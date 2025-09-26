@@ -1,0 +1,210 @@
+PROC'D - Fctn 6 - Takes you to the inventory/profile, Fctn-9 (BACK) to exit. 
+AID - Fctn-7 - Brings up the keys and a game summary, Fctn-9 (BACK) to exit.
+REDO - Fctn-8 - Takes you to the load/save screen to load/save game, Fctn-9 (BACK) to exit.
+
+These /probably/ need to be local, though, I'm unsure how to handle inventory yet... 
+
+--- aid screen ---
+
+01234567890123456789012345678901
+
+Fctn-6 - inventory
+Fctn-7 - help (press again for
+         more details)
+Fctn-8 - Load/Save game
+Fctn-9 - Exit subscreens
+
+Press Fctn-7 again for more
+information, or Fctn-9 to
+return to the game.
+
+(Fctn-9 again)
+
+This is a visual novel where you
+guide Phoenix Wright as he 
+learns about the Equestrian 
+legal system and way of life, 
+and tries to defend Rainbow Dash
+from the unusual charge of 
+murder.
+
+When information is being 
+presented, use the N key for the
+next screen, and P key for the
+previous screen.
+
+When cross-examining, you have 
+two additional keys. 
+
+You can use H for Hold It! This 
+will press the witness for more 
+information.
+
+Press any key to continue...
+
+You can also use O for 
+Objection! You MUST present a 
+piece of evidence in your 
+inventory to support your 
+objection. Objecting without the 
+correct evidence may result in 
+penalties! Evidence may 
+sometimes be a creature instead 
+of an item!
+
+On the inventory screen, use E 
+and X to move up and down. A 
+description of each item or 
+character will show at the 
+bottom. N will change pages - 
+the last page will contain 
+character profiles, then N again 
+will wrap to the first page. If 
+presenting evidence, use Enter 
+to present the selected item.
+
+Press any key to continue...
+
+When investigating, you can 
+search an area using S to 
+search. Move the crosshairs with 
+ESDX and press Enter to search 
+an area. This allows you to find 
+evidence.
+
+At any time you can press Fctn-6 
+to visit the Inventory screen, 
+Fctn-7 for this help screen, and 
+Fctn-8 for the game load/save 
+screen. Fctn-9 will back out of 
+these screens and return to the 
+game. Fctn-= will quit the game 
+and return to the master title 
+page - unsaved progress will be 
+lost!
+
+Fctn-9 to return to the game.
+
+-----------------
+
+Status line below text:
+
+01234567890123456789012345678901
+N-Next P-Prev
+
+On inventory screen (next means next page. Don't need Prev cause there should only be 3 pages max. One page is the profiles.)
+
+01234567890123456789012345678901
+E/X-View N-Next Enter to present
+
+Cross Examination
+
+01234567890123456789012345678901
+N-Next P-Prev H-Hold O-Object
+
+------------------
+
+Text window then:
+
+Name of Speaker
+  text text blah blah
+  text text blah blah
+  text text blah blah
+  text text blah blah
+  text text blah blah
+  text text blah blah
+N-Next P-Prev
+
+------------------
+
+Text descriptions:
+
+Col 
+1-11	Timestamp (probably irrelevant)
+13-23	Visual effect - either a 4-digit slide number, or text effect
+25-25	Name or sfx (sfx in parentheses). Also '.' to repeat previous.
+37-??	Text to be displayed. We're allowing up to 6 lines of 32 characters, so 192 chars.
+
+Visual Effects:
+	black	- to display black frame
+	flash	- to show white frame then back to original frame
+
+
+Sfx (I think many are missing, autoadvance after SFX slides)
+	(crowd sfx)
+	(hammersfx)
+	(trixie obj - would be cut off here, continues as: ection sfx)
+	(phoenix ob - would be cut off here, continues as: jection sfx)
+	(silence)	- stop music
+	(boomsfx)
+	(trixie hol - dit sfx)
+	(phoenix ho - ldit sfx)
+	(laughsfx)
+	(twilight o - bjection sfx)
+	(phoenix ta - kethat sfx)
+	(breaklock  - sfx) - note the space after breaklock
+	(party horn - sfx)
+	(badumtish  - sfx) - note the space after badumtish
+	(crash sfx)
+	(rip sfx)
+	(whoosh sfx - )
+	
+----------------------
+
+The data table still need a way to do branching paths...
+
+I'm thinking that the client side is a thin client, with the server side handling the game and most of the heavy lifting.
+
+Clients need to generate a random session key which is attached to the IP address for the session. The load mechanism happens on a new connection.
+
+Then it's just requesting info:
+
+CLIENT[ABCD.TI99].REQUESTDATA[user keypress if any]
+
+SERVER:SHOWIMAGE[size of data]=<data,pattern table first for TI version>
+
+CLIENT[ABCD.TI99].REQUESTDATA[user keypress if any]
+
+SERVER:SHOWTEXT[size of data]=<text to print, supports "\n" for line break, otherwise client formats it>
+
+CLIENT[ABCD.TI99].REQUESTDATA[user keypress if any]
+
+SERVER:SHOWFX[name of effect, as above]
+
+CLIENT[ABCD.TI99].REQUESTDATA[user keypress if any]
+
+SERVER:PLAYSND[name of sound, as above]
+
+CLIENT[ABCD.TI99].REQUESTDATA[user keypress if any]
+
+SERVER:GETCHOICE[valid keys]=<32 character prompt string>
+
+Not sure how to handle the inventory screen - maybe the client has a 'request inventory' command and uses that.
+
+CLIENT[ABCD.TI99].REQUESTINVENTORY
+SERVER:INVENTORY[size of data]=<pipe separated list of name|description|name|description, etc>
+
+User keypress of '0' is no key. 0xff is restart current frame (used after local commands are run).
+
+Inventory items are presented as a keypress from 128 and up.
+
+Since the server maintains its state, it should be able to run the whole game with that. The client will need to know how to do the visual effects and sound effects, otherwise it need remember nothing. It includes the client type so that the server can translate graphics for it (and maybe someday other things will matter). 
+
+The big one will be images. For the TI and Apple versions(?), hey, maybe Amiga and ST too, the server will translate the graphics into the native format and send them down. It should cache the translated images so that it doesn't have to do the work more than once, especially since the same image is often reused. For more powerful clients like the web client, the server can just send the original image data.
+
+The client simply keeps requesting data (though it provides a user keypress ONLY on the frame after it waited for one), and does what the server asks otherwise.
+
+I sort of think that as much as it'd be rather painful to build the data tables, a structure similar to what I used for Dragon's Lair might work. 
+
+The index would be the line of the data table, and then it would contain:
+
+text file, line of text file, default->frame, key->frame, key->frame, etc
+
+text file and line of text file lets us extract the image number, character name and text to display (or effects, of course)
+
+Prompts can be answered by the requested keys, or the user may present something. Most of the time presentations will lead to a default "I don't know what that is" line, which would need to return to the original line... so the code probably needs to remember the last frame on a default, and a -1 frame probably needs to mean 'previous'.
+
+But with this, next and previous (not the default's previous) are explicitly linked in. Generating all this with a tool would be the simplest approach. It also works around the row number approach being rather fragile. Otherwise we probably need labels.
+
+This also handles multiple choice and the like - display the choices as graphics and request 1,2,3, etc.
+

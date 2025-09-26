@@ -1,0 +1,777 @@
+------
+MOVIE2
+'T' in frame field indicates 'TESTIMONY' flag (blinks in game - sprites?)
+'C' indicates cross-examination - 'hold it' (H) and 'objection' (O) are active, skip over if not pressed
+        TODO - need to set up the missing paths, mostly bad objections (that or create a default scene with some random phrases)
+------
+
+Time        Frame       Who             Text
+00:02       0203                    Fey Law Offices
+00:05                   Phoenix     My name is Phoenix Wright, AND I'M FINE!
+00:09                   .           My name is Phoenix Wright, AND I'M FINE!!
+00:13                   .           My name is Phoenix Wright, AND I'M FINE!!!
+00:17       0204        Mia         Phoenix, are you okay!?
+00:19                   Phoenix     Oh, hey Chief. I was just practicing for my very first trial, which is tomorrow.
+00:24                   .           The guys back at law school said this tape would really help me out.
+00:27       0205        Mia         Thank goodness...
+00:29                   .           When I heard all the screeching coming from the office, I thought someone was murdering you.
+00:34                   Phoenix     (That wasn't screeching, that was step four!)
+00:38                   Mia         Haha, I don't think you need this exercise tape.
+00:42                   .           I'm sure you'll do just fine. The suspect -- he's your friend, right?
+00:47                   Phoenix     Yeah, he's my friend... but...
+00:49       0203        Mia         But what?
+00:51                   Phoenix     He's, well...
+00:53                   Mia         Yes?
+00:54                   Phoenix     He's kind of an idiot.
+00:56       0205        Mia         That's not a very nice thing to say about your friend.
+01:00                   Phoenix     No, I really mean it. He thinks passing the 8th grade is a credential; he even got the report card framed and everything.
+01:06       0206        Mia         So? What are you getting at?
+01:09                   Phoenix     I mean, what if he really did kill that woman?
+01:12                   .           What do I do?
+01:14                   .           Do I still lie and try to defend him, or do I side with justice and let him be punished...?
+01:18       0205        Mia         Phoenix...
+01:20                   Phoenix     ...
+01:22                   Mia         Don't stress yourself out so much.
+01:24                   .           Tell me, what do you think?
+01:27       0206        Phoenix     Me? What do you mean?
+01:30       0205        Mia         You, as Phoenix Wright, not as a defense attorney.
+01:34                   .           Do you think your friend killed that woman?
+01:37                   Phoenix     He might not be the sharpest tool in the shed, but I don't think he has it in him to kill anyone.
+01:42       0206        Mia         There you go.
+01:44                   Phoenix     Huh?
+01:45                   Mia         Go off that. You have to believe in him; it's your job to.
+01:49       0205        .           Cast all that doubt aside and pursue the truth. If you do that, nothing can stop you.
+01:56                   Phoenix     The truth, huh...
+01:59                   .           Thanks, Chief. I'm still a little nervous, though...
+02:02       0206        Mia         Don't worry, we all go through it.
+02:05                   Phoenix     Hey, umm... do you by any chance know who the prosecutor is?
+02:09       0204        Mia         The prosecutor?
+02:11       0205        .           I believe it's Winston Payne. You know, "The Rookie Killer."
+02:17                   Phoenix     R-rookie killer...
+02:19                   .           (I don't like the sound of that title.)
+02:21       0204        Mia         Not many rookies take the prosecutor into consideration.
+02:25                   .           Why did you want to know something like that?
+02:27                   Phoenix     No reason, I was just curious.
+02:30                   Mia         You seem more disappointed than curious.
+02:34                   Phoenix     Ah, forget about it. I'm just a little out of it right now.
+02:36       0206
+02:40       black
+02:42                   Phoenix     I'll never forget what you taught me.
+02:44                   .           But somehow, I highly doubt you're looking down on me smiling after what I did today...
+02:52       0100                    Ponyville District Court, June 10th, 11:55AM
+02:58       0207        Twilight    Phoenix... I was wrong about you...
+03:01       0100        Phoenix     Twilight, wait, I-...
+03:03                   .           She's gone...
+03:05                   .           Who am I kidding?
+03:07                   .           She's right. I did absolutely terrible in there...
+03:10                   .           Now two of her friends are suspects; what do I do now?
+03:14                   .           I don't have any leads at all, nobody to turn to. I'm all by myself...
+03:19                   .           Which means... I can't even get back home...
+03:21                   .           ...
+03:22                   .           No, I can't think that way. I've got to stay diligent.
+03:27                   .           I said I'd clear Rainbow Dash's name, and I bought her another day.
+03:32                   .           I can't let it go to waste... but where do I start...?
+03:37       0208        ?????       Hey, Mr Frowny-Wowny. What's the matter?
+03:40                   Phoenix     (Huh? Where did she come from? She smells like cotton candy...)
+03:46       0209        ?????       Cotton candy?
+03:48       0210        .           Oh! You must smell the new shampoo I'm using.
+03:50                   Phoenix     That explains it, then...
+03:52       0208        .           Wait, did I say that, or think tha-...?
+03:56                   .           Who are you!?
+03:58       0211        Pinkie      I'm Pinkie Pie, of course!
+04:00                   .           Party Thrower Extraordinaire!
+04:02       0209        .           But I can't talk right now! I'm looking for something...
+04:05                   Phoenix     What for?
+04:07       0208        Pinkie      Some other ponies said there was a spiky-headed monster in here.
+04:09                   .           I can't seem to find it anywhere, though.
+04:11       0209        .           You'd think it would stick out like a sore hoof.
+04:13       0208        .           Have you seen it?
+04:15                   Phoenix     (* sigh *)
+04:16       0212        Pinkie      ...does that mean "no"?
+04:18                   Phoenix     I'm getting so sick of this place!
+04:21       0213        Pinkie      Hey! Turn that frowny upside-downy!
+04:25                   Phoenix     How can I? I did such a lousy job in court today, and Twilight probably hates my guts for what I did...
+04:31       0210        Pinkie      Hey, you know Twilight!? Me too!
+04:34                   Phoenix     You know Twilight Sparkle?
+04:36       0213        Pinkie      Yup! We're the bestest of best friends!
+04:38       0214        .           Oh, that reminds me! I'm supposed to go to court today, and cheer for Rainbow Dash!
+04:42       0100        .           Sorry, gotta run!
+04:44                   Phoenix     But you're-!
+04:46       0208        Pinkie      Oh, I'm already here.
+04:48       0211        .           Yay!
+04:49       0213        Phoenix     I hate to break it to you, but you missed the trial.
+04:51                   .           (Out of all the pastel grass-chewers I've met, this one is definitely the weirdest.)
+04:55                   .           (AH! I better be careful, I think she can read minds.)
+05:00       0212        Pinkie      Is Dashie okay?
+05:02                   Phoenix     For the time being, yes.
+05:04                   .           The trial is being postponed. I'm actually Rainbow Dash's lawyer, Phoenix Wright.
+05:08       0210
+05:10                   Pinkie      Neato! So what'cha doing right now, Feenie?
+05:14       0212        Phoenix     "Feenie"... that's...
+05:17                   .           ...
+05:18                   .           Never mind...
+05:19       0213        .           Well... I don't know what I should be doing right now, to be honest. I have no leads at all.
+05:25       0208        Pinkie      Why don't you go talk to Dashie about the trial?
+05:28       0213        Phoenix     Wait a minute... she had Psyche-locks...
+05:31       0209        Pinkie      Psyche-locks? Is that some kinda breakfast cereal?
+05:33       0210        .           Sounds yummy!
+05:35       0208        .           Is it made with real locks and not grossly-wossly artificial locks?
+05:38       0215        Phoenix     Thanks for the advice, erm, Pinkie Pie.
+05:42                   .           I'm gonna go to the detention center now.
+05:46       0034                    Ponyville Detention Center, June 10th, 12:00PM
+05:52                   Phoenix     (I really hope she isn't mad at me after what happened...)
+05:55       0216        Rainbow     No no no no! No! No! No!
+05:59       0217        Phoenix     R-Rainbow Dash?
+06:01       0045        Rainbow     I-I can't bear to live anymore!
+06:03       0216        .           Throw the book at me! L-let them send me to the sun, there's nothing left for me in Equestria!
+06:10       0045        Phoenix     Rainbow Dash, get a hold of yourself!
+06:13                   .           (She must still be upset over those... pictures.)
+06:17       0218        Rainbow     Easy for you to say! Now the Wonderbolts will NEVER let me in! Ponyville is going to laugh at me forever!
+06:24                   Phoenix     They weren't... that... um... bad... r-really. I'm sure everyone will forget it by tomorrow. I guarantee it.
+06:33       0045        .           (There's no way anyone's forgetting images like those...)
+06:38       0044        Rainbow     You think so?
+06:40                   Phoenix     I know so! I'm always right: my name is Phoenix WRIGHT after all...
+06:47       0219
+06:49                   Rainbow     That wasn't funny...
+06:51                   Phoenix     (Ack! ... I thought it was! ...)
+06:53       0036        Rainbow     Thanks for trying to cheer me up though, I appreciate it.
+06:56                   Phoenix     You're welcome.
+06:58       0040        Rainbow     By the way...
+07:00                   Phoenix     Yes? What is it?
+07:02       0035        Rainbow     What was that terri-bad performance in court today!?
+07:04                   .           I could have done a better job defending myself!
+07:07                   Phoenix     I-I...
+07:09       0220        Rainbow     Every defense attorney must suck horse apples, if you're supposed to be the best one!
+07:14       0035        Phoenix     Look, I know I screwed up, but I'm going to make it up to you and Fluttershy tomorrow.
+07:19       0221        Rainbow     Fluttershy?! Ha!
+07:21                   .           She got what she deserved! After she betrayed me like that!
+07:25                   Phoenix     Hey! It tore me up having to do that! It was the only way I could save you. Fluttershy didn't betray you.
+07:32       0035        Rainbow     Give me a break! This is the thanks I get for all the times I stuck up for her sorry flank?
+07:38                   Phoenix     She was just telling the truth.
+07:40       0036        Rainbow     Truth? You proved she was lying though, she didn't see Applebloom!
+07:46       0035        Phoenix     But she did see you leave the forest... you were there, weren't you?
+07:50       0038        Rainbow     ...
+07:51       0221        .           Whatever! We are ex-friends as of now!
+07:54       0038        .           I could tell you were trying your hardest to defend me, even if you did do a crummy job.
+07:59                   Phoenix     (Gee, thanks.)
+08:02       0035        Rainbow     She pretty much said:
+08:04       0222        .           "Yup! Rainbow Dash did it!"
+08:06       0035        .           What kind of a friend does that?
+08:08                   Phoenix     Rainbow Dash, for the last time, she was telling the truth. What she saw...
+08:13       0036        .           Actually, that brings me to why I'm here.
+08:16       0040        Rainbow     What? Why are you here?
+08:19                   Phoenix     The truth. I want to know what you were really doing near the Everfree Forest the night of the murder.
+08:25       0223        (phoenix takethat sfx)
+08:30       0224        Rainbow     Ugh...
+08:31       0225        .           I told you already, I was practicing for the race!
+08:35                   Phoenix     (Phew... it still works after that incident this morning...)
+08:39
+08:46       0227        Phoenix     (What was that all about anyway?)
+08:48                   .           (Ugh, forget about that! It still works, and that's all that matters!)
+08:53                   .           (Okay, there they are. Time to break 'em!)
+08:57                   .           Sorry, but I don't believe you, my little pony. Not for a single solitary second.
+09:02       0224        Rainbow     You're my lawyer and you don't believe me? THAT'S reassuring...
+09:07                   Phoenix     Let's play a game, Rainbow Dash...
+09:09                   .           I'm going to guess what you were really doing near the crime scene that night, and you're going to tell me if I'm right.
+09:14       0228        Rainbow     You can go right ahead and do that, but I'm sticking to my story.
+09:19                   Phoenix     I don't think you were practicing at all; I think you were doing something FAR more important.
+09:24       0225        Rainbow     L-like WHAT!?
+09:26                   Phoenix     Like, oh, I don't know... meeting someone?
+09:30       0229        Rainbow     Ah! Uh-I-I mean-...
+09:34       0225        .           Who would I be meeting in the middle of the forest at that hour?
+09:37                   .           Nopony ever goes in there willingly.
+09:40                   Phoenix     Then why were YOU "practicing" there if no one ever goes in there willingly?
+09:44       0229        Rainbow     U-uh... w-well...
+09:49       0227        Phoenix     I know there was someone in the forest the night of the murder.
+09:53       0225        Rainbow     Put your money where your mouth is! Who do you think I was meeting?
+09:57       0223        (phoenix takethat sfx)
+09:59       0227        Phoenix     Ace Swift!
+10:01                   .           The fact that your feathers were found all around the clearing proves you were there that night.
+10:04       0229        Rainbow     !!??
+10:05                   Phoenix     And who else was in the clearing that night...? The victim, of course!
+10:08                   .           You needed to be there to see him.
+10:11                   .           You also just told me, ponies avoid going in there.
+10:13                   .           So I'm willing to bet he wanted to meet with you in private, and what better place to pick than the middle of a forest nobody ever goes into?
+10:21       0230        Rainbow     AHH! NOOOOO!
+10:24       0231        (breaklock sfx)
+10:26       0232        Rainbow     I-I mean-... "Ah, no, you're wrong!"
+10:29       0233        .           H-he was just competition!
+10:32                   .           Why would I want to meet him? I have better things I could be doing.
+10:36                   Phoenix     Like what?
+10:38       0234        Rainbow     I don't know, napping? Something like that...
+10:42                   Phoenix     (Oh, please...)
+10:44                   .           Maybe he had something you wanted.
+10:46       0235        Rainbow     What do you mean?
+10:48                   Phoenix     I'm saying maybe he had somehting important to you, something you'd move heaven and earth for.
+10:53       0233        Rainbow     I'm a pretty self-satisfied pony.
+10:55                   .           I've got everything I need, well, besides fortune and glory, and I don't think he could give those to me.
+11:01       0236        .           What could he possibly have that I'd want?
+11:04                   Phoenix     I'm glad you asked that, Rainbow Dash...
+11:07       0235        Rainbow     Y-you are?
+11:09                   Phoenix     There's one thing that you absolutely needed that I know he had.
+11:13       0234        Rainbow     I'm afraid I don't know what you're talking about...
+11:17                   Phoenix     The reason you went to go meet him is...
+11:19       0223        (phoenix takethat sfx)
+11:21                   Phoenix     These!
+11:23       0237        Rainbow     AHH! Put those away before somepony sees them! PLEASE!
+11:28       0238        Phoenix     Even right now, your anxiety shows you absolutely didn't want these pictures floating out and about!
+11:34       0232        Rainbow     Yes, yes, yes, you're right!
+11:35                   .           I was meeting him about these! Can you please just put them away? NOW!?
+11:40       0239        (breaklock sfx)
+11:42       0240        Phoenix     This brings us to the money question... why did he have these pictures?
+11:46                   Rainbow     Who knows, he's dead, what a bummer, guess we'll never know!
+11:51                   Phoenix     I actually think I know why.
+11:53       0241        Rainbow     You do?
+11:55                   Phoenix     Yes. I can think of one reason why he'd want to meet you over pictures like these...
+11:59                   .           He was blackmailing you, wasn't he?
+12:02       0242        Rainbow     Blackmail...
+12:04                   Phoenix     I'm willing to bet my attorney badge that he wanted you to toss the Equestrian 500.
+12:07                   Rainbow     ...
+12:09                   Phoenix     I was told of ponies suspecting him of foul play in the wake of all his success.
+12:14                   .           He was probably threatening you to let him win the race.
+12:16       0241        Rainbow     Wow...
+12:19                   Phoenix     Hmm?
+12:20       0243        Rainbow     You're really good...
+12:22       0244        (breaklock sfx)
+12:28       0245        Rainbow     It's true... Ace was trying to force me to drop out of the Equestrian 500...
+12:33                   Phoenix     How did it start?
+12:35       0036        Rainbow     I got home two days ago and saw this letter on my doorstep.
+12:38       0246                    A letter blackmailing Rainbow Dash that she found on her doorstep.
+12:43       0036        Phoenix     "I'll let your secret out if you don't drop out of the Equestrian 500. Meet in the Everfree Forest clearing 8:35PM tonight for negotiations."
+12:51                   Rainbow     At first I didn't know what secret it was talking about...
+12:54       0045        .           But attached to the message was one of those pictures...
+12:57                   Phoenix     About those pictures...
+13:00                   .           Why are you-
+13:01       0247        Rainbow     IT'S A HOBBY, ALRIGHT!?
+13:03                   .           I BET YOU HAVE SKELETONS IN YOUR CLOSET TOO, MR 20-SOMETHING WHO PLAYS WITH TOYS!
+13:07                   Phoenix     Okay, okay, I won't ask about them anymore.
+13:10       0035        .           Do you have any idea how he got them, though?
+13:12       0036        Rainbow     I have no clue; my best guess is that the jerk was stalking me, trying to get dirt on me.
+13:17       0035        Phoenix     Rainbow Dash...
+13:19       0038        Rainbow     Yes? What is it?
+13:21                   Phoenix     I want you to know that I trust you, and I'm going to need you to trust me when I ask you these next series of questions.
+13:24       0040        Rainbow     Huh?
+13:26                   Phoenix     I know you may be scared this will make you look guilty, but I know you're innocent.
+13:30       0248        Rainbow     I-I'm not scared...!
+13:33                   Phoenix     Why did you move that cloud to the crime scene and set it off?
+13:35       0245
+13:38                   Rainbow     B-but... I-I... I didn't-
+13:41                   Phoenix     Please, Rainbow Dash, you can trust me. I won't think any differently of you in light of what you tell me. I know you didn't kill him.
+13:47                   Rainbow     ...
+13:49       0036        .           Okay... I'll tell you...
+13:51       0245        .           I did move the cloud there and I did set it off...
+13:54       0045        .           I just wanted to give him a scare, that's all.
+13:57                   Phoenix     A scare?
+14:00                   .           So you really did move the cloud over the forest clearing?
+14:02       0036        Rainbow     As soon as I saw the requirements of the blackmail letter, I knew it was Ace, and that all those rumors about him were true.
+14:09       0035        .           He's a blackmailing cheater.
+14:11                   .           So, I set up the cloud over the clearing earlier that day with the intent of declining his little offer.
+14:16                   Phoenix     So you weren't going to drop out in spite of him leaking the pictures?
+14:19       0247        Rainbow     No way!
+14:21       0035        .           I'm not going to let some loser have his way with me even if it meant those pictures getting out...
+14:25                   .           I have too much pride for that.
+14:28                   Phoenix     I find that really admirable.
+14:30       0037        Rainbow     Heh, thanks...
+14:32                   .           This is also my first year competing in the race; I just reached the required age to participate.
+14:37                   .           I've been way too anxious to just drop out.
+14:40       0039        .           R-B-D spells VIC-TOR-Y!
+14:43                   Phoenix     You sure you can take 500 miles? It's longer than it sounds, you know.
+14:46       0040        Rainbow     There's some checkpoints along the track set up so the racers can have some R&R, but that's a little problem I keep having.
+14:52       0036        .           There's no doubt I'm fast, but I tire out along the way. I'm not used to flying that long.
+14:57                   Phoenix     In races like these, you should pace yourself accordingly.
+15:00                   .           Don't go fast right from the start - save all your energy for the home stretch.
+15:04                   .           Kind of like how I don't present all my evidence right from the start.
+15:08       0037        Rainbow     I'll try to keep that in mind.
+15:10                   Phoenix     But let's get back on topic, shall we?
+15:12       0036        .           I'm supposed to be your lawyer, not your coach.
+15:14       0040        Rainbow     Right...
+15:16       0036        .           Anyway, I wasn't planning on killing him, just give him a bit of a startle...
+15:20                   .           You know, just kicking some dirt in his face for messing with me.
+15:24       0249        .           The cloud shoots a lightning bolt directly under it when activated.
+15:27       0037        .           I mess around with ponies by scaring them with clouds all the time, but I got an extra big one in his case, to make the sound as loud as possible.
+15:34       0245        .           I guess it was a little dangerous getting one that big.
+15:37                   Phoenix     So it didn't hit him when you set it off?
+15:39       0036        Rainbow     No, I made sure it wasn't over him.
+15:42                   .           Even though it was really dark outside, like you said in the court today, I could see that the bolt didn't even come close to touching him.
+15:48       0037        .           When the lightning bolt lit up the area, it made him scream like a little girl and left a really sissy look on his mug.
+15:54                   .           You should have seen it; it was priceless!
+15:56       0040        .           Then I just hightailed it out of there as fast as I could.
+15:59                   Phoenix     (That's probably when Fluttershy saw her.)
+16:02                   .           Why didn't you tell anyone about this blackmail earlier?
+16:05       0036        Rainbow     I didn't want anypony to know about the blackmail... because...
+16:08       0045        .           You know... they would wonder what he was blackmailing me with...
+16:12                   Phoenix     I see...
+16:14                   .           (Then those pictures would get out...)
+16:16                   Rainbow     You believe me, right? He was absolutely fine when I left, I swear!
+16:19                   Phoenix     Yes, I believe you, though more questions arise from this.
+16:22       0248        Rainbow     More questions?
+16:24                   Phoenix     How did he end up dead directly under the cloud?
+16:27       0036        .           I was trying desperately to convince the court it was the second bolt that killed him. That would make this all an accident, since you have no control over it.
+16:36                   .           But then we have that "Lightning doesn't strike the same place twice" thing that Trixie was talking about.
+16:41       0040        Rainbow     That's true, it's a new type of storm cloud the pegasi are using to protect ponies from situations like this.
+16:48       0249        .           Since it can't hit the same place twice, they can just stand under a cloud after the first bolt.
+16:53                   Phoenix     So the safest place is under the cloud...
+16:55                   .           That's really something; the weather just works by itself where I live.
+17:00       0039        Rainbow     I kind of wish it worked that way here; I'd have a lot more free time on my hooves so I could perfect my "Sonic Rainboom" or my "Fantastic Filly Flash".
+17:09                   Phoenix     (Are those dance moves or something?)
+17:11                   .           From what I hear, you're also the weather manager.
+17:14       0036        .           I need some information regarding how the lightning here in Equestria works.
+17:18                   Rainbow     What do you need to know?
+17:20                   Phoenix     Well, is it true the bolt causes the noise?
+17:23       0040        Rainbow     Yeah, it is.
+17:25       0249        .           I don't know how it works exactly, but I'm pretty sure when it touches the ground or anything attached to the ground, like, say, a tree... it sends out vibrations which makes the 'boom'.
+17:34                   Phoenix     (I'm no meteorologist, but I'm pretty sure lightning doesn't work like that...)
+17:38       0036        .           (Then again, I keep forgetting I'm in a land full of magical talking ponies who can manually change weather...)
+17:45                   .           Is there anything that could prevent it from making a sound?
+17:48       0249        Rainbow     I suppose if it hit something small in the air that was close enough to the cloud... yeah, it wouldn't make a sound...
+17:55       0248        .           And I know what you're thinking, but that couldn't happen...
+17:58                   Phoenix     Why not?
+18:00       0035        Rainbow     That itchy racing suit.
+18:02                   Phoenix     Oh, right. I remember that being brought up.
+18:05       0250        .           That's that lightning-proof suit you pegasuses wear for the race, right?
+18:10                   Rainbow     The plural is "pegasi"...
+18:12                   .           I absolutely hate wearing that thing, but while in the air you're pretty much invulnerable to lightning.
+18:18                   Phoenix     Weren't there some exposed parts on it, though?
+18:20                   Rainbow     Yes, there are, but while you're in the flying position those parts are covered up. They're only exposed while you're on all fours and grounded.
+18:27       0245        .           This is sounding more and more hopeless for me the more I talk about it...
+18:31                   Phoenix     Try to cheer up. I'll find out what really happened and get you out of here.
+18:35       0044        Rainbow     Thank you, Nix...
+18:37                   Phoenix     Okay, Rainbow Dash, I'm gonna go do some more investigating in light of this new information.
+18:41       0036        Rainbow     Alright, catch you later.
+18:44                   Phoenix     Oh, wait! One more thing...
+18:46       0040        Rainbow     Yes?
+18:47                   Phoenix     Pinkie Pie. I bumped into her after the trial...
+18:49                   .           I'm guessing she's a friend of yours. She wanted to cheer you on in court today, but sadly, it seems she was late.
+18:56       0036        .           Is she always that... uh... loopy?
+19:01       0037        Rainbow     Heh, yeah. That's just Pinkie Pie being Pinkie Pie.
+19:04                   Phoenix     Okay, just thought I'd let you know.
+19:07                   .           Well, goodbye Rainbow Dash.
+19:09       0251        Rainbow     Wait!
+19:11                   Phoenix     (Geez, I just can't leave this place...)
+19:13       0036        .           Yes, what is it?
+19:15                   Rainbow     Here, take this...
+19:17                   Phoenix     A key? What is it for?
+19:19       0252        Rainbow     Ace's hotel room.
+19:21                   Phoenix     What!? How did you get this!?
+19:24       0253        Rainbow     I was angry when I thought he was stalking me, so I snuck into his hotel room to find dirt on him...
+19:28       0254        .           It was under the mat... what a stupid place to leave your key, huh?
+19:33                   Phoenix     ...
+19:35       0037        .           Yeah... stupid place...
+19:37                   .           (Note to self: put key to office in different hiding spot.)
+19:41       0255                    A key to the hotel Ace Swift was staying in while in Ponyville.
+19:44       0037        Rainbow     I wasn't able to find anything good in there, but maybe you can!
+19:47                   Phoenix     Where is the hotel?
+19:49       0249        Rainbow     He was staying in the "Hay and Stay Hotel" while he was at Ponyville. It's a little past Sugar Cube Corner.
+19:54       0036        .           Just have Twilight show you where it is.
+19:57                   Phoenix     Twilight...
+19:59       0248        Rainbow     What's the matter?
+20:01                   Phoenix     O-oh, nothing. Thanks Rainbow Dash. This will really help my investigation!
+20:05       0037        Rainbow     Goodbye, Nix.
+20:07                   Phoenix     I promise I'll get you and Fluttershy out of this mess.
+20:09       0035        Rainbow     Fluttershy... 
+20:11                   .           I told you, I don't care about her.
+20:14                   Phoenix     (She's still really angry about that testimony Fluttershy gave...)
+20:18       0037        Rainbow     I just know you'll find some super awesome evidence this time around!
+20:22       black
+20:24       0256                    Ponyville, June 10th, 12:30PM
+20:30                   Phoenix     Okay, where should I go first? ... back to the forest, or to the hotel room?
+20:35                   ???         Hello again!
+20:38                   Phoenix     It would be a lot easier to go to the forest, since I know the general direction and I might find some new clues with the sun out...
+20:45                   ???         Hello?
+20:47                   Phoenix     Then again, I already found a lot of evidence in the forest already...
+20:52                   ???         Knock, knock... Feenie!
+20:54                   Phoenix     Though, would going into his hotel room be considered breaking and entering?
+20:59                   .           I'll have a bit of trouble finding it without someone guiding me, anyway...
+21:02       0257        (party horn sfx)
+21:03                   Phoenix     AH!?
+21:05       0258        Pinkie      Got your attention now!
+21:07                   Phoenix     Oh, you're... Pinkie Pie.
+21:09       0257        Pinkie      Yup-a-roonie! That's my name!
+21:11                   Phoenix     What are you doing here?
+21:13       0259        Pinkie      I followed you! The guards wouldn't let me in though, so I just talked with them while I waited for you!
+21:16       0260        .           Right boys?
+21:18       0261        Guard       Oh, for the love of all things holy... please...
+21:22                   .           Take her away...
+21:24       0262        Phoenix     Uh... why were you following me?
+21:28                   Pinkie      Cause I need help finding something...
+21:30       0263        Phoenix     Look, the spiky-headed monster they were talking about is-
+21:33       0257        Pinkie      Oh! I gave up trying to find that a looooooong time ago, it's probably just somepony's overactive imagination!
+21:39       0262        .           I need to find something I lost about a week ago.
+21:41                   Phoenix     What did you lose?
+21:43       0264        Pinkie      It's a secret!
+21:45                   Phoenix     So you want me to help you find something... but you won't tell me what it is...?
+21:50       0258        Pinkie      Correct-a-mundo!
+21:52                   Phoenix     That makes no sense!
+21:54                   .           (Wait a minute...)
+21:56                   .           Actually, uh, Pinkie Pie...
+21:58       0262        Pinkie      Yes?
+22:00                   Phoenix     Do you know where "Sugar Cube Corner" is?
+22:02       0257        Pinkie      You want to go bake cupcakes with me at Sugar Cube Corner!
+22:05                   .           Mr and Mrs Cake always let me help out, now I have an assistant! Yay!
+22:07                   .           You know how to make cupcakes, right?
+22:09                   .           It's okay if you can't, I can teach you if you don't know, it's really really REALLY easy.
+22:15       0258        .           First-you-preheat-the-oven-to-350-degrees-and-line-the-cupcake-pans-with-paper-liners.
+22:17       0259        .           Then-you-toss-flour-sugar-baking-powder-and-salt-in-a-mixing-bowl.
+22:19                   .           Add-shortening-milk-and-vanilla-for-flavor-and-taste;
+22:21       0257        .           I-personally-put-in-a-little-bit-of-candy-as-well-to-make-them-sweeter.
+22:22                   .           Beat-for-1-minute-then-scrape-the-side-of-the-bowl-with-a-spatula;
+22:23       0259        .           we-want-to-salvage-as-many-cupcakes-as-we-can-from-the-mix!
+22:27                   Phoenix     ...
+22:28                   .           That's not what I meant...
+22:30                   .           I was wondering if you knew where the "Hay and Stay" is. It's a hotel? I heard it was by there.
+22:36                   .           (Of course I know how to make cupcakes; what does she think I am, a hobo?)
+22:40       0257        Pinkie      Yessiree! I know where it is!
+22:43                   Phoenix     I need someone to escort me; would you be willing to do that for me if I help you find your missing... thing?
+22:51       0262        Pinkie      Okie-dokie-loki! On one other condition!
+22:54                   Phoenix     Name it.
+22:56                   .           (This is going to be easier than I thought.)
+22:59                   Pinkie      You have to tell me...
+23:01       0258        .           a funny joke!
+23:03                   Phoenix     W-what!? Why do I have to do that!?
+23:06       0265        Pinkie      I don't want to hang out with some big party-pooper-frowny-stick-in-the-mud!
+23:09       0262        .           Show me you have a sense of humor, Feenie-weenie!
+23:11                   Phoenix     Do I really have to do this?
+23:14       0260        Pinkie      Mmmm-hhhmmmmm!
+23:17       0262        Phoenix     (Well, she seems really easy to impress anyway...)
+23:20                   .           Okay. This is a really good one, Pinkie Pie!
+23:23       0257        Pinkie      Tell me! Tell me!
+23:25                   Phoenix     Here goes! Why do they call me Phoenix Wright?
+23:28       0262        Pinkie      Hmmmm... I don't know. Why?
+23:31                   Phoenix     Because...
+23:33                   .           I'M ALWAYS "WRIGHT"!
+23:34                   (badumtish sfx)
+23:35       0263
+23:37                   Pinkie      That wasn't funny...
+23:39                   Phoenix     ...
+23:40       0262        Pinkie      So... do you have any better ones?
+23:43                   Phoenix     ... well, uh... This one time I cross-examined a parakeet! What's the deal with that!?
+23:50       0263        Pinkie      ...
+23:52                   Phoenix     (This is a lot harder than I thought... I'm a lawyer, not a comedian!)
+23:56                   .           Ummm... Did you know I had the entire left side of my body cut off once? Don't worry, I'm all "Wright" now...
+24:05                   Pinkie      ...
+24:06       0266        .           Oh hey, what's that!?
+24:10       0267        Phoenix     This? It's my Equestria Attorney Badge. That's how I got in that detention center.
+24:17       0258        Pinkie      Wow, that is the girliest thing I've ever seen!
+24:21       0257        .           That must have been why you were pretending to be so bad at telling a good joke!
+24:24                   .           To build up to flashing that ridiculous-looking thing!
+24:28       0258        .           You sure are a knee-slapper, Feenie!
+24:33                   Phoenix     (I really feel like sobbing to myself in a dark corner right now...)
+24:37                   .           So, will you show me where this hotel is, now?
+24:41                   Pinkie      (* giggling uncontrollably *)
+24:47                   Phoenix     Pinkie?
+24:49       0262        Pinkie      Oh right! The hotel is THIS way!!
+24:52       0256        Phoenix     Hey! Wait up!
+24:56       black                   Hay and Stay Hotel, June 10th, 12:53PM
+25:04                   Pinkie      (* humming Phoenix Wright's theme *)
+25:10                   Phoenix     (That song she's humming sounds really, really familiar...)
+25:15                   Pinkie      Lookie! Here's that room!
+25:17                   Phoenix     Hmm... Do you think we'll get in trouble for going into his room without asking?
+25:22                   Pinkie      Don't be such a chicken, Feenie! Gimme that key!
+25:25                   Phoenix     H-hey! We can't just-
+25:28                   Pinkie      We just stick it in here aaaand...
+25:30       0268        .           We're in!
+25:32       0269        .           Pinkie Pie, master of unlocking!
+25:35       0268        Phoenix     (I really hope I don't get sent to the sun for this...)
+25:38       0270        .           So, this is Ace's room.
+25:42                   .           Seeing as he's dead, surely he won't mind if we look around?
+25:45       0271        Pinkie      My name is Pinkie, not Shirley.
+25:48       0272        .           What are we trying to find here anyway, Feenie? A magical stone? A secret chamber? A prisoner? A cup? Maybe something you ordered? Oatmeal?
+25:56       0273        Phoenix     Oatmeal? Why would anybody want to find oatmeal?
+26:00       0268        Pinkie      Duh... when they're hungry!
+26:05                   Phoenix     No, Pinkie Pie, we're trying to find clues that relate to the crime.
+26:09       0274        Pinkie      So... no oatmeal?
+26:13                   Phoenix     No oatmeal.
+26:15       0275        .           I want to try and be out of here as fast as humanly possible, okay? I don't want to be caught by anyone.
+26:22       0268        Pinkie      Alright! I'll try to be as fast as PONY-ly possible then!
+26:27                   Phoenix     (Maybe it was a mistake, taking her in here with me...)
+26:30       0273        Pinkie      Look Feenie, a step-ladder! Is that a clue?
+26:33                   Phoenix     One, that's not a clue.
+26:35       0272        .           Two, that's not a step-ladder, it's a ladder.
+26:38       0274        Pinkie      There's a difference?
+26:40                   Phoenix     There's a BIG difference!
+26:42                   .           A step-ladder has an A-frame that folds while a ladder is flat like that one.
+26:47       0272        Pinkie      I still don't see what the difference is... I mean, you still step on it, right? Wouldn't it be a STEP-ladder then?
+26:53       0268        Phoenix     How can I put this in a way you'll understand...?
+26:57                   .           It's like cupcakes and muffins.
+27:00       0272        Pinkie      Cupcakes and muffins?
+27:02                   Phoenix     Exactly. Both look kind of the same, but they're totally different, like ladders and step-ladders.
+27:08                   .           Cupcakes have frosting on them, like how step-ladders have a folding frame, while muffins are usually plain, like the ladder is flat.
+27:15       0268        Pinkie      OOHHH! I think I get it now! Like hacksaws and saws?
+27:19       0274        .           Why do they call it a hacksaw anyway?
+27:21                   Phoenix     !!??
+27:24       0268        Pinkie      I don't get it... it doesn't hack; hacking is what you do with daggers and axes.
+27:28       0273        .           And knives!
+27:31                   Phoenix     Uhh... yeah...
+27:33                   .           (Okay, seriously, she's freaking me out now.)
+27:38       0268        Pinkie      But you sure know a lot about ladders, Feenie! Are you sure you're a lawyer and not actually a ladder connoisseur?
+27:44                   Phoenix     It's just common sense!
+27:46                   .           I find it annoying that a lot of people don't know the difference between the two.
+27:50       0272        .           Wait a minute, wasn't the victim a Pegasus?
+27:53                   .           Why would he need a ladder anyway?
+27:55                   .           He could just fly up and get the things he would need a ladder for.
+27:58       0268        Pinkie      Maybe he was superstitious and didn't want bad luck.
+28:01                   Phoenix     Keeping a ladder doesn't prevent bad luck...
+28:03                   .           You GET bad luck for walking under a ladder.
+28:07       0276        Pinkie      What about this? Is ripped-up paper good luck?
+28:09                   Phoenix     It's a piece of ripped up paper...
+28:11                   .           Why would it be good luck?
+28:13                   .           (I need an aspirin...)
+28:15       0274        Pinkie      Guess you're right, it just says a bunch of mumbo-jumbo on it anyway.
+28:18                   Phoenix     "Mumbo-jumbo?" Let me see it...
+28:21       0268        .           "This is a letter stating my permanent Leave of Absence. After the Equestrian 500 is over, I can no longer work with you."
+28:29                   .           "We made quite the team, but I-"
+28:32                   .           Then it cuts off. The rest must be on the other half!
+28:36                   .           Pinkie, you found a clue!
+28:39       0273        Pinkie      Is that good luck?
+28:41       0272        Phoenix     No!
+28:42                   .           Well... yes!
+28:44                   .           Kinda!
+28:45                   .           Good job, Pinkie!
+28:47       0277        Pinkie      Yay!!
+28:48       0278                    Someone was planning on quitting something after the Equestrian 500. The other half is missing.
+28:52       0272        Phoenix     It would only make sense that Ace wrote this, since it's his room, but who was he writing it to?
+28:57       0268        Pinkie      Maybe he-
+28:57       0279        .           OH NO!
+29:00                   Phoenix     Shh! We aren't supposed to be in here, remember?
+29:03                   .           What's the problem?
+29:05                   Pinkie      My tail's twitching!
+29:07                   Phoenix     So, my foot fell asleep. You don't see me freaking out.
+29:09       0270        .           (Why is she hiding under that table?)
+29:11                   .           Pinkie Pie, stop fooling around and-
+29:13                   (crash sfx)
+29:14                   Phoenix     OW!
+29:15       0279        Pinkie      See? I warned you!
+29:17                   Phoenix     W-what?!
+29:18                   .           You didn't say anything was going to fall on my head!
+29:21       0274        Pinkie      Sure I did! I said my tail was twitching.
+29:23                   .           That means something's gonna fall.
+29:25                   Phoenix     That's ridiculous! You can't tell me you can make predictions like that based off body spasms.
+29:31       0268        Pinkie      So what's that book say?
+29:33                   Phoenix     You mean the thing that fell on my head?
+29:35       0270        .           It seems like it's some sort of advanced spell book.
+29:37       0273        Pinkie      Hey Feenie! Do you think that you can cast a spell!?
+29:40       0274        .           I can't since I'm an earth pony.
+29:42                   Phoenix     Of course not! I'm not a magician!
+29:44                   .           I can't even read it anyway.
+29:46       0272        .           I only know it's an advanced spell book because I saw Twilight reading a book just like it this morning, and I asked her what it was.
+29:53                   .           The text isn't in English. The characters are in weird hieroglyphics like Twilight's book.
+29:59                   .           Huh? Look at this...
+30:02       0281        Pinkie      "Continue from here, third line."
+30:05                   Phoenix     Seems someone scribbled a note here.
+30:08                   Pinkie      You can get in big trouble for writing in hotel's books like that!
+30:11                   Phoenix     No, I don't think this is the hotel's book.
+30:13                   .           Twilight said these advanced spell books are only available in Ca...
+30:17                   .           Can...
+30:19                   .           I forget the name, starts with a hard "C" if I recall...
+30:22                   Pinkie      Cookie?
+30:24                   Phoenix     No.
+30:25                   Pinkie      Carrot?
+30:26                   Phoenix     No...
+30:27                   Pinkie      Corkscrew?
+30:28                   Phoenix     No... just stop guessing. The point is, this must be someone's personal book...
+30:33       0282                    A book found in the victim's hotel room. Small note scribbled on one of the pages.
+30:37       0272        Phoenix     I better put it back on the shelf.
+30:40                   Pinkie      It was all the way up there.
+30:42                   Phoenix     I can reach it.
+30:44                   .           Almost got it.
+30:46                   (rip sfx)
+30:47       0279        Phoenix     AH!!!!!!
+30:48                   .           NOOOOOOOOOOoooOOO!
+30:50       0274        Pinkie      Didn't you just tell me to be quiet a second ago?
+30:52                   .           Practice what you preach!
+30:54                   Phoenix     I ripped my suit!
+30:56       0276        Pinkie      You're right; you have a big hole in your armpit!
+30:58                   .           Should have used the stepladder instead of reaching so high.
+31:00                   Phoenix     It's a ladder!
+31:02       0272        .           You don't realize how bad this is!
+31:05                   .           I can't walk around with a big rip in my suit!
+31:08       0268        Pinkie      No use crying over spilled milk! Or ripped armpits!
+31:13       0273        .           Lookie! It's Rainbow Dash!
+31:15                   Phoenix     Huh? Where?
+31:18                   Pinkie      Right here on the table!
+31:20       0283        Phoenix     Well, it's her name alright...
+31:22                   .           What is this? It looks like some kind of list.
+31:25                   Pinkie      Maybe it's a party invite!
+31:28                   Phoenix     Do you know who these other names are, Pinkie?
+31:30                   Pinkie      Nope, doesn't ring any bells.
+31:32                   .           "Rainbow Dash" is the only name on here I recognize...
+31:35                   .           Uh oh! I have to find out who these other ponies are!
+31:38                   Phoenix     Why?
+31:40                   Pinkie      I throw a party for every new pony in Ponyville...
+31:43                   .           (gasp!) That reminds me! I haven't thrown a welcome party for you yet!
+31:47                   .           I'm sorry Feenie, I just haven't had the time today!
+31:50                   Phoenix     Uh... that's alright...
+31:53                   .           (She seems so upset about it...)
+31:56                   .           Look next to Rainbow Dash's name, it's a time: "8:35"
+32:01                   Pinkie      I was right! It's a party invite!
+32:04                   .           "Rainbow Dash party at 8:35". I'll try not to be late this time.
+32:08                   Phoenix     I don't think so. I think I know what this is now...
+32:12       0284                    A list with several names including Rainbow Dash.
+32:14       0273        Pinkie      You know? Tell me! Tell me!
+32:18                   Phoenix     I'm not completely positive, but I think this is a-
+32:21       0279        ????        And just who are you two?!
+32:23                   Phoenix     (OH NO! We're caught!!)
+32:25       0285        Mia         Why are you snooping around my room?
+32:28                   Phoenix     Ch-Chief!?
+32:30                   Mia         I should have the police book you two and have you thrown in jail for breaking and entering.
+32:36                   Phoenix     (This can't be Mia, it just can't be!)
+32:39       0273        Pinkie      We're room service!
+32:41                   Phoenix     (Do you honestly think she's going to fall for that?)
+32:44       0285        Mia         Do you honestly think I'm going to fall for-!
+32:47       0286        .           Wait a minute...
+32:48                   .           I know who you are...
+32:50       0285        Phoenix     It's me, Mia...
+32:51       0286        Mia         Mia?
+32:52       0285        .           My name is Sonata.
+32:54                   Phoenix     Sonata...?
+32:56       0287        Sonata      Did I stutter? Yes, that's my name.
+33:01       0288        Phoenix     (It's not her... but the resemblance... it's uncanny...)
+33:07       0289        Sonata      Name. Now.
+33:09       0288        Phoenix     Phoenix Wright...
+33:11       0268        Pinkie      Pinkamena Dianne Pie, Party Thrower Extraordinaire!
+33:14       0288        Sonata      As I thought. You're that human lawyer from the trial earlier...
+33:18                   Phoenix     (I can't get over this... it looks exactly like her... if she were a pony.)
+33:24       0287        Sonata      Can you stop staring at me like that, please.
+33:27       0272        Pinkie      What's the matter Feenie, cat got your tongue?
+33:29       0268        .           That would hurt because a cat has claws and your tongue is really sensitive...
+33:33       0279        .           Ouch!
+33:34       0288        Sonata      I knew Rainbow Dash was guilty, but it didn't even look like you were trying in court today.
+33:40                   Phoenix     Who... exactly... are you...?
+33:44       0290        Sonata      I'm the one who should be asking questions here. Seeing as you two are the ones who broke into my room.
+33:50                   .           I'm betting you're the one who stole the key two days ago.
+33:53                   Phoenix     But isn't this Ace Swift's room?
+33:57       0288        Sonata      You're here about him?
+34:00                   .           I see...
+34:01       0289        Phoenix     We were just investigating his hotel room for clues. This is his room, is it not?
+34:06       0288        Sonata      Hmm?
+34:08       0289        .           Oh, yes, that is correct.
+34:10                   Phoenix     You just said this was your room though. What are you, his girlfriend or something?
+34:15       0290        Sonata      That's strike one, Mr. Wright. I suggest you not strike out anymore.
+34:21                   Phoenix     (Ack! Better not get on her bad side.)
+34:24                   .           Uh... sorry.
+34:26       0288        Sonata      Actually I'm-
+34:27                   .           Or should I say, WAS, his manager. Given the circumstances.
+34:32                   Phoenix     His... manager...?
+34:35       0291        (whoosh sfx)
+34:38       0288        Phoenix     (This is getting weird...)
+34:42                   .           I'm sorry about what happened.
+34:44                   Sonata      Don't worry, I got over it pretty quickly.
+34:47       0287        .           Besides, justice will be served. Your client will be punished for her crime.
+34:53                   Phoenix     Hey, Rainbow Dash didn't do it!
+34:56       0288        Sonata      Anypony with half a brain can see that she did it, Mr Wright. Look at all the evidence stacked against her.
+35:03       0287        .           No matter how you look at it, she was the one who activated that cloud and killed him.
+35:08       0288        .           Your little feather theory may have bought some time, but she is going to be found guilty tomorrow morning. I assure it.
+35:17                   Phoenix     I believe in her, and I'm going to defend her to the very end. No matter what you say.
+35:21       0290        Sonata      And that's why you're going to lose.
+35:25                   .           From what I've gathered, you're not even from Equestria. Why place loyalty in a pony you hardly know?
+35:31       0288        Phoenix     Did I stutter?
+35:33       0292        .           I said, because I believe her. She didn't do it.
+35:37       0293        Sonata      Arrogant... just like that prosecutor.
+35:41       0287        Phoenix     Do you mean Trixie?
+35:43       0288        Sonata      Yes. Her.
+35:44                   Phoenix     What do you have against her?
+35:46                   Sonata      I wished to prosecute for this case, but that pig-headed showmare beat me to it.
+35:51                   Phoenix     (She does seem a lot more qualified to be a prosecutor than Trixie.)
+35:56                   .           So wait, you're a prosecutor as well as a manager?
+36:01                   Sonata      Ace and I are from Canterlot, Equestria's capital. Most of the unicorns there are "jacks-of-all-trades," so to speak.
+36:09       0287        .           We take on as many jobs as we can to flourish our intellect and magical abilites.
+36:15       0273        Pinkie      Wow! I didn't even know that! I should take another trade!
+36:17       0294        .           Maybe bowling?
+36:19       0273        .           No, creative writing!
+36:20       0280        .           No! NO! How about SCUBA DIVING??
+36:23       0288        Sonata      ...
+36:25                   Phoenix     (Pinkie, it doesn't look like she shares your enthusiasm...)
+36:29                   .           Trixie is from this "Canterlot" place then?
+36:32                   Sonata      Yes, she is. I was in Ponyville when the murder took place.
+36:36                   .           So there wasn't enough time for me to go to Canterlot and execute the procedures to prosecute this case.
+36:43                   .           Trixie must have already been there when she heard about it.
+36:47       0287        .           How foolish, taking a case over a silly little grudge...
+36:52       0295        .           It's funny really, part of me wants you to best her.
+36:57       0288        Phoenix     (Who has the grudge now?)
+36:59                   Sonata      I actually know quite a bit about her... care to listen?
+37:03       0296        Pinkie      A story! I love stories!
+37:06       0294        .           I'll tell you the one where me and some guy in a blue suit broke into somepony's room and rummaged through their personal belongings!
+37:10       0276        .           It's a classic!
+37:12       0288        Sonata      ...
+37:13                   Phoenix     (Pinkie, for the love of God, shut up!)
+37:16                   .           If you wouldn't mind... I wasn't told much about Trixie.
+37:20                   Sonata      I was classmates with her when I was but a foal. I attended the same magic classes as her.
+37:26                   Phoenix     Were you friends with her or something?
+37:28       0287        Sonata      No, I kept to myself as I do now. I only consult with those who are worth my time.
+37:35       0294        Pinkie      Hey, you know what that means, Feenie!
+37:37                   .           We're both worth her time!
+37:39       0280        .           Here I thought she wouldn't like us for breaking into her room.
+37:41       0288        Sonata      ...
+37:42                   Phoenix     (Every time you speak, you make that glare icier and icier...)
+37:46                   Sonata      Continuing...
+37:47                   .           The Trixie you saw in court today is how she has been all her life. An arrogant boaster, a show-off.
+37:56       0287        .           I hate that type...
+37:58       0288        .           She was at the top of the class. As much as I hate to say it, she's better than me, despite me being older...
+38:08                   .           Well, when it comes to magic, anyway.
+38:10       0280        Pinkie      Ah! So you're just jealous then!
+38:12                   Phoenix     P-Pinkie! Is your brain the size of chewed bubble gum!?
+38:16       0271        Pinkie      I don't think so. If it were bubble gum, it would probably stick to the inside of my head, don't you think?
+38:20       0280        Phoenix     Argh! Pinkie, just stop talking. PLEASE!
+38:25       0272        Pinkie      Okay, I'll stop talking...
+38:27       0279        .           Ah! Oops, sorry, I spoke!
+38:28                   .           AH! I SPOKE AGAIN!
+38:29                   .           AND AGAIN! AND AGAIN! AND AGAIN!
+38:32                   .           AH!
+38:33       0297        Sonata      Ergh!
+38:36                   Phoenix     Huh!? Are you okay?
+38:39       0293        Sonata      Yes... excuse me...
+38:41       0288        .           Anyway, I'm not jealous...
+38:43                   .           In fact, unlike Trixie, I'm striving to become better with magic.
+38:48                   .           Not going around town and showing off a bunch a cheap parlor tricks.
+38:53       0287        .           You should earn attention and praise for the actions you do, not what you claim you can do.
+39:00                   Phoenix     So just because she showed off in school, you hate her?
+39:03       0288        .           Sorry, but that's a little shallow if you ask me.
+39:07                   Sonata      But is it? Do you think she's qualified to be prosecuting? You saw how she acted.
+39:14                   .           No professionalism at all...
+39:16                   Phoenix     I've had it worse in the courtroom... toupees, birds, whips...
+39:21       0292        Sonata      Whips?
+39:23                   Phoenix     Uh... don't ask. As long as she's getting the job done, I don't see anything wrong with it.
+39:29       0288        .           Why do you want to prosecute this case so badly, anyway? I know you were his manager, but still...
+39:35                   Sonata      Because if things were going my way, the case would have been closed by now.
+39:40       0287        .           Cold, hard, swift justice.
+39:43       0288        .           That's the way I work.
+39:45                   Phoenix     That's not what being a lawyer is about, Sonata.
+39:48                   Sonata      Then what is it about, Mr Wright?
+39:51                   .           Sitting back and letting a dangerous felon off the hook scot-free?
+39:55                   Phoenix     No, it's about finding the truth.
+39:57       0292        Sonata      The truth?
+39:59                   Phoenix     Attorneys aren't meant to uphold justice; we're to work to the best of our abilities to guide it, and seek out the truth.
+40:05       0290        Sonata      You sure have quite the ideals, Mr Wright. I don't know what kind of trials and tribulations you've been through...
+40:10                   .           But you're not changing my opinion.
+40:14       0287        .           Rainbow Dash is guilty, and that's all there is to it.
+40:20                   Phoenix     If you don't mind me asking, what does that eyeball stand for?
+40:23       0276        Pinkie      It's her cutie mark!
+40:25                   .           It must mean her special talent is poking ponies' eyes out with that horn!
+40:29                   Phoenix     (We are so dead...)
+40:31       0297        Sonata      Mmph!
+40:32                   Phoenix     (What the heck is wrong with her?)
+40:34                   .           Uh... are you okay? You look like you're in pain...
+40:38                   Sonata      Yes, I'm fine...
+40:40       0288        .           But no...
+40:42                   .           My talent is perceiving and having a keen eye for detail.
+40:46                   .           For instance, Mr Wright.
+40:48                   .           You're desperately trying to change the subject, hoping I forget about you breaking into my room...
+40:53                   .           Indicated by your nervous breathing patterns and the sweat trickling down your forehead and neck.
+40:58       0295        .           You're also trying to cover up that embarrassing rip in your armpit.
+41:03                   .           I can tell by how firmly your left arm is pressed against your body compared to your right one.
+41:09       0288        .           And her... she's...
+41:11       0280        Pinkie      ...
+41:12       0288        Sonata      She's thinking about ladders...
+41:14       0279        Pinkie      Wow! How did you know? You must be psychic!
+41:17       0280        .           But I was actually thinking about step-ladders.
+41:19                   Phoenix     It's a ladder! Even I could have gotten that one!
+41:23                   .           Throughout the whole conversation, you keep looking at it!
+41:26       0288        .           But, Sonata, can you tell me a little bit more about Ace?
+41:30                   Sonata      What's there to say?
+41:32                   .           He was good at what he did.
+41:34                   Phoenix     (Good at what he did? Yeah, sure. That creep was blackmailing Rainbow Dash.)
+41:39                   .           What about your relationship with him? As his manager, I mean...
+41:42       0293        Sonata      ...
+41:44                   Phoenix     Well?
+41:45       0290        Sonata      Th-that's none of your business!
+41:48                   Phoenix     (For a second there she kind of hesitated. Perhaps I should press this further...)

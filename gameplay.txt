@@ -1,0 +1,35 @@
+!! Look at https://www.youtube.com/watch?v=FKKw2x46anM for presentation ideas (the scrolling at least!) !!
+
+I need to break up the text into the various scenes that optional bits, and then build up a story tree to link them together (filling in gaps if necessary).
+
+For the 'hold it' and 'objection' bits, it would be good to have default 'oops' scenes, maybe with a number of randomly selected phrases. A 'game over' sequence would be good too, but since Dash is found guilty early, I can probably use that.
+
+'hold it' is always(?) free, but I need to flag certain sequences as mandatory to proceed. (Usually those sequences introduce additional testimony, so the trick will be moving to different testimony trees).
+
+'objection' requires presentation of evidence. Wrong evidence is a miss.
+
+It's also important to be able to review evidence. I think a simple menu with the name at the top and the description at the bottom. You can also select the map at any time, when you have it. We need to track which version of the map the player has.
+
+Outside of court, you need to visit locations and collect the information that's important at each. I probably need some default scenes for locations with nothing, that are not ready, or have already been cleared.
+
+Real time is a bit fast for reading. I might have the default speed 1.5x slower than real time for that reason. I'll have keys to allow speeding up and slowing down. Also have keys for pause and back, so you can go back to the last thing said (in the current scene, don't go back beyond scenes. This includes when testimony is updated).
+
+I've been tracking some basic sfx but I might need more.
+
+I need to go back and figure out which music is playing at which points, and encode that.
+
+I might be able to use my compressor (or maybe a variant of it) to pack the data. With a lookup table for first byte, if I can get it to compress over all the data (pictures to pictures and text to text) it might do pretty well. I might have to extend it to 32-bits though (page and offset?). 64k probably won't cut it. That or maybe text can compress to a dictionary? If we count how many words there are used and it's less than 257, we could use a single byte per word. (or just the 255 most used words, and the rest are encoded inline with the 256th byte as a code). (as an example, transcript 1 is 40132 bytes, but has just 6565 words. If it fit, that'd be 6k+dictionary. My compressor only gets it to 27950, so it's a poor match). But, there are already between 1600 and 2300 different words in transcript 1 alone. So... we'll see. Gzip gets it to 14k, so it's tough.
+
+For rendering.. flashing 'TESTIMONY' at top left during 'T' messages. Whispers (start with parens) should be green instead of grey. Black background for text, 2/3rd bitmap screen otherwise. There are a few full-screen frames, we should be able to specify them.
+
+Compression over all this data will require an extension to my pack format (if I use that) but would be worth it.
+
+Possible target of the FlashGROM99 would allow for distributing for SD cards.
+
+In transcripts:
+------
+'T' in frame field indicates 'TESTIMONY' flag (blinks in game - sprites?)
+'C' indicates cross-examination - 'hold it' (H) and 'objection' (O) are active, skip over if not pressed
+        TODO - need to set up the missing paths, mostly bad objections (that or create a default scene with some random phrases)
+------
+

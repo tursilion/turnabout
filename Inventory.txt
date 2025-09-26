@@ -1,0 +1,44 @@
+Frame is the frame you get the item - it's available after that. I think we can just
+restrict the items to text, except maybe the maps.
+These frames (in the story at least) should play the 'new inventory' chime/sfx. I don't have that inline at the moment.
+Inventory Images start at 9000.
+
+Item							Frame	    Description	
+Attorney Badge					0000/9000	Nobody would believe I was an attorney without this.
+The Fillies Guide to Ponies		0015/9001   -Earth Ponies founded Land
+                                            -Unicorns use magic
+                                            -Pegasi soar through the air
+Equestrian Attorney Badge		0030/9002   A heart shaped badge that gives all the privileges of an Equestrian defense Attorney
+Magatama						0047/9003   A gift from Maya. Allows me to see if anyone is hiding any deep secret in their heart from me.
+Photo #1						0084/9004   Charred and blackened grass around body.
+Burnt Object					0086/9005   A metal object that was severely burned by something. It is unidentifiable now.
+Photo #2						0090/9004   An imprint of what seems to be something long. Next to it some markings indicating someone had scuffled the dirt around.
+Brown Feather					0096/9006   A suspicious brown feather that doesn't belong to a bird or a pony. (Need to update description later).
+Ace Swift Autopsy Report		0146/9007   Estimated time of death: 8:30pm - 9:00pm.
+                                            Cause: died instantly due to severe electrocution.
+                                            Burn mark on the back of neck: unknown cause.
+Diagram of Everfree Forest		0155/9008   A diagram of the scene of the crime and where lightning struck that night.
+                                            (0154 has the full version. Note there is a later version that replaces this one.)
+Weather Schedule				0175/9004   Rainbow Dash scheduled to create a thunder storm at 3:00PM on the eastern side of Ponyville.
+                                            (0174 has the full version)
+Missing Cloud Report			0179/9009   A cloud Rainbow Dash was in charge of disappeared at 4:00PM on the night of the murder, and was found above the Everfree Forest Clearing.
+Embarrassing Pictures			0186/9004   Several pictures of Rainbow Dash... Why in her right mind would she be doing this...? Photos found in a bag on the victim.
+Blackmail Letter				0246/9009   A letter blackmailing Rainbow Dash that she found on her doorstep.
+Key to Ace's Hotel				0255/9010   A key to the hotel Ace Swift was staying in while in Ponyville.
+Torn Resignation Letter			0278/9011   Someone was planning on quitting something after the Equestrian 500. The other half is missing.
+Advanced Unicorn Spell Book		0282/9012   A book found in the victim's hotel room. Small note scribbled on one of the pages. (note is #281)
+List							0284/9009   A list with several names including Rainbow Dash.
+
+
+
+Probably need characters too:
+Phoenix Wright                  0000/0137   That's me, attorney at law! I seem to have been called to Equestria via magic.
+Judge                           0126/0126   The Judge also seems to have been called! He's fair, though easily confused.
+Twilight Sparkle				0010/0006   Unicorn disciple of Princess Celestia. Summoned the 'Greatest Defense Attorney' to Equestria.
+Rainbow Dash					0039/0104   Pegsus racer, the 'best flier in Equestria'. Accused of the murder of Ace Swift.
+Ace Swift						0040/0034   The victim, a professional pegasus racer. Never lost an event. Found dead in the Everfree Forest.
+Fluttershy						0065/0072   Pegasus friend of Rainbow Dash. Witness who lives near the Everfree Forest.
+Trixie							0114/0114   The Great and Powerful Trixie, unicorn magician and prosecutor. Has a grudge against Twilight.
+Apple Bloom						0157/0157   Earth pony child, Cutie Mark Crusader. Witness who was in the Everfree Forest the night of the crime.
+Pinkie Pie						0211/0211   Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash.
+Sonata							0287/0288   Unicorn manager of Ace Swift. Resembles Mia from my own realm.

@@ -1,0 +1,1773 @@
+﻿[00:00:00.00 - 00:00:07.00]  My name is Phoenix Wright and I'm fine!
+[00:00:08.44 - 00:00:12.44]  My name is Phoenix Wright and I'm fine!
+[00:00:12.48 - 00:00:16.48]  My name is Phoenix Wright and I'm fine!
+[00:00:16.52 - 00:00:18.52]  Phoenix, are you okay?
+[00:00:18.56 - 00:00:22.56]  Oh, hey Chief. I was just practicing for my very first trial, which is tomorrow.
+[00:00:22.60 - 00:00:26.60]  The guys back at law school said this tape would really help me out.
+[00:00:26.64 - 00:00:32.64]  Oh, thank goodness! When I heard all the screeching coming from the office, I thought someone was murdering you!
+[00:00:33.64 - 00:00:36.64]  That wasn't screeching, I was dead at four!
+[00:00:37.64 - 00:00:45.64]  I don't think you need this exercise tape. I'm sure you'll do just fine. The suspect, he's your friend, right?
+[00:00:46.64 - 00:00:48.64]  Yeah, he's my friend, but...
+[00:00:49.64 - 00:00:50.64]  But...what?
+[00:00:51.64 - 00:00:52.64]  He's...well...
+[00:00:53.64 - 00:00:54.64]  Yes?
+[00:00:55.64 - 00:00:58.64]  That's not a very nice thing to say about your friend.
+[00:00:58.74 - 00:01:05.34]  No, I really mean it. He thinks passing the eighth grade is a credential. Even got the report card framed and everything.
+[00:01:05.44 - 00:01:07.84]  So, what are you getting at?
+[00:01:07.94 - 00:01:17.44]  I mean, what if he really did kill that woman? What do I do? Do I still lie and try to defend them? Or do I side with justice and let him be punished?
+[00:01:17.54 - 00:01:19.24]  Phoenix.
+[00:01:20.74 - 00:01:22.74]  Don't stress yourself out so much.
+[00:01:23.24 - 00:01:25.24]  Tell me, what do you think?
+[00:01:26.24 - 00:01:26.74]  Me?
+[00:01:27.24 - 00:01:28.24]  What do you mean?
+[00:01:29.24 - 00:01:32.74]  You, as Phoenix Wright, not as a defense attorney.
+[00:01:33.24 - 00:01:35.74]  Do you think your friend killed that woman?
+[00:01:36.24 - 00:01:40.74]  He might not be the sharpest tool in the shed, but I don't think he has venom to kill anyone.
+[00:01:41.24 - 00:01:42.24]  There you go.
+[00:01:42.74 - 00:01:43.24]  Huh?
+[00:01:43.74 - 00:01:44.74]  Go off that.
+[00:01:45.24 - 00:01:48.24]  You have to believe in him. It's your job too.
+[00:01:48.74 - 00:01:52.46]  Cast all that doubt aside and pursue that truth.
+[00:01:52.96 - 00:01:55.46]  If you do that, nothing can stop you.
+[00:01:55.70 - 00:01:56.62]  The truth, huh?
+[00:01:58.16 - 00:01:58.86]  Thanks, Chief.
+[00:01:59.50 - 00:02:00.86]  I'm still a little nervous, though.
+[00:02:01.86 - 00:02:03.70]  Don't worry, we all go through it.
+[00:02:04.30 - 00:02:05.06]  Hey, um...
+[00:02:05.56 - 00:02:07.74]  Do you by any chance know who the prosecutor is?
+[00:02:08.46 - 00:02:09.66]  The prosecutor?
+[00:02:10.40 - 00:02:12.40]  I believe it's Winston Payne.
+[00:02:13.10 - 00:02:15.74]  You know, the rookie killer.
+[00:02:16.46 - 00:02:17.86]  For rookie killer?
+[00:02:17.86 - 00:02:19.86]  I don't like the sound of that title.
+[00:02:20.36 - 00:02:23.86]  Not many rookies take the prosecutor into consideration.
+[00:02:24.36 - 00:02:26.36]  Why did you want to know something like that?
+[00:02:26.86 - 00:02:29.36]  Uh, no reason. I was just curious.
+[00:02:29.86 - 00:02:32.86]  You seem more disappointed than curious.
+[00:02:33.36 - 00:02:36.86]  Ah, forget about it. I'm just a little out of it right now.
+[00:02:41.86 - 00:02:43.86]  I'll never forget what you taught me.
+[00:02:44.36 - 00:02:49.36]  But somehow, I highly doubt you're looking down on me smiling after what I did today.
+[00:02:50.36 - 00:03:00.70]  *
+[00:03:02.36 - 00:03:11.36]  She's gone. Who am I kidding? She's right! I did absolutely terrible in there! Now two of her friends are suspects.
+[00:03:12.36 - 00:03:19.36]  I do now. I don't have any leads at all. Nobody to turn to. I'm all by myself. Which means
+[00:03:19.60 - 00:03:26.60]  I can't even get back home. No, I can't think that way. I've got to stay diligent. I said
+[00:03:27.70 - 00:03:33.34]  I'd clear Rainbow Dash's name, and I bought her another day. I can't let it go to waste.
+[00:03:33.36 - 00:03:35.36]  But where do I start?
+[00:03:36.36 - 00:03:39.36]  Hey, Mr. Frowny-Wowny! What's the matter?
+[00:03:40.36 - 00:03:44.36]  Where did she come from? She smells like a cotton candy.
+[00:03:44.86 - 00:03:48.86]  Cotton candy? Oh, you must know the new shampoo I'm using.
+[00:03:49.36 - 00:03:50.86]  Eh, that explains it then.
+[00:03:51.36 - 00:03:55.86]  Wait, did I just say that or think that... who are you?
+[00:03:56.36 - 00:03:59.86]  I'm Pinky Pie, of course. Party throw extraordinaire.
+[00:04:00.36 - 00:04:03.86]  But I can't talk right now. I'm looking for something.
+[00:04:04.36 - 00:04:05.36]  What for?
+[00:04:05.86 - 00:04:08.48]  Some other ponies said there was a spiky-headed monster in here.
+[00:04:08.64 - 00:04:10.32]  I didn't seem to find it anywhere, though.
+[00:04:10.56 - 00:04:12.20]  You'd think it'd stick out like a sore hoof.
+[00:04:12.44 - 00:04:13.44]  Have you seen it?
+[00:04:14.20 - 00:04:15.20]  [Sigh]
+[00:04:15.70 - 00:04:17.36]  Does that mean... no?
+[00:04:17.46 - 00:04:18.04]  [GUNSHOT]
+[00:04:18.12 - 00:04:19.88]  I'm getting so sick of this place!
+[00:04:20.16 - 00:04:20.86]  Hey!
+[00:04:21.16 - 00:04:23.74]  Turn that Frowly upside downy!
+[00:04:23.94 - 00:04:24.96]  How can I?
+[00:04:25.20 - 00:04:27.54]  I did such a lousy job in court today.
+[00:04:27.92 - 00:04:30.46]  And Twilight probably hates my guts for what I did.
+[00:04:30.90 - 00:04:33.04]  Hey, you know Twilight? Me too!
+[00:04:33.34 - 00:04:34.88]  You know Twilight Sparkle?
+[00:04:34.88 - 00:04:37.28]  Yep, we're the bestest of best friends.
+[00:04:37.30 - 00:04:41.04]  Oh, that reminds me, I'm supposed to go to Cork's danger for Rainbow Dash!
+[00:04:41.06 - 00:04:42.34]  Sorry, better run!
+[00:04:42.36 - 00:04:43.84]  But you're...
+[00:04:43.86 - 00:04:46.86]  Oh, I'm already here. Yee!
+[00:04:46.88 - 00:04:49.86]  I hate to break it to you, but you missed the trial.
+[00:04:49.88 - 00:04:54.36]  Out of all the pastel grass chewers I've met, this one is definitely the weirdest.
+[00:04:54.38 - 00:04:58.86]  Ah, I better be careful. I think she can read minds.
+[00:04:58.88 - 00:05:00.36]  Is that you okay?
+[00:05:00.38 - 00:05:04.36]  For the time being, yes. The trial is being postponed.
+[00:05:04.36 - 00:05:07.36]  I'm actually Rainbow Dash's lawyer. Phoenix right.
+[00:05:07.56 - 00:05:11.36]  Ooo! Needo! So, whatcha doin' right now, Feeny?
+[00:05:13.36 - 00:05:15.36]  Feeny? That's...
+[00:05:16.36 - 00:05:23.36]  Nevermind. Well, I don't know what I should be doing right now, to be honest. I have no leads at all.
+[00:05:23.86 - 00:05:26.86]  Why don't you go talk to Dashie about the trial?
+[00:05:27.06 - 00:05:29.36]  Wait a minute. She had cyclocks!
+[00:05:29.86 - 00:05:33.36]  Cyclocks? Is that some kind of breakfast cereal? Sounds yummy!
+[00:05:33.36 - 00:05:36.36]  Is it me with real locks, not merciful, is he artificial locks?
+[00:05:36.86 - 00:05:39.86]  Thanks for the advice, um... Pinkie Pie.
+[00:05:40.36 - 00:05:42.36]  I'm gonna go to the detention center now.
+[00:05:50.86 - 00:05:53.36]  I really hope she isn't mad at me after what happened.
+[00:05:53.86 - 00:05:56.86]  No, no, no, no, no, no, no, no!
+[00:05:58.16 - 00:06:00.16]  Rainbow Dash?
+[00:06:01.16 - 00:06:08.16]  I can't bear to live anymore. Throw the book at me. Let them send me to the sun. There's nothing left for me in Equestria.
+[00:06:09.16 - 00:06:15.16]  Rainbow Dash, get a hold of yourself. She must still be upset over those pictures.
+[00:06:16.16 - 00:06:22.16]  Easy for you to say. Now the Winterbolts will never let me in. Ponyville is gonna laugh at me forever!
+[00:06:23.16 - 00:06:26.66]  They weren't that, um, bad.
+[00:06:27.16 - 00:06:31.66]  Really? I'm sure everyone will forget by tomorrow. I guarantee it.
+[00:06:32.16 - 00:06:35.16]  There's no way anyone's forgetting images like those.
+[00:06:37.16 - 00:06:38.16]  You think so?
+[00:06:39.16 - 00:06:44.16]  I know so. I'm always right. My name is Phoenix, right after all.
+[00:06:47.16 - 00:06:49.16]  That wasn't funny.
+[00:06:50.16 - 00:06:51.16]  I thought it was.
+[00:06:52.16 - 00:06:55.52]  Thanks for trying to cheer me up though. I appreciate it.
+[00:06:56.02 - 00:06:56.90]  You're welcome.
+[00:06:57.36 - 00:06:58.48]  By the way...
+[00:06:58.72 - 00:07:00.08]  Yes? What is it?
+[00:07:00.38 - 00:07:05.68]  What was that terrible bad performance in the court today? I could have done a better job defending myself!
+[00:07:06.28 - 00:07:07.64]  I... I...
+[00:07:08.52 - 00:07:13.44]  Anthony Defense Attorney must have hoarse apples if you're supposed to be the best one.
+[00:07:13.84 - 00:07:18.08]  Look, I know I screwed up. But I'm gonna make it up to you and Fluttershy tomorrow.
+[00:07:18.80 - 00:07:23.60]  Fluttershy? She got what she deserved after she betrayed me like that!
+[00:07:24.40 - 00:07:30.60]  Hey! It tore me up having to do that! It was the only way I could save you! Fluttershy didn't betray you!
+[00:07:31.40 - 00:07:36.00]  Give me a break! This is the things I get for all the times I stuck up for her sorry freak!
+[00:07:37.10 - 00:07:38.60]  She was just telling the truth.
+[00:07:39.60 - 00:07:44.00]  True? You proved she was lying though! She didn't see Applebloom!
+[00:07:45.20 - 00:07:47.20]  But she did see you leave the forest.
+[00:07:47.64 - 00:07:49.14]  You were there, weren't you?
+[00:07:50.68 - 00:07:53.68]  Whatever! We are ex-friends as of now.
+[00:07:53.84 - 00:07:58.48]  I can tell you were trying your hardest to defend me, even if you did do a crummy jog.
+[00:07:58.96 - 00:08:00.32]  Gee, thanks.
+[00:08:01.16 - 00:08:04.16]  She pretty much said, "Yup, Rainbow Dash did it!"
+[00:08:04.20 - 00:08:06.40]  What kind of a friend does that?
+[00:08:07.24 - 00:08:11.56]  Rainbow Dash, for the last time she was telling the truth, what she saw.
+[00:08:12.08 - 00:08:14.56]  Actually, that brings me to why I'm here.
+[00:08:14.56 - 00:08:17.56]  What? Why are you here?
+[00:08:18.56 - 00:08:23.56]  The truth. I want to know what you were really doing near the Everfree Forest the night of the murder.
+[00:08:24.56 - 00:08:25.56]  Take that!
+[00:08:29.56 - 00:08:33.56]  Ugh, I told you already. I was practicing for the race.
+[00:08:34.56 - 00:08:37.56]  It still works after that incident this morning.
+[00:08:38.56 - 00:08:39.56]  Huh?
+[00:08:42.56 - 00:08:43.56]  What the...
+[00:08:43.56 - 00:08:46.56]  What was that all about anyway?
+[00:08:47.56 - 00:08:51.56]  Ugh, forget about that. It still works and that's all that matters.
+[00:08:52.56 - 00:08:55.56]  Okay, there they are. Time to break 'em.
+[00:08:56.56 - 00:09:01.56]  Sorry, but I don't believe you, my little pony. Not for a single solitary second.
+[00:09:02.56 - 00:09:06.56]  You're my lawyer and you don't believe me? That's reassuring.
+[00:09:07.56 - 00:09:12.56]  Let's play a game, Rainbow Dash. I'm gonna guess what you were really doing near the crime scene that night, and you're gonna tell me if I'm right.
+[00:09:12.56 - 00:09:13.56]  if I'm right.
+[00:09:13.66 - 00:09:17.56]  I can go right ahead and do that, but I'm sticking to my story.
+[00:09:17.66 - 00:09:20.66]  I don't think you were practicing at all.
+[00:09:20.76 - 00:09:23.66]  I think you were doing something far more important.
+[00:09:23.76 - 00:09:25.66]  Like what?
+[00:09:25.76 - 00:09:28.66]  Like, oh, I don't know, meeting someone?
+[00:09:28.76 - 00:09:30.66]  Ugh!
+[00:09:30.76 - 00:09:36.66]  Uh, uh, I mean, who would I be meeting in the middle of the forest at that hour?
+[00:09:36.76 - 00:09:39.66]  No pony ever goes in there willingly.
+[00:09:39.76 - 00:09:43.76]  Then why were you practicing there if no one ever goes in there willingly?
+[00:09:44.76 - 00:09:47.76]  Uh... uh... whoa...
+[00:09:48.76 - 00:09:51.76]  I know there was someone in the forest the night of the murder.
+[00:09:52.76 - 00:09:55.76]  Put your money where your mouth is! Who do you think I was meeting?
+[00:09:56.76 - 00:10:02.76]  A-Swift! The fact your feathers were found all around the clearing proves you were there that night.
+[00:10:03.76 - 00:10:08.76]  And who else was in the clearing that night? The victim, of course! You needed to be there to see him.
+[00:10:08.76 - 00:10:14.28]  see him. You also just told me ponies avoid going in there, so I'm willing to bet he
+[00:10:14.28 - 00:10:16.32]  We wanted to meet with you in private.
+[00:10:16.32 - 00:10:19.92]  What better place to pick than the middle of a forest nobody ever goes into?
+[00:10:20.52 - 00:10:22.52]  Ah! No!
+[00:10:25.22 - 00:10:26.12]  I mean...
+[00:10:26.52 - 00:10:28.82]  Ah, no! You're wrong!
+[00:10:29.12 - 00:10:31.22]  He was just competition!
+[00:10:31.42 - 00:10:32.72]  Why would I want to meet him?
+[00:10:33.02 - 00:10:35.02]  I have better things I could be doing.
+[00:10:35.62 - 00:10:36.32]  Like what?
+[00:10:37.02 - 00:10:38.92]  I don't know, napping?
+[00:10:39.42 - 00:10:40.92]  Something like that.
+[00:10:41.82 - 00:10:43.12]  Oh, please.
+[00:10:43.52 - 00:10:45.12]  Maybe he had something you wanted.
+[00:10:46.02 - 00:10:47.02]  What do you mean?
+[00:10:47.52 - 00:10:52.02]  I'm saying maybe he had something important to you. Something you'd move heaven and earth for.
+[00:10:52.12 - 00:10:56.02]  I'm a pretty self satisfied pony. I've got everything I need.
+[00:10:56.12 - 00:11:00.52]  Well besides fortune and glory, and I don't think he could give those to me.
+[00:11:00.62 - 00:11:03.32]  What could he possibly have that I want?
+[00:11:03.42 - 00:11:05.52]  I'm glad you asked that Rainbow Dash.
+[00:11:05.62 - 00:11:07.52]  You are?
+[00:11:07.62 - 00:11:11.82]  There's one thing that you absolutely needed that I know he had.
+[00:11:11.92 - 00:11:15.72]  I'm afraid I don't know what you're talking about.
+[00:11:15.72 - 00:11:18.28]  The reason you went to go meet him is...
+[00:11:18.40 - 00:11:19.20]  Take that!
+[00:11:21.28 - 00:11:22.00]  These!
+[00:11:22.48 - 00:11:23.28]  AHHH!
+[00:11:23.48 - 00:11:26.16]  But those away before some bony sees them!
+[00:11:26.32 - 00:11:27.12]  Please!
+[00:11:27.32 - 00:11:32.80]  Even right now, your anxiety shows you absolutely didn't want these pictures floating out and about.
+[00:11:33.36 - 00:11:34.72]  Yes, yes, yes, you're right!
+[00:11:34.84 - 00:11:36.48]  I was meeting him about these!
+[00:11:36.60 - 00:11:38.48]  Can you please just put them away?
+[00:11:38.60 - 00:11:39.40]  NOW!
+[00:11:41.68 - 00:11:43.36]  This brings us to the money question.
+[00:11:43.64 - 00:11:45.16]  Why did he have these pictures?
+[00:11:45.16 - 00:11:50.16]  Who knows? He's dead. What a bummer. Guess we'll never know.
+[00:11:50.18 - 00:11:52.18]  I actually think I know why.
+[00:11:52.20 - 00:11:53.20]  You do?
+[00:11:53.22 - 00:12:00.20]  Yes. I can think of one reason why he'd want to meet you over pictures like these. He was blackmailing you, wasn't he?
+[00:12:00.22 - 00:12:02.22]  Blackmail.
+[00:12:02.24 - 00:12:07.24]  I'm willing to bet my attorney badge he wanted you to toss the Equestrian 500.
+[00:12:07.26 - 00:12:14.26]  I was told of Pony suspecting him of foul play in the wake of all its success. He was probably threatening you to let him win the race.
+[00:12:14.26 - 00:12:16.26]  you to let him win the race.
+[00:12:16.28 - 00:12:17.78]  Wow.
+[00:12:17.80 - 00:12:18.80]  Hmm?
+[00:12:18.82 - 00:12:20.82]  You're really good.
+[00:12:26.98 - 00:12:32.18]  It's true. Ace was trying to force me to drop out of the Equestrian 500.
+[00:12:32.20 - 00:12:33.90]  How did it start?
+[00:12:33.92 - 00:12:37.92]  I got home two days ago and saw this letter on my doorstep.
+[00:12:37.94 - 00:12:39.94]  [Doorbell]
+[00:12:41.74 - 00:12:45.24]  I'll let your secret out if you don't drop out of the Equestrian 500.
+[00:12:45.74 - 00:12:49.74]  Meet in the Ever-Reeforce clearing 835 tonight for negotiations.
+[00:12:50.24 - 00:12:53.24]  At first I didn't know what secret it was talking about.
+[00:12:53.74 - 00:12:56.24]  But attached to the message was one of those pictures.
+[00:12:56.74 - 00:12:59.74]  About those pictures? Why are you-
+[00:13:00.24 - 00:13:06.24]  It's Bobby, alright! I bet you have skeletons in your closet too, Mr. 20-something who plays with toys!
+[00:13:06.74 - 00:13:11.24]  Okay, okay, I won't ask about them anymore. Do you have any idea how he got them, though?
+[00:13:11.24 - 00:13:17.44]  I have no clue my best guess is that the jerk was stalking me trying to get dirt on me Rainbow Dash
+[00:13:17.56 - 00:13:18.72]  Yes, what is it?
+[00:13:18.74 - 00:13:23.62]  I want you to know that I trust you and I'm going to need you to trust me when I ask you these next series of questions
+[00:13:24.44 - 00:13:29.04]  Huh, I know you may be scared. This will make you look guilty, but I know you're innocent
+[00:13:29.72 - 00:13:34.38]  I'm not scared. Why did you move that cloud to the crime scene and set it off?
+[00:13:37.08 - 00:13:39.88]  But... but... I... I didn't...
+[00:13:40.18 - 00:13:42.08]  Please Rainbow Dash, you can trust me.
+[00:13:42.28 - 00:13:44.98]  I won't think any differently of you in light of what you tell me.
+[00:13:45.08 - 00:13:46.48]  I know you didn't kill him.
+[00:13:48.18 - 00:13:50.08]  Okay, I'll tell you.
+[00:13:50.48 - 00:13:53.28]  I did move the cloud there and I did set it off.
+[00:13:53.68 - 00:13:56.18]  I just wanted to give him a scare, that's all.
+[00:13:56.58 - 00:13:57.38]  A scare?
+[00:13:58.78 - 00:14:01.38]  So you really did move the cloud over the forest clearing?
+[00:14:01.68 - 00:14:04.48]  As soon as I saw the requirements of the blackmail letter,
+[00:14:04.58 - 00:14:07.78]  I knew it was Ace and that all those rumors about him were true.
+[00:14:07.98 - 00:14:09.58]  He's a blackmailing cheater!
+[00:14:09.78 - 00:14:15.18]  So I set up the cloud over the clearing earlier that day with the intent of declining his little offer.
+[00:14:15.48 - 00:14:18.58]  So you weren't gonna drop out in spite of him leaking the pictures?
+[00:14:18.88 - 00:14:19.68]  No way!
+[00:14:19.78 - 00:14:24.58]  I'm not gonna let some loser have his way with me, even if it meant those pictures getting out!
+[00:14:24.78 - 00:14:26.88]  I have too much pride for that!
+[00:14:27.28 - 00:14:28.88]  I find that really admirable.
+[00:14:29.48 - 00:14:30.98]  Hehe, thanks.
+[00:14:31.38 - 00:14:33.58]  This is also my first year competing in the race.
+[00:14:33.58 - 00:14:38.58]  I just reached the required age to participate. I've been way too anxious to just drop out.
+[00:14:38.68 - 00:14:40.88]  R.B.D. spells victory!
+[00:14:40.98 - 00:14:44.98]  You sure you can take 500 miles? It's longer than it sounds, you know.
+[00:14:45.08 - 00:14:48.98]  There's some checkpoints along the track set up so the racers can have some R&R.
+[00:14:49.08 - 00:14:54.18]  But that's a little problem I keep having. There's no doubt I'm fast, but I tire out along the way.
+[00:14:54.28 - 00:14:56.28]  I'm not used to flying that long.
+[00:14:56.38 - 00:14:59.38]  In racers like these, you should pace yourself accordingly.
+[00:14:59.48 - 00:15:03.48]  Don't go fast right from the start. Save all your energy for the home stretch.
+[00:15:03.98 - 00:15:06.48]  Kinda like how I don't present all my evidence right from the start.
+[00:15:07.48 - 00:15:08.48]  I'll try to keep that in mind.
+[00:15:09.48 - 00:15:13.48]  But let's get back on topic, shall we? I'm supposed to be your lawyer, not your coach.
+[00:15:14.48 - 00:15:18.48]  Right. Anyway, I wasn't planning on killing him. Just give him a bit of a startle.
+[00:15:19.48 - 00:15:22.48]  You know, just kicking some dirt in his face for messing with me.
+[00:15:23.48 - 00:15:25.48]  The cloud shoots a lightning bolt directly under it when activated.
+[00:15:26.48 - 00:15:32.98]  with ponies by scaring them with clouds all the time, but I got an extra big one in his case to make this sound as loud as possible.
+[00:15:33.28 - 00:15:36.48]  I guess it was a little dangerous getting one that big.
+[00:15:36.58 - 00:15:38.48]  So it didn't hit him when you set it off?
+[00:15:38.78 - 00:15:40.98]  No, I made sure it wasn't over him.
+[00:15:41.28 - 00:15:44.48]  Even though it was really dark outside, like you said in the court today,
+[00:15:44.68 - 00:15:47.58]  I could see that the bolt didn't even come close to touching him.
+[00:15:47.78 - 00:15:53.08]  When the lightning bolt lit up the area, it made him scream like a little girl and left a really sissy look on his mug.
+[00:15:53.28 - 00:15:55.58]  He should have seen it. It was priceless!
+[00:15:55.58 - 00:15:58.58]  Then I just hightailed it out of there as fast as I could!
+[00:15:58.78 - 00:16:00.78]  That's probably when Fluttershy saw her.
+[00:16:01.08 - 00:16:03.78]  Why didn't you tell anyone about this blackmail earlier?
+[00:16:04.08 - 00:16:06.78]  I didn't want anypony to know about the blackmail.
+[00:16:06.88 - 00:16:10.88]  Because, you know, I would wonder what he was blackmailing me with.
+[00:16:11.08 - 00:16:13.88]  I see. Then those pictures would get out.
+[00:16:14.08 - 00:16:18.08]  You believe me, right? He was absolutely fine when I left, I swear!
+[00:16:18.28 - 00:16:21.88]  Yes, I believe you. Though more questions arise from this.
+[00:16:22.08 - 00:16:23.78]  More questions?
+[00:16:23.88 - 00:16:26.28]  How did he end up dead directly under the cloud?
+[00:16:27.12 - 00:16:30.92]  I was trying desperately to convince the court it was the second bolt that killed him.
+[00:16:31.52 - 00:16:34.82]  That would make this all an accident, since you have no control over it.
+[00:16:35.22 - 00:16:40.92]  But then we have that "Lanking doesn't strike the same place twice!" thing that Trixie was talking about.
+[00:16:41.16 - 00:16:47.26]  That's true. It's a new type of storm cloud the Pegasi are using to protect ponies from situations like this.
+[00:16:47.56 - 00:16:52.16]  Since it can't hit in the same place twice, they can just stand under a cloud after the first bolt.
+[00:16:52.40 - 00:16:54.40]  So the safest place is under the cloud.
+[00:16:55.04 - 00:16:56.40]  That's really something.
+[00:16:56.96 - 00:16:58.96]  The weather just works by itself where I live.
+[00:16:59.60 - 00:17:01.60]  I kinda wish it worked that way here.
+[00:17:02.00 - 00:17:07.84]  I have a lot more free time on my hooves so I can perfect my sonic Rei-boo, or my fantastic Philly Flash!
+[00:17:08.40 - 00:17:10.40]  Are those dance moves or something?
+[00:17:11.04 - 00:17:13.44]  From what I hear, you're also the weather manager.
+[00:17:13.76 - 00:17:17.04]  I need some information regarding how the lightning here in Equestria works.
+[00:17:18.00 - 00:17:19.44]  What do you need to know?
+[00:17:19.84 - 00:17:22.24]  Well, is it true the bolt causes the noise?
+[00:17:22.24 - 00:17:33.24]  Yeah, it is. I don't know how it works exactly, but I'm pretty sure when it touches the ground or anything attached to the ground, like, say, a tree, it sends out vibrations which makes them boom.
+[00:17:33.74 - 00:17:37.74]  I'm no meteorologist, but I'm pretty sure lightning doesn't work like that.
+[00:17:38.24 - 00:17:44.24]  Then again, I keep forgetting I'm in a land full of magical talking ponies who can manually change weather.
+[00:17:44.74 - 00:17:47.24]  Is there anything that could prevent it from making a sound?
+[00:17:47.74 - 00:17:51.74]  Suppose if it hit something small in the air that was close enough to the cloud...
+[00:17:52.24 - 00:17:56.74]  Yeah, I wouldn't make a sound, and I know what you're thinking, but that couldn't happen.
+[00:17:57.24 - 00:17:57.74]  Why not?
+[00:17:58.24 - 00:17:59.74]  That itchy racing suit.
+[00:18:00.24 - 00:18:03.24]  Oh, right. I remember that being brought up.
+[00:18:03.74 - 00:18:08.24]  That's that lightning-proof suit that you Pegasuses wear for the race, right?
+[00:18:08.74 - 00:18:10.74]  The plural is "Pegasai."
+[00:18:11.24 - 00:18:16.74]  I absolutely hate wearing that thing, but while in the air you're pretty much invulnerable to lightning.
+[00:18:16.74 - 00:18:18.74]  Weren't there some exposed parts on it though?
+[00:18:19.08 - 00:18:23.36]  Yes, there are but while you're in the flying position those parts are covered up
+[00:18:23.50 - 00:18:26.14]  They're only exposed when you're on all fours and grounded
+[00:18:26.16 - 00:18:29.56]  This is sounding more and more hopeless for me the more I talk about it
+[00:18:30.00 - 00:18:34.74]  Try to cheer up. I'll find out what really happened and get you out of here. Thank you, Nix
+[00:18:35.56 - 00:18:39.50]  Okay, Rainbow Dash. I'm gonna go do some more investigating light of this new information
+[00:18:40.40 - 00:18:42.40]  Alright, catch you later. Oh
+[00:18:42.88 - 00:18:44.88]  Wait one more thing. Yes
+[00:18:45.24 - 00:18:50.16]  Pinkie Pie, I bumped into her after the trial. I'm guessing she's a friend of yours
+[00:18:50.52 - 00:18:54.52]  She wanted to cheer you on in court today, but sadly it seems she was late
+[00:18:55.32 - 00:18:58.24]  Eh, is she always that, eh,
+[00:18:59.20 - 00:19:00.84]  loopy?
+[00:19:00.86 - 00:19:07.28]  Yeah, that's just Pinkie Pie being Pinkie Pie. Okay, just thought I'd let you know. Well, goodbye, Rainbow Dash.
+[00:19:07.68 - 00:19:08.76]  Wait!
+[00:19:08.78 - 00:19:10.78]  Jeez, I just can't leave this place.
+[00:19:11.48 - 00:19:16.78]  Yes, what is it here take this a key? What is it for?
+[00:19:18.56 - 00:19:22.30]  Aces hotel room what how did you get this?
+[00:19:22.32 - 00:19:27.72]  I was angry when I thought he was stalking me so I snuck into his hotel room to find dirt on him
+[00:19:27.84 - 00:19:31.44]  It was under the mat. What a stupid place to leave your key, huh?
+[00:19:33.52 - 00:19:39.50]  Yeah, stupid place note to self put key to office in different hiding spot
+[00:19:39.50 - 00:19:46.28]  I wasn't able to find anything good in there, but maybe you can.
+[00:19:46.30 - 00:19:47.50]  Where's the hotel?
+[00:19:47.52 - 00:19:51.22]  He was staying in the Hay and Stay hotel while he was in Ponyville.
+[00:19:51.24 - 00:19:55.06]  It's a little past Sugar Cube Corner. Just have Twilight show you where it is.
+[00:19:55.08 - 00:19:56.70]  Twilight.
+[00:19:56.72 - 00:19:58.58]  What's the matter?
+[00:19:58.60 - 00:20:03.78]  Uh, nothing. Thanks, Rainbow Dash. This will really help my investigation.
+[00:20:03.80 - 00:20:04.98]  Goodbye, Nix.
+[00:20:05.00 - 00:20:08.18]  I promise I'll get you and Fluttershy out of this mess.
+[00:20:08.20 - 00:20:13.20]  Pfft, Fluttershy, I told you, I don't care about her!
+[00:20:14.20 - 00:20:17.20]  She's still really angry about that testimony Fluttershy gave.
+[00:20:18.20 - 00:20:21.20]  I just know you'll find some super awesome evidence this time around!
+[00:20:29.20 - 00:20:34.20]  Okay, where should I go first? Back to the forest? Or to the hotel room?
+[00:20:35.20 - 00:20:36.20]  Hello again!
+[00:20:37.20 - 00:20:41.24]  lot easier to go to the forest since I know the general direction and I might
+[00:20:41.26 - 00:20:43.26]  find some new clues with the sun out.
+[00:20:43.76 - 00:20:45.26]  Hello?
+[00:20:45.94 - 00:20:49.94]  Then again, I already found a lot of evidence in the forest already.
+[00:20:51.24 - 00:20:53.24]  Knock knock, see me!
+[00:20:53.94 - 00:20:57.94]  Though, would going in his hotel room be considered breaking and entering?
+[00:20:58.54 - 00:21:02.54]  I'll have a bit of trouble finding it without someone guiding me anyway.
+[00:21:03.74 - 00:21:05.74]  Got your attention now.
+[00:21:05.76 - 00:21:08.26]  Oh, you're Pinkie Pie.
+[00:21:08.76 - 00:21:10.26]  Yep, Peroony, that's my name.
+[00:21:10.76 - 00:21:11.76]  What are you doing here?
+[00:21:12.26 - 00:21:15.76]  I followed you. The guards won't let me in though, so I just talked with them while I made it for you.
+[00:21:16.26 - 00:21:17.26]  Right, boys?
+[00:21:17.76 - 00:21:23.26]  Oh, for the love of all things holy, please, take her away.
+[00:21:23.76 - 00:21:26.76]  Uh, why were you following me?
+[00:21:27.26 - 00:21:28.76]  Because I need help finding something.
+[00:21:29.26 - 00:21:32.76]  Look, the spiky-headed monster they were talking about is-
+[00:21:33.26 - 00:21:35.66]  I was trying to find that a long time ago.
+[00:21:35.70 - 00:21:38.10]  It's probably just some ponies over active imagination.
+[00:21:38.14 - 00:21:40.54]  I need to find something I lost about a week ago.
+[00:21:40.58 - 00:21:41.94]  What did you lose?
+[00:21:41.98 - 00:21:44.14]  It's a secret.
+[00:21:44.18 - 00:21:46.94]  So, you want me to help you find something,
+[00:21:46.98 - 00:21:49.02]  but you won't tell me what it is?
+[00:21:49.06 - 00:21:50.54]  Correct the window.
+[00:21:50.58 - 00:21:52.98]  That makes no sense!
+[00:21:53.02 - 00:21:54.58]  Wait a minute.
+[00:21:54.62 - 00:21:56.98]  Actually, uh, Pinkie Pie?
+[00:21:57.02 - 00:21:57.66]  Yes?
+[00:21:57.70 - 00:22:00.22]  Do you know where Sugar Cube Corner is?
+[00:22:00.26 - 00:22:03.86]  Woah! You wanna go big cupcakes with me at sugar cube corner!
+[00:22:03.98 - 00:22:08.06]  Mr. and Mrs. Pick always let me help out. Now I have an assistant! Yay!
+[00:22:08.18 - 00:22:11.46]  You know how to make cupcakes, right? It's okay if you can't. I can teach you if you don't know.
+[00:22:11.58 - 00:22:14.10]  It's really, really, REALLY easy.
+[00:22:14.58 - 00:22:16.42]  Hurts me down to 350 degrees, and I'm the cupcake man.
+[00:22:16.54 - 00:22:18.66]  Shuffle on your sunny flours, and you've got to rinse out your mixing bowl.
+[00:22:18.78 - 00:22:20.26]  I shorten you enough to know what the flavor and taste is.
+[00:22:20.38 - 00:22:22.62]  I've risen to a little bit of change, and you won't get me to beat for one minute.
+[00:22:22.74 - 00:22:25.54]  Let's rip this up and show you what the actual health we want as much as any we can from the mix!
+[00:22:27.14 - 00:22:28.58]  That's not what I meant.
+[00:22:29.06 - 00:22:34.38]  I was wondering if you knew where the Hay-N-Stay is. It's a hotel? I heard it was by there.
+[00:22:35.22 - 00:22:38.78]  Of course I know where to make cupcakes. What does she think I am, a hobo?
+[00:22:39.78 - 00:22:41.94]  Yes, to me! I know where it is!
+[00:22:42.82 - 00:22:50.14]  I need someone to escort me. Would you be willing to do that for me? If I help you find your missing... thing?
+[00:22:50.90 - 00:22:53.70]  Okey-dokey-lokey! On one other condition.
+[00:22:54.06 - 00:22:57.06]  Name it! This is gonna be easier than I thought.
+[00:22:57.94 - 00:23:00.58]  You have to tell me... a funny joke!
+[00:23:01.62 - 00:23:04.34]  What? Why do I have to do that?
+[00:23:04.98 - 00:23:07.94]  I don't want to hang out with some big party pooper frowny state in the mud.
+[00:23:08.10 - 00:23:10.18]  So many of a sense of humor, Feeny Meeny.
+[00:23:10.74 - 00:23:12.66]  Do I really have to do this?
+[00:23:12.98 - 00:23:14.58]  Mm-hmm...
+[00:23:15.86 - 00:23:18.98]  Well, she seems really easy to impress anyway.
+[00:23:19.54 - 00:23:22.42]  Okay, this is a really good one, Pinkie Pie.
+[00:23:22.58 - 00:23:23.94]  Tell me, tell me!
+[00:23:24.26 - 00:23:27.54]  Here goes! Why do they call me Phoenix Runt?
+[00:23:27.54 - 00:23:29.54]  I knew! Bro!
+[00:23:30.54 - 00:23:32.54]  Because I'm always right!
+[00:23:35.54 - 00:23:37.54]  That wasn't funny.
+[00:23:39.54 - 00:23:41.54]  So, do you have any better ones?
+[00:23:42.54 - 00:23:43.54]  Well, uh...
+[00:23:44.54 - 00:23:48.54]  This one time I cross-examined a parakeet. What's the deal with that?
+[00:23:50.54 - 00:23:54.54]  This is a lot harder than I thought. I'm a lawyer, not a comedian.
+[00:23:55.54 - 00:23:59.94]  Um, did you know I had the entire left side of my body cut off once?
+[00:24:00.44 - 00:24:03.14]  Don't worry, I'm all right now!
+[00:24:03.34 - 00:24:05.14]  *laughs*
+[00:24:06.44 - 00:24:08.44]  Oh, hey, what's that?
+[00:24:09.14 - 00:24:09.74]  This?
+[00:24:10.64 - 00:24:12.54]  It's my Equestria attorney badge.
+[00:24:13.04 - 00:24:14.94]  That's how I got in that detention center.
+[00:24:15.84 - 00:24:16.44]  *laughs*
+[00:24:16.84 - 00:24:17.74]  Oh, wow!
+[00:24:17.94 - 00:24:20.14]  That is the girliest thing I've ever seen!
+[00:24:20.34 - 00:24:23.44]  That must have been why you were pretending to be so bad at telling a good joke!
+[00:24:23.74 - 00:24:26.74]  to build up the flashing that ridiculous looking thing.
+[00:24:27.74 - 00:24:30.74]  Oh, you sure are a knee slapper, Phoebe.
+[00:24:31.74 - 00:24:35.74]  I really feel like sobbing to myself in a dark corner right now.
+[00:24:36.74 - 00:24:39.74]  So, will you show me where this hotel is now?
+[00:24:46.74 - 00:24:47.74]  Pinky?
+[00:24:48.74 - 00:24:51.74]  Oh, oh, right. The hotel is this way.
+[00:24:52.74 - 00:24:53.24]  WAIT UP!
+[00:24:54.74 - 00:25:09.08]  *
+[00:25:09.10 - 00:25:12.08]  Some of these humming cells are really pretty behind here.
+[00:25:13.74 - 00:25:15.74]  Lookie! Here's that room!
+[00:25:16.74 - 00:25:20.74]  Do you think we'll get in trouble for going in this room without asking?
+[00:25:21.24 - 00:25:23.24]  I hope he's such a chicken, Peony. Give me that!
+[00:25:24.74 - 00:25:26.74]  Hey! We can't just...
+[00:25:26.84 - 00:25:28.84]  We just stick in here and...
+[00:25:30.84 - 00:25:33.84]  We're in! Pinkie Pie, Master of Unlocking!
+[00:25:34.64 - 00:25:36.64]  I really hope I don't get sent to the sun for this.
+[00:25:37.64 - 00:25:39.64]  So, this is Ace's room.
+[00:25:40.64 - 00:25:43.64]  Seeing as he's dead, surely he won't mind if we look around.
+[00:25:44.64 - 00:25:46.64]  My name is Pinkie, not Shirley.
+[00:25:47.04 - 00:25:49.04]  What are we trying to find here anyway, Peony?
+[00:25:49.14 - 00:25:55.14]  A magical stone, a secret chamber, a prisoner, a cup, maybe something you ordered? Oatmeal?
+[00:25:56.14 - 00:25:59.14]  Oatmeal? Why would anybody want to find Oatmeal?
+[00:26:00.14 - 00:26:02.14]  Duh! When they're hungry!
+[00:26:04.14 - 00:26:08.14]  No Pinkie Pie, we're trying to find clues that relate to the crime.
+[00:26:09.14 - 00:26:11.14]  So, no Oatmeal?
+[00:26:12.14 - 00:26:13.14]  No Oatmeal.
+[00:26:14.14 - 00:26:21.14]  I want to try and be out of here as fast as humanly possible, okay? I don't want to be caught by anyone.
+[00:26:22.14 - 00:26:25.14]  Alright, I'll try to be as fast as humanly possible then.
+[00:26:26.14 - 00:26:29.14]  Maybe with a mistake taking her in here with me.
+[00:26:30.14 - 00:26:32.14]  Look, Phoebe, a step ladder! Is that a clue?
+[00:26:33.14 - 00:26:37.14]  One, that's not a clue. Two, that's not a step ladder, it's a ladder.
+[00:26:38.14 - 00:26:39.14]  There's a difference?
+[00:26:40.14 - 00:26:46.14]  A big difference! A step ladder has an A-frame that folds, while a ladder is flat like that one.
+[00:26:46.64 - 00:26:51.64]  I still don't see what the difference is. I mean, you still step on it, right? Wouldn't it be a step ladder then?
+[00:26:52.64 - 00:26:55.64]  How can I put this in a way you'll understand?
+[00:26:56.64 - 00:26:58.64]  It's like cupcakes and muffins.
+[00:26:59.14 - 00:27:00.64]  Cupcakes and muffins?
+[00:27:01.14 - 00:27:06.64]  Exactly! Both look kind of the same, but they're totally different, like ladders and step ladders.
+[00:27:07.14 - 00:27:13.50]  Except frosting on them like how step ladders have a folding frame well muffins are usually plain like ladders flat
+[00:27:14.50 - 00:27:17.38]  Oh, I think I get it now like hacksaws and saws
+[00:27:23.22 - 00:27:27.94]  I don't get it. It doesn't hack hacking is what you do with daggers and axes and knives
+[00:27:30.74 - 00:27:35.86]  Yeah, okay, seriously she's freaking me out now
+[00:27:35.86 - 00:27:42.86]  But you sure know a lot about ladders, Genie. Are you sure you're a lawyer and not actually a ladder commissuer?
+[00:27:43.10 - 00:27:48.10]  It's just common sense. I find it annoying that a lot of people don't know the difference between the two.
+[00:27:48.36 - 00:27:57.36]  Wait a minute. Wasn't the victim a Pegasus? Why would he need a ladder anyway? He could just fly up and get the things he would need a ladder for.
+[00:27:57.86 - 00:27:59.86]  Maybe he was superstitious and didn't want bad luck.
+[00:28:00.36 - 00:28:05.36]  Keeping a ladder doesn't prevent bad luck. You get bad luck for walking under a ladder.
+[00:28:05.36 - 00:28:08.36]  What about this? Is ripped up paper good luck?
+[00:28:08.46 - 00:28:11.86]  It's a piece of ripped up paper. Why would it be good luck?
+[00:28:11.96 - 00:28:13.86]  I'm even aspirin.
+[00:28:13.96 - 00:28:16.86]  Yes, you're right. It just needs a bunch of mumbo jumbo on it anyway.
+[00:28:16.96 - 00:28:20.36]  Mumbo jumbo? Well, let me see it.
+[00:28:20.46 - 00:28:23.86]  This is a letter stating my permanent leaf of absence.
+[00:28:23.96 - 00:28:27.86]  After the Equestrian 500 is over, I can no longer work with it.
+[00:28:27.96 - 00:28:31.36]  We made quite the team, but I...
+[00:28:31.46 - 00:28:33.36]  And then it cuts off.
+[00:28:33.46 - 00:28:35.46]  The rest must be on the other half.
+[00:28:35.66 - 00:28:37.66]  Pinky, you found a clue!
+[00:28:38.26 - 00:28:39.46]  Is that good enough?
+[00:28:39.76 - 00:28:40.66]  No.
+[00:28:40.96 - 00:28:42.66]  W-well, yes.
+[00:28:42.86 - 00:28:43.86]  Kinda.
+[00:28:43.96 - 00:28:45.26]  Good job, Pinky!
+[00:28:45.56 - 00:28:46.56]  Yay!
+[00:28:50.96 - 00:28:53.26]  It would only make sense that Ace wrote this,
+[00:28:53.36 - 00:28:54.66]  since it's his room.
+[00:28:54.96 - 00:28:56.96]  But who is he writing it to?
+[00:28:57.46 - 00:28:58.26]  Maybe he...
+[00:28:58.36 - 00:28:58.96]  Oh no!
+[00:28:59.56 - 00:29:02.16]  Shh! We aren't supposed to be in here, remember?
+[00:29:02.26 - 00:29:03.36]  What's the problem?
+[00:29:03.36 - 00:29:05.36]  My tail's twitching!
+[00:29:05.46 - 00:29:08.46]  So, my foot fell asleep, you don't see me freaking out?
+[00:29:08.56 - 00:29:10.56]  Why is she hiding under that table?
+[00:29:10.66 - 00:29:12.66]  Pinkie Pie, stop fooling around and-
+[00:29:12.76 - 00:29:13.26]  *POP*
+[00:29:13.36 - 00:29:14.26]  OW!
+[00:29:14.36 - 00:29:16.26]  See? I warned you!
+[00:29:16.36 - 00:29:17.26]  What?
+[00:29:17.36 - 00:29:19.26]  You didn't say anything was gonna fall on my head!
+[00:29:19.36 - 00:29:22.26]  Sure I did! I said my tail was twitching!
+[00:29:22.36 - 00:29:24.26]  That means something's gonna fall!
+[00:29:24.36 - 00:29:29.26]  That's ridiculous! You can't tell me you can make predictions like that based on body spasms!
+[00:29:29.36 - 00:29:31.26]  So what's a book say?
+[00:29:31.36 - 00:29:33.26]  You mean the thing that fell on my head?
+[00:29:33.26 - 00:29:36.02]  It seems like it's some sort of advanced spell book.
+[00:29:36.32 - 00:29:38.72]  Hey Phoebe! Do you think you can cast a spell?
+[00:29:38.92 - 00:29:40.60]  I can't since I'm an Earth pony.
+[00:29:40.94 - 00:29:43.44]  Of course not! I'm not a magician!
+[00:29:43.76 - 00:29:45.36]  I can't even read it anyway!
+[00:29:45.82 - 00:29:50.28]  I only know it's an advanced spell book because I saw Twilight reading a book just like it this morning.
+[00:29:50.56 - 00:29:51.92]  And I asked her what it was.
+[00:29:52.52 - 00:29:54.08]  The text isn't in English.
+[00:29:54.48 - 00:29:57.88]  The characters are in weird hieroglyphics like Twilight's book.
+[00:29:58.88 - 00:30:00.56]  Huh? Look at this.
+[00:30:01.68 - 00:30:03.68]  Continue from here.
+[00:30:03.78 - 00:30:04.78]  Erg, why?
+[00:30:04.88 - 00:30:06.88]  Seems someone scribbled a note here.
+[00:30:06.98 - 00:30:10.18]  You can get in fake trouble for any hotel's book like that!
+[00:30:10.28 - 00:30:12.68]  No, I don't think this is the hotel's book.
+[00:30:12.78 - 00:30:15.38]  Twilight said these advanced spell books are only available in...
+[00:30:15.48 - 00:30:16.48]  ...K...
+[00:30:16.58 - 00:30:17.58]  ...Can...
+[00:30:17.68 - 00:30:18.68]  ...Ehh...
+[00:30:18.78 - 00:30:19.68]  Forget the name.
+[00:30:19.78 - 00:30:21.98]  Starts with a hard C if I recall.
+[00:30:22.08 - 00:30:23.08]  Cookie?
+[00:30:23.18 - 00:30:23.88]  No.
+[00:30:23.98 - 00:30:24.68]  Parrot?
+[00:30:24.78 - 00:30:25.78]  No.
+[00:30:25.88 - 00:30:26.88]  Heart screw?
+[00:30:26.98 - 00:30:29.38]  No, just stop guessing.
+[00:30:29.48 - 00:30:32.48]  The point is, this must be someone's personal book.
+[00:30:36.48 - 00:30:38.48]  I'd better put it back on the shelf.
+[00:30:39.48 - 00:30:40.48]  It was all the way up there.
+[00:30:41.48 - 00:30:42.48]  I can reach it.
+[00:30:43.48 - 00:30:45.48]  Almost... got it!
+[00:30:46.48 - 00:30:47.48]  Ahh! No!
+[00:30:48.48 - 00:30:51.48]  Didn't you just tell me to be quiet a second ago? Practice what you preach.
+[00:30:52.48 - 00:30:53.48]  I ripped my suit!
+[00:30:54.48 - 00:30:56.48]  You're right! You have a big hole in your armpit!
+[00:30:57.48 - 00:30:59.48]  You can step ladder instead of reaching so high.
+[00:30:59.68 - 00:31:00.68]  It's a ladder!
+[00:31:02.18 - 00:31:04.68]  You don't realize how bad this is!
+[00:31:04.98 - 00:31:07.48]  I can't walk around with a big rip in my suit!
+[00:31:07.68 - 00:31:09.48]  No use crying over spilt milk.
+[00:31:09.88 - 00:31:11.08]  The core ripped on pits.
+[00:31:12.78 - 00:31:14.38]  Looky, it's Remo Dash!
+[00:31:14.68 - 00:31:16.18]  Huh? Where?
+[00:31:16.98 - 00:31:18.18]  Right here on the table.
+[00:31:18.88 - 00:31:20.88]  Well, it's her name alright.
+[00:31:21.78 - 00:31:24.48]  What is this? It looks like some kind of list.
+[00:31:25.18 - 00:31:26.88]  Maybe it's a party invite!
+[00:31:26.88 - 00:31:29.36]  Do you know who these other names are, Pinky?
+[00:31:29.40 - 00:31:34.12]  Nope, it doesn't ring any bells. Rainbow Dash is the only name I hear I recognize.
+[00:31:34.16 - 00:31:37.36]  Uh oh, I have to find out who these other ponies are!
+[00:31:37.40 - 00:31:38.80]  Why?
+[00:31:38.84 - 00:31:41.64]  I throw a party for every new pony in Ponyville.
+[00:31:41.68 - 00:31:43.04]  [GASP]
+[00:31:43.08 - 00:31:46.48]  That reminds me, I haven't thrown a welcome party for you yet!
+[00:31:46.52 - 00:31:49.12]  I'm sorry, Phoebe, I just haven't had the time today!
+[00:31:49.16 - 00:31:51.60]  Uh, that's alright.
+[00:31:51.64 - 00:31:54.16]  She seems to all upset about it.
+[00:31:54.20 - 00:32:00.20]  Look next to Rainbow Dash's name. It's a time. 8.35.
+[00:32:01.20 - 00:32:07.20]  I was right! It's a party invite! Rainbow Dash party at 8.35. I'll try not to be late this time.
+[00:32:08.20 - 00:32:11.20]  I don't think so. I think I know what this is now.
+[00:32:14.20 - 00:32:17.20]  You know? Tell me! Tell me!
+[00:32:18.20 - 00:32:20.20]  I'm not completely positive, but I think this is a-
+[00:32:21.20 - 00:32:22.20]  I'm just- Who are you two?
+[00:32:23.20 - 00:32:24.20]  No, we're caught!
+[00:32:24.54 - 00:32:26.54]  Why are you snooping around my room?
+[00:32:26.72 - 00:32:27.22]  Ugh!
+[00:32:27.88 - 00:32:28.38]  Chief!
+[00:32:28.76 - 00:32:29.26]  Chief!
+[00:32:30.06 - 00:32:34.06]  I should have the police book you two and have you thrown in jail for breaking and entering.
+[00:32:34.34 - 00:32:35.14]  I...
+[00:32:35.80 - 00:32:37.00]  This can't be Mia!
+[00:32:37.22 - 00:32:38.22]  It just can't be!
+[00:32:38.56 - 00:32:39.56]  We're room service!
+[00:32:40.60 - 00:32:42.60]  Do you honestly think she's gonna fall for that?
+[00:32:43.08 - 00:32:45.34]  Do you honestly think I'm going to fall for...
+[00:32:46.06 - 00:32:46.76]  Wait a minute...
+[00:32:47.52 - 00:32:48.60]  I know who you are.
+[00:32:48.94 - 00:32:49.80]  It's me, Mia.
+[00:32:50.08 - 00:32:51.08]  Mia!
+[00:32:51.60 - 00:32:52.90]  My name is Samnada.
+[00:32:52.90 - 00:32:54.90]  Zenada?
+[00:32:55.90 - 00:32:58.90]  Did I stutter? Yes, that's my name.
+[00:32:59.90 - 00:33:00.90]  It's not her.
+[00:33:01.90 - 00:33:04.90]  But the resemblance... It's uncanny.
+[00:33:05.90 - 00:33:07.90]  Name. Now.
+[00:33:08.90 - 00:33:09.90]  Phoenix Wright.
+[00:33:10.90 - 00:33:12.90]  Pretty girl extraordinary!
+[00:33:13.90 - 00:33:16.90]  As I thought, you're that human lawyer from the trial earlier.
+[00:33:17.90 - 00:33:20.90]  I can't get over this! It looks exactly like her!
+[00:33:21.90 - 00:33:22.90]  You're a pony.
+[00:33:23.18 - 00:33:25.48]  Can you stop staring at me like that, please?
+[00:33:25.98 - 00:33:27.10]  What's the matter, Phinee?
+[00:33:27.30 - 00:33:28.14]  Cat got your tongue?
+[00:33:28.44 - 00:33:32.58]  That would hurt because a hat and a car and your tongue is really sensitive!
+[00:33:32.82 - 00:33:33.48]  Ouch!
+[00:33:33.94 - 00:33:39.18]  I knew Rainbow Dash was guilty, but it didn't even look like you were trying in court today.
+[00:33:39.48 - 00:33:41.86]  Who exactly are you?
+[00:33:42.88 - 00:33:45.08]  I'm the one who should be asking questions here.
+[00:33:45.72 - 00:33:48.92]  Seeing as you two are the ones who broke into my room,
+[00:33:48.96 - 00:33:52.36]  I'm betting you're the one who stole the key two days ago.
+[00:33:52.86 - 00:33:54.86]  But isn't this Ace Swift's room?
+[00:33:56.56 - 00:33:57.86]  You're here about him?
+[00:33:58.86 - 00:33:59.76]  I see.
+[00:34:00.36 - 00:34:02.96]  We were just investigating his hotel room for clues.
+[00:34:03.56 - 00:34:04.66]  This is his room.
+[00:34:04.76 - 00:34:05.66]  Is it not?
+[00:34:05.96 - 00:34:06.66]  Hmm?
+[00:34:07.16 - 00:34:08.46]  Oh, yes.
+[00:34:08.96 - 00:34:09.96]  That is correct.
+[00:34:10.36 - 00:34:12.06]  You just said this was your room, though.
+[00:34:12.66 - 00:34:14.66]  What are you, is it girlfriend or something?
+[00:34:15.06 - 00:34:17.16]  That's strike one, Mr. Right.
+[00:34:17.36 - 00:34:19.84]  I suggest you not strike out anymore.
+[00:34:20.08 - 00:34:20.58]  Gah!
+[00:34:20.92 - 00:34:22.92]  Better not get on her back, sonny.
+[00:34:23.76 - 00:34:24.80]  Ah, sorry.
+[00:34:25.18 - 00:34:26.22]  Actually, I'm...
+[00:34:27.02 - 00:34:31.60]  Or, should I say, WAS his manager, given the circumstances.
+[00:34:32.14 - 00:34:32.64]  His...
+[00:34:33.36 - 00:34:34.24]  Manager?
+[00:34:38.24 - 00:34:40.24]  This is getting weird.
+[00:34:41.28 - 00:34:43.28]  I'm sorry about what happened.
+[00:34:43.68 - 00:34:45.68]  Don't worry, I got over it pretty quickly.
+[00:34:46.44 - 00:34:52.44]  Besides, justice will be served. Your client will be punished for her crime.
+[00:34:52.54 - 00:34:54.54]  Hey, Riggle Dash didn't do it!
+[00:34:54.64 - 00:34:58.64]  Anypony with half a brain can see that she did it, Mr. Wright.
+[00:34:58.74 - 00:35:01.74]  Look at all the evidence stacked against her.
+[00:35:01.84 - 00:35:07.34]  No matter how you look at it, she was the one who activated that cloud and killed him.
+[00:35:07.44 - 00:35:13.84]  Your little feather theory may have bought some time, but she is going to be found guilty tomorrow morning.
+[00:35:13.94 - 00:35:15.94]  I assure it.
+[00:35:15.94 - 00:35:19.94]  I believe in her, and I'm gonna defend her to the very end, no matter what you say.
+[00:35:20.94 - 00:35:29.94]  And that's why you're going to lose. From what I've gathered, you're not even from Equestria. Why place loyalty in a pony you hardly know?
+[00:35:30.94 - 00:35:34.94]  Did I stutter? I said because I believe her. She didn't do it.
+[00:35:35.94 - 00:35:38.94]  Eregant. Just like that prosecutor.
+[00:35:39.94 - 00:35:40.94]  Do you mean Trixie?
+[00:35:41.94 - 00:35:42.94]  Yes, her.
+[00:35:43.94 - 00:35:45.30]  What do you have against her?
+[00:35:45.32 - 00:35:50.76]  I wish to prosecute for this case, but that pig-headed show-mere beat me to it.
+[00:35:51.76 - 00:35:55.16]  She does seem a lot more qualified to be a prosecutor than Trixie.
+[00:35:56.16 - 00:35:59.96]  So wait, you're a prosecutor as well as a manager?
+[00:36:00.24 - 00:36:03.36]  Ace and I are from Canterlot, Equestria's capital.
+[00:36:03.76 - 00:36:08.08]  Most of the unicorns there are jacks of all trades, so to speak.
+[00:36:08.64 - 00:36:13.64]  We take on as many jobs as we can to flourish our intellect and magical abilities.
+[00:36:14.64 - 00:36:19.04]  Wow! I didn't even know that! How'd she take another tree? Maybe bowling? No, peanut
+[00:36:19.14 - 00:36:22.04]  fighting! No, no, how about scuba diving?
+[00:36:24.64 - 00:36:27.64]  Pinky, it doesn't look like she shares your enthusiasm.
+[00:36:28.64 - 00:36:30.64]  You sure she's from this... cannerlot place then?
+[00:36:31.64 - 00:36:33.64]  Yes, she is.
+[00:36:34.64 - 00:36:38.40]  when the murder took place, so there wasn't enough time for me to go to
+[00:36:38.42 - 00:36:41.84]  Canderlot and execute the procedures to prosecute this case.
+[00:36:42.84 - 00:36:45.64]  Trixie must have already been there when she heard about it.
+[00:36:46.34 - 00:36:47.64]  How foolish.
+[00:36:47.94 - 00:36:50.94]  Taking a case over a silly little garage.
+[00:36:51.34 - 00:36:52.64]  It's funny, really.
+[00:36:52.94 - 00:36:55.34]  Part of me wants you to best her.
+[00:36:56.54 - 00:36:57.84]  She wants the grudge now.
+[00:36:58.24 - 00:37:00.64]  I actually know quite a bit about her.
+[00:37:01.04 - 00:37:01.94]  Care to listen?
+[00:37:02.54 - 00:37:10.74]  Ooh, a story! I love stories! I'll tell you the one, our man's a bad blue suit broken somebody's room in our own suit of personal belongings! It's a classic-
+[00:37:12.24 - 00:37:14.54]  For the love of God, shut up!
+[00:37:15.04 - 00:37:19.04]  If you wouldn't mind, I wasn't told much about Trixie.
+[00:37:19.74 - 00:37:25.04]  I was classmates with her when I was but a fool. I attended the same magic classes as her.
+[00:37:25.24 - 00:37:27.04]  Were you friends with her or something?
+[00:37:27.34 - 00:37:33.84]  No, I capture myself as I do now. I only consult with those who are worth my time.
+[00:37:34.34 - 00:37:39.84]  Hey, you know what that means, Phoebe? We're both worth our time! You're a thought she wouldn't like us breaking into her room!
+[00:37:41.34 - 00:37:44.34]  Every time you speak, you make that glare icier and icier!
+[00:37:44.84 - 00:37:45.84]  Continuing...
+[00:37:46.34 - 00:37:53.34]  The tricks you saw in court today is how she has been all her life. An arrogant boaster, a show-off.
+[00:37:54.34 - 00:37:56.34]  I hate that type.
+[00:37:56.34 - 00:37:59.34]  She was at the top of the class.
+[00:38:00.34 - 00:38:03.34]  As much as I hate to say it, she's better than me.
+[00:38:04.34 - 00:38:06.34]  Despite me being older.
+[00:38:07.34 - 00:38:08.34]  Well, when it comes to magic anyway.
+[00:38:09.34 - 00:38:10.34]  Ah, so you're just jealous then?
+[00:38:11.34 - 00:38:14.34]  Pinky! Is your brain the size of June Bubblegum?
+[00:38:15.34 - 00:38:19.34]  I don't think so. If it were Bubblegum, it would probably stick to the inside of my head, don't you think?
+[00:38:20.34 - 00:38:23.34]  Ah! Pinky, just stop talking, please!
+[00:38:24.34 - 00:38:25.54]  Hey, I'll stop talking.
+[00:38:26.04 - 00:38:27.34]  Sorry, I spoke!
+[00:38:27.54 - 00:38:28.54]  I spoke again!
+[00:38:28.64 - 00:38:29.34]  And again!
+[00:38:29.44 - 00:38:30.04]  And again!
+[00:38:30.14 - 00:38:30.84]  And again!
+[00:38:30.94 - 00:38:31.44]  AHH!
+[00:38:35.94 - 00:38:36.54]  Huh?
+[00:38:36.74 - 00:38:37.84]  Are you okay?
+[00:38:38.14 - 00:38:38.84]  Yes.
+[00:38:39.14 - 00:38:40.04]  Excuse me.
+[00:38:40.24 - 00:38:42.04]  Anyway, I'm not jealous.
+[00:38:42.34 - 00:38:47.44]  In fact, unlike Trixie, I'm striving to become better with magic.
+[00:38:47.64 - 00:38:51.94]  Not going around town and showing off a bunch of cheap parlor tricks.
+[00:38:52.54 - 00:38:58.54]  You should earn attention and praise for the actions you do, not what you claim you can do.
+[00:38:59.04 - 00:39:02.54]  So just because she showed off in school, you hate her?
+[00:39:03.04 - 00:39:06.04]  Sorry, but not a little shallow if you ask me.
+[00:39:06.54 - 00:39:15.04]  But is it? Do you think she's qualified to be prosecuting? You saw how she acted. No professionalism at all.
+[00:39:16.04 - 00:39:20.54]  I've had it worse in the courtroom. Two pays, birds, whips.
+[00:39:21.04 - 00:39:21.54]  Whips?
+[00:39:21.54 - 00:39:27.54]  Ugh, don't ask. As long as she's getting the job done, I don't see anything wrong with it.
+[00:39:28.04 - 00:39:33.54]  Well, why do you want to prosecute this case so badly anyway? I know you were his manager, but still.
+[00:39:34.04 - 00:39:44.04]  Because if things were going my way, the case would have been closed by now. Cold, hard, swift justice. That's the way I work.
+[00:39:44.54 - 00:39:47.04]  That's not what being a lawyer is about, Sonata.
+[00:39:47.54 - 00:39:54.04]  Then what is it about, Mr. Wright? Sitting back and letting a dangerous felon off the hook, scot-free?
+[00:39:54.14 - 00:39:56.44]  No. It's about finding the truth.
+[00:39:56.54 - 00:39:58.04]  The truth?
+[00:39:58.14 - 00:40:04.54]  Attorneys aren't meant to uphold justice. We're to work to the best of our abilities to guide it, and seek out the truth.
+[00:40:04.84 - 00:40:13.64]  You have quite the ideals, Mr. Wright. I don't know what kinds of trials and tribulations you've been through, but you're not changing my opinion.
+[00:40:13.74 - 00:40:17.74]  Rainbow Dash is guilty, and that's all there is to it.
+[00:40:19.24 - 00:40:22.74]  If you don't mind me asking, what does that eyeball stand for?
+[00:40:23.24 - 00:40:27.24]  It's a cutie mark! It must be your special talent is poking Pony's eyes out with that form!
+[00:40:27.74 - 00:40:29.74]  We are so dead.
+[00:40:30.74 - 00:40:32.74]  What the heck is wrong with her?
+[00:40:33.74 - 00:40:36.74]  Are you okay? You look like you're in pain.
+[00:40:37.74 - 00:40:38.74]  Yes, I'm fine.
+[00:40:39.74 - 00:40:45.24]  But no. My talent is perceiving and having a keen eye for detail.
+[00:40:45.74 - 00:40:49.74]  For instance, Mr. Right, you're desperately trying to change the subject,
+[00:40:49.84 - 00:40:52.24]  hoping I forget about you breaking into my room,
+[00:40:52.34 - 00:40:57.04]  indicated by your nervous breathing patterns and the sweat trickling down your forehead and neck.
+[00:40:57.14 - 00:41:00.74]  You're also trying to cover up that embarrassing rip in your armpit.
+[00:41:00.84 - 00:41:06.04]  I can tell by how firmly your left arm is pressed against your body compared to your right one.
+[00:41:07.74 - 00:41:09.74]  And her. She's...
+[00:41:10.74 - 00:41:12.74]  She's thinking about ladders.
+[00:41:13.74 - 00:41:17.74]  How did you know? It must be psychic, but I was actually thinking about step ladders.
+[00:41:18.74 - 00:41:21.74]  It's a ladder! Even I could have gotten that one!
+[00:41:22.74 - 00:41:24.74]  Throughout the whole conversation, you keep looking at it!
+[00:41:25.74 - 00:41:29.74]  But, Sonata, can you tell me a little bit more about Ace?
+[00:41:30.74 - 00:41:32.74]  What's there to say? He was good at what he did.
+[00:41:33.74 - 00:41:34.74]  What about your relationship with him?
+[00:41:35.74 - 00:41:36.74]  As his manager, I mean.
+[00:41:37.74 - 00:41:38.74]  Well?
+[00:41:39.74 - 00:41:40.74]  That's none of your business.
+[00:41:41.74 - 00:41:42.74]  For a second there, she kind of hesitated.
+[00:41:43.74 - 00:41:44.74]  Perhaps I should press this further.
+[00:41:45.74 - 00:41:46.74]  I want to know, Zenada, what was it like being a Swiss manager?
+[00:41:51.74 - 00:41:52.74]  I told you, Mr. Wright.
+[00:41:53.74 - 00:41:54.74]  It's none of your business.
+[00:41:55.74 - 00:41:56.74]  I'm not a Swiss man.
+[00:41:57.74 - 00:41:58.74]  I'm not a Swiss man.
+[00:41:59.74 - 00:42:00.74]  I'm not a Swiss man.
+[00:42:01.74 - 00:42:03.74]  It's none of your business.
+[00:42:04.74 - 00:42:07.74]  And Bingo was his name-o. I knew there was more to you than meets the eye.
+[00:42:09.74 - 00:42:16.74]  Now, if you'll excuse me, I have some work to attend to. I would appreciate it if you left my room post-haste.
+[00:42:17.74 - 00:42:21.74]  That's odd. Didn't you say she was going to have us arrested for breaking and entering?
+[00:42:22.74 - 00:42:23.74]  Alright, let's go Pinkie Pie.
+[00:42:24.74 - 00:42:28.74]  Yep, yep. I wish you the best of luck on your investigation. You'll need it.
+[00:42:28.74 - 00:42:39.74]  I was sweating bullets back there.
+[00:42:39.74 - 00:42:41.74]  She's quite intimidating for a pony.
+[00:42:42.24 - 00:42:45.74]  I didn't find her intimidating. I tried to make her smile. How do you think I did?
+[00:42:46.24 - 00:42:48.74]  Uh... Don't quit your day job.
+[00:42:49.24 - 00:42:53.24]  Okay! Wait! What is my day job anyway? Throwing parties is more of a hobby.
+[00:42:53.74 - 00:42:58.24]  Pinky, you still haven't told me. How did you manage to be so late for the trial?
+[00:42:58.74 - 00:42:59.74]  I slept in.
+[00:43:02.74 - 00:43:03.74]  That's it?
+[00:43:04.24 - 00:43:05.24]  Is something wrong?
+[00:43:05.74 - 00:43:09.24]  No, I guess I was just expecting a better reason than that.
+[00:43:09.24 - 00:43:15.24]  I have a bad habit of being late. That's why I don't play parties too far in advance. I'll just be late and miss all the fun.
+[00:43:15.26 - 00:43:17.26]  So I just throw them whenever I want.
+[00:43:17.54 - 00:43:21.70]  That says a lot about you. I thought you were a bit annoying at first.
+[00:43:22.34 - 00:43:24.94]  But I can see now that you're just a...
+[00:43:25.74 - 00:43:31.26]  a free spirit. Your heart's in the right place though. You've remind me a lot of a girl I know.
+[00:43:31.30 - 00:43:32.98]  Aww, thanks, Feeny.
+[00:43:33.00 - 00:43:37.86]  So what do you think happened, Pinkie Pie? The crime, I mean. What do you think really happened?
+[00:43:37.90 - 00:43:41.90]  Let me think. Oh, oh, oh, I know!
+[00:43:42.90 - 00:43:45.90]  Maybe, just maybe. Rainbow Dash?
+[00:43:46.90 - 00:43:47.40]  Yes?
+[00:43:47.90 - 00:43:52.90]  Maybe she has an evil twin sister nobody knows about. Yeah, so there are two Rainbow Dashes, one good, one evil.
+[00:43:53.90 - 00:43:54.90]  Double Rainbow Dash?
+[00:43:55.90 - 00:43:56.90]  All the way! That would be so intense.
+[00:43:57.90 - 00:44:02.90]  Don't you think someone would notice two Rainbow Dashes by now? All those colors, they'd stick out.
+[00:44:03.90 - 00:44:06.90]  An evil twin sister nobody knows about doesn't seem plausible.
+[00:44:06.90 - 00:44:12.90]  No, Phinea, I think I'm gonna do something here. We have to find that bathroom before she starts again! Let's call her Wabniar!
+[00:44:13.90 - 00:44:16.90]  Wabniar? But that's just...
+[00:44:17.90 - 00:44:19.90]  Why am I even arguing about this?
+[00:44:20.90 - 00:44:21.90]  Hey, look there!
+[00:44:22.90 - 00:44:26.90]  Hey, you two! Did you by any chance receive a letter not posted to you?
+[00:44:28.60 - 00:44:31.84]  I-I-I-I-I-I-I-I-E-E-E-E-E-E-E EYES!
+[00:44:33.68 - 00:44:35.92]  Have you seen an optometrist about that?
+[00:44:36.16 - 00:44:38.48]  Optometrist? See me!
+[00:44:38.76 - 00:44:41.42]  Oh, I mean, I mean...
+[00:44:41.72 - 00:44:42.22]  Um...
+[00:44:42.30 - 00:44:43.90]  Mean no-see letter?
+[00:44:44.20 - 00:44:44.70]  *Sigh*
+[00:44:44.94 - 00:44:46.20]  That's just great.
+[00:44:46.50 - 00:44:47.20]  What's the matter?
+[00:44:47.62 - 00:44:52.04]  Some airhead even important letter to the wrong pony and I'm trying to track it down.
+[00:44:52.34 - 00:44:55.28]  I can't stop looking into those entrancing eyes.
+[00:44:55.94 - 00:44:57.28]  Did she see all around her?
+[00:44:57.62 - 00:45:00.62]  Maybe she can see through the very fabric of time and space!
+[00:45:00.82 - 00:45:02.62]  Hey! I know you!
+[00:45:02.82 - 00:45:03.62]  Hmph!
+[00:45:03.82 - 00:45:05.82]  Guess my reputation precedes me.
+[00:45:06.02 - 00:45:08.22]  Phoenix Wright, best attorney in the-
+[00:45:08.32 - 00:45:11.42]  He heard that big loser lawyer from Rainbow Dash's trial!
+[00:45:11.62 - 00:45:13.22]  Hey, you're famous, Beanie!
+[00:45:13.32 - 00:45:15.22]  I wish I could've seen you in action!
+[00:45:15.62 - 00:45:18.12]  I think the word you're looking for is infamous.
+[00:45:18.42 - 00:45:21.82]  Remember that part where you didn't know Pegasus could move clouds?
+[00:45:22.02 - 00:45:24.02]  Oh, how I laughed and laughed!
+[00:45:24.42 - 00:45:26.22]  Except I wasn't laughing.
+[00:45:26.62 - 00:45:28.62]  Look, I was just underprepared.
+[00:45:29.18 - 00:45:33.42]  And in case you haven't noticed by me not being a pony, I'm not from around here.
+[00:45:33.78 - 00:45:34.98]  Who are you anyway?
+[00:45:35.42 - 00:45:37.12]  The name's "Dirpy Hooves".
+[00:45:37.18 - 00:45:39.72]  Oh, that's kind of a cruel name.
+[00:45:40.38 - 00:45:40.88]  Well, DIR-
+[00:45:40.94 - 00:45:42.22]  Hey! Don't stop!
+[00:45:43.14 - 00:45:45.22]  Uh, uh, just a second, will you?
+[00:45:45.38 - 00:45:46.52]  What's wrong, Pinky?
+[00:45:46.72 - 00:45:47.92]  Don't say her name!
+[00:45:48.02 - 00:45:48.82]  Why not?
+[00:45:48.92 - 00:45:52.22]  She's really, really, really, REALLY sensitive about it.
+[00:45:52.32 - 00:45:54.12]  Don't say her name whatever you do!
+[00:45:54.42 - 00:45:56.42]  I think it's kind of a harsh name.
+[00:45:56.42 - 00:45:58.42]  But she seems okay with that.
+[00:45:58.52 - 00:46:00.52]  Who doesn't that upbeat oblivious voice?
+[00:46:01.12 - 00:46:04.00]  *Singing*
+[00:46:04.02 - 00:46:06.42]  No, no, no, no, no. Just trust me on this one.
+[00:46:06.46 - 00:46:09.92]  Fine. I'll see what the big deal is, though.
+[00:46:09.96 - 00:46:11.62]  Okay, we're done. H
+[00:46:11.66 - 00:46:15.96]  Well, der- I mean, uh, Blonde Main Pony?
+[00:46:16.00 - 00:46:18.00]  What did you think of the trial?
+[00:46:18.04 - 00:46:21.60]  Blonde Main Pony? Didn't I tell you my name?
+[00:46:21.64 - 00:46:24.40]  Uh, I, uh... I...
+[00:46:24.44 - 00:46:25.60]  Yes?
+[00:46:25.64 - 00:46:26.64]  I...
+[00:46:26.68 - 00:46:28.08]  Yes?
+[00:46:28.12 - 00:46:30.12]  I... uh...
+[00:46:30.12 - 00:46:31.40]  Like your mane?
+[00:46:31.66 - 00:46:34.38]  Oh really? I did it up all nice this morning!
+[00:46:34.58 - 00:46:36.74]  Yeah, it really looks good.
+[00:46:36.98 - 00:46:42.50]  Thanks! I'd say something about your hair, but it really just looks like you stood in front of a fan for a long time.
+[00:46:44.66 - 00:46:46.90]  Is this what I get for trying to be nice?
+[00:46:47.62 - 00:46:51.74]  I'd like to hear about what you thought of the trial, since apparently you were there.
+[00:46:52.34 - 00:46:54.74]  Oh, I was there alright! It was...
+[00:46:54.86 - 00:46:57.66]  Oh, hey, I know! I'll tell you in poem!
+[00:46:57.76 - 00:47:01.56]  I've been told I'm a really good poet when reciting mail carrier code.
+[00:47:02.36 - 00:47:03.06]  What?
+[00:47:03.66 - 00:47:07.36]  Ahem! The defense really seemed out of luck.
+[00:47:07.66 - 00:47:11.06]  If you want my opinion, you really did suck!
+[00:47:11.26 - 00:47:14.26]  Mr. Beard was indecisive and fickle.
+[00:47:14.36 - 00:47:17.36]  Fluttershy seemed like she is in quite the pickle.
+[00:47:17.56 - 00:47:21.26]  Little Apple Bloom heard that first bolt touch the ground,
+[00:47:21.36 - 00:47:23.96]  but why didn't the second one make a sound?
+[00:47:23.96 - 00:47:30.96]  The prosecutions put downs were quite rich, but honestly she was being a big stuck up...
+[00:47:31.46 - 00:47:31.96]  ...meany.
+[00:47:32.46 - 00:47:34.46]  Lava! That was really good!
+[00:47:34.96 - 00:47:36.96]  Thank you! Thank you!
+[00:47:37.46 - 00:47:39.96]  Actually, it really wasn't that bad.
+[00:47:40.46 - 00:47:43.96]  I'd better be off now. I'll be a deep dude if I don't find that letter.
+[00:47:44.46 - 00:47:44.96]  Bye!
+[00:47:45.46 - 00:47:51.46]  By the way, I should warn you too. There is a nasty unicorn calling ponies terrible memes out and about.
+[00:47:51.96 - 00:47:54.52]  I have a feeling that's our lovely prosecutor.
+[00:47:54.64 - 00:47:56.72]  Just thought I'd warn ya. See ya!
+[00:47:56.84 - 00:47:58.84]  So, did you get what you wanted from that hotel?
+[00:47:58.96 - 00:48:00.84]  Yeah, it should come in handy tomorrow.
+[00:48:01.28 - 00:48:03.72]  I wonder why Sonanda didn't have us arrested, though.
+[00:48:04.00 - 00:48:05.24]  Maybe she likes you.
+[00:48:05.32 - 00:48:08.92]  I highly doubt that. She was shooting daggers at me with her eyes.
+[00:48:09.28 - 00:48:11.40]  I must have been looking the other way when I happened.
+[00:48:11.48 - 00:48:15.48]  That must have been so cool! I wish I could shoot daggers from my eyes!
+[00:48:15.68 - 00:48:17.20]  It's a metaphor, Pinky.
+[00:48:17.88 - 00:48:20.04]  But it sort of does look that way.
+[00:48:20.64 - 00:48:22.14]  Just look at my suit.
+[00:48:22.64 - 00:48:24.14]  You're still upset about that?
+[00:48:24.44 - 00:48:27.44]  Of course I am! This is the only one I have on me!
+[00:48:27.64 - 00:48:29.64]  I can't walk into court with a ripped suit!
+[00:48:29.94 - 00:48:31.64]  I look so unprofessional.
+[00:48:31.94 - 00:48:33.44]  You could just go naked like me!
+[00:48:33.64 - 00:48:34.44]  Gah!
+[00:48:34.84 - 00:48:38.14]  Are you crazy? I'm not gonna show up in court naked!
+[00:48:38.44 - 00:48:41.24]  Why not? Everybody else does it.
+[00:48:41.44 - 00:48:42.64]  Uh, it's...
+[00:48:42.94 - 00:48:45.54]  Oh hey! I know what to fix that for you on a jiffy!
+[00:48:45.74 - 00:48:48.34]  Well, it's better than going in my birthday suit.
+[00:48:48.84 - 00:48:50.24]  Who can fix this for me?
+[00:48:50.24 - 00:48:51.24]  Rarity can!
+[00:48:51.34 - 00:48:52.34]  Rarity?
+[00:48:52.74 - 00:48:55.24]  I guess we can make a detour to get this repaired.
+[00:48:55.54 - 00:48:57.74]  I feel awkward with this hole in my armpit.
+[00:48:58.24 - 00:49:00.04]  There's a boutique as a free honor, Phoebe!
+[00:49:00.14 - 00:49:01.14]  Hooray!
+[00:49:01.64 - 00:49:04.14]  Hey! Stop running ahead of me like that!
+[00:49:14.14 - 00:49:17.34]  Wow. This place is really posh.
+[00:49:17.74 - 00:49:19.94]  Probably reflects the owner's personality.
+[00:49:19.94 - 00:49:20.94]  Oh, visitors!
+[00:49:22.94 - 00:49:24.94]  Whoa! A marshmallow pony!
+[00:49:25.94 - 00:49:27.94]  Oh, it's just you, Pinkie Pie, and...
+[00:49:29.94 - 00:49:30.94]  That's him!
+[00:49:31.94 - 00:49:32.94]  What's the matter?
+[00:49:33.94 - 00:49:34.94]  That's here!
+[00:49:35.94 - 00:49:37.94]  Go ahead. Just make fun of it.
+[00:49:38.94 - 00:49:40.94]  I've actually gotten used to it. What's it gonna be?
+[00:49:41.94 - 00:49:42.94]  Why's there a hedgehog sleeping on your head?
+[00:49:43.94 - 00:49:44.94]  That one's always a classic.
+[00:49:45.94 - 00:49:47.94]  Make fun of it? Whatever do you mean?
+[00:49:48.94 - 00:49:50.06]  It's fabulous!
+[00:49:50.36 - 00:49:51.06]  Huh?
+[00:49:51.28 - 00:49:52.88]  You like it?
+[00:49:53.48 - 00:49:54.12]  Like it?
+[00:49:54.44 - 00:49:55.72]  I love it!
+[00:49:55.82 - 00:49:57.10]  It's so dynamic!
+[00:49:57.26 - 00:49:58.14]  So intense!
+[00:49:58.24 - 00:49:59.42]  So daring!
+[00:49:59.58 - 00:50:01.12]  It just screams at the...
+[00:50:01.44 - 00:50:03.84]  Now, what's the phrase I'm looking for?
+[00:50:04.14 - 00:50:04.88]  Take that?
+[00:50:05.38 - 00:50:06.26]  Take that?
+[00:50:06.68 - 00:50:08.42]  Yes! It screams!
+[00:50:08.58 - 00:50:09.82]  Check that world!
+[00:50:09.92 - 00:50:11.92]  I can handle anything you send my way!
+[00:50:12.92 - 00:50:15.42]  You must tell me who does your hair!
+[00:50:15.58 - 00:50:18.00]  I'd like to use this style on some of my customers!
+[00:50:18.00 - 00:50:21.00]  I sort of just style it myself in the mirror.
+[00:50:21.10 - 00:50:24.10]  Then you have a natural talent for this.
+[00:50:24.20 - 00:50:27.00]  Heh, thanks, here. I'm making me flesh.
+[00:50:27.10 - 00:50:30.50]  Oh, and that marvelous royal blue suit of yours!
+[00:50:30.60 - 00:50:32.50]  I'm most partial to purple myself,
+[00:50:32.60 - 00:50:36.70]  but after setting my eyes on such a sophisticated, elegant suit like this,
+[00:50:36.80 - 00:50:38.30]  I might change my mind!
+[00:50:38.40 - 00:50:40.30]  It has so much character in it!
+[00:50:40.40 - 00:50:42.80]  It boldly proclaims to the world!
+[00:50:42.90 - 00:50:46.30]  Uh, help me out here. What's the way to say it?
+[00:50:46.40 - 00:50:47.40]  Hold it?
+[00:50:47.40 - 00:50:48.90]  Why yes, that's it!
+[00:50:49.90 - 00:50:54.40]  I am a figure of a merchant, and you're very honest with what I have to say.
+[00:50:54.90 - 00:50:57.40]  Wait, what's this?
+[00:50:57.50 - 00:50:58.40]  What's wrong?
+[00:50:58.50 - 00:51:00.40]  There's a giant hole in your suit!
+[00:51:00.50 - 00:51:02.90]  Yeah, yeah, that's what we came here for, Barry.
+[00:51:03.00 - 00:51:06.40]  This will not do! This will simply not do at all!
+[00:51:06.50 - 00:51:10.40]  We can't have you walking around with this gaping hole in your suit!
+[00:51:10.50 - 00:51:13.40]  It's an dignified spit in the face of fashion!
+[00:51:13.50 - 00:51:14.40]  Really?
+[00:51:14.50 - 00:51:18.50]  I don't like the whole much either, but it isn't that big.
+[00:51:19.50 - 00:51:23.50]  No, no, it's positively huge! Give it to you right now! I must fix up your suit!
+[00:51:24.50 - 00:51:28.50]  And since you're such a shop dresser and a fantastic stylist, I'll do it free of charge.
+[00:51:29.50 - 00:51:30.50]  Okay, if you're offering.
+[00:51:31.50 - 00:51:36.50]  Now, Mr. Feeny, let us talk. I would like to know more about you. I do enjoy some friendly discourse while I'm working.
+[00:51:37.50 - 00:51:39.50]  But you're sewing. Don't you need to concentrate?
+[00:51:40.50 - 00:51:44.50]  Stitching is second nature to me, and this is such a simple job.
+[00:51:44.60 - 00:51:47.50]  Multitasking is my middle name, after all.
+[00:51:47.60 - 00:51:49.60]  Really? Maybe some is Tabitha.
+[00:51:49.70 - 00:51:56.20]  Okay, then. And please don't call me Feeny. One pony calling me that is more than enough.
+[00:51:56.30 - 00:51:57.60]  What shall I call you, then?
+[00:51:57.70 - 00:52:00.30]  My name's Phoenix Wright, attorney at law.
+[00:52:00.40 - 00:52:05.20]  Oh, I see. So you must be that human attorney Twilight had hired.
+[00:52:05.30 - 00:52:06.70]  Yeah, that's me.
+[00:52:06.80 - 00:52:09.70]  You have been quite the talk of the time since this morning.
+[00:52:09.70 - 00:52:10.70]  I have.
+[00:52:10.80 - 00:52:15.80]  Very much so. News around Ponyville travels exceptionally fast, being so small and such.
+[00:52:15.90 - 00:52:19.80]  I've heard that Twilight had brought you here from a whole other world!
+[00:52:19.90 - 00:52:21.80]  Yeah, that's true.
+[00:52:21.90 - 00:52:28.80]  Oh, how rude of me! I haven't introduced myself yet. I'm Rarity, or Miss Rarity, if you prefer.
+[00:52:28.90 - 00:52:35.90]  Nice to meet you, Rarity. I have to say, out of all Twilight's friends I've been introduced to, you seem the most mature.
+[00:52:36.00 - 00:52:38.00]  Sure
+[00:52:56.16 - 00:53:01.06]  What would that be? Yeah there are
+[00:53:01.06 - 00:53:07.06]  Excellent! Before you go back to your world, I mean, I want to give you some of my concepts.
+[00:53:08.06 - 00:53:09.06]  Your concepts?
+[00:53:10.06 - 00:53:24.06]  Yes, for you see, I am a designer and an entrepreneur of sorts. I would like you to give my work to some of the ponies, you know, and ask for their opinions on them. This could really help me expand my business. Please don't tell them to be honest, though. I really need some constructive criticism.
+[00:53:25.06 - 00:53:28.06]  I'll have a little trouble doing that. They don't talk.
+[00:53:29.06 - 00:53:30.06]  They don't talk?
+[00:53:30.06 - 00:53:34.72]  My word? What a strange world you come from, Mr. Rat.
+[00:53:34.74 - 00:53:38.54]  You ponies? None of them can fly or use magic.
+[00:53:38.56 - 00:53:43.46]  They don't do that either. They just sort of sit in petting zoos and perplex.
+[00:53:43.48 - 00:53:45.46]  And they kind of smell.
+[00:53:45.48 - 00:53:51.56]  My, my, my. Perhaps they just need a highly cultured pony from Equestria such as myself
+[00:53:51.58 - 00:53:53.56]  to teach them some proper etiquette.
+[00:53:53.58 - 00:53:55.96]  Or a rockin' party, live Emma.
+[00:53:55.98 - 00:53:57.46]  Yeah, sure.
+[00:53:57.48 - 00:54:03.34]  So if you're friends with Twilight Sparkle and Pinkie Pie here, you must be friends with Rainbow Dash
+[00:54:04.56 - 00:54:07.48]  Why yes, yes, I am mr. Right and
+[00:54:08.48 - 00:54:12.20]  You're aware of what's happening to her right now. Yes. I am
+[00:54:13.24 - 00:54:16.28]  Don't worry very feeding I are hot in the trail of love me are
+[00:54:18.28 - 00:54:24.28]  Yeah, it's very much as evil twin sister that nobody knows about rainbow - has a twin sister
+[00:54:24.28 - 00:54:26.28]  You didn't know that.
+[00:54:27.28 - 00:54:32.28]  Of course you didn't! Did you get to know Pony knows about part? You're a pony and you don't know! See?
+[00:54:33.28 - 00:54:35.28]  Pinky, there is no evil twin sister!
+[00:54:36.28 - 00:54:40.28]  But Rarity, I don't recall seeing you at the trial today. Were you there?
+[00:54:41.28 - 00:54:44.28]  I wanted to go to the trial, really I did, but I couldn't make it.
+[00:54:45.28 - 00:54:50.28]  Why not? Pinky Pie was late and missed it because she slept in or something. I'm sure you have a better reason.
+[00:54:51.28 - 00:54:51.78]  Hey!
+[00:54:52.28 - 00:54:56.78]  You see, I was expecting a package today that I'd been really anxious to get my hools on.
+[00:54:57.28 - 00:54:57.78]  What was it?
+[00:54:58.28 - 00:55:01.78]  A shipment of imported perfume. It was supposed to be here on my doorstep this morning.
+[00:55:02.28 - 00:55:07.78]  So I went to the post office to ask why it hadn't arrived, expecting to be in and out in two shakes of a lion's tail.
+[00:55:08.28 - 00:55:09.78]  And it didn't go that way, I'm guessing.
+[00:55:10.28 - 00:55:10.78]  No.
+[00:55:14.28 - 00:55:19.28]  The flag was so long, it was hot and stifling, no more circulation whatsoever!
+[00:55:19.78 - 00:55:23.78]  The fool was crying and bickering the entire time! He entire time!
+[00:55:25.78 - 00:55:29.78]  I tried to love and tolerate, but it wouldn't spin!
+[00:55:29.88 - 00:55:34.78]  There was only one pen, and the pony in front of me was watching a novel or something with it!
+[00:55:34.88 - 00:55:39.88]  I was sitting there for half an hour waiting for her to finish so I could sign the dumb paper what they wanted me to sign!
+[00:55:39.98 - 00:55:44.38]  Wow, there were pens! Tell me, I heard there were pens!
+[00:55:44.48 - 00:55:47.78]  It was absolutely dreadful! I never heard to see that place again!
+[00:55:47.78 - 00:55:52.18]  I think I'm gonna need to change my pants now.
+[00:55:53.18 - 00:55:59.18]  Excuse me, yes. I got a ton prostrated and lost my composure while waiting in that line.
+[00:55:59.68 - 00:56:02.68]  All I wanted to do was inquire where my package was.
+[00:56:03.18 - 00:56:05.98]  Dad? It sounds like you had an aneurysm.
+[00:56:06.58 - 00:56:08.98]  Once you're in that line, there's no going back.
+[00:56:09.18 - 00:56:14.18]  It's like they intentionally trap you, forced to endure the tedious slow-moving line.
+[00:56:14.38 - 00:56:18.08]  Watching ponies write their life stories with that one pen!
+[00:56:18.18 - 00:56:20.68]  Why don't they stop war pens?!
+[00:56:20.78 - 00:56:22.68]  But the worst was yet to come.
+[00:56:22.78 - 00:56:27.58]  They said they didn't receive my perfume, making my trip all in vain!
+[00:56:27.68 - 00:56:29.58]  What do you mean by that?
+[00:56:29.68 - 00:56:31.68]  It was imported from across the sea.
+[00:56:31.78 - 00:56:34.78]  They said the shipment never arrived in Ponyville.
+[00:56:34.88 - 00:56:36.48]  That's a shame.
+[00:56:36.58 - 00:56:38.18]  Shame? Shame?!
+[00:56:38.28 - 00:56:41.78]  I wasted an entire hour of my life at the horrible post office!
+[00:56:41.88 - 00:56:43.98]  That was why I missed the trial!
+[00:56:43.98 - 00:56:48.98]  Naturally, I complained. I was so angry! I can't believe them! The nerve!
+[00:56:49.18 - 00:56:52.48]  No party should ever have to be put through the ordeal! I had to suffer!
+[00:56:52.68 - 00:56:54.68]  I would enrich it on my worst enemy!
+[00:56:54.98 - 00:56:57.48]  Are you getting some form of compensation for this?
+[00:56:57.78 - 00:56:59.28]  No, not at all.
+[00:56:59.68 - 00:57:02.98]  At the very least, they said they'd put in another shipment for me.
+[00:57:03.18 - 00:57:05.48]  It will take another week to get here, though.
+[00:57:06.18 - 00:57:10.18]  Oh, I know! Mr. Wright, how about I give you a copy of my invoice?
+[00:57:10.78 - 00:57:12.98]  What? I thought you weren't charging me?
+[00:57:12.98 - 00:57:16.38]  Oh, no, no, no, I need the invoice for my perfume.
+[00:57:16.48 - 00:57:17.88]  Why would I need that?
+[00:57:17.98 - 00:57:19.88]  You are a lawyer, correct.
+[00:57:19.98 - 00:57:26.38]  Perhaps you can use it to sue that horrible post office for the emotional agonizing and distress I was put through today.
+[00:57:26.98 - 00:57:27.88]  Eh...
+[00:57:30.48 - 00:57:33.18]  That will teach them to put out more pens!
+[00:57:33.58 - 00:57:34.98]  Right...
+[00:57:35.38 - 00:57:38.98]  So, tell me more about this perfume you ordered.
+[00:57:39.48 - 00:57:43.00]  Oh my gosh, it is simply to die for, Mr. Right!
+[00:57:43.02 - 00:57:45.56]  Though I'm not that familiar with it's scent yet.
+[00:57:45.58 - 00:57:47.48]  It's a rare fragrance, after all.
+[00:57:47.50 - 00:57:50.36]  Like morning dew on a blooming rose!
+[00:57:50.38 - 00:57:52.38]  That's the slogan!
+[00:57:52.40 - 00:57:55.40]  Well, it's better than the slogan Maya thought up.
+[00:57:56.22 - 00:57:58.22]  And you're getting a shipment of it?
+[00:57:58.68 - 00:58:00.68]  Just one bottle, actually.
+[00:58:01.10 - 00:58:03.10]  I'm looking at the invoice here and...
+[00:58:03.12 - 00:58:05.52]  That's a lot of zeros for one bottle.
+[00:58:05.54 - 00:58:07.54]  It's very long-lasting, you see.
+[00:58:07.56 - 00:58:12.56]  The aroma lingers for days. One bottle can easily suffice for years worth of use.
+[00:58:13.06 - 00:58:16.56]  You wanna wear perfume, Phoebe? You know that's for girls, right?
+[00:58:17.06 - 00:58:19.06]  I can't seem to go with the pads you have!
+[00:58:19.56 - 00:58:21.06]  You mean that?
+[00:58:21.56 - 00:58:24.06]  Yeah, that's my Equestria attorney badge.
+[00:58:24.56 - 00:58:27.56]  Please tell me at least you think it looks as good as my hair in my suit!
+[00:58:28.56 - 00:58:31.06]  Compared to your suit and hair...
+[00:58:31.56 - 00:58:33.06]  Uhhh...
+[00:58:33.56 - 00:58:35.06]  The pink is too much, honestly.
+[00:58:35.56 - 00:58:39.26]  Even the citizens of this place can see this thing looks embarrassingly stupid.
+[00:58:39.46 - 00:58:42.06]  And no, Pinky. I didn't want to wear the perfume.
+[00:58:42.26 - 00:58:44.46]  I was just wondering why it's so darn expensive.
+[00:58:44.96 - 00:58:47.76]  Now look at that! Your suit is as good as new!
+[00:58:48.16 - 00:58:51.26]  Oh wow! You really did a good job patching it up!
+[00:58:51.56 - 00:58:53.26]  I can't even see where you sewed it up!
+[00:58:53.76 - 00:58:56.86]  Please do take better care of your suit in the future, Mr. Rott.
+[00:58:57.16 - 00:59:00.46]  But if you have any more problems with it, please don't hesitate to come to me.
+[00:59:00.76 - 00:59:04.06]  I would be more than happy to take on such a fine work of art again!
+[00:59:04.66 - 00:59:07.30]  Thank you. You really helped me out of a jam.
+[00:59:07.42 - 00:59:10.18]  This is my only suit I have while I'm here in Equestria, you see.
+[00:59:10.74 - 00:59:12.26]  You're only one?
+[00:59:12.42 - 00:59:14.58]  *gasp* Idea!
+[00:59:14.70 - 00:59:16.34]  How about I make you another one?
+[00:59:16.50 - 00:59:19.26]  Perhaps I can encross the label with some rubies.
+[00:59:19.42 - 00:59:23.90]  Red and blue go well together, but how about this might bring out the color in your eyes?
+[00:59:24.02 - 00:59:25.90]  Maybe some sunglasses would match the...
+[00:59:26.02 - 00:59:28.46]  dare I say, pizzazz of that hair of yours.
+[00:59:28.58 - 00:59:33.30]  Royal blue really is your color, but maybe we can give you a sort of a nice purple lavender.
+[00:59:33.42 - 00:59:37.18]  As I said, purple is my favorite color and I think it would look simply ravishing in it!
+[00:59:37.26 - 00:59:40.06]  Uh, she seems to have gone off on a tangent.
+[00:59:41.02 - 00:59:43.58]  Yeah, she'll probably be like this for about an hour soon.
+[00:59:44.14 - 00:59:44.78]  Oh well.
+[00:59:45.50 - 00:59:47.50]  I don't know where we should go next, though.
+[00:59:48.22 - 00:59:49.18]  Fluttershy's Cottage!
+[00:59:49.58 - 00:59:50.78]  Fluttershy's Cottage?
+[00:59:51.02 - 00:59:52.38]  Why do you want to go there?
+[00:59:52.86 - 00:59:53.74]  I don't want to go there!
+[00:59:53.82 - 00:59:57.18]  The script says we go there to talk to someone and then something strange happens!
+[00:59:58.86 - 00:59:59.42]  Script?
+[00:59:59.98 - 01:00:00.86]  What script?
+[01:00:01.66 - 01:00:04.06]  Duh! The one the voice actors are following?
+[01:00:04.70 - 01:00:07.10]  Pinky, what on earth are you talking about?
+[01:00:07.30 - 01:00:08.50]  What voice actors?
+[01:00:08.86 - 01:00:12.06]  Like those people who do voices for characters in cartoons?
+[01:00:12.34 - 01:00:15.86]  I didn't look too far into it since I don't like spoilers, you know, ruins are fun of the story!
+[01:00:16.34 - 01:00:16.98]  What?
+[01:00:17.34 - 01:00:19.34]  You're completely going over my head!
+[01:00:19.74 - 01:00:22.34]  It says I should be going to Fluttershy's cottage, and that's where I'm gonna go!
+[01:00:22.46 - 01:00:23.94]  You should come too, because it says you say,
+[01:00:24.22 - 01:00:27.62]  "Why does she always run ahead of me like that? I better follow her, though."
+[01:00:27.70 - 01:00:29.38]  And follow me! See you there, Peeny!
+[01:00:29.86 - 01:00:30.98]  Pinky Pie, wait!
+[01:00:30.98 - 01:00:35.98]  Why does she always run ahead of me like that? I better follow it though.
+[01:00:36.98 - 01:00:39.98]  What? How would she do that?
+[01:00:50.98 - 01:00:56.98]  Hmm, I expected there to be more police here looking into that feather. Why is it you wanted to come here again?
+[01:00:57.98 - 01:00:58.98]  I forgot!
+[01:00:59.48 - 01:01:01.98]  So you just brought me here for no reason?
+[01:01:02.48 - 01:01:03.98]  Hey! You!
+[01:01:04.98 - 01:01:05.98]  Huh?
+[01:01:06.48 - 01:01:07.98]  What in tarnation do you think you're doing?
+[01:01:08.48 - 01:01:10.98]  No, no, no, no, no, no, no, no, no! Not you!
+[01:01:12.98 - 01:01:14.98]  Why I ought to knock you outside the head!
+[01:01:15.98 - 01:01:16.98]  Oh, you're not...
+[01:01:17.98 - 01:01:19.98]  Another mistaken identity.
+[01:01:20.48 - 01:01:25.98]  So tell me, Mr. Fancy Pants Lawyer, where do you get off going around accusing Sweet Little Hearty Gold Fluttershy like that?
+[01:01:26.48 - 01:01:28.48]  Accusing Fluttershy, well I-
+[01:01:28.58 - 01:01:30.58]  Forget it! I already know why you did it!
+[01:01:30.68 - 01:01:31.38]  But you just-
+[01:01:31.48 - 01:01:33.38]  You did it to buy Rainbow another day, didn't ya?
+[01:01:33.48 - 01:01:36.38]  Well, yeah, I didn't want to go and blame Fluttershy.
+[01:01:36.48 - 01:01:40.38]  But if I hadn't, Rainbow Dash would be getting a really strong tan right now.
+[01:01:40.48 - 01:01:43.38]  I know that, but Lion are still Lion!
+[01:01:43.48 - 01:01:47.38]  It's what's called a White Lie. The ones that are for good intentions.
+[01:01:47.48 - 01:01:50.38]  I'm sure Fluttershy doesn't appreciate your White Lie.
+[01:01:50.48 - 01:01:55.38]  Ugh, look, I'm sorry I did that to her! It wasn't even really a lie!
+[01:01:55.48 - 01:01:59.48]  I just proposed the possibility, questioning Fluttershy's alibi.
+[01:01:59.58 - 01:02:00.98]  Alibi?
+[01:02:01.08 - 01:02:04.98]  Er, stop trying to use your fancy silver tongue lawyer speak to confuse me!
+[01:02:05.08 - 01:02:07.98]  In any case, I'm gonna make everything right tomorrow.
+[01:02:08.08 - 01:02:09.78]  You're Apple Bloom's sister, right?
+[01:02:11.08 - 01:02:12.98]  Huh? How'd you know that?
+[01:02:13.08 - 01:02:14.78]  Take a wild guess, partner.
+[01:02:14.88 - 01:02:18.98]  Oh, right. The accent. Is it really that noticeable?
+[01:02:19.08 - 01:02:21.78]  Hey! Are you making fun of the way I speak?
+[01:02:21.88 - 01:02:23.98]  No, of course not!
+[01:02:24.28 - 01:02:26.28]  But who is this with you?
+[01:02:26.48 - 01:02:28.48]  Big Macintosh.
+[01:02:28.88 - 01:02:29.88]  Her brother.
+[01:02:29.98 - 01:02:31.98]  Oh, so your siblings.
+[01:02:32.88 - 01:02:34.88]  You better make everything right tomorrow.
+[01:02:35.18 - 01:02:37.18]  Or like I said, I'll knock you upside the head.
+[01:02:37.48 - 01:02:41.68]  Don't worry. Me and Pinkie Pie have found some evidence that's definitely going to come in handy.
+[01:02:42.08 - 01:02:43.68]  Yep, that's right, Uncle Jack.
+[01:02:43.78 - 01:02:46.68]  That reminds me. Why weren't you at the trial today, Pinkie Pie?
+[01:02:47.18 - 01:02:49.68]  Between you and me and Rarity, I'm the only one who showed up.
+[01:02:49.88 - 01:02:50.88]  I slipped in.
+[01:02:52.88 - 01:02:53.88]  That's it?
+[01:02:53.88 - 01:02:57.88]  Get...fattened, habit! We gotta have a better excuse than that!
+[01:02:58.88 - 01:03:01.88]  Oh? Okay! I sent you an extra, extra virus!
+[01:03:03.88 - 01:03:07.88]  We spoke with Rarity, and she kind of...uh...got held up in traffic.
+[01:03:08.88 - 01:03:15.88]  That just goes to show you that Applejack is the most dependable corner there is. All the same, rain or shine. I mean, got a trophy to prove it. Right, big man?
+[01:03:16.88 - 01:03:23.88]  Yup. A trophy for being dependable? I wish I had a trophy. I never even got one when I was in the Little League.
+[01:03:24.88 - 01:03:29.88]  So I know you're Appleboom's elder sister, but I don't know anything about you besides that.
+[01:03:30.88 - 01:03:32.88]  Name's Applejack. Proud owner of Sweet Apple Acres.
+[01:03:33.88 - 01:03:34.88]  Sweet Apple Acres?
+[01:03:35.88 - 01:03:40.88]  Oh yeah, you're not from this neck of the woods, are you? It's an apple farm run by the Apple family, ten minutes due south from here.
+[01:03:41.88 - 01:03:45.88]  With a name like Applejack, I guess you would set up a berth to be put in that business.
+[01:03:45.88 - 01:03:50.88]  I'm not here to talk about that though. I don't know if you've seen that sister of mine.
+[01:03:51.88 - 01:03:54.88]  No. Last time I saw her was when she was on the stand today.
+[01:03:55.88 - 01:03:59.88]  I've been with Fina all day. Oh, except when I was asleep. That it was with General Cake and Major Muffin.
+[01:04:00.88 - 01:04:02.88]  Major Muffin?
+[01:04:03.88 - 01:04:06.88]  I had a dream. I was committing a tally of sweets, fighting off an army of salads, varieties, and broccoli.
+[01:04:07.88 - 01:04:11.88]  It was like nutrition versus sweets. I had to recite them on a list on it first, but I ended up going to the DC side.
+[01:04:12.88 - 01:04:17.88]  We need to come to the shops and shop where chips last their lives, but we triumph in the end!
+[01:04:18.88 - 01:04:21.88]  A point would have a field day with Pinkie Pie.
+[01:04:22.88 - 01:04:24.88]  So why are you looking for Apple Bloom?
+[01:04:25.88 - 01:04:29.88]  She's supposed to be serving her grounded. You know, after going in at four so late.
+[01:04:30.88 - 01:04:33.88]  We got a little troublemaker ran off as soon as she was excused from the trial.
+[01:04:34.88 - 01:04:35.88]  She was supposed to wait for me.
+[01:04:36.88 - 01:04:38.88]  By the way, I have to thank you, Phoenix Rat.
+[01:04:39.88 - 01:04:43.88]  weren't you just threatening to knock me outside the head just a minute ago?
+[01:04:44.88 - 01:04:49.88]  Yeah, I still want to do that. But I have to thank you for getting my little sister to tell the truth on that there stand.
+[01:04:50.88 - 01:04:55.88]  Yup. You sure have an extensive vocabulary there, Big Macintosh.
+[01:04:56.88 - 01:05:02.88]  I don't know if Twilight told you, but I represent the element of honesty and I would like to see my kin follow suit, if you know what I mean.
+[01:05:03.88 - 01:05:04.88]  Element of honesty?
+[01:05:05.88 - 01:05:11.38]  Ah, Lance Laughter, it's like the best one ever. What's the matter? Do you want to know when it's too rainy? We can think of one for you.
+[01:05:11.88 - 01:05:12.38]  Uh-huh.
+[01:05:13.38 - 01:05:16.38]  Uh, Sugarcube? I don't think it works like that.
+[01:05:17.38 - 01:05:22.38]  Hmm, what element could you be? Oh, oh, oh, oh, I got it!
+[01:05:23.38 - 01:05:26.88]  Phoenix Wright with his nifty do represents the spirit of...
+[01:05:27.38 - 01:05:28.38]  Hair Gel!
+[01:05:29.38 - 01:05:30.38]  No comment.
+[01:05:31.38 - 01:05:35.38]  Old Beardy came by the farm and told me in Big Mac that he saw Applebrew with Twilight.
+[01:05:36.38 - 01:05:39.38]  Old Beardy? Oh, you must mean the judge.
+[01:05:40.38 - 01:05:42.38]  What's he doing wandering around his place?
+[01:05:43.38 - 01:05:44.38]  I wonder what Applebrew's doing with Twilight.
+[01:05:45.38 - 01:05:46.38]  Yeah, that's a good question.
+[01:05:47.38 - 01:05:52.38]  The last time I saw Twilight, she was as peeved as you were at me about that little incident in the courtroom.
+[01:05:53.38 - 01:05:54.38]  Oh, she'll get over it.
+[01:05:55.38 - 01:05:57.38]  That is, if you honestly intend on setting things right.
+[01:05:58.38 - 01:05:59.38]  Right?
+[01:06:00.38 - 01:06:04.90]  set things right. My name is Phoenix right after all.
+[01:06:08.90 - 01:06:14.06]  That wasn't funny. Yeah, Phiney, you really need to have more variety.
+[01:06:15.30 - 01:06:18.10]  Am I the only one who thinks that joke is funny?
+[01:06:18.34 - 01:06:21.98]  I may want to knock down new ones, but I'll be rooting for you anyway.
+[01:06:22.42 - 01:06:27.02]  Your rainbows only help right now and I hate to see her get vanished. She doesn't deserve that.
+[01:06:27.06 - 01:06:32.12]  I know for a fact she didn't kill anyone and no matter what I'll make everyone see that truth
+[01:06:32.34 - 01:06:40.10]  That's the spirit. You may be any bad as a media activate. I'd like to confirm something Applejack shoot partner about Applebloom
+[01:06:40.30 - 01:06:43.14]  Did she really arrive at home when she said she did?
+[01:06:43.86 - 01:06:49.04]  After nine, that's when she got home. She got scolding from Big Mac and I for going into the forest so late
+[01:06:51.22 - 01:06:56.58]  Spolding from him. What did he do? Yup her into submission? Why do you wait?
+[01:06:56.58 - 01:07:01.58]  It's just that this second lightning bolt has been plaguing my mind.
+[01:07:01.60 - 01:07:05.60]  How is it both your sister and Fluttershy didn't hear or see it?
+[01:07:05.62 - 01:07:09.62]  I was thinking that his Pegasus family intercepted it before it touched the ground.
+[01:07:09.64 - 01:07:12.64]  But that makes one of your comfort fiction do-hickeys.
+[01:07:12.66 - 01:07:15.66]  Contra-fiction? You mean contradiction.
+[01:07:15.68 - 01:07:18.68]  Yeah, one of those. You couldn't hit him because of that suit.
+[01:07:18.70 - 01:07:22.70]  I was thinking the same thing. But according to Rainbow Dash,
+[01:07:22.72 - 01:07:25.72]  That's who makes you completely invulnerable to lightning while in the air.
+[01:07:26.72 - 01:07:28.72]  Not to mention it would have made a sound, and left the mark.
+[01:07:29.72 - 01:07:30.72]  If it hit him on the ground where he was vulnerable.
+[01:07:32.72 - 01:07:34.72]  Well, this thing can make my head hurt.
+[01:07:35.72 - 01:07:37.72]  I couldn't hold a match for the prosecution today,
+[01:07:38.72 - 01:07:41.72]  but things are going to be different now that I've had time to get a better grasp of the situation.
+[01:07:42.72 - 01:07:46.72]  Speaking of that, you gotta show that stuck-up attention horse a thing or two for me.
+[01:07:47.72 - 01:07:48.72]  A tension horse?
+[01:07:49.72 - 01:07:50.72]  You know, it had no good blue snake in the grass.
+[01:07:51.72 - 01:07:54.12]  Oh, you must mean Trixie.
+[01:07:54.22 - 01:07:58.62]  Yeah, her. She's a great example of what lion will lead to.
+[01:07:58.72 - 01:08:03.12]  Her fibbing and ponytails cause that big ol' nurse to come stompin' through a ponytail.
+[01:08:03.22 - 01:08:05.12]  Twilight told me a bit about that.
+[01:08:05.22 - 01:08:10.62]  I can't stand her. I was biting my tongue every time she opened that big mouth of hers on the trial today.
+[01:08:10.72 - 01:08:14.42]  I've noticed Trixie has that effect on a lot of ponies in these parts.
+[01:08:14.52 - 01:08:19.32]  She's just doing this whole thing because she's all salty with Rarity, Twilight, Rainbow and I.
+[01:08:20.22 - 01:08:23.50]  Wait a minute. I knew she had a grudge against Twilight.
+[01:08:23.66 - 01:08:25.34]  But why you and the other two?
+[01:08:25.46 - 01:08:29.94]  Last time Trixie was in Ponyville, she was showing off and branding like she was the bee's knees.
+[01:08:30.06 - 01:08:32.58]  So the others and I called Trixie out on her hootie.
+[01:08:32.70 - 01:08:34.06]  Turns out we were right.
+[01:08:34.18 - 01:08:36.18]  She was a great powerful after all.
+[01:08:36.30 - 01:08:37.82]  So I ended up proving it.
+[01:08:38.26 - 01:08:42.70]  In fact, I told that with Bloom to call Trixie out if she gave her a hard time in the trial today.
+[01:08:42.82 - 01:08:45.46]  Oh, so you're responsible for that?
+[01:08:45.58 - 01:08:46.98]  Guilty as charged.
+[01:08:47.10 - 01:08:52.10]  Hehe, that was pretty entertaining, watching Trixie get verbally served by a child.
+[01:08:52.30 - 01:08:53.90]  Certainly brightened up my day!
+[01:08:54.10 - 01:08:55.30]  I know, right?
+[01:08:55.50 - 01:08:57.40]  But isn't Trixie a performer?
+[01:08:57.50 - 01:09:00.80]  Isn't she supposed to show off and blow things out of proportion?
+[01:09:01.10 - 01:09:05.70]  I don't think the decent and sort of powerful Trixie would really attract a crowd.
+[01:09:05.90 - 01:09:10.70]  Not defending her or anything, as there were times I wanted to smack her upside the head.
+[01:09:10.90 - 01:09:12.50]  No, you don't understand.
+[01:09:12.70 - 01:09:15.10]  Remember how she was calling you Mr. Mount Rat today?
+[01:09:15.30 - 01:09:17.30]  It was like that, only on stage.
+[01:09:17.50 - 01:09:19.80]  Actually, she was calling me Mr. Wrong.
+[01:09:20.00 - 01:09:22.30]  You know, because it's the opposite of right and...
+[01:09:22.40 - 01:09:25.00]  Same difference. All it is, it was just unbearable.
+[01:09:25.30 - 01:09:27.30]  I want you to do your best, Phoenix Wright.
+[01:09:27.40 - 01:09:29.10]  Show her what Ponyville is made of.
+[01:09:29.60 - 01:09:33.30]  Prove Rainbow is innocent and rubbing in that smoke's not a show I face of hers.
+[01:09:33.60 - 01:09:34.10]  Deal.
+[01:09:34.30 - 01:09:35.10]  Let's shake on it.
+[01:09:35.20 - 01:09:35.70]  Okay.
+[01:09:37.80 - 01:09:38.70]  Well, go on.
+[01:09:38.80 - 01:09:40.00]  I'm not touching that hoof.
+[01:09:40.10 - 01:09:40.80]  Why not?
+[01:09:41.00 - 01:09:42.70]  Because there's spit all over it.
+[01:09:43.40 - 01:09:44.90]  You're just as prissy as really.
+[01:09:44.90 - 01:09:50.94]  Don't want to get your pants pants all your hands dirty, eh? I think we can conclude this agreement with a nod
+[01:09:52.10 - 01:09:55.96]  Finally I miss the mosey on now partner. I gotta find out a little fear
+[01:09:56.70 - 01:10:01.30]  I'm gonna go check Twilight's place if you do see Apple Bloom. Could you tell her to go on home?
+[01:10:01.94 - 01:10:04.32]  Want her running out in the battle murders happening in all?
+[01:10:04.98 - 01:10:10.94]  She's with father so I suppose I shouldn't be worried. Yeah, we'll be sure to if we see her. Thank you
+[01:10:10.98 - 01:10:12.10]  Oh
+[01:10:12.14 - 01:10:14.78]  Well, I'm gonna give you a knock-up side of the head when I'm not so busy.
+[01:10:15.26 - 01:10:15.76]  Later!
+[01:10:16.46 - 01:10:18.78]  What a pleasant way to say goodbye to someone.
+[01:10:19.90 - 01:10:21.98]  Goodbye, Applejack. Goodbye,...
+[01:10:22.14 - 01:10:23.90]  ...Mmm... Big Macintosh.
+[01:10:24.54 - 01:10:25.44]  Yup.
+[01:10:26.30 - 01:10:28.86]  Was that the reason you wanted me to come here, Pinky?
+[01:10:29.18 - 01:10:30.54]  To speak with Applejack?
+[01:10:31.02 - 01:10:32.70]  No, it wasn't that.
+[01:10:32.94 - 01:10:34.86]  There should be another reason.
+[01:10:34.94 - 01:10:36.38]  Oh! Here it comes!
+[01:10:36.78 - 01:10:37.28]  Huh?
+[01:10:37.82 - 01:10:38.32]  [Giggles]
+[01:10:38.62 - 01:10:39.50]  What's coming?
+[01:10:39.98 - 01:10:40.62]  I cost!
+[01:10:40.78 - 01:10:41.50]  And?
+[01:10:41.50 - 01:10:43.90]  That means something strange is going to happen!
+[01:10:44.00 - 01:10:46.10]  Pinkie Pie, we've been through this already.
+[01:10:46.20 - 01:10:48.20]  You can't predict things based off of...
+[01:10:50.00 - 01:10:50.50]  What?
+[01:10:51.00 - 01:10:51.50]  What?!
+[01:10:52.50 - 01:10:53.50]  Ooh, what's that?
+[01:10:53.60 - 01:10:55.50]  I've never seen one of those things before.
+[01:10:55.60 - 01:10:56.70]  That's a catchy tune!
+[01:10:56.80 - 01:10:58.30]  But that's impossible!
+[01:10:58.40 - 01:11:00.00]  How could someone be calling me?
+[01:11:00.60 - 01:11:02.50]  So, what do you do with that thing anyway?
+[01:11:02.80 - 01:11:05.00]  I guess I just answer it.
+[01:11:05.70 - 01:11:08.30]  I hope trans-dimensional columns don't hurt my phone mill.
+[01:11:09.00 - 01:11:09.90]  He-Hello?
+[01:11:10.50 - 01:11:11.50]  Phoenix, right?
+[01:11:11.80 - 01:11:13.00]  Yes, that's me.
+[01:11:14.20 - 01:11:15.20]  Who is this?
+[01:11:15.50 - 01:11:17.00]  A concerned friend.
+[01:11:17.20 - 01:11:18.70]  A concerned friend?
+[01:11:18.90 - 01:11:20.90]  A friend? Tell them I say hello!
+[01:11:21.20 - 01:11:23.60]  Tell me, how and why are you phoning me?
+[01:11:23.70 - 01:11:25.00]  I want to help you.
+[01:11:25.20 - 01:11:25.90]  How?
+[01:11:26.50 - 01:11:28.50]  I want to help you win the trial tomorrow.
+[01:11:29.10 - 01:11:32.40]  I have some evidence for you that can clear your client indefinitely.
+[01:11:33.00 - 01:11:35.50]  What? Are you serious?
+[01:11:35.70 - 01:11:39.80]  Yes, I want you to meet me at the clearing, where the crime took place.
+[01:11:39.80 - 01:11:42.80]  Alright, I'll be right there. Pinky, we have to-
+[01:11:42.84 - 01:11:43.34]  Alone.
+[01:11:43.76 - 01:11:44.26]  Huh?
+[01:11:44.42 - 01:11:47.42]  We must meet alone. There's no other way I can see you.
+[01:11:47.68 - 01:11:48.34]  Why?
+[01:11:49.84 - 01:11:51.84]  I might get lost if I go in there alone.
+[01:11:52.52 - 01:11:54.02]  Do you want my help or not?
+[01:11:54.30 - 01:11:56.30]  Okay, okay, I'll go in alone.
+[01:11:56.76 - 01:11:58.76]  Good. I'll be waiting for you.
+[01:11:59.40 - 01:12:01.40]  You made the right choice, Phoenix, right?
+[01:12:01.66 - 01:12:03.26]  Tell me though, who is this?
+[01:12:05.54 - 01:12:06.54]  I'll be waiting for you.
+[01:12:08.00 - 01:12:09.20]  Who are you talking to, Phoenix?
+[01:12:09.20 - 01:12:15.24]  This seems a bit shady. Someone wants to meet me alone in the forest, but he said he wanted to help me
+[01:12:15.92 - 01:12:17.92]  How is he calling me anyway?
+[01:12:18.32 - 01:12:20.32]  Equestria doesn't seem to have cell phones
+[01:12:23.24 - 01:12:26.52]  Pinky I'm sorry, but I have to go solo here. Huh?
+[01:12:26.56 - 01:12:32.20]  I just got a lead that could win me the trial tomorrow, but whoever I was speaking to wants to meet me alone
+[01:12:32.84 - 01:12:34.84]  That sounds kind of suspicious
+[01:12:34.88 - 01:12:36.88]  Hey, I know who that was!
+[01:12:37.12 - 01:12:38.00]  Really?
+[01:12:38.24 - 01:12:42.24]  Yes! It was Wabniar! Planning to do something nasty!
+[01:12:42.44 - 01:12:44.64]  Pinky, there is no Wabniar!
+[01:12:44.84 - 01:12:48.04]  Besides, this person was male, and they said they wanted to help me.
+[01:12:48.34 - 01:12:49.24]  Oh, they did?
+[01:12:49.84 - 01:12:53.04]  No, that changes everything! Alright, I'll wait for you by the entrance.
+[01:12:53.34 - 01:12:54.74]  I'll be right back out.
+[01:12:55.04 - 01:12:58.54]  The pathway more or less leads to that clearing, and the sun's still out.
+[01:12:58.84 - 01:13:01.04]  I shouldn't have trouble navigating myself through.
+[01:13:01.34 - 01:13:03.94]  Be careful in there, Feeny. It's pretty dangerous.
+[01:13:04.24 - 01:13:07.14]  Okay, I'll be right back. Promise.
+[01:13:07.14 - 01:13:07.16]  (
+[01:13:08.66 - 01:13:09.16]  (
+[01:13:10.66 - 01:13:11.66]  (
+[01:13:12.66 - 01:13:13.66]  (
+[01:13:14.66 - 01:13:15.66]  (
+[01:13:18.66 - 01:13:20.66]  Hello, I'm here.
+[01:13:23.30 - 01:13:25.30]  Where is this mysterious friend of mine?
+[01:13:25.86 - 01:13:27.86]  He said he'd be waiting for me.
+[01:13:29.50 - 01:13:31.50]  It's me, Phoenix Wright.
+[01:13:31.54 - 01:13:33.54]  You said you wanted to help me.
+[01:13:35.34 - 01:13:37.34]  Is this someone's idea of a prank?
+[01:13:37.98 - 01:13:41.34]  Hey, I know! I'll just hit the redial button on my phone!
+[01:13:47.06 - 01:13:49.06]  What? No connection point?
+[01:13:50.10 - 01:13:52.66]  Then how was he able to call me earlier?
+[01:13:54.02 - 01:13:56.82]  Maybe all these trees are just interfering with the signal.
+[01:13:59.26 - 01:14:01.66]  I'll wait five more minutes. Then I'm leaving.
+[01:14:01.90 - 01:14:03.26]  This is getting creepy.
+[01:14:03.26 - 01:14:23.26]  [Music]
+[01:14:28.26 - 01:14:30.92]  (camera clicks)
+[01:14:34.02 - 01:14:35.10]  - Oh, my head.
+[01:14:37.14 - 01:14:40.54]  Did anyone get the license plate number of that truck?
+[01:14:42.54 - 01:14:44.34]  Oh, where am I?
+[01:14:44.36 - 01:14:45.70]  I'm still in the forest,
+[01:14:45.74 - 01:14:48.24]  but I'm not in the clearing anymore.
+[01:14:48.28 - 01:14:50.38]  Dammit, it was a trap!
+[01:14:50.40 - 01:14:52.28]  Now I'm lost.
+[01:14:52.30 - 01:14:54.08]  I need to get out of here.
+[01:14:54.12 - 01:14:56.54]  This must be how Apple Bloom felt the other day.
+[01:14:56.58 - 01:14:57.62]  Even though the sun's still out,
+[01:14:57.62 - 01:14:59.62]  I can hardly see.
+[01:15:00.12 - 01:15:02.12]  Wait a minute.
+[01:15:02.22 - 01:15:05.22]  What? Where is it? All my evidence is gone.
+[01:15:05.32 - 01:15:09.32]  Ah! Someone must have taken it while I was knocked out!
+[01:15:12.32 - 01:15:14.32]  Hello?
+[01:15:19.32 - 01:15:21.32]  Ah!
+[01:15:24.12 - 01:15:26.12]  Nice puppies.
+[01:15:26.12 - 01:15:33.12]  I'm frozen in place. I'm too scared to move. They're going to attack me.
+[01:15:38.12 - 01:15:39.12]  No!
+[01:15:46.12 - 01:15:52.12]  You should be ashamed of yourselves. Be a poor, innocent, defenseless Mr. Phoenix like that.
+[01:15:53.12 - 01:15:54.12]  Fluttershy?
+[01:15:54.12 - 01:15:57.40]  You two are acting like a pair of big, mean bugs!
+[01:15:57.44 - 01:16:00.44]  What would your mother think if they saw you behaving this way?
+[01:16:02.44 - 01:16:06.12]  I don't believe this! This can't be the same cowardly little pony!
+[01:16:06.68 - 01:16:10.68]  No, I want the two of you to go back home and think about what you've done!
+[01:16:15.12 - 01:16:17.12]  That was close, Mr. Phoenix.
+[01:16:17.16 - 01:16:21.56]  Those species of little pines are known to rip their prey apart within a few seconds.
+[01:16:22.56 - 01:16:26.56]  Fluttershy, thank you! You saved my life!
+[01:16:27.56 - 01:16:35.56]  Oh, you don't have to worry about that. Even if you had been killed, you would have come back to life from your ashes more magnificent than ever, right?
+[01:16:38.56 - 01:16:40.56]  Hehe, yeah.
+[01:16:41.56 - 01:16:48.56]  Fluttershy, listen. The reason I accused you earlier... I know you didn't do any of that garbage I was spouting.
+[01:16:49.56 - 01:16:54.58]  to buy another day to clear Rainbow Dash's name. Though I had good intentions, I did
+[01:16:54.58 - 01:16:58.58]  at your expense without your saying the matter. I'm sorry I did that.
+[01:17:00.58 - 01:17:03.58]  It's alright, Mr. Phoenix. I forgive you.
+[01:17:04.58 - 01:17:06.58]  You forgive me? Just like that?
+[01:17:07.58 - 01:17:13.58]  Yes. I believe in you. That's why I came in here to look for you, to make sure you were safe.
+[01:17:14.58 - 01:17:20.58]  You're too kind. But Fluttershy, what are you doing in here? I thought you were arrested.
+[01:17:21.58 - 01:17:23.58]  The police let me go.
+[01:17:23.78 - 01:17:26.78]  They let you go? But I thought you were a suspect.
+[01:17:27.08 - 01:17:31.58]  I don't know why. They just said I didn't have to stay anymore and let me out.
+[01:17:31.88 - 01:17:35.58]  That can only mean one thing. The feather didn't match any of our animals.
+[01:17:35.88 - 01:17:42.58]  When I got home, I saw Pinkie Pie standing by the entrance to the forest and I asked her what she was doing.
+[01:17:43.08 - 01:17:48.58]  She said you're waiting here all alone. So I got worried and I came in here to find you.
+[01:17:49.08 - 01:17:53.08]  Did you by any chance see anyone else in here while you were looking for me?
+[01:17:53.58 - 01:17:55.08]  No, I didn't.
+[01:17:56.08 - 01:17:58.08]  Um, should I have seen someone?
+[01:17:58.58 - 01:18:01.08]  You know, like, how I should have seen Applebloom that night?
+[01:18:01.58 - 01:18:04.08]  I'm so sorry, I didn't mean to do something wrong again.
+[01:18:05.08 - 01:18:10.08]  It's funny how she just took on two savage wolves, and then she goes back into submissive wimp mode.
+[01:18:10.58 - 01:18:11.58]  No, it's okay.
+[01:18:12.08 - 01:18:15.08]  It's just someone knocked me out and put me in the middle of this forest.
+[01:18:15.58 - 01:18:18.08]  Oh my, that's not very nice.
+[01:18:18.08 - 01:18:23.08]  On top of that, they stole all my evidence I was gonna use to defend Rainbow Dash in the trial tomorrow.
+[01:18:24.08 - 01:18:28.08]  Um, but Twilight said she was going to defend Rainbow Dash tomorrow.
+[01:18:29.08 - 01:18:31.08]  Huh? What?
+[01:18:32.08 - 01:18:37.08]  She talked with me at the detention center earlier and told me to forget about you.
+[01:18:38.08 - 01:18:43.08]  Oh no. I hope she's not doing what I think she is. She's gonna fire me for what I did to you.
+[01:18:44.08 - 01:18:46.08]  Trixie will eat her alive as she plans to defend Rainbow Dash.
+[01:18:47.08 - 01:18:51.08]  Why are you talking about that blue unicorn in the wizard outfit?
+[01:18:51.18 - 01:18:55.88]  Yeah, I was barely holding my own against her, and I have experience.
+[01:18:55.98 - 01:18:59.98]  Twilight won't stand a chance. I have to get her to reconsider.
+[01:19:00.08 - 01:19:04.38]  I'm sure if you tell her what you told me, she'll change her mind.
+[01:19:04.48 - 01:19:06.98]  I don't know. She was pretty bummed out.
+[01:19:07.08 - 01:19:09.48]  Then I'll help you explain it to her.
+[01:19:09.58 - 01:19:13.98]  Thanks, Fluttershy. Hey, wait a second. I just slaughtered something.
+[01:19:14.08 - 01:19:15.88]  What is it, Mr. Phoenix?
+[01:19:15.98 - 01:19:18.70]  You said Pinkie Pie is standing by the entrance, right?
+[01:19:19.08 - 01:19:20.58]  Um... yeah...
+[01:19:21.28 - 01:19:26.20]  Well, whoever knocked me out would have to leave through the entrance, since that's the only way out.
+[01:19:26.78 - 01:19:30.92]  Oh, I see now! Since Pinkie Pie is waiting by the entrance...
+[01:19:31.18 - 01:19:34.54]  Pinkie Pie will probably see whoever attacked me exit the forest.
+[01:19:34.88 - 01:19:38.58]  I'll show you the way out. You were right about that this morning.
+[01:19:39.08 - 01:19:39.68]  Huh?
+[01:19:40.08 - 01:19:45.48]  Even if I may not like visiting it much, this forest really is like a backyard to me.
+[01:19:45.48 - 01:19:47.48]  Alright, leave the way.
+[01:19:57.04 - 01:19:59.04]  Do I hear galloping?
+[01:19:59.36 - 01:20:01.36]  It's not me.
+[01:20:01.88 - 01:20:03.48]  It's getting closer.
+[01:20:03.68 - 01:20:05.68]  I can see some pony coming this way.
+[01:20:05.88 - 01:20:09.28]  One of the two attacked me. I really hope I don't have to fight a pony.
+[01:20:12.48 - 01:20:13.48]  Fluttershy?
+[01:20:13.68 - 01:20:14.48]  Phoenix?
+[01:20:14.48 - 01:20:16.48]  Uh, hey ya.
+[01:20:18.48 - 01:20:24.48]  Look, I know you really must not like me after what I did today, but I can explain.
+[01:20:25.48 - 01:20:30.48]  Mr. Phoenix is only trying to help Twilight. He never meant to hurt anyone.
+[01:20:31.48 - 01:20:34.48]  Let's go back to the library. I don't think it's a good idea to stay in this forest.
+[01:20:35.48 - 01:20:36.48]  Yeah, I agree.
+[01:20:36.48 - 01:20:50.12]  So that's why I did that. I know it wasn't fair to Fluttershy, but if I had just sat there and done
+[01:20:50.14 - 01:20:56.34]  nothing, Rainbow Dash would have been found guilty right there on the spot. I see. Do you still want
+[01:20:56.36 - 01:21:05.78]  to fire me? How did you- Fluttershy told me. Look, I don't mind if you do, but I have to warn you,
+[01:21:05.78 - 01:21:12.74]  Trixie's one tough customer. I underestimated her. Despite all my experience, she managed to trump everything I threw at her.
+[01:21:12.98 - 01:21:18.46]  In fact, she could have easily overruled my feather theory, since it was all just theory.
+[01:21:19.42 - 01:21:20.58]  What?
+[01:21:20.60 - 01:21:24.64]  I have a feeling the only reason she let me do that was to see another one of your friends in jail.
+[01:21:25.14 - 01:21:30.50]  She's gonna go all out tomorrow. So if you'd like to take over, I have to warn you about that.
+[01:21:31.30 - 01:21:33.10]  I don't know what I should do.
+[01:21:33.12 - 01:21:38.12]  If you really want to defend Rainbow Dash, at least allow me to do one more thing for you.
+[01:21:38.22 - 01:21:41.22]  You still want to help? Even though I was going to fire you?
+[01:21:41.32 - 01:21:45.32]  I'll do all I can to help someone who's being accused of a crime they didn't commit.
+[01:21:45.42 - 01:21:48.42]  I know for a fact Rainbow Dash didn't do anything wrong.
+[01:21:48.52 - 01:21:52.02]  And I know a certain pony who knows more than she's letting on.
+[01:21:52.12 - 01:21:55.02]  Actually, I do too.
+[01:21:55.12 - 01:21:59.02]  Phoenix, tell me. That thing you mixed in the evidence earlier.
+[01:21:59.12 - 01:22:02.02]  That wasn't a good luck charm, was it?
+[01:22:02.12 - 01:22:03.24]  Why do you ask?
+[01:22:03.40 - 01:22:06.20]  Let's just say I've been seeing a lot of locks today.
+[01:22:07.40 - 01:22:08.60]  Locks and...
+[01:22:09.00 - 01:22:09.56]  ...uh...
+[01:22:10.04 - 01:22:10.84]  ...chains?
+[01:22:11.44 - 01:22:12.88]  See, I knew you knew!
+[01:22:13.00 - 01:22:14.96]  What was that thing and what did it do to me?
+[01:22:15.56 - 01:22:17.16]  Okay, I'll be honest.
+[01:22:17.24 - 01:22:20.20]  'Cause if I don't, I bet you'll see them around me.
+[01:22:20.76 - 01:22:21.80]  I'm listening.
+[01:22:22.36 - 01:22:24.76]  You see, it's called a magatama.
+[01:22:24.92 - 01:22:29.00]  A tool I use to see if people are hiding deep secrets from me.
+[01:22:29.16 - 01:22:30.68]  But don't get me wrong!
+[01:22:30.80 - 01:22:32.80]  I only use it when I'm investigating crimes.
+[01:22:33.68 - 01:22:34.68]  Deep secrets?
+[01:22:35.60 - 01:22:39.68]  If someone's keeping a deep secret, psychic barriers called psych locks will appear.
+[01:22:40.12 - 01:22:42.12]  The more locks, the deeper the secret.
+[01:22:42.64 - 01:22:45.12]  If you break those locks using proof and evidence,
+[01:22:45.36 - 01:22:49.36]  chances are the person, or in this case, the pony, will spill the beans.
+[01:22:50.08 - 01:22:51.08]  Interesting.
+[01:22:51.92 - 01:22:54.16]  Interesting? I thought you'd be mad.
+[01:22:54.68 - 01:22:55.84]  What about black ones?
+[01:22:56.20 - 01:22:58.04]  Black ones? What do you mean?
+[01:22:58.88 - 01:22:59.68]  They were...
+[01:22:59.68 - 01:23:06.68]  Never mind. So, do you know how that thing's power got transferred into me?
+[01:23:06.70 - 01:23:10.98]  Not a clue. It probably had something to do with the way it reacted when you picked it
+[01:23:11.00 - 01:23:16.38]  up. Hmm. Well, I'm sure I can fix it. But I need it right now.
+[01:23:16.40 - 01:23:20.06]  But, since I told the truth, I expect the same from you.
+[01:23:20.08 - 01:23:24.90]  What? You're not a very good liar, Twilight. I could clearly see that you bringing me here
+[01:23:24.92 - 01:23:29.46]  was no accident. You did it on purpose, didn't you?
+[01:23:29.46 - 01:23:31.46]  I'm... that lying, huh?
+[01:23:32.10 - 01:23:36.34]  Yeah, you're about as thin as Kleenex. I mean, identification spell?
+[01:23:36.84 - 01:23:42.44]  I know you have magic here and all, but that sounds like something a third-grader came up with. I know that isn't a real spell.
+[01:23:43.38 - 01:23:47.90]  I was told not to say anything, but I suppose I owe you an explanation.
+[01:23:48.98 - 01:23:51.90]  Princess Celestia herself told me to summon you and play dumb.
+[01:23:52.46 - 01:23:55.18]  So you knowing my name and having that badge prepared?
+[01:23:55.70 - 01:23:59.94]  Yeah, she did all that. I didn't know you were going to be from another world, though.
+[01:24:00.94 - 01:24:04.74]  That's a bummer. So I'm not the greatest defense attorney in the universe?
+[01:24:05.24 - 01:24:07.62]  Darn. I was starting to like that title.
+[01:24:08.14 - 01:24:09.54]  But how does she know me?
+[01:24:10.48 - 01:24:12.54]  I'm a bit sketchy on that detail as well.
+[01:24:12.74 - 01:24:17.08]  I too found it really odd how she knew so much about you and how she was boasting about how good you were,
+[01:24:17.16 - 01:24:20.54]  yet you acted as if you had never met a pony in your life before me.
+[01:24:21.08 - 01:24:23.08]  How does this princess character know me?
+[01:24:23.66 - 01:24:26.06]  I think I want to have a chat with your Highness about this.
+[01:24:26.86 - 01:24:29.66]  Well, I certainly don't like the fact that I was being deceived by you.
+[01:24:30.36 - 01:24:32.26]  But I thank you for telling me the truth.
+[01:24:32.76 - 01:24:33.76]  I apologize.
+[01:24:33.96 - 01:24:35.96]  I was just doing what the princess told me to.
+[01:24:36.86 - 01:24:38.76]  She seems genuinely sorry about it.
+[01:24:39.46 - 01:24:40.86]  I shouldn't hold it against her.
+[01:24:41.16 - 01:24:42.96]  Perhaps I should just change the subject.
+[01:24:43.36 - 01:24:43.86]  Hmm.
+[01:24:44.16 - 01:24:45.46]  So this evidence you found.
+[01:24:45.66 - 01:24:46.86]  Seems he had a good turni-
+[01:24:47.26 - 01:24:47.76]  Oh-
+[01:24:48.76 - 01:24:49.26]  Ah!
+[01:24:49.86 - 01:24:50.66]  What's the matter?
+[01:24:50.96 - 01:24:52.36]  The other half of the letter!
+[01:24:52.76 - 01:24:55.36]  The other half of the letter? Wait, you have it?
+[01:24:55.46 - 01:24:57.76]  Yeah, I found it with Pinkie Pie today.
+[01:24:58.36 - 01:25:01.36]  This is my letter stating my permanent leave of absence.
+[01:25:01.66 - 01:25:05.26]  After the Equestria 500 is over, I can no longer work with you.
+[01:25:05.56 - 01:25:09.26]  We made quite the team, but I can't live with the guilt any longer.
+[01:25:09.56 - 01:25:11.96]  I can't keep helping you ruin others' lives.
+[01:25:12.06 - 01:25:16.26]  It saddens me beyond belief that we must part ways, but I must say farewell.
+[01:25:16.86 - 01:25:20.36]  Goodbye, Ace. May our paths cross in the future.
+[01:25:21.96 - 01:25:23.96]  Someone was quitting their job?
+[01:25:24.00 - 01:25:26.00]  Yeah, and I think I know who.
+[01:25:26.04 - 01:25:27.04]  Who?
+[01:25:27.08 - 01:25:29.08]  I'll tell you once I confirm my suspicion.
+[01:25:29.12 - 01:25:32.12]  You said you had someone you wanted to talk to, right?
+[01:25:32.16 - 01:25:34.16]  Perhaps we should go our separate ways again.
+[01:25:34.20 - 01:25:36.20]  You're right.
+[01:25:36.24 - 01:25:38.24]  Come back here once you're done though.
+[01:25:38.28 - 01:25:40.28]  You were attacked after all.
+[01:25:40.32 - 01:25:42.32]  You have my word.
+[01:25:42.32 - 01:25:48.32]  (Music)
+[01:25:57.32 - 01:25:58.32]  Hello?
+[01:25:59.32 - 01:26:00.32]  Hello, Sonata.
+[01:26:01.32 - 01:26:02.32]  What do you want?
+[01:26:03.32 - 01:26:04.32]  I just wanted to talk. That's all.
+[01:26:05.32 - 01:26:08.32]  I already spoke to you. Can you please leave?
+[01:26:09.32 - 01:26:13.88]  Be grateful I didn't tell the police about you and your friend's intrusion today.
+[01:26:13.90 - 01:26:17.88]  Funny you should say that, because I was wondering why you didn't.
+[01:26:17.90 - 01:26:21.80]  If you had me arrested, there would be no defense attorney tomorrow,
+[01:26:21.82 - 01:26:24.80]  meaning Rainbow Dash would be most likely found guilty.
+[01:26:24.82 - 01:26:29.14]  In other words, exactly what you want.
+[01:26:29.16 - 01:26:30.80]  I'm not here about that though.
+[01:26:30.82 - 01:26:34.30]  I just wanted to talk to you about a question you were avoiding earlier.
+[01:26:34.32 - 01:26:36.30]  What was it like being Ace's manager?
+[01:26:36.32 - 01:26:37.80]  Take that!
+[01:26:37.80 - 01:26:44.80]  A question like that is none of your business.
+[01:26:47.44 - 01:26:52.80]  Now let's see what you're hiding, Sonata. By the sound of it, it seems it wasn't good
+[01:26:52.82 - 01:26:53.58]  at all.
+[01:26:53.60 - 01:26:59.58]  I can't believe this! Shouldn't you be investigating the crime? Why are you bothering me with your
+[01:26:59.60 - 01:27:01.76]  annoying questions?
+[01:27:01.78 - 01:27:04.28]  Because I think you have something to do with all this.
+[01:27:04.30 - 01:27:07.68]  Really? Me? Tell me, Mr. Wright.
+[01:27:07.68 - 01:27:10.84]  Why do you think I'm involved with this crime?
+[01:27:10.88 - 01:27:12.58]  I'll show you why, Sonata.
+[01:27:12.62 - 01:27:13.62]  Take that!
+[01:27:14.62 - 01:27:16.12]  This look familiar to you?
+[01:27:17.16 - 01:27:18.56]  Where did you get that?
+[01:27:18.58 - 01:27:22.76]  Seems someone who was working with Ace was planning on quitting after the race.
+[01:27:22.80 - 01:27:25.16]  And I think that someone is you, Sonata.
+[01:27:25.20 - 01:27:28.66]  You're the only one working with Ace and Ponyville at the moment.
+[01:27:28.70 - 01:27:29.70]  Yeah.
+[01:27:32.00 - 01:27:34.14]  You think I wrote this?
+[01:27:34.18 - 01:27:37.04]  I've never seen this letter before.
+[01:27:37.04 - 01:27:40.64]  For all you know, it could have been nailed here by Ace's butler.
+[01:27:41.24 - 01:27:44.74]  No. I don't think you wrote this. I know you wrote this.
+[01:27:45.04 - 01:27:46.84]  Care to explain how?
+[01:27:47.44 - 01:27:49.54]  You see, it's very simple actually.
+[01:27:49.74 - 01:27:53.24]  We can just compare the writing to something I know for a fact you did write.
+[01:27:53.74 - 01:27:55.24]  And I have it right here.
+[01:27:55.34 - 01:27:56.24]  Take that!
+[01:27:57.34 - 01:28:00.14]  This unicorn spell book I found in this very room.
+[01:28:00.54 - 01:28:03.04]  Are you saying I wrote this book?
+[01:28:03.54 - 01:28:04.54]  Of course not.
+[01:28:04.94 - 01:28:07.54]  But this book has some interesting characteristics.
+[01:28:08.14 - 01:28:09.74]  I can't read a single word of it.
+[01:28:10.64 - 01:28:13.04]  Then why are you showing it to me?
+[01:28:13.14 - 01:28:15.34]  It probably belongs to the hotel.
+[01:28:16.04 - 01:28:17.84]  No, it doesn't belong to the hotel.
+[01:28:18.24 - 01:28:20.84]  I know a unicorn who reads a book just like this
+[01:28:21.54 - 01:28:25.34]  and says it's only available in Canterlot, the place you say you're from.
+[01:28:27.34 - 01:28:28.04]  Whatever.
+[01:28:28.44 - 01:28:29.54]  It's my book.
+[01:28:29.84 - 01:28:31.94]  What exactly are you trying to prove here?
+[01:28:32.44 - 01:28:33.34]  Like I said,
+[01:28:33.44 - 01:28:36.44]  I can't read any of the characters written inside these pages.
+[01:28:36.54 - 01:28:38.04]  Except these ones.
+[01:28:39.24 - 01:28:40.74]  Continue from here.
+[01:28:41.04 - 01:28:43.24]  I can read that note scribbled on the page.
+[01:28:43.64 - 01:28:45.74]  You couldn't find a bookmark, could you, Sonata?
+[01:28:47.74 - 01:28:50.64]  I'm sure if we compare the writing in here to that letter,
+[01:28:50.74 - 01:28:52.24]  we'll get a perfect match.
+[01:28:53.94 - 01:28:55.74]  Fine! I wrote the letter!
+[01:28:58.04 - 01:29:01.04]  But you still fail to prove any relevance to this.
+[01:29:02.14 - 01:29:03.04]  So what?
+[01:29:03.04 - 01:29:08.04]  I was going to quit. Why do you think I have something to do with this?
+[01:29:08.24 - 01:29:13.04]  I can't help ruin others' lives. I wonder what that could mean.
+[01:29:14.04 - 01:29:18.04]  I won't play dumb, because I know exactly what this little statement means.
+[01:29:21.04 - 01:29:26.04]  Is this some kind of joke? Why are you showing me these pictures?
+[01:29:26.24 - 01:29:31.04]  I found out earlier today, from my client. Ace was doing something very wrong to her.
+[01:29:32.04 - 01:29:37.54]  And I think you know all too well what it was. You were in on this blackmailing business, weren't you?
+[01:29:37.56 - 01:29:40.78]  It fits perfectly with the context of your resignation letter.
+[01:29:45.04 - 01:29:48.18]  You certainly have a wild imagination, Mr. Wright.
+[01:29:48.80 - 01:29:56.28]  Blackmail? Really? Even if your client was being blackmailed, what makes you think Ace and I were behind it?
+[01:29:56.30 - 01:29:58.30]  I know it's the truth, Sonata.
+[01:29:58.60 - 01:30:03.60]  Is that so? I don't see anything mentioning blackmail on this letter of mine.
+[01:30:04.60 - 01:30:05.60]  And those pictures of my client?
+[01:30:06.60 - 01:30:10.60]  Maybe Ace just needed a good laugh at his competition to get in the right mindset.
+[01:30:11.60 - 01:30:16.60]  I don't think so. Ruined others' lives kind of fits the description of blackmail.
+[01:30:17.60 - 01:30:22.60]  You could mean anything. You have no proof Ace and I were blackmailing anypony.
+[01:30:23.60 - 01:30:24.60]  Actually, I do.
+[01:30:25.60 - 01:30:26.60]  How?
+[01:30:27.60 - 01:30:28.60]  Take that!
+[01:30:29.60 - 01:30:30.60]  That?
+[01:30:31.60 - 01:30:33.60]  This is the letter Rainbow Dash was blackmailed with.
+[01:30:34.60 - 01:30:35.60]  Demands right from the horse's mouth.
+[01:30:36.60 - 01:30:39.60]  Like I said, there is no way you can prove Ace or I wrote this.
+[01:30:40.60 - 01:30:42.60]  It doesn't even have a name on it.
+[01:30:43.60 - 01:30:45.60]  I don't need a name. There's an easier way to find out who wrote this.
+[01:30:46.60 - 01:30:47.60]  What?
+[01:30:48.60 - 01:30:53.60]  Just like earlier, let's compare the writing style on this blackmail letter to your letter of resignation.
+[01:30:54.60 - 01:30:56.60]  They seem to match up perfectly, Sonata.
+[01:30:56.60 - 01:31:03.16]  Lisanata. Would you have any idea why? There's also that list I found on your
+[01:31:03.18 - 01:31:08.66]  table. With 835 next to Rainbow Dash's name, the same time requested to meet her
+[01:31:08.68 - 01:31:09.68]  on this letter.
+[01:31:11.68 - 01:31:16.18]  Well done, Mr. Wright. I guess there is no way to deny it anymore.
+[01:31:16.20 - 01:31:17.20]  [Doorbell rings]
+[01:31:18.70 - 01:31:20.70]  [Doorbell rings]
+[01:31:25.30 - 01:31:26.30]  Uh...
+[01:31:26.34 - 01:31:27.34]  Problem?
+[01:31:27.38 - 01:31:28.94]  Shouldn't you be worried?
+[01:31:28.98 - 01:31:29.98]  Worried?
+[01:31:30.02 - 01:31:31.02]  *laughs*
+[01:31:31.46 - 01:31:33.86]  Whatever should I be worried about?
+[01:31:33.90 - 01:31:35.30]  I found you out!
+[01:31:35.34 - 01:31:37.30]  You were blackmailing my client!
+[01:31:37.34 - 01:31:40.70]  That's a crime, Miss Cold Hard Swift Justice!
+[01:31:40.74 - 01:31:43.22]  Do you remember what I said earlier?
+[01:31:43.26 - 01:31:44.26]  *Ding*
+[01:31:44.50 - 01:31:45.58]  My talent.
+[01:31:45.62 - 01:31:47.54]  My eye for detail.
+[01:31:47.58 - 01:31:51.70]  It's what I've been using the whole time Ace and I have been doing this.
+[01:31:53.54 - 01:31:54.86]  For example,
+[01:31:54.86 - 01:32:01.50]  The days I studied Miss Rainbow Dash, I could see that she had quite an ego and reputation.
+[01:32:01.52 - 01:32:05.08]  That's why I took those photographs of her.
+[01:32:05.10 - 01:32:09.00]  We had quite the lucrative business set up, Ace and I.
+[01:32:09.02 - 01:32:14.90]  We have several gamblers placing large sums of money on him after we...
+[01:32:14.92 - 01:32:18.54]  have our way with a potentially tough competition.
+[01:32:18.56 - 01:32:23.42]  Then split the money 50/50 on top of what he's awarded for winning.
+[01:32:23.44 - 01:32:31.20]  That's why your client was targeted. Her performance at the Cloudsdale Young Flyers competition.
+[01:32:31.24 - 01:32:33.00]  Why are you telling me all this?
+[01:32:33.04 - 01:32:45.04]  To prove that I'm not worried at all. You see, I can get anyone to keep their mouth shut once I find out what makes them tick. You're no exception.
+[01:32:45.08 - 01:32:46.44]  What?
+[01:32:46.48 - 01:32:53.28]  Mr. Wright, I'm not worried in the slightest, because you're not going to tell a soul about
+[01:32:53.30 - 01:32:54.30]  this.
+[01:32:54.32 - 01:32:57.80]  You're wrong. I'm going to tell the police about this right away.
+[01:32:57.82 - 01:33:02.70]  With my conversations with you, I can tell you hold your loyalty and your client in high
+[01:33:02.72 - 01:33:03.72]  regard.
+[01:33:03.74 - 01:33:06.82]  So what? You can't take that away from me.
+[01:33:06.84 - 01:33:07.84]  Or can I?
+[01:33:07.86 - 01:33:16.00]  If I so much as even catch wind of you uttering the word "blackmail" to anybody, I'll report
+[01:33:16.00 - 01:33:19.00]  which you and your little accomplice did earlier.
+[01:33:19.02 - 01:33:21.02]  She must mean how it broke into her hotel room.
+[01:33:21.04 - 01:33:25.02]  You'll find it a little hard defending your client from a prison cell.
+[01:33:25.04 - 01:33:29.04]  You had no jurisdiction searching my hotel room,
+[01:33:29.06 - 01:33:33.04]  and you and that pink pony left Prince all over the place.
+[01:33:33.06 - 01:33:37.04]  I have more than enough evidence to take you down with me.
+[01:33:37.06 - 01:33:41.04]  It would be troublesome if information regarding my dealings got out,
+[01:33:41.06 - 01:33:44.04]  and you wanted to defend your client, correct?
+[01:33:44.06 - 01:33:46.06]  Seems we're at a stalemate.
+[01:33:47.06 - 01:33:49.06]  Why didn't you just report me earlier?
+[01:33:50.06 - 01:33:56.06]  Simple. I held the cards so I knew I could use them to my advantage, which I am right now.
+[01:33:57.06 - 01:33:59.06]  So, do we have a deal, Mr. Wright?
+[01:34:00.06 - 01:34:02.06]  I'll take your silences, yes.
+[01:34:03.06 - 01:34:09.06]  Don't worry. I'll be at the trial tomorrow to make sure you keep our little secret to yourself.
+[01:34:11.06 - 01:34:15.06]  Goodbye, Mr. Wright. Please go away and don't come back.
+[01:34:17.06 - 01:34:21.06]  Looks like I ended up on the same boat as all our other victims.
+[01:34:22.06 - 01:34:27.06]  What do I do? Though this seems important, how does it fit in with anything?
+[01:34:37.06 - 01:34:45.06]  Seems Twilight isn't back yet. Better not tell her about Sonata, unless it's necessary. Not only for my sake, but for hers as well.
+[01:34:48.06 - 01:34:49.06]  Hey, an owl!
+[01:34:50.06 - 01:34:51.06]  You, you're an owl!
+[01:34:52.06 - 01:34:54.06]  You mean, who am I?
+[01:34:55.06 - 01:34:57.06]  Phoenix Wright, with a P-H and a W.
+[01:34:58.06 - 01:35:02.06]  You know, you make Big Macintosh look like a blabbermouth.
+[01:35:05.06 - 01:35:06.06]  Oh, you're back!
+[01:35:06.06 - 01:35:10.06]  You're Spike, right? I remember meeting you earlier.
+[01:35:11.06 - 01:35:13.06]  When I heard he was a dragon, I thought he'd be much bigger.
+[01:35:14.06 - 01:35:15.06]  Honey's just a little guy.
+[01:35:16.06 - 01:35:19.06]  Yeah, I remember. You were being a big drama queen this morning.
+[01:35:20.06 - 01:35:23.06]  Sorry about that. Getting one hour of sleep will do that to you.
+[01:35:24.06 - 01:35:25.06]  So what's this owl doing here?
+[01:35:26.06 - 01:35:31.06]  That's Owlicious. He helps Twilight with her late night study session since he's nocturnal.
+[01:35:32.06 - 01:35:33.06]  Owl-wishes, huh?
+[01:35:34.06 - 01:35:35.50]  You, you're Aloysius.
+[01:35:35.56 - 01:35:36.06]  Who?
+[01:35:36.98 - 01:35:41.38]  Sometimes I keep at it hoping he'll say "what", "why", "where", or "how".
+[01:35:41.82 - 01:35:43.14]  So you're Twilight Scribe.
+[01:35:43.62 - 01:35:44.12]  Yep!
+[01:35:44.52 - 01:35:46.12]  Number one assistant Spike.
+[01:35:46.42 - 01:35:46.92]  Who?
+[01:35:47.42 - 01:35:49.26]  Oh, so are you actually...
+[01:35:49.46 - 01:35:52.56]  Would you mind being the number 1.5 assistant?
+[01:35:52.66 - 01:35:54.18]  I mean, that's still number one.
+[01:35:54.38 - 01:35:54.98]  Sorta.
+[01:35:55.22 - 01:35:59.10]  It's just number one assistant sounds a little better on me.
+[01:35:59.22 - 01:35:59.72]  Who?
+[01:36:00.30 - 01:36:00.80]  Me.
+[01:36:01.02 - 01:36:01.52]  Who?
+[01:36:01.94 - 01:36:03.22]  Me, Spike!
+[01:36:03.22 - 01:36:05.22]  You know my name?
+[01:36:06.22 - 01:36:14.22]  Spike, you're not gonna win. Twilight wasn't lying when she said she likes reading. She lives in this library. It's like a bookworm's dream come true.
+[01:36:15.22 - 01:36:18.22]  Yeah, hehehe. Twilight's a total nerd.
+[01:36:19.22 - 01:36:20.22]  Excuse me?
+[01:36:21.22 - 01:36:24.22]  Back, Twilight! I, um...
+[01:36:25.22 - 01:36:28.22]  I was just on my way to, um...
+[01:36:29.22 - 01:36:33.22]  Organize those awesome books my intelligent and smart friend reads!
+[01:36:35.22 - 01:36:36.22]  Uh, later!
+[01:36:37.22 - 01:36:39.22]  Did you find out what you needed to know?
+[01:36:40.22 - 01:36:43.22]  Yes, I'll fill you in about it tomorrow. I have a good idea who's behind all this.
+[01:36:44.22 - 01:36:47.22]  Okay. Wait, so you're not firing me?
+[01:36:48.22 - 01:36:52.22]  I thought about it, and I realize now that you mean well.
+[01:36:52.24 - 01:36:56.24]  And if what you say is true, you stand a better chance against Trixie than I do.
+[01:36:56.26 - 01:37:00.26]  Please, just tell me when you're going to do something like you did today.
+[01:37:00.28 - 01:37:04.28]  Yeah, I will. I shouldn't need to do anything like that again.
+[01:37:04.30 - 01:37:08.30]  From here on out, I'll try to find out what really happened in that forest that night.
+[01:37:08.32 - 01:37:12.32]  Fluttershy forgave you, so I guess I can too.
+[01:37:12.34 - 01:37:16.34]  A princess also said I can trust you. I'll try. No.
+[01:37:16.36 - 01:37:18.20]  I won't let you down this time.
+[01:37:18.22 - 01:37:19.02]  Thank you.
+[01:37:19.58 - 01:37:21.32]  That spare bed is in the same place.
+[01:37:21.34 - 01:37:23.26]  Try to get lots of sleep this time.
+[01:37:23.28 - 01:37:25.80]  I'm pretty tired after all that's happened today.
+[01:37:25.82 - 01:37:27.98]  Investigating sure takes a lot out of you.
+[01:37:28.00 - 01:37:29.46]  Tell me about it.
+[01:37:29.48 - 01:37:31.10]  I think I'm going to bed early.
+[01:37:31.12 - 01:37:33.86]  Alright, I'm probably gonna crash soon as well.
+[01:37:33.88 - 01:37:34.68]  Goodnight.
+[01:37:35.52 - 01:37:38.42]  This whole situation was not as bugging me.
+[01:37:38.44 - 01:37:42.20]  Not only her blackmailing, but her appearance.
+[01:37:42.22 - 01:37:44.94]  Is only a coincidence she looks like her?
+[01:37:44.96 - 01:37:46.96]  Or is that somehow really Mia?
+[01:37:48.32 - 01:37:50.32]  Twilight says she may know who's behind the murder.
+[01:37:51.04 - 01:37:54.54]  Perhaps I should just wait until tomorrow instead of stressing my brain about this.
+[01:37:57.24 - 01:37:58.04]  Wait a minute.
+[01:37:58.64 - 01:38:01.60]  Hey, Aloysius, do you think you can do me a favor?
+[01:38:01.98 - 01:38:02.48]  Whoo!
+[01:38:02.48 - 01:38:09.48]  [Music]
+[01:38:09.48 - 01:38:11.48]  [Music]
+[01:38:13.48 - 01:38:38.48]  [Music]
+[01:38:38.48 - 01:38:41.06]  (upbeat music)
+[01:38:41.06 - 01:38:43.64]  (upbeat music)
+[01:38:43.64 - 01:38:46.22]  (upbeat music)
+[01:38:46.22 - 01:38:48.80]  (upbeat music)
+[01:38:48.80 - 01:38:51.38]  (upbeat music)
+[01:38:51.38 - 01:38:53.96]  (upbeat music)
+[01:38:53.96 - 01:38:56.54]  (upbeat music)
+[01:38:56.54 - 01:38:59.12]  (upbeat music)
+[01:38:59.12 - 01:39:01.70]  (upbeat music)
+[01:39:01.70 - 01:39:04.28]  (upbeat music)
+[01:39:04.28 - 01:39:06.86]  (upbeat music)
+[01:39:06.86 - 01:39:09.44]  (upbeat music)
+[01:39:09.44 - 01:39:12.02]  (upbeat music)
+[01:39:12.02 - 01:39:14.60]  (upbeat music)
+[01:39:14.60 - 01:39:17.18]  (upbeat music)
+[01:39:17.18 - 01:39:46.82]  [Music]
+[01:39:46.82 - 01:39:49.40]  (upbeat music)
+[01:39:49.40 - 01:39:51.98]  (upbeat music)
+[01:39:51.98 - 01:40:09.98]  [Music]
+[01:40:09.98 - 01:40:38.98]  [Music]
+[01:40:38.98 - 01:40:41.56]  (upbeat music)
+[01:40:41.56 - 01:40:44.14]  (upbeat music)
+[01:40:44.14 - 01:40:46.72]  (upbeat music)
+[01:40:46.72 - 01:40:49.30]  (upbeat music)
+[01:40:49.30 - 01:40:51.88]  (upbeat music)
+[01:40:51.88 - 01:40:54.46]  (upbeat music)
+[01:40:54.46 - 01:40:57.04]  (upbeat music)
+[01:40:57.04 - 01:41:26.04]  [Music]
+[01:41:26.04 - 01:41:33.04]  [Music]
+[01:41:38.04 - 01:41:43.04]  Rainbow trash? Good one! I prefer lingo dash though.
+[01:41:43.04 - 01:41:45.44]  though
+[01:41:45.44 - 01:41:55.44]  [BLANK_AUDIO]

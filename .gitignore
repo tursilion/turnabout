@@ -1,0 +1,6 @@
+*.bmp
+*.png
+.vs/
+x64/
+PCPort/x64/
+music/

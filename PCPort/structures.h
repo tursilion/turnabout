@@ -1,0 +1,305 @@
+#ifndef STRUCTURES_H
+#define STRUCTURES_H
+
+// NOTE: max text is 8*32 = 256 bytes. And we lose more with word wrap.
+// We'd get 320 if we switched to 40 column text mode... ah, but we don't control the CPU during TIPI calls.
+// F18A could do it, but then we'd need two different copies. Still, F18A conversions of the graphics would be nice.
+
+// define what we are building for here - this will eventually be external on the build line
+#define LOCATION_IS_0
+
+// one of these for every location - see bottom of file
+//#define LOCATION_TYPE_INVESTIGATION
+//#define LOCATION_TYPE_INTERROGATION
+//#define LOCATION_TYPE_STORY
+//#define LOCATION_TYPE_CROSSEXAM
+
+/* Evidence structure */
+typedef struct {
+    int found;                 /* 1 if player has discovered this clue, -1 for a hidden clue (internal state) */
+    const char *name;          /* Display name - first byte sets text color from TMS9918A palette if <16 */
+    const char *description;   /* Text shown when examined */
+} Evidence_t;
+
+// evidence
+enum {
+    EV_NONE,
+
+    EV_BADGE,
+    EV_MAGATAMA,
+    EV_FILLIES,
+    EV_E_BADGE,
+    EV_PHOTO1,
+    EV_BURNT,
+    EV_PHOTO2,
+    EV_FEATHER,
+    EV_AUTOPSY,
+    EV_EVERFREE1,
+    EV_WEATHER,
+    EV_CLOUDREPORT,
+    EV_PICTURES,
+    EV_BLACKMAIL,
+    EV_ACEKEY,
+    EV_TORNRESIGN,
+    EV_UNICORNSPELL,
+    EV_LIST,
+    EV_INTERNAL_NOQUESTIONCLOUD,    // did not question the storm cloud evidence
+    
+    EV_MAX,
+
+    // people are just special evidence, so I need them in the same list
+    // they need to be in the MSB anyway, and PP_FIRST is used for the '??????' person
+    PP_FIRST    = 0x8000,
+    PP_UNKNOWN  = 0x8100,
+
+    PP_PHOENIX  = 0x8200,
+    PP_TWILIGHT = 0x8300,
+    PP_RAINBOW  = 0x8400,
+    PP_ACE      = 0x8500,
+    PP_FLUTTERSHY= 0x8600,
+    PP_TRIXIE   = 0x8700,
+    PP_JUDGE    = 0x8800,
+    PP_APPLEBLOOM= 0x8900,
+    PP_PINKIE   = 0x8a00,
+    PP_SONATA   = 0x8b00,
+
+    PP_LAST     = 0x8c00
+};
+#define PP_MAX ((PP_LAST>>8)-(PP_FIRST>>8))
+#define PP_NONE PP_FIRST
+
+// Location structure - each location is a separate app on the TI side
+// Since each location is a separate app, we don't need to store the type,
+// we can define it and use #ifdefs instead
+typedef struct {
+    const char *name;   // Location display name
+    int introStory;     // id of intro story text, or 0 if none
+//  int type;           // investigation, interrogation, story/testimony, cross-examination
+    int indexes[8];     // depends on type:
+                        // - investigation, text identifier at each screen location (divided into 8 squares) for evidence
+                        // - interrogation: line of questioning (up to 8) (each is a mini crossexam)
+                        // - story/testimony: start of text out (only 1 entry)
+                        // - cross-examination: similar to interrogation, but lines are sequential
+    int destinations[4]; // locations you can move to
+    int locks[4];        // evidence needed for each location
+} Location_t;
+
+// examination structure - start at 0
+typedef struct {
+    int lock;           // the evidence needed to unlock this item
+    const char *name;   // name of line of questioning (only used for interrogation)
+    int story;          // the story id for this line
+    int nextid;         // next exam id if we pass
+    int pressid;        // exam id to go to if we press, 0 if can't
+    int evidenceid;     // the correct evidence if we object, 0 if can't
+    int objectid;       // exam id to go to if we object successfully
+    int badobjectid;    // exam id to go to if we object incorrectly
+} CrossExam_t;
+
+// story structure - start at 0
+// used for all modes, but the mode might restrict what you can do
+typedef struct {
+    int evidence;        // evidence awarded for this line (else 0)
+    int frame;           // image frame
+    unsigned int cmdwho; // additional command in LSB - see enum, and id of speaker in MSB
+    const char* text;    // frame text
+} Story_t;
+
+// commands all need to be in the LAB
+enum {
+    CMD_NONE = 0    ,
+
+    CMD_FLASH       , // draw a white flash - ignore frame (but clear last frame so we know to load again)
+    CMD_BLACK       , // draw a black screen - ignore frame (but clear last frame so we know to load again)
+                    
+    CMD_CROWDSFX    , // play crowd noise
+    CMD_HAMMERSFX   , // play hammer sound
+    CMD_BOOMSFX     , // play boom sound
+    CMD_LAUGHSFX    , // play crowd laughter
+    CMD_BREAKSFX    , // play break psychlock sfx
+    CMD_PARTYSFX    , // play party horn sfx
+    CMD_JOKESFX     , // play rimshot sfx
+    CMD_CRASHSFX    , // play crash sfx
+    CMD_RIPSFX      , // play rip sfx
+    CMD_WHOOSHSFX   , // play whoosh sfx
+                    
+    CMD_TRIXIEOBJ   , // play trixie objection
+    CMD_PHOENIXOBJ  , // play phoenix objection
+    CMD_TWIOBJ      , // play twilight objection
+    CMD_FLUTTEROBJ  , // play fluttershy objection
+    CMD_JUDGEOBJ    , // play judge objection
+    CMD_GROUPOBJ    , // play group objection
+                    
+    CMD_TRIXIEHOLD  , // play trixie holdit
+    CMD_PHOENIXHOLD , // play phoenix holdit
+                    
+    CMD_PHOENIXTAKE , // play phoenix take that!
+
+    CMD_SHOWEV      , // request show evidence, text will say why. Examination struct will treat as objection.
+    CMD_ENDSTORY    , // end this story sequence and return to main loop. Story stores new location in evidence field and will jump to it.
+    CMD_REMOVEEV    , // remove evidence from inventory (evidence field) and go to next line
+    CMD_ADDEV       , // add evidence (evidence field) and go to next line. Only needed if you need the next line part
+    CMD_ASKOBJECT   , // ask whether we should object, branch to evidence as a story text if we do
+    CMD_SKIPIFEV    , // skip this line if we have a certain evidence (for story control)
+                    
+    CMD_STOPMUS     , // stop music
+                    
+    CMD_MUSPROLOG   , // Apollo Justice - Prologue
+    CMD_MUSSTEEL    , // Steel Samurai Ringtone
+    CMD_MUSLOUNGE   , // Courtroom Lounge - Another Prelude - Phoenix Wright: Justice for All
+    CMD_MUSMLP      , // My Little Pony - Friendship is Magic Theme (8-bit) - RainbowCrash88
+    CMD_MUSTROUPE   , // Gramarye Troupe - Apollo Justice Ace Attorney
+    CMD_MUSTRIAL    , // Ace Attorney 4 - Trial - Apollo Justice Ace Attorney
+    CMD_MUSTRACE    , // Trance Logic - Apollo Justice Ace Attorney
+    CMD_MUSTRICK    , // Trick and Magic - Phoenix Wright: Justice for All
+    CMD_MUSCRUSADE  , // Crusading - SoloAcapello
+    CMD_MUSEXAM     , // Examination - Moderate 2007 - Apollo Justice Ace Attorney
+    CMD_MUSSTART    , // Apollo Justice - Start of a New Trial! - Apollo Justice Ace Attorney
+    CMD_MUSCHESS    , // Logic Chess - Moderato - Ace Attorney Investigations 2
+    CMD_MUSOBJECT   , // Objection! 2009 - Ace Attorney Investigations 2
+    CMD_MUSTHRILL   , // Thrill Theme - Suspense
+    CMD_MUSINTEREST , // Interesting People - Ace Attorney Investigations
+    CMD_MUSSUSPENSE , // Suspense - Phoenix Wright Ace Attorney
+    CMD_MUSPEARLY   , // With Pearly - Phoenix Wright Justice for All
+    CMD_MUSCROSS    , // Cross Examination - Moderate 2002 - Phoenix Wright Justice For All
+    CMD_MUSSISTER   , // Turnabout Sisters - Capcom
+    CMD_MUSSMILE    , // Smile Instrumental - Hasbro
+    CMD_MUSKLAVIER  , // Klavier's Theme - Capcom
+    CMD_MUSLOCK     , // Lock on the Heart - Capcom
+    CMD_MUSINTER    , // Interview Tragicomedy - Capcom
+    CMD_MUSGIGGLE   , // Giggle at the Ghosties - Hasbro
+    CMD_MUSINVEST   , // Investigation Middle - Capcom
+    CMD_MUSCLOCK    , // Like Clockwork - SoloAcapello
+    CMD_MUSSPECIAL  , // Special Delivery! - SoloAcapello
+    CMD_MUSRARITY   , // Rarity's Theme - MandoPony
+    CMD_MUSAJ       , // Applejack's Theme - AcousticBrony
+    CMD_MUSSWEPT    , // Sweptaway Turnabout - Capcom
+    CMD_MUSHOTLINE  , // Hotline to Destiny - Capcom
+    CMD_MUSKG8      , // KG-8 Case - Capcom
+    CMD_MUSSEARCH   , // Search Core - Cadenza
+    CMD_MUSPRELUDE  , // Unending Prelude - Capcom
+    CMD_MUSBEGIN    , // Court Begins - Capcom
+    CMD_MUSCOOL     , // Too Cool For You, Dweeb - SoloAcapello
+    CMD_MUSTRUTH    , // Tell the Truth 2002 - Capcom
+    CMD_MUSLYING    , // Lying Coldly - Capcom
+    CMD_MUSMEMORY   , // Memories - SoloAcapello
+    CMD_MUSCOURT    , // Court Begins Orchestrated - Capcom
+    CMD_MUSPURSUIT  , // Pursuit - Questioned - Capcom
+    CMD_MUSEND      , // Ace Attorney ~ End - Capcom
+    CMD_MUSTRIALS   , // Trials and Tribulation WiiWare Rips - HoodieD
+    CMD_MUSMOON     , // Moonlight Sonata - The Orchard Music
+    CMD_MUSCORNERED , // Pursuit Cornered 2001 - Capcom
+    CMD_MUSWON      , // Won the Lawsuit - Magical Trick Society
+    CMD_MUSWINTER   , // Winter Wrap Up - David Larson
+};
+
+// and here for every location we define the type - Locations will define the story data
+#ifdef LOCATION_IS_0
+// intro story
+#define LOCATION_TYPE_STORY
+#endif
+
+#ifdef LOCATION_IS_1
+// library, question Twilight
+#define LOCATION_TYPE_INTERROGATION
+#endif
+
+#ifdef LOCATION_IS_2
+// outside detention center
+#define LOCATION_TYPE_INTERROGATION
+#endif
+
+#ifdef LOCATION_IS_3
+// interview dash
+#define LOCATION_TYPE_INTERROGATION
+#endif
+
+#ifdef LOCATION_IS_4
+// post interview talk to twilight
+#define LOCATION_TYPE_STORY
+#endif
+
+#ifdef LOCATION_IS_5
+// fluttershy's cottage
+#define LOCATION_TYPE_INTERROGATION
+#endif
+
+#ifdef LOCATION_IS_6
+// everfree forest
+#define LOCATION_TYPE_INVESTIGATION
+#endif
+
+#ifdef LOCATION_IS_10
+// outside courtroom
+#define LOCATION_TYPE_STORY
+#endif
+
+#ifdef LOCATION_IS_11
+// court introductions
+#define LOCATION_TYPE_STORY
+#endif
+
+#ifdef LOCATION_IS_12
+// Trixie's case
+#define LOCATION_TYPE_INTERROGATION
+#endif
+
+#ifdef LOCATION_IS_13
+// AppleBloom's testimony
+#define LOCATION_TYPE_STORY
+#endif
+
+#ifdef LOCATION_IS_14
+// AppleBloom cross examination
+#define LOCATION_TYPE_CROSSEXAM
+#endif
+
+#ifdef LOCATION_IS_15
+// Trixie and Dash's motive
+#define LOCATION_TYPE_INTERROGATION
+#endif
+
+#ifdef LOCATION_IS_16
+// Fluttershy's testimony
+#define LOCATION_TYPE_STORY
+#endif
+
+#ifdef LOCATION_IS_17
+// Fluttershy cross-examination
+#define LOCATION_TYPE_CROSSEXAM
+#endif
+
+#ifdef LOCATION_IS_20
+// flashback - Fey law offices
+#define LOCATION_TYPE_STORY
+#endif
+
+#ifdef LOCATION_IS_21
+// outside courtroom, talk to Pinkie
+#define LOCATION_TYPE_INTERROGATION
+#endif
+
+#ifdef LOCATION_IS_22
+// detention center with Dash
+#define LOCATION_TYPE_INTERROGATION
+#endif
+
+#ifdef LOCATION_IS_23
+// on the street with Pinkie
+#define LOCATION_TYPE_STORY
+#endif
+
+#ifdef LOCATION_IS_24
+// Ace's room
+#define LOCATION_TYPE_INVESTIGATION
+#endif
+
+#ifdef LOCATION_IS_25
+// Caught by Sonata
+#define LOCATION_TYPE_INTERROGATION
+#endif
+
+
+
+#endif
+

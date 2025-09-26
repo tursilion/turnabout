@@ -1,0 +1,17 @@
+Maybe we can put the script information inside the image files - since we are using a server we have infinite space.
+
+Basic gameplay steps:
+
+Investigation Phase:
+
+- Move - select location
+
+In a location you can talk or examine. Talk is only if someone is available. Examine is always available.
+
+When you talk to someone, you have a question tree and you can also present evidence. Doing this can induce additional text, new locations, or advance to a new part of the story.
+
+I was trying to do it simply by status point, but that may not work well enough.
+
+Inventory then contains characters and items.
+
+Maybe everything can run through inventory, and have key points add hidden inventory items. The game can then check only for having inventory items to advance state.
