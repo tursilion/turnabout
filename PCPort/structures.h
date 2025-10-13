@@ -109,7 +109,7 @@ typedef struct {
 enum {
     CMD_NONE = 0    ,
 
-    CMD_FLASH       , // draw a white flash - ignore frame (but clear last frame so we know to load again)
+    CMD_FLASH       , // draw a white flash and play boom - ignore frame
     CMD_BLACK       , // draw a black screen - ignore frame (but clear last frame so we know to load again)
                     
     CMD_CROWDSFX    , // play crowd noise
@@ -143,60 +143,73 @@ enum {
     CMD_SKIPIFEV    , // skip this line if we have a certain evidence (for story control)
                     
     CMD_STOPMUS     , // stop music
-                    
-    CMD_MUSPROLOG   , // Apollo Justice - Prologue
+
+    // downloaded
     CMD_MUSSTEEL    , // Steel Samurai Ringtone
-    CMD_MUSLOUNGE   , // Courtroom Lounge - Another Prelude - Phoenix Wright: Justice for All
-    CMD_MUSMLP      , // My Little Pony - Friendship is Magic Theme (8-bit) - RainbowCrash88
-    CMD_MUSTROUPE   , // Gramarye Troupe - Apollo Justice Ace Attorney
-    CMD_MUSTRIAL    , // Ace Attorney 4 - Trial - Apollo Justice Ace Attorney
-    CMD_MUSTRACE    , // Trance Logic - Apollo Justice Ace Attorney
+    CMD_MUSSTART    , // Apollo Justice - Start of a New Trial! - Apollo Justice Ace Attorney - Objection 2007 (used Objection 2011)
+    CMD_MUSEXAM     , // Cross Examination - Moderate 2007 - Apollo Justice Ace Attorney
+    CMD_MUSCROSS    , // Cross Examination - Moderato 2002 - Phoenix Wright Justice For All
     CMD_MUSTRICK    , // Trick and Magic - Phoenix Wright: Justice for All
-    CMD_MUSCRUSADE  , // Crusading - SoloAcapello
-    CMD_MUSEXAM     , // Examination - Moderate 2007 - Apollo Justice Ace Attorney
-    CMD_MUSSTART    , // Apollo Justice - Start of a New Trial! - Apollo Justice Ace Attorney
-    CMD_MUSCHESS    , // Logic Chess - Moderato - Ace Attorney Investigations 2
-    CMD_MUSOBJECT   , // Objection! 2009 - Ace Attorney Investigations 2
-    CMD_MUSTHRILL   , // Thrill Theme - Suspense
-    CMD_MUSINTEREST , // Interesting People - Ace Attorney Investigations
-    CMD_MUSSUSPENSE , // Suspense - Phoenix Wright Ace Attorney
+    CMD_MUSMLP      , // My Little Pony - Friendship is Magic Theme (8-bit) - RainbowCrash88 - used random Midi
+    CMD_MUSTROUPE   , // Gramarye Troupe - Apollo Justice Ace Attorney
+    CMD_MUSTRIAL    , // Ace Attorney 4 - Trial - Apollo Justice Ace Attorney - Court is now in session
+    CMD_MUSTRACE    , // Trance Logic - Apollo Justice Ace Attorney
     CMD_MUSPEARLY   , // With Pearly - Phoenix Wright Justice for All
-    CMD_MUSCROSS    , // Cross Examination - Moderate 2002 - Phoenix Wright Justice For All
     CMD_MUSSISTER   , // Turnabout Sisters - Capcom
     CMD_MUSSMILE    , // Smile Instrumental - Hasbro
+    CMD_MUSLOCK     , // Lock on the Heart - Capcom - Justice for All Psyche-Lock
+    CMD_MUSTRIALS   , // Trials and Tribulation WiiWare Rips - HoodieD
+    CMD_MUSPROLOG   , // Apollo Justice - Prologue
+    CMD_MUSCHESS    , // Logic Chess - Moderato - Ace Attorney Investigations 2
+    CMD_MUSOBJECT   , // Objection! 2009 - Ace Attorney Investigations
+    CMD_MUSTHRILL   , // Thrill Theme - Suspense
+    CMD_MUSINTEREST , // Interesting People - Ace Attorney Investigations
     CMD_MUSKLAVIER  , // Klavier's Theme - Capcom
-    CMD_MUSLOCK     , // Lock on the Heart - Capcom
-    CMD_MUSINTER    , // Interview Tragicomedy - Capcom
-    CMD_MUSGIGGLE   , // Giggle at the Ghosties - Hasbro
+    CMD_MUSTRAGIC   , // Interview Tragicomedy - Capcom
     CMD_MUSINVEST   , // Investigation Middle - Capcom
-    CMD_MUSCLOCK    , // Like Clockwork - SoloAcapello
-    CMD_MUSSPECIAL  , // Special Delivery! - SoloAcapello
-    CMD_MUSRARITY   , // Rarity's Theme - MandoPony
-    CMD_MUSAJ       , // Applejack's Theme - AcousticBrony
-    CMD_MUSSWEPT    , // Sweptaway Turnabout - Capcom
-    CMD_MUSHOTLINE  , // Hotline to Destiny - Capcom
     CMD_MUSKG8      , // KG-8 Case - Capcom
-    CMD_MUSSEARCH   , // Search Core - Cadenza
-    CMD_MUSPRELUDE  , // Unending Prelude - Capcom
-    CMD_MUSBEGIN    , // Court Begins - Capcom
-    CMD_MUSCOOL     , // Too Cool For You, Dweeb - SoloAcapello
-    CMD_MUSTRUTH    , // Tell the Truth 2002 - Capcom
     CMD_MUSLYING    , // Lying Coldly - Capcom
-    CMD_MUSMEMORY   , // Memories - SoloAcapello
-    CMD_MUSCOURT    , // Court Begins Orchestrated - Capcom
+    CMD_MUSMOON     , // Moonlight Sonata - The Orchard Music
+    CMD_MUSWINTER   , // Winter Wrap Up - David Larson
+    CMD_MUSLOUNGE   , // Courtroom Lounge - Another Prelude - Phoenix Wright: Justice for All - So it begins again
+    CMD_MUSHOTLINE  , // Hotline to Destiny - Capcom - Hotline of Fate
+    CMD_MUSSUSPENSE , // Suspense - Phoenix Wright Ace Attorney
+    CMD_MUSBEGIN    , // Court Begins - Capcom
+    CMD_MUSTRUTH    , // Tell the Truth 2002 - Capcom - The Truth Revealed 2002
     CMD_MUSPURSUIT  , // Pursuit - Questioned - Capcom
     CMD_MUSEND      , // Ace Attorney ~ End - Capcom
-    CMD_MUSTRIALS   , // Trials and Tribulation WiiWare Rips - HoodieD
-    CMD_MUSMOON     , // Moonlight Sonata - The Orchard Music
     CMD_MUSCORNERED , // Pursuit Cornered 2001 - Capcom
-    CMD_MUSWON      , // Won the Lawsuit - Magical Trick Society
-    CMD_MUSWINTER   , // Winter Wrap Up - David Larson
+    CMD_MUSSWEPT    , // Sweptaway Turnabout - Tragedy of the Horror House
+    CMD_MUSCORE     , // Investigation Core 2001 - Cadenza
+    CMD_MUSPRELUDE  , // Unending Prelude - Capcom - Defendant Lobby - So it Begins
+    CMD_MUSGIGGLE   , // Giggle at the Ghosties - Hasbro - starts with so many wonders - need to cut
+    CMD_MUSCOURT    , // Court Begins Orchestrated - Capcom - TAT Court is now in session
+    CMD_MUSWON      , // Won the Lawsuit - Magical Trick Society - Victory - Our First Win
+    CMD_MUSAJ       , // Applejack's Theme - AcousticBrony
+    CMD_MUSRARITY   , // Rarity's Theme - MandoPony - Using FIM Rarity MIDI instead
+
+    // not available yet - will probably need to replace - how can I reach SoloAcapello? Might be able to ask Mando for Rarity's theme.
+    CMD_MUSCRUSADE  , // Crusading (Apple Bloom) - SoloAcapello
+    CMD_MUSCLOCK    , // Like Clockwork (Sonata) - SoloAcapello
+    CMD_MUSSPECIAL  , // Special Delivery! (Derpy) - SoloAcapello
+    CMD_MUSCOOL     , // Too Cool For You, Dweeb (Gilda) - SoloAcapello
+    CMD_MUSMEMORY   , // Memories (Gilda confession) - SoloAcapello
+
+    // not listed in the game credits but downloaded anyway
+    // testimony-allegro (apparently no tracks are called that... might already have it then)
+
 };
 
 // and here for every location we define the type - Locations will define the story data
 #ifdef LOCATION_IS_0
 // intro story
 #define LOCATION_TYPE_STORY
+// sfx - will pretty much need to preload sfx
+#define HAS_BOOMSFX
+// music - but I think I might need to load music dynamically... 32k isn't much
+#define HAS_MUSPROLOG
+#define HAS_MUSSTEEL
+#define HAS_MUSSUSPENSE
 #endif
 
 #ifdef LOCATION_IS_1

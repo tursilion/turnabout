@@ -1,4 +1,4 @@
-#define LOCATION_TYPE_STORY
+#include "structures.h"
 
 #ifdef LOCATION_TYPE_STORY
 // we only need to process the contents of story[]. When we reach CMD_ENDSTORY, the evidence field tells us who to load
@@ -6,6 +6,7 @@
 
 #include "structures.h"
 #include "engine.h"
+#include "sfx.h"
 #include <conio.h>
 #include <string.h>
 #include <ctype.h>
@@ -36,8 +37,9 @@ int run_story() {
 
         // process commands
         switch (story[index].cmdwho&0xff) {
-            case CMD_FLASH       : // draw a white flash - ignore frame (we can invert colors once so we don't need to reload)
+            case CMD_FLASH       : // draw a white flashand play boom - ignore frame (we can invert colors once so we don't need to reload)
                 invert_image();
+                play_sfx(CMD_BOOMSFX);
                 for (int j=0; j<12; ++j) {
                     draw_screen();
                 }
@@ -81,6 +83,7 @@ int run_story() {
             case CMD_CRASHSFX    : // play crash sfx
             case CMD_RIPSFX      : // play rip sfx
             case CMD_WHOOSHSFX   : // play whoosh sfx
+                play_sfx(story[index].cmdwho&0xff);
                 break;
 
             case CMD_TRIXIEOBJ   : // play trixie objection
@@ -119,7 +122,6 @@ int run_story() {
             case CMD_MUSSMILE    : // Smile Instrumental - Hasbro
             case CMD_MUSKLAVIER  : // Klavier's Theme - Capcom
             case CMD_MUSLOCK     : // Lock on the Heart - Capcom
-            case CMD_MUSINTER    : // Interview Tragicomedy - Capcom
             case CMD_MUSGIGGLE   : // Giggle at the Ghosties - Hasbro
             case CMD_MUSINVEST   : // Investigation Middle - Capcom
             case CMD_MUSCLOCK    : // Like Clockwork - SoloAcapello
@@ -129,7 +131,6 @@ int run_story() {
             case CMD_MUSSWEPT    : // Sweptaway Turnabout - Capcom
             case CMD_MUSHOTLINE  : // Hotline to Destiny - Capcom
             case CMD_MUSKG8      : // KG-8 Case - Capcom
-            case CMD_MUSSEARCH   : // Search Core - Cadenza
             case CMD_MUSPRELUDE  : // Unending Prelude - Capcom
             case CMD_MUSBEGIN    : // Court Begins - Capcom
             case CMD_MUSCOOL     : // Too Cool For You, Dweeb - SoloAcapello

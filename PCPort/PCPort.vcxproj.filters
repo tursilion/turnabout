@@ -45,12 +45,24 @@
     <ClCompile Include="aid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sfx.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="music.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="structures.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="music.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -23,14 +23,14 @@ Story_t story[] =  {                          //  012345678901234567890123456789
 {   EV_NONE,     2,  PP_PHOENIX | CMD_NONE,      "That silly slogan Maya came up with must be what's making business this slow, I should really have it revised..." },
 {   EV_NONE,     2,  PP_PHOENIX | CMD_NONE,      "Scratch that! I NEED to have it revised! What a ridiculous slogan! Who are we trying to attract, grade school students?" },
 {   EV_NONE,     2,  PP_PHOENIX | CMD_NONE,      "I guess it is a good sign though..." },
-{   EV_NONE,     2,  PP_PHOENIX | CMD_NONE,      "The less people are in need of an attorney then less problems there are in the world." },
+{   EV_NONE,     2,  PP_PHOENIX | CMD_NONE,      "The fewer people who need an attorney the fewer problems there are in the world." },
 {   EV_NONE,     2,  PP_PHOENIX | CMD_NONE,      "Unfortunately sunshine and smiles don't pay the bills." },
 {   EV_NONE,     2,  PP_PHOENIX | CMD_NONE,      "Guess I can at least call it in early tonight." },
 {   EV_NONE,     2,  PP_PHOENIX | CMD_BOOMSFX,   "ARGH!" },
 {   EV_NONE,     2,  PP_PHOENIX | CMD_MUSSUSPENSE,"W-what's going on!?"},
 {   EV_NONE,     2,  PP_PHOENIX | CMD_FLASH,     "I can't move my body!" },
 {   EV_NONE,     2,  PP_PHOENIX | CMD_NONE,      "(Wait, is my hand fading away?!)" },
-{   EV_NONE,     2,  PP_PHOENIX | CMD_NONE,      "Getting...Dizzy... am I... dying..." },
+{   EV_NONE,     2,  PP_PHOENIX | CMD_NONE,      "Getting...Dizzy... am I... dying...?" },
 {   1,           2,  PP_PHOENIX | CMD_ENDSTORY,  "" }   // go to location 1 (negative value to flag)
 };
 #endif
