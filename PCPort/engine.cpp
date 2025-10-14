@@ -72,9 +72,9 @@ void load_image(int index) {
 
     // TODO: select a path for F18A or not
     //                     1         2         3         4
-    //           0123456789012345678901234567890123456789012345
-    strcpy(buf, "PI.HTTPS://harmlesslion.com/phoenix/0000.tiap");
-    off = 36;
+    //           01234567890123456789012345678901234567890123456789
+    strcpy(buf, "PI.HTTPS://harmlesslion.com/phoenix/img/p0000.TIAP");
+    off = 41;
 
     // load the index into the string - max 9999
     tmp = index/1000;
@@ -92,7 +92,7 @@ void load_image(int index) {
     if (myPab.OpCode == 0) {
         memset(&myPab, 0, sizeof(myPab));
         myPab.OpCode = DSR_LOAD;
-        myPab.RecordNumber = 0x1000;    // only 2/3rds of the screen! Rememeber it will fail to load if larger!
+        myPab.RecordNumber = 0x1020;    // only 2/3rds of the screen, plus F18A palette! Rememeber it will fail to load if larger!
     }
 
     // load patterns
@@ -101,7 +101,7 @@ void load_image(int index) {
     dsrlnk(&myPab, VDP_PAB_ADDRESS);
 
     // load colors (+5 cause we added 3 above for the indexes)
-    buf[off+5] = 'c';
+    buf[off+5] = 'C';
     myPab.VDPBuffer = gColor;
     dsrlnk(&myPab, VDP_PAB_ADDRESS);
 }
@@ -196,7 +196,7 @@ int main()
     vdpmemset(gImage+16*32, ' ', 8*32);
     // normal text is grey, high bit text is blue
     vdpmemset(gColor+0x1000, 0xe1, 0x400);
-    vdpmemset(gColor+0x1400, 0x51, 0x400);
+    vdpmemset(gColor+0x1400, 0x41, 0x400);
 
     // start it up!
     int nextloc = run_story();
@@ -217,8 +217,8 @@ int main()
 //
 // VDP MAP:
 //
-// 0000-0FFF - bitmap pattern table (top)
-// 1000-17FF - bottom third character set
+// 0000-0FFF - bitmap pattern table (top) - F18A palette loads 32 bytes after this
+// 1000-17FF - bottom third character set - first 4 chars (32 bytes) overwritten in F18A mode
 // 1800-19FF - bitmap SIT
 // 1B00-1A7F - sprite attribute list
 // 1B80-1A9F - Text screen color table
