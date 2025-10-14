@@ -1,7 +1,5 @@
 // display keyboard help - full screen like inventory
 
-#include <raylib.h>
-
 #include "structures.h"
 #include "engine.h"
 #include <conio.h>

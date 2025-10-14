@@ -1,7 +1,5 @@
 // let the user see their inventory
 
-#include <raylib.h>
-
 #include "structures.h"
 #include "engine.h"
 #include <conio.h>

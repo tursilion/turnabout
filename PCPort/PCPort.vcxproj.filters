@@ -48,9 +48,6 @@
     <ClCompile Include="sfx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sfx.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="music.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -63,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="music.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sfx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

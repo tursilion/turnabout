@@ -14,6 +14,11 @@
 //#define LOCATION_TYPE_STORY
 //#define LOCATION_TYPE_CROSSEXAM
 
+// some types
+#ifndef NULL
+#define NULL (0)
+#endif
+
 /* Evidence structure */
 typedef struct {
     int found;                 /* 1 if player has discovered this clue, -1 for a hidden clue (internal state) */

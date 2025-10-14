@@ -4,12 +4,15 @@
 // we only need to process the contents of story[]. When we reach CMD_ENDSTORY, the evidence field tells us who to load
 // when changing location, be sure to draw black and stop music
 
+#include <conio.h>
+#include <string.h>
 #include "structures.h"
 #include "engine.h"
 #include "sfx.h"
-#include <conio.h>
-#include <string.h>
-#include <ctype.h>
+
+#ifdef CLASSIC99
+extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long);
+#endif
 
 extern Story_t story[];
 extern int run_inventory();
@@ -43,7 +46,7 @@ int run_story() {
                 for (int j=0; j<12; ++j) {
                     draw_screen();
                 }
-                invert_image();
+                normal_image();
                 break;
                 
             case CMD_BLACK       : // draw a black screen - ignore frame (but clear last frame so we know to load again)
@@ -161,6 +164,7 @@ int run_story() {
             set_maxlen(i);
             for (int j=0; j<2; ++j) {
                 draw_screen();
+                VDP_WAIT_VBLANK_CRU;
             }
         }
         set_maxlen(len);
@@ -169,9 +173,9 @@ int run_story() {
         for (;;) {
             draw_screen();
 
-            // read keyboard - this requires input on the text window...
-            if (!_kbhit()) continue;
-            int ch = tolower(_getch());
+            // read keyboard
+            if (!kbhit()) continue;
+            int ch = tolower(cgetc());
 
             // act on 'next' or 'inventory'
             if (ch == 'n') {
