@@ -51,6 +51,9 @@
     <ClCompile Include="music.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="savegame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="structures.h">
@@ -63,6 +66,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="savegame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

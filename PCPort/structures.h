@@ -54,21 +54,21 @@ enum {
 
     // people are just special evidence, so I need them in the same list
     // they need to be in the MSB anyway, and PP_FIRST is used for the '??????' person
-    PP_FIRST    = 0x8000,
-    PP_UNKNOWN  = 0x8100,
+    PP_FIRST      = 0x8000,
+    PP_UNKNOWN    = 0x8100,
 
-    PP_PHOENIX  = 0x8200,
-    PP_TWILIGHT = 0x8300,
-    PP_RAINBOW  = 0x8400,
-    PP_ACE      = 0x8500,
-    PP_FLUTTERSHY= 0x8600,
-    PP_TRIXIE   = 0x8700,
-    PP_JUDGE    = 0x8800,
-    PP_APPLEBLOOM= 0x8900,
-    PP_PINKIE   = 0x8a00,
-    PP_SONATA   = 0x8b00,
+    PP_PHOENIX    = 0x8200,
+    PP_TWILIGHT   = 0x8300,
+    PP_RAINBOW    = 0x8400,
+    PP_ACE        = 0x8500,
+    PP_FLUTTERSHY = 0x8600,
+    PP_TRIXIE     = 0x8700,
+    PP_JUDGE      = 0x8800,
+    PP_APPLEBLOOM = 0x8900,
+    PP_PINKIE     = 0x8a00,
+    PP_SONATA     = 0x8b00,
 
-    PP_LAST     = 0x8c00
+    PP_LAST       = 0x8c00
 };
 #define PP_MAX ((PP_LAST>>8)-(PP_FIRST>>8))
 #define PP_NONE PP_FIRST

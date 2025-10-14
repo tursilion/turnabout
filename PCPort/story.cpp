@@ -10,10 +10,6 @@
 #include "engine.h"
 #include "sfx.h"
 
-#ifdef CLASSIC99
-extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long);
-#endif
-
 extern Story_t story[];
 extern int run_inventory();
 extern void run_aid();
@@ -155,16 +151,20 @@ int run_story() {
         }
 
         // update name and text
-        set_name((story[index].cmdwho & 0xff00) - PP_FIRST);
+        set_name(story[index].cmdwho & 0xff00);
         set_text(story[index].text);
 
-        // draw out the text - abort loop on keypress
+        // draw out the text - abort loop on space bar
         int len = (int)strlen(story[index].text);
         for (int i=1; i<len; ++i) {
             set_maxlen(i);
             for (int j=0; j<2; ++j) {
                 draw_screen();
-                VDP_WAIT_VBLANK_CRU;
+            }
+            if (kbhit()) {
+                if (cgetc() == ' ') {
+                    break;
+                }
             }
         }
         set_maxlen(len);

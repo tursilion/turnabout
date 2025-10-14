@@ -1,7 +1,7 @@
 #include "structures.h"
 
 // people are just special evidence, but sometimes we need them separately
-// remember to subtract PP_FIRST!
+// Remember names are stored in the MSB and or'd with 0x80
 Evidence_t people[PP_MAX] = {
     //                         Discovered At this image
     { 0, "                ",            ""    },  // PP_NONE

@@ -1,6 +1,7 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
+void clear_text();
 void draw_screen();
 void load_image(int index);
 void invert_image();

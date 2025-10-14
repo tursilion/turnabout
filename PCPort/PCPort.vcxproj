@@ -150,7 +150,9 @@
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="music.cpp" />
     <ClCompile Include="People.cpp" />
+    <ClCompile Include="savegame.cpp" />
     <ClCompile Include="sfx.cpp" />
+    <ClInclude Include="savegame.h" />
     <ClInclude Include="sfx.h" />
     <ClCompile Include="story.cpp" />
   </ItemGroup>
