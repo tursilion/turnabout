@@ -89,6 +89,12 @@ int main(int argc, char *argv[])
 
     // turn 6k into 4k
     fixbuf(buf, argv[2]);
+
+    // black out the last two rows
+    int off = 15*32*8;
+    for (int c=0; c<32; ++c) {
+        memset(&buf[off+c*8+6+128], 0, 2);
+    }
     
     // patch the TIFILES header
     buf[9]=0x10;    // length in sectors from 0x18 to 0x10

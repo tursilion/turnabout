@@ -72,9 +72,9 @@ void load_image(int index) {
 
     // TODO: select a path for F18A or not
     //                     1         2         3         4
-    //           01234567890123456789012345678901234567890123456789
-    strcpy(buf, "PI.HTTPS://harmlesslion.com/phoenix/img/p0000.TIAP");
-    off = 41;
+    //           01234567890123456789012345678901234567890123456789012345
+    strcpy(buf, "PI.HTTPS://harmlesslion.com/phoenix/pics9918/p0000.TIAP");
+    off = 46;
 
     // load the index into the string - max 9999
     tmp = index/1000;

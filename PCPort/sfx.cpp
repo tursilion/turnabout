@@ -1,4 +1,6 @@
 #include "structures.h"
+#include <sound.h>
+#include <vdp.h>
 
 void play_sfx(int sfx) {
     switch (sfx) {
@@ -14,6 +16,12 @@ void play_sfx(int sfx) {
 
 #ifdef HAS_BOOMSFX
         case CMD_BOOMSFX     : // play boom sound
+            SOUND(0xe6);    // select noise
+            for (unsigned char i=0; i<16; i++) {
+                SOUND(0xf0+i);
+                VDP_WAIT_VBLANK_CRU;
+            }
+            SOUND(0xff);    // make sure it ends muted
             break;
 #endif
 

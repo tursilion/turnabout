@@ -1,13 +1,27 @@
 #include "structures.h"
 
+void run_music(const unsigned char *p, int sz) {
+    // TODO: need to link the player in so we can call it, using system hangs
+}
+
 void play_music(int music) {
     switch(music) {
 #ifdef HAS_MUSPROLOG
     case CMD_MUSPROLOG: // Apollo Justice - Prologue
+    {
+static
+#include "..\music\processed\PROLOG.c"
+        run_music(MUS_PROLOG, sizeof(MUS_PROLOG));
+    }
         break;
 #endif
 #ifdef HAS_MUSSTEEL
     case CMD_MUSSTEEL: // Steel Samurai Ringtone
+        {
+static
+#include "..\music\processed\STEEL.c"
+        run_music(MUS_STEEL, sizeof(MUS_STEEL));
+        }
         break;
 #endif
 #ifdef HAS_MUSLOUNGE
@@ -64,6 +78,11 @@ void play_music(int music) {
 #endif
 #ifdef HAS_MUSSUSPENSE
     case CMD_MUSSUSPENSE: // Suspense - Phoenix Wright Ace Attorney
+        {
+static
+#include "..\music\processed\SUSPENSE.c"
+            run_music(MUS_SUSPENSE, sizeof(MUS_SUSPENSE));
+        }
         break;
 #endif
 #ifdef HAS_MUSPEARLY

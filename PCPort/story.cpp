@@ -6,9 +6,9 @@
 
 #include <conio.h>
 #include <string.h>
-#include "structures.h"
 #include "engine.h"
 #include "sfx.h"
+#include "music.h"
 
 extern Story_t story[];
 extern int run_inventory();
@@ -144,6 +144,7 @@ int run_story() {
             case CMD_MUSCORNERED : // Pursuit Cornered 2001 - Capcom
             case CMD_MUSWON      : // Won the Lawsuit - Magical Trick Society
             case CMD_MUSWINTER   : // Winter Wrap Up - David Larson
+                play_music(story[index].cmdwho&0xff);
                 break;
 
             default:
