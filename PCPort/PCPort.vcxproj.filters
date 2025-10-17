@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="vgmcomp2">
+      <UniqueIdentifier>{b700b068-af39-43e3-a2a3-27dcb04c0a05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -54,6 +57,21 @@
     <ClCompile Include="savegame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="vgmcomp2\CPlayerCommon.cpp">
+      <Filter>vgmcomp2</Filter>
+    </ClCompile>
+    <ClCompile Include="vgmcomp2\CPlayerPC.cpp">
+      <Filter>vgmcomp2</Filter>
+    </ClCompile>
+    <ClCompile Include="vgmcomp2\PC.cpp">
+      <Filter>vgmcomp2</Filter>
+    </ClCompile>
+    <ClCompile Include="vgmcomp2\sound.cpp">
+      <Filter>vgmcomp2</Filter>
+    </ClCompile>
+    <ClCompile Include="vgmcomp2\CPlayer.cpp">
+      <Filter>vgmcomp2</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="structures.h">
@@ -71,5 +89,21 @@
     <ClInclude Include="savegame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="vgmcomp2\CPlayer.h">
+      <Filter>vgmcomp2</Filter>
+    </ClInclude>
+    <ClInclude Include="vgmcomp2\sound.h">
+      <Filter>vgmcomp2</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="vgmcomp2\readme.txt">
+      <Filter>vgmcomp2</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="F18A_GPU.a99">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

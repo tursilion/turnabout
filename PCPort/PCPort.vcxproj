@@ -84,13 +84,13 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;CLASSIC99;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;CLASSIC99;USE_SN_PSG;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);libti99all1.lib;ws2_32.lib;winhttp.lib;ucrtd.lib;vcruntime.lib;msvcrtd.lib</AdditionalDependencies>
+      <AdditionalDependencies>libti99all1.lib;ws2_32.lib;winmm.lib;winhttp.lib;ucrtd.lib;vcruntime.lib;msvcrtd.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
       <EntryPointSymbol>classic99_main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -100,7 +100,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;CLASSIC99;USE_SN_PSG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -108,6 +108,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -152,14 +153,30 @@
     <ClCompile Include="People.cpp" />
     <ClCompile Include="savegame.cpp" />
     <ClCompile Include="sfx.cpp" />
+    <ClCompile Include="vgmcomp2\CPlayer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="vgmcomp2\CPlayerCommon.cpp" />
+    <ClCompile Include="vgmcomp2\CPlayerPC.cpp" />
+    <ClCompile Include="vgmcomp2\PC.cpp" />
+    <ClCompile Include="vgmcomp2\sound.cpp" />
     <ClInclude Include="savegame.h" />
     <ClInclude Include="sfx.h" />
     <ClCompile Include="story.cpp" />
+    <ClInclude Include="vgmcomp2\CPlayer.h" />
+    <ClInclude Include="vgmcomp2\sound.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h" />
     <ClInclude Include="music.h" />
     <ClInclude Include="structures.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="vgmcomp2\readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="F18A_GPU.a99" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

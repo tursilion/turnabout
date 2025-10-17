@@ -23,6 +23,12 @@ int run_story() {
     for (;;) {
         // process the current line
 
+        // music being somewhat special, we'll check here - if it's a stop command, we should
+        // stop it before we load, to reduce hiccups.
+        if ((story[index].cmdwho&0xff) == CMD_STOPMUS) {
+            stop_music();
+        }
+
         // do the image
         if (story[index].frame != lastimg) {
             load_image(story[index].frame);
@@ -94,9 +100,6 @@ int run_story() {
             case CMD_TRIXIEHOLD  : // play trixie holdit
             case CMD_PHOENIXHOLD : // play phoenix holdit
             case CMD_PHOENIXTAKE : // play phoenix take that!
-                break;
-
-            case CMD_STOPMUS     : // stop music
                 break;
 
             case CMD_MUSPROLOG   : // Apollo Justice - Prologue

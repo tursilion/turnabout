@@ -1,8 +1,6 @@
+#include <sound.h>
 #include "structures.h"
-
-void run_music(const unsigned char *p, int sz) {
-    // TODO: need to link the player in so we can call it, using system hangs
-}
+#include "vgmcomp2/CPlayer.h"
 
 void play_music(int music) {
     switch(music) {
@@ -11,7 +9,7 @@ void play_music(int music) {
     {
 static
 #include "..\music\processed\PROLOG.c"
-        run_music(MUS_PROLOG, sizeof(MUS_PROLOG));
+        StartSong(MUS_PROLOG, 0);
     }
         break;
 #endif
@@ -20,7 +18,7 @@ static
         {
 static
 #include "..\music\processed\STEEL.c"
-        run_music(MUS_STEEL, sizeof(MUS_STEEL));
+        StartSong(MUS_STEEL, 0);
         }
         break;
 #endif
@@ -81,7 +79,7 @@ static
         {
 static
 #include "..\music\processed\SUSPENSE.c"
-            run_music(MUS_SUSPENSE, sizeof(MUS_SUSPENSE));
+            StartSong(MUS_SUSPENSE, 0);
         }
         break;
 #endif
@@ -204,5 +202,18 @@ static
 
     default:
         break;
+    }
+}
+
+void stop_music() {
+    StopSong();
+    MUTE_SOUND();
+}
+
+void update_music() {
+    if (songNote[3]&SONGACTIVEACTIVE) {
+        SongLoop();
+    } else {
+        StopSong();
     }
 }

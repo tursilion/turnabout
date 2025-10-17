@@ -1,0 +1,60 @@
+* A simple GPU program to set palette 1 at the top of frame, and
+* palette 0 for the lower 8 rows.
+
+    AORG >3880
+
+
+MAINLP
+    clr r0
+
+    movb @>7000,r0  * get current scanline
+    ci r0,>ff00     * bottom of frame (this continues from 255-261 (or 262?)) 
+    jne notbot
+
+    li r0,>0100     * palette 1
+    movb r0,@>6018  * VDP register >18 - palette index
+    jmp MAINLP
+
+notbot
+    ci r0,>7E00     * scanline 126
+    jne notmid
+    clr r0          * palette 0
+    movb r0,@>6018  * VDP register >18 - palette index
+    jmp MAINLP
+
+notmid
+    movb @>38ff,r0  * check for command
+    jeq MAINLP      * no command
+
+    ci r0,>0100     * load palette
+    jne notload
+    li r0,>1000     * palette is located at >1000 after the (valid) pattern table data
+    li r1,>5020     * F18A palette table, bank 1
+    li r2,8         * 16 entries to copy, unrolled a bit
+cplp1
+    mov *r0+,*r1+   * move two words
+    mov *r0+,*r1+
+    dec r2
+    jne cplp1
+    jmp clrcmd
+
+notload
+    ci r0,>0200     * invert palette
+    jne MAINLP
+
+    li r4,>FFFF     * something to subtract from (can't remember if 0RGB or RGB0 or what)
+    li r0,>1000     * palette is located at >1000 after the (valid) pattern table data
+    li r1,>5020     * F18A palette table, bank 1
+    li r2,16        * 16 entries to copy, not as easy to unroll
+cplp2
+    mov *r0+,r3     * get the entry
+    s r3,r4         * subtract it from FFFF
+    mov r4,*r1+     * write the result
+    dec r2
+    jne cplp2
+
+clrcmd
+    clr @>38ff      * zero command byte (and >38fe)
+    jmp MAINLP
+
+    END

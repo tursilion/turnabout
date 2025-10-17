@@ -9,16 +9,23 @@
 // TODO: alter path for pics depending on whether F18A is available, and have F18A loader (16-color palette)
 // we can have a small GPU program change the palette for the bottom half - just use two palettes for quick change
 
+#include <sound.h>
 #include <conio.h>
 #include <string.h>
 #include <vdp.h>
 #include <files.h>
 #include <f18a.h>
 #include "structures.h"
+#include "music.h"
 
 extern int run_story();
 extern Evidence_t evidence[EV_MAX];
 extern Evidence_t people[PP_MAX];
+extern "C" const unsigned int F18A_INITIAL[16];
+
+#ifdef CLASSIC99
+extern "C" void vgm_pcinit();
+#endif
 
 const char *pString = NULL;
 const char *pOldString = NULL;
@@ -39,6 +46,7 @@ void clear_text() {
 // Images are loaded directly to video memory, and not in this function
 void draw_screen() {
     VDP_WAIT_VBLANK_CRU;
+    VDP_CLEAR_VBLANK;
 
     if (iName != oldName) {
         oldName = iName;
@@ -63,6 +71,9 @@ void draw_screen() {
             clear_text();
         }
     }
+
+    // also play music - we might need to check frame time on hardware
+    update_music();
 }
 
 void load_image(int index) {
@@ -75,6 +86,10 @@ void load_image(int index) {
     //           01234567890123456789012345678901234567890123456789012345
     strcpy(buf, "PI.HTTPS://harmlesslion.com/phoenix/pics9918/p0000.TIAP");
     off = 46;
+
+    if (f18a) {
+        memcpy(&buf[40], "f18a", 4);
+    }
 
     // load the index into the string - max 9999
     tmp = index/1000;
@@ -100,6 +115,12 @@ void load_image(int index) {
     myPab.pName = (unsigned char*)buf;
     dsrlnk(&myPab, VDP_PAB_ADDRESS);
 
+    if (f18a) {
+        // load the palette - it's at the end of the image there
+        // we can just send a palette command to the F18A
+        vdpchar(0x38ff, 0x01);  // load palette command
+    }
+
     // load colors (+5 cause we added 3 above for the indexes)
     buf[off+5] = 'C';
     myPab.VDPBuffer = gColor;
@@ -110,20 +131,25 @@ void invert_image() {
     // a real invert is too slow, but we can swap the color and pattern tables
     // rather than track it, a separate function can restore them
 
-    // TODO: for F18A, invert the palette instead
-
-    VDP_SET_REGISTER(VDP_REG_CT, 0x7f);
-	VDP_SET_REGISTER(VDP_REG_PDT, 0x07);
+    // for F18A, invert the palette instead
+    if (f18a) {
+        vdpchar(0x38ff, 0x02);  // invert palette command
+    } else {
+        VDP_SET_REGISTER(VDP_REG_CT, 0x7f);
+	    VDP_SET_REGISTER(VDP_REG_PDT, 0x07);
+    }
 }
 
 void normal_image() {
     // a real invert is too slow, but we can swap the color and pattern tables
     // rather than track it, a separate function can restore them
 
-    // TODO: For F18A, just call invert again to change the palette
-
-    VDP_SET_REGISTER(VDP_REG_CT, 0xFF);
-	VDP_SET_REGISTER(VDP_REG_PDT, 0x03);
+    if (f18a) {
+        vdpchar(0x38ff, 0x01);  // load palette command
+    } else {
+        VDP_SET_REGISTER(VDP_REG_CT, 0xFF);
+	    VDP_SET_REGISTER(VDP_REG_PDT, 0x03);
+    }
 }
 
 void black_image() {
@@ -161,11 +187,36 @@ void set_name(int i) {
 }
 
 // F18A specific setup
+// TODO: this code is only needed in the initial boot program...
 void setupgpu() {
     // TODO: load a GPU program to set palette 1 at top of frame
-    // and palette 0 at scanline 128
+    // and palette 0 at scanline 128 (F18A_GPU.a99)
     // We should already have a TI compatible palette in palette 0
+    static const unsigned char GPUPROG[] = {
+        0x04,0xc0,0xd0,0x20,0x70,0x00,0x02,0x80,
+        0xff,0x00,0x16,0x05,0x02,0x00,0x01,0x00,
+        0xd8,0x00,0x60,0x18,0x10,0xf5,0x02,0x80,
+        0x7e,0x00,0x16,0x04,0x04,0xc0,0xd8,0x00,
+        0x60,0x18,0x10,0xee,
+        0xd0,0x20,0x38,0xff,0x13,0xeb,0x02,0x80,
+        0x01,0x00,0x16,0x0b,0x02,0x00,0x10,0x00,
+        0x02,0x01,0x50,0x20,0x02,0x02,0x00,0x08,
+        0xcc,0x70,0xcc,0x70,0x06,0x02,0x16,0xfc,
+        0x10,0x10,0x02,0x80,0x02,0x00,0x16,0xda,
+        0x02,0x04,0xff,0xff,0x02,0x00,0x10,0x00,
+        0x02,0x01,0x50,0x20,0x02,0x02,0x00,0x10,
+        0xc0,0xf0,0x61,0x03,0xcc,0x44,0x06,0x02,
+        0x16,0xfb,0x04,0xe0,0x38,0xff,0x10,0xca
+    };
 
+    black_image();
+    vdpmemcpy(0x3880, GPUPROG, sizeof(GPUPROG));
+    
+    // for the basics, load the same palette in 1 as well as what's expected in 0
+    loadpal_f18a(&F18A_INITIAL[0], 16, 16);
+    
+    // now it's safe to start
+    startgpu_f18a(0x3880);
 }
 
 //------
@@ -175,7 +226,11 @@ int main()
     debug_write("Starting up...");
     files(1);
 
-    // detect F18A for graphics
+#ifdef CLASSIC99
+    vgm_pcinit();
+#endif
+
+    // detect F18A for graphics (corrupts VDP registers)
     f18a = detect_f18a();
     if (f18a) {
         debug_write("F18A enabled");
@@ -197,12 +252,13 @@ int main()
     // normal text is grey, high bit text is blue
     vdpmemset(gColor+0x1000, 0xe1, 0x400);
     vdpmemset(gColor+0x1400, 0x41, 0x400);
+    black_image();
 
     // start it up!
     int nextloc = run_story();
+    MUTE_SOUND();
 
-
-
+    // load the next section...
 }
 
 // TODO: a boot program that serves as the entrance to the game, and
@@ -228,7 +284,8 @@ int main()
 // 2000-2FFF - bitmap color table (top)
 // 3000-37FF - bottom third color table
 // 3800-387F - PAB space
-// 3880-3BE3 - game data for between programs
+// 3880-38FF - F18A GPU code
+// 3900-3BE3 - game data for between programs
 // 3BE4-3FFF - DSR Buffers FILES(1)
 
 
