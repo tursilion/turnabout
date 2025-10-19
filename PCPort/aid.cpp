@@ -1,5 +1,7 @@
 // display keyboard help - full screen like inventory
 
+// TODO: need to have an option in the F18A GPU to disable the palette swap and only use palette 0
+
 #include "structures.h"
 #include "engine.h"
 #include "savegame.h"

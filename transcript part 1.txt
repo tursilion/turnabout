@@ -2,6 +2,8 @@
 MOVIE1
 ------
 
+--- LOCATION 0 ---
+
 Time        Frame           Who         Text
 00:00       0000            ???????     (Everfree shadows)
 00:07                       .           Time for negotiations...
@@ -33,6 +35,9 @@ Time        Frame           Who         Text
 01:45                       .           (Wait, is my hand fading away?!)
 01:49                       .           Getting...Dizzy... am I... dying...
 01:55       black
+
+--- LOCATION 1 ---
+
 02:00                                   ?????? ?????????? June 9th, 9:45PM
 02:06                       Phoenix     Ughhhhh...
 02:08                       ????????    Hey! Who the heck are you?!
@@ -138,6 +143,9 @@ WHO ARE YOU? (advances)
 07:34                       Phoenix     Identication spell?
 07:35       0010            Twilight    Yeah! An identification spell! Anyway, let me prepare a few things, then we can go to the Detension Center.
 07:43       0004            Phoenix     (After I get her inside there with her friend, I'll let her off easy and make her send me back home. There is no way I'm taking a case this weird...)
+
+--- LOCATION 2 ---
+
 07:53       0017                        Ponyville   June 9th, 10:05PM
 07:59                       Phoenix     I have never felt like such a minority in my life!
 08:01       0018            Twilight    Oh, it wasn't that bad.

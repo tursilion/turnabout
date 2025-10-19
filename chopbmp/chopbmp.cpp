@@ -36,15 +36,26 @@ int main(int argc, char *argv[])
     }
 
     char szfn[1024];
-    snprintf(szfn, sizeof(szfn), "%04d.TIAP", atoi(argv[1]));
+    char workchar = 'p';    // p or f - we'll autodetect
+
+    snprintf(szfn, sizeof(szfn), "%c%04d.TIAP", workchar, atoi(argv[1]));
     fp = fopen(szfn, "rb");
     if (NULL == fp) {
-        printf("Can't open %s\n", szfn);
-        return 1;
+        workchar = 'f';
+        snprintf(szfn, sizeof(szfn), "%c%04d.TIAP", workchar, atoi(argv[1]));
+        fp = fopen(szfn, "rb");
+        if (NULL == fp) {
+            printf("Can't open %s\n", szfn);
+            return 1;
+        }
     }
     printf("Found %s\n", szfn);
-    fread(buf, 1, 0x1800, fp);
+    if (fread(buf, 1, 0x1800, fp) < 6144) {
+        printf("* Already processed\n");
+        return 1;
+    }
     fclose(fp);
+    remove(szfn);
 
     // turn 6k into 4k
     fixbuf(buf, argv[2]);
@@ -53,21 +64,24 @@ int main(int argc, char *argv[])
     buf[9]=0x10;    // length in sectors from 0x18 to 0x10
 
     // try for the palette file
-    snprintf(szfn, sizeof(szfn), "%04d.TIAM", atoi(argv[1]));
-    fp = fopen(szfn, "rb");
-    if (NULL != fp) {
-        printf("Found %s\n", szfn);
-        fread(&buf[0x1000], 1, 128+32, fp); // include room for the TIFILES header
-        fclose(fp);
-        // move just the data
-        memmove(&buf[0x1000], &buf[0x1080], 32);
-        // patch the TIFILES header
-        buf[9]=0x11;    // length in sectors from 0x10 to 0x11
-        buf[12]=0x20;   // with 32 bytes in the extra sector
+    if (workchar == 'f') {
+        snprintf(szfn, sizeof(szfn), "%c%04d.TIAM", workchar, atoi(argv[1]));
+        fp = fopen(szfn, "rb");
+        if (NULL != fp) {
+            printf("Found %s\n", szfn);
+            fread(&buf[0x1000], 1, 128+32, fp); // include room for the TIFILES header
+            fclose(fp);
+            // move just the data
+            memmove(&buf[0x1000], &buf[0x1080], 32);
+            // patch the TIFILES header
+            buf[9]=0x11;    // length in sectors from 0x10 to 0x11
+            buf[12]=0x20;   // with 32 bytes in the extra sector
+            remove(szfn);
+        }
     }
 
     // write it out
-    snprintf(szfn, sizeof(szfn), "p%04d.TIAP", atoi(argv[1]));
+    snprintf(szfn, sizeof(szfn), "%c%04d.TIAP", workchar, atoi(argv[1]));
     fp = fopen(szfn, "wb");
     if (NULL == fp) {
         printf("Failed to write %s\n", szfn);
@@ -77,7 +91,7 @@ int main(int argc, char *argv[])
     fclose(fp);
 
     // now color
-    snprintf(szfn, sizeof(szfn), "%04d.TIAC", atoi(argv[1]));
+    snprintf(szfn, sizeof(szfn), "%c%04d.TIAC", workchar, atoi(argv[1]));
     fp = fopen(szfn, "rb");
     if (NULL == fp) {
         printf("Can't open %s\n", szfn);
@@ -86,6 +100,7 @@ int main(int argc, char *argv[])
     printf("Found %s\n", szfn);
     fread(buf, 1, 0x1800, fp);
     fclose(fp);
+    remove(szfn);
 
     // turn 6k into 4k
     fixbuf(buf, argv[2]);
@@ -99,7 +114,7 @@ int main(int argc, char *argv[])
     // patch the TIFILES header
     buf[9]=0x10;    // length in sectors from 0x18 to 0x10
 
-    snprintf(szfn, sizeof(szfn), "p%04d.TIAC", atoi(argv[1]));
+    snprintf(szfn, sizeof(szfn), "%c%04d.TIAC", workchar, atoi(argv[1]));
     fp = fopen(szfn, "wb");
     if (NULL == fp) {
         printf("Failed to write %s\n", szfn);

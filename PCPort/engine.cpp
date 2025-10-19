@@ -53,11 +53,9 @@ void draw_screen() {
         vdpmemset(gImage+16*32, ' ', 32);
         if (iName >= 0) {
             // we need to OR every character with 0x80 for the color
-            unsigned char *p = (unsigned char*)people[iName].name;
-            VDP_SET_ADDRESS_WRITE(16*32+gImage);
-            while (*p) {
-                VDPWD( (*(p++)) | 0x80);
-            }
+            reverse(1);
+            cputsxy(0, 16, people[iName].name);
+            reverse(0);
         }
     }
     if ((maxtext != oldMaxtext) || (pString != pOldString))  {
@@ -88,7 +86,7 @@ void load_image(int index) {
     off = 46;
 
     if (f18a) {
-        memcpy(&buf[40], "f18a", 4);
+        memcpy(&buf[40], "f18a/f", 6);
     }
 
     // load the index into the string - max 9999
@@ -168,7 +166,22 @@ void add_inventory(int id) {
     }
 }
 void remove_inventory(int id) {
-    evidence[id].found = 0;
+    if (id >= PP_FIRST) {
+        id = (id-PP_FIRST)>>8;
+        evidence[id].found = 0;
+    } else if (id < EV_MAX) {
+        evidence[id].found = 0;
+    }
+}
+// return non-zero if we have inventory
+int has_inventory(int id) {
+    if (id >= PP_FIRST) {
+        id = (id-PP_FIRST)>>8;
+        return (evidence[id].found != 0);
+    } else if (id < EV_MAX) {
+        return (evidence[id].found != 0);
+    }
+    return 0;
 }
 void set_text(const char *p) {
     clear_text();

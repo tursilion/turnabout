@@ -6,12 +6,12 @@
 // F18A could do it, but then we'd need two different copies. Still, F18A conversions of the graphics would be nice.
 
 // define what we are building for here - this will eventually be external on the build line
-#define LOCATION_IS_0
+//#define LOCATION_IS_0
+#define LOCATION_IS_1
 
 // one of these for every location - see bottom of file
 //#define LOCATION_TYPE_INVESTIGATION
-//#define LOCATION_TYPE_INTERROGATION
-//#define LOCATION_TYPE_STORY
+//#define LOCATION_TYPE_STORY  -- also covers interrogation
 //#define LOCATION_TYPE_CROSSEXAM
 
 // some types
@@ -30,43 +30,56 @@ typedef struct {
 enum {
     EV_NONE,
 
-    EV_BADGE,
-    EV_MAGATAMA,
-    EV_FILLIES,
-    EV_E_BADGE,
-    EV_PHOTO1,
-    EV_BURNT,
-    EV_PHOTO2,
-    EV_FEATHER,
-    EV_AUTOPSY,
-    EV_EVERFREE1,
-    EV_WEATHER,
-    EV_CLOUDREPORT,
-    EV_PICTURES,
-    EV_BLACKMAIL,
-    EV_ACEKEY,
-    EV_TORNRESIGN,
-    EV_UNICORNSPELL,
-    EV_LIST,
-    EV_INTERNAL_NOQUESTIONCLOUD,    // did not question the storm cloud evidence
-    
+    EV_BADGE,                       // Nobody would believe I was an attorney without this.
+    EV_MAGATAMA,                    // A gift from Maya. Allows me to see if anyone is hiding any deep secret in their heart from me.
+    EV_FILLIES,                     // Earth Ponies founded Land. Unicorns use magic. Pegasi soar through the air.
+    EV_E_BADGE,                     // A heart shaped badge that gives all the privileges of an Equestrian defense Attorney
+    EV_PHOTO1,                      // Charred and blackened grass around body.
+    EV_BURNT,                       // A metal object that was severely burned by something. It is unidentifiable now.
+    EV_PHOTO2,                      // An imprint of what seems to be something long. Next to it some markings indicating someone had scuffled the dirt around.
+    EV_FEATHER,                     // A suspicious brown feather that doesn't belong to a bird or a pony.
+    EV_AUTOPSY,                     // Estimated time of death: 8:30pm - 9:00pm. Cause: died instantly due to severe electrocution. Burn mark on the back of neck: unknown cause.
+    EV_EVERFREE1,                   // A diagram of the scene of the crime and where lightning struck that night. (#154)
+    EV_WEATHER,                     // Rainbow Dash scheduled to create a thunder storm at 3:00PM on the eastern side of Ponyville.
+    EV_CLOUDREPORT,                 // A cloud Rainbow Dash was in charge of disappeared at 4:00PM on the night of the murder, and was found above the Everfree Forest Clearing.
+    EV_PICTURES,                    // Several pictures of Rainbow Dash... Why in her right mind would she be doing this...? Photos found in a bag on the victim.
+    EV_BLACKMAIL,                   // A letter blackmailing Rainbow Dash that she found on her doorstep.
+    EV_ACEKEY,                      // A key to the hotel Ace Swift was staying in while in Ponyville.
+    EV_TORNRESIGN,                  // Someone was planning on quitting something after the Equestrian 500. The other half is missing.
+    EV_UNICORNSPELL,                // A book found in the victim's hotel room. Small note scribbled on one of the pages. "Continue from here."
+    EV_LIST,                        // A list with several names including Rainbow Dash.
+
+    // internal inventory items
+    EV_START_INTERNAL,              // don't display evidence starting here - internal flags
+    EV_I_NOQUESTIONCLOUD,           // did not question the storm cloud evidence (for example)
+
+    // story tags - not stored in inventory, but used to find blocks
+    EV_START_TAGS,                  // story tags - do not store in inventory starting here
+    EV_T_SNDBCK,
+    EV_T_SNDBCK2,
+    EV_T_WHORU,
+    EV_T_CRIME,
+    EV_T_DETAIL,
+
     EV_MAX,
 
     // people are just special evidence, so I need them in the same list
     // they need to be in the MSB anyway, and PP_FIRST is used for the '??????' person
+    // note that we will have more than 256 evidences including all the flags and story tags (probably), so
+    // EV_xxx is legal up to 0x7FFF
     PP_FIRST      = 0x8000,
     PP_UNKNOWN    = 0x8100,
 
-    PP_PHOENIX    = 0x8200,
-    PP_TWILIGHT   = 0x8300,
-    PP_RAINBOW    = 0x8400,
-    PP_ACE        = 0x8500,
-    PP_FLUTTERSHY = 0x8600,
-    PP_TRIXIE     = 0x8700,
-    PP_JUDGE      = 0x8800,
-    PP_APPLEBLOOM = 0x8900,
-    PP_PINKIE     = 0x8a00,
-    PP_SONATA     = 0x8b00,
+    PP_PHOENIX    = 0x8200,         // That's me, attorney at law! I seem to have been called to Equestria via magic.
+    PP_TWILIGHT   = 0x8300,         // Unicorn disciple of Princess Celestia. Summoned the 'Greatest Defense Attorney' to Equestria.
+    PP_RAINBOW    = 0x8400,         // Pegsus racer, the 'best flier in Equestria'. Accused of the murder of Ace Swift.
+    PP_ACE        = 0x8500,         // The victim, a professional pegasus racer. Never lost an event. Found dead in the Everfree Forest.
+    PP_FLUTTERSHY = 0x8600,         // Pegasus friend of Rainbow Dash. Witness who lives near the Everfree Forest.
+    PP_TRIXIE     = 0x8700,         // The Great and Powerful Trixie, unicorn magician and prosecutor. Has a grudge against Twilight.
+    PP_JUDGE      = 0x8800,         // The Judge also seems to have been called! He's fair, though easily confused.
+    PP_APPLEBLOOM = 0x8900,         // Earth pony child, Cutie Mark Crusader. Witness who was in the Everfree Forest the night of the crime.
+    PP_PINKIE     = 0x8a00,         // Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash.
+    PP_SONATA     = 0x8b00,         // Unicorn manager of Ace Swift. Resembles Mia from my own realm.
 
     PP_LAST       = 0x8c00
 };
@@ -110,13 +123,15 @@ typedef struct {
     const char* text;    // frame text
 } Story_t;
 
-// commands all need to be in the LAB
+// commands all need to be in the LSB
 enum {
     CMD_NONE = 0    ,
 
     CMD_FLASH       , // draw a white flash and play boom - ignore frame
     CMD_BLACK       , // draw a black screen - ignore frame (but clear last frame so we know to load again)
                     
+    CMD_SFXSTARTLIST, // find SFXs
+
     CMD_CROWDSFX    , // play crowd noise
     CMD_HAMMERSFX   , // play hammer sound
     CMD_BOOMSFX     , // play boom sound
@@ -127,29 +142,39 @@ enum {
     CMD_CRASHSFX    , // play crash sfx
     CMD_RIPSFX      , // play rip sfx
     CMD_WHOOSHSFX   , // play whoosh sfx
+
+    CMD_SFXENDLIST  , // end SFX list
                     
+    CMD_VOICESTARTLIST, // find voice commands
+
     CMD_TRIXIEOBJ   , // play trixie objection
     CMD_PHOENIXOBJ  , // play phoenix objection
     CMD_TWIOBJ      , // play twilight objection
     CMD_FLUTTEROBJ  , // play fluttershy objection
     CMD_JUDGEOBJ    , // play judge objection
     CMD_GROUPOBJ    , // play group objection
-                    
     CMD_TRIXIEHOLD  , // play trixie holdit
     CMD_PHOENIXHOLD , // play phoenix holdit
-                    
     CMD_PHOENIXTAKE , // play phoenix take that!
+
+    CMD_VOICEENDLIST, // end of voice commands
 
     CMD_SHOWEV      , // request show evidence, text will say why. Examination struct will treat as objection.
     CMD_ENDSTORY    , // end this story sequence and return to main loop. Story stores new location in evidence field and will jump to it.
     CMD_REMOVEEV    , // remove evidence from inventory (evidence field) and go to next line
-    CMD_ADDEV       , // add evidence (evidence field) and go to next line. Only needed if you need the next line part
+    CMD_ADDEV       , // add evidence (evidence field) and go to next line. Only needed if you need the next line part, otherwise use -EV_xxx
     CMD_ASKOBJECT   , // ask whether we should object, branch to evidence as a story text if we do
-    CMD_SKIPIFEV    , // skip this line if we have a certain evidence (for story control)
+    CMD_SKIPIFEV    , // skip this line if we have a certain evidence - evidence in evidence, skip tag in picture id
+    CMD_ADDPROMPT   , // Add this string and EV_I_name to the conversation prompts (and skip to the next one) - EV is how we find it
+    CMD_DELPROMPT   , // delete the EV_xxx prompt from the list (only used if we need to, let the user go back)
+    CMD_CHANGEPROMPT, // update the tag and/or text of a prompt (if NONE or empty, no change)
+    CMD_SELPROMPT   , // go back to the prompt selection list (after this line)
                     
     CMD_STOPMUS     , // stop music
 
     // downloaded
+    CMD_MUSTARTLIST , // just to find the music block
+
     CMD_MUSSTEEL    , // Steel Samurai Ringtone
     CMD_MUSSTART    , // Apollo Justice - Start of a New Trial! - Apollo Justice Ace Attorney - Objection 2007 (used Objection 2011)
     CMD_MUSEXAM     , // Cross Examination - Moderate 2007 - Apollo Justice Ace Attorney
@@ -203,6 +228,7 @@ enum {
     // not listed in the game credits but downloaded anyway
     // testimony-allegro (apparently no tracks are called that... might already have it then)
 
+    CMD_MUSENDLIST  , // just to find the end
 };
 
 // and here for every location we define the type - Locations will define the story data
@@ -219,17 +245,21 @@ enum {
 
 #ifdef LOCATION_IS_1
 // library, question Twilight
-#define LOCATION_TYPE_INTERROGATION
+#define LOCATION_TYPE_STORY
+// sfx
+#define HAS_BOOMSFX
+// music
+// TODO: I have to look what music it uses
 #endif
 
 #ifdef LOCATION_IS_2
 // outside detention center
-#define LOCATION_TYPE_INTERROGATION
+#define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_3
 // interview dash
-#define LOCATION_TYPE_INTERROGATION
+#define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_4
@@ -239,7 +269,7 @@ enum {
 
 #ifdef LOCATION_IS_5
 // fluttershy's cottage
-#define LOCATION_TYPE_INTERROGATION
+#define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_6
@@ -259,7 +289,7 @@ enum {
 
 #ifdef LOCATION_IS_12
 // Trixie's case
-#define LOCATION_TYPE_INTERROGATION
+#define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_13
@@ -274,7 +304,7 @@ enum {
 
 #ifdef LOCATION_IS_15
 // Trixie and Dash's motive
-#define LOCATION_TYPE_INTERROGATION
+#define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_16
@@ -294,12 +324,12 @@ enum {
 
 #ifdef LOCATION_IS_21
 // outside courtroom, talk to Pinkie
-#define LOCATION_TYPE_INTERROGATION
+#define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_22
 // detention center with Dash
-#define LOCATION_TYPE_INTERROGATION
+#define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_23
@@ -314,7 +344,7 @@ enum {
 
 #ifdef LOCATION_IS_25
 // Caught by Sonata
-#define LOCATION_TYPE_INTERROGATION
+#define LOCATION_TYPE_STORY
 #endif
 
 

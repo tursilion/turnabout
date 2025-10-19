@@ -64,3 +64,7 @@ void play_sfx(int sfx) {
         break;
     }
 }
+
+// play voice clips - TODO: still deciding what these will look like
+void play_voice(int voice) {
+}

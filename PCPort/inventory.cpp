@@ -4,6 +4,8 @@
 #include "engine.h"
 #include <conio.h>
 
+// TODO: get the inventory/person menu with descriptions working
+
 // returns the element selected (might be an item or it might be a person)
 int run_inventory() {
     // just a text display - so need a custom draw function

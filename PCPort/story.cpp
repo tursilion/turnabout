@@ -4,35 +4,95 @@
 // we only need to process the contents of story[]. When we reach CMD_ENDSTORY, the evidence field tells us who to load
 // when changing location, be sure to draw black and stop music
 
+// TODO: we can use sprites to show blinking letters of available keys (N, P, O, etc)
+
 #include <conio.h>
 #include <string.h>
 #include "engine.h"
 #include "sfx.h"
 #include "music.h"
+#include "kscan.h"
 
 extern Story_t story[];
+extern int nStorySize;
 extern int run_inventory();
 extern void run_aid();
+
+// current story index
+static int index = 0;
+
+// conversation prompts that can be prompted
+// it's an error to enter prompt mode without registering any!
+struct _PROMPTS {
+    int tagid;          // make sure to only register EV_T_xxx tags - zero means unset
+    int isread;         // set if the text was read already
+    const char *str;    // pointer to the string to display for it (from the story text)
+} prompts[8];
+
+void change_index(int tag) {
+    for (index = 0; index < nStorySize; ++index) {
+        if ((story[index].evidence == tag) && ((story[index].cmdwho&0xff) == CMD_NONE)) {
+            return;
+        }
+    }
+    index = 0;  // couldn't find it - start over
+}
+
+// get a prompt from the user and update the index
+void conversation() {
+    // draw out the menu
+    set_name(PP_NONE);  // needed to force the name to redraw after the menu
+    set_text("");
+    draw_screen();
+    int max = 0;
+    for (int i=0; i<8; ++i) {
+        if (prompts[i].tagid == 0) break;
+        gotoxy(2, 16+i);
+        if (prompts[i].isread) reverse(1);
+        cprintf("%c %s", i+'1', prompts[i].str);
+        reverse(0);
+        max = i;
+    }
+
+    for (;;) {
+        VDP_WAIT_VBLANK_CRU;
+        VDP_CLEAR_VBLANK;
+        update_music();
+
+        kscanfast(0);
+        if ((KSCAN_KEY > '0') && (KSCAN_KEY <= max+'1')) break;
+    }
+
+    int newid = KSCAN_KEY-'1';
+    prompts[newid].isread=1;
+    change_index(prompts[newid].tagid);
+}
 
 // returns the next location to run
 int run_story() {
     // story text is very simple - it just has to run the story text until it's finished (or told to exit)
-    int index = 0;
     int lastimg = -1;
+
+    // prep
+    memset(prompts, 0, sizeof(prompts));
+    index = 0;
 
     for (;;) {
         // process the current line
+        int cmdID = story[index].cmdwho&0xff;
 
         // music being somewhat special, we'll check here - if it's a stop command, we should
         // stop it before we load, to reduce hiccups.
-        if ((story[index].cmdwho&0xff) == CMD_STOPMUS) {
+        if (cmdID == CMD_STOPMUS) {
             stop_music();
         }
 
-        // do the image
-        if (story[index].frame != lastimg) {
-            load_image(story[index].frame);
-            lastimg = story[index].frame;
+        // do the image (if not overridden)
+        if ((cmdID == 0) || (cmdID == CMD_FLASH) || (cmdID == CMD_SELPROMPT)) {
+            if (story[index].frame != lastimg) {
+                load_image(story[index].frame);
+                lastimg = story[index].frame;
+            }
         }
 
         // check for add inventory - a negative inventory is an add with no command
@@ -40,8 +100,18 @@ int run_story() {
             add_inventory(-story[index].evidence);
         }
 
-        // process commands
-        switch (story[index].cmdwho&0xff) {
+        // doing music this way should take less code than in the switch... just keep the order
+        if ((cmdID > CMD_MUSTARTLIST) && (cmdID < CMD_MUSENDLIST)) {
+            play_music(cmdID);
+        } else
+        if ((cmdID > CMD_SFXSTARTLIST) && (cmdID < CMD_SFXENDLIST)) {
+            play_sfx(cmdID);
+        } else
+        if ((cmdID > CMD_VOICESTARTLIST) && (cmdID < CMD_VOICEENDLIST)) {
+            play_voice(cmdID);
+        } else
+        // process other commands
+        switch (cmdID) {
             case CMD_FLASH       : // draw a white flashand play boom - ignore frame (we can invert colors once so we don't need to reload)
                 invert_image();
                 play_sfx(CMD_BOOMSFX);
@@ -75,80 +145,59 @@ int run_story() {
             case CMD_ASKOBJECT   : // ask whether we should object, branch to evidence as a story text if we do
                 break;
 
-            case CMD_SKIPIFEV    : // skip to 'evidence' line if we have a certain evidence (for story control)
-                break;
+            case CMD_SKIPIFEV    : // skip to 'evidence' line (EV_T_xxx) if we have a certain evidence (for story control)
+                if (has_inventory(story[index].evidence)) {
+                    change_index(story[index].frame);
+                } else {
+                    ++index;
+                }
+                continue;
 
-            case CMD_CROWDSFX    : // play crowd noise
-            case CMD_HAMMERSFX   : // play hammer sound
-            case CMD_BOOMSFX     : // play boom sound
-            case CMD_LAUGHSFX    : // play crowd laughter
-            case CMD_BREAKSFX    : // play break psychlock sfx
-            case CMD_PARTYSFX    : // play party horn sfx
-            case CMD_JOKESFX     : // play rimshot sfx
-            case CMD_CRASHSFX    : // play crash sfx
-            case CMD_RIPSFX      : // play rip sfx
-            case CMD_WHOOSHSFX   : // play whoosh sfx
-                play_sfx(story[index].cmdwho&0xff);
-                break;
+            case CMD_ADDPROMPT   : // Add this string and EV_I_name to the conversation prompts (and skip to the next one) - EV is how we find it
+                for (int i=0; i<8; ++i) {
+                    if (prompts[i].tagid == story[index].evidence) {
+                        // already exists
+                        break;
+                    }
+                    if (prompts[i].tagid == 0) {
+                        prompts[i].tagid = story[index].evidence;
+                        prompts[i].str = story[index].text;
+                        prompts[i].isread = 0;
+                        break;
+                    }
+                }
+                ++index;
+                continue;
 
-            case CMD_TRIXIEOBJ   : // play trixie objection
-            case CMD_PHOENIXOBJ  : // play phoenix objection
-            case CMD_TWIOBJ      : // play twilight objection
-            case CMD_FLUTTEROBJ  : // play fluttershy objection
-            case CMD_JUDGEOBJ    : // play judge objection
-            case CMD_GROUPOBJ    : // play group objection
-            case CMD_TRIXIEHOLD  : // play trixie holdit
-            case CMD_PHOENIXHOLD : // play phoenix holdit
-            case CMD_PHOENIXTAKE : // play phoenix take that!
-                break;
+            case CMD_DELPROMPT   : // delete the EV_xxx prompt from the list (only used if we need to, let the user go back)
+                for (int i=0; i<8; ++i) {
+                    if (prompts[i].tagid == story[index].evidence) {
+                        prompts[i].tagid = 0;
+                        break;
+                    }
+                }
+                ++index;
+                continue;
 
-            case CMD_MUSPROLOG   : // Apollo Justice - Prologue
-            case CMD_MUSSTEEL    : // Steel Samurai Ringtone
-            case CMD_MUSLOUNGE   : // Courtroom Lounge - Another Prelude - Phoenix Wright: Justice for All
-            case CMD_MUSMLP      : // My Little Pony - Friendship is Magic Theme (8-bit) - RainbowCrash88
-            case CMD_MUSTROUPE   : // Gramarye Troupe - Apollo Justice Ace Attorney
-            case CMD_MUSTRIAL    : // Ace Attorney 4 - Trial - Apollo Justice Ace Attorney
-            case CMD_MUSTRACE    : // Trance Logic - Apollo Justice Ace Attorney
-            case CMD_MUSTRICK    : // Trick and Magic - Phoenix Wright: Justice for All
-            case CMD_MUSCRUSADE  : // Crusading - SoloAcapello
-            case CMD_MUSEXAM     : // Examination - Moderate 2007 - Apollo Justice Ace Attorney
-            case CMD_MUSSTART    : // Apollo Justice - Start of a New Trial! - Apollo Justice Ace Attorney
-            case CMD_MUSCHESS    : // Logic Chess - Moderato - Ace Attorney Investigations 2
-            case CMD_MUSOBJECT   : // Objection! 2009 - Ace Attorney Investigations 2
-            case CMD_MUSTHRILL   : // Thrill Theme - Suspense
-            case CMD_MUSINTEREST : // Interesting People - Ace Attorney Investigations
-            case CMD_MUSSUSPENSE : // Suspense - Phoenix Wright Ace Attorney
-            case CMD_MUSPEARLY   : // With Pearly - Phoenix Wright Justice for All
-            case CMD_MUSCROSS    : // Cross Examination - Moderate 2002 - Phoenix Wright Justice For All
-            case CMD_MUSSISTER   : // Turnabout Sisters - Capcom
-            case CMD_MUSSMILE    : // Smile Instrumental - Hasbro
-            case CMD_MUSKLAVIER  : // Klavier's Theme - Capcom
-            case CMD_MUSLOCK     : // Lock on the Heart - Capcom
-            case CMD_MUSGIGGLE   : // Giggle at the Ghosties - Hasbro
-            case CMD_MUSINVEST   : // Investigation Middle - Capcom
-            case CMD_MUSCLOCK    : // Like Clockwork - SoloAcapello
-            case CMD_MUSSPECIAL  : // Special Delivery! - SoloAcapello
-            case CMD_MUSRARITY   : // Rarity's Theme - MandoPony
-            case CMD_MUSAJ       : // Applejack's Theme - AcousticBrony
-            case CMD_MUSSWEPT    : // Sweptaway Turnabout - Capcom
-            case CMD_MUSHOTLINE  : // Hotline to Destiny - Capcom
-            case CMD_MUSKG8      : // KG-8 Case - Capcom
-            case CMD_MUSPRELUDE  : // Unending Prelude - Capcom
-            case CMD_MUSBEGIN    : // Court Begins - Capcom
-            case CMD_MUSCOOL     : // Too Cool For You, Dweeb - SoloAcapello
-            case CMD_MUSTRUTH    : // Tell the Truth 2002 - Capcom
-            case CMD_MUSLYING    : // Lying Coldly - Capcom
-            case CMD_MUSMEMORY   : // Memories - SoloAcapello
-            case CMD_MUSCOURT    : // Court Begins Orchestrated - Capcom
-            case CMD_MUSPURSUIT  : // Pursuit - Questioned - Capcom
-            case CMD_MUSEND      : // Ace Attorney ~ End - Capcom
-            case CMD_MUSTRIALS   : // Trials and Tribulation WiiWare Rips - HoodieD
-            case CMD_MUSMOON     : // Moonlight Sonata - The Orchard Music
-            case CMD_MUSCORNERED : // Pursuit Cornered 2001 - Capcom
-            case CMD_MUSWON      : // Won the Lawsuit - Magical Trick Society
-            case CMD_MUSWINTER   : // Winter Wrap Up - David Larson
-                play_music(story[index].cmdwho&0xff);
-                break;
+            case CMD_CHANGEPROMPT   : // update the EV_xxx prompt with new target and/or text
+                for (int i=0; i<8; ++i) {
+                    if (prompts[i].tagid == story[index].evidence) {
+                        if (story[index].frame != 0) {
+                            prompts[i].tagid = story[index].frame;
+                        }
+                        if (*story[index].text != '\0') {
+                            prompts[i].str = story[index].text;
+                        }
+                        break;
+                    }
+                }
+                ++index;
+                continue;
+
+            case CMD_SELPROMPT   : // go back to the prompt selection list (after this line)
+                // updates index
+                conversation();
+                continue;
 
             default:
                 break;
