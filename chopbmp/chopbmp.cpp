@@ -7,7 +7,7 @@
 #include <iostream>
 #include <stdio.h>
 
-unsigned char buf[8192+32];
+unsigned char buf[8192+32+128+128];
 FILE *fp;
 
 void fixbuf(unsigned char *buf, char *mode) {
@@ -17,10 +17,10 @@ void fixbuf(unsigned char *buf, char *mode) {
         // nothing to do, it already starts at the top
     } else if (0 == strcmp(mode, "middle")) {
         // take four rows off the top. Each row is 32*8 bytes
-        memmove(128+buf, 128+buf+32*8*4, 32*8*16);
+        memmove(128+buf, 128+buf+32*8*4, 32*8*20);  // copy 20 rows starting 4 down
     } else if (0 == strcmp(mode, "bottom")) {
         // take 8 rows off the top
-        memmove(128+buf, 128+buf+32*8*8, 32*8*16);
+        memmove(128+buf, 128+buf+32*8*8, 32*8*16);   // copy 16 rows starting 8 down
     } else {
         printf("Unknown mode %s\n", mode);
         exit(1);
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
         }
     }
     printf("Found %s\n", szfn);
-    if (fread(buf, 1, 0x1800, fp) < 6144) {
+    if (fread(buf, 1, 0x1800+128, fp) < 6144) {
         printf("* Already processed\n");
         return 1;
     }
@@ -69,10 +69,10 @@ int main(int argc, char *argv[])
         fp = fopen(szfn, "rb");
         if (NULL != fp) {
             printf("Found %s\n", szfn);
-            fread(&buf[0x1000], 1, 128+32, fp); // include room for the TIFILES header
+            fread(&buf[0x1000+128], 1, 128+32, fp); // include room for the TIFILES header
             fclose(fp);
             // move just the data
-            memmove(&buf[0x1000], &buf[0x1080], 32);
+            memmove(&buf[0x1000+128], &buf[0x1000+128+128], 32);
             // patch the TIFILES header
             buf[9]=0x11;    // length in sectors from 0x10 to 0x11
             buf[12]=0x20;   // with 32 bytes in the extra sector
@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
         printf("Failed to write %s\n", szfn);
         return 1;
     }
-    fwrite(buf, 1, 128+0x1000+buf[12], fp);
+    fwrite(buf, 1, 128+0x1000+buf[12], fp); // buf[12] is either 0 or 32, depending on palette presence
     fclose(fp);
 
     // now color
@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
         return 1;
     }
     printf("Found %s\n", szfn);
-    fread(buf, 1, 0x1800, fp);
+    fread(buf, 1, 0x1800+128, fp);
     fclose(fp);
     remove(szfn);
 

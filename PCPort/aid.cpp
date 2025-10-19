@@ -1,7 +1,5 @@
 // display keyboard help - full screen like inventory
 
-// TODO: need to have an option in the F18A GPU to disable the palette swap and only use palette 0
-
 #include "structures.h"
 #include "engine.h"
 #include "savegame.h"
@@ -14,7 +12,6 @@
 // can we fit them all on screen? Or should we take in which help to show?
 void run_aid() {
     // just a text display - so need a custom draw function
-
     // based on set_graphics, but different map and we don't touch the sprite table
     scrn_scroll = scrn_scroll_default;
 
@@ -29,6 +26,7 @@ void run_aid() {
     // leaving sprites at bitmap default of 0x1b00 and sprite patterns at 0x1800
     // text information is the same too, except for the flags
 	nTextFlags = TEXT_WIDTH_32;
+    fixed_image();  // fix F18A palette
 
     clrscr();
     vdpmemset(gColor, 0xe0, 32);
@@ -72,4 +70,5 @@ void run_aid() {
 
     // restore the bitmap screen - we'll just call the bmp function
     set_bitmap(0);
+    normal_image();
 }

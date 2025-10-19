@@ -3,7 +3,6 @@
 
     AORG >3880
 
-
 MAINLP
     clr r0
 
@@ -40,7 +39,7 @@ cplp1
 
 notload
     ci r0,>0200     * invert palette
-    jne MAINLP
+    jne notinv
 
     li r4,>FFFF     * something to subtract from (can't remember if 0RGB or RGB0 or what)
     li r0,>1000     * palette is located at >1000 after the (valid) pattern table data
@@ -56,5 +55,13 @@ cplp2
 clrcmd
     clr @>38ff      * zero command byte (and >38fe)
     jmp MAINLP
+
+notinv
+    ci r0,>0300     * fixed palette
+    jne MAINLP
+    li r0,>5000     * F18A palette table, bank 0
+    li r1,>5020     * F18A palette table, bank 1
+    li r2,8         * 16 entries to copy, unrolled a bit
+    jmp cplp1       * do the copy
 
     END

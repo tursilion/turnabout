@@ -158,7 +158,7 @@ Story_t story[] =  {                          //  012345678901234567890123456789
 {   EV_NONE,     5 , PP_PHOENIX  | CMD_NONE,     "How did you know my name? I haven't introduced myself yet..."  },
 {   EV_NONE,     16, PP_TWILIGHT | CMD_NONE,     "Oh-uh... I did... uh.. a quick identification spell."  },
 {   EV_NONE,     16, PP_PHOENIX  | CMD_NONE,     "Identication spell?"  },
-{   EV_NONE,     10, PP_TWILIGHT | CMD_NONE,     "Yeah! An identification spell! Anyway, let me prepare a few things, then we can go to the Detension Center."  },
+{   EV_NONE,     10, PP_TWILIGHT | CMD_NONE,     "Yeah! An identification spell! Anyway, let me prepare a few things, then we can go to the Detention Center."  },
 {   EV_NONE,     4,  PP_PHOENIX  | CMD_NONE,     "(After I get her inside there with her friend, I'll let her off easy and make her send me back home. There is no way I'm taking a case this weird...)"  },
 {   2,           4 , PP_PHOENIX  | CMD_ENDSTORY, ""  },
 };

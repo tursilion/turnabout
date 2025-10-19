@@ -24,79 +24,90 @@ Asm994a TMS99000 Assembler - v3.010
    3            
    4                AORG >3880
    5            
-   6            
-   7            MAINLP
-   8  3880 04C0     clr r0
-   9            
-  10  3882 D020     movb @>7000,r0  * get current scanline
-  10  3884 7000  
-  11  3886 0280     ci r0,>ff00     * bottom of frame (this continues from 255-261 (or 262?)) 
-  11  3888 FF00  
-  12  388A 1605     jne notbot
-  13            
-  14  388C 0200     li r0,>0100     * palette 1
-  14  388E 0100  
-  15  3890 D800     movb r0,@>6018  * VDP register >18 - palette index
-  15  3892 6018  
-  16  3894 10F5     jmp MAINLP
-  17            
-  18            notbot
-  19  3896 0280     ci r0,>7E00     * scanline 126
-  19  3898 7E00  
-  20  389A 1604     jne notmid
-  21  389C 04C0     clr r0          * palette 0
-  22  389E D800     movb r0,@>6018  * VDP register >18 - palette index
-  22  38A0 6018  
-  23  38A2 10EE     jmp MAINLP
-  24            
-  25            notmid
-  26  38A4 D020     movb @>38ff,r0  * check for command
-  26  38A6 38FF  
-  27  38A8 13EB     jeq MAINLP      * no command
-  28            
-  29  38AA 0280     ci r0,>0100     * load palette
-  29  38AC 0100  
-  30  38AE 160B     jne notload
-  31  38B0 0200     li r0,>1000     * palette is located at >1000 after the (valid) pattern table data
-  31  38B2 1000  
-  32  38B4 0201     li r1,>5020     * F18A palette table, bank 1
-  32  38B6 5020  
-  33  38B8 0202     li r2,8         * 16 entries to copy, unrolled a bit
-  33  38BA 0008  
-  34            cplp1
-  35  38BC CC70     mov *r0+,*r1+   * move two words
-  36  38BE CC70     mov *r0+,*r1+
-  37  38C0 0602     dec r2
-  38  38C2 16FC     jne cplp1
-  39  38C4 1010     jmp clrcmd
-  40            
-  41            notload
-  42  38C6 0280     ci r0,>0200     * invert palette
-  42  38C8 0200  
-  43  38CA 16DA     jne MAINLP
-  44            
-  45  38CC 0204     li r4,>FFFF     * something to subtract from (can't remember if 0RGB or RGB0 or what)
-  45  38CE FFFF  
-  46  38D0 0200     li r0,>1000     * palette is located at >1000 after the (valid) pattern table data
-  46  38D2 1000  
-  47  38D4 0201     li r1,>5020     * F18A palette table, bank 1
-  47  38D6 5020  
-  48  38D8 0202     li r2,16        * 16 entries to copy, not as easy to unroll
-  48  38DA 0010  
-  49            cplp2
-  50  38DC C0F0     mov *r0+,r3     * get the entry
-  51  38DE 6103     s r3,r4         * subtract it from FFFF
-  52  38E0 CC44     mov r4,*r1+     * write the result
-  53  38E2 0602     dec r2
-  54  38E4 16FB     jne cplp2
-  55            
-  56            clrcmd
-  57  38E6 04E0     clr @>38ff      * zero command byte (and >38fe)
-  57  38E8 38FF  
-  58  38EA 10CA     jmp MAINLP
-  59            
-  60  38EC 0000     END
-  60            
+   6            MAINLP
+   7  3880 04C0     clr r0
+   8            
+   9  3882 D020     movb @>7000,r0  * get current scanline
+   9  3884 7000  
+  10  3886 0280     ci r0,>ff00     * bottom of frame (this continues from 255-261 (or 262?)) 
+  10  3888 FF00  
+  11  388A 1605     jne notbot
+  12            
+  13  388C 0200     li r0,>0100     * palette 1
+  13  388E 0100  
+  14  3890 D800     movb r0,@>6018  * VDP register >18 - palette index
+  14  3892 6018  
+  15  3894 10F5     jmp MAINLP
+  16            
+  17            notbot
+  18  3896 0280     ci r0,>7E00     * scanline 126
+  18  3898 7E00  
+  19  389A 1604     jne notmid
+  20  389C 04C0     clr r0          * palette 0
+  21  389E D800     movb r0,@>6018  * VDP register >18 - palette index
+  21  38A0 6018  
+  22  38A2 10EE     jmp MAINLP
+  23            
+  24            notmid
+  25  38A4 D020     movb @>38ff,r0  * check for command
+  25  38A6 38FF  
+  26  38A8 13EB     jeq MAINLP      * no command
+  27            
+  28  38AA 0280     ci r0,>0100     * load palette
+  28  38AC 0100  
+  29  38AE 160B     jne notload
+  30  38B0 0200     li r0,>1000     * palette is located at >1000 after the (valid) pattern table data
+  30  38B2 1000  
+  31  38B4 0201     li r1,>5020     * F18A palette table, bank 1
+  31  38B6 5020  
+  32  38B8 0202     li r2,8         * 16 entries to copy, unrolled a bit
+  32  38BA 0008  
+  33            cplp1
+  34  38BC CC70     mov *r0+,*r1+   * move two words
+  35  38BE CC70     mov *r0+,*r1+
+  36  38C0 0602     dec r2
+  37  38C2 16FC     jne cplp1
+  38  38C4 1010     jmp clrcmd
+  39            
+  40            notload
+  41  38C6 0280     ci r0,>0200     * invert palette
+  41  38C8 0200  
+  42  38CA 1610     jne notinv
+  43            
+  44  38CC 0204     li r4,>FFFF     * something to subtract from (can't remember if 0RGB or RGB0 or what)
+  44  38CE FFFF  
+  45  38D0 0200     li r0,>1000     * palette is located at >1000 after the (valid) pattern table data
+  45  38D2 1000  
+  46  38D4 0201     li r1,>5020     * F18A palette table, bank 1
+  46  38D6 5020  
+  47  38D8 0202     li r2,16        * 16 entries to copy, not as easy to unroll
+  47  38DA 0010  
+  48            cplp2
+  49  38DC C0F0     mov *r0+,r3     * get the entry
+  50  38DE 6103     s r3,r4         * subtract it from FFFF
+  51  38E0 CC44     mov r4,*r1+     * write the result
+  52  38E2 0602     dec r2
+  53  38E4 16FB     jne cplp2
+  54            
+  55            clrcmd
+  56  38E6 04E0     clr @>38ff      * zero command byte (and >38fe)
+  56  38E8 38FF  
+  57  38EA 10CA     jmp MAINLP
+  58            
+  59            notinv
+  60  38EC 0280     ci r0,>0300     * fixed palette
+  60  38EE 0300  
+  61  38F0 16C7     jne MAINLP
+  62  38F2 0200     li r0,>5000     * F18A palette table, bank 0
+  62  38F4 5000  
+  63  38F6 0201     li r1,>5020     * F18A palette table, bank 1
+  63  38F8 5020  
+  64  38FA 0202     li r2,8         * 16 entries to copy, unrolled a bit
+  64  38FC 0008  
+  65  38FE 10DE     jmp cplp1       * do the copy
+  66            
+  67  3900 0000     END
+  67            
 
 
  Assembly Complete - Errors: 0,  Warnings: 0
@@ -109,6 +120,7 @@ Asm994a TMS99000 Assembler - v3.010
  CPLP2  ABS:38DC cplp2
  MAINLP ABS:3880 MAINLP
  NOTBOT ABS:3896 notbot
+ NOTINV ABS:38EC notinv
  NOTLOA ABS:38C6 notload
  NOTMID ABS:38A4 notmid
  R0     ABS:0000 R0

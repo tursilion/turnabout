@@ -87,14 +87,6 @@ int run_story() {
             stop_music();
         }
 
-        // do the image (if not overridden)
-        if ((cmdID == 0) || (cmdID == CMD_FLASH) || (cmdID == CMD_SELPROMPT)) {
-            if (story[index].frame != lastimg) {
-                load_image(story[index].frame);
-                lastimg = story[index].frame;
-            }
-        }
-
         // check for add inventory - a negative inventory is an add with no command
         if (story[index].evidence < 0) {
             add_inventory(-story[index].evidence);
@@ -112,15 +104,6 @@ int run_story() {
         } else
         // process other commands
         switch (cmdID) {
-            case CMD_FLASH       : // draw a white flashand play boom - ignore frame (we can invert colors once so we don't need to reload)
-                invert_image();
-                play_sfx(CMD_BOOMSFX);
-                for (int j=0; j<12; ++j) {
-                    draw_screen();
-                }
-                normal_image();
-                break;
-                
             case CMD_BLACK       : // draw a black screen - ignore frame (but clear last frame so we know to load again)
                 black_image();
                 lastimg = -1;
@@ -201,6 +184,24 @@ int run_story() {
 
             default:
                 break;
+        }
+
+        // do the image - if we don't want to, the command should continue above
+        if (cmdID != CMD_BLACK) {
+            if (story[index].frame != lastimg) {
+                load_image(story[index].frame);
+                lastimg = story[index].frame;
+            }
+        }
+
+        // special check for BOOM - has to be after picture load
+        if (cmdID == CMD_FLASH) {
+            invert_image();
+            play_sfx(CMD_BOOMSFX);
+            for (int j=0; j<12; ++j) {
+                draw_screen();
+            }
+            normal_image();
         }
 
         // update name and text
