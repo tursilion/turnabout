@@ -236,6 +236,11 @@ void setupgpu() {
         0x00,0x08,0x10,0xde
     };
 
+    // if we don't put something valid into VDPR1, we'll hang forever waiting
+    // for the VDP to tell us about end of frame. 0xe0 is the default, and if
+    // we turn off 0x40, we can blank the display. On return bitmap is set up.
+    VDP_SET_REGISTER(VDP_REG_MODE1, 0xa0);
+
     black_image();
     vdpmemcpy(0x3880, GPUPROG, sizeof(GPUPROG));
     
@@ -244,7 +249,7 @@ void setupgpu() {
     
     // now it's safe to start
     startgpu_f18a(0x3880);
-    
+
     // brief pause in case of Classic99
     VDP_WAIT_VBLANK_CRU;
     VDP_CLEAR_VBLANK;
