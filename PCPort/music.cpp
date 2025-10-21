@@ -1,6 +1,11 @@
+// TODO: Music should probably loop
+
 #include <sound.h>
+#include "sfx.h"
 #include "structures.h"
 #include "vgmcomp2/CPlayer.h"
+
+const unsigned char *pSong = NULL;
 
 void play_music(int music) {
     switch(music) {
@@ -9,6 +14,7 @@ void play_music(int music) {
     {
 static
 #include "..\music\processed\PROLOG.c"
+        pSong = MUS_PROLOG;
         StartSong(MUS_PROLOG, 0);
     }
         break;
@@ -18,6 +24,7 @@ static
         {
 static
 #include "..\music\processed\STEEL.c"
+        pSong = MUS_STEEL;
         StartSong(MUS_STEEL, 0);
         }
         break;
@@ -79,6 +86,7 @@ static
         {
 static
 #include "..\music\processed\SUSPENSE.c"
+            pSong = MUS_SUSPENSE;
             StartSong(MUS_SUSPENSE, 0);
         }
         break;
@@ -199,6 +207,16 @@ static
     case CMD_MUSWINTER: // Winter Wrap Up - David Larson
         break;
 #endif
+#ifdef HAS_MUSTRUCY
+    case CMD_MUSTRUCY:  // Trucy's theme - Child of Magic
+    {
+static
+#include "..\music\processed\TRUCY.c"
+        pSong = MUS_TRUCY;
+        StartSong(MUS_TRUCY, 0);
+    }
+        break;
+#endif
 
     default:
         break;
@@ -206,14 +224,21 @@ static
 }
 
 void stop_music() {
-    StopSong();
     MUTE_SOUND();
+    StopSong();
+    pSong = NULL;
+    play_sfx(CMD_CHIMESFX);
 }
 
 void update_music() {
     if (songNote[3]&SONGACTIVEACTIVE) {
         SongLoop();
     } else {
-        StopSong();
+        // handle loop, if set
+        if (NULL == pSong) {
+            StopSong();
+        } else {
+            StartSong(pSong, 0);
+        }
     }
 }

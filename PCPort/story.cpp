@@ -84,6 +84,7 @@ int run_story() {
         // music being somewhat special, we'll check here - if it's a stop command, we should
         // stop it before we load, to reduce hiccups.
         if (cmdID == CMD_STOPMUS) {
+            // TODO: We can't easily fade out. Should we play a chime like the animation does?
             stop_music();
         }
 

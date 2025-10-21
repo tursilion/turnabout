@@ -134,6 +134,7 @@ enum {
 
     CMD_CROWDSFX    , // play crowd noise
     CMD_HAMMERSFX   , // play hammer sound
+    CMD_CHIMESFX    , // play chime sound (mostly meant for cmd_stopmus)
     CMD_BOOMSFX     , // play boom sound
     CMD_LAUGHSFX    , // play crowd laughter
     CMD_BREAKSFX    , // play break psychlock sfx
@@ -217,6 +218,7 @@ enum {
     CMD_MUSWON      , // Won the Lawsuit - Magical Trick Society - Victory - Our First Win
     CMD_MUSAJ       , // Applejack's Theme - AcousticBrony
     CMD_MUSRARITY   , // Rarity's Theme - MandoPony - Using FIM Rarity MIDI instead
+    CMD_MUSTRUCY    , // Trucy's Theme - Child of Magic (Chords 0/1/2, 4/5/6, 7/8)
 
     // not available yet - will probably need to replace - how can I reach SoloAcapello? Might be able to ask Mando for Rarity's theme.
     CMD_MUSCRUSADE  , // Crusading (Apple Bloom) - SoloAcapello
@@ -230,6 +232,9 @@ enum {
 
     CMD_MUSENDLIST  , // just to find the end
 };
+
+// everyone has CHIMESFX (used in stop music)
+#define HAS_CHIMESFX
 
 // and here for every location we define the type - Locations will define the story data
 #ifdef LOCATION_IS_0
@@ -249,7 +254,7 @@ enum {
 // sfx
 #define HAS_BOOMSFX
 // music
-// TODO: I have to look what music it uses
+#define HAS_MUSTRUCY
 #endif
 
 #ifdef LOCATION_IS_2

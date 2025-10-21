@@ -16,12 +16,25 @@ void play_sfx(int sfx) {
 
 #ifdef HAS_BOOMSFX
         case CMD_BOOMSFX     : // play boom sound
-            SOUND(0xe6);    // select noise
+            SOUND(0xe6);        // select noise
             for (unsigned char i=0; i<16; i++) {
-                SOUND(0xf0+i);
+                SOUND(0xf0+i);  // fade
                 VDP_WAIT_VBLANK_CRU;
             }
-            SOUND(0xff);    // make sure it ends muted
+            SOUND(0xff);        // make sure it ends muted
+            break;
+#endif
+
+#ifdef HAS_CHIMESFX
+        case CMD_CHIMESFX     : // play chime sound
+            SOUND(0x87);
+            SOUND(0x09);      // frequency will waver a bit around the 7
+            for (unsigned char i=0; i<32; i++) {
+                SOUND(0x87+(i&3));  // warble? probably should be a sine wave
+                SOUND(0x90+(i>>1)); // fade
+                VDP_WAIT_VBLANK_CRU;
+            }
+            SOUND(0x9f);    // make sure it ends muted
             break;
 #endif
 
