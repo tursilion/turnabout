@@ -20,8 +20,15 @@
 
 extern int run_story();
 extern Evidence_t evidence[EV_MAX];
+int evidence_found[EV_MAX];
 extern Evidence_t people[PP_MAX];
-extern "C" const unsigned int F18A_INITIAL[16];
+int people_found[PP_MAX];
+
+extern 
+#ifdef __cplusplus
+"C"
+#endif
+const unsigned int F18A_INITIAL[16];
 
 #ifdef CLASSIC99
 extern "C" void vgm_pcinit();
@@ -168,30 +175,28 @@ void black_image() {
 void add_inventory(int id) {
     if (id >= PP_FIRST) {
         id = (id-PP_FIRST)>>8;
-        people[id].found = 1;
+        people_found[id] = 1;
     } else if (id < EV_MAX) {
-        evidence[id].found = 1;
+        evidence_found[id] = 1;
     }
 }
 void remove_inventory(int id) {
-    if (id >= PP_FIRST) {
-        id = (id-PP_FIRST)>>8;
-        evidence[id].found = 0;
-    } else if (id < EV_MAX) {
-        evidence[id].found = 0;
+    // can't remove people
+    if (id < EV_MAX) {
+        evidence_found[id] = 0;
     }
 }
 // return non-zero if we have inventory
 int has_inventory(int id) {
     if (id >= PP_FIRST) {
         id = (id-PP_FIRST)>>8;
-        return (evidence[id].found != 0);
+        return (people_found[id] != 0);
     } else if (id < EV_MAX) {
-        return (evidence[id].found != 0);
+        return (evidence_found[id] != 0);
     }
     return 0;
 }
-void set_text(const char *p) {
+void set_textout(const char *p) {
     clear_text();
     pString = p;
 }
@@ -251,7 +256,12 @@ void setupgpu() {
 }
 
 //------
+#ifdef CLASSIC99
 extern "C" void debug_write(char *s, ...);
+#else
+#define debug_write(...) ((void)0)
+#endif
+
 int main()
 {
     debug_write("Starting up...");

@@ -5,3 +5,7 @@ x64/
 PCPort/x64/
 music/
 Debug/
+*.i
+*.o
+*.s
+

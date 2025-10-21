@@ -5,9 +5,11 @@
 // We'd get 320 if we switched to 40 column text mode... ah, but we don't control the CPU during TIPI calls.
 // F18A could do it, but then we'd need two different copies. Still, F18A conversions of the graphics would be nice.
 
+#ifdef CLASSIC99
 // define what we are building for here - this will eventually be external on the build line
-//#define LOCATION_IS_0
-#define LOCATION_IS_1
+#define LOCATION_IS_0
+//#define LOCATION_IS_1
+#endif
 
 // one of these for every location - see bottom of file
 //#define LOCATION_TYPE_INVESTIGATION
@@ -19,10 +21,9 @@
 #define NULL (0)
 #endif
 
-/* Evidence structure */
+/* Evidence structure - const side */
 typedef struct {
-    int found;                 /* 1 if player has discovered this clue, -1 for a hidden clue (internal state) */
-    const char *name;          /* Display name - first byte sets text color from TMS9918A palette if <16 */
+    const char *name;          /* Display name */
     const char *description;   /* Text shown when examined */
 } Evidence_t;
 

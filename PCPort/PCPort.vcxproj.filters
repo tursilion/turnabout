@@ -36,9 +36,6 @@
     <ClCompile Include="investigation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="interrogation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="crossexam.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -105,5 +102,9 @@
     <None Include="F18A_GPU.a99">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="crt0_ea5.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Makefile" />
   </ItemGroup>
 </Project>

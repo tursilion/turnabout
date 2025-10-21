@@ -144,7 +144,6 @@
     <ClCompile Include="aid.cpp" />
     <ClCompile Include="crossexam.cpp" />
     <ClCompile Include="Evidence.cpp" />
-    <ClCompile Include="interrogation.cpp" />
     <ClCompile Include="inventory.cpp" />
     <ClCompile Include="investigation.cpp" />
     <ClCompile Include="Locations.cpp" />
@@ -176,7 +175,9 @@
     <Text Include="vgmcomp2\readme.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="crt0_ea5.asm" />
     <None Include="F18A_GPU.a99" />
+    <None Include="Makefile" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

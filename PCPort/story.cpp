@@ -20,6 +20,8 @@ extern void run_aid();
 
 // current story index
 static int index = 0;
+// load loaded story picture
+int lastimg = -1;
 
 // conversation prompts that can be prompted
 // it's an error to enter prompt mode without registering any!
@@ -42,7 +44,7 @@ void change_index(int tag) {
 void conversation() {
     // draw out the menu
     set_name(PP_NONE);  // needed to force the name to redraw after the menu
-    set_text("");
+    set_textout("");
     draw_screen();
     int max = 0;
     for (int i=0; i<8; ++i) {
@@ -71,7 +73,6 @@ void conversation() {
 // returns the next location to run
 int run_story() {
     // story text is very simple - it just has to run the story text until it's finished (or told to exit)
-    int lastimg = -1;
 
     // prep
     memset(prompts, 0, sizeof(prompts));
@@ -190,8 +191,11 @@ int run_story() {
         // do the image - if we don't want to, the command should continue above
         if (cmdID != CMD_BLACK) {
             if (story[index].frame != lastimg) {
-                load_image(story[index].frame);
-                lastimg = story[index].frame;
+                // gcc doesn't treat story[index].frame as cachable, 
+                // or even story[index], so recalculates it all every access
+                int tmp = story[index].frame;
+                lastimg = tmp;
+                load_image(tmp);
             }
         }
 
@@ -207,7 +211,7 @@ int run_story() {
 
         // update name and text
         set_name(story[index].cmdwho & 0xff00);
-        set_text(story[index].text);
+        set_textout(story[index].text);
 
         // draw out the text - abort loop on space bar
         int len = (int)strlen(story[index].text);

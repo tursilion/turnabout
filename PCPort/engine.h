@@ -11,7 +11,7 @@ void black_image();
 void add_inventory(int id);
 void remove_inventory(int id);
 int has_inventory(int id);
-void set_text(const char *p);
+void set_textout(const char *p);
 void set_name(int i);
 void set_maxlen(int i);
 

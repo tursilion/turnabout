@@ -54,18 +54,26 @@ struct STRTYPE {
 };
 
 // External C interface
-extern "C" void vgm_pcinit();
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+void vgm_pcinit();
 
 // Call this function to prepare to play
 // pSbf - pointer to song block data
 // songNum - which song to play (starts at 0)
-extern "C" void StartSong(const unsigned char *pSbf, uWordSize songNum);
+void StartSong(const unsigned char *pSbf, uWordSize songNum);
 
 // Call this to stop the current song
-extern "C" void StopSong();
+void StopSong();
 
 // this needs to be called 60 times per second by your system
-extern "C" void SongLoop();
+void SongLoop();
+
+#ifdef __cplusplus
+}
+#endif
 
 // Don't call this, it's for use by the unpack codes
 uint8 getCompressedByte(STREAM *str);

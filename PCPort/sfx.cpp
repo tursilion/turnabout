@@ -20,6 +20,7 @@ void play_sfx(int sfx) {
             for (unsigned char i=0; i<16; i++) {
                 SOUND(0xf0+i);  // fade
                 VDP_WAIT_VBLANK_CRU;
+                VDP_CLEAR_VBLANK;
             }
             SOUND(0xff);        // make sure it ends muted
             break;
@@ -33,6 +34,7 @@ void play_sfx(int sfx) {
                 SOUND(0x87+(i&3));  // warble? probably should be a sine wave
                 SOUND(0x90+(i>>1)); // fade
                 VDP_WAIT_VBLANK_CRU;
+                VDP_CLEAR_VBLANK;
             }
             SOUND(0x9f);    // make sure it ends muted
             break;

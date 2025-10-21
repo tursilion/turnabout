@@ -3,7 +3,11 @@
 #include <sound.h>
 #include "sfx.h"
 #include "structures.h"
+#ifdef CLASSIC99
 #include "vgmcomp2/CPlayer.h"
+#else
+#include <TISNPlay.h>
+#endif
 
 const unsigned char *pSong = NULL;
 
@@ -13,7 +17,7 @@ void play_music(int music) {
     case CMD_MUSPROLOG: // Apollo Justice - Prologue
     {
 static
-#include "..\music\processed\PROLOG.c"
+#include "../music/processed/PROLOG.c"
         pSong = MUS_PROLOG;
         StartSong(MUS_PROLOG, 0);
     }
@@ -23,7 +27,7 @@ static
     case CMD_MUSSTEEL: // Steel Samurai Ringtone
         {
 static
-#include "..\music\processed\STEEL.c"
+#include "../music/processed/STEEL.c"
         pSong = MUS_STEEL;
         StartSong(MUS_STEEL, 0);
         }
@@ -85,7 +89,7 @@ static
     case CMD_MUSSUSPENSE: // Suspense - Phoenix Wright Ace Attorney
         {
 static
-#include "..\music\processed\SUSPENSE.c"
+#include "../music/processed/SUSPENSE.c"
             pSong = MUS_SUSPENSE;
             StartSong(MUS_SUSPENSE, 0);
         }
@@ -211,7 +215,7 @@ static
     case CMD_MUSTRUCY:  // Trucy's theme - Child of Magic
     {
 static
-#include "..\music\processed\TRUCY.c"
+#include "../music/processed/TRUCY.c"
         pSong = MUS_TRUCY;
         StartSong(MUS_TRUCY, 0);
     }
@@ -232,7 +236,12 @@ void stop_music() {
 
 void update_music() {
     if (songNote[3]&SONGACTIVEACTIVE) {
+#ifdef CLASSIC99
+        // note: real TI is not safe to call this function directly, it must use the macro
         SongLoop();
+#else
+        CALL_PLAYER_SN;
+#endif
     } else {
         // handle loop, if set
         if (NULL == pSong) {
