@@ -368,7 +368,8 @@ void __attribute__ ((noinline)) samsMapPage(int page, int location) {
 
 // only the loader needs this - we'll store the result in the VDP savedata
 int hasSams() {
-    volatile int* lower_exp = (volatile int*) 0x2000;
+    // TODO: this is also not safe in the classic99 build, which will need to run without SAMS
+    //volatile int* lower_exp = (volatile int*) 0x2000;
     samsMapOn();
     
     // TODO: figure out a safe way to do this -- banking out 0x2000 kills our variables and stack...

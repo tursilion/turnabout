@@ -17,7 +17,7 @@ extern int f18a, ams;
 // can we fit them all on screen? Or should we take in which help to show?
 void run_aid() {
     // based on set_graphics, but different map and we don't touch the sprite table
-    scrn_scroll = scrn_scroll_default;
+    //scrn_scroll = scrn_scroll_default;
 
     // this mode can exist without corrupting the bitmap screens
     unsigned char reg1 = VDP_MODE1_16K | VDP_MODE1_UNBLANK | VDP_MODE1_INT | 0;
