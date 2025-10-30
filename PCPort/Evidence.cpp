@@ -20,8 +20,6 @@ Evidence_t evidence[EV_MAX] = {
     { "Advanced Unicorn Spell Book",  /*282*/ "A book found in the victim's hotel room. Small note scribbled on one of the pages."    },
     { "List",	                      /*284*/ "A list with several names including Rainbow Dash."    }
 
-// TODO: need to make sure these elements are added to inventory at the correct location
-
 };
 
 

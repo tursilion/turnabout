@@ -6,17 +6,16 @@
 // when loading new files. Need a way to save and reload said preferences to disk so can
 // save your game and continue.
 
-// TODO: alter path for pics depending on whether F18A is available, and have F18A loader (16-color palette)
-// we can have a small GPU program change the palette for the bottom half - just use two palettes for quick change
-
 #include <sound.h>
 #include <conio.h>
 #include <string.h>
 #include <vdp.h>
 #include <files.h>
 #include <f18a.h>
+#include <kscan.h>
 #include "structures.h"
 #include "music.h"
+#include "savegame.h
 
 extern int run_story();
 extern Evidence_t evidence[EV_MAX];
@@ -41,6 +40,7 @@ int oldMaxtext = 32*7;
 int iName = -1;     // does NOT use PP_FIRST after it's set
 int oldName = -2;
 int f18a = 0;
+int ams = 0;
 
 struct PAB myPab = {0};
 
@@ -86,7 +86,6 @@ void load_image(int index) {
     char buf[256];
     int off,tmp;
 
-    // TODO: select a path for F18A or not
     //                     1         2         3         4
     //           01234567890123456789012345678901234567890123456789012345
     strcpy(buf, "PI.HTTPS://harmlesslion.com/phoenix/pics9918/p0000.TIAP");
@@ -112,7 +111,7 @@ void load_image(int index) {
     if (myPab.OpCode == 0) {
         memset(&myPab, 0, sizeof(myPab));
         myPab.OpCode = DSR_LOAD;
-        myPab.RecordNumber = 0x1020;    // only 2/3rds of the screen, plus F18A palette! Rememeber it will fail to load if larger!
+        myPab.RecordNumber = 0x1022;    // only 2/3rds of the screen, plus F18A palette! Rememeber it will fail to load if larger!
     }
 
     // load patterns
@@ -123,7 +122,7 @@ void load_image(int index) {
     if (f18a) {
         // load the palette - it's at the end of the image there
         // we can just send a palette command to the F18A
-        vdpchar(0x38ff, 0x01);  // load palette command
+        vdpchar(0x3900, 0x01);  // load palette command
     }
 
     // load colors (+5 cause we added 3 above for the indexes)
@@ -132,13 +131,72 @@ void load_image(int index) {
     dsrlnk(&myPab, VDP_PAB_ADDRESS);
 }
 
+#ifdef LOCATION_IS_LOADER
+// loads a full screen title image
+void load_title() {
+#define VDP_PAB_ADDRESS 0x3800
+    char buf[128];
+    unsigned char pal[32];
+    int off,tmp;
+
+    //                     1         2         3         4
+    //           01234567890123456789012345678901234567890123456789012345
+    strcpy(buf, "PI.HTTPS://harmlesslion.com/phoenix/pics9918/p9999.TIAP");
+    off = 54;   // points to the last character, we don't need to change the number
+
+    if (f18a) {
+        memcpy(&buf[40], "f18a/f", 6);
+    }
+
+    // check PAB
+    memset(&myPab, 0, sizeof(myPab));
+    myPab.OpCode = DSR_LOAD;
+    myPab.RecordNumber = 0x1802;    // 2 extra bytes for DSR security
+
+    // load palette if necessary
+    if (f18a) {
+        buf[off] = 'M';
+        myPab.VDPBuffer = gPattern;
+        dsrlnk(&myPab, VDP_PAB_ADDRESS);
+        // fetch the data
+        vdpmemread(0, pal, 32);
+        // load both palettes, then the GPU program won't interfere
+        loadpal_f18a((unsigned int*)pal, 0, 16);
+        loadpal_f18a((unsigned int*)pal, 16, 16);
+    }
+
+    // load patterns
+    buf[off] = 'P';
+    myPab.VDPBuffer = gPattern;
+    myPab.pName = (unsigned char*)buf;
+    dsrlnk(&myPab, VDP_PAB_ADDRESS);
+
+    // load colors
+    buf[off] = 'C';
+    myPab.VDPBuffer = gColor;
+    dsrlnk(&myPab, VDP_PAB_ADDRESS);
+
+    // reset the pab for later
+    myPab.OpCode = 0;
+}
+#endif
+
+// map a string of sprites (maximum 4) to the display
+void spritestring(const char*str, unsigned char col) {
+    int i = 0;
+    while (*str) {
+        sprite(i++, *str, col, 15*8-2, i*8+27*8);
+        ++str;
+    }
+}
+
 void invert_image() {
     // a real invert is too slow, but we can swap the color and pattern tables
     // rather than track it, a separate function can restore them
 
     // for F18A, invert the palette instead
     if (f18a) {
-        vdpchar(0x38ff, 0x02);  // invert palette command
+        vdpchar(0x3900, 0x02);  // invert palette command
     } else {
         VDP_SET_REGISTER(VDP_REG_CT, 0x7f);
 	    VDP_SET_REGISTER(VDP_REG_PDT, 0x07);
@@ -150,18 +208,25 @@ void normal_image() {
     // rather than track it, a separate function can restore them
 
     if (f18a) {
-        vdpchar(0x38ff, 0x01);  // load palette command
+        vdpchar(0x3900, 0x01);  // load palette command
     } else {
         VDP_SET_REGISTER(VDP_REG_CT, 0xFF);
 	    VDP_SET_REGISTER(VDP_REG_PDT, 0x03);
     }
 }
 
+void bitmap_screen() {
+    set_bitmap(0);
+    VDP_SET_REGISTER(VDP_REG_SDT, 2);   
+    gSpritePat=0x1000;  // move the sprite pattern table
+    vdpchar(gSprite, 0xd0); // all sprites off
+}
+
 void fixed_image() {
     // load the fixed TI palette into palette 1 (f18a only)
 
     if (f18a) {
-        vdpchar(0x38ff, 0x03);  // fixed palette command
+        vdpchar(0x3900, 0x03);  // fixed palette command
     }
 }
 
@@ -211,6 +276,12 @@ void set_name(int i) {
         iName = -1;
     }
 }
+void wait_for_key_release() {
+    kscanfast(0);
+    while (KSCAN_KEY != 0xff) {
+        kscanfast(0);
+    }
+}
 
 // F18A specific setup
 // TODO: this code is only needed in the initial boot program...
@@ -222,7 +293,7 @@ void setupgpu() {
         0xd8,0x00,0x60,0x18,0x10,0xf5,0x02,0x80,
         0x7e,0x00,0x16,0x04,0x04,0xc0,0xd8,0x00,
         0x60,0x18,0x10,0xee,
-        0xd0,0x20,0x38,0xff,0x13,0xeb,0x02,0x80,
+        0xd0,0x20,0x39,0x00,0x13,0xeb,0x02,0x80,
         0x01,0x00,0x16,0x0b,0x02,0x00,0x10,0x00,
         0x02,0x01,0x50,0x20,0x02,0x02,0x00,0x08,
         0xcc,0x70,0xcc,0x70,0x06,0x02,0x16,0xfc,
@@ -230,7 +301,7 @@ void setupgpu() {
         0x02,0x04,0xff,0xff,0x02,0x00,0x10,0x00,
         0x02,0x01,0x50,0x20,0x02,0x02,0x00,0x10,
         0xc0,0xf0,0x61,0x03,0xcc,0x44,0x06,0x02,
-        0x16,0xfb,0x04,0xe0,0x38,0xff,0x10,0xca,
+        0x16,0xfb,0x04,0xe0,0x39,0x00,0x10,0xca,
         0x02,0x80,0x03,0x00,0x16,0xc7,0x02,0x00,
         0x50,0x00,0x02,0x01,0x50,0x20,0x02,0x02,
         0x00,0x08,0x10,0xde
@@ -245,6 +316,7 @@ void setupgpu() {
     vdpmemcpy(0x3880, GPUPROG, sizeof(GPUPROG));
     
     // for the basics, load the same palette in 1 as well as what's expected in 0
+    loadpal_f18a(&F18A_INITIAL[0], 0, 16);
     loadpal_f18a(&F18A_INITIAL[0], 16, 16);
     
     // now it's safe to start
@@ -259,6 +331,88 @@ void setupgpu() {
     // set normal palette in 1
     normal_image();
 }
+
+// SAMS code by Jedimatt42
+// TODO: only the sample player needs these, so likely
+// we'll rewrite these in assembly, but keeping here for now for reference
+void __attribute__ ((noinline)) samsMapOn() {
+  __asm__(
+    "LI r12, >1E00\n\t"
+    "SBO 1\n\t"
+  );
+}
+
+void __attribute__ ((noinline)) samsMapOff() {
+  __asm__(
+    "LI r12, >1E00\n\t"
+    "SBZ 1\n\t"
+  );
+}
+
+void __attribute__ ((noinline)) samsMapPage(int page, int location) {
+  __asm__(
+      "LI r12, >1E00\n\t"
+      "SRL %0, 12\n\t"
+      "SLA %0, 1\n\t"
+      "SWPB %1\n\t"
+      "SBO 0\n\t"
+      "MOV %1, @>4000(%0)\n\t"
+      "SBZ 0\n\t"
+      "SWPB %1\n\t"
+      :
+      : "r"(location), "r"(page)
+      : "r12");
+}
+
+#ifdef LOCATION_IS_LOADER
+
+// only the loader needs this - we'll store the result in the VDP savedata
+int hasSams() {
+    volatile int* lower_exp = (volatile int*) 0x2000;
+    samsMapOn();
+    
+    // TODO: figure out a safe way to do this -- banking out 0x2000 kills our variables and stack...
+    // maybe we'll need to just write assembly for all the AMS stuff... we can always
+    // load wavs to VDP then copy to SAMS in scratchpad
+
+    // test two pages
+    samsMapPage(0, 0x2000);
+    *lower_exp = 0x1234;
+    samsMapPage(1, 0x2000);
+    *lower_exp = 0;
+    samsMapPage(0, 0x2000);
+    int detected = (*lower_exp == 0x1234);
+
+    if (detected) {
+        // set initial state of all pages
+        for(int i = 0; i < 4096; i++) {
+            samsMapPage(i, 0x2000);
+            *lower_exp = 0x1234;
+        }
+        // now mark pages and stop when they repeat
+        samsMapPage(0, 0x2000);
+        int pages = 0;
+        while(pages < 4096 && *lower_exp != 0xFFFF) {
+            *lower_exp = 0xFFFF;
+            samsMapPage(++pages, 0x2000);
+        }
+        samsMapOff();
+
+        // *** TODO *** return true if there is at least ????k
+        // how much do we need for the samples?
+        // there are 9 samples, each is a bit over a second, so
+        // lets say we need 20s worth of samples. At 8khz sampling,
+        // 4 bit is 4000 bytes per second, so 20,000 bytes. That
+        // means even the 128k AMS is adequate.
+        if (pages >= 32) {
+            return pages;
+        }
+    }
+    samsMapOff();
+    return 0;
+}
+
+#endif
 
 //------
 #ifdef CLASSIC99
@@ -276,12 +430,96 @@ int main()
     vgm_pcinit();
 #endif
 
+
+#if LOCATION_IS_LOADER
     // detect F18A for graphics (corrupts VDP registers)
     f18a = detect_f18a();
     if (f18a) {
         debug_write("F18A enabled");
-        setupgpu();
     }
+    ams = hasSams();
+    memset(evidence_found, 0, EV_MAX*sizeof(evidence_found[0]));
+    memset(people_found, 0, PP_MAX*sizeof(people_found[0]));
+    add_inventory(EV_BADGE);
+    add_inventory(EV_MAGATAMA);
+    add_inventory(PP_PHOENIX);
+
+    // setup bitmap mode
+    bitmap_screen();
+    vdpwriteinc(gImage, 0, 768);
+
+    // load the full screen title page
+    load_title();
+
+    // wait for keypress
+    wait_for_key_release();
+    while (KSCAN_KEY == 0xff) {
+        kscanfast(0);
+    }
+
+    // TODO: pre-load voices if ams is present
+    // if (ams) { }
+
+    // text mode, load charset
+    set_graphics(0);
+    vdpmemset(gImage, ' ', 768);
+    vdpmemset(gColor, 0xe0, 32);
+    if (f18a) {
+        setupgpu();     // load the program and default palette
+        fixed_image();  // fix F18A palette
+    }
+    charsetlc();
+
+    gotoxy(0,0);
+    //     01234567890123456789012345678901
+    cputs("Phoenix Wright / My Little Pony\n");
+    cputs("- Turnabout Storm\n\n");
+    cputs("Original video by PWaaMLPfim\n");
+    cputs("https://youtu.be/yUDfoZGhLjE\n");
+    cputs("Title image by HowXu\n");
+    cputs("https://www.deviantart.com/\n");
+    cputs("howxu/art/Phoenix-Wright-MLP-\n");
+    cputs("FIM-turnabout-storm-304455701\n\n");
+    cputs("This game is running LIVE over\n");
+    cputs("the internet and is a work in\n");
+    cputs("progress! Currently I have\n");
+    cputs("implemented 2 scenes which is\n");
+    cputs("about 2%% of the total script.\n\n");
+    // to get the percentage I'm looking at the last timestamp, and dividing it by about 6 hrs
+
+    // some hardware info
+    cprintf("SAMS detected: %dk\n", ams*4);
+    cprintf("F18A detected: %s\n\n", f18a?"yes":"no");
+
+    // ask player if they want to load or start a new game
+    // TODO: passwords too in the future? show them on AID screen?
+    cputs("Do you want to:");
+    cputs("1 Start a new game\n");
+    cputs("2 Load a saved game\n");
+    wait_for_key_release();
+
+    while (KSCAN_KEY == 0xff) {
+        kscanfast(0);
+        if ((KSCAN_KEY == '1') || (KSCAN_KEY == '2')) break;
+    }
+
+    // load VDP if requested, then jump to the saved chapter (from 0x3b00)
+    int nextloc = 0;
+    store_saved_data();
+    if (KSCAN_KEY == '2') {
+        // load file
+        loadgame();
+        VDP_SET_ADDRESS(SAVE_GAME_VDP + 32);
+        nextloc = VDPRD() << 8;
+        nextloc |= VDPRD();
+    }
+     
+#else
+    // restore the data from VDP
+    restore_saved_data();
+
+    // TODO: write the current location at 0x3b00 in case we save
+    // I'm not sure how that's going to work. Might have to just have a massive list of #ifdefs... maybe it goes in the location table?
 
     // hack the character set into the third page before we set bitmap
     // we load it twice so that we can have two colors
@@ -292,7 +530,7 @@ int main()
 
     // now set up bitmap mode
     // set top 2/3rds for image, bottom third for text (grey on black)
-    set_bitmap(0);
+    bitmap_screen();
     vdpwriteinc(gImage, 0, 512);
     vdpmemset(gImage+16*32, ' ', 8*32);
     // normal text is grey, high bit text is blue
@@ -302,19 +540,32 @@ int main()
 
     // start it up!
     int nextloc = run_story();
-    MUTE_SOUND();
+#endif
 
-    // load the next section...
+    // load the next section in nextloc...
+    // save the current state before we load
+    MUTE_SOUND();
+    store_saved_data();
+
+    // set up a text mode screen for the loader
+    fixed_image();  // fix F18A palette
+    reset_f18a();   // turn off GPU program
+    set_text();     // text mode has fewest requirements
+	VDP_SET_REGISTER(VDP_REG_SIT, 10);	gImage = 0x2800;
+	VDP_SET_REGISTER(VDP_REG_PDT, 4);	gPattern = 0x2000;
+    VDP_SET_REGISTER(VDP_REG_COL, (COLOR_GRAY<<4)|COLOR_BLACK);
+    charsetlc();
+	nTextFlags = TEXT_WIDTH_40;
+    vdpmemset(gImage, ' ', 40*24);
+    gotoxy(0,0);
+    cputs("Loading...");
+
+    // TODO: location index is in nextloc
+    // bring in the scratchpad loader and use it to load the next program
+    // use VDP >0000 as the buffer
+
 }
 
-// TODO: a boot program that serves as the entrance to the game, and
-// lets you load a save or start a new game.
-//
-// We might cheap out and save by password... or just offer the ability
-// to save the password AND display it on the screen? Can we use TIPI netvars?
-//
-// that program could also offer to disable F18A if detected
-//
 // Intermediate data is saved in VDP RAM between programs.
 //
 // VDP MAP:
@@ -323,7 +574,10 @@ int main()
 // 1000-17FF - bottom third character set - first 4 chars (32 bytes) overwritten in F18A mode
 // 1800-19FF - bitmap SIT
 // 1B00-1A7F - sprite attribute list
-// 1B80-1A9F - Text screen color table
+// 1A80-1A9F - Text screen color table
+// 1AA0-1AFF -
+// 1B00-1B7F - Sprite attribute list
+// 1B80-1B9F - help screen color table
 // 1BA0-1BFF - 
 // 1C00-1EFF - Text screen SIT
 // 1F00-1FFF -
@@ -331,7 +585,8 @@ int main()
 // 3000-37FF - bottom third color table
 // 3800-387F - PAB space
 // 3880-38FF - F18A GPU code
-// 3900-3BE3 - game data for between programs
+// 3900-390F - F18A GPU interface
+// 3910-39FF -
+// 3A00-3AFF - game data for between programs (see savegame.h)
+// 3B00-3BE3 - 
 // 3BE4-3FFF - DSR Buffers FILES(1)
-
-

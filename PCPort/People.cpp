@@ -18,5 +18,4 @@ Evidence_t people[PP_MAX] = {
     { "Pinkie Pie",	        /*211*/	"Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash."      },
     { "Sonata",	            /*287*/	"Unicorn manager of Ace Swift. Resembles Mia from my own realm."      }
 
-    // TODO: need to fill the appearence field in to the story 'add evidence' field as they are reached
 };

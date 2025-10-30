@@ -22,7 +22,7 @@ notbot
     jmp MAINLP
 
 notmid
-    movb @>38ff,r0  * check for command
+    movb @>3900,r0  * check for command
     jeq MAINLP      * no command
 
     ci r0,>0100     * load palette
@@ -53,7 +53,7 @@ cplp2
     jne cplp2
 
 clrcmd
-    clr @>38ff      * zero command byte (and >38fe)
+    clr @>3900      * zero command byte (and >38fe)
     jmp MAINLP
 
 notinv

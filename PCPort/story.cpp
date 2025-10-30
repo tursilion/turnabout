@@ -85,7 +85,6 @@ int run_story() {
         // music being somewhat special, we'll check here - if it's a stop command, we should
         // stop it before we load, to reduce hiccups.
         if (cmdID == CMD_STOPMUS) {
-            // TODO: We can't easily fade out. Should we play a chime like the animation does?
             stop_music();
         }
 
@@ -220,21 +219,36 @@ int run_story() {
             for (int j=0; j<2; ++j) {
                 draw_screen();
             }
-            if (kbhit()) {
-                if (cgetc() == ' ') {
-                    break;
-                }
+            kscanfast(0);
+            if (KSCAN_KEY == ' ') {
+                break;
             }
         }
         set_maxlen(len);
 
+        // wait for non-space to be released, space is okay as it's not used below
+        while ((KSCAN_KEY != 0xff) && (KSCAN_KEY != ' ')) {
+            kscanfast(0);
+        }
+
         // now enter command loop
+        int cnt = 0;
         for (;;) {
             draw_screen();
+            if (cnt%60 == 0) {
+                if (cnt%120 == 0) {
+                    // set up the sprite string
+                    spritestring("N", COLOR_WHITE);
+                } else {
+                    spritestring("N", COLOR_DKBLUE);
+                }
+            }
+            ++cnt;
 
             // read keyboard
-            if (!kbhit()) continue;
-            int ch = tolower(cgetc());
+            kscanfast(0);
+            if (KSCAN_KEY == 0xff) continue;
+            int ch = tolower(KSCAN_KEY);
 
             // act on 'next' or 'inventory'
             if (ch == 'n') {
@@ -254,6 +268,8 @@ int run_story() {
             }
         }
 
+        // clear the sprites
+        vdpchar(gSprite, 0xd0);
     }
 
     // should never get here

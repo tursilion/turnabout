@@ -7,7 +7,8 @@
 
 #ifdef CLASSIC99
 // define what we are building for here - this will eventually be external on the build line
-#define LOCATION_IS_0
+#define LOCATION_IS_LOADER
+//#define LOCATION_IS_0
 //#define LOCATION_IS_1
 #endif
 
@@ -238,8 +239,18 @@ enum {
 #define HAS_CHIMESFX
 
 // and here for every location we define the type - Locations will define the story data
+#ifdef LOCATION_IS_LOADER
+// it knows what to do
+#endif
+
+#ifdef LOCATION_IS_LOADER
+// Just the loader file, save game not valid here
+#define LOCATION_NUMER 0
+#endif
+
 #ifdef LOCATION_IS_0
 // intro story
+#define LOCATION_NUMER 0
 #define LOCATION_TYPE_STORY
 // sfx - will pretty much need to preload sfx
 #define HAS_BOOMSFX
@@ -251,6 +262,7 @@ enum {
 
 #ifdef LOCATION_IS_1
 // library, question Twilight
+#define LOCATION_NUMER 1
 #define LOCATION_TYPE_STORY
 // sfx
 #define HAS_BOOMSFX
@@ -260,28 +272,35 @@ enum {
 
 #ifdef LOCATION_IS_2
 // outside detention center
+#define LOCATION_NUMER 2
 #define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_3
 // interview dash
+#define LOCATION_NUMER 3
 #define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_4
 // post interview talk to twilight
+#define LOCATION_NUMER 4
 #define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_5
 // fluttershy's cottage
+#define LOCATION_NUMER 5
 #define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_6
 // everfree forest
+#define LOCATION_NUMER 6
 #define LOCATION_TYPE_INVESTIGATION
 #endif
+
+// I'm not sure if the skip makes sense...
 
 #ifdef LOCATION_IS_10
 // outside courtroom

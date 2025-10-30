@@ -1,5 +1,3 @@
-// TODO: Music should probably loop
-
 #include <sound.h>
 #include "sfx.h"
 #include "structures.h"
