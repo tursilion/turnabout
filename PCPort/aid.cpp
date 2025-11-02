@@ -4,6 +4,7 @@
 #include "engine.h"
 #include "savegame.h"
 #include "music.h"
+#include "aid.h"
 #include <conio.h>
 #include <kscan.h>
 #include <vdp.h>
@@ -15,7 +16,9 @@ extern int f18a, ams;
 
 // display the help keys, then return
 // can we fit them all on screen? Or should we take in which help to show?
-void run_aid() {
+void run_aid(int isFinal) {
+
+#ifndef LOCATION_IS_LOADER
     // based on set_graphics, but different map and we don't touch the sprite table
     //scrn_scroll = scrn_scroll_default;
 
@@ -32,25 +35,48 @@ void run_aid() {
 	nTextFlags = TEXT_WIDTH_32;
     fixed_image();  // fix F18A palette
     vdpchar(gSprite, 0xd0);  // sprites off
+#endif
 
     vdpmemset(gImage, ' ', 768);
     vdpmemset(gColor, 0xe0, 32);
     gotoxy(0,0);
 
+    if (isFinal) {
+        //     01234567890123456789012345678901
+        cputs("You have reached the end for\n");
+        cputs("now. You can save your game\n\n");
+    }
+
     //     01234567890123456789012345678901
     cputs("All scenes:\n\n");
-    cputs("N - next text\n");
-    cputs("I - inventory screen\n");
+    cputs("N - Next text\n");
+    cputs("I - Inventory screen\n");
     cputs("7 - Help screen (this)\n");
     cputs("SPACE - speed text\n\n");
     cputs("Cross-Examination:\n");
-    cputs("P - press for more info\n");
+    cputs("P - Press for more info\n");
     cputs("O - Object (present evidence)\n\n");
     
+#ifdef LOCATION_IS_LOADER
+    // ask player if they want to load or start a new game
+    // TODO: passwords too in the future? show them on AID screen?
+    cputs("Do you want to:\n\n");
+    cputs("1 Start a new game\n");
+    cputs("2 Load a saved game\n");
+    wait_for_key_release();
+
+    for (;;) {
+        kscanfast(0);
+        if ((KSCAN_KEY == '1') || (KSCAN_KEY == '2')) break;
+    }
+
+#else
     cputs("Press:\n");
-    cputs("QUIT to exit\n");
-    cputs("Q - Save game/passcode\n");
-    cputs("SPACE - return to game\n");
+    cputs(" QUIT to exit\n");
+    cputs(" S - Save game/passcode\n");
+    if (!isFinal) {
+        cputs(" SPACE - return to game\n");
+    }
 
     for (;;) {
         VDP_WAIT_VBLANK_CRU;
@@ -58,12 +84,12 @@ void run_aid() {
         update_music();
 
         kscanfast(0);
-        if (KSCAN_KEY == 'Q') {
+        if (KSCAN_KEY == 'S') {
             wait_for_key_release();
             savegame();
             continue;
         }
-        if (KSCAN_KEY == ' ') {
+        if ((!isFinal) && (KSCAN_KEY == ' ')) {
             wait_for_key_release();
             break;
         }
@@ -76,4 +102,6 @@ void run_aid() {
     // restore the bitmap screen - we'll just call the bmp function
     bitmap_screen();
     normal_image();
+#endif
+
 }

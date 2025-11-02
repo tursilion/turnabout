@@ -5,6 +5,7 @@
 #include <vdp.h>
 #include "structures.h"
 #include "savegame.h"
+#include "music.h"
 
 // static variables
 static struct PAB myPab = { 0 };
@@ -14,7 +15,15 @@ static char myFilename[16] = "";
 extern int evidence_found[EV_MAX];
 extern int people_found[PP_MAX];
 extern int f18a;
-extern int ams = 0;
+extern int ams;
+
+void set_default_data() {
+    if (myFilename[0] < ' ') {
+        memset(&myPab, 0, sizeof(myPab));
+        memset(myFilename, 0, sizeof(myFilename));
+        strcpy(myFilename, "DSK1.SAVEFILE");
+    }
+}
 
 // restore saved data from VDP RAM
 void restore_saved_data() {
@@ -48,10 +57,7 @@ void restore_saved_data() {
 
 void store_saved_data() {
     // if we've never set up the savegame PAB, zero the whole mess before we write it, just to be sure
-    if (myPab.OpCode == 0) {
-        memset(&myPab, 0, sizeof(myPab));
-        memset(myFilename, 0, sizeof(myFilename));
-    }
+    set_default_data();
 
     vdpmemcpy(SAVE_GAME_VDP, (unsigned char*)&myPab, 10);
     vdpmemcpy(SAVE_GAME_VDP+10, (unsigned char*)myFilename, 15);
@@ -84,17 +90,20 @@ static int getfilename() {
     int off;
 
     // get the filename
-    gotoxy(23,0);
+    gotoxy(0,23);
     cprintf("Filename: %s", myFilename);
 
     // a rudimentary text editor to edit the filename (max length 15 - path+10 char filename)
-    // not going to use kbhit and cgetc here, too slow. Am going to use full kscan because... why?
+    // not going to use kbhit and cgetc here, too slow. Am going to use full kscan to get arrows and back
     // work until enter
     off = 0;
     while (KSCAN_KEY != 13) {
         // wait for key release
         while (KSCAN_KEY != 0xff) {
             kscan(5);
+            VDP_WAIT_VBLANK_CRU;
+            VDP_CLEAR_VBLANK;
+            update_music();
         }
 
         // display cursor
@@ -103,6 +112,9 @@ static int getfilename() {
         // check input
         kscan(5);
         if (KSCAN_KEY == 0xff) {
+            VDP_WAIT_VBLANK_CRU;
+            VDP_CLEAR_VBLANK;
+            update_music();
             continue;
         }
         if (KSCAN_KEY == 15) {
@@ -114,7 +126,12 @@ static int getfilename() {
         if ((KSCAN_KEY == 8) && (off > 0)) {
             // left arrow
             // restore character
-            vdpchar(gImage+23*32+10+off, myFilename[off]);
+            if (myFilename[off] < '!') {
+                // assuming space or NUL
+                vdpchar(gImage+23*32+10+off, ' ');
+            } else {
+                vdpchar(gImage+23*32+10+off, myFilename[off]);
+            }
             --off;
             continue;
         }
@@ -154,11 +171,7 @@ static int getfilename() {
 // assumes we are already in a text compatible mode, and that the last line is free to use
 void savegame() {
     // if we've never set up the PAB, set it up now
-    if (myPab.OpCode == 0) {
-        memset(&myPab, 0, sizeof(myPab));
-        memset(myFilename, 0, sizeof(myFilename));
-        strcpy(myFilename, "DSK1.SAVEFILE");
-    }
+    set_default_data();
     store_saved_data();
 
     for (;;) {
@@ -173,6 +186,7 @@ void savegame() {
 
         if (getfilename()) {
             // skip save
+            vdpmemset(gImage+23*32, ' ', 32);
             return;
         }
 
@@ -186,6 +200,8 @@ void savegame() {
     }
 
     vdpmemset(gImage+23*32, ' ', 32);
+    gotoxy(0,23);
+    cputs("Save ok!");
 }
 
 // only the loader needs to loadgame
@@ -194,11 +210,7 @@ void savegame() {
 // assumes we are already in a text compatible mode, and that the last line is free to use
 void loadgame() {
     // if we've never set up the PAB, set it up now
-    if (myPab.OpCode == 0) {
-        memset(&myPab, 0, sizeof(myPab));
-        memset(myFilename, 0, sizeof(myFilename));
-        strcpy(myFilename, "DSK1.SAVEFILE");
-    }
+    set_default_data();
 
     for (;;) {
         unsigned char err;
@@ -211,6 +223,7 @@ void loadgame() {
         myPab.pName = (unsigned char*)myFilename;
 
         if (getfilename()) {
+            vdpmemset(gImage+23*32, ' ', 32);
             // skip load
             return;
         }
@@ -228,6 +241,8 @@ void loadgame() {
     // load it back into the variables, except for the location which isn't a variable
     restore_saved_data();
     vdpmemset(gImage+23*32, ' ', 32);
+    gotoxy(0,23);
+    cputs("Load ok!");
 }
 
 #endif

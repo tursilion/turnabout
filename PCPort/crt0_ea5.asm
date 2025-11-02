@@ -1,5 +1,6 @@
  def _start
  def _init_data
+ ref AMS
  
 # Entry point for C runtime initilization code
 #

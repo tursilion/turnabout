@@ -347,7 +347,7 @@ void sound_update(short *buf, double nAudioIn, int nSamples) {
 						// noises properly and see what they really do. 
 						// For now I am going to swing negative to play nicely with
 						// the tone channels. 
-						// TODO: I need to verify noise vs tone on a clean system.
+						// I need to verify noise vs tone on a clean system.
 						// need to test for 0 because periodic noise sets it
 						if (nOutput[3] == 0.0) {
 							nOutput[3] = 1.0;
@@ -360,7 +360,7 @@ void sound_update(short *buf, double nAudioIn, int nSamples) {
 					// Compared against TI samples, this looks right
 					if (LFSR&0x0001) {
 						in=0x4000;	// (15 bit shift)
-						// TODO: verify periodic noise as well as white noise
+						// verify periodic noise as well as white noise
 						// always positive
 						nOutput[3]=1.0;
 					} else {

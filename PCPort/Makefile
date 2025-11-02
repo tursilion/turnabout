@@ -13,6 +13,7 @@ LD=$(TMS9900_DIR)/tms9900-ld
 CC=$(TMS9900_DIR)/tms9900-gcc
 
 CP=/usr/bin/cp
+MV=/usr/bin/mv
 NAME=ploc
 
 # Path to elf to binary tools
@@ -44,15 +45,31 @@ SOURCE_LIST := $(OBJECT_LIST:.o=.cpp)
 # List of all files needed in executable
 PREREQUISITES=\
   $(OBJECT_LIST_EA5)
-  
-all: ploc0 ploc1
+
+all: pload ploc0 ploc1
 
 # Recipe to compile the executable
+# Note: The loader (PWRIGHT/etc) is simlinked to the "tipi" folder, but also built into Classic99
+pload: $(PREREQUISITES) crt0_ea5.asm
+	-rm *.o
+	$(GAS) crt0_pload.asm -o crt0_ea5.o
+	$(GAS) scratchloaderStandalone.a99 -o scratchloaderStandalone.o
+	$(CC) -c $(C_FLAGS) -DLOCATION_IS_LOADER $(SOURCE_LIST) $(INCPATH)
+	$(LD) crt0_ea5.o $(OBJECT_LIST) scratchloaderStandalone.o $(LIBS) $(LIBPATH) $(LDFLAGS_EA5) -o $(NAME)99.ea5.elf > $(NAME)99_ea5.map
+	$(ELF2EA5) $(NAME)99.ea5.elf $(NAME)99.ea5.bin
+	$(EA5PLIT) $(NAME)99.ea5.bin
+	$(MV) PLOC991 PWRIGHT
+	$(MV) PLOC992 PWRIGHU
+	-$(MV) PLOC993 PWRIGHV
+	$(CP) PWRIGH* /mnt/d/classic99/dsk1/
+	rm *.o
+
 ploc0: $(PREREQUISITES) crt0_ea5.asm
 	-rm *.o
 	$(GAS) crt0_ea5.asm -o crt0_ea5.o
+	$(GAS) scratchloaderStandalone.a99 -o scratchloaderStandalone.o
 	$(CC) -c $(C_FLAGS) -DLOCATION_IS_0 $(SOURCE_LIST) $(INCPATH)
-	$(LD) crt0_ea5.o $(OBJECT_LIST) $(LIBS) $(LIBPATH) $(LDFLAGS_EA5) -o $(NAME)00.ea5.elf > $(NAME)00_ea5.map
+	$(LD) crt0_ea5.o $(OBJECT_LIST) scratchloaderStandalone.o $(LIBS) $(LIBPATH) $(LDFLAGS_EA5) -o $(NAME)00.ea5.elf > $(NAME)00_ea5.map
 	$(ELF2EA5) $(NAME)00.ea5.elf $(NAME)00.ea5.bin
 	$(EA5PLIT) $(NAME)00.ea5.bin
 	$(CP) PLOC00* /mnt/d/classic99/dsk1/
@@ -61,8 +78,9 @@ ploc0: $(PREREQUISITES) crt0_ea5.asm
 ploc1: $(PREREQUISITES) crt0_ea5.asm
 	-rm *.o
 	$(GAS) crt0_ea5.asm -o crt0_ea5.o
-	$(CC) -c $(C_FLAGS) -DLOCATION_IS_1 $(SOURCE_LIST) $(INCPATH)
-	$(LD) crt0_ea5.o $(OBJECT_LIST) $(LIBS) $(LIBPATH) $(LDFLAGS_EA5) -o $(NAME)01.ea5.elf > $(NAME)01_ea5.map
+	$(GAS) scratchloaderStandalone.a99 -o scratchloaderStandalone.o
+	$(CC) -c $(C_FLAGS) -DLOCATION_IS_1 -DLAST_LOCATION $(SOURCE_LIST) $(INCPATH)
+	$(LD) crt0_ea5.o $(OBJECT_LIST) scratchloaderStandalone.o $(LIBS) $(LIBPATH) $(LDFLAGS_EA5) -o $(NAME)01.ea5.elf > $(NAME)01_ea5.map
 	$(ELF2EA5) $(NAME)01.ea5.elf $(NAME)01.ea5.bin
 	$(EA5PLIT) $(NAME)01.ea5.bin
 	$(CP) PLOC01* /mnt/d/classic99/dsk1/

@@ -160,6 +160,7 @@
     <ClCompile Include="vgmcomp2\CPlayerPC.cpp" />
     <ClCompile Include="vgmcomp2\PC.cpp" />
     <ClCompile Include="vgmcomp2\sound.cpp" />
+    <ClInclude Include="aid.h" />
     <ClInclude Include="savegame.h" />
     <ClInclude Include="sfx.h" />
     <ClCompile Include="story.cpp" />
@@ -176,8 +177,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="crt0_ea5.asm" />
+    <None Include="crt0_pload.asm" />
     <None Include="F18A_GPU.a99" />
     <None Include="Makefile" />
+    <None Include="scratchloaderStandalone.a99" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

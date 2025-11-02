@@ -38,8 +38,6 @@
 // three arguments: songActive (for mutes), channel (for mutes), byte
 // the SN PSG, channel is 1-4 (no zero), and for the AY channel is
 // the register number (0-10). See the CPlayerXX.c files for examples.
-// TODO: an optimization might be to group the two tone and the volume
-// writes under only one test against muted channel.
 
 #include "CPlayer.h"
 

@@ -4,19 +4,17 @@
 // we only need to process the contents of story[]. When we reach CMD_ENDSTORY, the evidence field tells us who to load
 // when changing location, be sure to draw black and stop music
 
-// TODO: we can use sprites to show blinking letters of available keys (N, P, O, etc)
-
 #include <conio.h>
 #include <string.h>
 #include "engine.h"
 #include "sfx.h"
+#include "aid.h"
 #include "music.h"
 #include "kscan.h"
 
 extern Story_t story[];
 extern int nStorySize;
 extern int run_inventory();
-extern void run_aid();
 
 // current story index
 static int index = 0;
@@ -240,7 +238,7 @@ int run_story() {
                     // set up the sprite string
                     spritestring("N", COLOR_WHITE);
                 } else {
-                    spritestring("N", COLOR_DKBLUE);
+                    spritestring("N", COLOR_DKGREEN);
                 }
             }
             ++cnt;
@@ -263,7 +261,7 @@ int run_story() {
 
             if (ch == '7') {
                 // fctn-7 for AID
-                run_aid();
+                run_aid(0);
                 continue;
             }
         }

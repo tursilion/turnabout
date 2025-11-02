@@ -15,13 +15,17 @@
 #include <kscan.h>
 #include "structures.h"
 #include "music.h"
-#include "savegame.h
+#include "savegame.h"
+#include "aid.h"
 
 extern int run_story();
 extern Evidence_t evidence[EV_MAX];
 int evidence_found[EV_MAX];
 extern Evidence_t people[PP_MAX];
 int people_found[PP_MAX];
+
+extern void EA5LD();
+extern char FILENAME[];
 
 extern 
 #ifdef __cplusplus
@@ -49,6 +53,67 @@ void clear_text() {
     vdpmemset(gImage+17*32, ' ', 7*32);
 }
 
+// optimized version of cputwordwrap that drops features I don't need to try and
+// get it down to a frame per update...
+// cnt is used to limit the string to before the NUL termination
+// if zero, then the whole string is used - no control codes, direct to output function
+void fastputwordwrap(int x, int y, const char *pWork, int cnt) {
+    const int width = 32;
+    if (cnt == 0) {
+        cnt = 32767;    // rely on the NUL terminator
+    }
+
+    // where we are writing to
+    VDP_SET_ADDRESS(gImage+(y<<5)+x);
+
+    while (*pWork) {
+        // check for space
+        if (*pWork == ' ') {
+            // ignore leading spaces
+            if (x > 0) {
+                VDPWD(' '|conio_reverseMask);  // direct output
+                x++;
+                if (x>=width) {
+                    x=0;
+                    ++y;
+                    if (y > 23) break; // out of lines
+                    VDP_SET_ADDRESS(gImage+(y<<5)+x);
+                }
+            }
+            pWork++;
+            if (--cnt == 0) break;
+            continue;
+        }
+        // check first if this line fits
+        int pos = 0;
+        while (pWork[pos]) {
+            if (pWork[pos] == ' ') break;
+            ++pos;
+            if (pos+x >= width) break;
+        }
+        if (pos+x >= width) {
+            if (x > 0) {
+                // too long, and wasn't the whole line, so next line
+                y++;
+                if (y > 23) break; // out of lines
+                x=0;
+                VDP_SET_ADDRESS(gImage+(y<<5)+x);
+            } else {
+                // just reduce to one line
+                --pos;
+            }
+        }
+        // output the characters
+        while (pos--) {
+            VDPWD((*(pWork++))|conio_reverseMask);  // direct output
+            if (*pWork == '\0') break;
+            if (--cnt == 0) break;
+            ++x;
+        }
+        if (cnt == 0) break;    // again
+    }
+}
+
 // more of an update than a draw, per-sae
 // Images are loaded directly to video memory, and not in this function
 void draw_screen() {
@@ -70,7 +135,7 @@ void draw_screen() {
         pOldString = pString;
         if (pString) {
             // draw out the string one character at time with wordwrap
-            cputwordwrap(0, 17, pString, maxtext);
+            fastputwordwrap(0, 17, pString, maxtext);
         } else {
             // clear the text window
             clear_text();
@@ -81,21 +146,9 @@ void draw_screen() {
     update_music();
 }
 
-void load_image(int index) {
-#define VDP_PAB_ADDRESS 0x3800
-    char buf[256];
+void patch_string(char *buf, int index) {
     int off,tmp;
-
-    //                     1         2         3         4
-    //           01234567890123456789012345678901234567890123456789012345
-    strcpy(buf, "PI.HTTPS://harmlesslion.com/phoenix/pics9918/p0000.TIAP");
-    off = 46;
-
-    if (f18a) {
-        memcpy(&buf[40], "f18a/f", 6);
-    }
-
-    // load the index into the string - max 9999
+    off = 0;
     tmp = index/1000;
     buf[off++] = tmp+'0';
     index -= tmp*1000;
@@ -106,6 +159,23 @@ void load_image(int index) {
     buf[off++] = tmp+'0';
     index -= tmp*10;
     buf[off] = index+'0';
+}
+
+void load_image(int index) {
+#define VDP_PAB_ADDRESS 0x3800
+    char buf[256];
+
+    //                     1         2         3         4
+    //           01234567890123456789012345678901234567890123456789012345
+    strcpy(buf, "PI.HTTPS://harmlesslion.com/phoenix/pics9918/P0000.TIAP");
+    int off = 46;
+
+    if (f18a) {
+        memcpy(&buf[40], "f18a/F", 6);
+    }
+
+    // load the index into the string - max 9999
+    patch_string(&buf[off], index);
 
     // check PAB
     if (myPab.OpCode == 0) {
@@ -125,8 +195,14 @@ void load_image(int index) {
         vdpchar(0x3900, 0x01);  // load palette command
     }
 
-    // load colors (+5 cause we added 3 above for the indexes)
-    buf[off+5] = 'C';
+    // best we can do... it'll help a little
+    // we could probably fake a lot since it's Classic99 targetted now...
+    VDP_WAIT_VBLANK_CRU;
+    VDP_CLEAR_VBLANK;
+    update_music();
+
+    // load colors
+    buf[off+8] = 'C';
     myPab.VDPBuffer = gColor;
     dsrlnk(&myPab, VDP_PAB_ADDRESS);
 }
@@ -141,11 +217,11 @@ void load_title() {
 
     //                     1         2         3         4
     //           01234567890123456789012345678901234567890123456789012345
-    strcpy(buf, "PI.HTTPS://harmlesslion.com/phoenix/pics9918/p9999.TIAP");
+    strcpy(buf, "PI.HTTPS://harmlesslion.com/phoenix/pics9918/P9999.TIAP");
     off = 54;   // points to the last character, we don't need to change the number
 
     if (f18a) {
-        memcpy(&buf[40], "f18a/f", 6);
+        memcpy(&buf[40], "f18a/F", 6);
     }
 
     // check PAB
@@ -157,6 +233,7 @@ void load_title() {
     if (f18a) {
         buf[off] = 'M';
         myPab.VDPBuffer = gPattern;
+        myPab.pName = (unsigned char*)buf;
         dsrlnk(&myPab, VDP_PAB_ADDRESS);
         // fetch the data
         vdpmemread(0, pal, 32);
@@ -185,9 +262,10 @@ void load_title() {
 void spritestring(const char*str, unsigned char col) {
     int i = 0;
     while (*str) {
-        sprite(i++, *str, col, 15*8-2, i*8+27*8);
+        sprite(i++, *str, col, 16*8-6, i*8+27*8);
         ++str;
     }
+    VDPWD(0xd0);    // no sprites after this!
 }
 
 void invert_image() {
@@ -284,7 +362,7 @@ void wait_for_key_release() {
 }
 
 // F18A specific setup
-// TODO: this code is only needed in the initial boot program...
+// safer to do this in each app than hope it's still initialized
 void setupgpu() {
     // This is now exactly 128 bytes - to extend we need to reserve more space
     static const unsigned char GPUPROG[] = {
@@ -332,6 +410,7 @@ void setupgpu() {
     normal_image();
 }
 
+#if 0
 // SAMS code by Jedimatt42
 // TODO: only the sample player needs these, so likely
 // we'll rewrite these in assembly, but keeping here for now for reference
@@ -352,65 +431,33 @@ void __attribute__ ((noinline)) samsMapOff() {
 void __attribute__ ((noinline)) samsMapPage(int page, int location) {
   __asm__(
       "LI r12, >1E00\n\t"
-      "SRL %0, 12\n\t"
-      "SLA %0, 1\n\t"
-      "SWPB %1\n\t"
-      "SBO 0\n\t"
-      "MOV %1, @>4000(%0)\n\t"
-      "SBZ 0\n\t"
-      "SWPB %1\n\t"
+      "SRL %0, 12\n\t"      // isolate top nibble of location
+      "SLA %0, 1\n\t"       // shift up for word address
+      "SWPB %1\n\t"         // want little endian order for page
+      "SBO 0\n\t"           // card on
+      "MOV %1, @>4000(%0)\n\t"  // map page
+      "SBZ 0\n\t"           // card off
+      "SWPB %1\n\t"         // restore page register before returning
       :
       : "r"(location), "r"(page)
       : "r12");
 }
+#endif
 
 #ifdef LOCATION_IS_LOADER
 
 // only the loader needs this - we'll store the result in the VDP savedata
-int hasSams() {
-    // TODO: this is also not safe in the classic99 build, which will need to run without SAMS
-    //volatile int* lower_exp = (volatile int*) 0x2000;
-    samsMapOn();
-    
-    // TODO: figure out a safe way to do this -- banking out 0x2000 kills our variables and stack...
-    // maybe we'll need to just write assembly for all the AMS stuff... we can always
-    // load wavs to VDP then copy to SAMS in scratchpad
-
-    // test two pages
-    samsMapPage(0, 0x2000);
-    *lower_exp = 0x1234;
-    samsMapPage(1, 0x2000);
-    *lower_exp = 0;
-    samsMapPage(0, 0x2000);
-    int detected = (*lower_exp == 0x1234);
-
-    if (detected) {
-        // set initial state of all pages
-        for(int i = 0; i < 4096; i++) {
-            samsMapPage(i, 0x2000);
-            *lower_exp = 0x1234;
-        }
-        // now mark pages and stop when they repeat
-        samsMapPage(0, 0x2000);
-        int pages = 0;
-        while(pages < 4096 && *lower_exp != 0xFFFF) {
-            *lower_exp = 0xFFFF;
-            samsMapPage(++pages, 0x2000);
-        }
-        samsMapOff();
-
-        // *** TODO *** return true if there is at least ????k
-        // how much do we need for the samples?
-        // there are 9 samples, each is a bit over a second, so
-        // lets say we need 20s worth of samples. At 8khz sampling,
-        // 4 bit is 4000 bytes per second, so 20,000 bytes. That
-        // means even the 128k AMS is adequate.
-        if (pages >= 32) {
-            return pages;
-        }
+void checkSams() {
+    // The CRT0 should have already done the sizing, we just need to ensure we got enough
+    // *** TODO *** return true if there is at least ????k
+    // how much do we need for the samples?
+    // there are 9 samples, each is a bit over a second, so
+    // lets say we need 20s worth of samples. At 8khz sampling,
+    // 4 bit is 4000 bytes per second, so 20,000 bytes. That
+    // means even the 128k AMS is adequate.
+    if (ams < 32) {
+        ams = 0;
     }
-    samsMapOff();
-    return 0;
 }
 
 #endif
@@ -438,7 +485,7 @@ int main()
     if (f18a) {
         debug_write("F18A enabled");
     }
-    ams = hasSams();
+    checkSams();
     memset(evidence_found, 0, EV_MAX*sizeof(evidence_found[0]));
     memset(people_found, 0, PP_MAX*sizeof(people_found[0]));
     add_inventory(EV_BADGE);
@@ -462,13 +509,14 @@ int main()
     // if (ams) { }
 
     // text mode, load charset
-    set_graphics(0);
-    vdpmemset(gImage, ' ', 768);
-    vdpmemset(gColor, 0xe0, 32);
+    VDP_SET_REGISTER(VDP_REG_MODE1, VDP_MODE1_16K|VDP_MODE1_INT);
     if (f18a) {
         setupgpu();     // load the program and default palette
         fixed_image();  // fix F18A palette
     }
+    set_graphics(0);
+    vdpmemset(gImage, ' ', 768);
+    vdpmemset(gColor, 0xe0, 32);
     charsetlc();
 
     gotoxy(0,0);
@@ -476,7 +524,7 @@ int main()
     cputs("Phoenix Wright / My Little Pony\n");
     cputs("- Turnabout Storm\n\n");
     cputs("Original video by PWaaMLPfim\n");
-    cputs("https://youtu.be/yUDfoZGhLjE\n");
+    cputs("https://youtu.be/yUDfoZGhLjE\n\n");
     cputs("Title image by HowXu\n");
     cputs("https://www.deviantart.com/\n");
     cputs("howxu/art/Phoenix-Wright-MLP-\n");
@@ -485,24 +533,22 @@ int main()
     cputs("the internet and is a work in\n");
     cputs("progress! Currently I have\n");
     cputs("implemented 2 scenes which is\n");
-    cputs("about 2%% of the total script.\n\n");
+    cputs("about 2% of the total script.\n\n");
     // to get the percentage I'm looking at the last timestamp, and dividing it by about 6 hrs
 
     // some hardware info
-    cprintf("SAMS detected: %dk\n", ams*4);
+    cprintf("SAMS detected: %d pages\n", ams);
     cprintf("F18A detected: %s\n\n", f18a?"yes":"no");
 
-    // ask player if they want to load or start a new game
-    // TODO: passwords too in the future? show them on AID screen?
-    cputs("Do you want to:");
-    cputs("1 Start a new game\n");
-    cputs("2 Load a saved game\n");
+    // wait for acknowledgement
+    cputs("Press any key...");
     wait_for_key_release();
-
     while (KSCAN_KEY == 0xff) {
         kscanfast(0);
-        if ((KSCAN_KEY == '1') || (KSCAN_KEY == '2')) break;
     }
+
+    // will return with selection in KSCAN_KEY
+    run_aid(0);
 
     // load VDP if requested, then jump to the saved chapter (from 0x3b00)
     int nextloc = 0;
@@ -519,8 +565,10 @@ int main()
     // restore the data from VDP
     restore_saved_data();
 
-    // TODO: write the current location at 0x3b00 in case we save
-    // I'm not sure how that's going to work. Might have to just have a massive list of #ifdefs... maybe it goes in the location table?
+    if (f18a) {
+        setupgpu();     // load the program and default palette
+        fixed_image();  // fix F18A palette
+    }
 
     // hack the character set into the third page before we set bitmap
     // we load it twice so that we can have two colors
@@ -546,6 +594,10 @@ int main()
     // load the next section in nextloc...
     // save the current state before we load
     MUTE_SOUND();
+
+#ifdef LAST_LOCATION
+    run_aid(1);
+#else
     store_saved_data();
 
     // set up a text mode screen for the loader
@@ -561,10 +613,17 @@ int main()
     gotoxy(0,0);
     cputs("Loading...");
 
-    // TODO: location index is in nextloc
-    // bring in the scratchpad loader and use it to load the next program
-    // use VDP >0000 as the buffer
-
+    // location index is in nextloc - need to patch the filename
+    // The filename is hard coded in the EA5LD assembly, so we
+    // need to assume the length! It's 43 chars long:
+    // "PI.HTTPS://harmlesslion.com/phoenix/PLOCxx1"
+    // loader hard coded to load at VDP >2000 with PABs at VDP >2A00
+    // Scratchpad loader must exist higher than >C000 in order for
+    // it not to overwrite itself on the first load.
+    FILENAME[40] = (nextloc/10)+'0';
+    FILENAME[41] = (nextloc%10)+'0';
+    EA5LD();
+#endif
 }
 
 // Intermediate data is saved in VDP RAM between programs.

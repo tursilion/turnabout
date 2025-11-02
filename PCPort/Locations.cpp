@@ -23,7 +23,7 @@ Story_t story[] =  {                    //  012345678901234567890123456789010123
 {   EV_NONE,     2,  PP_PHOENIX | CMD_NONE,      "I guess it is a good sign though..." },
 {   EV_NONE,     2,  PP_PHOENIX | CMD_NONE,      "The fewer people who need an attorney the fewer problems there are in the world." },
 {   EV_NONE,     2,  PP_PHOENIX | CMD_NONE,      "Unfortunately sunshine and smiles don't pay the bills." },
-{   EV_NONE,     2,  PP_PHOENIX | CMD_NONE,      "Guess I can at least call it in early tonight." },
+{   EV_NONE,     2,  PP_PHOENIX | CMD_NONE,      "Guess I can at least call it early tonight." },
 {   EV_NONE,     2,  PP_PHOENIX | CMD_BOOMSFX,   "ARGH!" },
 {   EV_NONE,     2,  PP_PHOENIX | CMD_MUSSUSPENSE,"W-what's going on!?"},
 {   EV_NONE,     2,  PP_PHOENIX | CMD_FLASH,     "I can't move my body!" },
@@ -83,7 +83,7 @@ const Story_t story[] =  {                    //  012345678901234567890123456789
 {   EV_NONE,     10, PP_PHOENIX  | CMD_NONE,     "(... aaaaaaand it does go where I think it is...)"  },
 {   EV_NONE,     6 , PP_UNKNOWN  | CMD_NONE,     "And you just happen to be here..."  },
 {   EV_NONE,     12, PP_PHOENIX  | CMD_NONE,     "Actually, you kidnapped me with your freaky spell, remember..."  },
-{   EV_NONE,     7 , PP_UNKNOWN  | CMD_NONE,     "A minor setback..."  },
+{   EV_NONE,     7 , PP_UNKNOWN  | CMD_NONE,     "A minor distinction..."  },
 {   EV_NONE,     7 , PP_PHOENIX  | CMD_NONE,     "MINOR!?"  },
 {   EV_NONE,     6 , PP_UNKNOWN  | CMD_NONE,     "Yes... but would you be willing to represent my friend?"  },
 {   EV_NONE,     5 , PP_PHOENIX  | CMD_NONE,     "...To be honest... I'm still shocked I am in a library talking to a purple hors-err I mean... pony..."  },
@@ -99,7 +99,7 @@ const Story_t story[] =  {                    //  012345678901234567890123456789
 {   EV_NONE,     10, PP_PHOENIX  | CMD_NONE,     "(... aaaaaaand it does go where I think it is...)"  },
 {   EV_NONE,     6 , PP_TWILIGHT | CMD_NONE,     "And you just happen to be here..."  },
 {   EV_NONE,     12, PP_PHOENIX  | CMD_NONE,     "Actually, you kidnapped me with your freaky spell, remember..."  },
-{   EV_NONE,     7 , PP_TWILIGHT | CMD_NONE,     "A minor setback..."  },
+{   EV_NONE,     7 , PP_TWILIGHT | CMD_NONE,     "A minor distinction..."  },
 {   EV_NONE,     7 , PP_PHOENIX  | CMD_NONE,     "MINOR!?"  },
 {   EV_NONE,     6 , PP_TWILIGHT | CMD_NONE,     "Yes... but would you be willing to represent my friend?"  },
 {   EV_NONE,     5 , PP_PHOENIX  | CMD_NONE,     "...Honest... I'm still shocked I am in a library talking to a purple hors-err I mean... pony..."  },
@@ -165,5 +165,9 @@ const Story_t story[] =  {                    //  012345678901234567890123456789
 
 #endif
 
+#ifndef LOCATION_IS_LOADER
+
 // a value that can be referenced externally, though I don't plan to check everything
 int nStorySize = sizeof(story)/sizeof(story[0]);
+
+#endif

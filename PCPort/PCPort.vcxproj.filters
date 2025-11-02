@@ -92,6 +92,9 @@
     <ClInclude Include="vgmcomp2\sound.h">
       <Filter>vgmcomp2</Filter>
     </ClInclude>
+    <ClInclude Include="aid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="vgmcomp2\readme.txt">
@@ -106,5 +109,11 @@
       <Filter>Source Files</Filter>
     </None>
     <None Include="Makefile" />
+    <None Include="crt0_pload.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="scratchloaderStandalone.a99">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

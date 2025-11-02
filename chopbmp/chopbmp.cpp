@@ -31,17 +31,17 @@ int main(int argc, char *argv[])
 {
     if (argc < 3) {
         printf("chopbmp <index> [top|middle|bottom]\n");
-        printf("Writes p0000.TIAP and p0000.TIAC (TIAM is appended to TIAP)\n");
+        printf("Writes P0000.TIAP and P0000.TIAC (TIAM is appended to TIAP)\n");
         return 1;
     }
 
     char szfn[1024];
-    char workchar = 'p';    // p or f - we'll autodetect
+    char workchar = 'P';    // p or f - we'll autodetect
 
     snprintf(szfn, sizeof(szfn), "%c%04d.TIAP", workchar, atoi(argv[1]));
     fp = fopen(szfn, "rb");
     if (NULL == fp) {
-        workchar = 'f';
+        workchar = 'F';
         snprintf(szfn, sizeof(szfn), "%c%04d.TIAP", workchar, atoi(argv[1]));
         fp = fopen(szfn, "rb");
         if (NULL == fp) {
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
     buf[9]=0x10;    // length in sectors from 0x18 to 0x10
 
     // try for the palette file
-    if (workchar == 'f') {
+    if (workchar == 'F') {
         snprintf(szfn, sizeof(szfn), "%c%04d.TIAM", workchar, atoi(argv[1]));
         fp = fopen(szfn, "rb");
         if (NULL != fp) {

@@ -245,12 +245,12 @@ enum {
 
 #ifdef LOCATION_IS_LOADER
 // Just the loader file, save game not valid here
-#define LOCATION_NUMER 0
+#define LOCATION_NUMBER 0
 #endif
 
 #ifdef LOCATION_IS_0
 // intro story
-#define LOCATION_NUMER 0
+#define LOCATION_NUMBER 0
 #define LOCATION_TYPE_STORY
 // sfx - will pretty much need to preload sfx
 #define HAS_BOOMSFX
@@ -262,7 +262,7 @@ enum {
 
 #ifdef LOCATION_IS_1
 // library, question Twilight
-#define LOCATION_NUMER 1
+#define LOCATION_NUMBER 1
 #define LOCATION_TYPE_STORY
 // sfx
 #define HAS_BOOMSFX
