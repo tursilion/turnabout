@@ -13,19 +13,20 @@
 #include <files.h>
 #include <f18a.h>
 #include <kscan.h>
+#include "engine.h"
 #include "structures.h"
 #include "music.h"
 #include "savegame.h"
 #include "aid.h"
 
 extern int run_story();
-extern Evidence_t evidence[EV_MAX];
 int evidence_found[EV_MAX];
-extern Evidence_t people[PP_MAX];
 int people_found[PP_MAX];
 
+#ifndef CLASSIC99
 extern void EA5LD();
 extern char FILENAME[];
+#endif
 
 extern 
 #ifdef __cplusplus
@@ -315,25 +316,23 @@ void black_image() {
 
 //------
 
-void add_inventory(int id) {
+void add_inventory(unsigned int id) {
     if (id >= PP_FIRST) {
-        id = (id-PP_FIRST)>>8;
-        people_found[id] = 1;
+        people_found[PPLIDX(id)] = 1;
     } else if (id < EV_MAX) {
         evidence_found[id] = 1;
     }
 }
-void remove_inventory(int id) {
+void remove_inventory(unsigned int id) {
     // can't remove people
     if (id < EV_MAX) {
         evidence_found[id] = 0;
     }
 }
 // return non-zero if we have inventory
-int has_inventory(int id) {
+int has_inventory(unsigned int id) {
     if (id >= PP_FIRST) {
-        id = (id-PP_FIRST)>>8;
-        return (people_found[id] != 0);
+        return (people_found[PPLIDX(id)] != 0);
     } else if (id < EV_MAX) {
         return (evidence_found[id] != 0);
     }
@@ -346,10 +345,10 @@ void set_textout(const char *p) {
 void set_maxlen(int i) {
     maxtext = i;
 }
-void set_name(int i) {
+void set_name(unsigned int i) {
     // convert into an index, 0 being PP_FIRST, -1 being none
     if (i >= PP_FIRST) {
-        iName = (i-PP_FIRST)>>8;
+        iName = PPLIDX(i);
     } else {
         iName = -1;
     }
@@ -364,6 +363,7 @@ void wait_for_key_release() {
 // F18A specific setup
 // safer to do this in each app than hope it's still initialized
 void setupgpu() {
+    // This is now exactly 128 bytes - to extend we need to reserve more space
     // This is now exactly 128 bytes - to extend we need to reserve more space
     static const unsigned char GPUPROG[] = {
         0x04,0xc0,0xd0,0x20,0x70,0x00,0x02,0x80,
@@ -410,6 +410,32 @@ void setupgpu() {
     normal_image();
 }
 
+// set an alternate text mode that doesn't conflict with the bitmap
+// used by inventory and aid
+void set_alt_text() {
+    // based on set_graphics, but different map and we don't touch the sprite table
+    //scrn_scroll = scrn_scroll_default;
+
+    // this mode can exist without corrupting the bitmap screens
+    unsigned char reg1 = VDP_MODE1_16K | VDP_MODE1_UNBLANK | VDP_MODE1_INT | 0;
+	VDP_SET_REGISTER(VDP_REG_MODE1, reg1);
+    VDP_REG1_KSCAN_MIRROR = reg1;
+	VDP_SET_REGISTER(VDP_REG_MODE0, 0);
+	VDP_SET_REGISTER(VDP_REG_SIT, 7);	gImage = 0x1C00;
+	VDP_SET_REGISTER(VDP_REG_CT, 110);	gColor = 0x1b80;
+	VDP_SET_REGISTER(VDP_REG_PDT, 2);	gPattern = 0x1000;
+    // leaving sprites at bitmap default of 0x1b00 and sprite patterns at 0x1800
+    // text information is the same too, except for the flags
+	nTextFlags = TEXT_WIDTH_32;
+    fixed_image();  // fix F18A palette
+    vdpchar(gSprite, 0xd0);  // sprites off
+
+    vdpmemset(gImage, ' ', 768);
+    vdpmemset(gColor, 0xe0, 16);        // grey
+    vdpmemset(gColor+16, 0x40, 16);     // blue
+    gotoxy(0,0);
+}
+
 #if 0
 // SAMS code by Jedimatt42
 // TODO: only the sample player needs these, so likely
@@ -454,7 +480,7 @@ void checkSams() {
     // there are 9 samples, each is a bit over a second, so
     // lets say we need 20s worth of samples. At 8khz sampling,
     // 4 bit is 4000 bytes per second, so 20,000 bytes. That
-    // means even the 128k AMS is adequate.
+    // means even the 128k AMS is adequate. Note the code in CRT maxes out at 1MB
     if (ams < 32) {
         ams = 0;
     }
@@ -620,9 +646,12 @@ int main()
     // loader hard coded to load at VDP >2000 with PABs at VDP >2A00
     // Scratchpad loader must exist higher than >C000 in order for
     // it not to overwrite itself on the first load.
+#ifndef CLASSIC99
     FILENAME[40] = (nextloc/10)+'0';
     FILENAME[41] = (nextloc%10)+'0';
     EA5LD();
+#endif
+
 #endif
 }
 

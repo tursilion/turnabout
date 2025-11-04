@@ -19,43 +19,30 @@ extern int f18a, ams;
 void run_aid(int isFinal) {
 
 #ifndef LOCATION_IS_LOADER
-    // based on set_graphics, but different map and we don't touch the sprite table
-    //scrn_scroll = scrn_scroll_default;
-
-    // this mode can exist without corrupting the bitmap screens
-    unsigned char reg1 = VDP_MODE1_16K | VDP_MODE1_UNBLANK | VDP_MODE1_INT | 0;
-	VDP_SET_REGISTER(VDP_REG_MODE1, reg1);
-    VDP_REG1_KSCAN_MIRROR = reg1;
-	VDP_SET_REGISTER(VDP_REG_MODE0, 0);
-	VDP_SET_REGISTER(VDP_REG_SIT, 7);	gImage = 0x1C00;
-	VDP_SET_REGISTER(VDP_REG_CT, 110);	gColor = 0x1b80;
-	VDP_SET_REGISTER(VDP_REG_PDT, 2);	gPattern = 0x1000;
-    // leaving sprites at bitmap default of 0x1b00 and sprite patterns at 0x1800
-    // text information is the same too, except for the flags
-	nTextFlags = TEXT_WIDTH_32;
-    fixed_image();  // fix F18A palette
-    vdpchar(gSprite, 0xd0);  // sprites off
-#endif
-
+    set_alt_text();
+#else
+    // LOADER is already in text, but do some inline anyway
     vdpmemset(gImage, ' ', 768);
-    vdpmemset(gColor, 0xe0, 32);
+    vdpmemset(gColor, 0xe0, 16);        // grey
+    vdpmemset(gColor+16, 0x40, 16);     // blue
     gotoxy(0,0);
+#endif
 
     if (isFinal) {
         //     01234567890123456789012345678901
         cputs("You have reached the end for\n");
         cputs("now. You can save your game\n\n");
+    } else {
+        //     01234567890123456789012345678901
+        cputs("All scenes:\n\n");
+        cputs("N - Next text\n");
+        cputs("I - Inventory screen\n");
+        cputs("7 - Help screen (this)\n");
+        cputs("SPACE - speed text\n\n");
+        cputs("Cross-Examination:\n");
+        cputs("P - Press for more info\n");
+        cputs("O - Object (present evidence)\n\n");
     }
-
-    //     01234567890123456789012345678901
-    cputs("All scenes:\n\n");
-    cputs("N - Next text\n");
-    cputs("I - Inventory screen\n");
-    cputs("7 - Help screen (this)\n");
-    cputs("SPACE - speed text\n\n");
-    cputs("Cross-Examination:\n");
-    cputs("P - Press for more info\n");
-    cputs("O - Object (present evidence)\n\n");
     
 #ifdef LOCATION_IS_LOADER
     // ask player if they want to load or start a new game
@@ -67,13 +54,14 @@ void run_aid(int isFinal) {
 
     for (;;) {
         kscanfast(0);
-        if ((KSCAN_KEY == '1') || (KSCAN_KEY == '2')) break;
+        unsigned char x = KSCAN_KEY;
+        if ((x == '1') || (x == '2')) break;
     }
 
 #else
     cputs("Press:\n");
     cputs(" QUIT to exit\n");
-    cputs(" S - Save game/passcode\n");
+    cputs(" S - Save game\n");
     if (!isFinal) {
         cputs(" SPACE - return to game\n");
     }
@@ -84,12 +72,13 @@ void run_aid(int isFinal) {
         update_music();
 
         kscanfast(0);
-        if (KSCAN_KEY == 'S') {
+        unsigned char x = KSCAN_KEY;
+        if (x == 'S') {
             wait_for_key_release();
             savegame();
             continue;
         }
-        if ((!isFinal) && (KSCAN_KEY == ' ')) {
+        if ((!isFinal) && (x == ' ')) {
             wait_for_key_release();
             break;
         }

@@ -7,8 +7,8 @@
 
 #ifdef CLASSIC99
 // define what we are building for here - this will eventually be external on the build line
-#define LOCATION_IS_LOADER
-//#define LOCATION_IS_0
+//#define LOCATION_IS_LOADER
+#define LOCATION_IS_0
 //#define LOCATION_IS_1
 #endif
 
@@ -28,7 +28,7 @@ typedef struct {
     const char *description;   /* Text shown when examined */
 } Evidence_t;
 
-// evidence
+// evidence - remember anything dealing with people needs to be UNSIGNED
 enum {
     EV_NONE,
 
@@ -93,34 +93,34 @@ enum {
 // we can define it and use #ifdefs instead
 typedef struct {
     const char *name;   // Location display name
-    int introStory;     // id of intro story text, or 0 if none
+    unsigned int introStory;     // id of intro story text, or 0 if none
 //  int type;           // investigation, interrogation, story/testimony, cross-examination
-    int indexes[8];     // depends on type:
+    unsigned int indexes[8];     // depends on type:
                         // - investigation, text identifier at each screen location (divided into 8 squares) for evidence
                         // - interrogation: line of questioning (up to 8) (each is a mini crossexam)
                         // - story/testimony: start of text out (only 1 entry)
                         // - cross-examination: similar to interrogation, but lines are sequential
-    int destinations[4]; // locations you can move to
-    int locks[4];        // evidence needed for each location
+    unsigned int destinations[4]; // locations you can move to
+    unsigned int locks[4];        // evidence needed for each location
 } Location_t;
 
 // examination structure - start at 0
 typedef struct {
     int lock;           // the evidence needed to unlock this item
     const char *name;   // name of line of questioning (only used for interrogation)
-    int story;          // the story id for this line
-    int nextid;         // next exam id if we pass
-    int pressid;        // exam id to go to if we press, 0 if can't
-    int evidenceid;     // the correct evidence if we object, 0 if can't
-    int objectid;       // exam id to go to if we object successfully
-    int badobjectid;    // exam id to go to if we object incorrectly
+    unsigned int story;          // the story id for this line
+    unsigned int nextid;         // next exam id if we pass
+    unsigned int pressid;        // exam id to go to if we press, 0 if can't
+    unsigned int evidenceid;     // the correct evidence if we object, 0 if can't
+    unsigned int objectid;       // exam id to go to if we object successfully
+    unsigned int badobjectid;    // exam id to go to if we object incorrectly
 } CrossExam_t;
 
 // story structure - start at 0
 // used for all modes, but the mode might restrict what you can do
 typedef struct {
-    int evidence;        // evidence awarded for this line (else 0)
-    int frame;           // image frame
+    unsigned int evidence;        // evidence awarded for this line (else 0)
+    unsigned int frame;           // image frame
     unsigned int cmdwho; // additional command in LSB - see enum, and id of speaker in MSB
     const char* text;    // frame text
 } Story_t;
@@ -165,7 +165,7 @@ enum {
     CMD_SHOWEV      , // request show evidence, text will say why. Examination struct will treat as objection.
     CMD_ENDSTORY    , // end this story sequence and return to main loop. Story stores new location in evidence field and will jump to it.
     CMD_REMOVEEV    , // remove evidence from inventory (evidence field) and go to next line
-    CMD_ADDEV       , // add evidence (evidence field) and go to next line. Only needed if you need the next line part, otherwise use -EV_xxx
+    CMD_ADDEV       , // add evidence (evidence field) and go to next line IF text field is empty.
     CMD_ASKOBJECT   , // ask whether we should object, branch to evidence as a story text if we do
     CMD_SKIPIFEV    , // skip this line if we have a certain evidence - evidence in evidence, skip tag in picture id
     CMD_ADDPROMPT   , // Add this string and EV_I_name to the conversation prompts (and skip to the next one) - EV is how we find it

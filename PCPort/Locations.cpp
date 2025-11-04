@@ -3,15 +3,15 @@
 #ifdef LOCATION_IS_0
 // just story                                 //  0                               1                               2                               3                               4                               5                               6                               7
 Story_t story[] =  {                    //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
-{   -PP_PHOENIX, 0,  PP_NONE    | CMD_NONE,      "?????? ??????? June 9th, 8:??PM"  },
-{   -EV_BADGE,   0,  PP_NONE    | CMD_MUSPROLOG, "Time for negotiations..."  },
-{   EV_NONE,     0,  PP_NONE    | CMD_NONE,      "Forget it, I'm not doing it!"  },
+{   PP_PHOENIX,  0,  PP_NONE    | CMD_ADDEV,     "?????? ??????? June 9th, 8:??PM"  },
+{   EV_NONE,     0,  PP_NONE    | CMD_MUSPROLOG, "Time for negotiations..."  },
+{   EV_BADGE,    0,  PP_NONE    | CMD_ADDEV,     "Forget it, I'm not doing it!"  },
 {   EV_NONE,     0,  PP_NONE    | CMD_NONE,      "Do it or else!"  },
 {   EV_NONE,     0,  PP_NONE    | CMD_NONE,      "I don't care about that anymore..."  },
 {   EV_NONE,     0,  PP_NONE    | CMD_NONE,      "Besides... I have a better idea..."  },
 {   EV_NONE,     0,  PP_NONE    | CMD_NONE,      "WHAT?!"  },
-{   EV_NONE,     0,  PP_NONE    | CMD_NONE,      "Enjoy the parting gift!"  },
-{   -EV_MAGATAMA,1,  PP_NONE    | CMD_STOPMUS,   ""  },
+{   EV_MAGATAMA, 0,  PP_NONE    | CMD_ADDEV,     "Enjoy the parting gift!"  },
+{   EV_NONE,     1,  PP_NONE    | CMD_STOPMUS,   ""  },
 {   EV_NONE,     1,  PP_NONE    | CMD_FLASH,     ""  },
 {   EV_NONE,     1,  PP_NONE    | CMD_BLACK,     "June 9th, 9:43PM Wright and Co. Law Offices" },
 {   EV_NONE,     3,  PP_NONE    | CMD_MUSSTEEL,  "(*ring*)"  },
@@ -36,7 +36,7 @@ Story_t story[] =  {                    //  012345678901234567890123456789010123
 #ifdef LOCATION_IS_1
 //      story                                 //  0                               1                               2                               3                               4                               5                               6                               7
 const Story_t story[] =  {                    //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
-{   -PP_PHOENIX, 4,  PP_NONE    | CMD_BLACK,     "?????????????? June 9th, 9:45PM"  },
+{   EV_NONE,     4,  PP_NONE    | CMD_BLACK,     "?????????????? June 9th, 9:45PM"  },
 {   EV_NONE,     4,  PP_PHOENIX | CMD_BLACK,     "Ughhhhh..."  },
 {   EV_NONE,     4,  PP_UNKNOWN | CMD_BLACK,     "Hey! Who the heck are you?!"  },
 {   EV_NONE,     4,  PP_PHOENIX | CMD_BLACK,     "(...Whose voice is that?)"  },
@@ -109,7 +109,7 @@ const Story_t story[] =  {                    //  012345678901234567890123456789
 
 {  EV_T_WHORU,   5 , PP_PHOENIX  | CMD_NONE,     "Let me just get my head together. This is a little too much for me."  },
 {   EV_NONE,     5 , PP_PHOENIX  | CMD_NONE,     "First off, who are you and where am I?"  },
-{  -PP_TWILIGHT, 10, PP_TWILIGHT | CMD_NONE,     "My name is Twilight Sparkle. I'm a disciple of \"Princess Celestia\", the monarch of this land."  },
+{   PP_TWILIGHT, 10, PP_TWILIGHT | CMD_ADDEV,    "My name is Twilight Sparkle. I'm a disciple of \"Princess Celestia\", the monarch of this land."  },
 {   EV_NONE,     10, PP_TWILIGHT | CMD_NONE,     "I am chronicling the magic of friendship for her and you're in the town of Ponyville."  },
 {   EV_NONE,     5 , PP_PHOENIX  | CMD_NONE,     "Celestia? Magic of Friendship? Ponyville?... Wait a minute, are you saying there are more talking ponies?!"  },
 {   EV_NONE,     6 , PP_TWILIGHT | CMD_NONE,     "Mhm, almost all of Ponyville's inhabitants are ponies."  },
@@ -120,7 +120,7 @@ const Story_t story[] =  {                    //  012345678901234567890123456789
 {   EV_NONE,     14, PP_PHOENIX  | CMD_NONE,     "Hmmm... wait! This says it's \"For early ages\" on the cover!"  },
 {   EV_NONE,     14, PP_PHOENIX  | CMD_NONE,     "This is a children's book!"  },
 {   EV_NONE,     9 , PP_TWILIGHT | CMD_NONE,     "Well you see... this stuff is kind of common knowledge."  },
-{   -EV_FILLIES, 15, PP_NONE     | CMD_NONE,     "The Fillies Guide to Ponies: Earth Ponies founded Land. Unicorns use magic. Pegasi soar through the air."  },
+{   EV_FILLIES,  15, PP_NONE     | CMD_ADDEV,    "The Fillies Guide to Ponies: Earth Ponies founded Land. Unicorns use magic. Pegasi soar through the air."  },
 {   EV_NONE,     9 , PP_PHOENIX  | CMD_NONE,     "You call this detailed! I read the whole book cover to cover in ten seconds flat..."  },
 {   EV_NONE,     13, PP_TWILIGHT | CMD_STOPMUS,  "*Sigh*"  },
 {   EV_NONE,     13, PP_PHOENIX  | CMD_NONE,     "Hey... I'm sorry. I guess I shouldn't look a gift horse in the mouth."  },

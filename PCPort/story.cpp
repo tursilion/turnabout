@@ -11,10 +11,10 @@
 #include "aid.h"
 #include "music.h"
 #include "kscan.h"
+#include "inventory.h"
 
 extern Story_t story[];
 extern int nStorySize;
-extern int run_inventory();
 
 // current story index
 static int index = 0;
@@ -60,7 +60,8 @@ void conversation() {
         update_music();
 
         kscanfast(0);
-        if ((KSCAN_KEY > '0') && (KSCAN_KEY <= max+'1')) break;
+        unsigned char x = KSCAN_KEY;
+        if ((x > '0') && (x <= max+'1')) break;
     }
 
     int newid = KSCAN_KEY-'1';
@@ -86,11 +87,6 @@ int run_story() {
             stop_music();
         }
 
-        // check for add inventory - a negative inventory is an add with no command
-        if (story[index].evidence < 0) {
-            add_inventory(-story[index].evidence);
-        }
-
         // doing music this way should take less code than in the switch... just keep the order
         if ((cmdID > CMD_MUSTARTLIST) && (cmdID < CMD_MUSENDLIST)) {
             play_music(cmdID);
@@ -111,15 +107,21 @@ int run_story() {
             case CMD_ENDSTORY    : // end this story sequence and return to main loop. Story stores new location in evidence field and will jump to it.
                 return story[index].evidence;
 
-            case CMD_REMOVEEV    : // remove evidence from inventory (evidence field) and go to next line
+            case CMD_REMOVEEV    : // remove evidence from inventory (evidence field) and go to next line if text if empty
                 remove_inventory(story[index].evidence);
-                ++index;
-                continue;
+                if (story[index].text[0] == '\0') {
+                    ++index;
+                    continue;
+                }
+                break;
 
-            case CMD_ADDEV       : // add evidence (evidence field) and go to next line. Only needed if you need the next line part
+            case CMD_ADDEV       : // add evidence (evidence field) and go to next line if the text if empty
                 add_inventory(story[index].evidence);
-                ++index;
-                continue;
+                if (story[index].text[0] == '\0') {
+                    ++index;
+                    continue;
+                }
+                break;
 
             case CMD_SHOWEV      : // request show evidence, text will say why. Examination struct will treat as objection.
                 break;
@@ -234,30 +236,42 @@ int run_story() {
         for (;;) {
             draw_screen();
             if (cnt%60 == 0) {
+#ifdef LOCATION_IS_0
                 if (cnt%120 == 0) {
                     // set up the sprite string
                     spritestring("N", COLOR_WHITE);
                 } else {
                     spritestring("N", COLOR_DKGREEN);
                 }
+#else
+                if (cnt%120 == 0) {
+                    // set up the sprite string
+                    spritestring("NI", COLOR_WHITE);
+                } else {
+                    spritestring("NI", COLOR_DKGREEN);
+                }
+#endif
             }
             ++cnt;
 
             // read keyboard
             kscanfast(0);
             if (KSCAN_KEY == 0xff) continue;
-            int ch = tolower(KSCAN_KEY);
+            int ch = KSCAN_KEY;
 
             // act on 'next' or 'inventory'
-            if (ch == 'n') {
+            if (ch == 'N') {
                 ++index;
                 break;
             }
 
-            if (ch == 'i') {
-                run_inventory();
+            // no inventory on location 0
+#ifndef LOCATION_IS_0
+            if (ch == 'I') {
+                run_inventory("Press enter to return to game");
                 continue;
             }
+#endif
 
             if (ch == '7') {
                 // fctn-7 for AID

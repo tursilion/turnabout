@@ -161,6 +161,7 @@
     <ClCompile Include="vgmcomp2\PC.cpp" />
     <ClCompile Include="vgmcomp2\sound.cpp" />
     <ClInclude Include="aid.h" />
+    <ClInclude Include="inventory.h" />
     <ClInclude Include="savegame.h" />
     <ClInclude Include="sfx.h" />
     <ClCompile Include="story.cpp" />

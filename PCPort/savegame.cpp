@@ -40,7 +40,7 @@ void restore_saved_data() {
     ams=VDPRD()<<8;
     ams|=VDPRD();
 
-    for (int i=0; i<EV_MAX; ++i) {
+    for (unsigned int i=0; i<EV_MAX; ++i) {
         // EV_MAX can not be larger than 64!
         evidence_found[i]=VDPRD()<<8;
         evidence_found[i]|=VDPRD();
@@ -48,7 +48,7 @@ void restore_saved_data() {
 
     // skip ahead to the people, we don't necessarily fill all 64 slots
     VDP_SET_ADDRESS(SAVE_GAME_VDP+166);
-    for (int i=0; i<PP_MAX; ++i) {
+    for (unsigned int i=0; i<PP_MAX; ++i) {
         // PP_MAX can not be larger than 16
         people_found[i]=VDPRD()<<8;
         people_found[i]|=VDPRD();
@@ -69,7 +69,7 @@ void store_saved_data() {
     VDPWD(f18a);
     VDPWD(ams>>8);
     VDPWD(ams);
-    for (int i=0; i<EV_MAX; ++i) {
+    for (unsigned int i=0; i<EV_MAX; ++i) {
         // EV_MAX can not be larger than 64!
         VDPWD(evidence_found[i]>>8);
         VDPWD(evidence_found[i]);
@@ -77,7 +77,7 @@ void store_saved_data() {
 
     // we don't necessarily fill all 64 slots
     VDP_SET_ADDRESS_WRITE(SAVE_GAME_VDP+166);
-    for (int i=0; i<PP_MAX; ++i) {
+    for (unsigned int i=0; i<PP_MAX; ++i) {
         // PP_MAX can not be larger than... well, a really big value I didn't bother to work out!
         VDPWD(people_found[i]>>8);
         VDPWD(people_found[i]);
@@ -95,10 +95,10 @@ static int getfilename() {
 
     // a rudimentary text editor to edit the filename (max length 15 - path+10 char filename)
     // not going to use kbhit and cgetc here, too slow. Am going to use full kscan to get arrows and back
-    // work until enter
+    // read until enter pressed
     off = 0;
     while (KSCAN_KEY != 13) {
-        // wait for key release
+        // wait for key release, but keep playing music
         while (KSCAN_KEY != 0xff) {
             kscan(5);
             VDP_WAIT_VBLANK_CRU;
@@ -111,19 +111,20 @@ static int getfilename() {
 
         // check input
         kscan(5);
-        if (KSCAN_KEY == 0xff) {
+        unsigned char x = KSCAN_KEY;
+        if (x == 0xff) {
             VDP_WAIT_VBLANK_CRU;
             VDP_CLEAR_VBLANK;
             update_music();
             continue;
         }
-        if (KSCAN_KEY == 15) {
+        if (x == 15) {
             // FCTN-9 (back) - just abort and return
             return 1;
         }
 
         // check editors
-        if ((KSCAN_KEY == 8) && (off > 0)) {
+        if ((x == 8) && (off > 0)) {
             // left arrow
             // restore character
             if (myFilename[off] < '!') {
@@ -135,7 +136,7 @@ static int getfilename() {
             --off;
             continue;
         }
-        if ((KSCAN_KEY == 9) && (off < 14)) {
+        if ((x == 9) && (off < 14)) {
             // right arrow
             if (myFilename[off+1] != '\0') {
                 // restore character
@@ -146,8 +147,8 @@ static int getfilename() {
         }
 
         // check text
-        if ((KSCAN_KEY >= ' ') && (KSCAN_KEY <= 0x7e)) {
-            myFilename[off] = KSCAN_KEY;
+        if ((x >= ' ') && (x <= 0x7e)) {
+            myFilename[off] = x;
             vdpchar(gImage+23*32+10+off, myFilename[off]);
             if (off < 14) {
                 ++off;

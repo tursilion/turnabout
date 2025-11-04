@@ -1,6 +1,8 @@
 #include "structures.h"
 
 Evidence_t evidence[EV_MAX] = {
+    // 01234567890123456789012345678
+    { "","" },   // EV_NONE
     { "Attorney Badge",	              /*0*/  "Nobody would believe I was an attorney without this."    },
     { "Magatama",	                  /*1*/  "A gift from Maya. Allows me to see if anyone is hiding any deep secret in their heart from me."    },
     { "The Fillies Guide to Ponies",  /*15*/ "Earth Ponies founded Land, Unicorns use magic, Pegasi soar through the air."    },

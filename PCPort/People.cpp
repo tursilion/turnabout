@@ -4,18 +4,19 @@
 // Remember names are stored in the MSB and or'd with 0x80
 Evidence_t people[PP_MAX] = {
     //                         Discovered At this image
-    { "                ",            ""    },  // PP_NONE
-    { "?????",	            /*0*/	""    },  // PP_UNKNOWN
+    { "                ",           ""    },    // PP_NONE
+    { "?????",	            /*0*/	""    },    // PP_UNKNOWN
 
-    { "Phoenix Wright",	    /*0*/	"That's me, attorney at law! I seem to have been called to Equestria via magic."      },
+    // 01234567890123456789012345678
+    { "Phoenix Wright",	    /*0*/	"That's me, attorney at law!"      },
     { "Twilight Sparkle",	/*10*/	"Unicorn disciple of Princess Celestia. Summoned the 'Greatest Defense Attorney' to Equestria."      },
-    { "Rainbow Dash",	    /*39*/	"Pegsus racer, the 'best flier in Equestria'. Accused of the murder of Ace Swift."      },
-    { "Ace Swift",	        /*40*/	"The victim, a professional pegasus racer. Never lost an event. Found dead in the Everfree Forest."      },
+    { "Rainbow Dash",	    /*39*/	"The Defendent: Pegasus racer, the 'best flier in Equestria'. Accused of the murder of Ace Swift."   },
+    { "Ace Swift",	        /*40*/	"The victim, a professional pegasus racer. Never lost an event. Found dead in the Everfree Forest."  },
     { "Fluttershy",	        /*65*/	"Pegasus friend of Rainbow Dash. Witness who lives near the Everfree Forest."      },
-    { "Trixie",	            /*114*/	"The Great and Powerful Trixie, unicorn magician and prosecutor. Has a grudge against Twilight."      },
+    { "Trixie",	            /*114*/	"The Great and Powerful Trixie, unicorn magician and prosecutor. Has a grudge against Twilight."     },
     { "Judge",	            /*126*/ "The Judge also seems to have been called! He's fair, though easily confused."      },
     { "Apple Bloom",	    /*157*/	"Earth pony child, Cutie Mark Crusader. Witness who was in the Everfree Forest the night of the crime."      },
     { "Pinkie Pie",	        /*211*/	"Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash."      },
-    { "Sonata",	            /*287*/	"Unicorn manager of Ace Swift. Resembles Mia from my own realm."      }
+    { "Sonata",	            /*287*/	"Unicorn manager of Ace Swift. Resembles Mia from my own realm."        }
 
 };
