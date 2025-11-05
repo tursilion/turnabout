@@ -1,8 +1,11 @@
 #include "structures.h"
 
+// Remember to take into account that you might have the right object earlier than normal if you are loading a save game!
+// take it into account if you can!
+
 #ifdef LOCATION_IS_0
 // just story                                 //  0                               1                               2                               3                               4                               5                               6                               7
-Story_t story[] =  {                    //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
+const Story_t story[] =  {                    //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
 {   PP_PHOENIX,  0,  PP_NONE    | CMD_ADDEV,     "?????? ??????? June 9th, 8:??PM"  },
 {   EV_NONE,     0,  PP_NONE    | CMD_MUSPROLOG, "Time for negotiations..."  },
 {   EV_BADGE,    0,  PP_NONE    | CMD_ADDEV,     "Forget it, I'm not doing it!"  },
@@ -160,14 +163,109 @@ const Story_t story[] =  {                    //  012345678901234567890123456789
 {   EV_NONE,     16, PP_PHOENIX  | CMD_NONE,     "Identification spell?"  },
 {   EV_NONE,     10, PP_TWILIGHT | CMD_NONE,     "Yeah! An identification spell! Anyway, let me prepare a few things, then we can go to the Detention Center."  },
 {   EV_NONE,     4,  PP_PHOENIX  | CMD_NONE,     "(After I get her inside there with her friend, I'll let her off easy and make her send me back home. There is no way I'm taking a case this weird...)"  },
-{   2,           4 , PP_PHOENIX  | CMD_ENDSTORY, ""  },
+{   2,           4 , PP_PHOENIX  | CMD_ENDSTORY, ""  }
 };
 
 #endif
 
-#ifndef LOCATION_IS_LOADER
+#ifdef LOCATION_IS_2
+//      story                                    //  0                               1                               2                               3                               4                               5                               6                               7
+const Story_t story[] =  {                       //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
+{   EV_NONE,    17,     PP_NONE     | CMD_NONE,     "Ponyville June 9th, 10:05PM"   },
+{   EV_NONE,    17,     PP_PHOENIX  | CMD_NONE,     "I have never felt like such a minority in my life!"    },
+{   EV_NONE,    18,     PP_TWILIGHT | CMD_NONE,     "Oh, it wasn't that bad."   },
+{   EV_NONE,    18,     PP_PHOENIX  | CMD_NONE,     "All those ponies were gawking at me the whole way here!"   },
+{   EV_NONE,    19,     PP_TWILIGHT | CMD_NONE,     "Mr. Wright, humans have almost never been seen in Equestria."   },
+{   EV_NONE,    18,     PP_TWILIGHT | CMD_NONE,     "In fact you may be the first one in Ponyville."   },
+{   EV_NONE,    20,     PP_TWILIGHT | CMD_NONE,     "You should be honored!"   },
+{   EV_NONE,    20,     PP_PHOENIX  | CMD_NONE,     "(Honored? Strolling around a town infested with candy colored equines...)"   },
+{   EV_NONE,    20,     PP_PHOENIX  | CMD_NONE,     "(Yeah, maybe I'd feel honored if I was... Oh, I dunno... a five year old girl!)"   },
 
+{   EV_T_HUMAN, 20,     PP_PHOENIX  | CMD_ADDPROMPT, "How did you know?"  },
+{   EV_T_NOHUMAN, 20,   PP_PHOENIX  | CMD_ADDPROMPT, "Let it go"  },
+{   EV_NONE,     20,    PP_PHOENIX  | CMD_SELPROMPT, ""  },
+
+{   EV_T_HUMAN, 20,     PP_PHOENIX  | CMD_NONE,     "So how did you know I was a human?"   },
+{   EV_NONE,    21,     PP_TWILIGHT | CMD_NONE,     "I read a lot!"   },
+{   EV_NONE,    21,     PP_TWILIGHT | CMD_NONE,     "I've read almost every book in my library five times over and I am familiar with a lot of different species:"   },
+{   EV_NONE,    20,     PP_TWILIGHT | CMD_NONE,     "Chimeras, Trolls, Basilisks, Goblins, et cetera, et cetera."   },
+{   EV_NONE,    20,     PP_PHOENIX  | CMD_NONE,     "(Wait!? You're telling me she has read every book in that gigantic library FIVE TIMES?!)"   },
+
+{   EV_T_NOHUMAN, 19,   PP_TWILIGHT | CMD_NONE,     "Anyway we're here, Phoenix."   },
+{   PP_GUARD,   22,     PP_GUARD    | CMD_ADDEV,    "Halt! Only a lawyer can enter the detention center."   },
+{   EV_NONE,    18,     PP_TWILIGHT | CMD_NONE,     "Well, go on..."   },
+{   EV_NONE,    22,     PP_PHOENIX  | CMD_NONE,     "Uh... Hi guys, I'm a lawyer..."   },
+{   EV_NONE,    22,     PP_GUARD    | CMD_NONE,     "Identification!"   },
+
+{   EV_NONE,    22,     PP_GUARD    | CMD_SHOWEV,   "Present your identification"   },
+{   EV_BADGE,EV_T_LAWYERBADGE, PP_GUARD|CMD_JUMPIFSHOW, "" }, 
+{  EV_E_BADGE,EV_T_RIGHTBADGE, PP_GUARD|CMD_JUMPIFSHOW, "" }, 
+{   EV_T_NOBADGE,22,    PP_GUARD    | CMD_JUMP,     "" }, 
+
+{   EV_T_LAWYERBADGE, 22, PP_PHOENIX| CMD_NONE,     "Ah!... Right here!"   },
+{   EV_NONE,    23,     PP_PHOENIX  | CMD_NONE,     "(Never leave home without it!)"   },
+{   EV_NONE,    23,     PP_GUARD    | CMD_NONE,     "What is that?"   },
+{   EV_NONE,    23,     PP_GUARD    | CMD_NONE,     "Is that a toy? You look a little old to be playing with toys."   },
+{   EV_NONE,    23,     PP_PHOENIX  | CMD_NONE,     "(Next time I am leaving it at home...)"   },
+
+{   EV_T_NOBADGE,22,    PP_GUARD    | CMD_NONE,     "You cannot pass without valid Equestrian identification."   },
+{   EV_NONE,    22,     PP_PHOENIX  | CMD_NONE,     "But I don't have any..."   },
+{   EV_NONE,    22,     PP_GUARD    | CMD_NONE,     "Then beat it Spiky!"   },
+{   EV_NONE,    19,     PP_PHOENIX  | CMD_NONE,     "Twilight! They're not letting me in."   },
+{   EV_NONE,    20,     PP_TWILIGHT | CMD_NONE,     "Oh that's right, Mr. Wright! I was supposed to give you this."   },
+{   EV_NONE,    24,     PP_TWILIGHT | CMD_CLRPROMPT,"The princess ordered me to give you this earlier today. A permit to defend in Equestria."   },
+
+{   EV_T_QUESTIONBADGE,24,PP_PHOENIX| CMD_ADDPROMPT,"That seems odd..."   },
+{   EV_T_NOQBADGE,24,   PP_PHOENIX | CMD_ADDPROMPT, "That's fine."        },
+{   EV_NONE,     24,    PP_PHOENIX  | CMD_SELPROMPT, ""  },
+
+{EV_T_QUESTIONBADGE,24, PP_PHOENIX  | CMD_NONE,     "I see... wait..."   },
+{   EV_NONE,    25,     PP_PHOENIX  | CMD_NONE,     "I thought you accidentally brought me here. How could your princess have had that prepared for me?"   },
+{   EV_NONE,    26,     PP_TWILIGHT | CMD_NONE,     "O-oh uh What I meant was... I had my assistant Spike prepare it before we left."   },
+{   EV_NONE,    26,     PP_PHOENIX  | CMD_NONE,     "Spike? I didn't see anyone else in that library..."   },
+{   EV_NONE,    25,     PP_TWILIGHT | CMD_NONE,     "He was sleeping. It's late as you can see, I had to wake him up and have him prepare it. That's why it took a little while to leave."   },
+{   EV_NONE,    27,     PP_TWILIGHT | CMD_NONE,     "I'll properly introduce you to him later."   },
+{   EV_NONE,    28,     PP_PHOENIX  | CMD_NONE,     "You prepared a permit in twenty minutes? I find that a little fishy..."   },
+{   EV_NONE,    29,     PP_TWILIGHT | CMD_NONE,     "Save the questions for my friend, just take the badge!"   },
+{   EV_NONE,    29,     PP_PHOENIX  | CMD_NONE,     "(This isn't helping me accept your request, you know...)"   },
+
+{ EV_T_NOQBADGE,30,     PP_PHOENIX  | CMD_CHIMESFX, "Equestrian Attorney Badge. A heart shaped badge that gives all the privileges of an Equestrian defense attorney."  },
+{ EV_E_BADGE,   19,     PP_PHOENIX  | CMD_ADDEV,    "A heart..."   },
+{   EV_NONE,    19,     PP_PHOENIX  | CMD_NONE,     "(I feel my masculinity going... going... gone.)"   },
+{   EV_NONE,    31,     PP_TWILIGHT | CMD_NONE,     "Come on, hurry up! Visiting hours are almost over."   },
+{   EV_NONE,    31,     PP_PHOENIX  | CMD_NONE,     "Alright, alright! No need to shove me..."   },
+{   EV_NONE,    32,     PP_PHOENIX  | CMD_NONE,     "Okay... guys here it is..."   },
+{   EV_NONE,    32,     PP_PHOENIX  | CMD_NONE,     "(This is so degrading...)"   },
+
+{ EV_T_RIGHTBADGE,32,   PP_GUARD    | CMD_NONE,     "Permission granted, you may enter."   },
+{   EV_NONE,    32,     PP_PHOENIX  | CMD_NONE,     "Phew... alrighty!"   },
+{   EV_NONE,    19,     PP_PHOENIX  | CMD_NONE,     "Come on Twilight, you can go speak with your friend now."   },
+{   EV_NONE,    33,     PP_TWILIGHT | CMD_NONE,     "Sorry Phoenix..."   },
+{   EV_NONE,    33,     PP_PHOENIX  | CMD_NONE,     "Sorry? About what?"   },
+{   EV_NONE,    33,     PP_TWILIGHT | CMD_NONE,     "I am not allowed in, only attorneys are allowed to speak with suspects..."   },
+{   EV_NONE,    33,     PP_PHOENIX  | CMD_NONE,     "But you said..."   },
+{   EV_NONE,    19,     PP_TWILIGHT | CMD_NONE,     "I know I said I'd talk to her but it'd be better if you got all the details about the crime to make your judgement."   },
+{   EV_NONE,    19,     PP_TWILIGHT | CMD_NONE,     "Just please hear her out... if you don't want to do it after that..."   },
+{   EV_NONE,    33,     PP_TWILIGHT | CMD_NONE,     "I'll send you back to where you came from..."   },
+{   EV_NONE,    33,     PP_PHOENIX  | CMD_CLRPROMPT, "But I-"   },
+
+{   EV_T_CONCERN,24,    PP_PHOENIX  | CMD_ADDPROMPT, "Concerned..."   },
+{   EV_T_NOCONCERN,24,  PP_PHOENIX  | CMD_ADDPROMPT, "See what it's all about."        },
+{   EV_NONE,     24,    PP_PHOENIX  | CMD_SELPROMPT, ""  },
+
+{   EV_T_CONCERN, 33,   PP_PHOENIX  | CMD_NONE,     "(Should I really be doing this...?)"   },
+{   EV_NONE,    33,     PP_PHOENIX  | CMD_NONE,     "(Should I really be meddling in some other world's affair...?)"   },
+{   EV_NONE,    33,     PP_PHOENIX  | CMD_NONE,     "(Maybe I should at least hear what all this fuss is about...)"   },
+
+{ EV_T_NOCONCERN, 33,   PP_PHOENIX  | CMD_NONE,     "Sigh... Fine..."   },
+{   EV_NONE,    20,     PP_TWILIGHT | CMD_NONE,     "Thank you so much, Mr. Wright."   },
+{   3,          20,     PP_NONE     | CMD_ENDSTORY, ""  }   // go to location 3
+
+};
+#endif
+
+#ifndef LOCATION_IS_LOADER
 // a value that can be referenced externally, though I don't plan to check everything
 int nStorySize = sizeof(story)/sizeof(story[0]);
-
 #endif
+

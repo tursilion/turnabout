@@ -13,13 +13,12 @@
 #include "kscan.h"
 #include "inventory.h"
 
-extern Story_t story[];
-extern int nStorySize;
-
 // current story index
 static int index = 0;
 // load loaded story picture
 int lastimg = -1;
+// last evidence shown
+int shownEvidence = EV_NONE;
 
 // conversation prompts that can be prompted
 // it's an error to enter prompt mode without registering any!
@@ -47,7 +46,7 @@ void conversation() {
     int max = 0;
     for (int i=0; i<8; ++i) {
         if (prompts[i].tagid == 0) break;
-        gotoxy(2, 16+i);
+        gotoxy(1, 16+i);
         if (prompts[i].isread) reverse(1);
         cprintf("%c %s", i+'1', prompts[i].str);
         reverse(0);
@@ -123,19 +122,34 @@ int run_story() {
                 }
                 break;
 
-            case CMD_SHOWEV      : // request show evidence, text will say why. Examination struct will treat as objection.
-                break;
+            case CMD_SHOWEV      : // request the user show evidence, text is in text field, result is saved to test later
+                shownEvidence = run_inventory(story[index].text);
+                ++index;
+                continue;
 
-            case CMD_ASKOBJECT   : // ask whether we should object, branch to evidence as a story text if we do
-                break;
+            case CMD_JUMPIFSHOW  : // if the last evidence shown matches 'evidence', then jump to 'story frame'
+                if (shownEvidence == story[index].evidence) {
+                    change_index(story[index].frame);
+                } else {
+                    ++index;
+                }
+                continue;
 
-            case CMD_SKIPIFEV    : // skip to 'evidence' line (EV_T_xxx) if we have a certain evidence (for story control)
+            case CMD_JUMPIFEV    : // skip to 'story frame' line (EV_T_xxx) if we have a certain evidence (for story control)
                 if (has_inventory(story[index].evidence)) {
                     change_index(story[index].frame);
                 } else {
                     ++index;
                 }
                 continue;
+
+            case CMD_JUMP        : // always jump to the line in evidence
+                change_index(story[index].evidence);
+                continue;
+
+            case CMD_CLRPROMPT   : // clear all prompts from the conversation - continue to run as story
+                memset(prompts, 0, sizeof(prompts));
+                break;  
 
             case CMD_ADDPROMPT   : // Add this string and EV_I_name to the conversation prompts (and skip to the next one) - EV is how we find it
                 for (int i=0; i<8; ++i) {

@@ -8,8 +8,9 @@
 #ifdef CLASSIC99
 // define what we are building for here - this will eventually be external on the build line
 //#define LOCATION_IS_LOADER
-#define LOCATION_IS_0
+//#define LOCATION_IS_0
 //#define LOCATION_IS_1
+#define LOCATION_IS_2
 #endif
 
 // one of these for every location - see bottom of file
@@ -62,6 +63,15 @@ enum {
     EV_T_WHORU,
     EV_T_CRIME,
     EV_T_DETAIL,
+    EV_T_HUMAN,
+    EV_T_NOHUMAN,
+    EV_T_LAWYERBADGE,
+    EV_T_NOBADGE,
+    EV_T_RIGHTBADGE,
+    EV_T_QUESTIONBADGE,
+    EV_T_NOQBADGE,
+    EV_T_CONCERN,
+    EV_T_NOCONCERN,
 
     EV_MAX,
 
@@ -82,8 +92,9 @@ enum {
     PP_APPLEBLOOM = 0x8900,         // Earth pony child, Cutie Mark Crusader. Witness who was in the Everfree Forest the night of the crime.
     PP_PINKIE     = 0x8a00,         // Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash.
     PP_SONATA     = 0x8b00,         // Unicorn manager of Ace Swift. Resembles Mia from my own realm.
+    PP_GUARD      = 0x8c00,         // guard / police
 
-    PP_LAST       = 0x8c00
+    PP_LAST       = 0x8d00
 };
 #define PP_MAX ((PP_LAST>>8)-(PP_FIRST>>8))
 #define PP_NONE PP_FIRST
@@ -162,12 +173,14 @@ enum {
 
     CMD_VOICEENDLIST, // end of voice commands
 
-    CMD_SHOWEV      , // request show evidence, text will say why. Examination struct will treat as objection.
+    CMD_JUMP        , // always jump to label specified in evidence
+    CMD_SHOWEV      , // request show evidence, text will say why. Next lines will jump based on what is selected
+    CMD_JUMPIFSHOW  , // jump if we showed evidence (requires previous CMD_SHOWEV). Evidence in evidence, skip tag in picture id
     CMD_ENDSTORY    , // end this story sequence and return to main loop. Story stores new location in evidence field and will jump to it.
     CMD_REMOVEEV    , // remove evidence from inventory (evidence field) and go to next line
     CMD_ADDEV       , // add evidence (evidence field) and go to next line IF text field is empty.
-    CMD_ASKOBJECT   , // ask whether we should object, branch to evidence as a story text if we do
-    CMD_SKIPIFEV    , // skip this line if we have a certain evidence - evidence in evidence, skip tag in picture id
+    CMD_JUMPIFEV    , // skip to this tag if we have a certain evidence - evidence in evidence, skip tag in picture id
+    CMD_CLRPROMPT   , // clear all prompts (new conversation tree)
     CMD_ADDPROMPT   , // Add this string and EV_I_name to the conversation prompts (and skip to the next one) - EV is how we find it
     CMD_DELPROMPT   , // delete the EV_xxx prompt from the list (only used if we need to, let the user go back)
     CMD_CHANGEPROMPT, // update the tag and/or text of a prompt (if NONE or empty, no change)
@@ -235,14 +248,13 @@ enum {
     CMD_MUSENDLIST  , // just to find the end
 };
 
+extern const Story_t story[];
+extern int nStorySize;
+
 // everyone has CHIMESFX (used in stop music)
 #define HAS_CHIMESFX
 
 // and here for every location we define the type - Locations will define the story data
-#ifdef LOCATION_IS_LOADER
-// it knows what to do
-#endif
-
 #ifdef LOCATION_IS_LOADER
 // Just the loader file, save game not valid here
 #define LOCATION_NUMBER 0
@@ -271,32 +283,37 @@ enum {
 #endif
 
 #ifdef LOCATION_IS_2
+#define LAST_LOCATION
 // outside detention center
-#define LOCATION_NUMER 2
+#define LOCATION_NUMBER 2
 #define LOCATION_TYPE_STORY
+// sfx
+// none
+// music
+// none (expect a switch..case default warning)
 #endif
 
 #ifdef LOCATION_IS_3
 // interview dash
-#define LOCATION_NUMER 3
+#define LOCATION_NUMBER 3
 #define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_4
 // post interview talk to twilight
-#define LOCATION_NUMER 4
+#define LOCATION_NUMBER 4
 #define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_5
 // fluttershy's cottage
-#define LOCATION_NUMER 5
+#define LOCATION_NUMBER 5
 #define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_6
 // everfree forest
-#define LOCATION_NUMER 6
+#define LOCATION_NUMBER 6
 #define LOCATION_TYPE_INVESTIGATION
 #endif
 

@@ -208,6 +208,10 @@ WHO ARE YOU? (advances)
 11:01                       .           (Maybe I should at least hear what all this fuss is about...)
 11:04                       .           Sigh... Fine...
 11:07       0020            Twilight    Thank you so much, Mr. Wright.
+
+
+--- LOCATION 3 ---
+
 11:13       0034                        Ponyville Detention Center June 9th, 10:15PM
 11:20                       Phoenix     Okay, so where is Twilight's friend?
 11:23       0035            ????????    Hey!
@@ -327,6 +331,10 @@ WHO ARE YOU? (advances)
 17:59       0034            Phoenix     Hey! No they aren't! There are still five minutes left!
 18:02                       .           She's gone...
 18:04                       .           Oh well, I probably need more information to pursue that any further anyway. As long as she didn't do it that is all I need to know for now.
+
+
+--- Location 4 ---
+
 18:15       0017                        Ponyville June 9th, 10:30PM
 18:19       0020            Twilight    Phoenix! How did it go?
 18:21       0019            Phoenix     I have decided to represent Rainbow Dash.
@@ -367,6 +375,9 @@ WHO ARE YOU? (advances)
 20:32                       Phoenix     Do you know the way?
 20:33       0021            Twilight    Sure do!
 20:35                       Phoenix     Let's go then.
+
+-- Location 5 ---
+
 20:39       0060                        Fluttershy's Cottage June 9th, 11:16PM
 20:43       0061            Twilight    Phoenix, we should stop here.
 20:46                       Phoenix     Why's that?
@@ -462,6 +473,9 @@ WHO ARE YOU? (advances)
 25:26       0063            Twilight    Thank you again for accepting this, Phoenix!
 25:29       0061            .           But we better hurry to the crime scene though.
 25:31                       Phoenix     Right!
+
+--- Location 6 ---
+
 25:38       black                       Everfree Forest. June 9th, 11:30PM
 25:40                       Twilight    Welcome to the Everfree Forest, Mr. Wright.
 25:43                       Phoenix     Kind of spooky...

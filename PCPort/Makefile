@@ -46,7 +46,7 @@ SOURCE_LIST := $(OBJECT_LIST:.o=.cpp)
 PREREQUISITES=\
   $(OBJECT_LIST_EA5)
 
-all: pload ploc0 ploc1
+all: pload ploc0 ploc1 ploc2
 
 # Recipe to compile the executable
 # Note: The loader (PWRIGHT/etc) is simlinked to the "tipi" folder, but also built into Classic99
@@ -79,11 +79,22 @@ ploc1: $(PREREQUISITES) crt0_ea5.asm
 	-rm *.o
 	$(GAS) crt0_ea5.asm -o crt0_ea5.o
 	$(GAS) scratchloaderStandalone.a99 -o scratchloaderStandalone.o
-	$(CC) -c $(C_FLAGS) -DLOCATION_IS_1 -DLAST_LOCATION $(SOURCE_LIST) $(INCPATH)
+	$(CC) -c $(C_FLAGS) -DLOCATION_IS_1 $(SOURCE_LIST) $(INCPATH)
 	$(LD) crt0_ea5.o $(OBJECT_LIST) scratchloaderStandalone.o $(LIBS) $(LIBPATH) $(LDFLAGS_EA5) -o $(NAME)01.ea5.elf > $(NAME)01_ea5.map
 	$(ELF2EA5) $(NAME)01.ea5.elf $(NAME)01.ea5.bin
 	$(EA5PLIT) $(NAME)01.ea5.bin
 	$(CP) PLOC01* /mnt/d/classic99/dsk1/
+	rm *.o
+
+ploc2: $(PREREQUISITES) crt0_ea5.asm
+	-rm *.o
+	$(GAS) crt0_ea5.asm -o crt0_ea5.o
+	$(GAS) scratchloaderStandalone.a99 -o scratchloaderStandalone.o
+	$(CC) -c $(C_FLAGS) -DLOCATION_IS_2 $(SOURCE_LIST) $(INCPATH)
+	$(LD) crt0_ea5.o $(OBJECT_LIST) scratchloaderStandalone.o $(LIBS) $(LIBPATH) $(LDFLAGS_EA5) -o $(NAME)02.ea5.elf > $(NAME)02_ea5.map
+	$(ELF2EA5) $(NAME)02.ea5.elf $(NAME)02.ea5.bin
+	$(EA5PLIT) $(NAME)02.ea5.bin
+	$(CP) PLOC02* /mnt/d/classic99/dsk1/
 	rm *.o
 
 # Recipe to clean all compiled objects
