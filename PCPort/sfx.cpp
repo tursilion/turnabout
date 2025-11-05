@@ -26,6 +26,18 @@ void play_sfx(int sfx) {
             break;
 #endif
 
+#ifdef HAS_LOCKSFX:
+        case CMD_LOCKSFX     : // play three boom sounds
+            SOUND(0xe6);        // select noise
+            for (unsigned char i=0; i<48; i++) {
+                SOUND(0xf0+(i&0xf));  // fade
+                VDP_WAIT_VBLANK_CRU;
+                VDP_CLEAR_VBLANK;
+            }
+            SOUND(0xff);        // make sure it ends muted
+            break;
+#endif
+
 #ifdef HAS_CHIMESFX
         case CMD_CHIMESFX     : // play chime sound
             SOUND(0x87);
@@ -62,6 +74,13 @@ void play_sfx(int sfx) {
 
 #ifdef HAS_CRASHSFX
         case CMD_CRASHSFX    : // play crash sfx
+            SOUND(0xe5);        // select noise
+            for (unsigned char i=0; i<32; i++) {
+                SOUND(0xf0+(i>>1));  // fade
+                VDP_WAIT_VBLANK_CRU;
+                VDP_CLEAR_VBLANK;
+            }
+            SOUND(0xff);        // make sure it ends muted
             break;
 #endif
 

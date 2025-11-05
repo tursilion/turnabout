@@ -264,6 +264,185 @@ const Story_t story[] =  {                       //  012345678901234567890123456
 };
 #endif
 
+#ifdef LOCATION_IS_3
+//      story                                    //  0                               1                               2                               3                               4                               5                               6                               7
+const Story_t story[] =  {                       //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
+
+{   EV_NONE,    34,     PP_NONE     | CMD_NONE,     "Ponyville Detention Center June 9th, 10:15PM"      },
+{   EV_NONE,    34,     PP_PHOENIX  | CMD_NONE,     "Okay, so where is Twilight's friend?"      },
+{   EV_NONE,    35,     PP_UNKNOWN  | CMD_CHIMESFX, "Hey!"      },
+{   EV_NONE,    35,     PP_PHOENIX  | CMD_NONE,     "Eh?! What did I do?!"      },
+{   EV_NONE,    36,     PP_UNKNOWN  | CMD_NONE,     "I don't think they allow animals in here, you should get out before they toss you in here too."      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "Look, I am not an animal. I'm a human being!"      },
+{   EV_NONE,    37,     PP_UNKNOWN  | CMD_NONE,     "Oh... I didn't mean you, I meant that thing on your head."      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "(If someone makes fun of my hair ONE more time...)"      },
+{   EV_NONE,    37,     PP_UNKNOWN  | CMD_MUS??,    "So I'm guessing you're my lawyer, huh?"      },
+{   EV_NONE,    37,     PP_PHOENIX  | CMD_NONE,     "Yes, Twilight Sparkle sent me..."      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_BOOMSFX,  "Wait! No! I haven't agreed to anything yet!"      },
+{   EV_NONE,    38,     PP_UNKNOWN  | CMD_NONE,     "Geez, Twilight knows how to pick 'em..."      },
+{   EV_NONE,    36,     PP_UNKNOWN  | CMD_NONE,     "What are you doing here then?"      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "I just want information regarding the crime you are being accused of."      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "Let's start off with your name..."      },
+{   EV_NONE,    39,     PP_RAINBOW  | CMD_NONE,     "I'm Rainbow Dash, best flier in Ponyville! Soon to be a household name in all of Equestria!"      },
+{   EV_NONE,    39,     PP_RAINBOW  | CMD_NONE,     "Line up for my autograph starts over there!"      },
+{   EV_NONE,    37,     PP_PHOENIX  | CMD_NONE,     "(Twilight Sparkle? Rainbow Dash?)"      },
+{   EV_NONE,    37,     PP_PHOENIX  | CMD_NONE,     "(Is it me or are their names starting to sound like flavors of ice cream?)"      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "I am Phoenix Wright, best attorney in the... universe... apparently..."      },
+{   EV_NONE,    40,     PP_RAINBOW  | CMD_NONE,     "Phoenix?"      },
+{   EV_NONE,    40,     PP_RAINBOW  | CMD_CHIMESFX, "Sweet name but it could sound cooler..."      },
+{   EV_NONE,    39,     PP_PHOENIX  | CMD_NONE,     "Uuhh... \"cooler\"?"      },
+{   EV_NONE,    37,     PP_RAINBOW  | CMD_NONE,     "I think I'll call you \"Nix\", that sounds cool!"      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "(Another strange name I can add to my nickname checklist.)"      },
+
+{   EV_T_EARTHP, 36,    PP_PHOENIX  | CMD_ADDPROMPT, "You're an earth pony?"   },
+{   EV_T_UNIP,   36,    PP_PHOENIX  | CMD_ADDPROMPT, "You're a unicorn?"   },
+{   EV_T_PEGASUSP,36,   PP_PHOENIX  | CMD_ADDPROMPT, "You're a pegasus?"   },
+{   EV_T_NOPONY, 36,    PP_PHOENIX  | CMD_ADDPROMPT, "Why are you in here?"    },
+{   EV_NONE,     36,    PP_PHOENIX  | CMD_SELPROMPT, ""  },
+
+{   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "Hmmm, so you are an... earth pony, correct?"      },
+{   EV_NONE,    41,     PP_RAINBOW  | CMD_NONE,     "What the hay are you talking about? I'm not an earth pony, I'm a pegasus!"      },
+{EV_T_BADGUESS, 41,     PP_RAINBOW  | CMD_JUMP,     ""      },
+
+{   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "Hmmm, so you are a... unicorn pony, correct?"      },
+{   EV_NONE,    41,     PP_RAINBOW  | CMD_NONE,     "What the hay are you talking about? I'm not a unicorn, I'm a pegasus!"      },
+{EV_T_BADGUESS, 41,     PP_RAINBOW  | CMD_JUMP,     ""      },
+
+{   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "Hmmm, so you are a... pegasus, correct?"      },
+{   EV_NONE,    39,     PP_RAINBOW  | CMD_NONE,     "That's right! The BEST pegasus! Good for you, Nix!"      },
+{EV_T_NOPONY,   41,     PP_RAINBOW  | CMD_JUMP,     ""      },
+
+{EV_T_BADGUESS, 41,     PP_PHOENIX  | CMD_NONE,     "(It's kinda sad I couldn't get down a book with twelve words.)"      },
+
+{ EV_T_NOPONY,  41,     PP_PHOENIX  | CMD_NONE,     "Uhh... never mind that. Why are you in here?"      },
+{   EV_NONE,    40,     PP_RAINBOW  | CMD_NONE,     "Well, I guess I can tell you all I know..."      },
+{   EV_NONE,    36,     PP_RAINBOW  | CMD_CLRPROMPT,"You see, last night a pegasus named \"Ace Swift\" was killed in the Everfree Forest."      },
+
+{   EV_T_ACE,   36,    PP_PHOENIX  | CMD_ADDPROMPT, "Ace Swift"    },
+{   EV_NONE,    36,    PP_PHOENIX  | CMD_SELPROMPT, ""  },
+
+{   EV_T_ACE,   36,     PP_PHOENIX  | CMD_NONE,     "Do you know anything about him?"      },
+{   EV_NONE,    37,     PP_RAINBOW  | CMD_NONE,     "Sure do, he was a hot shot racer expected to win the \"Equestrian 500\"."      },
+
+{   EV_T_EQ500, 36,    PP_PHOENIX  | CMD_ADDPROMPT, "Equestrian 500"    },
+{   EV_NONE,    36,    PP_PHOENIX  | CMD_SELPROMPT, ""  },
+
+{   EV_T_EQ500, 37,     PP_PHOENIX  | CMD_NONE,     "\"Equestrian 500\"?"      },
+{   EV_NONE,    37,     PP_RAINBOW  | CMD_NONE,     "A grueling race for pegasi, enduring a five hundred mile journey around Equestria."      },
+{   PP_ACE,     37,     PP_RAINBOW  | CMD_ADDEV,    "He was the top pick to win the whole thing."      },
+{   EV_NONE,    39,     PP_RAINBOW  | CMD_NONE,     "Dont worry though..."      },
+
+{   EV_T_DONTWORRY, 36, PP_PHOENIX  | CMD_ADDPROMPT, "Don't worry?"    },
+{   EV_T_HOWDIE, 36,    PP_PHOENIX  | CMD_ADDPROMPT, "How did he die?"    },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_SELPROMPT, ""  },
+
+{   EV_T_DONTWORRY, 39, PP_PHOENIX  | CMD_NONE,     "\"Don't worry\"? About what?"      },
+{   EV_NONE,    37,     PP_RAINBOW  | CMD_NONE,     "I still would have won even if he were still alive, ha!"      },
+{   EV_NONE,    37,     PP_PHOENIX  | CMD_NONE,     "Let me guess, you were planning on entering that race as well?"      },
+{   EV_NONE,    42,     PP_RAINBOW  | CMD_NONE,     "Of course! The winner gets special lessons from the Wonderbolts!"      },
+{   EV_NONE,    42,     PP_PHOENIX  | CMD_NONE,     "Who are \"The Wonderbolts\"?"      },
+{   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "You don't know who the Wonderbolts are?"      },
+{   EV_NONE,    35,     PP_RAINBOW  | CMD_NONE,     "You living under a rock or something?!"      },
+{   EV_NONE,    35,     PP_PHOENIX  | CMD_NONE,     "Hey, I'm new here! Cut me some slack!"      },
+{   EV_NONE,    43,     PP_RAINBOW  | CMD_NONE,     "*Sigh*"      },
+{   EV_NONE,    41,     PP_RAINBOW  | CMD_NONE,     "\"THE\" Wonderbolts are only the most coolest ponies in all of Equestria!"      },
+{   EV_NONE,    41,     PP_RAINBOW  | CMD_NONE,     "They are the Princess' personal aerial acrobatic team. The stunts they perform are nine degrees of cool!"      },
+{   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "You see, I've been trying to get in their group forever and the Equestrian 500 is my ticket to show off my slick moves to them."      },
+{   EV_NONE,    37,     PP_RAINBOW  | CMD_NONE,     "I'd do anything to get that chance!"      },
+{   EV_NONE,    37,     PP_PHOENIX  | CMD_NONE,     "(Thank you for effectively establishing motive for yourself, Ms. Dash, this helps your case so much...)"      },
+
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_SELPROMPT, ""  },
+
+{   EV_T_HOWDIE, 37,    PP_PHOENIX  | CMD_NONE,     "So how did this guy die?"      },
+{   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "Pony."      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "Wha...?"      },
+{   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "\"How did this pony die?\" is what you mean, Nix."      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "(Well excuse me, I didn't take \"Hooked on Ponyics\")"      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "The point is, how did he die?"      },
+{   EV_NONE,    40,     PP_RAINBOW  | CMD_NONE,     "How should I know? I didn't do it..."      },
+
+{   EV_T_ARREST,36,    PP_PHOENIX  | CMD_ADDPROMPT, "Arrest?"    },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_SELPROMPT, ""  },
+
+{   EV_T_ARREST,40,     PP_PHOENIX  | CMD_NONE,     "Then why did they take you in?"      },
+{   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "I just happened to be flying near the Everfree Forest that night..."      },
+{   EV_NONE,    35,     PP_RAINBOW  | CMD_NONE,     "Then those chuckleheads burst into my house and brought me here, saying \"I did it\"!"      },
+{   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "They even said that they had lots of proof but I would never do that to another pony!"      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "They just took you in like that?"      },
+{   EV_NONE,    45,     PP_RAINBOW  | CMD_STOPMUS,  "They said they are going to banish me..."      },
+{   EV_NONE,    45,     PP_PHOENIX  | CMD_NONE,     "So I heard..."      },
+{   EV_NONE,    45,     PP_RAINBOW  | CMD_MUS???,     "Everyone thinks I did it, everyone!"      },
+{   EV_NONE,    45,     PP_RAINBOW  | CMD_NONE,     "The Wonderbolts probably hate me..."      },
+{   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "But you believe me, right?"      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "Well, I-I guess, but not everyone thinks you did it..."      },
+{   EV_NONE,    40,     PP_RAINBOW  | CMD_NONE,     "Huh?"      },
+{   EV_NONE,    40,     PP_PHOENIX  | CMD_NONE,     "Your friend Twilight seems to have faith in you, otherwise I wouldn't be in this mess..."      },
+{   EV_NONE,    44,     PP_RAINBOW  | CMD_NONE,     "Heh, you're right I guess. Twilight's a real pal..."      },
+{   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "What do you mean by \"mess\", anyway?"      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "You see, as you can probably guess I'm not from Equestria."      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "Your purple friend pulled me out of my world because she accidentally called the \"Greatest Defense Attorney\"... and that happened to be me."      },
+{   EV_NONE,    39,     PP_RAINBOW  | CMD_NONE,     "Awesome! It's only fitting, the best pegasus ever gets the best lawyer ever!"      },
+{   EV_NONE,    39,     PP_RAINBOW  | CMD_NONE,     "You were destined to defend me!"      },
+{   EV_NONE,    39,     PP_PHOENIX  | CMD_NONE,     "(The ones ego is larger than Detective Gumshoe's appetite for instant noodles.)"      },
+{   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "Nix, as much as I hate asking for help..."      },
+{   EV_NONE,    44,     PP_RAINBOW  | CMD_NONE,     "Can you PAH-LEEES be my Attorney?"      },
+{   EV_NONE,    44,     PP_PHOENIX  | CMD_CLRPROMPT,"(I feel kind of sorry for her, she sounds like she is telling the truth and I want to say yes... but should I...?)"      },
+
+{   EV_T_BELIEVE,36,    PP_PHOENIX  | CMD_ADDPROMPT, "Believe her"    },
+{   EV_T_MAKESURE,36,   PP_PHOENIX  | CMD_ADDPROMPT, "Make sure"    },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_SELPROMPT, ""  },
+
+{   EV_T_BELIEVE,44,    PP_PHOENIX  | CMD_NONE,     "Well... oh, wait a minute!"      },
+{   EV_NONE,    46,     PP_PHOENIX  | CMD_NONE,     "(I believe her but I better make sure...)"      },
+
+{   EV_T_MAKESURE, 47,  PP_PHOENIX  | CMD_NONE,     "Magatama: A gift from Maya. Allows me to see if anyone is hiding any deep secret in their heart from me."  },
+
+{   EV_NONE,    48,     PP_RAINBOW  | CMD_NONE,     "Is that a toy? You look a little old to be playing with toys, Nix."      },
+{   EV_NONE,    49,     PP_PHOENIX  | CMD_NONE,     "Look, Rainbow Dash, I am going to ask you this and I want you to tell me the absolute 100% truth!"      },
+{   EV_NONE,    49,     PP_PHOENIX  | CMD_STOPMUS,  "Did you have ANYTHING to do with the death of \"Ace Swift\"?"      },
+{   EV_NONE,    50,     PP_RAINBOW  | CMD_CRASHSFX, "I told you... I DIDN'T KILL ANYPONY!"      },
+{   EV_NONE,    50,     PP_PHOENIX  | CMD_NONE,     "..."      },
+{   EV_NONE,    49,     PP_PHOENIX  | CMD_NONE,     "(Nothing... it's certain then. She really didn't do it.)"      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "Okay Rainbow Dash..."      },
+{   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "What? Why did you go all silent there?"      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "I've decided to take your case, I trust you."      },
+{   EV_NONE,    39,     PP_RAINBOW  | CMD_MUS???,     "Yes! Alright! I know you can do it Nix!"      },
+{   EV_NONE,    39,     PP_PHOENIX  | CMD_NONE,     "I suppose the first thing I should do is investigate the scene of the crime for some evidence to prove your innocence. Where was it again?"      },
+{   EV_NONE,    37,     PP_RAINBOW  | CMD_NONE,     "A clearing in the Everfree Forest."      },
+{   EV_NONE,    37,     PP_PHOENIX  | CMD_NONE,     "Everfree Forest?"      },
+{   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "Yeah, it's about fifteen minutes from Fluttershy's house."      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "Fluttershy... huh..."      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "(Probably another pony...)"      },
+{   EV_NONE,    37,     PP_RAINBOW  | CMD_NONE,     "Well good luck Nix, you may look a little strange but you're okay in my book!"      },
+{   EV_NONE,    37,     PP_PHOENIX  | CMD_NONE,     "(\"I\" look a little strange?! Coming from the \"Roy G Biv\" pony with wings, you look strange even by Ponyville standards!)"      },
+{   EV_NONE,    37,     PP_PHOENIX  | CMD_NONE,     "Oh... right, there was one more question I wanted to ask you..."      },
+{   EV_NONE,    40,     PP_RAINBOW  | CMD_CLRPROMPT,"Shoot!"      },
+
+{   EV_T_WHYTHERE,36,   PP_PHOENIX  | CMD_ADDPROMPT, "What were you doing?"    },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_SELPROMPT, ""  },
+
+{   EV_T_WHYTHERE, 40,  PP_PHOENIX  | CMD_NONE,     "What were you doing near the scene of the crime anyway?"      },
+{   EV_NONE,    45,     PP_RAINBOW  | CMD_STOPMUS,  "Uh..."      },
+{   EV_NONE,    45,     PP_PHOENIX  | CMD_NONE,     "Well?"      },
+{   EV_NONE,    45,     PP_RAINBOW  | CMD_NONE,     "I-I was practicing for the Equestrian 500."      },
+{   EV_NONE,    51,     PP_RAINBOW  | CMD_LOCKSFX,  "Yep, that's what I was doing... practicing for the big race!"      },
+{   EV_NONE,    52,     PP_PHOENIX  | CMD_NONE,     "(Psyche-locks... you're a bad liar. Even without this thing I can tell that you are hiding something from me.)"      },
+{   EV_NONE,    38,     PP_PHOENIX  | CMD_NONE,     "Look Rainbow Dash, if I am going to defend you, you're going to need to be honest with me..."      },
+{   EV_NONE,    45,     PP_RAINBOW  | CMD_NONE,     "I told you a dozen times already, I didn't do it!"      },
+{   EV_NONE,    35,     PP_PHOENIX  | CMD_NONE,     "I am not saying you did it! I'm just wondering what you were doing near the scene of the crime."      },
+{   EV_NONE,    45,     PP_RAINBOW  | CMD_NONE,     "Um... well... uh-oh...!"      },
+{   EV_NONE,    37,     PP_RAINBOW  | CMD_NONE,     "Looks like visiting hours are over!"      },
+{   EV_NONE,    39,     PP_RAINBOW  | CMD_NONE,     "Catch ya later, Nix!"      },
+{   EV_NONE,    34,     PP_PHOENIX  | CMD_NONE,     "Hey! No they aren't! There are still five minutes left!"      },
+{   EV_NONE,    34,     PP_PHOENIX  | CMD_NONE,     "She's gone..."      },
+{   EV_NONE,    34,     PP_PHOENIX  | CMD_NONE,     "Oh well, I probably need more information to pursue that any further anyway. As long as she didn't do it that is all I need to know for now."      },
+    
+{   4,          34,     PP_NONE     | CMD_ENDSTORY, ""  }   // go to location 4
+
+};
+#endif
+
+
 #ifndef LOCATION_IS_LOADER
 // a value that can be referenced externally, though I don't plan to check everything
 int nStorySize = sizeof(story)/sizeof(story[0]);

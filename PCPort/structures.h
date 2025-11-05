@@ -6,11 +6,12 @@
 // F18A could do it, but then we'd need two different copies. Still, F18A conversions of the graphics would be nice.
 
 #ifdef CLASSIC99
-// define what we are building for here - this will eventually be external on the build line
+// define what we are building for here - this will be external on the build line for the makefile builds
 //#define LOCATION_IS_LOADER
 //#define LOCATION_IS_0
 //#define LOCATION_IS_1
-#define LOCATION_IS_2
+//#define LOCATION_IS_2
+#define LOCATION_IS_3
 #endif
 
 // one of these for every location - see bottom of file
@@ -72,6 +73,19 @@ enum {
     EV_T_NOQBADGE,
     EV_T_CONCERN,
     EV_T_NOCONCERN,
+    EV_T_EARTHP,
+    EV_T_UNIP,
+    EV_T_PEGASUSP,
+    EV_T_NOPONY,
+    EV_T_BADGUESS,
+    EV_T_ACE,
+    EV_T_EQ500,
+    EV_T_DONTWORRY,
+    EV_T_HOWDIE,
+    EV_T_BELIEVE,
+    EV_T_ARREST,
+    EV_T_MAKESURE,
+    EV_T_WHYTHERE,
 
     EV_MAX,
 
@@ -149,6 +163,7 @@ enum {
     CMD_HAMMERSFX   , // play hammer sound
     CMD_CHIMESFX    , // play chime sound (mostly meant for cmd_stopmus)
     CMD_BOOMSFX     , // play boom sound
+    CMD_LOCKSFX     , // play 3 booms for psychelocks
     CMD_LAUGHSFX    , // play crowd laughter
     CMD_BREAKSFX    , // play break psychlock sfx
     CMD_PARTYSFX    , // play party horn sfx
@@ -297,6 +312,11 @@ extern int nStorySize;
 // interview dash
 #define LOCATION_NUMBER 3
 #define LOCATION_TYPE_STORY
+// sfx
+#define HAS_LOCKSFX
+#define HAS_BOOMSFX
+#define HAS_CRASHSFX
+// music
 #endif
 
 #ifdef LOCATION_IS_4
