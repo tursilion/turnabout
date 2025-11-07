@@ -22,12 +22,14 @@ int shownEvidence = EV_NONE;
 
 // conversation prompts that can be prompted
 // it's an error to enter prompt mode without registering any!
+// TODO: thinking of reducing the maximum to six? Maybe push it down out of the nametag line
 struct _PROMPTS {
     int tagid;          // make sure to only register EV_T_xxx tags - zero means unset
     int isread;         // set if the text was read already
     const char *str;    // pointer to the string to display for it (from the story text)
 } prompts[8];
 
+// REMEMBER! Any target of a change_index must have CMD_NONE (because otherwise the evidence might be meant for something else)
 void change_index(int tag) {
     for (index = 0; index < nStorySize; ++index) {
         if ((story[index].evidence == tag) && ((story[index].cmdwho&0xff) == CMD_NONE)) {
@@ -87,6 +89,10 @@ redraw:
             goto redraw;
         }
 
+        // TODO: hmm. What if we get 7 story options? Should we change it to letters? Would conflict with inventory...
+        // I could make = the help screen, but if you accidentally did fctn-= you'd reset after getting there. I can't
+        // read the FCTN key otherwise it'd be easy...
+        // I'll try to keep options to 6 or fewer...
         if (x == '7') {
             // fctn-7 for AID
             run_aid(0);

@@ -12,6 +12,7 @@ Evidence_t people[PP_MAX] = {
     // 01234567890123456789012345678
     { "Phoenix Wright",	    /*0*/	"That's me, attorney at law!"      },
     { "Twilight Sparkle",	/*10*/	"Unicorn disciple of Princess Celestia. Summoned the 'Greatest Defense Attorney' to Equestria."      },
+    { "Royal Guard",        /*17*/  "Royal Equestrian Guard, they appear to handle most police duties here."  },
     { "Rainbow Dash",	    /*39*/	"The Defendent: Pegasus racer, the 'best flier in Equestria'. Accused of the murder of Ace Swift."   },
     { "Ace Swift",	        /*40*/	"The victim, a professional pegasus racer. Never lost an event. Found dead in the Everfree Forest."  },
     { "Fluttershy",	        /*65*/	"Pegasus friend of Rainbow Dash. Witness who lives near the Everfree Forest."      },
@@ -19,7 +20,6 @@ Evidence_t people[PP_MAX] = {
     { "Judge",	            /*126*/ "The Judge also seems to have been called! He's fair, though easily confused."      },
     { "Apple Bloom",	    /*157*/	"Earth pony child, Cutie Mark Crusader. Witness who was in the Everfree Forest the night of the crime."      },
     { "Pinkie Pie",	        /*211*/	"Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash."      },
-    { "Sonata",	            /*287*/	"Unicorn manager of Ace Swift. Resembles Mia from my own realm."        },
-    { "Royal Guard",        /*17*/  "Royal Equestrian Guard, they appear to handle most police duties here."  }
+    { "Sonata",	            /*287*/	"Unicorn manager of Ace Swift. Resembles Mia from my own realm."        }
 
 };

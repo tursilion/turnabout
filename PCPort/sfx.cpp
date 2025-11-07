@@ -27,7 +27,13 @@ void play_sfx(int sfx) {
 #endif
 
 #ifdef HAS_LOCKSFX
-        case CMD_LOCKSFX     : // play three boom sounds
+        case CMD_LOCKSFX     :
+            // pulsing noise for the chain
+            SOUND(0xe4);        // select noise
+            for (unsigned char i=0; i<48; i++) {
+                SOUND(0xf6+((i&7)-4));
+            }
+            // three booms for three locks
             SOUND(0xe6);        // select noise
             SOUND(0x81);
             SOUND(0x00);        // lowest pitch
@@ -85,6 +91,37 @@ void play_sfx(int sfx) {
                 VDP_CLEAR_VBLANK;
             }
             SOUND(0xff);        // make sure it ends muted
+            break;
+#endif
+
+#ifdef HAS_FALLSFX
+        case CMD_FALLSFX    : // play falling sfx
+            SOUND(0x80);
+            SOUND(0x10);
+            SOUND(0xA0);
+            SOUND(0x20);
+            SOUND(0xCF);
+            SOUND(0x30);
+            SOUND(0x90);
+            SOUND(0xB0);
+            SOUND(0xD0);    // three tones, 0-1 fall in pitch, 2 fades out
+            for (unsigned char i=0; i<32; i++) {
+                VDP_WAIT_VBLANK_CRU;
+                VDP_CLEAR_VBLANK;
+                SOUND(0x80);
+                SOUND(0x10+(i/3));
+                SOUND(0xa0);
+                SOUND(0x20+(i/3));
+                if (i < 16) {
+                    SOUND(0xD0+i);
+                } else {
+                    SOUND(0xDF);
+                }
+            }
+            SOUND(0x9f);        // make sure it ends muted
+            SOUND(0xbf);        // make sure it ends muted
+            SOUND(0xdf);        // make sure it ends muted
+            SOUND(0xdf);        // make sure it ends muted
             break;
 #endif
 

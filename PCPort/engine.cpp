@@ -559,8 +559,8 @@ int main()
     cputs("This game is running LIVE over\n");
     cputs("the internet and is a work in\n");
     cputs("progress! Currently I have\n");
-    cputs("implemented 5 scenes which is\n");
-    cputs("about 6% of the total script.\n\n");
+    cputs("implemented 6 scenes which is\n");
+    cputs("about 7% of the total script.\n\n");
     // to get the percentage I'm looking at the last timestamp, and dividing it by about 6 hrs
 
     // some hardware info

@@ -95,6 +95,12 @@ static
 #endif
 #ifdef HAS_MUSPEARLY
     case CMD_MUSPEARLY: // With Pearly - Phoenix Wright Justice for All
+        {
+static
+#include "../music/processed/PEARLY.c"
+        pSong = MUS_PEARLY;
+        StartSong(MUS_PEARLY, 0);
+        }
         break;
 #endif
 #ifdef HAS_MUSCROSS

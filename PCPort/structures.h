@@ -12,7 +12,8 @@
 //#define LOCATION_IS_1
 //#define LOCATION_IS_2
 //#define LOCATION_IS_3
-#define LOCATION_IS_4
+//#define LOCATION_IS_4
+#define LOCATION_IS_5
 #endif
 
 // one of these for every location - see bottom of file
@@ -89,6 +90,9 @@ enum {
     EV_T_MAKESURE,
     EV_T_CHECKDASH,
     EV_T_WHYTHERE,
+    EV_T_FSEE,
+    EV_T_FBEG,
+    EV_T_FWORK,
 
     EV_MAX,
 
@@ -101,15 +105,15 @@ enum {
 
     PP_PHOENIX    = 0x8200,         // That's me, attorney at law! I seem to have been called to Equestria via magic.
     PP_TWILIGHT   = 0x8300,         // Unicorn disciple of Princess Celestia. Summoned the 'Greatest Defense Attorney' to Equestria.
-    PP_RAINBOW    = 0x8400,         // Pegsus racer, the 'best flier in Equestria'. Accused of the murder of Ace Swift.
-    PP_ACE        = 0x8500,         // The victim, a professional pegasus racer. Never lost an event. Found dead in the Everfree Forest.
-    PP_FLUTTERSHY = 0x8600,         // Pegasus friend of Rainbow Dash. Witness who lives near the Everfree Forest.
-    PP_TRIXIE     = 0x8700,         // The Great and Powerful Trixie, unicorn magician and prosecutor. Has a grudge against Twilight.
-    PP_JUDGE      = 0x8800,         // The Judge also seems to have been called! He's fair, though easily confused.
-    PP_APPLEBLOOM = 0x8900,         // Earth pony child, Cutie Mark Crusader. Witness who was in the Everfree Forest the night of the crime.
-    PP_PINKIE     = 0x8a00,         // Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash.
-    PP_SONATA     = 0x8b00,         // Unicorn manager of Ace Swift. Resembles Mia from my own realm.
-    PP_GUARD      = 0x8c00,         // guard / police
+    PP_GUARD      = 0x8400,         // guard / police
+    PP_RAINBOW    = 0x8500,         // Pegsus racer, the 'best flier in Equestria'. Accused of the murder of Ace Swift.
+    PP_ACE        = 0x8600,         // The victim, a professional pegasus racer. Never lost an event. Found dead in the Everfree Forest.
+    PP_FLUTTERSHY = 0x8700,         // Pegasus friend of Rainbow Dash. Witness who lives near the Everfree Forest.
+    PP_TRIXIE     = 0x8800,         // The Great and Powerful Trixie, unicorn magician and prosecutor. Has a grudge against Twilight.
+    PP_JUDGE      = 0x8900,         // The Judge also seems to have been called! He's fair, though easily confused.
+    PP_APPLEBLOOM = 0x8a00,         // Earth pony child, Cutie Mark Crusader. Witness who was in the Everfree Forest the night of the crime.
+    PP_PINKIE     = 0x8b00,         // Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash.
+    PP_SONATA     = 0x8c00,         // Unicorn manager of Ace Swift. Resembles Mia from my own realm.
 
     PP_LAST       = 0x8d00
 };
@@ -174,6 +178,7 @@ enum {
     CMD_CRASHSFX    , // play crash sfx
     CMD_RIPSFX      , // play rip sfx
     CMD_WHOOSHSFX   , // play whoosh sfx
+    CMD_FALLSFX     , // play falling sfx
 
     CMD_SFXENDLIST  , // end SFX list
                     
@@ -334,10 +339,6 @@ extern int nStorySize;
 // music
 #define HAS_MUSRECALL
 #define HAS_MUSSISTER
-
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
-#define LAST_LOCATION
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
 #endif
 
 #ifdef LOCATION_IS_5
@@ -345,7 +346,14 @@ extern int nStorySize;
 #define LOCATION_NUMBER 5
 #define LOCATION_TYPE_STORY
 // sfx
+#define HAS_CRASHSFX
+#define HAS_FALLSFX
 // music
+#define HAS_MUSPEARLY
+
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
+#define LAST_LOCATION
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
 #endif
 
 #ifdef LOCATION_IS_6
