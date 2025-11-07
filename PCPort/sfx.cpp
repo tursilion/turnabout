@@ -26,15 +26,19 @@ void play_sfx(int sfx) {
             break;
 #endif
 
-#ifdef HAS_LOCKSFX:
+#ifdef HAS_LOCKSFX
         case CMD_LOCKSFX     : // play three boom sounds
             SOUND(0xe6);        // select noise
+            SOUND(0x81);
+            SOUND(0x00);        // lowest pitch
             for (unsigned char i=0; i<48; i++) {
                 SOUND(0xf0+(i&0xf));  // fade
+                SOUND(0x90+(i&0xf));  // noise+bass
                 VDP_WAIT_VBLANK_CRU;
                 VDP_CLEAR_VBLANK;
             }
             SOUND(0xff);        // make sure it ends muted
+            SOUND(0x9f);
             break;
 #endif
 

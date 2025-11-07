@@ -1,5 +1,7 @@
 #include "structures.h"
 
+// Warning: put no variables in here, they won't be initialized
+
 Evidence_t evidence[EV_MAX] = {
     // 01234567890123456789012345678
     { "","" },   // EV_NONE

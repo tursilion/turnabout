@@ -11,7 +11,8 @@
 //#define LOCATION_IS_0
 //#define LOCATION_IS_1
 //#define LOCATION_IS_2
-#define LOCATION_IS_3
+//#define LOCATION_IS_3
+#define LOCATION_IS_4
 #endif
 
 // one of these for every location - see bottom of file
@@ -73,6 +74,7 @@ enum {
     EV_T_NOQBADGE,
     EV_T_CONCERN,
     EV_T_NOCONCERN,
+    EV_T_RDNAME,
     EV_T_EARTHP,
     EV_T_UNIP,
     EV_T_PEGASUSP,
@@ -85,6 +87,7 @@ enum {
     EV_T_BELIEVE,
     EV_T_ARREST,
     EV_T_MAKESURE,
+    EV_T_CHECKDASH,
     EV_T_WHYTHERE,
 
     EV_MAX,
@@ -249,6 +252,9 @@ enum {
     CMD_MUSAJ       , // Applejack's Theme - AcousticBrony
     CMD_MUSRARITY   , // Rarity's Theme - MandoPony - Using FIM Rarity MIDI instead
     CMD_MUSTRUCY    , // Trucy's Theme - Child of Magic (Chords 0/1/2, 4/5/6, 7/8)
+    CMD_MUSELEGY    , // Guard's elegy - Capcom
+    CMD_MUSGUILTY   , // Guilty love - Capcom (using ringtone version)
+    CMD_MUSRECALL   , // Recollation - Elementary School Trial
 
     // not available yet - will probably need to replace - how can I reach SoloAcapello? Might be able to ask Mando for Rarity's theme.
     CMD_MUSCRUSADE  , // Crusading (Apple Bloom) - SoloAcapello
@@ -298,7 +304,6 @@ extern int nStorySize;
 #endif
 
 #ifdef LOCATION_IS_2
-#define LAST_LOCATION
 // outside detention center
 #define LOCATION_NUMBER 2
 #define LOCATION_TYPE_STORY
@@ -317,24 +322,38 @@ extern int nStorySize;
 #define HAS_BOOMSFX
 #define HAS_CRASHSFX
 // music
+#define HAS_MUSGUILTY
+#define HAS_MUSELEGY
 #endif
 
 #ifdef LOCATION_IS_4
 // post interview talk to twilight
 #define LOCATION_NUMBER 4
 #define LOCATION_TYPE_STORY
+// sfx
+// music
+#define HAS_MUSRECALL
+#define HAS_MUSSISTER
+
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
+#define LAST_LOCATION
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
 #endif
 
 #ifdef LOCATION_IS_5
 // fluttershy's cottage
 #define LOCATION_NUMBER 5
 #define LOCATION_TYPE_STORY
+// sfx
+// music
 #endif
 
 #ifdef LOCATION_IS_6
 // everfree forest
 #define LOCATION_NUMBER 6
 #define LOCATION_TYPE_INVESTIGATION
+// sfx
+// music
 #endif
 
 // I'm not sure if the skip makes sense...

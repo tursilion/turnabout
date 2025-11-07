@@ -13,6 +13,7 @@
 
 // reference for diagnostics
 extern int f18a, ams;
+extern void reset_last_img();
 
 // display the help keys, then return
 // can we fit them all on screen? Or should we take in which help to show?
@@ -22,11 +23,13 @@ void run_aid(int isFinal) {
     set_alt_text();
 #else
     // LOADER is already in text, but do some inline anyway
-    vdpmemset(gImage, ' ', 768);
     vdpmemset(gColor, 0xe0, 16);        // grey
     vdpmemset(gColor+16, 0x40, 16);     // blue
-    gotoxy(0,0);
 #endif
+
+redraw:
+    vdpmemset(gImage, ' ', 768);
+    gotoxy(0,0);
 
     if (isFinal) {
         //     01234567890123456789012345678901
@@ -37,7 +40,7 @@ void run_aid(int isFinal) {
         cputs("All scenes:\n\n");
         cputs("N - Next text\n");
         cputs("I - Inventory screen\n");
-        cputs("7 - Help screen (this)\n");
+        cputs("7 - Help and save screen (this)\n");
         cputs("SPACE - speed text\n\n");
         cputs("Cross-Examination:\n");
         cputs("P - Press for more info\n");
@@ -61,6 +64,7 @@ void run_aid(int isFinal) {
 #else
     cputs("Press:\n");
     cputs(" QUIT to exit\n");
+    cprintf(" F - toggle F18A (%s)\n", f18a?"on":"off");
     cputs(" S - Save game\n");
     if (!isFinal) {
         cputs(" SPACE - return to game\n");
@@ -81,6 +85,14 @@ void run_aid(int isFinal) {
         if ((!isFinal) && (x == ' ')) {
             wait_for_key_release();
             break;
+        }
+        if (x == 'F') {
+            wait_for_key_release();
+            if (f18a) f18a=0; else f18a=1;
+#ifdef LOCATION_TYPE_STORY
+            reset_last_img();
+#endif
+            goto redraw;
         }
         if (check_reset()) {
             reset_f18a();

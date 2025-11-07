@@ -7,7 +7,7 @@
 #include <TISNPlay.h>
 #endif
 
-const unsigned char *pSong = NULL;
+const unsigned char *pSong;
 
 void play_music(int music) {
     switch(music) {
@@ -103,6 +103,12 @@ static
 #endif
 #ifdef HAS_MUSSISTER
     case CMD_MUSSISTER: // Turnabout Sisters - Capcom
+    {
+static
+#include "../music/processed/SISTERS.c"
+        pSong = MUS_SISTERS;
+        StartSong(MUS_SISTERS, 0);
+    }
         break;
 #endif
 #ifdef HAS_MUSSMILE
@@ -219,9 +225,39 @@ static
     }
         break;
 #endif
+#ifdef HAS_MUSGUILTY
+    case CMD_MUSGUILTY:  // Guilty love - Capcom (using ringtone version)
+    {
+static
+#include "../music/processed/GUILTY.c"
+        pSong = MUS_GUILTY;
+        StartSong(MUS_GUILTY, 0);
+    }
+        break;
+#endif
+#ifdef HAS_MUSELEGY
+    case CMD_MUSELEGY:  // Guard's elegy - Capcom
+    {
+static
+#include "../music/processed/ELEGY.c"
+        pSong = MUS_ELEGY;
+        StartSong(MUS_ELEGY, 0);
+    }
+        break;
+#endif
+#ifdef HAS_MUSRECALL
+    case CMD_MUSRECALL:  // Recollation - Elementary School Trial
+    {
+static
+#include "../music/processed/RECALL.c"
+        pSong = MUS_RECALL;
+        StartSong(MUS_RECALL, 0);
+    }
+        break;
+#endif
 
     default:
-        break;
+        pSong = NULL;
     }
 }
 

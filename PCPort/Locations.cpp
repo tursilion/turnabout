@@ -276,20 +276,24 @@ const Story_t story[] =  {                       //  012345678901234567890123456
 {   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "Look, I am not an animal. I'm a human being!"      },
 {   EV_NONE,    37,     PP_UNKNOWN  | CMD_NONE,     "Oh... I didn't mean you, I meant that thing on your head."      },
 {   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "(If someone makes fun of my hair ONE more time...)"      },
-{   EV_NONE,    37,     PP_UNKNOWN  | CMD_MUS??,    "So I'm guessing you're my lawyer, huh?"      },
+{   EV_NONE,    37,     PP_UNKNOWN  | CMD_MUSGUILTY,"So I'm guessing you're my lawyer, huh?"      },
 {   EV_NONE,    37,     PP_PHOENIX  | CMD_NONE,     "Yes, Twilight Sparkle sent me..."      },
 {   EV_NONE,    36,     PP_PHOENIX  | CMD_BOOMSFX,  "Wait! No! I haven't agreed to anything yet!"      },
 {   EV_NONE,    38,     PP_UNKNOWN  | CMD_NONE,     "Geez, Twilight knows how to pick 'em..."      },
 {   EV_NONE,    36,     PP_UNKNOWN  | CMD_NONE,     "What are you doing here then?"      },
 {   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "I just want information regarding the crime you are being accused of."      },
-{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "Let's start off with your name..."      },
+
+{   EV_T_RDNAME, 36,    PP_PHOENIX  | CMD_ADDPROMPT, "What's your name?"    },
+{   EV_NONE,     36,    PP_PHOENIX  | CMD_SELPROMPT, ""  },
+
+{   EV_T_RDNAME,36,     PP_PHOENIX  | CMD_NONE,     "Let's start off with your name..."      },
 {   EV_NONE,    39,     PP_RAINBOW  | CMD_NONE,     "I'm Rainbow Dash, best flier in Ponyville! Soon to be a household name in all of Equestria!"      },
 {   EV_NONE,    39,     PP_RAINBOW  | CMD_NONE,     "Line up for my autograph starts over there!"      },
 {   EV_NONE,    37,     PP_PHOENIX  | CMD_NONE,     "(Twilight Sparkle? Rainbow Dash?)"      },
 {   EV_NONE,    37,     PP_PHOENIX  | CMD_NONE,     "(Is it me or are their names starting to sound like flavors of ice cream?)"      },
 {   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "I am Phoenix Wright, best attorney in the... universe... apparently..."      },
 {   EV_NONE,    40,     PP_RAINBOW  | CMD_NONE,     "Phoenix?"      },
-{   EV_NONE,    40,     PP_RAINBOW  | CMD_CHIMESFX, "Sweet name but it could sound cooler..."      },
+{   EV_NONE,    40,     PP_RAINBOW  | CMD_NONE,     "Sweet name but it could sound cooler..."      },
 {   EV_NONE,    39,     PP_PHOENIX  | CMD_NONE,     "Uuhh... \"cooler\"?"      },
 {   EV_NONE,    37,     PP_RAINBOW  | CMD_NONE,     "I think I'll call you \"Nix\", that sounds cool!"      },
 {   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "(Another strange name I can add to my nickname checklist.)"      },
@@ -300,15 +304,15 @@ const Story_t story[] =  {                       //  012345678901234567890123456
 {   EV_T_NOPONY, 36,    PP_PHOENIX  | CMD_ADDPROMPT, "Why are you in here?"    },
 {   EV_NONE,     36,    PP_PHOENIX  | CMD_SELPROMPT, ""  },
 
-{   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "Hmmm, so you are an... earth pony, correct?"      },
+{ EV_T_EARTHP,  36,     PP_PHOENIX  | CMD_NONE,     "Hmmm, so you are an... earth pony, correct?"      },
 {   EV_NONE,    41,     PP_RAINBOW  | CMD_NONE,     "What the hay are you talking about? I'm not an earth pony, I'm a pegasus!"      },
 {EV_T_BADGUESS, 41,     PP_RAINBOW  | CMD_JUMP,     ""      },
 
-{   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "Hmmm, so you are a... unicorn pony, correct?"      },
+{   EV_T_UNIP,  36,     PP_PHOENIX  | CMD_NONE,     "Hmmm, so you are a... unicorn pony, correct?"      },
 {   EV_NONE,    41,     PP_RAINBOW  | CMD_NONE,     "What the hay are you talking about? I'm not a unicorn, I'm a pegasus!"      },
 {EV_T_BADGUESS, 41,     PP_RAINBOW  | CMD_JUMP,     ""      },
 
-{   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "Hmmm, so you are a... pegasus, correct?"      },
+{ EV_T_PEGASUSP,36,     PP_PHOENIX  | CMD_NONE,     "Hmmm, so you are a... pegasus, correct?"      },
 {   EV_NONE,    39,     PP_RAINBOW  | CMD_NONE,     "That's right! The BEST pegasus! Good for you, Nix!"      },
 {EV_T_NOPONY,   41,     PP_RAINBOW  | CMD_JUMP,     ""      },
 
@@ -322,14 +326,14 @@ const Story_t story[] =  {                       //  012345678901234567890123456
 {   EV_NONE,    36,    PP_PHOENIX  | CMD_SELPROMPT, ""  },
 
 {   EV_T_ACE,   36,     PP_PHOENIX  | CMD_NONE,     "Do you know anything about him?"      },
-{   EV_NONE,    37,     PP_RAINBOW  | CMD_NONE,     "Sure do, he was a hot shot racer expected to win the \"Equestrian 500\"."      },
+{   PP_ACE,    37,     PP_RAINBOW  | CMD_ADDEV,     "Sure do, he was a hot shot racer expected to win the \"Equestrian 500\"."      },
 
 {   EV_T_EQ500, 36,    PP_PHOENIX  | CMD_ADDPROMPT, "Equestrian 500"    },
 {   EV_NONE,    36,    PP_PHOENIX  | CMD_SELPROMPT, ""  },
 
 {   EV_T_EQ500, 37,     PP_PHOENIX  | CMD_NONE,     "\"Equestrian 500\"?"      },
 {   EV_NONE,    37,     PP_RAINBOW  | CMD_NONE,     "A grueling race for pegasi, enduring a five hundred mile journey around Equestria."      },
-{   PP_ACE,     37,     PP_RAINBOW  | CMD_ADDEV,    "He was the top pick to win the whole thing."      },
+{   EV_NONE,    37,     PP_RAINBOW  | CMD_NONE,     "He was the top pick to win the whole thing."      },
 {   EV_NONE,    39,     PP_RAINBOW  | CMD_NONE,     "Dont worry though..."      },
 
 {   EV_T_DONTWORRY, 36, PP_PHOENIX  | CMD_ADDPROMPT, "Don't worry?"    },
@@ -371,7 +375,7 @@ const Story_t story[] =  {                       //  012345678901234567890123456
 {   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "They just took you in like that?"      },
 {   EV_NONE,    45,     PP_RAINBOW  | CMD_STOPMUS,  "They said they are going to banish me..."      },
 {   EV_NONE,    45,     PP_PHOENIX  | CMD_NONE,     "So I heard..."      },
-{   EV_NONE,    45,     PP_RAINBOW  | CMD_MUS???,     "Everyone thinks I did it, everyone!"      },
+{   EV_NONE,    45,     PP_RAINBOW  | CMD_MUSELEGY, "Everyone thinks I did it, everyone!"      },
 {   EV_NONE,    45,     PP_RAINBOW  | CMD_NONE,     "The Wonderbolts probably hate me..."      },
 {   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "But you believe me, right?"      },
 {   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "Well, I-I guess, but not everyone thinks you did it..."      },
@@ -379,11 +383,11 @@ const Story_t story[] =  {                       //  012345678901234567890123456
 {   EV_NONE,    40,     PP_PHOENIX  | CMD_NONE,     "Your friend Twilight seems to have faith in you, otherwise I wouldn't be in this mess..."      },
 {   EV_NONE,    44,     PP_RAINBOW  | CMD_NONE,     "Heh, you're right I guess. Twilight's a real pal..."      },
 {   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "What do you mean by \"mess\", anyway?"      },
-{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "You see, as you can probably guess I'm not from Equestria."      },
+{   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "As you can probably guess: I'm not from Equestria."      },
 {   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "Your purple friend pulled me out of my world because she accidentally called the \"Greatest Defense Attorney\"... and that happened to be me."      },
 {   EV_NONE,    39,     PP_RAINBOW  | CMD_NONE,     "Awesome! It's only fitting, the best pegasus ever gets the best lawyer ever!"      },
 {   EV_NONE,    39,     PP_RAINBOW  | CMD_NONE,     "You were destined to defend me!"      },
-{   EV_NONE,    39,     PP_PHOENIX  | CMD_NONE,     "(The ones ego is larger than Detective Gumshoe's appetite for instant noodles.)"      },
+{   EV_NONE,    39,     PP_PHOENIX  | CMD_NONE,     "(This one's ego is larger than Detective Gumshoe's appetite for instant noodles.)"      },
 {   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "Nix, as much as I hate asking for help..."      },
 {   EV_NONE,    44,     PP_RAINBOW  | CMD_NONE,     "Can you PAH-LEEES be my Attorney?"      },
 {   EV_NONE,    44,     PP_PHOENIX  | CMD_CLRPROMPT,"(I feel kind of sorry for her, she sounds like she is telling the truth and I want to say yes... but should I...?)"      },
@@ -394,9 +398,11 @@ const Story_t story[] =  {                       //  012345678901234567890123456
 
 {   EV_T_BELIEVE,44,    PP_PHOENIX  | CMD_NONE,     "Well... oh, wait a minute!"      },
 {   EV_NONE,    46,     PP_PHOENIX  | CMD_NONE,     "(I believe her but I better make sure...)"      },
+{   EV_T_CHECKDASH, 36, PP_PHOENIX  | CMD_JUMP,     ""  },
 
-{   EV_T_MAKESURE, 47,  PP_PHOENIX  | CMD_NONE,     "Magatama: A gift from Maya. Allows me to see if anyone is hiding any deep secret in their heart from me."  },
+{   EV_T_MAKESURE, 47,  PP_PHOENIX  | CMD_NONE,     "(I think I better make sure...)"  },
 
+{   EV_T_CHECKDASH, 47, PP_PHOENIX  | CMD_NONE,     "Magatama: A gift from Maya. Allows me to see if anyone is hiding any deep secret in their heart from me."  },
 {   EV_NONE,    48,     PP_RAINBOW  | CMD_NONE,     "Is that a toy? You look a little old to be playing with toys, Nix."      },
 {   EV_NONE,    49,     PP_PHOENIX  | CMD_NONE,     "Look, Rainbow Dash, I am going to ask you this and I want you to tell me the absolute 100% truth!"      },
 {   EV_NONE,    49,     PP_PHOENIX  | CMD_STOPMUS,  "Did you have ANYTHING to do with the death of \"Ace Swift\"?"      },
@@ -406,7 +412,7 @@ const Story_t story[] =  {                       //  012345678901234567890123456
 {   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "Okay Rainbow Dash..."      },
 {   EV_NONE,    36,     PP_RAINBOW  | CMD_NONE,     "What? Why did you go all silent there?"      },
 {   EV_NONE,    36,     PP_PHOENIX  | CMD_NONE,     "I've decided to take your case, I trust you."      },
-{   EV_NONE,    39,     PP_RAINBOW  | CMD_MUS???,     "Yes! Alright! I know you can do it Nix!"      },
+{   EV_NONE,    39,     PP_RAINBOW  | CMD_MUSGUILTY,"Yes! Alright! I know you can do it Nix!"      },
 {   EV_NONE,    39,     PP_PHOENIX  | CMD_NONE,     "I suppose the first thing I should do is investigate the scene of the crime for some evidence to prove your innocence. Where was it again?"      },
 {   EV_NONE,    37,     PP_RAINBOW  | CMD_NONE,     "A clearing in the Everfree Forest."      },
 {   EV_NONE,    37,     PP_PHOENIX  | CMD_NONE,     "Everfree Forest?"      },
@@ -442,6 +448,54 @@ const Story_t story[] =  {                       //  012345678901234567890123456
 };
 #endif
 
+#ifdef LOCATION_IS_4
+//      story                                    //  0                               1                               2                               3                               4                               5                               6                               7
+const Story_t story[] =  {                       //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
+{   EV_NONE,    17,     PP_NONE     | CMD_NONE  ,   "Ponyville June 9th, 10:30PM"   },
+{   EV_NONE,    20,     PP_TWILIGHT | CMD_CHIMESFX, "Phoenix! How did it go?"   },
+{   EV_NONE,    19,     PP_PHOENIX  | CMD_NONE  ,   "I have decided to represent Rainbow Dash."   },
+{   EV_NONE,    20,     PP_TWILIGHT | CMD_NONE  ,   "Oh, thank you so much Mr. Wright!"   },
+{   EV_NONE,    20,     PP_PHOENIX  | CMD_NONE  ,   "She said she didn't do it and I can't turn my back on the innocent, or let them be punished for something they didn't do."   },
+{   EV_NONE,    21,     PP_TWILIGHT | CMD_NONE  ,   "You share a very similar trait to Rainbow Dash, Mr. Wright."   },
+{   EV_NONE,    21,     PP_PHOENIX  | CMD_NONE  ,   "I do? Am I really that obnoxious?"   },
+{   EV_NONE,    20,     PP_TWILIGHT | CMD_NONE  ,   "No, you are very loyal."   },
+{   EV_NONE,    20,     PP_TWILIGHT | CMD_NONE  ,   "She probably may not have looked it, but Rainbow Dash is probably really scared about what is going to happen to her."   },
+{   EV_NONE,    20,     PP_TWILIGHT | CMD_NONE  ,   "So she needs all the support she can get right now."   },
+{   EV_NONE,    19,     PP_PHOENIX  | CMD_NONE  ,   "Now that you mention it, she did seem awfully chipper for someone who is the prime suspect for murder."   },
+{   EV_NONE,    33,     PP_TWILIGHT | CMD_NONE  ,   "I can't imagine what it must be like..."   },
+{   EV_NONE,    33,     PP_PHOENIX  | CMD_NONE  ,   "I have been in that place before."   },
+{   EV_NONE,    19,     PP_TWILIGHT | CMD_NONE  ,   "\"That place\"?"   },
+{   EV_NONE,    19,     PP_TWILIGHT | CMD_CHIMESFX, "What do you mean by that, Phoenix?"   },
+{   EV_NONE,    19,     PP_PHOENIX  | CMD_MUSRECALL,"I have been on trial for crimes I didn't commit, I know how she probably feels."   },
+{   EV_NONE,    19,     PP_TWILIGHT | CMD_BLACK ,   "You have?"   },
+{   EV_NONE,    19,     PP_PHOENIX  | CMD_BLACK ,   "It felt dark and lonely having nobody to turn to."   },
+{   EV_NONE,    53,     PP_PHOENIX  | CMD_NONE  ,   "Feeling as if the whole world was against me and nobody could help..."   },
+{   EV_NONE,    54,     PP_PHOENIX  | CMD_NONE  ,   "Once when I was just a kid, my whole class accused me of stealing and we had this stupid \"Class Trial\"."   },
+{   EV_NONE,    54,     PP_PHOENIX  | CMD_NONE  ,   "The other time was a little more serious..."   },
+{   EV_NONE,    55,     PP_PHOENIX  | CMD_NONE  ,   "I was framed for murder by someone who I thought cared for me."   },
+{   EV_NONE,    55,     PP_PHOENIX  | CMD_STOPMUS,  "I learned the hard way appearances can be deceiving..."   },
+{   EV_NONE,    56,     PP_PHOENIX  | CMD_MUSSISTER,"But I was lucky to have friends who pulled me out of that darkness."   },
+{   EV_NONE,    56,     PP_PHOENIX  | CMD_NONE  ,   "It really touched me..."   },
+{   EV_NONE,    56,     PP_PHOENIX  | CMD_NONE  ,   "It's what made me decide to become a defense attorney."   },
+{   EV_NONE,    57,     PP_PHOENIX  | CMD_NONE  ,   "A defense attorney is someone who is there for you when times are grim."   },
+{   EV_NONE,    57,     PP_PHOENIX  | CMD_NONE  ,   "Showing you have someone who trusts and believes in you - that you are not alone."   },
+{   EV_NONE,    58,     PP_PHOENIX  | CMD_NONE  ,   "Smiling to the very end no matter how bad things may get."   },
+{   EV_NONE,    59,     PP_TWILIGHT | CMD_NONE,  "Mr. Wright... You know, I was going to study some law and justice books and be Rainbow Dash's defense attorney myself if you declined."   },
+{   EV_NONE,    21,     PP_TWILIGHT | CMD_NONE  ,   "But I see now that there is some knowledge out there even books can't teach."   },
+{   EV_NONE,    20,     PP_TWILIGHT | CMD_NONE  ,   "It was no mistake choosing you to be Rainbow Dash's lawyer!"   },
+{   EV_NONE,    20,     PP_PHOENIX  | CMD_STOPMUS,  "(\"Choose\"? Didn't you bring me here by accident?)"   },
+{   EV_NONE,    19,     PP_TWILIGHT | CMD_NONE  ,   "So did you learn anything else from Rainbow Dash?"   },
+{   EV_NONE,    19,     PP_PHOENIX  | CMD_NONE  ,   "Yes, she said the crime scene was in the clearing of the \"Everfree Forest\" near \"Butshersty's\" house."   },
+{   EV_NONE,    18,     PP_TWILIGHT | CMD_NONE  ,   "\"Butshersty\"?"   },
+{   EV_NONE,    20,     PP_TWILIGHT | CMD_NONE  ,   "Oh-oh! You mean Fluttershy!"   },
+{   EV_NONE,    20,     PP_PHOENIX  | CMD_NONE  ,   "Do you know the way?"   },
+{   EV_NONE,    21,     PP_TWILIGHT | CMD_NONE  ,   "Sure do!"   },
+{   EV_NONE,    21,     PP_PHOENIX  | CMD_NONE  ,   "Let's go then."   },
+
+{   5,          34,     PP_NONE     | CMD_ENDSTORY, ""  }   // go to location 5
+
+};
+#endif
 
 #ifndef LOCATION_IS_LOADER
 // a value that can be referenced externally, though I don't plan to check everything

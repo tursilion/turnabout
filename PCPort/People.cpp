@@ -1,5 +1,7 @@
 #include "structures.h"
 
+// Warning: put no variables in here, they won't be initialized
+
 // people are just special evidence, but sometimes we need them separately
 // Remember names are stored in the MSB and or'd with 0x80
 Evidence_t people[PP_MAX] = {

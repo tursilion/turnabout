@@ -499,6 +499,7 @@ int main()
 {
     debug_write("Starting up...");
     files(1);
+    play_music(0);  // makes sure pSong is zeroed out
 
 #ifdef CLASSIC99
     vgm_pcinit();
@@ -558,8 +559,8 @@ int main()
     cputs("This game is running LIVE over\n");
     cputs("the internet and is a work in\n");
     cputs("progress! Currently I have\n");
-    cputs("implemented 2 scenes which is\n");
-    cputs("about 2% of the total script.\n\n");
+    cputs("implemented 5 scenes which is\n");
+    cputs("about 6% of the total script.\n\n");
     // to get the percentage I'm looking at the last timestamp, and dividing it by about 6 hrs
 
     // some hardware info
@@ -652,6 +653,9 @@ int main()
     EA5LD();
 #endif
 
+    // if we return, the load must have failed to find the first file (later files will just reboot)
+    // aid will say we're at the end and at least allow a save
+    run_aid(1);
 #endif
 }
 

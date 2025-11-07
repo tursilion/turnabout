@@ -11,7 +11,7 @@
 extern const char *pString;
 // we hack this to force a redraw of the original text
 extern int oldMaxtext;
-const char *DEFTEXT = "Press letter for description, Enter to select. Space for next page.";
+const char *DEFTEXT = "Press letter for description, Enter to select. Period for next page.";
 
 // TODO: Are we going to need inventory images, at least for the maps? probably...
 
@@ -99,7 +99,7 @@ unsigned int run_inventory(const char *pTitle) {
             // KSCAN_KEY is volatile (for some reason), so we'll use oldkey
             // to improve optimization chances
             oldkey = KSCAN_KEY;
-            if (oldkey == ' ') {
+            if (oldkey == '.') {
                 // find the current highest
                 unsigned int next = 0;
                 for (int i=0; i<15; ++i) {
@@ -131,6 +131,11 @@ unsigned int run_inventory(const char *pTitle) {
                 set_textout(DEFTEXT);
                 maxlen = 0;
                 break;
+            }
+            if (oldkey == ' ') {
+                maxlen = 32*7;
+                set_maxlen(maxlen);
+                continue;
             }
             if (oldkey == 13) {
                 // mark it selected and break out (including EV_NONE)

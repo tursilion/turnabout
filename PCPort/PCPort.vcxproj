@@ -180,6 +180,7 @@
     <None Include="crt0_ea5.asm" />
     <None Include="crt0_pload.asm" />
     <None Include="F18A_GPU.a99" />
+    <None Include="linker.ld" />
     <None Include="Makefile" />
     <None Include="scratchloaderStandalone.a99" />
   </ItemGroup>

@@ -37,13 +37,21 @@ void change_index(int tag) {
     index = 0;  // couldn't find it - start over
 }
 
+void reset_last_img() {
+    lastimg = -1;
+}
+
 // get a prompt from the user and update the index
 void conversation() {
+    int max;
+
     // draw out the menu
     set_name(PP_NONE);  // needed to force the name to redraw after the menu
     set_textout("");
     draw_screen();
-    int max = 0;
+    
+redraw:
+    max = 0;
     for (int i=0; i<8; ++i) {
         if (prompts[i].tagid == 0) break;
         gotoxy(1, 16+i);
@@ -53,14 +61,38 @@ void conversation() {
         max = i;
     }
 
+    // location 0 can't get here, so we can just do the main string
+    int cnt = 0;
     for (;;) {
         VDP_WAIT_VBLANK_CRU;
         VDP_CLEAR_VBLANK;
         update_music();
 
+        if (cnt%60 == 0) {
+            if (cnt%120 == 0) {
+                // set up the sprite string for inventory check
+                spritestring("I", COLOR_WHITE);
+            } else {
+                spritestring("I", COLOR_DKGREEN);
+            }
+        }
+        ++cnt;
+
         kscanfast(0);
         unsigned char x = KSCAN_KEY;
         if ((x > '0') && (x <= max+'1')) break;
+
+        if (x == 'I') {
+            run_inventory("Press enter to return to game");
+            goto redraw;
+        }
+
+        if (x == '7') {
+            // fctn-7 for AID
+            run_aid(0);
+            goto redraw;
+        }
+
     }
 
     int newid = KSCAN_KEY-'1';
