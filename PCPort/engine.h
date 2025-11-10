@@ -3,7 +3,7 @@
 
 #include "structures.h"
 
-extern Evidence_t evidence[EV_MAX];
+extern Evidence_t evidence[EV_MAX_STORED_EV];
 extern Evidence_t people[PP_MAX];
 
 #define PPLIDX(i) (((i)-PP_FIRST)>>8)

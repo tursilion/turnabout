@@ -12,7 +12,7 @@ static struct PAB myPab = { 0 };
 static char myFilename[16] = "";
 
 // externs
-extern int evidence_found[EV_MAX];
+extern int evidence_found[EV_MAX_STORED_EV];
 extern int people_found[PP_MAX];
 extern int f18a;
 extern int ams;
@@ -40,8 +40,8 @@ void restore_saved_data() {
     ams=VDPRD()<<8;
     ams|=VDPRD();
 
-    for (unsigned int i=0; i<EV_MAX; ++i) {
-        // EV_MAX can not be larger than 64!
+    for (unsigned int i=0; i<EV_MAX_STORED_EV; ++i) {
+        // EV_MAX_STORED_EV can not be larger than 64!
         evidence_found[i]=VDPRD()<<8;
         evidence_found[i]|=VDPRD();
     }
@@ -57,6 +57,10 @@ void restore_saved_data() {
 
 void store_saved_data() {
     // if we've never set up the savegame PAB, zero the whole mess before we write it, just to be sure
+    // TODO: can we manage saving the 'next' scene on final? we have 'nextloc' in the main engine...
+    // Or we could just build a dummy 'next' which is nothing BUT the 'you have reached the end' prompt.
+    // That would let things like the long investigation not need to be replayed.
+
     set_default_data();
 
     vdpmemcpy(SAVE_GAME_VDP, (unsigned char*)&myPab, 10);
@@ -69,8 +73,8 @@ void store_saved_data() {
     VDPWD(f18a);
     VDPWD(ams>>8);
     VDPWD(ams);
-    for (unsigned int i=0; i<EV_MAX; ++i) {
-        // EV_MAX can not be larger than 64!
+    for (unsigned int i=0; i<EV_MAX_STORED_EV; ++i) {
+        // EV_MAX_STORED_EV can not be larger than 64!
         VDPWD(evidence_found[i]>>8);
         VDPWD(evidence_found[i]);
     }

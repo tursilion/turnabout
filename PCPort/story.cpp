@@ -12,6 +12,7 @@
 #include "music.h"
 #include "kscan.h"
 #include "inventory.h"
+#include "investigate.h"
 
 // current story index
 static int index = 0;
@@ -181,6 +182,14 @@ int run_story() {
                 }
                 continue;
 
+            case CMD_JUMPIFNOEV    : // skip to 'story frame' line (EV_T_xxx) if we do NOT have a certain evidence (for story control)
+                if (!has_inventory(story[index].evidence)) {
+                    change_index(story[index].frame);
+                } else {
+                    ++index;
+                }
+                continue;
+
             case CMD_JUMP        : // always jump to the line in evidence
                 change_index(story[index].evidence);
                 continue;
@@ -235,6 +244,15 @@ int run_story() {
                 conversation();
                 continue;
 
+#ifdef LOCATION_TYPE_INVESTIGATION
+            case CMD_INVESTIGATE:
+                // assumes image is already loaded. Returns EV_0_1 through EV_I_7 in the shownEvidence field
+                // frame contains EV_T_ILEFTOK, EV_T_RIGHTOK, or EV_T_BOTHOK to indicate the legality of returning EV_I_SEARCH_LEFT or EV_I_SEARCH_RIGHT
+                shownEvidence = investigate(story[index].frame);
+                ++index;
+                continue;
+#endif
+
             default:
                 break;
         }
@@ -263,6 +281,13 @@ int run_story() {
         // update name and text
         set_name(story[index].cmdwho & 0xff00);
         set_textout(story[index].text);
+
+        // Now after all that, if we are on CMD_NONE and there is no text, then proceed
+        // it was probably just a label, but we might still want the image change
+        if ((cmdID == CMD_NONE) && (story[index].text[0] == '\0')) {
+            ++index;
+            continue;
+        }
 
         // draw out the text - abort loop on space bar
         int len = (int)strlen(story[index].text);

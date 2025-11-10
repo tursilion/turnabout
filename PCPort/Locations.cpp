@@ -2,6 +2,7 @@
 
 // Remember to take into account that you might have the right object earlier than normal if you are loading a save game!
 // take it into account if you can!
+// Also remember that SFX_FLASH needs BOOMSFX on the HAS_xxx list
 
 #ifdef LOCATION_IS_0
 // just story                                 //  0                               1                               2                               3                               4                               5                               6                               7
@@ -333,7 +334,7 @@ const Story_t story[] =  {                       //  012345678901234567890123456
 
 {   EV_T_EQ500, 37,     PP_PHOENIX  | CMD_NONE,     "\"Equestrian 500\"?"      },
 {   EV_NONE,    37,     PP_RAINBOW  | CMD_NONE,     "A grueling race for pegasi, enduring a five hundred mile journey around Equestria."      },
-{   EV_NONE,    37,     PP_RAINBOW  | CMD_NONE,     "He was the top pick to win the whole thing."      },
+{   EV_EQ500,   37,     PP_RAINBOW  | CMD_ADDEV,    "He was the top pick to win the whole thing."      },
 {   EV_NONE,    39,     PP_RAINBOW  | CMD_NONE,     "Dont worry though..."      },
 
 {   EV_T_DONTWORRY, 36, PP_PHOENIX  | CMD_ADDPROMPT, "Don't worry?"    },
@@ -424,7 +425,7 @@ const Story_t story[] =  {                       //  012345678901234567890123456
 {   EV_NONE,    37,     PP_PHOENIX  | CMD_NONE,     "Oh... right, there was one more question I wanted to ask you..."      },
 {   EV_NONE,    40,     PP_RAINBOW  | CMD_CLRPROMPT,"Shoot!"      },
 
-{   EV_T_WHYTHERE,36,   PP_PHOENIX  | CMD_ADDPROMPT, "What were you doing?"    },
+{   EV_T_WHYTHERE,36,   PP_PHOENIX  | CMD_ADDPROMPT, "What were you doing there?"    },
 {   EV_NONE,    36,     PP_PHOENIX  | CMD_SELPROMPT, ""  },
 
 {   EV_T_WHYTHERE, 40,  PP_PHOENIX  | CMD_NONE,     "What were you doing near the scene of the crime anyway?"      },
@@ -612,6 +613,252 @@ const Story_t story[] =  {                           //  01234567890123456789012
 
 };
 #endif
+
+#ifdef LOCATION_IS_6
+//      story                                        //  0                               1                               2                               3                               4                               5                               6                               7
+const Story_t story[] =  {                           //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
+{   EV_NONE,    80, PP_NONE     | CMD_BLACK,            "Everfree Forest. June 9th, 11:30PM"    },
+{   EV_NONE,    80, PP_TWILIGHT | CMD_BLACK,            "Welcome to the Everfree Forest, Mr. Wright."    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "Kind of spooky..."    },
+{   EV_NONE,    80, PP_TWILIGHT | CMD_BLACK,            "There are many deadly creatures in the Everfree Forest."    },
+{   EV_NONE,    80, PP_TWILIGHT | CMD_BLACK,            "Everypony tends to avoid entering here because of that."    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "D-deadly creatures?"    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "A-ah! HELP! Something just touched my hand!"    },
+{   EV_NONE,    80, PP_TWILIGHT | CMD_BLACK,            "That was just my tail. Don't worry Phoenix, we aren't that deep. Most of the menacing things live much further in."    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "Oh-oh okay."    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "(Come on! Don't be such a chicken, Phoenix!)"    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "Look, there is a clearing... this must be it..."    },
+{   EV_NONE,    80, PP_TWILIGHT | CMD_BLACK,            "Hard to believe somepony died here..."    },
+
+{   EV_T_INVEST,80, PP_PHOENIX  | CMD_ADDPROMPT,        "Where are the investigators?"    },
+{   EV_T_DARK,  80, PP_PHOENIX  | CMD_ADDPROMPT,        "It's too dark!"    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_SELPROMPT,        ""  },
+
+{   EV_T_INVEST,80, PP_PHOENIX  | CMD_NONE,             ""    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "Aren't there any crime scene investigators?"    },
+{   EV_NONE,    80, PP_TWILIGHT | CMD_BLACK,            "They're probably all finished up."    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "Bonus for me, I guess..."    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "Let's get down to work then!"    },
+
+{   EV_NONE,    80, PP_PHOENIX  | CMD_SELPROMPT,        ""  },
+
+{   EV_T_DARK,  80, PP_PHOENIX  | CMD_NONE,             ""    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "But there is a little problem..."    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "It's way too dark here. I can hardly see anything and I don't have a flashlight."    },
+{   EV_NONE,    80, PP_TWILIGHT | CMD_BLACK,            "Let me take care of that."    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "(It's that horn again. It's lighting up like a candle. That must be really handy.)"    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_NONE,             "Good work, Twilight."    },
+{   EV_NONE,    81, PP_TWILIGHT | CMD_NONE,             "Alright! Let's find some clues!"    },
+{   EV_NONE,    81, PP_PHOENIX  | CMD_NONE,             "(She seems really eager to start this up.)"    },
+
+// first screen investigation
+{   EV_NONE  ,      9801,           PP_NONE     | CMD_NONE,         "BEGIN INVESTIGATION - use arrows to move box, press enter to inspect area. Press < or > to shift view."    },
+{EV_T_IN1_SC1,      9801,           PP_NONE     | CMD_NONE,         ""    },
+{   EV_NONE,        EV_T_IRIGHTOK,  PP_PHOENIX  | CMD_INVESTIGATE,  ""    },
+{   EV_I_4,         EV_T_I11_4,     PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },
+{   EV_I_5,         EV_T_I11_5,     PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },
+{EV_I_SEARCH_RIGHT, EV_T_IN1_SC2,   PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },
+{EV_T_I11_NOTHING,  9801,           PP_PHOENIX  | CMD_JUMP,         "" }, 
+
+// first screen nothing here
+{EV_T_I11_NOTHING,  9801,           PP_PHOENIX  | CMD_NONE,        "Nothing interesting here..." }, 
+{EV_PHOTO1,         EV_T_IN1_SC1,   PP_PHOENIX  | CMD_JUMPIFNOEV,  "" }, 
+{EV_BURNT,          EV_T_IN1_SC1,   PP_PHOENIX  | CMD_JUMPIFNOEV,  "" }, 
+{EV_NONE,           9801,           PP_PHOENIX  | CMD_NONE,        "I should check the rest of the clearing..." }, 
+{EV_T_IN1_SC1,      9801,           PP_PHOENIX  | CMD_JUMP,        "" }, 
+
+{   EV_T_I11_5, 81, PP_PHOENIX  | CMD_NONE,             "Hey! Look at this!"    },
+{   EV_NONE,    80, PP_TWILIGHT | CMD_NONE,             "Why is there tape all over the grass?"    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_NONE,             "If it's anything like in my world, this is probably where they found Ace Swift's body."    },
+{   EV_NONE,    82, PP_TWILIGHT | CMD_NONE,             "Ugh... I think I'm going to be sick..."    },
+{   EV_NONE,    82, PP_PHOENIX  | CMD_NONE,             "(And all that eagerness seemed to go away in one fell swoop.)"    },
+{   EV_NONE,    80, PP_TWILIGHT | CMD_NONE,             "Wait, the victim was Ace Swift?"    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_NONE,             "That is what Rainbow Dash told me..."    },
+{   EV_NONE,    83, PP_TWILIGHT | CMD_NONE,             "Ace Swift, hmm..."    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_NONE,             "It's strange, though..."    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_NONE,             "There's no blood at all."    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_NONE,             "Uh... ponies can bleed, right?"    },
+{   EV_NONE,    83, PP_TWILIGHT | CMD_NONE,             "Of course they can!"    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_NONE,             "It's just really strange there is a murder, but not a drop of blood in sight."    },
+{   EV_NONE,    83, PP_TWILIGHT | CMD_NONE,             "This grass is odd, too. It's all black..."    },
+{   EV_NONE,    83, PP_PHOENIX  | CMD_NONE,             "You're right. It is all charred and burned like there was a small fire around the body."    },
+{   EV_PHOTO1,  84, PP_NONE     | CMD_ADDEV,            "Photo#1 - Charred and blackened grass around body."    },
+{   EV_NONE,    81, PP_TWILIGHT | CMD_NONE,             "\"Steel Samurai\"? That sure is an interesting looking camera, Phoenix."    },
+{   EV_NONE,    81, PP_PHOENIX  | CMD_NONE,             "It's not mine, it belongs to a friend."    },
+{   EV_NONE,    81, PP_PHOENIX  | CMD_NONE,             "(Hey! Maybe I should tell Twilight about \"The Steel Samuari\". Amazing how a kids' show got so popular outside its targeted demographic.)"    },
+// check if that was the last piece
+{EV_PHOTO1, EV_T_IN1_SC1, PP_PHOENIX | CMD_JUMPIFNOEV,  "" }, 
+{EV_BURNT,  EV_T_IN1_SC1, PP_PHOENIX | CMD_JUMPIFNOEV,  "" }, 
+{EV_PHOTO2, EV_T_IN1_SC1, PP_PHOENIX | CMD_JUMPIFNOEV,  "" }, 
+{EV_FEATHER,EV_T_IN1_SC1,PP_PHOENIX  | CMD_JUMPIFNOEV,  "" },
+{EV_T_IN1_DONE, 9803,    PP_PHOENIX  | CMD_JUMP,        "" },
+
+{   EV_T_I11_4, 80, PP_TWILIGHT | CMD_NONE,             "Hey, look there. That thing on the ground next to where the body was."    },
+{   EV_NONE,    85, PP_TWILIGHT | CMD_NONE,             ""    },
+{   EV_NONE,    85, PP_PHOENIX  | CMD_NONE,             "It's a... what the heck is this thing!?"    },
+{   EV_NONE,    85, PP_TWILIGHT | CMD_NONE,             "I don't have any idea."    },
+{   EV_NONE,    85, PP_PHOENIX  | CMD_NONE,             "Whatever it was, it's totally burnt to a crisp."    },
+{   EV_NONE,    80, PP_TWILIGHT | CMD_NONE,             "Just like the grass."    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_NONE,             "This may be important evidence."    },
+{   EV_BURNT,   86, PP_NONE     | CMD_ADDEV,            "Burnt Object: A metal object that was severely burned by something. It is unidentifiable now."    },
+// check if that was the last piece
+{EV_PHOTO1, EV_T_IN1_SC1, PP_PHOENIX | CMD_JUMPIFNOEV,  "" }, 
+{EV_BURNT,  EV_T_IN1_SC1, PP_PHOENIX | CMD_JUMPIFNOEV,  "" }, 
+{EV_PHOTO2, EV_T_IN1_SC1, PP_PHOENIX | CMD_JUMPIFNOEV,  "" }, 
+{EV_FEATHER,EV_T_IN1_SC1,PP_PHOENIX  | CMD_JUMPIFNOEV,  "" },
+{EV_T_IN1_DONE, 9803,    PP_PHOENIX  | CMD_JUMP,        "" },
+
+// second screen investigation
+{EV_T_IN1_SC2,      9802,           PP_NONE     | CMD_NONE,         ""    },
+{   EV_NONE,        EV_T_IBOTHOK,   PP_PHOENIX  | CMD_INVESTIGATE,  ""    },
+{   EV_I_4,         EV_T_I12_4,     PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },
+{EV_I_SEARCH_RIGHT, EV_T_IN1_SC3,   PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },
+{EV_I_SEARCH_LEFT,  EV_T_IN1_SC1,   PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },
+{EV_T_I12_NOTHING,  9802,           PP_PHOENIX  | CMD_JUMP,         "" }, 
+
+// second screen nothing here
+{EV_T_I12_NOTHING,  9802,           PP_PHOENIX  | CMD_NONE,        "Nothing interesting here..." }, 
+{EV_PHOTO2,         EV_T_IN1_SC2,   PP_PHOENIX  | CMD_JUMPIFNOEV,  "" }, 
+{EV_NONE,           9802,           PP_PHOENIX  | CMD_NONE,        "I should check the rest of the clearing..." }, 
+{EV_T_IN1_SC2,      9802,           PP_PHOENIX  | CMD_JUMP,        "" }, 
+
+{EV_T_I12_4,    80, PP_PHOENIX  | CMD_NONE,             "Let's look at that dirt landscape over there."    },
+{   EV_NONE,    81, PP_TWILIGHT | CMD_NONE,             "Sure thing!"    },
+{   EV_NONE,    87, PP_PHOENIX  | CMD_NONE,             "What's this?"    },
+{   EV_NONE,    88, PP_TWILIGHT | CMD_NONE,             "There is an imprint of something in the dirt, something long..."    },
+{   EV_NONE,    88, PP_PHOENIX  | CMD_NONE,             "That isn't what I find odd..."    },
+{   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "What do you mean?"    },
+{   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "Look next to it, someone obviously disturbed the dirt here."    },
+{   EV_NONE,    88, PP_TWILIGHT | CMD_NONE,             "Now that you mention it... this doesn't look natural at all. It looks like somepony was kicking the dirt around in this area."    },
+{  EV_PHOTO2,   90, PP_NONE     | CMD_ADDEV,            "Photo#2: An imprint of what seems to be something long. Next to it some markings indicating someone had scuffled the dirt around."    },
+
+// check if that was the last piece
+{EV_PHOTO1, EV_T_IN1_SC2, PP_PHOENIX | CMD_JUMPIFNOEV,  "" }, 
+{EV_BURNT,  EV_T_IN1_SC2, PP_PHOENIX | CMD_JUMPIFNOEV,  "" }, 
+{EV_PHOTO2, EV_T_IN1_SC2, PP_PHOENIX | CMD_JUMPIFNOEV,  "" }, 
+{EV_FEATHER,EV_T_IN1_SC2,PP_PHOENIX  | CMD_JUMPIFNOEV,  "" },
+{EV_T_IN1_DONE, 9803,    PP_PHOENIX  | CMD_JUMP,        "" },
+
+// Scene 3 sets a flag to skip the introductory text
+{EV_T_IN1_SC3,  89, PP_PHOENIX  | CMD_NONE,             ""    },
+{EV_I_IN1FLAG1, EV_T_IN1_SC3b, PP_PHOENIX  | CMD_JUMPIFEV, "" },
+
+{EV_I_IN1FLAG1, 89, PP_PHOENIX  | CMD_ADDEV,            "See anything else suspicious?"    },
+{   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "Look at that tree way over there at the other end of the crime scene."    },
+{   EV_NONE,    91, PP_PHOENIX  | CMD_NONE,             "It's knocked down..."    },
+{   EV_NONE,    91, PP_TWILIGHT | CMD_NONE,             "But look at the trunk. It suffers from the same burning as the grass and that object."    },
+{   EV_NONE,    91, PP_PHOENIX  | CMD_NONE,             "Can ponies breathe fire or something?"    },
+{   EV_NONE,    92, PP_TWILIGHT | CMD_NONE,             "No Phoenix. Dragons do that, not ponies..."    },
+{   EV_NONE,    91, PP_PHOENIX  | CMD_NONE,             "Heh! Maybe a dragon really did do all this."    },
+{   EV_NONE,    92, PP_TWILIGHT | CMD_NONE,             "That isn't possible. Spike is the only dragon in Ponyville and he was with me all night."    },
+{   EV_NONE,    91, PP_PHOENIX  | CMD_NONE,             "Spike..."    },
+{   EV_NONE,    91, PP_PHOENIX  | CMD_NONE,             "That is your assistant you told me about..."    },
+{   EV_NONE,    91, PP_PHOENIX  | CMD_NONE,             "Wait, he's a dragon!? There really are dragons here!?"    },
+{   EV_NONE,    92, PP_TWILIGHT | CMD_NONE,             "Why, yes..."    },
+{   EV_NONE,    91, PP_PHOENIX  | CMD_NONE,             "You said you wanted to introduce me to him..."    },
+{   EV_NONE,    91, PP_PHOENIX  | CMD_NONE,             "I-it's quite alright. Y-you don't need to, he's p-probably a really nice guy."    },
+{   EV_NONE,    93, PP_TWILIGHT | CMD_NONE,             "Don't be so shy, Spike loves company!"    },
+{   EV_NONE,    93, PP_PHOENIX  | CMD_NONE,             "(gulp)"    },
+{   EV_NONE,    93, PP_PHOENIX  | CMD_NONE,             "(I really hope that doesn't have a double meaning to it!)"    },
+
+// third screen investigation
+{EV_T_IN1_SC3b,     9803,           PP_PHOENIX  | CMD_NONE,         ""    },
+{   EV_NONE,        EV_T_ILEFTOK,   PP_PHOENIX  | CMD_INVESTIGATE,  ""    },
+{   EV_I_7,         EV_T_I13_7,     PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },
+{EV_I_SEARCH_LEFT,  EV_T_IN1_SC2,   PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },
+{EV_T_I13_NOTHING,  9803,           PP_PHOENIX  | CMD_JUMP,         ""    }, 
+
+// third screen nothing here
+{EV_T_I13_NOTHING,  9803,           PP_PHOENIX  | CMD_NONE,        "Nothing interesting here..." }, 
+{EV_FEATHER,        EV_T_IN1_SC3b,  PP_PHOENIX  | CMD_JUMPIFNOEV,  "" }, 
+{EV_NONE,           9803,           PP_PHOENIX  | CMD_NONE,        "I should check the rest of the clearing..." }, 
+{EV_T_IN1_SC3b,     9803,           PP_PHOENIX  | CMD_JUMP,        "" }, 
+
+{ EV_T_I13_7,   94, PP_TWILIGHT | CMD_NONE,             "Oh Phoenix! Look on that branch there, on that tree behind the fallen one."    },
+{   EV_NONE,    94, PP_PHOENIX  | CMD_NONE,             "There is something stuck on it. I'll climb up and get it..."    },
+{   EV_NONE,    93, PP_TWILIGHT | CMD_NONE,             "No need, Mr. Wright."    },
+{   EV_NONE,    93, PP_PHOENIX  | CMD_NONE,             "(Or you could just float it down...)"    },
+{   EV_NONE,    95, PP_PHOENIX  | CMD_NONE,             "It's a brown... feather..."    },
+{   EV_NONE,    95, PP_PHOENIX  | CMD_NONE,             "Well that was pointless. Probably from a bird."    },
+{   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "No, it can't be. No bird in Ponyville is this big."    },
+{   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "I know, maybe it is the victim's. He was a pegasus, right? Maybe it is from his wings."    },
+{   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "Nope, this feather doesn't belong to a pony, either. Too big."    },
+{   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "Then we should keep it."    },
+{   EV_FEATHER, 96, PP_NONE     | CMD_ADDEV,            "Brown feather: A suspicious brown feather that doesn't belong to a bird or a pony."    },
+
+// check if that was the last piece
+{EV_PHOTO1, EV_T_IN1_SC3b, PP_PHOENIX | CMD_JUMPIFNOEV,  "" }, 
+{EV_BURNT,  EV_T_IN1_SC3b, PP_PHOENIX | CMD_JUMPIFNOEV,  "" }, 
+{EV_PHOTO2, EV_T_IN1_SC3b, PP_PHOENIX | CMD_JUMPIFNOEV,  "" }, 
+{EV_FEATHER,EV_T_IN1_SC3b,PP_PHOENIX  | CMD_JUMPIFNOEV,  "" },
+// fall through 
+
+{ EV_T_IN1_DONE,89, PP_PHOENIX  | CMD_NONE,             ""                     },
+{   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "How do you do that, Twilight?"    },
+{   EV_NONE,    88, PP_TWILIGHT | CMD_NONE,             "Do what, Phoenix?"    },
+{   EV_NONE,    88, PP_PHOENIX  | CMD_NONE,             "I've seen you levitating things with that horn of yours."    },
+{   EV_NONE,    88, PP_PHOENIX  | CMD_NONE,             "Not to mention you are lighting this whole area with it at this very moment."    },
+{   EV_NONE,    94, PP_TWILIGHT | CMD_NONE,             "It's magic. Levitation and illumination are two of the basic spells a unicorn can learn."    },
+{   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "Why do you ask? Is there no magic in your world?"    },
+{   EV_NONE,    89, PP_PHOENIX  | CMD_CLRPROMPT,        "No, there isn't..."    },
+
+{ EV_T_ISMAGIC, 89, PP_PHOENIX  | CMD_ADDPROMPT,        "Some magic..."    },
+{ EV_T_NODECIS, 89, PP_PHOENIX  | CMD_ADDPROMPT,        "Nothing decisive..."    },
+{   EV_NONE,    89, PP_PHOENIX  | CMD_SELPROMPT,        ""  },
+
+{ EV_T_ISMAGIC, 89, PP_PHOENIX  | CMD_NONE,             "Actually, you could say there is..."    },
+{   EV_NONE,    93, PP_TWILIGHT | CMD_NONE,             "Please do tell. You see, magic is sort of my bread and butter, I want to learn everything there is to know about it."    },
+{   EV_NONE,    93, PP_PHOENIX  | CMD_NONE,             "Well, I have been able to speak to the dead via spirit channeling. That could be considered magic, I guess."    },
+{   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "Spirit channeling?"    },
+{   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "It's when the spirit of someone who is departed possesses the body of the living."    },
+{   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "I have used it to keep in touch with someone very dear to me."    },
+{   EV_NONE,    88, PP_TWILIGHT | CMD_NONE,             "Oh, I get it..."    },
+{   EV_NONE,    93, PP_TWILIGHT | CMD_NONE,             "Hey! Phoenix, can't you do it right now? We can get Ace Swift in your body and ask who killed him."    },
+{   EV_NONE,    93, PP_PHOENIX  | CMD_NONE,             "Heh, sorry. I forgot to mention you have to be a high level spirit medium in order to perform the channeling technique."    },
+{   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "My friend is the one who normally does it."    },
+{   EV_NONE,    88, PP_TWILIGHT | CMD_NONE,             "I see..."    },
+{   EV_NONE,    93, PP_TWILIGHT | CMD_NONE,             "Thanks for the information though. I'll definitely look into it more."    },
+
+{   EV_NONE,    89, PP_PHOENIX  | CMD_SELPROMPT,        ""  },
+
+{EV_T_NODECIS,  89, PP_PHOENIX  | CMD_NONE,             "Hmm... No decisive evidence yet. We still don't even know how this guy died."    },
+{   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "Hey, Twilight. Do you know anything about him?"    },
+{   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "I know a bit of information about him."    },
+{   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "All right, anything helps..."    },
+{   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "Well, Ace was an athlete who got extremely popular around Equestria by winning every event he's ever competed in."    },
+{   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "He won EVERY single event he's ever competed in!?"    },
+{   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "Yeah, he was that good..."    },
+{   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "But with this streak of success he gained a few skeptics thinking that all his victories were a result of cheating and other dubious methods."    },
+{   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "I'd probably think the same if I saw someone winning at everything they do."    },
+{   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "*cough*"    },
+{   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "He was supposed to be competing in the Equestrian 500 and was the racer expected most likely to win."    },
+{   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "Rainbow Dash told me about that too. Unfortunately it sets up a motive for her..."    },
+{   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "What do you mean?"    },
+{   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "Rainbow Dash said she was planning on flying in that race as well and she seemed really, well, determined on winning it."    },
+{   EV_NONE,    94, PP_TWILIGHT | CMD_NONE,             "Yes, I remember her going around Ponyville bantering how she was going to be the one to take the gold."    },
+{   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "If she were to rub out the guy most likely to win, she would have more of a chance of winning the whole thing herself."    },
+{   EV_NONE,    97, PP_TWILIGHT | CMD_NONE,             "But she wouldn't do that!"    },
+{   EV_NONE,    97, PP_PHOENIX  | CMD_NONE,             "Yes, yes I know. But we are going to have to prove otherwise to those who probably suspect that in court tomorrow."    },
+{   EV_NONE,    98, PP_TWILIGHT | CMD_NONE,             "Sorry, I guess you're right."    },
+{   EV_NONE,    98, PP_PHOENIX  | CMD_NONE,             "Can't say I'm really satisfied with the evidence we gathered but this looks like all we are going to find here..."    },
+{   EV_NONE,    91, PP_TWILIGHT | CMD_NONE,             "The ponies investigating the crime scene must have taken all the important stuff."    },
+{   EV_NONE,    91, PP_PHOENIX  | CMD_NONE,             "I'm sure we will see it presented in tomorrow's trial. In any case, we should go get some rest."    },
+{   EV_NONE,    99, PP_TWILIGHT | CMD_NONE,             "What!? No studying or anything!?"    },
+{   EV_NONE,    91, PP_PHOENIX  | CMD_NONE,             "Don't worry, I do it all the time. If I just keep my eyes set on truth, everything will be fine."    },
+{   EV_NONE,    98, PP_TWILIGHT | CMD_NONE,             "I hope you really are the best defense attorney, Mr. Wright..."    },
+{   EV_NONE,    98, PP_PHOENIX  | CMD_NONE,             "We have a big day ahead of us tomorrow."    },
+{   EV_NONE,    94, PP_TWILIGHT | CMD_NONE,             "You can sleep at my house. I have an extra bed for you."    },
+{   EV_NONE,    94, PP_PHOENIX  | CMD_NONE,             "(I still feel like I shouldn't be taking this case. I'm an outsider meddling in something that doesn't concern me at all...)"    },
+{   EV_NONE,    94, PP_PHOENIX  | CMD_NONE,             "(But at the same time, I can't turn my back on someone who is being accused of a crime they didn't commit. That just goes against everything I stand for.)"    },
+{   EV_NONE,    94, PP_PHOENIX  | CMD_NONE,             "(This whole thing is still really weird, talking ponies and all. But I said I would defend Rainbow Dash and that is what I am going to do.)"    },
+{   EV_NONE,    94, PP_PHOENIX  | CMD_NONE,             "(I need to bring my A-game tomorrow, even with little evidence. I will find the truth and get Rainbow Dash acquitted of this murder.)"    },
+
+{   10,          61,     PP_NONE         | CMD_ENDSTORY, ""  }   // go to location 10?
+
+};
+
+#endif
+
 
 #ifndef LOCATION_IS_LOADER
 // a value that can be referenced externally, though I don't plan to check everything

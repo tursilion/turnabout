@@ -34,7 +34,7 @@ redraw:
     if (isFinal) {
         //     01234567890123456789012345678901
         cputs("You have reached the end for\n");
-        cputs("now. You can save your game\n\n");
+        cputs("now. You can save your game.\n\n");
     } else {
         //     01234567890123456789012345678901
         cputs("All scenes:\n\n");

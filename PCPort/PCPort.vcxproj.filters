@@ -98,6 +98,9 @@
     <ClInclude Include="inventory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="investigate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="vgmcomp2\readme.txt">

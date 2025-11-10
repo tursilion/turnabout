@@ -2,13 +2,14 @@
 
 // Warning: put no variables in here, they won't be initialized
 
-Evidence_t evidence[EV_MAX] = {
+Evidence_t evidence[EV_MAX_STORED_EV] = {
     // 01234567890123456789012345678
     { "","" },   // EV_NONE
     { "Attorney Badge",	              /*0*/  "Nobody would believe I was an attorney without this."    },
     { "Magatama",	                  /*1*/  "A gift from Maya. Allows me to see if anyone is hiding any deep secret in their heart from me."    },
     { "The Fillies Guide to Ponies",  /*15*/ "Earth Ponies founded Land, Unicorns use magic, Pegasi soar through the air."    },
     { "Equestrian Attorney Badge",	  /*30*/ "A heart shaped badge that gives all the privileges of an Equestrian defense Attorney"    },
+    { "Equestria 500",                /*  */ "A gruelling 500 mile race around Equestria for pegasi. Ace Swift was expected to win."     },
     { "Photo #1",	                  /*84*/ "Shows charred and blackened grass around body."    },
     { "Burnt Object",	              /*86*/ "A metal object that was severely burned by something. It is unidentifiable now."    },
     { "Photo #2",	                  /*90*/ "An imprint of what seems to be something long. Next to it some markings indicating someone had scuffled the dirt around."    },

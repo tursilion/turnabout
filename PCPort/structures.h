@@ -13,12 +13,13 @@
 //#define LOCATION_IS_2
 //#define LOCATION_IS_3
 //#define LOCATION_IS_4
-#define LOCATION_IS_5
+//#define LOCATION_IS_5
+#define LOCATION_IS_6
 #endif
 
 // one of these for every location - see bottom of file
 //#define LOCATION_TYPE_INVESTIGATION
-//#define LOCATION_TYPE_STORY  -- also covers interrogation
+//#define LOCATION_TYPE_STORY  -- everything ended up using this
 //#define LOCATION_TYPE_CROSSEXAM
 
 // some types
@@ -40,6 +41,7 @@ enum {
     EV_MAGATAMA,                    // A gift from Maya. Allows me to see if anyone is hiding any deep secret in their heart from me.
     EV_FILLIES,                     // Earth Ponies founded Land. Unicorns use magic. Pegasi soar through the air.
     EV_E_BADGE,                     // A heart shaped badge that gives all the privileges of an Equestrian defense Attorney
+    EV_EQ500,                       // Equestria 500 race
     EV_PHOTO1,                      // Charred and blackened grass around body.
     EV_BURNT,                       // A metal object that was severely burned by something. It is unidentifiable now.
     EV_PHOTO2,                      // An imprint of what seems to be something long. Next to it some markings indicating someone had scuffled the dirt around.
@@ -58,6 +60,20 @@ enum {
     // internal inventory items
     EV_START_INTERNAL,              // don't display evidence starting here - internal flags
     EV_I_NOQUESTIONCLOUD,           // did not question the storm cloud evidence (for example)
+    EV_I_IN1FLAG1,                  // flagged first search done
+
+    EV_MAX_STORED_EV,               // nothing after here is saved in inventory arrays
+
+    EV_I_0,                         // investigation square
+    EV_I_1,                         // investigation square
+    EV_I_2,                         // investigation square
+    EV_I_3,                         // investigation square
+    EV_I_4,                         // investigation square
+    EV_I_5,                         // investigation square
+    EV_I_6,                         // investigation square
+    EV_I_7,                         // investigation square
+    EV_I_SEARCH_LEFT,               // investigation move left
+    EV_I_SEARCH_RIGHT,              // investigation move right
 
     // story tags - not stored in inventory, but used to find blocks
     EV_START_TAGS,                  // story tags - do not store in inventory starting here
@@ -93,6 +109,28 @@ enum {
     EV_T_FSEE,
     EV_T_FBEG,
     EV_T_FWORK,
+    EV_T_INVEST,
+    EV_T_DARK,
+
+    EV_T_ILEFTOK,       // can move left from here
+    EV_T_IRIGHTOK,      // can move right from here
+    EV_T_IBOTHOK,       // both directions are okay from here
+
+    EV_T_IN1_SC1,       // investigation 1 screen 1
+    EV_T_I11_4,         // select square 4
+    EV_T_I11_5,         // select square 5
+    EV_T_I11_NOTHING,   // all other squares
+    EV_T_IN1_SC2,       // investigation 1 screen 2
+    EV_T_I12_4,         // select square 4
+    EV_T_I12_NOTHING,   // all other squares
+    EV_T_IN1_SC3,       // investigation 1 screen 3
+    EV_T_IN1_SC3b,      // screen 3 after introduction text
+    EV_T_I13_7,         // select square 7
+    EV_T_I13_NOTHING,   // all other squares
+    EV_T_IN1_DONE,
+
+    EV_T_ISMAGIC,
+    EV_T_NODECIS,
 
     EV_MAX,
 
@@ -107,15 +145,16 @@ enum {
     PP_TWILIGHT   = 0x8300,         // Unicorn disciple of Princess Celestia. Summoned the 'Greatest Defense Attorney' to Equestria.
     PP_GUARD      = 0x8400,         // guard / police
     PP_RAINBOW    = 0x8500,         // Pegsus racer, the 'best flier in Equestria'. Accused of the murder of Ace Swift.
-    PP_ACE        = 0x8600,         // The victim, a professional pegasus racer. Never lost an event. Found dead in the Everfree Forest.
-    PP_FLUTTERSHY = 0x8700,         // Pegasus friend of Rainbow Dash. Witness who lives near the Everfree Forest.
-    PP_TRIXIE     = 0x8800,         // The Great and Powerful Trixie, unicorn magician and prosecutor. Has a grudge against Twilight.
-    PP_JUDGE      = 0x8900,         // The Judge also seems to have been called! He's fair, though easily confused.
-    PP_APPLEBLOOM = 0x8a00,         // Earth pony child, Cutie Mark Crusader. Witness who was in the Everfree Forest the night of the crime.
-    PP_PINKIE     = 0x8b00,         // Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash.
-    PP_SONATA     = 0x8c00,         // Unicorn manager of Ace Swift. Resembles Mia from my own realm.
+    PP_ACE2       = 0x8600,         // The victim, a professional pegasus racer. Found dead in the Everfree Forest. (partial information)
+    PP_ACE        = 0x8700,         // The victim, a professional pegasus racer. Never lost an event. Found dead in the Everfree Forest.
+    PP_FLUTTERSHY = 0x8800,         // Pegasus friend of Rainbow Dash. Witness who lives near the Everfree Forest.
+    PP_TRIXIE     = 0x8900,         // The Great and Powerful Trixie, unicorn magician and prosecutor. Has a grudge against Twilight.
+    PP_JUDGE      = 0x8a00,         // The Judge also seems to have been called! He's fair, though easily confused.
+    PP_APPLEBLOOM = 0x8b00,         // Earth pony child, Cutie Mark Crusader. Witness who was in the Everfree Forest the night of the crime.
+    PP_PINKIE     = 0x8c00,         // Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash.
+    PP_SONATA     = 0x8d00,         // Unicorn manager of Ace Swift. Resembles Mia from my own realm.
 
-    PP_LAST       = 0x8d00
+    PP_LAST       = 0x8e00
 };
 #define PP_MAX ((PP_LAST>>8)-(PP_FIRST>>8))
 #define PP_NONE PP_FIRST
@@ -197,18 +236,25 @@ enum {
     CMD_VOICEENDLIST, // end of voice commands
 
     CMD_JUMP        , // always jump to label specified in evidence
+    
     CMD_SHOWEV      , // request show evidence, text will say why. Next lines will jump based on what is selected
     CMD_JUMPIFSHOW  , // jump if we showed evidence (requires previous CMD_SHOWEV). Evidence in evidence, skip tag in picture id
-    CMD_ENDSTORY    , // end this story sequence and return to main loop. Story stores new location in evidence field and will jump to it.
+    
+    CMD_INVESTIGATE , // load investigation with scene number. Return as though evidence provided, with EV_I_1 through 8 (4 across)
+
     CMD_REMOVEEV    , // remove evidence from inventory (evidence field) and go to next line
     CMD_ADDEV       , // add evidence (evidence field) and go to next line IF text field is empty.
     CMD_JUMPIFEV    , // skip to this tag if we have a certain evidence - evidence in evidence, skip tag in picture id
+    CMD_JUMPIFNOEV  , // skip to this tag if we do not have a certain evidence - evidence in evidence, skip tag in picture id
+    
     CMD_CLRPROMPT   , // clear all prompts (new conversation tree)
     CMD_ADDPROMPT   , // Add this string and EV_I_name to the conversation prompts (and skip to the next one) - EV is how we find it
     CMD_DELPROMPT   , // delete the EV_xxx prompt from the list (only used if we need to, let the user go back)
     CMD_CHANGEPROMPT, // update the tag and/or text of a prompt (if NONE or empty, no change)
     CMD_SELPROMPT   , // go back to the prompt selection list (after this line)
-                    
+
+    CMD_ENDSTORY    , // end this story sequence and return to main loop. Story stores new location in evidence field and will jump to it.
+                        
     CMD_STOPMUS     , // stop music
 
     // downloaded
@@ -348,20 +394,22 @@ extern int nStorySize;
 // sfx
 #define HAS_CRASHSFX
 #define HAS_FALLSFX
+#define HAS_BOOMSFX
 // music
 #define HAS_MUSPEARLY
-
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
-#define LAST_LOCATION
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
 #endif
 
 #ifdef LOCATION_IS_6
 // everfree forest
 #define LOCATION_NUMBER 6
+#define LOCATION_TYPE_STORY
 #define LOCATION_TYPE_INVESTIGATION
 // sfx
 // music
+
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
+#define LAST_LOCATION
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
 #endif
 
 // I'm not sure if the skip makes sense...

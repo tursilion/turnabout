@@ -18,7 +18,7 @@ Offset  Size    Data
  32      2      Location index
  34      2      F18A flag
  36      2      Number of SAMS pages
- 38    128      Evidence Found (reads/writes EV_MAX, max 64)
+ 38    128      Evidence Found (reads/writes EV_MAX_STORED_EV, max 64)
  (gap)
 166     32      People found (up to PP_MAX, max 16)
 

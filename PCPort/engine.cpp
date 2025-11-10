@@ -20,7 +20,7 @@
 #include "aid.h"
 
 extern int run_story();
-int evidence_found[EV_MAX];
+int evidence_found[EV_MAX_STORED_EV];
 int people_found[PP_MAX];
 
 #ifndef CLASSIC99
@@ -319,13 +319,15 @@ void black_image() {
 void add_inventory(unsigned int id) {
     if (id >= PP_FIRST) {
         people_found[PPLIDX(id)] = 1;
-    } else if (id < EV_MAX) {
+    } else if (id < EV_MAX_STORED_EV) {
         evidence_found[id] = 1;
     }
 }
 void remove_inventory(unsigned int id) {
-    // can't remove people
-    if (id < EV_MAX) {
+    // if you are removing a people, make sure you add the replacement right back!
+    if (id >= PP_FIRST) {
+        people_found[PPLIDX(id)] = 0;
+    } else if (id < EV_MAX_STORED_EV) {
         evidence_found[id] = 0;
     }
 }
@@ -333,7 +335,7 @@ void remove_inventory(unsigned int id) {
 int has_inventory(unsigned int id) {
     if (id >= PP_FIRST) {
         return (people_found[PPLIDX(id)] != 0);
-    } else if (id < EV_MAX) {
+    } else if (id < EV_MAX_STORED_EV) {
         return (evidence_found[id] != 0);
     }
     return 0;
@@ -513,7 +515,7 @@ int main()
         debug_write("F18A enabled");
     }
     checkSams();
-    memset(evidence_found, 0, EV_MAX*sizeof(evidence_found[0]));
+    memset(evidence_found, 0, EV_MAX_STORED_EV*sizeof(evidence_found[0]));
     memset(people_found, 0, PP_MAX*sizeof(people_found[0]));
     add_inventory(EV_BADGE);
     add_inventory(EV_MAGATAMA);
