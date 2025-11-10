@@ -327,7 +327,7 @@ const Story_t story[] =  {                       //  012345678901234567890123456
 {   EV_NONE,    36,    PP_PHOENIX  | CMD_SELPROMPT, ""  },
 
 {   EV_T_ACE,   36,     PP_PHOENIX  | CMD_NONE,     "Do you know anything about him?"      },
-{   PP_ACE,    37,     PP_RAINBOW  | CMD_ADDEV,     "Sure do, he was a hot shot racer expected to win the \"Equestrian 500\"."      },
+{   PP_ACE2,    37,     PP_RAINBOW  | CMD_ADDEV,    "Sure do, he was a hot shot racer expected to win the \"Equestrian 500\"."      },
 
 {   EV_T_EQ500, 36,    PP_PHOENIX  | CMD_ADDPROMPT, "Equestrian 500"    },
 {   EV_NONE,    36,    PP_PHOENIX  | CMD_SELPROMPT, ""  },
@@ -826,8 +826,8 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "I know a bit of information about him."    },
 {   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "All right, anything helps..."    },
 {   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "Well, Ace was an athlete who got extremely popular around Equestria by winning every event he's ever competed in."    },
-{   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "He won EVERY single event he's ever competed in!?"    },
-{   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "Yeah, he was that good..."    },
+{   PP_ACE2,    89, PP_PHOENIX  | CMD_REMOVEEV,         "He won EVERY single event he's ever competed in!?"    },
+{   PP_ACE,     89, PP_TWILIGHT | CMD_ADDEV,            "Yeah, he was that good..."    },
 {   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "But with this streak of success he gained a few skeptics thinking that all his victories were a result of cheating and other dubious methods."    },
 {   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "I'd probably think the same if I saw someone winning at everything they do."    },
 {   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "*cough*"    },

@@ -60,7 +60,6 @@ void store_saved_data() {
     // TODO: can we manage saving the 'next' scene on final? we have 'nextloc' in the main engine...
     // Or we could just build a dummy 'next' which is nothing BUT the 'you have reached the end' prompt.
     // That would let things like the long investigation not need to be replayed.
-
     set_default_data();
 
     vdpmemcpy(SAVE_GAME_VDP, (unsigned char*)&myPab, 10);
