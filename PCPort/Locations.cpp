@@ -513,7 +513,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    65,     PP_FLUTTERSHY   | CMD_NONE,     "..."    },
 {   EV_NONE,    65,     PP_PHOENIX      | CMD_NONE,     "So Ponyville is a really nice place, huh?"    },
 {   EV_NONE,    65,     PP_PHOENIX      | CMD_NONE,     "(Talk about quiet, certainly lives up to her name.)"    },
-{   EV_NONE,    66,     PP_FLUTTERSHY   | CMD_CHIMESFX, "*Whisper*"    },
+{   EV_NONE,    66,     PP_FLUTTERSHY   | CMD_NONE,     "*Whisper*"    },
 {   EV_NONE,    67,     PP_TWILIGHT     | CMD_NONE,     "Oh... Oh... Okay..."    },
 {   EV_NONE,    67,     PP_PHOENIX      | CMD_NONE,     "W-what's she saying?"    },
 {   EV_NONE,    67,     PP_TWILIGHT     | CMD_NONE,     "She is saying suits and ties intimidate her."    },
@@ -647,8 +647,8 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "It's way too dark here. I can hardly see anything and I don't have a flashlight."    },
 {   EV_NONE,    80, PP_TWILIGHT | CMD_BLACK,            "Let me take care of that."    },
 {   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "(It's that horn again. It's lighting up like a candle. That must be really handy.)"    },
-{   EV_NONE,    80, PP_PHOENIX  | CMD_NONE,             "Good work, Twilight."    },
-{   EV_NONE,    81, PP_TWILIGHT | CMD_NONE,             "Alright! Let's find some clues!"    },
+{   EV_NONE,    80, PP_PHOENIX  | CMD_MAGICSFX,         "Good work, Twilight."    },
+{   EV_NONE,    81, PP_TWILIGHT | CMD_MUSMIDDLE,        "Alright! Let's find some clues!"    },
 {   EV_NONE,    81, PP_PHOENIX  | CMD_NONE,             "(She seems really eager to start this up.)"    },
 
 // first screen investigation
@@ -712,6 +712,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {EV_T_IN1_SC2,      9802,           PP_NONE     | CMD_NONE,         ""    },
 {   EV_NONE,        EV_T_IBOTHOK,   PP_PHOENIX  | CMD_INVESTIGATE,  ""    },
 {   EV_I_4,         EV_T_I12_4,     PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },
+{   EV_I_5,         EV_T_I12_4,     PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },    // allow 4 or 5
 {EV_I_SEARCH_RIGHT, EV_T_IN1_SC3,   PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },
 {EV_I_SEARCH_LEFT,  EV_T_IN1_SC1,   PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },
 {EV_T_I12_NOTHING,  9802,           PP_PHOENIX  | CMD_JUMP,         "" }, 
@@ -832,12 +833,12 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "I'd probably think the same if I saw someone winning at everything they do."    },
 {   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "*cough*"    },
 {   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "He was supposed to be competing in the Equestrian 500 and was the racer expected most likely to win."    },
-{   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "Rainbow Dash told me about that too. Unfortunately it sets up a motive for her..."    },
+{   EV_NONE,    89, PP_PHOENIX  | CMD_STOPMUS,          "Rainbow Dash told me about that too. Unfortunately it sets up a motive for her..."    },
 {   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "What do you mean?"    },
 {   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "Rainbow Dash said she was planning on flying in that race as well and she seemed really, well, determined on winning it."    },
 {   EV_NONE,    94, PP_TWILIGHT | CMD_NONE,             "Yes, I remember her going around Ponyville bantering how she was going to be the one to take the gold."    },
 {   EV_NONE,    89, PP_PHOENIX  | CMD_NONE,             "If she were to rub out the guy most likely to win, she would have more of a chance of winning the whole thing herself."    },
-{   EV_NONE,    97, PP_TWILIGHT | CMD_NONE,             "But she wouldn't do that!"    },
+{   EV_NONE,    97, PP_TWILIGHT | CMD_MUSCORE,          "But she wouldn't do that!"    },
 {   EV_NONE,    97, PP_PHOENIX  | CMD_NONE,             "Yes, yes I know. But we are going to have to prove otherwise to those who probably suspect that in court tomorrow."    },
 {   EV_NONE,    98, PP_TWILIGHT | CMD_NONE,             "Sorry, I guess you're right."    },
 {   EV_NONE,    98, PP_PHOENIX  | CMD_NONE,             "Can't say I'm really satisfied with the evidence we gathered but this looks like all we are going to find here..."    },
@@ -853,12 +854,19 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    94, PP_PHOENIX  | CMD_NONE,             "(This whole thing is still really weird, talking ponies and all. But I said I would defend Rainbow Dash and that is what I am going to do.)"    },
 {   EV_NONE,    94, PP_PHOENIX  | CMD_NONE,             "(I need to bring my A-game tomorrow, even with little evidence. I will find the truth and get Rainbow Dash acquitted of this murder.)"    },
 
-{   10,          61,     PP_NONE         | CMD_ENDSTORY, ""  }   // go to location 10?
+{   10,         94,     PP_NONE         | CMD_ENDSTORY, ""  }   // go to location 10?
 
 };
-
 #endif
 
+#ifdef LOCATION_IS_10
+//      story                                        //  0                               1                               2                               3                               4                               5                               6                               7
+const Story_t story[] =  {                           //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
+{   EV_NONE,    80, PP_NONE     | CMD_BLACK,            "Everfree Forest. June 9th, 11:30PM"    },
+{   10,         94,     PP_NONE         | CMD_ENDSTORY, ""  }   // go to location 10?
+
+};
+#endif
 
 #ifndef LOCATION_IS_LOADER
 // a value that can be referenced externally, though I don't plan to check everything

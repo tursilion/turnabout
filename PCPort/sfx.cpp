@@ -94,6 +94,31 @@ void play_sfx(int sfx) {
             break;
 #endif
 
+#ifdef HAS_MAGICSFX
+        case CMD_MAGICSFX:    // play magic sfx
+            SOUND(0x80);
+            SOUND(0x10);
+            SOUND(0xA0);
+            SOUND(0x20);
+            SOUND(0x9F);
+            SOUND(0xBF);      // two channels rising pitch and volume
+            for (unsigned char i=0; i<32; i++) {
+                VDP_WAIT_VBLANK_CRU;
+                VDP_CLEAR_VBLANK;
+                SOUND(0x80);
+                SOUND(0x10-(i/3));
+                SOUND(0xa0);
+                SOUND(0x20-(i/3));
+                SOUND(0x9f-(i/2));
+                SOUND(0xBF-(i/2));
+            }
+            SOUND(0x9f);        // make sure it ends muted
+            SOUND(0xbf);        // make sure it ends muted
+            SOUND(0xdf);        // make sure it ends muted
+            SOUND(0xdf);        // make sure it ends muted
+            break;
+#endif
+
 #ifdef HAS_FALLSFX
         case CMD_FALLSFX    : // play falling sfx
             SOUND(0x80);

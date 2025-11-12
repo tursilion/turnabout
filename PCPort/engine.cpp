@@ -366,7 +366,6 @@ void wait_for_key_release() {
 // safer to do this in each app than hope it's still initialized
 void setupgpu() {
     // This is now exactly 128 bytes - to extend we need to reserve more space
-    // This is now exactly 128 bytes - to extend we need to reserve more space
     static const unsigned char GPUPROG[] = {
         0x04,0xc0,0xd0,0x20,0x70,0x00,0x02,0x80,
         0xff,0x00,0x16,0x05,0x02,0x00,0x01,0x00,
@@ -507,13 +506,13 @@ int main()
     vgm_pcinit();
 #endif
 
-
-#if LOCATION_IS_LOADER
     // detect F18A for graphics (corrupts VDP registers)
     f18a = detect_f18a();
     if (f18a) {
         debug_write("F18A enabled");
     }
+
+#if LOCATION_IS_LOADER
     checkSams();
     memset(evidence_found, 0, EV_MAX_STORED_EV*sizeof(evidence_found[0]));
     memset(people_found, 0, PP_MAX*sizeof(people_found[0]));
@@ -591,8 +590,11 @@ int main()
     }
      
 #else
+#ifndef CLASSIC99
+    // clasic99 build never ran the loader, it goes direct, so keep the f18a setting (never has AMS)
     // restore the data from VDP
     restore_saved_data();
+#endif
 
     if (f18a) {
         setupgpu();     // load the program and default palette
@@ -616,17 +618,20 @@ int main()
     vdpmemset(gColor+0x1400, 0x41, 0x400);
     black_image();
 
+#ifdef LAST_LOCATION
+    // no story on last location - this should make the save file record the right location
+    run_aid(1);
+#else
     // start it up!
     int nextloc = run_story();
+#endif
+
 #endif
 
     // load the next section in nextloc...
     // save the current state before we load
     MUTE_SOUND();
 
-#ifdef LAST_LOCATION
-    run_aid(1);
-#else
     store_saved_data();
 
     // set up a text mode screen for the loader
@@ -658,7 +663,7 @@ int main()
     // if we return, the load must have failed to find the first file (later files will just reboot)
     // aid will say we're at the end and at least allow a save
     run_aid(1);
-#endif
+
 }
 
 // Intermediate data is saved in VDP RAM between programs.

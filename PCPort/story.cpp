@@ -143,6 +143,7 @@ int run_story() {
                 break;
 
             case CMD_ENDSTORY    : // end this story sequence and return to main loop. Story stores new location in evidence field and will jump to it.
+                stop_music();
                 return story[index].evidence;
 
             case CMD_REMOVEEV    : // remove evidence from inventory (evidence field) and go to next line if text if empty

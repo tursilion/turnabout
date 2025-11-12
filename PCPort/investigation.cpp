@@ -96,10 +96,12 @@ int investigate(int panning) {
             break;
         } else if (ch == 'I') {
             run_inventory("Press enter to return to game");
+            // TODO: when coming back out, fix sprite size and disregard enter key
             continue;
         } else if (ch == '7') {
             // fctn-7 for AID
             run_aid(0);
+            // TODO: when coming back out, fix sprite size
             continue;
         } else {
             joystfast(1);
@@ -152,6 +154,9 @@ int investigate(int panning) {
             vchar(0, c, 31, 16);
         }
 
+        // black out and restore the screen image table
+        vdpmemset(gColor, 0, 0x1000);
+        vdpwriteinc(gImage, 0, 512);
     } else if (ret == EV_I_SEARCH_RIGHT) {
         // do a left to right wipe
         vdpchar(gSprite, 0xd0);
@@ -167,6 +172,10 @@ int investigate(int panning) {
 
             vchar(0, c, 0, 16);
         }
+
+        // black out and restore the screen image table
+        vdpmemset(gColor, 0, 0x1000);
+        vdpwriteinc(gImage, 0, 512);
     }
 
     // on return, return sprite size to single-size non-magnified

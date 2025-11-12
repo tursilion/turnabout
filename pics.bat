@@ -88,6 +88,30 @@ goto :EOF
 ..\PCPort\Debug\chopbmp.exe 77 top
 ..\PCPort\Debug\chopbmp.exe 78 top
 ..\PCPort\Debug\chopbmp.exe 79 top
+..\PCPort\Debug\chopbmp.exe 80 top
+..\PCPort\Debug\chopbmp.exe 81 top
+..\PCPort\Debug\chopbmp.exe 82 top
+..\PCPort\Debug\chopbmp.exe 83 top
+..\PCPort\Debug\chopbmp.exe 84 top
+..\PCPort\Debug\chopbmp.exe 85 top
+..\PCPort\Debug\chopbmp.exe 86 top
+..\PCPort\Debug\chopbmp.exe 87 top
+..\PCPort\Debug\chopbmp.exe 88 top
+..\PCPort\Debug\chopbmp.exe 89 top
+..\PCPort\Debug\chopbmp.exe 90 top
+..\PCPort\Debug\chopbmp.exe 91 top
+..\PCPort\Debug\chopbmp.exe 92 top
+..\PCPort\Debug\chopbmp.exe 93 top
+..\PCPort\Debug\chopbmp.exe 94 top
+..\PCPort\Debug\chopbmp.exe 95 top
+..\PCPort\Debug\chopbmp.exe 96 top
+..\PCPort\Debug\chopbmp.exe 97 top
+..\PCPort\Debug\chopbmp.exe 98 top
+..\PCPort\Debug\chopbmp.exe 99 top
+
+..\PCPort\Debug\chopbmp.exe 9801 bottom
+..\PCPort\Debug\chopbmp.exe 9802 bottom
+..\PCPort\Debug\chopbmp.exe 9803 bottom
 
 exit /b
 

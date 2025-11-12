@@ -133,8 +133,14 @@ static
     case CMD_MUSGIGGLE: // Giggle at the Ghosties - Hasbro
         break;
 #endif
-#ifdef HAS_MUSINVEST
-    case CMD_MUSINVEST: // Investigation Middle - Capcom
+#ifdef HAS_MUSMIDDLE
+    case CMD_MUSMIDDLE: // Investigation Middle - Capcom
+    {
+static
+#include "../music/processed/MIDDLE.c"
+        pSong = MUS_MIDDLE;
+        StartSong(MUS_MIDDLE, 0);
+    }
         break;
 #endif
 #ifdef HAS_MUSCLOCK
@@ -258,6 +264,16 @@ static
 #include "../music/processed/RECALL.c"
         pSong = MUS_RECALL;
         StartSong(MUS_RECALL, 0);
+    }
+        break;
+#endif
+#ifdef HAS_MUSCORE
+    case CMD_MUSCORE:  // Investigation Core 2001 - Cadenza
+    {
+static
+#include "../music/processed/CORE.c"
+        pSong = MUS_CORE;
+        StartSong(MUS_CORE, 0);
     }
         break;
 #endif

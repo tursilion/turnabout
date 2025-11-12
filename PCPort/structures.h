@@ -218,6 +218,7 @@ enum {
     CMD_RIPSFX      , // play rip sfx
     CMD_WHOOSHSFX   , // play whoosh sfx
     CMD_FALLSFX     , // play falling sfx
+    CMD_MAGICSFX    , // play magic sfx
 
     CMD_SFXENDLIST  , // end SFX list
                     
@@ -281,7 +282,7 @@ enum {
     CMD_MUSINTEREST , // Interesting People - Ace Attorney Investigations
     CMD_MUSKLAVIER  , // Klavier's Theme - Capcom
     CMD_MUSTRAGIC   , // Interview Tragicomedy - Capcom
-    CMD_MUSINVEST   , // Investigation Middle - Capcom
+    CMD_MUSMIDDLE   , // Investigation Middlegame - Capcom - Ace Attorney Investigations
     CMD_MUSKG8      , // KG-8 Case - Capcom
     CMD_MUSLYING    , // Lying Coldly - Capcom
     CMD_MUSMOON     , // Moonlight Sonata - The Orchard Music
@@ -405,82 +406,99 @@ extern int nStorySize;
 #define LOCATION_TYPE_STORY
 #define LOCATION_TYPE_INVESTIGATION
 // sfx
+#define HAS_MAGICSFX
 // music
-
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
-#define LAST_LOCATION
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
+#define HAS_MUSMIDDLE   // Investigation Middlegame - Capcom - Ace Attorney Investigations
+#define HAS_MUSCORE     // Investigations core 2001 - Phoenix Wright
 #endif
 
 // I'm not sure if the skip makes sense...
 
 #ifdef LOCATION_IS_10
 // outside courtroom
+#define LOCATION_NUMBER 10
 #define LOCATION_TYPE_STORY
+
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
+#define LAST_LOCATION
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
 #endif
 
 #ifdef LOCATION_IS_11
 // court introductions
+#define LOCATION_NUMBER 11
 #define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_12
 // Trixie's case
+#define LOCATION_NUMBER 12
 #define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_13
 // AppleBloom's testimony
+#define LOCATION_NUMBER 13
 #define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_14
 // AppleBloom cross examination
+#define LOCATION_NUMBER 14
 #define LOCATION_TYPE_CROSSEXAM
 #endif
 
 #ifdef LOCATION_IS_15
 // Trixie and Dash's motive
+#define LOCATION_NUMBER 15
 #define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_16
 // Fluttershy's testimony
+#define LOCATION_NUMBER 16
 #define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_17
 // Fluttershy cross-examination
+#define LOCATION_NUMBER 17
 #define LOCATION_TYPE_CROSSEXAM
 #endif
 
 #ifdef LOCATION_IS_20
 // flashback - Fey law offices
+#define LOCATION_NUMBER 20
 #define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_21
 // outside courtroom, talk to Pinkie
+#define LOCATION_NUMBER 21
 #define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_22
 // detention center with Dash
+#define LOCATION_NUMBER 22
 #define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_23
 // on the street with Pinkie
+#define LOCATION_NUMBER 23
 #define LOCATION_TYPE_STORY
 #endif
 
 #ifdef LOCATION_IS_24
 // Ace's room
+#define LOCATION_NUMBER 24
 #define LOCATION_TYPE_INVESTIGATION
 #endif
 
 #ifdef LOCATION_IS_25
 // Caught by Sonata
+#define LOCATION_NUMBER 25
 #define LOCATION_TYPE_STORY
 #endif
 

@@ -199,7 +199,7 @@ void savegame() {
         if (err == DSR_ERR_NONE) {
             break;
         }
-        gotoxy(22, 0);
+        gotoxy(0, 22);
         cprintf("DSR Error %d", err);
     }
 
@@ -213,6 +213,12 @@ void savegame() {
 
 // assumes we are already in a text compatible mode, and that the last line is free to use
 void loadgame() {
+    // we need to preserve the hardware settings, but
+    // they are saved cause that's also how they move
+    // from program to program
+    int oldF18 = f18a;
+    int oldams = ams;
+
     // if we've never set up the PAB, set it up now
     set_default_data();
 
@@ -238,12 +244,18 @@ void loadgame() {
         if (DSR_ERR_NONE == err) {
             break;
         }
-        gotoxy(22, 0);
+        gotoxy(0, 22);
         cprintf("DSR Error %d", err);
     }
 
     // load it back into the variables, except for the location which isn't a variable
     restore_saved_data();
+
+    // restore the hardware
+    ams = oldams;
+    f18a = oldF18;
+
+    // report success!
     vdpmemset(gImage+23*32, ' ', 32);
     gotoxy(0,23);
     cputs("Load ok!");
