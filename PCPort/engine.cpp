@@ -621,6 +621,8 @@ int main()
 #ifdef LAST_LOCATION
     // no story on last location - this should make the save file record the right location
     run_aid(1);
+    // just for build (and if we somehow return)
+    int nextloc = LOCATION_NUMBER;
 #else
     // start it up!
     int nextloc = run_story();

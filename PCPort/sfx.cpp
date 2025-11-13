@@ -102,7 +102,16 @@ void play_sfx(int sfx) {
             SOUND(0x20);
             SOUND(0x9F);
             SOUND(0xBF);      // two channels rising pitch and volume
-            for (unsigned char i=0; i<32; i++) {
+/*
+sfx.cpp:166: error: unrecognizable insn (on the 0x10-(i/3)):
+(insn 93 92 94 10 sfx.cpp:109 (set (reg:QI 36 [ D.1257 ])
+        (minus:QI (const_int 16 [0x10])
+            (reg:QI 37 [ D.1256 ]))) -1 (expr_list:REG_EQUAL (minus:QI (const_int 16 [0x10])
+            (reg:QI 37 [ D.1256 ]))
+        (nil)))
+sfx.cpp:166: internal compiler error: in extract_insn, at recog.c:2048
+*/
+            for (unsigned int i=0; i<32; i++) {     // QI subtraction compiler error, so use ints
                 VDP_WAIT_VBLANK_CRU;
                 VDP_CLEAR_VBLANK;
                 SOUND(0x80);

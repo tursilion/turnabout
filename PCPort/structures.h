@@ -14,7 +14,8 @@
 //#define LOCATION_IS_3
 //#define LOCATION_IS_4
 //#define LOCATION_IS_5
-#define LOCATION_IS_6
+//#define LOCATION_IS_6
+#define LOCATION_IS_10
 #endif
 
 // one of these for every location - see bottom of file

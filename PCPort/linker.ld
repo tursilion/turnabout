@@ -26,13 +26,12 @@ SECTIONS {
         crossexam.o 
         engine.o 
         inventory.o 
-        investigation.o 
         Locations.o 
         savegame.o 
         sfx.o 
         story.o 
         *libti99.a:*
-        *libtivgm2.a:*
+        People.o(.text .rodata)
         scratchloaderStandalone.o
 
         PROVIDE(etextupper = .);
@@ -42,9 +41,10 @@ SECTIONS {
     {
         PROVIDE(stextlower = .);
 
+        *libtivgm2.a:*
         Evidence.o(.text .rodata)
-        People.o(.text .rodata)
         music.o(.text .rodata)
+        investigation.o(.text .rodata)
 
         PROVIDE(etextlower = .);
     } > LOWER
