@@ -11,7 +11,7 @@
 extern const char *pString;
 // we hack this to force a redraw of the original text
 extern int oldMaxtext;
-const char *DEFTEXT = "Press letter for description, Enter to select. Period for next page.";
+#define DEFTEXT "Press letter for description, Enter to select. Period for next page."
 
 // TODO: Are we going to need inventory images, at least for the maps? probably...
 
@@ -59,7 +59,7 @@ unsigned int run_inventory(const char *pTitle) {
                 gotoxy(1, row);
                 
                 if (selected == tmp) reverse(1);
-                cprintf("%c %s", 'A'+row-1, evidence[tmp].name);
+                cprintfmini("%c %s", 'A'+row-1, evidence[tmp].name);
                 if (selected == tmp) reverse(0);
 
                 ++tmp;
@@ -76,7 +76,7 @@ unsigned int run_inventory(const char *pTitle) {
                 evidx[row-1] = tmp;
                 gotoxy(1, row);
                 if (selected == tmp) reverse(1);
-                cprintf("%c %s", 'A'+row-1, people[PPLIDX(tmp)].name);
+                cprintfmini("%c %s", 'A'+row-1, people[PPLIDX(tmp)].name);
                 if (selected == tmp) reverse(0);
                 tmp += 0x100;
                 ++row;

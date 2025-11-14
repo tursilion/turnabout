@@ -287,7 +287,6 @@ void stop_music() {
     MUTE_SOUND();
     StopSong();
     pSong = NULL;
-    play_sfx(CMD_CHIMESFX);
 }
 
 void update_music() {

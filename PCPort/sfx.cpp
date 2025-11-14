@@ -32,6 +32,8 @@ void play_sfx(int sfx) {
             SOUND(0xe4);        // select noise
             for (unsigned char i=0; i<48; i++) {
                 SOUND(0xf6+((i&7)-4));
+                VDP_WAIT_VBLANK_CRU;
+                VDP_CLEAR_VBLANK;
             }
             // three booms for three locks
             SOUND(0xe6);        // select noise

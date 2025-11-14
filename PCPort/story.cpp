@@ -30,10 +30,10 @@ struct _PROMPTS {
     const char *str;    // pointer to the string to display for it (from the story text)
 } prompts[8];
 
-// REMEMBER! Any target of a change_index must have CMD_NONE (because otherwise the evidence might be meant for something else)
+// REMEMBER! Any target of a change_index must have a target command less than CMD_VOICEENDLIST
 void change_index(int tag) {
     for (index = 0; index < nStorySize; ++index) {
-        if ((story[index].evidence == tag) && ((story[index].cmdwho&0xff) == CMD_NONE)) {
+        if ((story[index].evidence == tag) && ((story[index].cmdwho&0xff) < CMD_VOICEENDLIST)) {
             return;
         }
     }
@@ -59,7 +59,7 @@ redraw:
         if (prompts[i].tagid == 0) break;
         gotoxy(1, 16+i);
         if (prompts[i].isread) reverse(1);
-        cprintf("%c %s", i+'1', prompts[i].str);
+        cprintfmini("%c %s", i+'1', prompts[i].str);
         reverse(0);
         max = i;
     }
@@ -123,6 +123,7 @@ int run_story() {
         // stop it before we load, to reduce hiccups.
         if (cmdID == CMD_STOPMUS) {
             stop_music();
+            play_sfx(CMD_CHIMESFX);
         }
 
         // doing music this way should take less code than in the switch... just keep the order
@@ -284,7 +285,7 @@ int run_story() {
         set_textout(story[index].text);
 
         // Now after all that, if we are on CMD_NONE and there is no text, then proceed
-        // it was probably just a label, but we might still want the image change
+        // it was probably just a label (but we still want to load images on it)
         if ((cmdID == CMD_NONE) && (story[index].text[0] == '\0')) {
             ++index;
             continue;
@@ -355,6 +356,12 @@ int run_story() {
                 // fctn-7 for AID
                 run_aid(0);
                 continue;
+            }
+
+            if (ch =='R') {
+                // reload current frame
+                reset_last_img();
+                break;
             }
         }
 

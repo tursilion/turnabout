@@ -18,6 +18,7 @@
 #include "music.h"
 #include "savegame.h"
 #include "aid.h"
+#include "cache.h"
 
 extern int run_story();
 int evidence_found[EV_MAX_STORED_EV];
@@ -164,7 +165,11 @@ void patch_string(char *buf, int index) {
 
 void load_image(int index) {
 #define VDP_PAB_ADDRESS 0x3800
-    char buf[256];
+    char buf[64];
+
+    if (loadFromCache(index)) {
+        return;
+    }
 
     //                     1         2         3         4
     //           01234567890123456789012345678901234567890123456789012345
@@ -196,6 +201,8 @@ void load_image(int index) {
         vdpchar(0x3900, 0x01);  // load palette command
     }
 
+    storeToCache(index);
+
     // best we can do... it'll help a little
     // we could probably fake a lot since it's Classic99 targetted now...
     VDP_WAIT_VBLANK_CRU;
@@ -212,7 +219,7 @@ void load_image(int index) {
 // loads a full screen title image
 void load_title() {
 #define VDP_PAB_ADDRESS 0x3800
-    char buf[128];
+    char buf[64];
     unsigned char pal[32];
     int off,tmp;
 
@@ -437,40 +444,6 @@ void set_alt_text() {
     gotoxy(0,0);
 }
 
-#if 0
-// SAMS code by Jedimatt42
-// TODO: only the sample player needs these, so likely
-// we'll rewrite these in assembly, but keeping here for now for reference
-void __attribute__ ((noinline)) samsMapOn() {
-  __asm__(
-    "LI r12, >1E00\n\t"
-    "SBO 1\n\t"
-  );
-}
-
-void __attribute__ ((noinline)) samsMapOff() {
-  __asm__(
-    "LI r12, >1E00\n\t"
-    "SBZ 1\n\t"
-  );
-}
-
-void __attribute__ ((noinline)) samsMapPage(int page, int location) {
-  __asm__(
-      "LI r12, >1E00\n\t"
-      "SRL %0, 12\n\t"      // isolate top nibble of location
-      "SLA %0, 1\n\t"       // shift up for word address
-      "SWPB %1\n\t"         // want little endian order for page
-      "SBO 0\n\t"           // card on
-      "MOV %1, @>4000(%0)\n\t"  // map page
-      "SBZ 0\n\t"           // card off
-      "SWPB %1\n\t"         // restore page register before returning
-      :
-      : "r"(location), "r"(page)
-      : "r12");
-}
-#endif
-
 #ifdef LOCATION_IS_LOADER
 
 // only the loader needs this - we'll store the result in the VDP savedata
@@ -560,13 +533,13 @@ int main()
     cputs("This game is running LIVE over\n");
     cputs("the internet and is a work in\n");
     cputs("progress! Currently I have\n");
-    cputs("implemented 6 scenes which is\n");
-    cputs("about 7% of the total script.\n\n");
+    cputs("implemented 7 scenes which is\n");
+    cputs("about 9% of the total script.\n\n");
     // to get the percentage I'm looking at the last timestamp, and dividing it by about 6 hrs
 
     // some hardware info
-    cprintf("SAMS detected: %d pages\n", ams);
-    cprintf("F18A detected: %s\n\n", f18a?"yes":"no");
+    cprintfmini("SAMS detected: %d pages\n", ams);
+    cprintfmini("F18A detected: %s\n\n", f18a?"yes":"no");
 
     // wait for acknowledgement
     cputs("Press any key...");
@@ -576,6 +549,7 @@ int main()
     }
 
     // will return with selection in KSCAN_KEY
+repeataid:
     run_aid(0);
 
     // load VDP if requested, then jump to the saved chapter (from 0x3b00)
@@ -583,7 +557,9 @@ int main()
     store_saved_data();
     if (KSCAN_KEY == '2') {
         // load file
-        loadgame();
+        if (!loadgame()) {
+            goto repeataid;
+        }
         VDP_SET_ADDRESS(SAVE_GAME_VDP + 32);
         nextloc = VDPRD() << 8;
         nextloc |= VDPRD();

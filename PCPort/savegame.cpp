@@ -57,9 +57,6 @@ void restore_saved_data() {
 
 void store_saved_data() {
     // if we've never set up the savegame PAB, zero the whole mess before we write it, just to be sure
-    // TODO: can we manage saving the 'next' scene on final? we have 'nextloc' in the main engine...
-    // Or we could just build a dummy 'next' which is nothing BUT the 'you have reached the end' prompt.
-    // That would let things like the long investigation not need to be replayed.
     set_default_data();
 
     vdpmemcpy(SAVE_GAME_VDP, (unsigned char*)&myPab, 10);
@@ -94,7 +91,7 @@ static int getfilename() {
 
     // get the filename
     gotoxy(0,23);
-    cprintf("Filename: %s", myFilename);
+    cprintfmini("Filename: %s", myFilename);
 
     // a rudimentary text editor to edit the filename (max length 15 - path+10 char filename)
     // not going to use kbhit and cgetc here, too slow. Am going to use full kscan to get arrows and back
@@ -200,7 +197,7 @@ void savegame() {
             break;
         }
         gotoxy(0, 22);
-        cprintf("DSR Error %d", err);
+        cprintfmini("DSR Error %d", err);
     }
 
     vdpmemset(gImage+23*32, ' ', 32);
@@ -212,7 +209,8 @@ void savegame() {
 #ifdef LOCATION_IS_LOADER
 
 // assumes we are already in a text compatible mode, and that the last line is free to use
-void loadgame() {
+// returns 1 on load, 0 if cancelled
+int loadgame() {
     // we need to preserve the hardware settings, but
     // they are saved cause that's also how they move
     // from program to program
@@ -235,7 +233,7 @@ void loadgame() {
         if (getfilename()) {
             vdpmemset(gImage+23*32, ' ', 32);
             // skip load
-            return;
+            return 0;
         }
 
         // yes, we store the PAB at the same VDP RAM we are loading - this should be okay
@@ -245,7 +243,7 @@ void loadgame() {
             break;
         }
         gotoxy(0, 22);
-        cprintf("DSR Error %d", err);
+        cprintfmini("DSR Error %d", err);
     }
 
     // load it back into the variables, except for the location which isn't a variable
@@ -259,6 +257,8 @@ void loadgame() {
     vdpmemset(gImage+23*32, ' ', 32);
     gotoxy(0,23);
     cputs("Load ok!");
+
+    return 1;
 }
 
 #endif

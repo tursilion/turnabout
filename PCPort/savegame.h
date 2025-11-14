@@ -4,7 +4,7 @@
 #define SAVE_GAME_VDP 0x3a00
 
 void savegame();
-void loadgame();
+int loadgame();
 void restore_saved_data();
 void store_saved_data();
 

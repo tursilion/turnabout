@@ -14,8 +14,8 @@
 //#define LOCATION_IS_3
 //#define LOCATION_IS_4
 //#define LOCATION_IS_5
-//#define LOCATION_IS_6
-#define LOCATION_IS_10
+#define LOCATION_IS_6
+//#define LOCATION_IS_10
 #endif
 
 // one of these for every location - see bottom of file
@@ -235,7 +235,7 @@ enum {
     CMD_PHOENIXHOLD , // play phoenix holdit
     CMD_PHOENIXTAKE , // play phoenix take that!
 
-    CMD_VOICEENDLIST, // end of voice commands
+    CMD_VOICEENDLIST, // end of voice commands - this is also used as a differentiator for label jump targets!
 
     CMD_JUMP        , // always jump to label specified in evidence
     

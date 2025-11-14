@@ -142,6 +142,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="aid.cpp" />
+    <ClCompile Include="cache.cpp" />
     <ClCompile Include="crossexam.cpp" />
     <ClCompile Include="Evidence.cpp" />
     <ClCompile Include="inventory.cpp" />
@@ -161,6 +162,7 @@
     <ClCompile Include="vgmcomp2\PC.cpp" />
     <ClCompile Include="vgmcomp2\sound.cpp" />
     <ClInclude Include="aid.h" />
+    <ClInclude Include="cache.h" />
     <ClInclude Include="inventory.h" />
     <ClInclude Include="investigate.h" />
     <ClInclude Include="savegame.h" />

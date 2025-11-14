@@ -634,16 +634,14 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_T_DARK,  80, PP_PHOENIX  | CMD_ADDPROMPT,        "It's too dark!"    },
 {   EV_NONE,    80, PP_PHOENIX  | CMD_SELPROMPT,        ""  },
 
-{   EV_T_INVEST,80, PP_PHOENIX  | CMD_NONE,             ""    },
-{   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "Aren't there any crime scene investigators?"    },
+{   EV_T_INVEST,80, PP_PHOENIX  | CMD_BLACK,            "Aren't there any crime scene investigators?"    },
 {   EV_NONE,    80, PP_TWILIGHT | CMD_BLACK,            "They're probably all finished up."    },
 {   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "Bonus for me, I guess..."    },
 {   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "Let's get down to work then!"    },
 
 {   EV_NONE,    80, PP_PHOENIX  | CMD_SELPROMPT,        ""  },
 
-{   EV_T_DARK,  80, PP_PHOENIX  | CMD_NONE,             ""    },
-{   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "But there is a little problem..."    },
+{   EV_T_DARK,  80, PP_PHOENIX  | CMD_BLACK,            "But there is a little problem..."    },
 {   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "It's way too dark here. I can hardly see anything and I don't have a flashlight."    },
 {   EV_NONE,    80, PP_TWILIGHT | CMD_BLACK,            "Let me take care of that."    },
 {   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "(It's that horn again. It's lighting up like a candle. That must be really handy.)"    },
@@ -803,8 +801,8 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    89, PP_TWILIGHT | CMD_NONE,             "Why do you ask? Is there no magic in your world?"    },
 {   EV_NONE,    89, PP_PHOENIX  | CMD_CLRPROMPT,        "No, there isn't..."    },
 
-{ EV_T_ISMAGIC, 89, PP_PHOENIX  | CMD_ADDPROMPT,        "Some magic..."    },
-{ EV_T_NODECIS, 89, PP_PHOENIX  | CMD_ADDPROMPT,        "Nothing decisive..."    },
+{ EV_T_ISMAGIC, 89, PP_PHOENIX  | CMD_ADDPROMPT,        "Well, some magic..."    },
+{ EV_T_NODECIS, 89, PP_PHOENIX  | CMD_ADDPROMPT,        "We've nothing decisive..."    },
 {   EV_NONE,    89, PP_PHOENIX  | CMD_SELPROMPT,        ""  },
 
 { EV_T_ISMAGIC, 89, PP_PHOENIX  | CMD_NONE,             "Actually, you could say there is..."    },

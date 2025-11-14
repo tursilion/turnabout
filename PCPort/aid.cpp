@@ -40,6 +40,7 @@ void run_aid(int isFinal) {
         cputs("All scenes:\n\n");
         cputs("N - Next text\n");
         cputs("I - Inventory screen\n");
+        cputs("R - Reload image\n");
         cputs("7 - Help and save screen (this)\n");
         cputs("SPACE - speed text\n\n");
         cputs("Cross-Examination:\n");

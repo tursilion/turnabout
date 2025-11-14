@@ -11,7 +11,8 @@ SEARCH_DIR("/home/tursi/gcc9900/tms9900/lib");
 MEMORY
 {
     UPPER(xrw) : ORIGIN = 0xA000, LENGTH = 24K
-    LOWER(xrw) : ORIGIN = 0x2080, LENGTH = 8064
+    /* reserving 256 bytes minimum for stack */
+    LOWER(xrw) : ORIGIN = 0x2000, LENGTH = 0x1f00 
 }
 
 SECTIONS {
@@ -44,6 +45,7 @@ SECTIONS {
         *libtivgm2.a:*
         Evidence.o(.text .rodata)
         music.o(.text .rodata)
+        cache.o(.text .rodata)
         investigation.o(.text .rodata)
 
         PROVIDE(etextlower = .);

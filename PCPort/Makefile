@@ -37,7 +37,7 @@ C_FLAGS=\
 
 # note: crt not explicitly included as its not c
 OBJECT_LIST=\
-  aid.o crossexam.o engine.o Evidence.o inventory.o investigation.o Locations.o music.o People.o savegame.o sfx.o story.o 
+  aid.o crossexam.o engine.o Evidence.o inventory.o investigation.o Locations.o music.o People.o savegame.o sfx.o story.o cache.o
 
 # map the objects back to source files
 SOURCE_LIST := $(OBJECT_LIST:.o=.cpp)

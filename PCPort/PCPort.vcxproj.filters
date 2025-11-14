@@ -69,6 +69,9 @@
     <ClCompile Include="vgmcomp2\CPlayer.cpp">
       <Filter>vgmcomp2</Filter>
     </ClCompile>
+    <ClCompile Include="cache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="structures.h">
@@ -99,6 +102,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="investigate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cache.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

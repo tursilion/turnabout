@@ -6,6 +6,7 @@
 
 #include <vdp.h>
 #include <kscan.h>
+#include "engine.h"
 #include "investigate.h"
 #include "music.h"
 #include "inventory.h"
@@ -20,13 +21,19 @@ const unsigned char spritepats[] = {
     0xff,0x01,0x01,0x01,0x01,0x01,0x01,0x01,
     0x01,0x01,0x01,0x01,0x01,0x01,0x01,0xff
 };
+// the arrow patterns (takes less mem to redefine them than copy them - 7 bytes each)
+const unsigned char arrowleft[] = {
+    0x08,0x10,0x20,0x40,0x20,0x10,0x08
+};
+const unsigned char arrowright[] = {
+    0x20,0x10,0x08,0x04,0x08,0x10,0x20
+};
 
 int investigate(int panning) {
     // our sprite will be 32x32, start roughly centered
     unsigned char x = 112;
     unsigned char y = 48;
     int ret = 0;
-    unsigned char cpybuf[8];    // used to copy some sprite patterns
 
     // turn off all sprites (overwrite first four)
     vdpmemset(gSprite, 0xd0, 16);
@@ -36,10 +43,8 @@ int investigate(int panning) {
     vdpmemcpy(gSpritePat+32, spritepats, 32);   // pattern 4-7
     vdpmemset(gSpritePat+64, 0xff, 32);         // pattern 8-11
     vdpmemset(gSpritePat+96, 0x00, 64);         // zero out patterns 12-19
-    vdpmemread(gPattern+0x1000+'<'*8, cpybuf, 8);
-    vdpmemcpy(gSpritePat+96+4, cpybuf, 8);      // pattern 12-15 = '<'
-    vdpmemread(gPattern+0x1000+'>'*8, cpybuf, 8);
-    vdpmemcpy(gSpritePat+128+4, cpybuf, 8);     // pattern 16-19= '>'
+    vdpmemcpy(gSpritePat+96+4, arrowleft, 7);   // pattern 12-15 = '<'
+    vdpmemcpy(gSpritePat+128+4, arrowright, 7); // pattern 16-19= '>'
 
     // set sprite size to double-size magnified
     // We know we're in bitmap already, so VDP R1 should be 0xE0, and we want 0xE3
@@ -64,15 +69,22 @@ int investigate(int panning) {
             vdpchar(gSprite+8, 0xd1);
         }
 
-        // DEBUG code - emit sector
-        {
-            int x2=(x+32)/64;
-            int y2=(y+32)/64;
-            vdpchar(23*32,'0'+(y2*4)+x2);
-        }
-
         kscanfast(0);
         unsigned char ch = KSCAN_KEY;
+        if (ch == 0xff) {
+            // try joystick for emulator
+            joystfast(1);
+            if (KSCAN_JOYY == JOY_UP) ch='E';
+            else if (KSCAN_JOYY == JOY_DOWN) ch='X';
+            else if (KSCAN_JOYX == JOY_LEFT) ch='S';
+            else if (KSCAN_JOYX == JOY_RIGHT) ch='D';
+            else {
+                kscanfast(1);
+                if (KSCAN_KEY == JOY_FIRE) {
+                    ch=13;
+                }
+            }
+        }
 
         if ((ch == 'E') && (y > 4)) {
             y-=4;
@@ -96,29 +108,14 @@ int investigate(int panning) {
             break;
         } else if (ch == 'I') {
             run_inventory("Press enter to return to game");
-            // TODO: when coming back out, fix sprite size and disregard enter key
+            VDP_SET_REGISTER(1, 0xe3);
+            wait_for_key_release();
             continue;
         } else if (ch == '7') {
             // fctn-7 for AID
             run_aid(0);
-            // TODO: when coming back out, fix sprite size
+            VDP_SET_REGISTER(1, 0xe3);
             continue;
-        } else {
-            joystfast(1);
-            if ((KSCAN_JOYY == JOY_UP) && (y > 4)) {
-                y-=4;
-            } else if ((KSCAN_JOYY == JOY_DOWN) && (y < 127-32-4)) {
-                y+=4;
-            } else if ((KSCAN_JOYX == JOY_LEFT) && (x > 4)) {
-                x-=4;
-            } else if ((KSCAN_JOYX == JOY_RIGHT) && (x < 256-32-4)) {
-                x+=4;
-            } else {
-                kscan(1);
-                if (KSCAN_KEY == JOY_FIRE) {
-                    break;
-                }
-            }
         }
     }
 
@@ -139,7 +136,6 @@ int investigate(int panning) {
         y=(y+32)/64;
         ret = EV_I_0 + (y*4)+x;
     } else if (ret == EV_I_SEARCH_LEFT) {
-        // do a right to left wipe
         vdpchar(gSprite, 0xd0);
 
         // we'll use character 31 in both tables
@@ -157,6 +153,7 @@ int investigate(int panning) {
         // black out and restore the screen image table
         vdpmemset(gColor, 0, 0x1000);
         vdpwriteinc(gImage, 0, 512);
+
     } else if (ret == EV_I_SEARCH_RIGHT) {
         // do a left to right wipe
         vdpchar(gSprite, 0xd0);
@@ -178,7 +175,6 @@ int investigate(int panning) {
         vdpwriteinc(gImage, 0, 512);
     }
 
-    // on return, return sprite size to single-size non-magnified
     vdpchar(gSprite, 0xd0);
     VDP_SET_REGISTER(1, 0xe0);
 
