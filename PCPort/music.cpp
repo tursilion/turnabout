@@ -32,15 +32,33 @@ static
         break;
 #endif
 #ifdef HAS_MUSLOUNGE
-    case CMD_MUSLOUNGE: // Courtroom Lounge - Another Prelude - Phoenix Wright: Justice for All
+    case CMD_MUSLOUNGE: // Courtroom Lounge - Overture again
+        {
+static
+#include "../music/processed/LOUNGE.c"
+        pSong = MUS_LOUNGE;
+        StartSong(MUS_LOUNGE, 0);
+        }
         break;
 #endif
 #ifdef HAS_MUSMLP
     case CMD_MUSMLP: // My Little Pony - Friendship is Magic Theme (8-bit) - RainbowCrash88
+        {
+static
+#include "../music/processed/MLP.c"
+        pSong = MUS_MLP;
+        StartSong(MUS_MLP, 0);
+        }
         break;
 #endif
 #ifdef HAS_MUSTROUPE
     case CMD_MUSTROUPE: // Gramarye Troupe - Apollo Justice Ace Attorney
+        {
+static
+#include "../music/processed/TROUPE.c"
+        pSong = MUS_TROUPE;
+        StartSong(MUS_TROUPE, 0);
+        }
         break;
 #endif
 #ifdef HAS_MUSTRIAL

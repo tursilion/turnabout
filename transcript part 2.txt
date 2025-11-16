@@ -5,6 +5,7 @@ MOVIE2
         TODO - need to set up the missing paths, mostly bad objections (that or create a default scene with some random phrases)
 ------
 
+-- LOCATION 10 --
 
 Time        Frame       Who         Text
 00:05       0100                    Ponyville District Court. June 10th, 9:45AM
@@ -137,6 +138,9 @@ Time        Frame       Who         Text
 08:33                   Guard       The Defense and its co-counsel are to make their way to the court room!
 08:36       0110        Twilight    Okay, Phoenix, the trial is about to start. Do your best!
 08:41                   Phoenix     (Forget about the Magatama, I have bigger problems right now. Even with what little time I had to prepare... I've got to try my best for their sake!)
+
+-- LOCATION 11 --
+
 08:50       black                   Ponyville District Court, Courtroom No. 1, June 10th, 10:00AM.
 08:56       0124        (crowd sfx)
 08:59       0125        (hammersfx)

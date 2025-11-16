@@ -17,6 +17,7 @@ void normal_image();
 void bitmap_screen();
 void fixed_image();
 void black_image();
+void white_image();
 void add_inventory(unsigned int id);
 void remove_inventory(unsigned int id);
 int has_inventory(unsigned int id);

@@ -143,6 +143,12 @@ int run_story() {
                 lastimg = -1;
                 break;
 
+            case CMD_WHITE       : // draw a white screen, play inverted crash - ignore frame (but clear last frame so we know to load again)
+                white_image();
+                play_sfx(CMD_CHIMESFX);
+                lastimg = -1;
+                break;
+
             case CMD_ENDSTORY    : // end this story sequence and return to main loop. Story stores new location in evidence field and will jump to it.
                 stop_music();
                 return story[index].evidence;

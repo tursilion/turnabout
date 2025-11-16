@@ -14,8 +14,8 @@
 //#define LOCATION_IS_3
 //#define LOCATION_IS_4
 //#define LOCATION_IS_5
-#define LOCATION_IS_6
-//#define LOCATION_IS_10
+//#define LOCATION_IS_6
+#define LOCATION_IS_10
 #endif
 
 // one of these for every location - see bottom of file
@@ -154,8 +154,9 @@ enum {
     PP_APPLEBLOOM = 0x8b00,         // Earth pony child, Cutie Mark Crusader. Witness who was in the Everfree Forest the night of the crime.
     PP_PINKIE     = 0x8c00,         // Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash.
     PP_SONATA     = 0x8d00,         // Unicorn manager of Ace Swift. Resembles Mia from my own realm.
-
-    PP_LAST       = 0x8e00
+    
+    PP_EDGEWORTH  = 0x8e00,         // never used in game, but we need it for his name in a flashback
+    PP_LAST       = 0x8f00
 };
 #define PP_MAX ((PP_LAST>>8)-(PP_FIRST>>8))
 #define PP_NONE PP_FIRST
@@ -203,6 +204,7 @@ enum {
 
     CMD_FLASH       , // draw a white flash and play boom - ignore frame
     CMD_BLACK       , // draw a black screen - ignore frame (but clear last frame so we know to load again)
+    CMD_WHITE       , // draw a white screen with inverse crash sound
                     
     CMD_SFXSTARTLIST, // find SFXs
 
@@ -216,10 +218,12 @@ enum {
     CMD_PARTYSFX    , // play party horn sfx
     CMD_JOKESFX     , // play rimshot sfx
     CMD_CRASHSFX    , // play crash sfx
+    CMD_ICRASHSFX   , // play inverted crash sfx (used by CMD_WHITE)
     CMD_RIPSFX      , // play rip sfx
     CMD_WHOOSHSFX   , // play whoosh sfx
     CMD_FALLSFX     , // play falling sfx
     CMD_MAGICSFX    , // play magic sfx
+    CMD_BADMAGSFX   , // play bad magic sfx
 
     CMD_SFXENDLIST  , // end SFX list
                     
@@ -288,7 +292,7 @@ enum {
     CMD_MUSLYING    , // Lying Coldly - Capcom
     CMD_MUSMOON     , // Moonlight Sonata - The Orchard Music
     CMD_MUSWINTER   , // Winter Wrap Up - David Larson
-    CMD_MUSLOUNGE   , // Courtroom Lounge - Another Prelude - Phoenix Wright: Justice for All - So it begins again
+    CMD_MUSLOUNGE   , // Courtroom Lounge - Overture again
     CMD_MUSHOTLINE  , // Hotline to Destiny - Capcom - Hotline of Fate
     CMD_MUSSUSPENSE , // Suspense - Phoenix Wright Ace Attorney
     CMD_MUSBEGIN    , // Court Begins - Capcom
@@ -353,7 +357,7 @@ extern int nStorySize;
 // sfx
 #define HAS_BOOMSFX
 // music
-#define HAS_MUSTRUCY
+#define HAS_MUSTRUCY    // Twilight
 #endif
 
 #ifdef LOCATION_IS_2
@@ -375,7 +379,7 @@ extern int nStorySize;
 #define HAS_BOOMSFX
 #define HAS_CRASHSFX
 // music
-#define HAS_MUSGUILTY
+#define HAS_MUSGUILTY   // Dash
 #define HAS_MUSELEGY
 #endif
 
@@ -398,7 +402,7 @@ extern int nStorySize;
 #define HAS_FALLSFX
 #define HAS_BOOMSFX
 // music
-#define HAS_MUSPEARLY
+#define HAS_MUSPEARLY   // Fluttershy
 #endif
 
 #ifdef LOCATION_IS_6
@@ -409,26 +413,33 @@ extern int nStorySize;
 // sfx
 #define HAS_MAGICSFX
 // music
-#define HAS_MUSMIDDLE   // Investigation Middlegame - Capcom - Ace Attorney Investigations
-#define HAS_MUSCORE     // Investigations core 2001 - Phoenix Wright
+#define HAS_MUSMIDDLE
+#define HAS_MUSCORE
 #endif
 
-// I'm not sure if the skip makes sense...
+// I'm not sure if the skip makes sense... guess it doesn't matter
 
 #ifdef LOCATION_IS_10
 // outside courtroom
 #define LOCATION_NUMBER 10
 #define LOCATION_TYPE_STORY
-
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
-#define LAST_LOCATION
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
+// sfx
+#define HAS_CRASHSFX
+#define HAS_BADMAGSFX   // kind of a ringing sound
+#define HAS_ICRASHSFX
+// music
+#define HAS_MUSLOUNGE
+#define HAS_MUSMLP
+#define HAS_MUSTROUPE   // Trixie
 #endif
 
 #ifdef LOCATION_IS_11
 // court introductions
 #define LOCATION_NUMBER 11
 #define LOCATION_TYPE_STORY
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
+#define LAST_LOCATION
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
 #endif
 
 #ifdef LOCATION_IS_12

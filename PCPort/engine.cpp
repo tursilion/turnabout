@@ -173,11 +173,11 @@ void load_image(int index) {
 
     //                     1         2         3         4
     //           01234567890123456789012345678901234567890123456789012345
-    strcpy(buf, "PI.HTTPS://harmlesslion.com/phoenix/pics9918/P0000.TIAP");
-    int off = 46;
+    strcpy(buf, "PI.HTTP://harmlesslion.com/phoenix/pics9918/P0000.TIAP");
+    int off = 45;
 
     if (f18a) {
-        memcpy(&buf[40], "f18a/F", 6);
+        memcpy(&buf[39], "f18a/F", 6);
     }
 
     // load the index into the string - max 9999
@@ -225,11 +225,11 @@ void load_title() {
 
     //                     1         2         3         4
     //           01234567890123456789012345678901234567890123456789012345
-    strcpy(buf, "PI.HTTPS://harmlesslion.com/phoenix/pics9918/P9999.TIAP");
-    off = 54;   // points to the last character, we don't need to change the number
+    strcpy(buf, "PI.HTTP://harmlesslion.com/phoenix/pics9918/P9999.TIAP");
+    off = 53;   // points to the last character, we don't need to change the number
 
     if (f18a) {
-        memcpy(&buf[40], "f18a/F", 6);
+        memcpy(&buf[39], "f18a/F", 6);
     }
 
     // check PAB
@@ -319,6 +319,11 @@ void fixed_image() {
 void black_image() {
     // we'll see if this is just fast enough - black out the color table
     vdpmemset(gColor, 0, 0x1000);
+}
+
+void white_image() {
+    // white out the color table
+    vdpmemset(gColor, 0xff, 0x1000);
 }
 
 //------
@@ -533,8 +538,8 @@ int main()
     cputs("This game is running LIVE over\n");
     cputs("the internet and is a work in\n");
     cputs("progress! Currently I have\n");
-    cputs("implemented 7 scenes which is\n");
-    cputs("about 9% of the total script.\n\n");
+    cputs("implemented 8 scenes which is\n");
+    cputs("about 11% of the total script.\n\n");
     // to get the percentage I'm looking at the last timestamp, and dividing it by about 6 hrs
 
     // some hardware info
@@ -633,8 +638,8 @@ repeataid:
     // Scratchpad loader must exist higher than >C000 in order for
     // it not to overwrite itself on the first load.
 #ifndef CLASSIC99
-    FILENAME[40] = (nextloc/10)+'0';
-    FILENAME[41] = (nextloc%10)+'0';
+    FILENAME[39] = (nextloc/10)+'0';
+    FILENAME[40] = (nextloc%10)+'0';
     EA5LD();
 #endif
 

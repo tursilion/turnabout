@@ -96,6 +96,18 @@ void play_sfx(int sfx) {
             break;
 #endif
 
+#ifdef HAS_ICRASHSFX
+        case CMD_ICRASHSFX    : // play inverted crash sfx
+            SOUND(0xe5);        // select noise
+            for (unsigned char i=31; i>0; i--) {
+                SOUND(0xf0+(i>>1));  // fade in
+                VDP_WAIT_VBLANK_CRU;
+                VDP_CLEAR_VBLANK;
+            }
+            SOUND(0xff);        // make sure it ends muted
+            break;
+#endif
+
 #ifdef HAS_MAGICSFX
         case CMD_MAGICSFX:    // play magic sfx
             SOUND(0x80);
@@ -125,8 +137,25 @@ sfx.cpp:166: internal compiler error: in extract_insn, at recog.c:2048
             }
             SOUND(0x9f);        // make sure it ends muted
             SOUND(0xbf);        // make sure it ends muted
-            SOUND(0xdf);        // make sure it ends muted
-            SOUND(0xdf);        // make sure it ends muted
+            break;
+#endif
+
+#ifdef HAS_BADMAGSFX
+        case CMD_BADMAGSFX:    // play bad magic sfx - like chime but with 2 channel synth
+            SOUND(0x87);
+            SOUND(0x09);      // frequency will waver a bit around the 7
+            SOUND(0xa7);
+            SOUND(0x0a);      // frequency will waver a bit around the 7
+            for (unsigned char i=0; i<32; i++) {
+                SOUND(0x87+(i&3));  // warble? probably should be a sine wave
+                SOUND(0xa8+(i&3));  // warble? probably should be a sine wave
+                SOUND(0x90+(i>>1)); // fade
+                SOUND(0xb0+(i>>1)); // fade
+                VDP_WAIT_VBLANK_CRU;
+                VDP_CLEAR_VBLANK;
+            }
+            SOUND(0x9f);    // make sure it ends muted
+            SOUND(0xbf);    // make sure it ends muted
             break;
 #endif
 

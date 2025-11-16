@@ -21,6 +21,7 @@ Evidence_t people[PP_MAX] = {
     { "Judge",	            /*126*/ "The Judge also seems to have been called! He's fair, though easily confused."      },
     { "Apple Bloom",	    /*157*/	"Earth pony child, Cutie Mark Crusader. Witness who was in the Everfree Forest the night of the crime."      },
     { "Pinkie Pie",	        /*211*/	"Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash."      },
-    { "Sonata",	            /*287*/	"Unicorn manager of Ace Swift. Resembles Mia from my own realm."        }
+    { "Sonata",	            /*287*/	"Unicorn manager of Ace Swift. Resembles Mia from my own realm."        },
+    { "Edgeworth",                  "Prosecutor from my realm."     }
 
 };

@@ -396,12 +396,14 @@ GPLJMP	MOV r10,@0x83F2		44 46	copy address into GPLWS r9
 PAB
 		DATA OPLOAD 		opcode for load
 		DATA VDPADR 		destination address in vdp
-		DATA 0x0000 			not required for load operation
+		DATA 0x0000 		not required for load operation
 		DATA 8198 			max number of bytes to load
-		DATA 0x002b 			last byte=length byte
+		DATA 0x002a 		last byte=length byte <<<
 FILENAME
-		TEXT 'PI.HTTPS://harml'
-		TEXT 'esslion.com/phoe'
-		TEXT 'nix/PLOC001     '       
+# warning: the length of this string for patching is hardcoded in engine.cpp (setting the index)
+# and also the length byte in the PAB above
+		TEXT 'PI.HTTP://harmle'
+		TEXT 'sslion.com/phoen'
+		TEXT 'ix/PLOC001      '
 		
 		END

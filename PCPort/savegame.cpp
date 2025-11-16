@@ -6,6 +6,7 @@
 #include "structures.h"
 #include "savegame.h"
 #include "music.h"
+#include "engine.h"
 
 // static variables
 static struct PAB myPab = { 0 };
@@ -92,6 +93,7 @@ static int getfilename() {
     // get the filename
     gotoxy(0,23);
     cprintfmini("Filename: %s", myFilename);
+    wait_for_key_release();
 
     // a rudimentary text editor to edit the filename (max length 15 - path+10 char filename)
     // not going to use kbhit and cgetc here, too slow. Am going to use full kscan to get arrows and back
@@ -158,7 +160,9 @@ static int getfilename() {
     }
     // walk through myFilename and replace space with NUL
     for (int i=0; i<sizeof(myFilename); ++i) {
-        if ((myFilename[i]==' ') || (myFilename[i-1] == '\0')) {
+        if (myFilename[i]==' ') {
+            myFilename[i] = '\0';
+        } else if ((i > 0) && (myFilename[i-1] == '\0')) {
             myFilename[i] = '\0';
         }
     }
@@ -172,7 +176,6 @@ static int getfilename() {
 // assumes we are already in a text compatible mode, and that the last line is free to use
 void savegame() {
     // if we've never set up the PAB, set it up now
-    set_default_data();
     store_saved_data();
 
     for (;;) {
@@ -198,6 +201,7 @@ void savegame() {
         }
         gotoxy(0, 22);
         cprintfmini("DSR Error %d", err);
+        wait_for_key_release();
     }
 
     vdpmemset(gImage+23*32, ' ', 32);
@@ -244,6 +248,7 @@ int loadgame() {
         }
         gotoxy(0, 22);
         cprintfmini("DSR Error %d", err);
+        wait_for_key_release();
     }
 
     // load it back into the variables, except for the location which isn't a variable
