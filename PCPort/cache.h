@@ -18,4 +18,7 @@ int loadFromCache(int idx);
 // The F18A palette bytes are copied whether we are in F18A mode or not
 void storeToCache(int idx);
 
+// invalidate the cache for a particular image so it can be force-reloaded
+void invalidateCache(int idx);
+
 #endif

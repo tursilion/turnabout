@@ -8,8 +8,11 @@
 #endif
 
 const unsigned char *pSong;
+int mute = 0;
 
 void play_music(int music) {
+    if (mute) return;
+
     switch(music) {
 #ifdef HAS_MUSPROLOG
     case CMD_MUSPROLOG: // Apollo Justice - Prologue
@@ -308,6 +311,11 @@ void stop_music() {
 }
 
 void update_music() {
+    if (mute) {
+        pSong = NULL;
+        return;
+    }
+
     if (songNote[3]&SONGACTIVEACTIVE) {
 #ifdef CLASSIC99
         // note: real TI is not safe to call this function directly, it must use the macro

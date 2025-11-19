@@ -16,7 +16,8 @@ Offset  Size    Data
  0      32      Save/Load PAB and Filename
  (gap)
  32      2      Location index
- 34      2      F18A flag
+ 34      1      Mute flag MSB
+ 35      1      F18A flag LSB
  36      2      Number of SAMS pages
  38    128      Evidence Found (reads/writes EV_MAX_STORED_EV, max 64)
  (gap)

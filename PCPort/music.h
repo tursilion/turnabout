@@ -4,5 +4,7 @@
 void play_music(int music);
 void stop_music();
 void update_music();
+void set_mute();
+void clear_mute();
 
 #endif

@@ -17,6 +17,7 @@ extern int evidence_found[EV_MAX_STORED_EV];
 extern int people_found[PP_MAX];
 extern int f18a;
 extern int ams;
+extern int mute;
 
 void set_default_data() {
     if (myFilename[0] < ' ') {
@@ -36,8 +37,8 @@ void restore_saved_data() {
     // skip location at 32
 
     VDP_SET_ADDRESS(SAVE_GAME_VDP+34);
-    f18a=VDPRD()<<8;
-    f18a|=VDPRD();
+    mute=VDPRD();
+    f18a=VDPRD();
     ams=VDPRD()<<8;
     ams|=VDPRD();
 
@@ -66,8 +67,8 @@ void store_saved_data() {
     VDP_SET_ADDRESS_WRITE(SAVE_GAME_VDP+32);
     VDPWD(LOCATION_NUMBER>>8);
     VDPWD(LOCATION_NUMBER);
-    VDPWD(f18a>>8);
-    VDPWD(f18a);
+    VDPWD(mute&0xff);
+    VDPWD(f18a&0xff);
     VDPWD(ams>>8);
     VDPWD(ams);
     for (unsigned int i=0; i<EV_MAX_STORED_EV; ++i) {

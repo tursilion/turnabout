@@ -1,3 +1,5 @@
+@rem dealth with top/bottom manually in the image conversion, so all are top now
+
 cd pics9918
 call :runpics
 cd ..\picsf18a
@@ -8,8 +10,8 @@ goto :EOF
 @rem process each pic
 :runpics
 
-..\PCPort\Debug\chopbmp.exe 0 bottom
-..\PCPort\Debug\chopbmp.exe 1 bottom
+..\PCPort\Debug\chopbmp.exe 0 top
+..\PCPort\Debug\chopbmp.exe 1 top
 ..\PCPort\Debug\chopbmp.exe 2 top
 ..\PCPort\Debug\chopbmp.exe 3 top
 ..\PCPort\Debug\chopbmp.exe 4 top
@@ -133,9 +135,9 @@ goto :EOF
 ..\PCPort\Debug\chopbmp.exe 122 top
 ..\PCPort\Debug\chopbmp.exe 123 top
 
-..\PCPort\Debug\chopbmp.exe 9801 bottom
-..\PCPort\Debug\chopbmp.exe 9802 bottom
-..\PCPort\Debug\chopbmp.exe 9803 bottom
+..\PCPort\Debug\chopbmp.exe 9801 top
+..\PCPort\Debug\chopbmp.exe 9802 top
+..\PCPort\Debug\chopbmp.exe 9803 top
 
 exit /b
 

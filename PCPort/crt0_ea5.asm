@@ -57,6 +57,31 @@ bss_clear_end:
 # call vdpinit to set critical variables
   bl @vdpinit  
 
+# to make debugging easier, always init the default AMS pages
+# Based on SAMS code by JediMatt42
+# we should be running at >A000 with regs at >8300
+# so we can bank >2000 safely here
+  li r12,0x1E00
+  sbo 0          # enable registers - we have to make a compatible map
+  li r0,0x0200   # I'm not sure this will work for all SAMS cards, safer to map BEFORE loading...
+  li r1,0x0100   # sets default address for all RAM locations
+  mov r0,@>4004
+  a r1,r0
+  mov r0,@>4006
+  li r0,0x0a00
+  mov r0,@>4014
+  a r1,r0
+  mov r0,@>4016
+  a r1,r0
+  mov r0,@>4018
+  a r1,r0
+  mov r0,@>401a
+  a r1,r0
+  mov r0,@>401c
+  a r1,r0
+  mov r0,@>401e
+  sbz 0
+
 # Start running C code
   bl @main
 

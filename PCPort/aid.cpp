@@ -13,6 +13,7 @@
 
 // reference for diagnostics
 extern int f18a, ams;
+extern int mute;
 extern void reset_last_img();
 extern void setupgpu();
 
@@ -28,6 +29,7 @@ void run_aid(int isFinal) {
     vdpmemset(gColor+16, 0x40, 16);     // blue
 #endif
 
+redraw:
     vdpmemset(gImage, ' ', 768);
     gotoxy(0,0);
 
@@ -46,8 +48,12 @@ void run_aid(int isFinal) {
         cputs("Cross-Examination:\n");
         cputs("P - Press for more info\n");
         cputs("O - Object (present evidence)\n\n");
+        cputs("M - toggle music. Current: ");
+        if (mute) cputs("Off\n\n"); else cputs("On\n\n");
     }
     
+    wait_for_key_release();
+
 #ifdef LOCATION_IS_LOADER
     // ask player if they want to load or start a new game
     // TODO: passwords too in the future? show them on AID screen?
@@ -60,6 +66,10 @@ void run_aid(int isFinal) {
         kscanfast(0);
         unsigned char x = KSCAN_KEY;
         if ((x == '1') || (x == '2')) break;
+        if (x == 'M') {
+            mute = !mute;
+            goto redraw;
+        }
     }
 
 #else
@@ -82,9 +92,18 @@ void run_aid(int isFinal) {
             savegame();
             continue;
         }
-        if ((!isFinal) && (x == ' ')) {
-            wait_for_key_release();
-            break;
+        if (!isFinal) {
+            if (x == ' ') {
+                wait_for_key_release();
+                break;
+            }
+            if (x == 'M') {
+                mute = !mute;
+                if (mute) {
+                    stop_music();
+                }
+                goto redraw;
+            }
         }
         if (check_reset()) {
             reset_f18a();

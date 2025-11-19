@@ -1,16 +1,7 @@
 #if 1
-int loadFromCache(int index) {
-    (void)index;
-    return 0;
-}
-void storeToCache(int index) {
-    (void)index;
-}
-#else 
-
+// Make sure to link this file first after the crt0, that way it's guaranteed to be in the >a000 page
 // An AMS cache for downloaded images - this lets us load without
 // going to the web and also play music during the load (since we expect that to take about 4 frames)
-// This code is expected to be loaded in low RAM, and will page in at >A000. it should not expect other code to be available.
 
 #include <vdp.h>
 #include <f18a.h>
@@ -46,11 +37,57 @@ void storeToCache(int index) {
 #define FIRST_CACHE_PAGE 16
 #define LAST_CACHE_PAGE 255
 #define NUM_CACHE_PAGES (LAST_CACHE_PAGE-FIRST_CACHE_PAGE+1)
-#define MAP_ADDRESS 0xa000
-#define ADR_DEFAULT_PAGE 10
-
+// Warning: bug workaround asm code below hard-codes this MAP_ADDRESS value
+#define MAP_ADDRESS 0xf000
+#define ADR_DEFAULT_PAGE 15
 int CacheHead = 0, CacheTail = 0;
 #define CACHE_MAX (NUM_CACHE_PAGES-1)
+
+#ifdef CLASSIC99
+// Can't test the hardware interaction, but can at least test the buffering theory!
+// we could use the real AMS hardware if the emulation gave us a way to SBO/SBZ, but that's ok.
+// later, if necessary.
+#include <malloc.h>
+
+extern int ams;     // number of pages detected - we'll simulate this
+
+#ifndef NULL
+#define NULL (0)
+#endif
+
+unsigned char *pAmsRam = NULL;      // we'll allocate this on first run
+unsigned char *pAmsMap[16] = {};    // 16 4k blocks pointing into AMS, initialized to sequence by CRT, here we'll do it when we allocate
+bool amsMapOn = false;
+
+typedef unsigned short uint16;
+extern "C" void debug_write(char *s, ...);
+
+// here we'll just track a variable to ensure we are doing the on/off right
+void samsMapOn() {
+    amsMapOn = true;
+}
+
+void samsMapOff() {
+    amsMapOn = false;
+}
+
+// must be the first function called! (otherwise what are you mapping?)
+void samsMapPage(int page, int location) {
+    if (pAmsRam == NULL) {
+        // first call
+        pAmsRam=(unsigned char*)malloc(ams*4096);   // yes, we'll leak this
+        for (int i=0; i<16; ++i) {
+            pAmsMap[i]=pAmsRam+4096*i;
+        }
+    }
+
+    // now update the map
+    pAmsMap[(location&0xf000)>>12] = pAmsRam+page*4096;
+}
+
+#else
+typedef unsigned int uint16;
+#define debug_write(...) ((void)0)
 
 // SAMS code by Jedimatt42
 void samsMapOn() {
@@ -81,16 +118,22 @@ void samsMapPage(int page, int location) {
       : "r"(location), "r"(page)
       : "r12");
 }
+#endif
 
 // sz must be a multiple of 256!
 void vdpmemcpywithmusic(unsigned int vdpAdr, unsigned char *cpuAdr, unsigned int sz) {
     // store 256 bytes at a time, checking for music
     // music player and data must ALSO be in low memory!!
+#ifdef CLASSIC99
+    if (!amsMapOn) debug_write("WARNING: memcpywithmusic but map is off!");
+    cpuAdr = pAmsMap[(((int)cpuAdr)&0xf000)>>12]+(((int)cpuAdr)&0x0fff);
+#endif
     while (sz > 0) {
         vdpmemcpy(vdpAdr, cpuAdr, 0x100);
         vdpAdr += 0x100;
         cpuAdr += 0x100;
         sz -= 0x100;
+#ifndef CLASSIC99
         // check VDP CRU
         int flag = 0;
         __asm__ volatile ( "clr r12\n\ttb 2\n\tjeq vdp%=\n\tseto r12\nvdp%=:\n\tmov r12,%0" : "=r"(flag) : : "r12","cc" );
@@ -98,17 +141,23 @@ void vdpmemcpywithmusic(unsigned int vdpAdr, unsigned char *cpuAdr, unsigned int
             VDP_CLEAR_VBLANK;
             update_music();
         }
+#endif
     }
 }
 
 void vdpmemreadwithmusic(unsigned int vdpAdr, unsigned char *cpuAdr, unsigned int sz) {
     // read 256 bytes at a time, checking for music
     // music player and data must ALSO be in low memory!!
+#ifdef CLASSIC99
+    if (!amsMapOn) debug_write("WARNING: memreadwithmusic but map is off!");
+    cpuAdr = pAmsMap[(((int)cpuAdr)&0xf000)>>12]+(((int)cpuAdr)&0x0fff);
+#endif
     while (sz > 0) {
         vdpmemread(vdpAdr, cpuAdr, 0x100);
         vdpAdr += 0x100;
         cpuAdr += 0x100;
         sz -= 0x100;
+#ifndef CLASSIC99
         // check VDP CRU
         int flag = 0;
         __asm__ volatile ( "clr r12\n\ttb 2\n\tjeq vdp%=\n\tseto r12\nvdp%=:\n\tmov r12,%0" : "=r"(flag) : : "r12","cc" );
@@ -116,6 +165,7 @@ void vdpmemreadwithmusic(unsigned int vdpAdr, unsigned char *cpuAdr, unsigned in
             VDP_CLEAR_VBLANK;
             update_music();
         }
+#endif
     }
 }
 
@@ -126,20 +176,24 @@ void restoreSamsMap() {
 }
 
 // if we find the item in cache, copy the cache line to buf and return the cache line offset, else return 0xffff (which is > 4k)
-// warning: SAMS MAP is NOT restored on good return!
+// warning: SAMS MAP is NOT restored - left active on the cache page
 int findInCache(int idx, unsigned char *buf) {
     samsMapPage(0, MAP_ADDRESS);
     samsMapOn();
     for (int cnt = CacheHead; cnt != CacheTail; cnt = ((cnt+1)>CACHE_MAX ? 0 : cnt+1)) {
         // fetch the cache line
+#ifdef CLASSIC99
+        if (!amsMapOn) debug_write("WARNING: findinCache but map is off!");
+        memcpy(buf, (unsigned char*)(pAmsMap[(MAP_ADDRESS&0xf000)>>12]) + (cnt<<5), 32);
+#else
         memcpy(buf, (unsigned char*)MAP_ADDRESS + (cnt<<5), 32);
-        if (*(unsigned int*)buf == idx) {
+#endif
+        if (*(uint16*)buf == idx) {
             // hey, this is it!
             return cnt;
         }
     }
 
-    restoreSamsMap();
     return 0xffff;
 }
 
@@ -147,71 +201,220 @@ int findInCache(int idx, unsigned char *buf) {
 int loadFromCache(int idx) {
     unsigned char buf[32];
 
+#ifdef CLASSIC99
+    if (amsMapOn) debug_write("loadFromCache but last call left map on");
+#endif
+
     if (ams == 0) {
         return 0;
     }
 
     int found = findInCache(idx, buf);
     if (found == 0xffff) {
+        restoreSamsMap();
         return 0;
     }
+    debug_write("Loading from page %d\n", found);
 
     // remember the SAMS MAP needs to be restored!
 
     // we found it. We have a copy of the cache line, so we can use that
     // found has the index of the cache line. The card page is (index*2)+FIRST_CACHE_PAGE
     // remember it takes two pages for every cached image
-    found = (found<<1)+FIRST_CACHE_PAGE;
-    samsMapPage(found, MAP_ADDRESS);
-    samsMapOn();
+    int mapidx = (found<<1)+FIRST_CACHE_PAGE;
+#ifdef CLASSIC99
+    samsMapPage(mapidx, MAP_ADDRESS);
+#else
+   // bug workaround
+    __asm__ volatile (
+      "LI r12, >1E00\n\t"
+      "SWPB %0\n\t"         // want little endian order for page
+      "SBO 0\n\t"           // card on
+      "MOV %0, @>401e\n\t"  // map page for >F000
+      "SBZ 0\n\t"           // card off
+      "SWPB %0\n\t"         // restore page register before returning
+      :
+      : "r"(mapidx)
+      : "r12");
+#endif
     vdpmemcpywithmusic(gPattern, (unsigned char*)MAP_ADDRESS, 0x1000);
     if (f18a) {
-        // warning: this might not work on little endian...
-        loadpal_f18a((unsigned int*)&buf[2], 1, 15);
+        // we need to load the palette into the right VDP address too, and tell the F18A about it
+        buf[0]=0;   // always black and need to clear out the image index
+        buf[1]=0;
+        vdpmemcpy(gPattern+0x1000, buf, 32);
+        vdpchar(0x3900, 0x01);  // load palette command
     }
-    samsMapPage(found+1, MAP_ADDRESS);
+    ++mapidx;
+#ifdef CLASSIC99
+    samsMapPage(mapidx, MAP_ADDRESS);
+#else
+   // bug workaround
+    __asm__ volatile (
+      "LI r12, >1E00\n\t"
+      "SWPB %0\n\t"         // want little endian order for page
+      "SBO 0\n\t"           // card on
+      "MOV %0, @>401e\n\t"  // map page for >F000
+      "SBZ 0\n\t"           // card off
+      "SWPB %0\n\t"         // restore page register before returning
+      :
+      : "r"(mapidx)
+      : "r12");
+#endif
     vdpmemcpywithmusic(gColor, (unsigned char*)MAP_ADDRESS, 0x1000);
     restoreSamsMap();
 
     return 1;
 }
 
-// Store image from VDP to cache. If it is already there, it's overwritten.
+// Store image from VDP to cache. If it is already there, we're done
 // The F18A palette bytes are copied whether we are in F18A mode or not
 void storeToCache(int idx) {
     unsigned char buf[32];
+
+#ifdef CLASSIC99
+    if (amsMapOn) debug_write("storeToCache but last call left map on");
+#endif
 
     if (ams == 0) {
         return;
     }
 
     int found = findInCache(idx, buf);
-    if (found == 0xffff) {
-        // we need to find a new page
-        ++CacheTail;
-        if (CacheTail > CACHE_MAX) CacheTail = 0;
-        int cnt = CacheTail - CacheHead;
-        if (cnt < 0) cnt = CacheTail+CACHE_MAX+1 - CacheHead;
-        if (cnt > CACHE_MAX) {
-            ++CacheHead;
-            if (CacheHead > CACHE_MAX) {
-                CacheHead = 0;
-            }
+    if (found != 0xffff) {
+        restoreSamsMap();
+        return;
+    }
+
+    // Save it to the current tail, and increment
+    // if we bump the head, nudge it up to lose the oldest one
+    found = CacheTail;
+    ++CacheTail;
+    if (CacheTail > CACHE_MAX) CacheTail = 0;
+    if (CacheTail == CacheHead) {
+        ++CacheHead;
+        if (CacheHead > CACHE_MAX) {
+            CacheHead = 0;
         }
     }
+    debug_write("Saving to new page %d\n", found);
     
     // update cache line
-    vdpmemread(0x1000, (unsigned char*)MAP_ADDRESS + (found<<5), 32);
-    *(unsigned int*)MAP_ADDRESS = idx;
+    unsigned char *baseAddress = (unsigned char*)MAP_ADDRESS;
+#ifdef CLASSIC99
+    if (!amsMapOn) debug_write("WARNING: storetocache but map is off!");
+    baseAddress = pAmsMap[(((int)baseAddress)&0xf000)>>12]+(((int)baseAddress)&0x0fff);
+#endif
+    baseAddress += (found<<5);
+    vdpmemread(0x1000, baseAddress, 32);
+    *(uint16*)baseAddress = idx;
     
-    // copy pattern table
-    found = (found<<1)+FIRST_CACHE_PAGE;
-    samsMapPage(found, MAP_ADDRESS);
-    samsMapOn();
+    // copy pattern table - use the TI addresses here as vdpmemreadwithmusic will fix for C99 build
+
+    // compiler bug needs to be resolved here... we lose the MAP_ADDRESS constant (because we don't flag that the shift changes the value?)
+    // We should take a look, but otherwise we can probably do the mapping inline more efficiently than it did...
+    // I think my patches are out of date, so maybe we start with finding the latest and rebuilding?
+    // What about my custom patches? Do I have any I need to keep?
+#if 0
+    samsMapPage((found<<1)+FIRST_CACHE_PAGE, MAP_ADDRESS);
+    // TODO** COMPILER BUG
+   A2B0  020E  li   R14,>f000              (20)     MAP_ADDRESS -> R14
+         F000
+   A2B4  C04F  mov  R15,R1                 (18)     found cache index
+   A2B6  0221  ai   R1,>0010               (22)     plus first page (we already did the times 2)
+         0010
+   A2BA  020C  li   R12,>1e00              (20)     CRU for AMS
+         1E00
+>  A2BE  09CE  srl  R14,12                          MAP Address most significant nibble
+   A2C0  0A1E  sla  R14,1                           times 2 for map register address
+   A2C2  06C1  swpb R1                              'correct' byte order for write to register
+   A2C4  1D00  sbo  >0000                           card regs on
+   A2C6  CB81  mov  R1,@>4000(R14)                  write map value
+         4000
+   A2CA  1E00  sbz  >0000                           card regs off
+   A2CC  06C1  swpb R1                              restore R1 order
+   A2CE  0203  li   R3,>1000                        VDP copy size
+         1000
+   A2D2  C08E  mov  R14,R2                          ** still thinks R14 has the MAP_ADDRESS in it ** <---
+   A2D4  C060  mov  @>e2bc[gPattern],R1             VDP address in R1
+         E2BC
+   A2D8  06A0  bl   @>a1aa[vdpmemreadwithmusic]     do vdpmemread
+         A1AA
+#endif
+
+    int mapidx = (found<<1)+FIRST_CACHE_PAGE;
+#ifdef CLASSIC99
+    samsMapPage(mapidx, MAP_ADDRESS);
+#else
+   // bug workaround
+    __asm__ volatile (
+      "LI r12, >1E00\n\t"
+      "SWPB %0\n\t"         // want little endian order for page
+      "SBO 0\n\t"           // card on
+      "MOV %0, @>401e\n\t"  // map page for >F000
+      "SBZ 0\n\t"           // card off
+      "SWPB %0\n\t"         // restore page register before returning
+      :
+      : "r"(mapidx)
+      : "r12");
+#endif
     vdpmemreadwithmusic(gPattern, (unsigned char*)MAP_ADDRESS, 0x1000);
-    samsMapPage(found+1, MAP_ADDRESS);
+
+    ++mapidx;
+#ifdef CLASSIC99
+    samsMapPage(mapidx, MAP_ADDRESS);
+#else
+    __asm__ volatile (
+      "LI r12, >1E00\n\t"
+      "SWPB %0\n\t"         // want little endian order for page
+      "SBO 0\n\t"           // card on
+      "MOV %0, @>401e\n\t"  // map page for >F000
+      "SBZ 0\n\t"           // card off
+      "SWPB %0\n\t"         // restore page register before returning
+      :
+      : "r"(mapidx)
+      : "r12");
+#endif
     vdpmemreadwithmusic(gColor, (unsigned char*)MAP_ADDRESS, 0x1000);
+
     restoreSamsMap();
 }
 
+// invalidate the cache for a particular image so it can be force-reloaded
+void invalidateCache(int idx) {
+    unsigned char buf[32];
+
+#ifdef CLASSIC99
+    if (amsMapOn) debug_write("invalidateCache but last call left map on");
+#endif
+
+    if (ams == 0) {
+        return;
+    }
+
+    int found = findInCache(idx, buf);
+    if (found != 0xffff) {
+        unsigned char *baseAddress = (unsigned char*)MAP_ADDRESS;
+    #ifdef CLASSIC99
+        if (!amsMapOn) debug_write("WARNING: invalidateCache but map is off!");
+        baseAddress = pAmsMap[(((int)baseAddress)&0xf000)>>12]+(((int)baseAddress)&0x0fff);
+    #endif
+        baseAddress += (found<<5);
+        *(uint16*)baseAddress = 0xffff;
+    }
+
+    restoreSamsMap();
+}
+
+#else
+int loadFromCache(int index) {
+    (void)index;
+    return 0;
+}
+void storeToCache(int index) {
+    (void)index;
+}
+void invalidateCache(int index) {
+    (void)index;
+}
 #endif

@@ -23,6 +23,9 @@ SECTIONS {
         PROVIDE(stextupper = .);
 
         crt0_ea5.o
+        cache.o
+        *libti99.a:*
+/* we need all the above to finish before 0xf000 for the caching to be safe */
         aid.o
         crossexam.o 
         engine.o 
@@ -31,7 +34,6 @@ SECTIONS {
         savegame.o 
         sfx.o 
         story.o 
-        *libti99.a:*
         People.o(.text .rodata)
         scratchloaderStandalone.o
 

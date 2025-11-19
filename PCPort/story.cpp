@@ -6,6 +6,7 @@
 
 #include <conio.h>
 #include <string.h>
+#include "cache.h"
 #include "engine.h"
 #include "sfx.h"
 #include "aid.h"
@@ -366,6 +367,7 @@ int run_story() {
 
             if (ch =='R') {
                 // reload current frame
+                invalidateCache(lastimg);
                 reset_last_img();
                 break;
             }

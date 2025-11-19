@@ -46,7 +46,11 @@ int oldMaxtext = 32*7;
 int iName = -1;     // does NOT use PP_FIRST after it's set
 int oldName = -2;
 int f18a = 0;
+#ifdef CLASSIC99
+int ams = 32;   // we can't actually detect AMS, but i need some for testing the cache code
+#else
 int ams = 0;
+#endif
 
 struct PAB myPab = {0};
 
@@ -201,18 +205,15 @@ void load_image(int index) {
         vdpchar(0x3900, 0x01);  // load palette command
     }
 
-    storeToCache(index);
-
-    // best we can do... it'll help a little
-    // we could probably fake a lot since it's Classic99 targetted now...
-    VDP_WAIT_VBLANK_CRU;
-    VDP_CLEAR_VBLANK;
-    update_music();
+    // hitting one beat of music here may help Classic99 a tiny bit, but it's terrible on hardware
+    // many tunes which haven't even started yet hang on the first note with a music beat here
 
     // load colors
     buf[off+8] = 'C';
     myPab.VDPBuffer = gColor;
     dsrlnk(&myPab, VDP_PAB_ADDRESS);
+
+    storeToCache(index);
 }
 
 #ifdef LOCATION_IS_LOADER
