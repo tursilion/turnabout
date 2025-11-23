@@ -188,7 +188,7 @@ Time        Frame       Who         Text
 11:56       0127        Trixie      Indeed, this drabble has wasted enough of Trixie's time.
 11:59       0139        Phoenix     (That third person thing is really getting on my nerves.)
 
--- LOCATION 11 --
+-- LOCATION 12 --
 
 12:03       0126        Judge       Very well, the prosecution may make her opening statement.
 12:07       0141        Trixie      About time...
@@ -320,6 +320,9 @@ Time        Frame       Who         Text
 19:57       0127        Trixie      Since the first bolt is manually set off by a pegasus, cloud ballistics is unable to confirm when it was fired. But luckily, we have an eyewitness who saw it.
 20:04       0130        Judge       I wish to hear a testimony from the witness. Please bring them out...
 20:10       0144        Trixie      Very well...
+
+-- LOCATION 13 --
+
 20:15       0127        .           State your name and occupation please...
 20:18       0156
 20:20       0139        Phoenix     Huh?

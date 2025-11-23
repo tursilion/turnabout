@@ -15,7 +15,8 @@
 //#define LOCATION_IS_5
 //#define LOCATION_IS_6
 //#define LOCATION_IS_10
-#define LOCATION_IS_11
+//#define LOCATION_IS_11
+#define LOCATION_IS_12
 #endif
 
 // some types
@@ -59,11 +60,11 @@ enum {
 
     // internal inventory items
     EV_START_INTERNAL,              // don't display evidence starting here - internal flags
-    EV_I_NOQUESTIONCLOUD,           // did not question the storm cloud evidence (for example)
+    EV_I_QUESTIONCLOUD,             // questioned the storm cloud evidence
     EV_I_IN1FLAG1,                  // flagged first search done
     EV_I_WHINEBED,                  // whined about bed
     EV_I_WHINEBREAKFAST,            // whined about breakfast
-    EV_I_REVISION1,                 // stored to track first revision
+    EV_I_REVISION1,                 // stored to track first revision of the save file
 
     EV_MAX_STORED_EV,               // nothing after here is saved in inventory arrays
 
@@ -152,6 +153,13 @@ enum {
     EV_T_ALLMAG,
     EV_T_ASKHELP,
     EV_T_WINGIT,
+    EV_T_OBJCLOUD,
+    EV_T_ACCCLOUD,
+    EV_T_WHOCALLED,
+    EV_T_ABCLOUD,
+    EV_T_3RDBOLT,
+    EV_T_SUREBOLT,
+
 
     EV_MAX,
 
@@ -260,6 +268,8 @@ enum {
 
     CMD_VOICEENDLIST, // end of voice commands - this is also used as a differentiator for label jump targets!
 
+// --- Above is okay for jump targets, below is not
+
     CMD_JUMP        , // always jump to label specified in evidence
     
     CMD_SHOWEV      , // request show evidence, text will say why. Next lines will jump based on what is selected
@@ -288,11 +298,11 @@ enum {
     CMD_MUSSTART    , // Apollo Justice - Start of a New Trial! - Apollo Justice Ace Attorney - Objection 2007 (used Objection 2011)
     CMD_MUSEXAM     , // Cross Examination - Moderate 2007 - Apollo Justice Ace Attorney
     CMD_MUSCROSS    , // Cross Examination - Moderato 2002 - Phoenix Wright Justice For All
-    CMD_MUSTRICK    , // Trick and Magic - Phoenix Wright: Justice for All
+    CMD_MUSTRICK    , // Magic and Tricks - Phoenix Wright: Justice for All
     CMD_MUSMLP      , // My Little Pony - Friendship is Magic Theme (8-bit) - RainbowCrash88 - used random Midi
     CMD_MUSTROUPE   , // Gramarye Troupe - Apollo Justice Ace Attorney
     CMD_MUSTRIAL    , // Ace Attorney 4 - Trial - Apollo Justice Ace Attorney - Court is now in session
-    CMD_MUSTRACE    , // Trance Logic - Apollo Justice Ace Attorney
+    CMD_MUSTRANCE   , // Trance Logic - Apollo Justice Ace Attorney
     CMD_MUSPEARLY   , // With Pearly - Phoenix Wright Justice for All
     CMD_MUSSISTER   , // Turnabout Sisters - Capcom
     CMD_MUSSMILE    , // Smile Instrumental - Hasbro
@@ -461,7 +471,7 @@ extern int nStorySize;
 #define HAS_ICRASHSFX
 // music
 #define HAS_MUSLOUNGE
-#define HAS_MUSMLP
+//#define HAS_MUSMLP    // TODO: OUT OF MEMORY
 #define HAS_MUSTROUPE   // Trixie
 #endif
 
@@ -485,10 +495,16 @@ extern int nStorySize;
 #define LOCATION_NUMBER 12
 #define LOCATION_TYPE_STORY
 // sfx
+#define HAS_BOOMSFX
+// voices
+#define HAS_VOICE
+#define HAS_TRIXIEOBJ
+#define HAS_PHOENIXOBJ
 // music
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
-#define LAST_LOCATION
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
+//#define HAS_MUSTRIAL      // TODO: OUT OF MEMORY - move music to AMS
+//#define HAS_MUSTRANCE
+#define HAS_MUSCORNERED
+#define HAS_MUSTRICK
 #endif
 
 #ifdef LOCATION_IS_13
@@ -497,6 +513,9 @@ extern int nStorySize;
 #define LOCATION_TYPE_STORY
 // sfx
 // music
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
+#define LAST_LOCATION
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
 #endif
 
 #ifdef LOCATION_IS_14

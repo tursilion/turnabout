@@ -2,6 +2,7 @@
 #define ENGINE_H
 
 #include "structures.h"
+#include "mylib.h"
 
 extern Evidence_t evidence[EV_MAX_STORED_EV];
 extern Evidence_t people[PP_MAX];
@@ -15,7 +16,6 @@ void load_image(int index);
 void spritestring(const char*str, unsigned char col);
 void invert_image();
 void normal_image();
-void bitmap_screen();
 void fixed_image();
 void black_image();
 void white_image();
@@ -26,7 +26,5 @@ void set_textout(const char *p);
 void set_name(unsigned int i);
 void set_maxlen(int i);
 void wait_for_key_release();
-
-void set_alt_text();
 
 #endif

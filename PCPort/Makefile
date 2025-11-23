@@ -37,7 +37,7 @@ C_FLAGS=\
 
 # note: crt not explicitly included as its not c
 OBJECT_LIST=\
-  aid.o crossexam.o engine.o Evidence.o inventory.o investigation.o Locations.o music.o People.o savegame.o sfx.o story.o cache.o voice.o
+  aid.o crossexam.o engine.o mybitmap.o Evidence.o inventory.o investigation.o Locations.o music.o othermusic.o People.o savegame.o sfx.o story.o cache.o voice.o
 
 # map the objects back to source files
 SOURCE_LIST := $(OBJECT_LIST:.o=.cpp)
@@ -46,7 +46,7 @@ SOURCE_LIST := $(OBJECT_LIST:.o=.cpp)
 PREREQUISITES=\
   $(OBJECT_LIST_EA5)
 
-all: pload ploc0 ploc1 ploc2 ploc3 ploc4 ploc5 ploc6 ploc10 ploc11 ploc12
+all: pload ploc0 ploc1 ploc2 ploc3 ploc4 ploc5 ploc6 ploc10 ploc11 ploc12 ploc13
 
 # Recipe to compile the executable
 # Note: The loader (PWRIGHT/etc) is simlinked to the "tipi" folder, but also built into Classic99
@@ -174,6 +174,17 @@ ploc12: $(PREREQUISITES) crt0_ea5.asm
 	$(ELF2EA5) $(NAME)12.ea5.elf $(NAME)12.ea5.bin
 	$(EA5PLIT) $(NAME)12.ea5.bin
 	$(CP) PLOC12* /mnt/d/classic99/dsk1/
+	rm *.o
+
+ploc13: $(PREREQUISITES) crt0_ea5.asm
+	-rm *.o
+	$(GAS) crt0_ea5.asm -o crt0_ea5.o
+	$(GAS) scratchloaderStandalone.a99 -o scratchloaderStandalone.o
+	$(CC) -c $(C_FLAGS) -DLOCATION_IS_13 $(SOURCE_LIST) $(INCPATH)
+	$(LD) crt0_ea5.o $(OBJECT_LIST) scratchloaderStandalone.o $(LIBS) $(LIBPATH) $(LDFLAGS_EA5) -o $(NAME)13.ea5.elf > $(NAME)13_ea5.map
+	$(ELF2EA5) $(NAME)13.ea5.elf $(NAME)13.ea5.bin
+	$(EA5PLIT) $(NAME)13.ea5.bin
+	$(CP) PLOC13* /mnt/d/classic99/dsk1/
 	rm *.o
 
 

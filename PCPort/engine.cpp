@@ -20,8 +20,8 @@
 #include "savegame.h"
 #include "aid.h"
 #include "cache.h"
+#include "story.h"
 
-extern int run_story();
 int evidence_found[EV_MAX_STORED_EV];
 int people_found[PP_MAX];
 
@@ -309,13 +309,6 @@ void normal_image() {
     }
 }
 
-void bitmap_screen() {
-    set_bitmap(0);
-    VDP_SET_REGISTER(VDP_REG_SDT, 2);   
-    gSpritePat=0x1000;  // move the sprite pattern table
-    vdpchar(gSprite, 0xd0); // all sprites off
-}
-
 void fixed_image() {
     // load the fixed TI palette into palette 1 (f18a only)
 
@@ -431,32 +424,6 @@ void setupgpu() {
     normal_image();
 }
 
-// set an alternate text mode that doesn't conflict with the bitmap
-// used by inventory and aid
-void set_alt_text() {
-    // based on set_graphics, but different map and we don't touch the sprite table
-    //scrn_scroll = scrn_scroll_default;
-
-    // this mode can exist without corrupting the bitmap screens
-    unsigned char reg1 = VDP_MODE1_16K | VDP_MODE1_UNBLANK | VDP_MODE1_INT | 0;
-	VDP_SET_REGISTER(VDP_REG_MODE1, reg1);
-    VDP_REG1_KSCAN_MIRROR = reg1;
-	VDP_SET_REGISTER(VDP_REG_MODE0, 0);
-	VDP_SET_REGISTER(VDP_REG_SIT, 7);	gImage = 0x1C00;
-	VDP_SET_REGISTER(VDP_REG_CT, 110);	gColor = 0x1b80;
-	VDP_SET_REGISTER(VDP_REG_PDT, 2);	gPattern = 0x1000;
-    // leaving sprites at bitmap default of 0x1b00 and sprite patterns at 0x1800
-    // text information is the same too, except for the flags
-	nTextFlags = TEXT_WIDTH_32;
-    fixed_image();  // fix F18A palette
-    vdpchar(gSprite, 0xd0);  // sprites off
-
-    vdpmemset(gImage, ' ', 768);
-    vdpmemset(gColor, 0xe0, 16);        // grey
-    vdpmemset(gColor+16, 0x40, 16);     // blue
-    gotoxy(0,0);
-}
-
 #ifdef LOCATION_IS_LOADER
 
 // only the loader needs this - we'll store the result in the VDP savedata
@@ -559,8 +526,8 @@ int main()
     cputs("This game is running LIVE over\n");
     cputs("the internet and is a work in\n");
     cputs("progress! Currently I have\n");
-    cputs("implemented 8 scenes which is\n");
-    cputs("about 11% of the total script.\n\n");
+    cputs("implemented 12 scenes which is\n");
+    cputs("about 15% of the total script.\n\n");
     // to get the percentage I'm looking at the last timestamp, and dividing it by about 6 hrs
 
     // some hardware info
@@ -641,12 +608,8 @@ repeataid:
     // set up a text mode screen for the loader
     fixed_image();  // fix F18A palette
     reset_f18a();   // turn off GPU program
-    set_text();     // text mode has fewest requirements
-	VDP_SET_REGISTER(VDP_REG_SIT, 10);	gImage = 0x2800;
-	VDP_SET_REGISTER(VDP_REG_PDT, 4);	gPattern = 0x2000;
-    VDP_SET_REGISTER(VDP_REG_COL, (COLOR_GRAY<<4)|COLOR_BLACK);
+    my_set_text();  // text mode has fewest requirements
     charsetlc();
-	nTextFlags = TEXT_WIDTH_40;
     vdpmemset(gImage, ' ', 40*24);
     gotoxy(0,0);
     cputs("Loading...");

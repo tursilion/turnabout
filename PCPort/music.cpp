@@ -1,3 +1,11 @@
+// TODO: I think we might have to move music to AMS to make this work. I didn't really want to,
+// but I think I'm going to need the RAM for evidence in a few more scenes. I can use the
+// packing tool to pack the music into best-sized 4k chunks and then see how many pages that
+// needs. I could page music in at >E000 so the existing >F000 page is free for graphics
+// and the two can interwork, but it means stock 32k machines won't be able to play music
+// anymore. Given my primary target is emulation, that may be all right. When I move to
+// ROM, if I move to ROM someday, I can fix that since the ROM is pagable too.
+
 #include <sound.h>
 #include "sfx.h"
 #include "structures.h"
@@ -74,12 +82,24 @@ static
         }
         break;
 #endif
-#ifdef HAS_MUSTRACE
-    case CMD_MUSTRACE: // Trance Logic - Apollo Justice Ace Attorney
+#ifdef HAS_MUSTRANCE
+    case CMD_MUSTRANCE: // Trance Logic - Apollo Justice Ace Attorney
+        {
+static
+#include "../music/processed/TRANCE.c"
+        pSong = MUS_TRANCE;
+        StartSong(MUS_TRANCE, 0);
+        }
         break;
 #endif
 #ifdef HAS_MUSTRICK
     case CMD_MUSTRICK: // Trick and Magic - Phoenix Wright: Justice for All
+        {
+static
+#include "../music/processed/TRICK.c"
+        pSong = MUS_TRICK;
+        StartSong(MUS_TRICK, 0);
+        }
         break;
 #endif
 #ifdef HAS_MUSCRUSADE
@@ -244,6 +264,12 @@ static
 #endif
 #ifdef HAS_MUSCORNERED
     case CMD_MUSCORNERED: // Pursuit Cornered 2001 - Capcom
+        {
+static
+#include "../music/processed/CORNERED.c"
+        pSong = MUS_CORNERED;
+        StartSong(MUS_CORNERED, 0);
+        }
         break;
 #endif
 #ifdef HAS_MUSWON

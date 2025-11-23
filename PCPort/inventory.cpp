@@ -2,18 +2,86 @@
 
 #include "structures.h"
 #include "engine.h"
+#include "story.h"
 #include <conio.h>
 #include <vdp.h>
 #include <string.h>
 #include <kscan.h>
 
+#ifdef LOCATION_IS_LOADER
+// nothing to do here
+unsigned int run_inventory(const char *pTitle) {
+    return 0;
+}
+#else
+
 // main engine string - we use this to save the old value
 extern const char *pString;
 // we hack this to force a redraw of the original text
 extern int oldMaxtext;
-#define DEFTEXT "Press letter for description, Enter to select. Period for next page."
+const char *DEFTEXT = "Press letter for description, Enter to select. Period for next page.";
 
-// TODO: Are we going to need inventory images, at least for the maps? probably...
+// if it's a special piece, we do the special work for bitmap images
+// return 1 for selected itself, return -1 for redraw needed, return 0 for nothing special
+int specialinventory(int selected) {
+    int imgout = 0;
+    unsigned char oldkey = KSCAN_KEY;
+    int maxlen = 0;
+
+    // which special evidence is it?
+    if (selected == EV_EVERFREE1) {
+        // map image zoomed in
+        imgout = 9008;
+    } else {
+        // nothing special
+        return 0;
+    }
+
+    // do the shared handling
+    // we're going to show an image and text for this
+    bitmap_screen();
+    normal_image();
+    load_image(imgout);
+    vdpmemset(gImage+16*32, ' ', 32);
+
+    reverse(1);
+    cputsxy(0,23,"Enter: select, period: return");
+    reverse(0);
+
+    // and clear the lastimg over in the story handler so it reloads when we're done
+    reset_last_img();
+
+    // textout is already set before we are called
+    while (1) {
+        // handles vblank and music
+        if (maxlen < 32*7) {
+            ++maxlen;
+            set_maxlen(maxlen);
+        }
+        draw_screen();
+
+        kscanfast(0);
+        if (KSCAN_KEY == oldkey) {
+            continue;
+        }
+        // KSCAN_KEY is volatile (for some reason), so we'll use oldkey
+        // to improve optimization chances
+        oldkey = KSCAN_KEY;
+        if (oldkey == 13) {
+            // selected
+            return 1;
+        }
+        if (oldkey == ' ') {
+            maxlen = 32*7;
+            set_maxlen(maxlen);
+            continue;
+        }
+        if (oldkey == '.') {
+            // redraw needed
+            return -1;
+        }
+    }
+}
 
 // returns the element selected (might be an item or it might be a person)
 // row 0: Inverted, the question (max 32 characters)
@@ -30,6 +98,9 @@ unsigned int run_inventory(const char *pTitle) {
     // save the old string, so we can reuse the drawing code
     // don't change the name, that'll cause us pain ;)
     const char *pOldString = pString;
+    unsigned char oldkey = 'I';     // make sure we don't carry 'I' into here
+
+startover:
     set_textout(DEFTEXT);
 
     // just a text display - so need a custom draw function
@@ -41,7 +112,6 @@ unsigned int run_inventory(const char *pTitle) {
     cputs(pTitle);
     reverse(0);
 
-    unsigned char oldkey = 'I';     // make sure we don't carry 'I' into here
     while (ret == -1) {
         // first, draw the selection - there is always at least ONE item
         vdpmemset(gImage+32, ' ', 32*14);
@@ -148,6 +218,18 @@ unsigned int run_inventory(const char *pTitle) {
                 selected = evidx[oldkey-'A'];
                 if (selected < PP_FIRST) {
                     set_textout(evidence[selected].description);
+                    // special case(s)
+                    int x = specialinventory(selected);
+                    if (x == 1) {
+                        // it was selected
+                        ret = selected;
+                        break;
+                    } else if (x == -1) {
+                        // it was not selected, but we need to redraw
+                        oldkey = '.';
+                        goto startover;
+                    }
+                    // otherwise it was not special
                 } else {
                     set_textout(people[PPLIDX(selected)].description);
                 }
@@ -170,3 +252,5 @@ unsigned int run_inventory(const char *pTitle) {
     // and return the value
     return ret;
 }
+
+#endif

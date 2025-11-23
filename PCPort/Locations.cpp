@@ -1115,13 +1115,168 @@ const Story_t story[] =  {                           //  01234567890123456789012
 #endif
 
 #ifdef LOCATION_IS_12
-//      story                                        //  0                               1                               2                               3                               4                               5                               6                               7
-const Story_t story[] =  {                           //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
-{   EV_NONE,    80, PP_NONE     | CMD_BLACK,            "Everfree Forest. June 9th, 11:30PM"    },
-{   13,         94,     PP_NONE         | CMD_ENDSTORY, ""  }   // go to location 13
+//      story                                    //  0                               1                               2                               3                               4                               5                               6                               7
+const Story_t story[] =  {                       //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
+{   EV_NONE,    126,    PP_JUDGE    | CMD_MUSTRIAL, "Very well, the prosecution may make her opening statement."    },
+{   EV_NONE,    141,    PP_TRIXIE   | CMD_NONE,     "About time..."    },
+{   EV_NONE,    142,    PP_TRIXIE   | CMD_NONE,     "The GREAT and POWERFUL Trixie would like to start off by saying the Defense has no chance of winning in this."    },
+{   EV_NONE,    127,    PP_TRIXIE   | CMD_STOPMUS,  "Zero.                           Zilch.                          Nada.                           None!"    },
+{   EV_NONE,    134,    PP_PHOENIX  | CMD_NONE,     "What kind of opening statement is that?!"    },
+{   EV_NONE,    127,    PP_TRIXIE   | CMD_NONE,     "In fact, Trixie finds it insulting she is not given a proper attorney to wage battle with."    },
+{   EV_NONE,    127,    PP_TRIXIE   | CMD_NONE,     "Instead she is forced to deal with this idiot..."    },
+{   EV_NONE,    139,    PP_PHOENIX  | CMD_NONE,     "What's your problem?!"    },
+{   EV_NONE,    126,    PP_JUDGE    | CMD_NONE,     "Please refrain from personal attacks on the defense, Ms Trixie. Can you please just get on with stating your case?"    },
+{   EV_NONE,    139,    PP_PHOENIX  | CMD_NONE,     "(There has to be some rule in the prosecutor handbook to be as unpleasant as possible.)"    },
+{   EV_NONE,    143,    PP_TRIXIE   | CMD_NONE,     "Hmph! Very well. Trixie shall dazzle and enlighten you all on the events that transpired that fateful night!"    },
+{   EV_NONE,    127,    PP_TRIXIE   | CMD_NONE,     "On June 8th at around the 20th hour, \"Ace Swift\", a famous pegasus athlete, was murdered in the Everfree Forest."    },
+{   EV_NONE,    141,    PP_TRIXIE   | CMD_NONE,     "Unfortunately we don't know why he was in such a place, but the Ponyville police force found his body there."    },
+{   EV_NONE,    142,    PP_TRIXIE   | CMD_NONE,     "And with the evidence and an eyewitness account they were able to find his killer: Rainbow Dash!"    },
+{   EV_NONE,    126,    PP_JUDGE    | CMD_NONE,     "Can you please share with the court the evidence that points to Ms Dash's guilt?"    },
+{   EV_NONE,    144,    PP_TRIXIE   | CMD_NONE,     "Certainly!"    },
+{   EV_NONE,    132,    PP_TWILIGHT | CMD_NONE,     "This is it, Phoenix!"    },
+{   EV_NONE,    132,    PP_PHOENIX  | CMD_NONE,     "We'll finally have some light shed on what exactly happened!"    },
+{   EV_NONE,    145,    PP_TRIXIE   | CMD_MUSTRANCE,"Ace Swift was electrocuted and killed instantly as detailed in this autopsy report."    },
+{   EV_NONE,    130,    PP_JUDGE    | CMD_NONE,     "Electrocuted?"    },
+{   EV_NONE,    130,    PP_JUDGE    | CMD_NONE,     "That is a peculiar way to die..."    },
+{   EV_NONE,    136,    PP_PHOENIX  | CMD_NONE,     "Electrocution? But how? The crime scene was a clearing. I saw no electronic devices or anything of that nature."    },
+{   EV_NONE,    135,    PP_TRIXIE   | CMD_NONE,     "Let Trixie finish, you dunce!"    },
+{   EV_NONE,    139,    PP_PHOENIX  | CMD_NONE,     "Grrr..."    },
+{   EV_NONE,    147,    PP_TRIXIE   | CMD_NONE,     "There was also a fresh sizable burn mark on the back of the victim's neck. Unfortunately, we couldn't find the cause of it."    },
+{   EV_NONE,    136,    PP_PHOENIX  | CMD_NONE,     "(A burn mark? Hmm...)"    },
+{   EV_NONE,    147,    PP_TRIXIE   | CMD_NONE,     "That wasn't the cause of death, though. It was the electrocution that did him in."    },
+{ EV_AUTOPSY,   146,    PP_NONE     | CMD_ADDEV,    "Estimated time of death: 8:30pm - 9:00pm. Died instantly due to severe electrocution. Burn mark on the back of the neck: unknown cause."    },
+{   EV_NONE,    143,    PP_TRIXIE   | CMD_NONE,     "The investigators found decisive evidence pointing to Rainbow Trash as the assailant in this crime."    },
+{   EV_NONE,    130,    PP_JUDGE    | CMD_NONE,     "And what was that?"    },
+{   EV_NONE,    147,    PP_TRIXIE   | CMD_STOPMUS,  "A storm cloud found right above the crime scene is what we believe killed Ace."    },
+
+{ EV_T_OBJCLOUD, 147, PP_PHOENIX | CMD_ADDPROMPT, "A storm cloud? Object!"     },
+{ EV_T_ACCCLOUD, 147, PP_PHOENIX | CMD_ADDPROMPT, "No, that makes sense."    },
+{   EV_NONE,     147, PP_PHOENIX | CMD_SELPROMPT, ""  },
+
+{ EV_T_OBJCLOUD,138,    PP_PHOENIX  | CMD_PHOENIXOBJ, ""    },
+{   EV_NONE,    148,    PP_PHOENIX  | CMD_MUSCORNERED, "A storm cloud!? You call that decisive!?"    },
+{   EV_NONE,    139,    PP_PHOENIX  | CMD_BOOMSFX,  "How could you place blame on my client for that!?"    },
+{EV_I_QUESTIONCLOUD,149,PP_PHOENIX  | CMD_ADDEV,    "Unless you are honestly suggesting Rainbow Dash can move clouds around and make them shoot lightning at will!"    },
+{   EV_NONE,    124,    PP_NONE     | CMD_STOPMUS,  "..."    },
+{   EV_NONE,    149,    PP_PHOENIX  | CMD_NONE,     "(Why is everyone staring at me like that?)"    },
+{   EV_NONE,    150,    PP_TWILIGHT | CMD_NONE,     "Oh, Mr Wright..."    },
+{   EV_NONE,    150,    PP_PHOENIX  | CMD_NONE,     "What's her problem, Twilight? She can't honestly think someone can control weather. It's ludicrous!"    },
+{   EV_NONE,    135,    PP_TRIXIE   | CMD_NONE,     "You have to be the biggest imbecile Trixie has ever laid eyes on!"    },
+{   EV_NONE,    130,    PP_JUDGE    | CMD_NONE,     "Mr Wright... that's a pegasus's job here in Equestria... It's sort of what they do."    },
+{   EV_NONE,    134,    PP_PHOENIX  | CMD_NONE,     "Mmmph... uh what...?"    },
+{   EV_NONE,    132,    PP_TWILIGHT | CMD_NONE,     "They schedule and control the weather, Phoenix. When it rains, snows, hails... that is all the pegasi's doing."    },
+{   EV_NONE,    137,    PP_PHOENIX  | CMD_NONE,     "Oh, sorry... my mistake..."    },
+{   EV_NONE,    143,    PP_TRIXIE   | CMD_NONE,     "Trixie knew you were incompetent - but THIS! Ha! This will be a walk in the park."    },
+{   EV_NONE,    151,    PP_JUDGE    | CMD_NONE,     "The defense will refrain from any more outbursts or they will be reprimanded."    },
+{   EV_NONE,    140,    PP_TWILIGHT | CMD_NONE,     "Maybe you should have, oh I don't know... STUDIED!"    },
+{   EV_NONE,    140,    PP_PHOENIX  | CMD_NONE,     "I said I was sorry!"    },
+
+{ EV_T_ACCCLOUD,143,    PP_TRIXIE   | CMD_NONE,     "When a pegasus sets off a cloud, the first bolt will always strike directly under it."    },
+{   EV_NONE,    127,    PP_TRIXIE   | CMD_NONE,     "This particular storm cloud bore hoof markings of the rainbow colored loser in the defendent chair."    },
+{   EV_NONE,    152,    PP_RAINBOW  | CMD_NONE,     "I'll show YOU who's a loser, you two bit fraud!"    },
+{   EV_NONE,    134,    PP_JUDGE    | CMD_NONE,     "ORDER!"    },
+{   EV_NONE,    127,    PP_JUDGE    | CMD_NONE,     "ORDER IN THE COURT, I SAY!"    },
+{   EV_NONE,    151,    PP_JUDGE    | CMD_NONE,     "The Defendent will remain seated for the duration of the trial!"    },
+{   EV_NONE,    150,    PP_TWILIGHT | CMD_NONE,     "This is a disaster..."    },
+{   EV_NONE,    143,    PP_TRIXIE   | CMD_NONE,     "Naturally, the body was discovered directly under the storm cloud in question."    },
+{   EV_NONE,    143,    PP_TRIXIE   | CMD_NONE,     "Trixie believes this is a pretty open and shut case."    },
+{   EV_NONE,    126,    PP_JUDGE    | CMD_NONE,     "As do I. There aren't many ways to be electrocuted in the middle of the forest."    },
+{   EV_NONE,    130,    PP_JUDGE    | CMD_NONE,     "Well, there was that one incident when I was camping with the bug zapper."    },
+{   EV_NONE,    130,    PP_JUDGE    | CMD_NONE,     "It nearly fried my beard off!"    },
+{   EV_NONE,    136,    PP_PHOENIX  | CMD_NONE,     "(I never saw the Judge as an outdoors man.)"    },
+{   EV_NONE,    139,    PP_PHOENIX  | CMD_BOOMSFX,  "I'd like to ask some questions!"    },
+{   EV_NONE,    143,    PP_TRIXIE   | CMD_NONE,     "Fine then, Mr Wrong... Ask away."    },
+{   EV_NONE,    139,    PP_PHOENIX  | CMD_CLRPROMPT, "It's Wright!"    },
+
+{ EV_T_WHOCALLED,139, PP_PHOENIX | CMD_ADDPROMPT, "Who called it in?"     },
+{ EV_T_ABCLOUD,  139, PP_PHOENIX | CMD_ADDPROMPT, "Tell me about the cloud"    },
+{   EV_NONE,     139, PP_PHOENIX | CMD_SELPROMPT, ""  },
+
+{ EV_T_WHOCALLED,    128,    PP_PHOENIX  | CMD_NONE, "How were the police notified of the murder? It was in the middle of a forest, right? Who reported it?"    },
+{   EV_NONE,    147,    PP_TRIXIE   | CMD_NONE,     "It was quite peculiar, actually..."    },
+{   EV_NONE,    147,    PP_TRIXIE   | CMD_NONE,     "Prior to the crime, the police received a vague tip that wished to remain anonymous."    },
+{   EV_NONE,    147,    PP_TRIXIE   | CMD_NONE,     "They are being questioned more thoroughly in the advent of the murder, though."    },
+{   EV_NONE,    128,    PP_PHOENIX  | CMD_NONE,     "What was this tip?"    },
+{   EV_NONE,    143,    PP_TRIXIE   | CMD_NONE,     "All they said was, \"Something big is going down in the Everfree Forest!\""    },
+{   EV_NONE,    134,    PP_PHOENIX  | CMD_NONE,     "That's it...?"    },
+{   EV_NONE,    143,    PP_TRIXIE   | CMD_NONE,     "Trixie told you it was vague."    },
+{   EV_NONE,    141,    PP_TRIXIE   | CMD_NONE,     "And due to the... \"attitude\" of this anonymous tip."    },
+{   EV_NONE,    143,    PP_TRIXIE   | CMD_NONE,     "The police didn't respond as quickly as they could have, since the tip failed to specify a time when \"something big\" was \"going down\"."    },
+{   EV_NONE,    139,    PP_PHOENIX  | CMD_NONE,     "Isn't that negligence!? They could have saved someone's life!"    },
+{   EV_NONE,    126,    PP_JUDGE    | CMD_NONE,     "This is true, Ms Trixie. The police force should have responded to this tip more responsibly."    },
+{   EV_NONE,    141,    PP_TRIXIE   | CMD_NONE,     "If you were to meet this individual, you'd take them as seriously as the police did."    },
+{   EV_NONE,    143,    PP_TRIXIE   | CMD_NONE,     "Any more questions, Mr Wrong?"    },
+{   EV_NONE,    139,    PP_PHOENIX  | CMD_NONE,     "I told you, it's Wright!"    },
+{   EV_NONE,    139, PP_PHOENIX | CMD_SELPROMPT, ""  },
+
+{ EV_T_ABCLOUD, 139,    PP_PHOENIX  | CMD_NONE,     "I do have some questions regarding that cloud though..."    },
+{   EV_NONE,    139,    PP_PHOENIX  | CMD_NONE,     "How many times did this storm cloud strike?"    },
+{   EV_NONE,    139,    PP_PHOENIX  | CMD_NONE,     "I noticed two charred areas that were quite a distance apart from each other on the crime scene."    },
+{   EV_NONE,    127,    PP_TRIXIE   | CMD_NONE,     "Three times... after the cloud was activated by...  you know who..."    },
+{   EV_NONE,    143,    PP_TRIXIE   | CMD_NONE,     "... the cloud operates by itself: gradually firing lightning wherever it wants, but never in the same place twice."    },
+{   EV_NONE,    127,    PP_TRIXIE   | CMD_NONE,     "It was only large enough to hold three bolts of lightning."    },
+{   EV_NONE,    136,    PP_PHOENIX  | CMD_NONE,     "Three?"    },
+{   EV_NONE,    127,    PP_TRIXIE   | CMD_NONE,     "The first bolt was directly under the cloud where the late Mr Swift lay."    },
+{   EV_NONE,    141,    PP_TRIXIE   | CMD_NONE,     "The second one... we don't know where it hit."    },
+{   EV_NONE,    138,    PP_PHOENIX  | CMD_PHOENIXOBJ, ""    },
+{   EV_NONE,    148,    PP_PHOENIX  | CMD_NONE,     "Wait, then maybe-"    },
+{   EV_NONE,    138,    PP_TRIXIE   | CMD_TRIXIEOBJ, ""    },
+{   EV_NONE,    135,    PP_TRIXIE   | CMD_NONE,     "Trixie knows what you are going to say and it's not going to work!"    },
+{   EV_NONE,    143,    PP_TRIXIE   | CMD_NONE,     "The investigation team combed the entire perimeter of the crime scene and they didn't find any indication the bolt hit the ground or any trees in the storm cloud's proximity."    },
+{   EV_NONE,    141,    PP_TRIXIE   | CMD_NONE,     "It's truly a mystery where this bolt of lightning went."    },
+{   EV_NONE,    139,    PP_PHOENIX  | CMD_NONE,     "Hey! Then, what if it-"    },
+{   EV_NONE,    144,    PP_TRIXIE   | CMD_NONE,     "Ace was also wearing a lightning-proof suit that protects the body from lightning, standard issue for all participants of the Equestrian 500."    },
+{   EV_NONE,    143,    PP_TRIXIE   | CMD_NONE,     "It protects pegasi from lighting when flying at high altitudes."    },
+{   EV_NONE,    143,    PP_TRIXIE   | CMD_NONE,     "The only reason the first bolt killed him is because it was aimed with precision at one of his exposed parts, by Rainbow Trash."    },
+{   EV_NONE,    148,    PP_PHOENIX  | CMD_NONE,     "I think that-"    },
+{   EV_NONE,    144,    PP_TRIXIE   | CMD_NONE,     "If the second bolt hit Ace directly, it still would have touched the ground, leaving burn marks like the one under the cloud."    },
+{   EV_NONE,    143,    PP_TRIXIE   | CMD_NONE,     "Even if he were struck while in the air."    },
+{   EV_NONE,    126,    PP_JUDGE    | CMD_NONE,     "The prosecution's logic is very sound, so I must overrule the defense's claims."    },
+{   EV_NONE,    134,    PP_PHOENIX  | CMD_NONE,     "But I didn't get to say anything!"    },
+{   EV_NONE,    130,    PP_JUDGE    | CMD_NONE,     "Fine then. What were you going to say, Mr Wright?"    },
+{   EV_NONE,    137,    PP_PHOENIX  | CMD_NONE,     "mmmph... Exactly... what... she said..."    },
+{ EV_T_3RDBOLT, 137,    PP_PHOENIX | CMD_ADDPROMPT, "Third Bolt?"    },
+{   EV_NONE,    151,    PP_JUDGE    | CMD_NONE,     "Then the defense's claims have been double-overruled."    },
+{   EV_NONE,    139, PP_PHOENIX | CMD_SELPROMPT, ""  },
+
+{ EV_T_3RDBOLT, 136,    PP_PHOENIX  | CMD_NONE,     "What about the third lightning bolt?"    },
+{   EV_NONE,    141,    PP_TRIXIE   | CMD_NONE,     "Since the storm cloud was important evidence, it was left on the scene undisturbed and the investigation team witnessed the final bolt take down a tree"    },
+{   EV_NONE,    144,    PP_TRIXIE   | CMD_NONE,     "... east of the crime scene, as Trixie will show you on this diagram of the clearing."    },
+{   EV_NONE,    153,    PP_TRIXIE   | CMD_MUSTRICK, "Right here is where the first lightning bolt hit - directly above the body. We know it was set off at 8:40PM."    },
+{   EV_NONE,    153,    PP_TRIXIE   | CMD_NONE,     "The second one is a mystery. We don't know where it touched down but we are sure a bolt of lightning left that cloud at 8:50PM."    },
+{   EV_NONE,    154,    PP_TRIXIE   | CMD_NONE,     "The third bolt touched down at 11:35PM when the investigation team was on the scene so we can completely rule it out of the crime."    },
+{   EV_NONE,    154,    PP_TRIXIE   | CMD_NONE,     "It just took down a tree right here."    },
+{   EV_NONE,    154,    PP_PHOENIX  | CMD_NONE,     "(So that's what happened to that tree...)"    },
+{ EV_T_SUREBOLT,137,    PP_PHOENIX  | CMD_ADDPROMPT, "How are you so sure?"    },
+{ EV_EVERFREE1, 155,    PP_PHOENIX  | CMD_ADDEV,    "A diagram of the scene of the crime and where the lightning struck that night."    },
+{   EV_NONE,    139, PP_PHOENIX | CMD_SELPROMPT, ""  },
+
+{ EV_T_SUREBOLT,136,    PP_PHOENIX  | CMD_NONE,     "But how are you so sure of the time the first two lightning bolts touched down?"    },
+{   EV_NONE,    144,    PP_TRIXIE   | CMD_NONE,     "We were able to use cloud ballistics to confirm the second bolt left the cloud at exactly 8:50PM."    },
+{   EV_NONE,    139,    PP_PHOENIX  | CMD_NONE,     "(\"Cloud ballistics\"... you have got to be joking!)"    },
+{   EV_NONE,    139,    PP_PHOENIX  | CMD_NONE,     "(I better not question it though, I don't want a penalty.)"    },
+{   EV_NONE,    128,    PP_PHOENIX  | CMD_NONE,     "And the first?"    },
+{   EV_NONE,    142,    PP_TRIXIE   | CMD_NONE,     "That's where Trixie's eyewitness comes in!"    },
+{   EV_NONE,    132,    PP_TWILIGHT | CMD_NONE,     "It must be Fluttershy..."    },
+{   EV_NONE,    127,    PP_TRIXIE   | CMD_NONE,     "Since the first bolt is manually set off by a pegasus, cloud ballistics is unable to confirm when it was fired. But luckily, we have an eyewitness who saw it."    },
+{   EV_NONE,    130,    PP_JUDGE    | CMD_NONE,     "I wish to hear a testimony from the witness. Please bring them out..."    },
+{   EV_NONE,    144,    PP_TRIXIE   | CMD_NONE,     "Very well..."    },
+
+{   13,         94,     PP_NONE     | CMD_ENDSTORY, ""  }   // go to location 13
 
 };
 #endif
+
+#ifdef LOCATION_IS_13
+//      story                                        //  0                               1                               2                               3                               4                               5                               6                               7
+const Story_t story[] =  {                           //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
+{   EV_NONE,    80, PP_NONE     | CMD_BLACK,            "Everfree Forest. June 9th, 11:30PM"    },
+{   14,         94,     PP_NONE         | CMD_ENDSTORY, ""  }   // go to location 14
+
+};
+#endif
+
+
 
 #ifndef LOCATION_IS_LOADER
 // a value that can be referenced externally, though I don't plan to check everything

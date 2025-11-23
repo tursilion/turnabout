@@ -7,6 +7,7 @@
 
 #include <conio.h>
 #include <string.h>
+#include "story.h"
 #include "cache.h"
 #include "engine.h"
 #include "sfx.h"

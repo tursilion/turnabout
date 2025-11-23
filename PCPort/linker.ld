@@ -25,12 +25,14 @@ SECTIONS {
         crt0_ea5.o
         cache.o
         voice.o
-        *libti99.a:*
+        othermusic.o
         *libtivgm2.a:*(songDatVars)
-/* we need all the above to finish before 0xf000 for the caching to be safe */
+        *libti99.a:*
+/* we need all the above to finish before 0xe000 for the caching to be safe */
         aid.o
         crossexam.o 
         engine.o 
+        mybitmap.o
         inventory.o 
         Locations.o 
         savegame.o 

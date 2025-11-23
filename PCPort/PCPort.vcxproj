@@ -150,6 +150,8 @@
     <ClCompile Include="Locations.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="music.cpp" />
+    <ClCompile Include="mybitmap.cpp" />
+    <ClCompile Include="othermusic.cpp" />
     <ClCompile Include="People.cpp" />
     <ClCompile Include="savegame.cpp" />
     <ClCompile Include="sfx.cpp" />
@@ -166,9 +168,11 @@
     <ClInclude Include="cache.h" />
     <ClInclude Include="inventory.h" />
     <ClInclude Include="investigate.h" />
+    <ClInclude Include="mylib.h" />
     <ClInclude Include="savegame.h" />
     <ClInclude Include="sfx.h" />
     <ClCompile Include="story.cpp" />
+    <ClInclude Include="story.h" />
     <ClInclude Include="vgmcomp2\CPlayer.h" />
     <ClInclude Include="vgmcomp2\sound.h" />
     <ClInclude Include="voice.h" />
