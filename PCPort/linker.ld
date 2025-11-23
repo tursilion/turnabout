@@ -26,6 +26,7 @@ SECTIONS {
         cache.o
         voice.o
         *libti99.a:*
+        *libtivgm2.a:*(songDatVars)
 /* we need all the above to finish before 0xf000 for the caching to be safe */
         aid.o
         crossexam.o 
@@ -45,7 +46,7 @@ SECTIONS {
     {
         PROVIDE(stextlower = .);
 
-        *libtivgm2.a:*
+        *libtivgm2.a:*(.text .rodata)
         Evidence.o(.text .rodata)
         music.o(.text .rodata)
         cache.o(.text .rodata)

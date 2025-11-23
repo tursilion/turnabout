@@ -10,7 +10,7 @@ const Story_t story[] =  {                    //  012345678901234567890123456789
 {   PP_PHOENIX,  0,  PP_NONE    | CMD_ADDEV,     "?????? ??????? June 9th, 8:??PM"  },
 {   EV_NONE,     0,  PP_NONE    | CMD_MUSPROLOG, "Time for negotiations..."  },
 {   EV_BADGE,    0,  PP_NONE    | CMD_ADDEV,     "Forget it, I'm not doing it!"  },
-{   EV_NONE,     0,  PP_NONE    | CMD_NONE,      "Do it or else!"  },
+{   EV_I_REVISION1,0,PP_NONE    | CMD_ADDEV,     "Do it or else!"  },
 {   EV_NONE,     0,  PP_NONE    | CMD_NONE,      "I don't care about that anymore..."  },
 {   EV_NONE,     0,  PP_NONE    | CMD_NONE,      "Besides... I have a better idea..."  },
 {   EV_NONE,     0,  PP_NONE    | CMD_NONE,      "WHAT?!"  },
@@ -647,7 +647,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    80, PP_PHOENIX  | CMD_BLACK,            "(It's that horn again. It's lighting up like a candle. That must be really handy.)"    },
 {   EV_NONE,    80, PP_PHOENIX  | CMD_MAGICSFX,         "Good work, Twilight."    },
 {   EV_NONE,    81, PP_TWILIGHT | CMD_MUSMIDDLE,        "Alright! Let's find some clues!"    },
-{   EV_NONE,    81, PP_PHOENIX  | CMD_NONE,             "(She seems really eager to start this up.)"    },
+{   EV_EVERFREE,81, PP_PHOENIX  | CMD_ADDEV,            "(She seems really eager to start this up.)"    },
 
 // first screen investigation
 {   EV_NONE  ,      9801,           PP_NONE     | CMD_NONE,         "BEGIN INVESTIGATION - use arrows to move box, press enter to inspect area. Press < or > to shift view."    },
@@ -875,14 +875,14 @@ const Story_t story[] =  {                   //  0123456789012345678901234567890
 {   EV_NONE,    101, PP_TWILIGHT | CMD_SELPROMPT, ""  },
 
 {  EV_T_BED,    102, PP_PHOENIX  |  CMD_NONE,   "That bed was way too small. I hardly got any sleep last night."   },
-{ EV_T_WHINEBED,        101,            PP_TWILIGHT | CMD_ADDEV,   "It wasn't designed for someone as tall as you."   },
-{ EV_T_WHINEBREAKFAST,  EV_T_WHINING,   PP_TWILIGHT | CMD_JUMPIFEV, "" },
+{ EV_I_WHINEBED,        101,            PP_TWILIGHT | CMD_ADDEV,   "It wasn't designed for someone as tall as you."   },
+{ EV_I_WHINEBREAKFAST,  EV_T_WHINING,   PP_TWILIGHT | CMD_JUMPIFEV, "" },
 {   EV_NONE,    101, PP_TWILIGHT | CMD_SELPROMPT, ""  },
 
 { EV_T_BREAKFAST,101, PP_PHOENIX  |  CMD_NONE,   "And I'm starving..."   },
 {   EV_NONE,    101, PP_TWILIGHT |  CMD_NONE,   "Spike and I offered you breakfast but you wouldn't eat it!"   },
-{ EV_T_WHINEBREAKFAST, 101,             PP_PHOENIX  | CMD_ADDEV,    "Sorry, but I don't eat hay!"   },
-{ EV_T_WHINEBED,        EV_T_WHINING,   PP_TWILIGHT | CMD_JUMPIFEV, "" },
+{ EV_I_WHINEBREAKFAST, 101,             PP_PHOENIX  | CMD_ADDEV,    "Sorry, but I don't eat hay!"   },
+{ EV_I_WHINEBED,        EV_T_WHINING,   PP_TWILIGHT | CMD_JUMPIFEV, "" },
 {   EV_NONE,    101, PP_TWILIGHT | CMD_SELPROMPT, ""  },
 
 {EV_T_WHINING,  103, PP_TWILIGHT |  CMD_NONE,   "Stop whining!"   },
@@ -1053,12 +1053,72 @@ const Story_t story[] =  {                   //  0123456789012345678901234567890
 };
 #endif
 
-
 #ifdef LOCATION_IS_11
 //      story                                        //  0                               1                               2                               3                               4                               5                               6                               7
 const Story_t story[] =  {                           //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
+{   EV_NONE,    125,   PP_NONE       | CMD_BLACK,       "Ponyville District Court, Courtroom No. 1, June 10th, 10:00AM."    },
+{   EV_NONE,    125,   PP_NONE       | CMD_HAMMERSFX,   ""    },
+{   EV_NONE,    126,   PP_JUDGE      | CMD_MUSTRIAL,    "Court is now in session. Are both sides ready?"    },
+{   EV_NONE,    127,   PP_TRIXIE     | CMD_NONE,        "The Great and Powerful Trixie was born ready!"    },
+{   EV_NONE,    128,   PP_PHOENIX    | CMD_NONE,        "The Defense is ready, your Honor..."    },
+{   EV_NONE,    129,   PP_PHOENIX    | CMD_CRASHSFX,    "YOUR HONOR!?"    },
+{   EV_NONE,    130,   PP_JUDGE      | CMD_NONE,        "Mr Wright! Fancy meeting you here!"    },
+{   EV_NONE,    131,   PP_TWILIGHT   | CMD_NONE,        "You know him Phoenix? That's great!"    },
+{   EV_NONE,    131,   PP_PHOENIX    | CMD_NONE,        "B-but I thought... what's going on here?!"    },
+{   EV_NONE,    132,   PP_TWILIGHT   | CMD_NONE,        "Last night while you were in bed the Princess contacted me about complications."    },
+{   EV_NONE,    132,   PP_PHOENIX    | CMD_NONE,        "Complications?"    },
+{   EV_NONE,    132,   PP_TWILIGHT   | CMD_NONE,        "Originally Princess Celestia was going to preside as the judge, but the high council members were concerned that her verdict might be biased..."    },
+{   EV_NONE,    130,   PP_PHOENIX    | CMD_NONE,        "But what's HE doing here?"    },
+{   EV_NONE,    132,   PP_TWILIGHT   | CMD_NONE,        "I thought since we have a human defense attorney, I'd get a human judge as well. So I summoned \"the greatest human judge\", and he's a really nice guy!"    },
+{   EV_NONE,    133,   PP_TWILIGHT   | CMD_NONE,        "He took the whole thing a lot better than you did. I would have told you that I summoned him, but I didn't want to wake you."    },
+{   EV_NONE,    133,   PP_PHOENIX    | CMD_NONE,        "You're kidding me..."    },
+{   EV_NONE,    133,   PP_PHOENIX    | CMD_NONE,        "(Are you sure you didn't summon \"the ficklest judge ever\", Twilight?)"    },
+{   EV_NONE,    133,   PP_PHOENIX    | CMD_NONE,        "(Oh well... as weird as this is, he seems to always give fair verdicts. I shouldn't be complaining.)"    },
+{   EV_NONE,    133,   PP_PHOENIX    | CMD_NONE,        "But isn't this Princess the ruler of this country? Can't she just say \"Too bad, I'm doing it anyway\"?"    },
+{   EV_NONE,    132,   PP_TWILIGHT   | CMD_NONE,        "Princess Celestia is our all powerful ruler, yes, but every political decision must go by the High Council first."    },
+{   EV_NONE,    132,   PP_TWILIGHT   | CMD_NONE,        "They represent the best interests of the citizens of Equestria."    },
+{   EV_NONE,    132,   PP_TWILIGHT   | CMD_NONE,        "Naturally this case went by them, and they wouldn't allow the Princess to preside as the judge..."    },
+{   EV_NONE,    132,   PP_PHOENIX    | CMD_NONE,        "*sigh* that's democracy for you..."    },
+{   EV_NONE,    130,   PP_JUDGE      | CMD_NONE,        "Aren't these ponies just remarkable, Mr Wright? They have shown me nothing but a good time."    },
+{   EV_NONE,    134,   PP_PHOENIX    | CMD_NONE,        "All they've done for me is make fun of my hair..."    },
+{   EV_NONE,    135,   PP_TRIXIE     | CMD_NONE,        "Enough of this idle chit-chat. Trixie has a trial to win!"    },
+{   EV_NONE,    126,   PP_JUDGE      | CMD_NONE,        "Oh! That's correct, we have a trial underway. We'll have to catch up later, Mr Wright."    },
+{   EV_NONE,    126,   PP_JUDGE      | CMD_NONE,        "I expect you are aware of the workings of Equestria?"    },
+{   EV_NONE,    136,   PP_PHOENIX    | CMD_NONE,        "Eh? The workings?"    },
+{   EV_NONE,    130,   PP_JUDGE      | CMD_NONE,        "You see, this world operates a lot differently from our world."    },
+{   EV_NONE,    128,   PP_PHOENIX    | CMD_NONE,        "Twilight Sparkle here showed me a bit... but I figured it's almost like our world... just with talking ponies..."    },
+{   EV_NONE,    126,   PP_JUDGE      | CMD_NONE,        "No, no, Mr Wright! There are many amazing things these ponies do that are a far cry from the workings of our world."    },
+{   EV_NONE,    132,   PP_TWILIGHT   | CMD_STOPMUS,     "This is why you should have studied!"    },
+
+{ EV_T_ASKHELP,  132, PP_PHOENIX | CMD_ADDPROMPT, "Ask for help"     },
+{ EV_T_WINGIT,   132, PP_PHOENIX | CMD_ADDPROMPT, "Wing it"    },
+{   EV_NONE,     132, PP_PHOENIX | CMD_SELPROMPT, ""  },
+
+{EV_T_ASKHELP,  137,   PP_PHOENIX    | CMD_NONE,        "Ngh... Could you tell me about these differences, Your Honor?"    },
+{   EV_NONE,    130,   PP_JUDGE      | CMD_NONE,        "Well, Mr Wright, the first thing you should know is..."    },
+{   EV_NONE,    138,   PP_TRIXIE     | CMD_TRIXIEOBJ,   ""  },
+{   EV_NONE,    135,   PP_TRIXIE     | CMD_NONE,        "It's not our fault this bumbling buffoon didn't do any research! We shouldn't be holding up the trial because of his stupidity and negligence."    },
+{   EV_NONE,    139,   PP_PHOENIX    | CMD_NONE,        "Hey!"    },
+{   EV_NONE,    126,   PP_JUDGE      | CMD_NONE,        "I'm sorry Mr Wright, but the prosecution is right. You should have studied Equestria before jumping in to this case."    },
+{   EV_NONE,    140,   PP_PHOENIX    | CMD_FALLSFX,     "Err- I'm sorry..."    },
+
+{ EV_T_WINGIT,  139,   PP_PHOENIX    | CMD_NONE,        "(It's all right, I'll work it out on the fly...)"    },
+{   EV_NONE,    132,   PP_TWILIGHT   | CMD_MUSTRIAL,    "I'll try to keep you informed if we encounter anything that may work differently from your world."    },
+{   EV_NONE,    132,   PP_PHOENIX    | CMD_NONE,        "Alright, thank you."    },
+{   EV_NONE,    126,   PP_JUDGE      | CMD_NONE,        "The trial will now commence!"    },
+{   EV_NONE,    127,   PP_TRIXIE     | CMD_NONE,        "Indeed, this drabble has wasted enough of Trixie's time."    },
+{   EV_NONE,    139,   PP_PHOENIX    | CMD_NONE,        "(That third person thing is really getting on my nerves.)"    },
+    
+{   12,         139,    PP_NONE       | CMD_ENDSTORY, ""  }   // go to location 12
+
+};
+#endif
+
+#ifdef LOCATION_IS_12
+//      story                                        //  0                               1                               2                               3                               4                               5                               6                               7
+const Story_t story[] =  {                           //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
 {   EV_NONE,    80, PP_NONE     | CMD_BLACK,            "Everfree Forest. June 9th, 11:30PM"    },
-{   10,         94,     PP_NONE         | CMD_ENDSTORY, ""  }   // go to location 10?
+{   13,         94,     PP_NONE         | CMD_ENDSTORY, ""  }   // go to location 13
 
 };
 #endif

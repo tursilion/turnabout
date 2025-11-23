@@ -104,9 +104,7 @@ static int getfilename() {
         // wait for key release, but keep playing music
         while (KSCAN_KEY != 0xff) {
             kscan(5);
-            VDP_WAIT_VBLANK_CRU;
-            VDP_CLEAR_VBLANK;
-            update_music();
+            music_delay();
         }
 
         // display cursor
@@ -116,9 +114,7 @@ static int getfilename() {
         kscan(5);
         unsigned char x = KSCAN_KEY;
         if (x == 0xff) {
-            VDP_WAIT_VBLANK_CRU;
-            VDP_CLEAR_VBLANK;
-            update_music();
+            music_delay();
             continue;
         }
         if (x == 15) {
@@ -254,6 +250,17 @@ int loadgame() {
 
     // load it back into the variables, except for the location which isn't a variable
     restore_saved_data();
+
+    // check if upgrades are needed
+    if (!has_inventory(EV_I_REVISION1)) {
+        // upgrade from zero to rev 1 - inserted everfree forest after EQ500
+        // so shift all evidence up and insert it (even if you didn't get there yet, that's okay)
+        for (int i=EV_MAX_STORED_EV-2; i>=EV_EVERFREE; --i) {
+            evidence_found[i+1]=evidence_found[i];
+        }
+        evidence_found[EV_EVERFREE] = 1;
+        evidence_found[EV_I_REVISION1] = 1;
+    }
 
     // restore the hardware
     ams = oldams;

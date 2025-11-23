@@ -6,7 +6,7 @@
 
 #ifdef CLASSIC99
 // define what we are building for here - this will be external on the build line for the makefile builds
-#define LOCATION_IS_LOADER
+//#define LOCATION_IS_LOADER
 //#define LOCATION_IS_0
 //#define LOCATION_IS_1
 //#define LOCATION_IS_2
@@ -15,7 +15,7 @@
 //#define LOCATION_IS_5
 //#define LOCATION_IS_6
 //#define LOCATION_IS_10
-//#define LOCATION_IS_11
+#define LOCATION_IS_11
 #endif
 
 // some types
@@ -41,6 +41,7 @@ enum {
     EV_FILLIES,                     // Earth Ponies founded Land. Unicorns use magic. Pegasi soar through the air.
     EV_E_BADGE,                     // A heart shaped badge that gives all the privileges of an Equestrian defense Attorney
     EV_EQ500,                       // Equestria 500 race
+    EV_EVERFREE,                    // Everfree forest - incredibly dark
     EV_PHOTO1,                      // Charred and blackened grass around body.
     EV_BURNT,                       // A metal object that was severely burned by something. It is unidentifiable now.
     EV_PHOTO2,                      // An imprint of what seems to be something long. Next to it some markings indicating someone had scuffled the dirt around.
@@ -60,8 +61,9 @@ enum {
     EV_START_INTERNAL,              // don't display evidence starting here - internal flags
     EV_I_NOQUESTIONCLOUD,           // did not question the storm cloud evidence (for example)
     EV_I_IN1FLAG1,                  // flagged first search done
-    EV_T_WHINEBED,                  // whined about bed
-    EV_T_WHINEBREAKFAST,            // whined about breakfast
+    EV_I_WHINEBED,                  // whined about bed
+    EV_I_WHINEBREAKFAST,            // whined about breakfast
+    EV_I_REVISION1,                 // stored to track first revision
 
     EV_MAX_STORED_EV,               // nothing after here is saved in inventory arrays
 
@@ -148,6 +150,8 @@ enum {
     EV_T_YESMAG,
     EV_T_NOMAG,
     EV_T_ALLMAG,
+    EV_T_ASKHELP,
+    EV_T_WINGIT,
 
     EV_MAX,
 
@@ -270,7 +274,6 @@ enum {
     
     CMD_CLRPROMPT   , // clear all prompts (new conversation tree)
     CMD_ADDPROMPT   , // Add this string and EV_I_name to the conversation prompts (and skip to the next one) - EV is how we find it
-    CMD_DELPROMPT   , // delete the EV_xxx prompt from the list (only used if we need to, let the user go back)
     CMD_CHANGEPROMPT, // update the tag and/or text of a prompt (if NONE or empty, no change)
     CMD_SELPROMPT   , // go back to the prompt selection list (after this line)
 
@@ -354,6 +357,7 @@ extern int nStorySize;
 // Just the loader file, save game not valid here
 #define LOCATION_NUMBER 0
 // sfx
+#define HAS_VOICE
 #define HAS_TRIXIEOBJ
 #define HAS_PHOENIXOBJ  
 #define HAS_TWIOBJ      
@@ -466,10 +470,14 @@ extern int nStorySize;
 #define LOCATION_NUMBER 11
 #define LOCATION_TYPE_STORY
 // sfx
-#define HAS_VOICE
 #define HAS_HAMMERSFX
-
+#define HAS_CRASHSFX
+#define HAS_FALLSFX
+// voices
+#define HAS_VOICE
+#define HAS_TRIXIEOBJ
 // music
+#define HAS_MUSTRIAL
 #endif
 
 #ifdef LOCATION_IS_12

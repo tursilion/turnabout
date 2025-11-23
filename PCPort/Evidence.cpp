@@ -10,6 +10,7 @@ Evidence_t evidence[EV_MAX_STORED_EV] = {
     { "The Fillies Guide to Ponies",  /*15*/ "Earth Ponies founded Land, Unicorns use magic, Pegasi soar through the air."    },
     { "Equestrian Attorney Badge",	  /*30*/ "A heart shaped badge that gives all the privileges of an Equestrian defense Attorney"    },
     { "Equestria 500",                /*  */ "A gruelling 500 mile race around Equestria for pegasi. Ace Swift was expected to win."     },
+    { "Everfree Forest",                     "Location of the crime. Incredibly dark and secluded, especially at night."  },
     { "Photo #1",	                  /*84*/ "Shows charred and blackened grass around body."    },
     { "Burnt Object",	              /*86*/ "A metal object that was severely burned by something. It is unidentifiable now."    },
     { "Photo #2",	                  /*90*/ "An imprint of what seems to be something long. Next to it some markings indicating someone had scuffled the dirt around."    },

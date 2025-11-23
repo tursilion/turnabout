@@ -188,6 +188,7 @@ Time        Frame       Who         Text
 11:56       0127        Trixie      Indeed, this drabble has wasted enough of Trixie's time.
 11:59       0139        Phoenix     (That third person thing is really getting on my nerves.)
 
+-- LOCATION 11 --
 
 12:03       0126        Judge       Very well, the prosecution may make her opening statement.
 12:07       0141        Trixie      About time...

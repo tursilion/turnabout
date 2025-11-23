@@ -66,6 +66,12 @@ static
 #endif
 #ifdef HAS_MUSTRIAL
     case CMD_MUSTRIAL: // Ace Attorney 4 - Trial - Apollo Justice Ace Attorney
+        {
+static
+#include "../music/processed/TRIAL.c"
+        pSong = MUS_TRIAL;
+        StartSong(MUS_TRIAL, 0);
+        }
         break;
 #endif
 #ifdef HAS_MUSTRACE

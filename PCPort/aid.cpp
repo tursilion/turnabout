@@ -87,9 +87,7 @@ redraw:
     }
 
     for (;;) {
-        VDP_WAIT_VBLANK_CRU;
-        VDP_CLEAR_VBLANK;
-        update_music();
+        music_delay();
 
         kscanfast(0);
         unsigned char x = KSCAN_KEY;

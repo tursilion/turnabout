@@ -57,15 +57,15 @@
 // (if looking at hexdump, remember the 0x80 bytes of TIFILES header don't get loaded, so there it's 0x192)
 #define TAG_OFFSET_WORD         0x0112
 
-#define JUDGE_OBJECT_TAG        0x2233
-#define TWILIGHT_OBJECT_TAG     0x2324
-#define TRIXIE_OBJECT_TAG       0x26d9
-#define TRIXIE_HOLDIT_TAG       0x3245
-#define ALL_OBJECT_TAG          0x3333
-#define PHOENIX_TAKETHAT_TAG    0x5444
-#define PHOENIX_OBJECT_TAG      0x5655
-#define FLUTTERSHY_OBJECT_TAG   0x6543
-#define PHOENIX_HOLDIT_TAG      0xfcf6
+#define JUDGE_OBJECT_TAG        0x1122
+#define TWILIGHT_OBJECT_TAG     0x1213
+#define TRIXIE_OBJECT_TAG       0x15ea
+#define TRIXIE_HOLDIT_TAG       0x2134
+#define ALL_OBJECT_TAG          0x2222
+#define PHOENIX_TAKETHAT_TAG    0x4333
+#define PHOENIX_OBJECT_TAG      0x4544
+#define FLUTTERSHY_OBJECT_TAG   0x5432
+#define PHOENIX_HOLDIT_TAG      0xfdf5
 
 void play_voice(int voice);
 void load_voices();

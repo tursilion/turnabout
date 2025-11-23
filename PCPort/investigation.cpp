@@ -52,9 +52,7 @@ int investigate(int panning) {
 
     // remember to allow AID and INVENTORY
     for (;;) {
-        VDP_WAIT_VBLANK_CRU;
-        VDP_CLEAR_VBLANK;
-        update_music();
+        music_delay();
 
         // a little wasteful to write the whole sprite table every frame, but that's okay
         sprite(0, 4, COLOR_MEDGREEN, y, x);
@@ -123,9 +121,7 @@ int investigate(int panning) {
         // do a quick animation blinking the box
 
         for (int i=0; i<30; ++i) {
-            VDP_WAIT_VBLANK_CRU;
-            VDP_CLEAR_VBLANK;
-            update_music();
+            music_delay();
 
             // a little wasteful to write the whole sprite table every frame, but that's okay
             sprite(0, 8, COLOR_MEDGREEN, y, x);
@@ -143,10 +139,7 @@ int investigate(int panning) {
         vdpmemset(gColor+2048+31*8, 0x00, 8);
 
         for (int c=31; c>=0; --c) {
-            VDP_WAIT_VBLANK_CRU;
-            VDP_CLEAR_VBLANK;
-            update_music();
-
+            music_delay();
             vchar(0, c, 31, 16);
         }
 
@@ -163,10 +156,7 @@ int investigate(int panning) {
         vdpmemset(gColor+2048, 0x00, 8);
 
         for (int c=0; c<32; ++c) {
-            VDP_WAIT_VBLANK_CRU;
-            VDP_CLEAR_VBLANK;
-            update_music();
-
+            music_delay();
             vchar(0, c, 0, 16);
         }
 

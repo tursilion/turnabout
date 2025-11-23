@@ -9,6 +9,7 @@ extern Evidence_t people[PP_MAX];
 #define PPLIDX(i) (((i)-PP_FIRST)>>8)
 
 void clear_text();
+void music_delay();
 void draw_screen();
 void load_image(int index);
 void spritestring(const char*str, unsigned char col);

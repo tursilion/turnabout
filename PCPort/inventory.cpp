@@ -50,7 +50,7 @@ unsigned int run_inventory(const char *pTitle) {
         int row = 1;
         if (active < PP_FIRST) {
             // manage inventory objects up to the internal items
-            while ((row < 16) && (tmp < EV_START_INTERNAL)) {
+            while ((row < 15) && (tmp < EV_START_INTERNAL)) {
                 if (!has_inventory(tmp)) {
                     ++tmp;
                     continue;

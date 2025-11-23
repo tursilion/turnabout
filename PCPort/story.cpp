@@ -70,9 +70,7 @@ redraw:
     // location 0 can't get here, so we can just do the main string
     int cnt = 0;
     for (;;) {
-        VDP_WAIT_VBLANK_CRU;
-        VDP_CLEAR_VBLANK;
-        update_music();
+        music_delay();
 
         if (cnt%60 == 0) {
             if (cnt%120 == 0) {
@@ -137,7 +135,7 @@ int run_story() {
             play_sfx(cmdID);
         } else
         if ((cmdID > CMD_VOICESTARTLIST) && (cmdID < CMD_VOICEENDLIST)) {
-            play_voice(cmdID);
+            play_voice(cmdID-CMD_VOICESTARTLIST-1);
         } else
         // process other commands
         switch (cmdID) {
@@ -219,16 +217,6 @@ int run_story() {
                         prompts[i].tagid = story[index].evidence;
                         prompts[i].str = story[index].text;
                         prompts[i].isread = 0;
-                        break;
-                    }
-                }
-                ++index;
-                continue;
-
-            case CMD_DELPROMPT   : // delete the EV_xxx prompt from the list (only used if we need to, let the user go back)
-                for (int i=0; i<8; ++i) {
-                    if (prompts[i].tagid == story[index].evidence) {
-                        prompts[i].tagid = 0;
                         break;
                     }
                 }

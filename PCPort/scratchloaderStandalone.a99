@@ -81,6 +81,7 @@ VSBR
 DSRADR BSS 2
 DSRCRU BSS 2
 SAVE   BSS 2
+SAVE2  BSS 2
 NAMBUF BSS 8
 NAMLEN BSS 2
 DSRDAT DATA 0x2EAA
@@ -189,6 +190,7 @@ EA5LD
 # rewrite the PABs in the scratchpad portion.
 # For performance reasons, we dont examine the actual
 # files at this point. Each PAB is 74 bytes.
+        MOV R11,@SAVE2
 
 # Get address of PABs last filename character in CPU into r5
 		CLR r1 				prepare r1 for byte operations
@@ -225,7 +227,10 @@ DOLOAD
 		MOVB r1,r1			Test the byte
 		JEQ NOERR			all was well
 RESET		
-		BLWP @0x0000			reset console otherwise
+#		BLWP @0x0000			reset console otherwise
+# we might be able to return...
+        mov @SAVE2,r11
+        b *r11
 
 NOERR		
 # the file should now be in vdp ram at address vdpadr onwards

@@ -16,6 +16,7 @@
 #include "engine.h"
 #include "structures.h"
 #include "music.h"
+#include "voice.h"
 #include "savegame.h"
 #include "aid.h"
 #include "cache.h"
@@ -57,6 +58,13 @@ struct PAB myPab = {0};
 // clear the text window (excluding name)
 void clear_text() {
     vdpmemset(gImage+17*32, ' ', 7*32);
+}
+
+// wait for blank and update music
+void music_delay() {
+    VDP_WAIT_VBLANK_CRU;
+    VDP_CLEAR_VBLANK;
+    update_music();
 }
 
 // optimized version of cputwordwrap that drops features I don't need to try and
@@ -484,6 +492,19 @@ int main()
     vgm_pcinit();
 #endif
 
+    // I'm not sure why this screws up, but to keep the order sane
+    // this is an EXTRA restore call so that load_voices knows whether
+    // we have AMS or not. We then do the early F18A detect and restore again
+    // in the regular place
+#ifndef LOCATION_IS_LOADER
+#ifndef CLASSIC99
+    // clasic99 build never ran the loader, it goes direct, so keep the f18a setting (never has AMS)
+    // restore the data from VDP
+    restore_saved_data();
+#endif
+    load_voices();
+#endif
+
     // detect F18A for graphics (corrupts VDP registers)
     f18a = detect_f18a();
     if (f18a) {
@@ -643,6 +664,8 @@ repeataid:
     EA5LD();
 #endif
 
+    // TODO: we can't return - scratchpad loader is one way. How
+    // can we verify the load works before committing?
     // if we return, the load must have failed to find the first file (later files will just reboot)
     // aid will say we're at the end and at least allow a save
     run_aid(1);
