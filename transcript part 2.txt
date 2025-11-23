@@ -187,6 +187,8 @@ Time        Frame       Who         Text
 11:54       0126        Judge       The trial will now commence!
 11:56       0127        Trixie      Indeed, this drabble has wasted enough of Trixie's time.
 11:59       0139        Phoenix     (That third person thing is really getting on my nerves.)
+
+
 12:03       0126        Judge       Very well, the prosecution may make her opening statement.
 12:07       0141        Trixie      About time...
 12:09       0142        .           The GREAT and POWERFUL Trixie would like to start off by saying the Defense has no chance of winning in this.

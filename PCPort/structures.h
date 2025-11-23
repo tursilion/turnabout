@@ -3,11 +3,10 @@
 
 // NOTE: max text is 8*32 = 256 bytes. And we lose more with word wrap.
 // We'd get 320 if we switched to 40 column text mode... ah, but we don't control the CPU during TIPI calls.
-// F18A could do it, but then we'd need two different copies. Still, F18A conversions of the graphics would be nice.
 
 #ifdef CLASSIC99
 // define what we are building for here - this will be external on the build line for the makefile builds
-//#define LOCATION_IS_LOADER
+#define LOCATION_IS_LOADER
 //#define LOCATION_IS_0
 //#define LOCATION_IS_1
 //#define LOCATION_IS_2
@@ -15,18 +14,17 @@
 //#define LOCATION_IS_4
 //#define LOCATION_IS_5
 //#define LOCATION_IS_6
-#define LOCATION_IS_10
+//#define LOCATION_IS_10
+//#define LOCATION_IS_11
 #endif
-
-// one of these for every location - see bottom of file
-//#define LOCATION_TYPE_INVESTIGATION
-//#define LOCATION_TYPE_STORY  -- everything ended up using this
-//#define LOCATION_TYPE_CROSSEXAM
 
 // some types
 #ifndef NULL
 #define NULL (0)
 #endif
+
+// Image loading PAB address in VDP
+#define VDP_PAB_ADDRESS 0x3800
 
 /* Evidence structure - const side */
 typedef struct {
@@ -62,6 +60,8 @@ enum {
     EV_START_INTERNAL,              // don't display evidence starting here - internal flags
     EV_I_NOQUESTIONCLOUD,           // did not question the storm cloud evidence (for example)
     EV_I_IN1FLAG1,                  // flagged first search done
+    EV_T_WHINEBED,                  // whined about bed
+    EV_T_WHINEBREAKFAST,            // whined about breakfast
 
     EV_MAX_STORED_EV,               // nothing after here is saved in inventory arrays
 
@@ -131,7 +131,23 @@ enum {
     EV_T_IN1_DONE,
 
     EV_T_ISMAGIC,
-    EV_T_NODECIS,
+    EV_T_ABOUTACE,
+    EV_T_HOWDO,
+    EV_T_RD500,
+    EV_T_BED,
+    EV_T_BREAKFAST,
+    EV_T_NERVOUS,
+    EV_T_WHINING,
+    EV_T_TELLRD,
+    EV_T_ASKTS,
+    EV_T_WHOTRIX,
+    EV_T_KNOWTRIX,
+    EV_T_TRIXGRUDGE,
+    EV_T_COURT,
+    EV_T_EVIDENCE,
+    EV_T_YESMAG,
+    EV_T_NOMAG,
+    EV_T_ALLMAG,
 
     EV_MAX,
 
@@ -208,7 +224,6 @@ enum {
                     
     CMD_SFXSTARTLIST, // find SFXs
 
-    CMD_CROWDSFX    , // play crowd noise
     CMD_HAMMERSFX   , // play hammer sound
     CMD_CHIMESFX    , // play chime sound (mostly meant for cmd_stopmus)
     CMD_BOOMSFX     , // play boom sound
@@ -229,15 +244,15 @@ enum {
                     
     CMD_VOICESTARTLIST, // find voice commands
 
-    CMD_TRIXIEOBJ   , // play trixie objection
-    CMD_PHOENIXOBJ  , // play phoenix objection
-    CMD_TWIOBJ      , // play twilight objection
-    CMD_FLUTTEROBJ  , // play fluttershy objection
-    CMD_JUDGEOBJ    , // play judge objection
-    CMD_GROUPOBJ    , // play group objection
-    CMD_TRIXIEHOLD  , // play trixie holdit
-    CMD_PHOENIXHOLD , // play phoenix holdit
-    CMD_PHOENIXTAKE , // play phoenix take that!
+    CMD_TRIXIEOBJ   , // play trixie objection      S0
+    CMD_PHOENIXOBJ  , // play phoenix objection     S1
+    CMD_TWIOBJ      , // play twilight objection    S2
+    CMD_FLUTTEROBJ  , // play fluttershy objection  S3
+    CMD_JUDGEOBJ    , // play judge objection       S4
+    CMD_GROUPOBJ    , // play group objection       S5
+    CMD_TRIXIEHOLD  , // play trixie holdit         S6
+    CMD_PHOENIXHOLD , // play phoenix holdit        S7
+    CMD_PHOENIXTAKE , // play phoenix take that!    S8
 
     CMD_VOICEENDLIST, // end of voice commands - this is also used as a differentiator for label jump targets!
 
@@ -333,18 +348,31 @@ extern int nStorySize;
 #define HAS_CHIMESFX
 
 // and here for every location we define the type - Locations will define the story data
+
+// loader has all voices for voice test, but doesn't load any until needed
 #ifdef LOCATION_IS_LOADER
 // Just the loader file, save game not valid here
 #define LOCATION_NUMBER 0
+// sfx
+#define HAS_TRIXIEOBJ
+#define HAS_PHOENIXOBJ  
+#define HAS_TWIOBJ      
+#define HAS_FLUTTEROBJ  
+#define HAS_JUDGEOBJ    
+#define HAS_GROUPOBJ    
+#define HAS_TRIXIEHOLD  
+#define HAS_PHOENIXHOLD 
+#define HAS_PHOENIXTAKE 
+// music
 #endif
 
 #ifdef LOCATION_IS_0
 // intro story
 #define LOCATION_NUMBER 0
 #define LOCATION_TYPE_STORY
-// sfx - will pretty much need to preload sfx
+// sfx
 #define HAS_BOOMSFX
-// music - but I think I might need to load music dynamically... 32k isn't much
+// music
 #define HAS_MUSPROLOG
 #define HAS_MUSSTEEL
 #define HAS_MUSSUSPENSE
@@ -437,84 +465,121 @@ extern int nStorySize;
 // court introductions
 #define LOCATION_NUMBER 11
 #define LOCATION_TYPE_STORY
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
-#define LAST_LOCATION
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
+// sfx
+#define HAS_VOICE
+#define HAS_HAMMERSFX
+
+// music
 #endif
 
 #ifdef LOCATION_IS_12
 // Trixie's case
 #define LOCATION_NUMBER 12
 #define LOCATION_TYPE_STORY
+// sfx
+// music
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
+#define LAST_LOCATION
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
 #endif
 
 #ifdef LOCATION_IS_13
 // AppleBloom's testimony
 #define LOCATION_NUMBER 13
 #define LOCATION_TYPE_STORY
+// sfx
+// music
 #endif
 
 #ifdef LOCATION_IS_14
 // AppleBloom cross examination
 #define LOCATION_NUMBER 14
 #define LOCATION_TYPE_CROSSEXAM
+// sfx
+// music
 #endif
 
 #ifdef LOCATION_IS_15
 // Trixie and Dash's motive
 #define LOCATION_NUMBER 15
 #define LOCATION_TYPE_STORY
+// sfx
+// music
 #endif
 
 #ifdef LOCATION_IS_16
 // Fluttershy's testimony
 #define LOCATION_NUMBER 16
 #define LOCATION_TYPE_STORY
+// sfx
+// music
 #endif
 
 #ifdef LOCATION_IS_17
 // Fluttershy cross-examination
 #define LOCATION_NUMBER 17
 #define LOCATION_TYPE_CROSSEXAM
+// sfx
+// music
 #endif
 
 #ifdef LOCATION_IS_20
 // flashback - Fey law offices
 #define LOCATION_NUMBER 20
 #define LOCATION_TYPE_STORY
+// sfx
+// music
 #endif
 
 #ifdef LOCATION_IS_21
 // outside courtroom, talk to Pinkie
 #define LOCATION_NUMBER 21
 #define LOCATION_TYPE_STORY
+// sfx
+// music
 #endif
 
 #ifdef LOCATION_IS_22
 // detention center with Dash
 #define LOCATION_NUMBER 22
 #define LOCATION_TYPE_STORY
+// sfx
+// music
 #endif
 
 #ifdef LOCATION_IS_23
 // on the street with Pinkie
 #define LOCATION_NUMBER 23
 #define LOCATION_TYPE_STORY
+// sfx
+// music
 #endif
 
 #ifdef LOCATION_IS_24
 // Ace's room
 #define LOCATION_NUMBER 24
 #define LOCATION_TYPE_INVESTIGATION
+// sfx
+// music
 #endif
 
 #ifdef LOCATION_IS_25
 // Caught by Sonata
 #define LOCATION_NUMBER 25
 #define LOCATION_TYPE_STORY
+// sfx
+// music
 #endif
 
 
+
+// make sure voice samples include crash
+// any location with a sample should also have CRASHSFX for non-AMS users
+#ifdef HAS_VOICE
+#ifndef HAS_CRASHSFX
+#define HAS_CRASHSFX
+#endif
+#endif
 
 #endif
 

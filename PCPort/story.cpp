@@ -1,3 +1,4 @@
+// This containts the location type ifdef, so needs to be outside it
 #include "structures.h"
 
 #ifdef LOCATION_TYPE_STORY
@@ -9,6 +10,7 @@
 #include "cache.h"
 #include "engine.h"
 #include "sfx.h"
+#include "voice.h"
 #include "aid.h"
 #include "music.h"
 #include "kscan.h"

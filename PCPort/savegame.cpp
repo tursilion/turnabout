@@ -99,7 +99,7 @@ static int getfilename() {
     // a rudimentary text editor to edit the filename (max length 15 - path+10 char filename)
     // not going to use kbhit and cgetc here, too slow. Am going to use full kscan to get arrows and back
     // read until enter pressed
-    off = 0;
+    off = 5;
     while (KSCAN_KEY != 13) {
         // wait for key release, but keep playing music
         while (KSCAN_KEY != 0xff) {

@@ -24,6 +24,7 @@ SECTIONS {
 
         crt0_ea5.o
         cache.o
+        voice.o
         *libti99.a:*
 /* we need all the above to finish before 0xf000 for the caching to be safe */
         aid.o

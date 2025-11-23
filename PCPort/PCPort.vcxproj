@@ -161,6 +161,7 @@
     <ClCompile Include="vgmcomp2\CPlayerPC.cpp" />
     <ClCompile Include="vgmcomp2\PC.cpp" />
     <ClCompile Include="vgmcomp2\sound.cpp" />
+    <ClCompile Include="voice.cpp" />
     <ClInclude Include="aid.h" />
     <ClInclude Include="cache.h" />
     <ClInclude Include="inventory.h" />
@@ -170,6 +171,7 @@
     <ClCompile Include="story.cpp" />
     <ClInclude Include="vgmcomp2\CPlayer.h" />
     <ClInclude Include="vgmcomp2\sound.h" />
+    <ClInclude Include="voice.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h" />

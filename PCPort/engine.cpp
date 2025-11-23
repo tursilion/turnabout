@@ -47,7 +47,7 @@ int iName = -1;     // does NOT use PP_FIRST after it's set
 int oldName = -2;
 int f18a = 0;
 #ifdef CLASSIC99
-int ams = 32;   // we can't actually detect AMS, but i need some for testing the cache code
+int ams = 256;   // we can't actually detect AMS, but i need some for testing the cache code
 #else
 int ams = 0;
 #endif
@@ -168,7 +168,6 @@ void patch_string(char *buf, int index) {
 }
 
 void load_image(int index) {
-#define VDP_PAB_ADDRESS 0x3800
     char buf[64];
 
     if (loadFromCache(index)) {

@@ -72,6 +72,9 @@
     <ClCompile Include="cache.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="voice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="structures.h">
@@ -105,6 +108,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="voice.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

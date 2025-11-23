@@ -1,16 +1,19 @@
 #include "structures.h"
+#include "sfx.h"
 #include <sound.h>
 #include <vdp.h>
 
 void play_sfx(int sfx) {
     switch (sfx) {
-#ifdef HAS_CROWDSFX
-        case CMD_CROWDSFX    : // play crowd noise
-            break;
-#endif
-
 #ifdef HAS_HAMMERSFX
         case CMD_HAMMERSFX   : // play hammer sound
+            SOUND(0xe4);        // select noise
+            for (unsigned char i=0; i<8; i++) {
+                SOUND(0xf0+(i<<1));  // fade
+                VDP_WAIT_VBLANK_CRU;
+                VDP_CLEAR_VBLANK;
+            }
+            SOUND(0xff);        // make sure it ends muted
             break;
 #endif
 
@@ -203,8 +206,4 @@ sfx.cpp:166: internal compiler error: in extract_insn, at recog.c:2048
     default:
         break;
     }
-}
-
-// play voice clips - TODO: still deciding what these will look like
-void play_voice(int voice) {
 }

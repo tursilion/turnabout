@@ -5,6 +5,7 @@
 #include "savegame.h"
 #include "music.h"
 #include "aid.h"
+#include "voice.h"
 #include <conio.h>
 #include <kscan.h>
 #include <vdp.h>
@@ -69,6 +70,11 @@ redraw:
         if (x == 'M') {
             mute = !mute;
             goto redraw;
+        }
+        if ((x >= 'A') && (x <= 'I')) {
+            int n = x-'A';
+            load_one_voice(n);
+            play_voice(n);
         }
     }
 

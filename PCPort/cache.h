@@ -5,7 +5,9 @@
 #ifndef CACHE_H
 #define CACHE_H
 
-// TODO: we need to figure out how much AMS to reserve for samples. I guess for now we'll all cache
+// Warning: bug workaround asm code in cache.cpp hard-codes this MAP_ADDRESS value
+#define MAP_ADDRESS 0xf000
+#define ADR_DEFAULT_PAGE 15
 
 // Some code to cache recent images in AMS
 extern int ams;
@@ -20,5 +22,13 @@ void storeToCache(int idx);
 
 // invalidate the cache for a particular image so it can be force-reloaded
 void invalidateCache(int idx);
+
+// SAMS code by Jedimatt42
+extern void samsMapOn();
+extern void samsMapOff();
+extern void samsMapPage(int page, int location);
+
+// this is hard coded to "the" paged map and exposed only for voice.cpp
+void restoreSamsMap();
 
 #endif

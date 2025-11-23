@@ -1,0 +1,366 @@
+# tipi io ports
+# to work with gas i need to make a lot of syntax changes...
+
+    def tipidsr
+
+tdout   equ >5fff   # ti data (output)
+tcout   equ >5ffd   # ti control signal (output)
+rdin    equ >5ffb   # pi data (input)
+rcin    equ >5ff9   # pi control signal (input)
+
+# tipi signal constants
+tsrset  equ >f100   # reset syn value
+tswb    equ >0300   # write byte syn value with bit set
+tsrb    equ >0700   # read byte syn value with bit set
+synbit  equ >0100   # the actual bit we toggle
+
+# useful work for the transmit macro delay slot
+wswpb0  equ >0000   # swpb r0
+wswpb4  equ >0000   # swpb r4
+
+# vdp io ports
+vdprd	equ	>8800		# vdp read data
+vdpst	equ	>8802		# vdp read status
+vdpwa	equ	>8c02		# vdp write address/register
+vdpwd	equ	>8c00		# vdp write data
+
+# vdp flag for setting write address
+vdwrite	equ	>4000		# ori w/register holder target vdp write address.
+
+### optimized
+### send a message to the rpi - sends a word containing the length of message, then the bytes of the message.
+# register usage:
+#   r0 - contains length of message. result is 0 if all bytes sent.
+#   r1 - cpu address of bytes to send.
+#   destroys r2, r3, r6 and potentially the first and last word of bytes to send.
+sendmsg
+    li r2,tsrset
+    movb r2,@tcout
+sr1 cb @rcin,r2
+    jne sr1
+    li r2,tswb          # command byte
+    li r3,synbit        # toggle bit for updating syn/ack
+    li r6,tdout
+    movb r0,*r6         # load first byte
+    movb r2,@tcout  # command byte out
+    swpb r0
+sml1   cb @rcin,r2     # test if pi is done
+    jne sml2          # loop if not
+    xor r3,r2       # toggle the syn/ack bit
+    movb r0,*r6         # put out the next word
+
+    movb r2,@tcout  # command byte out
+    swpb r0         # instruction word for delay slot, this gives pi time to work while we do something useful
+sml2   cb @rcin,r2     # test if pi is done
+    jne sml2          # loop if not
+    xor r3,r2       # toggle the syn/ack bit
+
+    mov r0,r0           # check if the length was zero - if so we're done
+    jeq sdone
+snext
+    movb *r1+,*r6       # send the data byte
+# can't think of anything for the delay slot! can't do the dec cause we need it beside the jne
+    movb r2,@tcout  # command byte out
+sml3 cb @rcin,r2     # test if pi is done
+    jne sml3        # loop if not
+    xor r3,r2       # toggle the syn/ack bit
+
+    dec r0
+    jne snext
+sdone
+    rt
+    
+### send a message to the rpi - sends a word containing the length of message, then the bytes of the message.
+# register usage:
+#   r0 - contains length of message. result is 0 if all bytes sent.
+#   r1 - vdp address of bytes to send.
+#   destroys r2, r3, r5, r6 and potentially the first and last word of bytes to send.
+vsendmsg
+    li r2,tsrset
+    movb r2,@tcout
+vsr1 cb @rcin,r2
+    jne vsr1
+    li r2,tswb          # command byte
+    li r3,synbit        # toggle bit
+    li r5,rdin
+    li r6,tdout
+    movb r0,*r6         # load byte
+    movb r2,@tcout  # command byte out
+    swpb r0         # instruction word for delay slot, this gives pi time to work while we do something useful
+vsml1   cb @rcin,r2     # test if pi is done
+    jne vsml1          # loop if not
+    xor r3,r2       # toggle the syn/ack bit
+
+    movb r0,*r6         # load next byte
+    movb r2,@tcout  # command byte out
+    swpb r0         # instruction word for delay slot, this gives pi time to work while we do something useful
+vsml2   cb @rcin,r2     # test if pi is done
+    jne vsml2          # loop if not
+    xor r3,r2       # toggle the syn/ack bit
+
+    mov r0,r0
+    jeq vsdone
+    swpb    r1
+    movb    r1,@vdpwa
+    swpb    r1
+    movb    r1,@vdpwa
+vsnext
+    movb *r5,*r6
+    movb r2,@tcout  # command byte out
+vsl1   cb @rcin,r2     # test if pi is done
+    jne vsl1          # loop if not
+    xor r3,r2       # toggle the syn/ack bit
+    dec r0
+    jne vsnext
+vsdone
+    rt
+
+### request a message from the rpi - expects the pi to send a word containing the length of the message followed by the payload.
+# register usage:
+#   r0 - set to number of bytes loaded into buffer upon completion
+#   r1 - cpu address of buffer
+#   destroys r0 - r5
+recvmsg
+    li r2,tsrset
+    movb r2,@tcout
+rr1  cb @rcin,r2
+    jne rr1
+    li r2,tsrb          # set read mode
+    li r3,synbit        # toggle bit
+    li r5,rdin
+    movb r2,@tcout  # command byte out
+rml1   cb @rcin,r2     # test if pi is done
+    jne rml1          # loop if not
+    xor r3,r2       # toggle the syn/ack bit
+    movb *r5,r4         # read msb of data size
+    movb r2,@tcout  # command byte out
+    swpb r4         # instruction word for delay slot, this gives pi time to work while we do something useful
+rml2   cb @rcin,r2     # test if pi is done
+    jne rml2          # loop if not
+    xor r3,r2       # toggle the syn/ack bit
+    movb *r5,r4         # read lsb of data size
+    mov r4,r4           # if size is 0, then be done
+    jeq rrt
+    swpb r4
+    mov r4,r0
+rnext
+    movb r2,@tcout  # command byte out
+rml3   cb @rcin,r2     # test if pi is done
+    jne rml3          # loop if not
+    xor r3,r2       # toggle the syn/ack bit
+    movb *r5,*r1+       # copy byte from tipi to ram
+    dec r4
+    jne rnext           # if not done then go back and read next
+rrt
+    rt
+
+### request a message from the rpi - expects the pi to send a word containing the length of the message followed by the payload.
+# register usage:
+#   r0 - set to number of bytes loaded into buffer upon completion
+#   r1 - vdp address of buffer
+#   destroys r2, r3, r4, r5, r6
+vrecvmsg
+    li r2,tsrset
+    movb r2,@tcout
+vrr1  cb @rcin,r2
+    jne vrr1
+    li r2,tsrb          # set read byte mode
+    li r3,synbit        # toggle bit
+    li r5,rdin
+    li r6,vdpwd
+    movb r2,@tcout  # command byte out
+vrml1   cb @rcin,r2     # test if pi is done
+    jne vrml1          # loop if not
+    xor r3,r2       # toggle the syn/ack bit
+    movb r2,@tcout  # command byte out
+vrml2   cb @rcin,r2     # test if pi is done
+    jne vrml2          # loop if not
+    xor r3,r2       # toggle the syn/ack bit
+    movb *r5,r4         # read msb of data size
+
+    movb r2,@tcout  # command byte out
+    swpb r4         # instruction word for delay slot, this gives pi time to work while we do something useful
+vrml4   cb @rcin,r2     # test if pi is done
+    jne vrml4          # loop if not
+    xor r3,r2       # toggle the syn/ack bit
+    movb *r5,r4         # read lsb of data size
+    mov r4,r4
+    jeq vrrt
+    swpb r4
+    mov r4,r0
+
+    ori     r1,vdwrite
+    swpb    r1
+    movb    r1,@vdpwa
+    swpb    r1
+    movb    r1,@vdpwa
+vrnext
+    movb r2,@tcout  # command byte out
+vrml3   cb @rcin,r2     # test if pi is done
+    jne vrml3          # loop if not
+    xor r3,r2       # toggle the syn/ack bit
+    movb *r5,*r6        # copy byte from tipi to vdp - could save 24 cycles per byte with these in regs...
+    dec r4
+    jne vrnext          # if not read expected size then read next
+vrrt
+    rt
+
+# can we get any more registers for the macros? regs for tcout and rcin would help the loops.
+
+###############################################################
+
+# there is room in pad for the 10 byte header at cpab
+#   these equates are relative to wp at dsr entry. (we store that in r10)
+pad	equ	->e0		# beginning of scratchpad ram
+fac	equ	pad+>4a		# some of this must be preserved for dsrlnk, some is available
+cpab	equ	pad+>64		# supposedly memory up to 836d is available ( 15 bytes )
+
+# so, pab: appears to be handed off in a fixed address in scratchpad. the dsr must work backwards from the end.
+pabnam	equ	>8356		# address in vdp of device name
+pabnle	equ	>8354		# length of name (?only trust the lsb?)
+# pab begins at vdp address pointed to by: @>8356 - @>8354 - >0a
+vpab	equ	>835a		# once we compute the beginning of pab in vdp we'll reuse this value.
+
+r9lb	equ	>13
+
+# error codes - rpi will return one of these or success after evaluating pab and device name.
+edvname	equ	>00		# bad device name
+ewprot	equ	>01		# device write protected
+eopattr	equ	>02		# bad open attribute
+eillop	equ	>03		# illegal operation
+enospac	equ	>04		# out of table/buffer space
+eeof	equ	>05		# attempt to read past eof
+edeverr	equ	>06		# any device failure
+efilerr	equ	>07		# any file failure
+
+# success code
+success	equ	>ff		# returned from rpi if pab will be handled.
+
+opcode	equ	cpab+>0		# pab - location of opcode after copied
+flgsts	equ	cpab+>1		# pab - [0-2 error][3 1=variable][4 1=internal][5-6 mode][7 1=relative]
+bufadr	equ	cpab+>2		# pab - address of read or write buffer
+reclen	equ	cpab+>4		# pab - logical record length
+chrcnt	equ	cpab+>5		# pab - character count
+recnum	equ	cpab+>6		# pab - record number
+scnoff	equ	cpab+>8		# pab - screen offset
+statb 	equ	scnoff		# alias for when scnoff makes no sense.
+
+## fake dsr entry that only knows load and uses the above functions
+## here we enter with the c workspace of >8300 via bl, but we want gplws
+cpuflag
+	data  >4000
+
+tipidsr
+    limi 0
+    lwpi >83e0
+    
+    li r12,>1100    # assuming >1100 cru -- probably need to save with autodetect
+    sbo 0           # turn card on!
+    li r10,>83e0    # was stwp, but got error on it?
+	li	r4,pabnam	# begin computing beginning of pab
+	clr	r9
+	a	*r4,r9
+	s	@pabnle,r9	#   rewind to beginning of device name
+	li	r2,>0a
+	s	r2,r9		#   rewind over pab header
+# now r9 == v@pab - beginning of vdp pab, we will preserve that.
+	mov	r9,@vpab
+    
+# set vdp to read from beginning of pab that is now in r0 and copy to scratchpad
+    swpb    r9
+    movb    r9,@vdpwa
+    swpb    r9
+    movb    r9,@vdpwa
+	li	r1,>09		# while r1 ne 0# do  (pab is 10 bytes, but we never use the last optlen)
+	mov	r10,r2		#   r2 will be index relative to scratchpad
+tdl1	movb @vdprd,@opcode(r2)	#   load from pab in vdp
+	inc	r2		#   inc index... 
+	dec	r1		#   r1 is our loop counter
+	jne	tdl1    #   copy more bytes if r1 is not 0
+
+# send request to rpi
+	li	r0,>0a		# pab is 10 bytes
+	mov	r10,r1
+	ai	r1,opcode
+	szcb	@cpuflag,@opcode(r10)	# clear cpuflag before sending pab to tipi
+	bl	@sendmsg	# send the 10 byte pab from scratchpad
+    swpb    r9
+    movb    r9,@vdpwa
+    swpb    r9
+    movb    r9,@vdpwa
+	movb	@vdprd,@opcode(r10)		# restore original opcode from vdp
+
+	mov	@pabnam,r1	# begin computing beginning of pab device name
+	s	@pabnle,r1	#   rewind to beginning of device name (might need to only consume the lsb of pabnle
+	dec	r1		#   and back one more to get full device name length
+    swpb    r1
+    movb    r1,@vdpwa
+    swpb    r1
+    movb    r1,@vdpwa
+	movb	@vdprd,r0	# initialize character counter
+	srl	r0,8		#   just a byte
+	inc	r1		# set address of beginning device name data.
+	bl	@vsendmsg	# send the full devicename
+
+# handle result
+	li	r0,1		# set expectation to read 1 byte
+	mov	r10,r1		# set receive address to workspace
+	ai	r1,r9lb		# add low byte address of r9 to receive address
+	clr	r9		# clear value in r9 so msb is 0.
+	bl	@recvmsg	# receive single byte response from tipi into r9
+
+	ci	r9,edvname	# if device name error ( such as we don't handle it )
+	jeq	retskip
+	ci	r9,success	# if not success, we'll pass the code back to the pab
+	jeq	hresponse
+
+	mov	r9,r1
+	jne	reterr
+
+# we also treat this as an error since we aren't doing a real dsrlnk
+retskip
+# exit and return an error status back to os, status expected in r1
+reterr
+	src	r1,3		#   move status to top 3 bits.
+	socb @flgsts(r10),r1	#   merge with file flags so we don't overwrite them
+	mov	@vpab,r3	#   compose the address of status byte 
+	inc	r3		#   second byte in pab
+    ori     r3,vdwrite
+    swpb    r3
+    movb    r3,@vdpwa
+    swpb    r3
+    movb    r3,@vdpwa
+	movb	r1,@vdpwd	#   write the status byte
+	
+retdone	
+	bl	@cleanup
+	sbz 0       # turn card off
+# restore c workspace, no inc needed
+    lwpi >8300
+	rt
+    
+# rpi thinks it can handle this request :) good news!
+# note: if it's not load, then we'll be in trouble #) i'll leave cpu support in though i don't currently need it.
+hresponse
+hload
+	mov	@recnum(r10),r0	# vpd space left is limited
+	mov	@bufadr(r10),r1	# set vdp location to load in to.
+	bl	@dcvrecv	# load image data into cpu or vdp ram
+	jmp	retdone
+
+# uses r9
+dcvrecv				# examine opcode for cpuflag, and delegate to vdp or cpu recv function
+	mov	@opcode(r10),r9
+	coc @cpuflag,r9	# if the cpuflag is set, set equal status bit
+	jeq	rccpu
+	b	@vrecvmsg	# read data to vdp ram
+rccpu	b	@recvmsg	# read data to cpu ram
+
+cleanup
+	clr	r0		# clean up output latches before we go.
+	movb	r0,@tdout
+	movb	r0,@tcout
+	rt
+
+    end
+    

@@ -16,30 +16,33 @@
 // That would fill our 1MB max, but we have to also leave room for the 32k RAM:
 //
 // page 0 - cache here (overlaps ROM otherwise unused)
-// page 1 - overlaps ROM, unused
+// page 1 - (overlaps ROM) SAMPLE: All Objection (ending)
 // page 2 - >2000
 // page 3 - >3000
-// page 4 - overlaps DSR, unused
-// page 5 - overlaps DSR, unused
-// page 6 - overlaps cart, unused
-// page 7 - overlaps cart, unused
-// page 8 - overlaps I/O, unused
-// page 9 - overlaps I/O, unused (24k unused here total)
+// page 4 - (overlaps DSR) SAMPLE: Trixie Objection
+// page 5 - (overlaps DSR) SAMPLE: Trixie Holdit
+// page 6 - (overlaps cart) SAMPLE: Phoenix Holdit
+// page 7 - (overlaps cart) SAMPLE: Phoenix Objection
+// page 8 - (overlaps I/O) SAMPLE: Phoenix TakeThat / Judge Objection (final scene)
+// page 9 - (overlaps I/O) SAMPLE: Fluttershy Objection / Twilight Objection
 // page10 - >a000
 // page11 - >b000
 // page12 - >c000
 // page13 - >d000
 // page14 - >e000
 // page15 - >f000
-// page16-255 - free to use - still need to work out sample data
+// page16-255 - Cached images
+
+// Image - each image takes 2 pages (pattern and color) plus 32 bytes in the cache index page 0
+// The 32 bytes contain 2 bytes of image, and 30 bytes of F18A image. (Random data if not F18A).
+// As the total page is 4k in size, we can store 128 images total in cache.
+// 128 images is 256 pages - but since 16 pages are used for the default memory space + cache + samples,
+// we only have 240 pages. That's 120 images.
 
 #define CACHE_PAGE 0
 #define FIRST_CACHE_PAGE 16
 #define LAST_CACHE_PAGE 255
 #define NUM_CACHE_PAGES (LAST_CACHE_PAGE-FIRST_CACHE_PAGE+1)
-// Warning: bug workaround asm code below hard-codes this MAP_ADDRESS value
-#define MAP_ADDRESS 0xf000
-#define ADR_DEFAULT_PAGE 15
 int CacheHead = 0, CacheTail = 0;
 #define CACHE_MAX (NUM_CACHE_PAGES-1)
 
@@ -125,6 +128,7 @@ void vdpmemcpywithmusic(unsigned int vdpAdr, unsigned char *cpuAdr, unsigned int
     // store 256 bytes at a time, checking for music
     // music player and data must ALSO be in low memory!!
 #ifdef CLASSIC99
+    if ((((int)cpuAdr&0xfff))+sz > 0x1000) debug_write("Warning: access past end of AMS page");
     if (!amsMapOn) debug_write("WARNING: memcpywithmusic but map is off!");
     cpuAdr = pAmsMap[(((int)cpuAdr)&0xf000)>>12]+(((int)cpuAdr)&0x0fff);
 #endif
@@ -149,6 +153,7 @@ void vdpmemreadwithmusic(unsigned int vdpAdr, unsigned char *cpuAdr, unsigned in
     // read 256 bytes at a time, checking for music
     // music player and data must ALSO be in low memory!!
 #ifdef CLASSIC99
+    if ((((int)cpuAdr&0xfff))+sz > 0x1000) debug_write("Warning: access past end of AMS page");
     if (!amsMapOn) debug_write("WARNING: memreadwithmusic but map is off!");
     cpuAdr = pAmsMap[(((int)cpuAdr)&0xf000)>>12]+(((int)cpuAdr)&0x0fff);
 #endif
