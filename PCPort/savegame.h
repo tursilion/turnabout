@@ -10,7 +10,7 @@ void store_saved_data();
 
 /*
 Save Game Data
-All values are 16-bit big endian ints (even though the VDP is bytes)
+Most values are 16-bit big endian ints (even though the VDP is bytes)
 
 Offset  Size    Data
  0      32      Save/Load PAB and Filename

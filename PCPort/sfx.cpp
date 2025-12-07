@@ -210,3 +210,4 @@ sfx.cpp:166: internal compiler error: in extract_insn, at recog.c:2048
     // restore noise to periodic user-defined in case music was using that...
     SOUND(0xe3);
 }
+

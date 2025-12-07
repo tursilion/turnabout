@@ -129,7 +129,7 @@ startover:
                 gotoxy(1, row);
                 
                 if (selected == tmp) reverse(1);
-                cprintfmini("%c %s", 'A'+row-1, evidence[tmp].name);
+                cprintfmini("%c.%s", 'A'+row-1, evidence[tmp].name);
                 if (selected == tmp) reverse(0);
 
                 ++tmp;
@@ -146,7 +146,7 @@ startover:
                 evidx[row-1] = tmp;
                 gotoxy(1, row);
                 if (selected == tmp) reverse(1);
-                cprintfmini("%c %s", 'A'+row-1, people[PPLIDX(tmp)].name);
+                cprintfmini("%c.%s", 'A'+row-1, people[PPLIDX(tmp)].name);
                 if (selected == tmp) reverse(0);
                 tmp += 0x100;
                 ++row;
@@ -217,6 +217,10 @@ startover:
                 clear_text();
                 selected = evidx[oldkey-'A'];
                 if (selected < PP_FIRST) {
+                    reverse(1);
+                    cputsxy(0,16,evidence[selected].name);
+                    reverse(0);
+
                     set_textout(evidence[selected].description);
                     // special case(s)
                     int x = specialinventory(selected);
@@ -231,6 +235,10 @@ startover:
                     }
                     // otherwise it was not special
                 } else {
+                    reverse(1);
+                    cputsxy(0,16,people[PPLIDX(selected)].name);
+                    reverse(0);
+
                     set_textout(people[PPLIDX(selected)].description);
                 }
                 maxlen = 0;

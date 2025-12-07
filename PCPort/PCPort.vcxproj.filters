@@ -75,9 +75,6 @@
     <ClCompile Include="voice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="othermusic.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="mybitmap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -146,5 +143,6 @@
       <Filter>Source Files</Filter>
     </None>
     <None Include="linker.ld" />
+    <None Include="linkerload.ld" />
   </ItemGroup>
 </Project>

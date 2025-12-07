@@ -34,6 +34,9 @@ typedef unsigned int uint16;    // must be 16 bit or larger, unsigned
 typedef unsigned char uint8;    // must be 8 bit unsigned
 typedef unsigned int uWordSize; // most efficient word size, 8 bits or more unsigned
 #elif defined(CLASSIC99)
+// TODO: These should not be named with the standard type names, they should
+// all be app specific like uWordSize, so that we don't conflict with user
+// programs like we do now!
 typedef int int16;              // we're really 32 bit, that's okay
 typedef unsigned int uint16;    // must be 16 bit or larger, unsigned
 typedef unsigned char uint8;    // must be 8 bit unsigned

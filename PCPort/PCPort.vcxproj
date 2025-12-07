@@ -151,7 +151,6 @@
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="music.cpp" />
     <ClCompile Include="mybitmap.cpp" />
-    <ClCompile Include="othermusic.cpp" />
     <ClCompile Include="People.cpp" />
     <ClCompile Include="savegame.cpp" />
     <ClCompile Include="sfx.cpp" />
@@ -190,6 +189,7 @@
     <None Include="crt0_pload.asm" />
     <None Include="F18A_GPU.a99" />
     <None Include="linker.ld" />
+    <None Include="linkerload.ld" />
     <None Include="Makefile" />
     <None Include="scratchloaderStandalone.a99" />
   </ItemGroup>

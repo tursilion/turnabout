@@ -1,6 +1,7 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
+#include <files.h>
 #include "structures.h"
 #include "mylib.h"
 
@@ -26,5 +27,6 @@ void set_textout(const char *p);
 void set_name(unsigned int i);
 void set_maxlen(int i);
 void wait_for_key_release();
+unsigned char wrap_dsrlnk(struct PAB *pab, unsigned int vdp);
 
 #endif

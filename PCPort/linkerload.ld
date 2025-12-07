@@ -32,7 +32,7 @@ SECTIONS {
     } > UPPERFIXED
 
 /* only the loader program will contain this section! Needs to start early to beat >E000 */
-    .musiccode (NOLOAD) :
+    .musiccode :
     {
         PROVIDE(mustextlower = .);
 
@@ -46,8 +46,8 @@ SECTIONS {
     /* we need all the above to finish before 0xe000 for the paging to be safe */
     /* __musiccode_load is the binary load address to copy from! */
 
-    /* Calculate next free address after above usage - music not loaded! */
-    PROVIDE(__upperpre_end = LOADADDR(.musiccode) );
+    /* Calculate next free address after above usage */
+    PROVIDE(__upperpre_end = LOADADDR(.musiccode) + SIZEOF(.musiccode));
 
     /* Rest of code starts at next free address */
     /* note because there's no memory section it's not warning about overrun */

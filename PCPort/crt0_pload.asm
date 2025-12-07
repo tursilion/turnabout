@@ -1,6 +1,7 @@
  def _start
  def _init_data
  ref ams
+ ref __musiccode_load
  
 # Entry point for C runtime initilization code
 #
@@ -130,12 +131,30 @@ slp1
   jne slp1
   c r6,r2
   jne slp1
-  
+
+# preserve R1 till we save it!
 amsize
+  ci r1,32
+  jl amdone         # not even 128k - let the c code zero it for better debugging
+
+# but otherwise, before we go, copy the music player code to page 16
+  li r4,>1000    # page 16 (little endian)
+  mov r4,*r3     # register for >2000
+  li r0,>2000
+  li r4,__musiccode_load
+  li r2,>0400    # just always 4k (divided by 4)
+ammusc
+  mov *r4+,*r0+
+  mov *r4+,*r0+
+  dec r2
+  jne ammusc
+
+amdone
+# restore the default setting before we turn it off
   li r0,>0200       # default page for >2000
   mov r0,@>4004
-  mov r1,@ams
-  
+  mov r1,@ams       # must write AFTER we restore the correct page!
+
 nosams
   sbz 1
   sbz 0

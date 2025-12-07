@@ -204,7 +204,7 @@ void load_image(int index) {
     // load patterns
     myPab.VDPBuffer = gPattern;
     myPab.pName = (unsigned char*)buf;
-    dsrlnk(&myPab, VDP_PAB_ADDRESS);
+    wrap_dsrlnk(&myPab, VDP_PAB_ADDRESS);
 
     if (f18a) {
         // load the palette - it's at the end of the image there
@@ -218,7 +218,7 @@ void load_image(int index) {
     // load colors
     buf[off+8] = 'C';
     myPab.VDPBuffer = gColor;
-    dsrlnk(&myPab, VDP_PAB_ADDRESS);
+    wrap_dsrlnk(&myPab, VDP_PAB_ADDRESS);
 
     storeToCache(index);
 }
@@ -250,7 +250,7 @@ void load_title() {
         buf[off] = 'M';
         myPab.VDPBuffer = gPattern;
         myPab.pName = (unsigned char*)buf;
-        dsrlnk(&myPab, VDP_PAB_ADDRESS);
+        wrap_dsrlnk(&myPab, VDP_PAB_ADDRESS);
         // fetch the data
         vdpmemread(0, pal, 32);
         // load both palettes, then the GPU program won't interfere
@@ -262,12 +262,12 @@ void load_title() {
     buf[off] = 'P';
     myPab.VDPBuffer = gPattern;
     myPab.pName = (unsigned char*)buf;
-    dsrlnk(&myPab, VDP_PAB_ADDRESS);
+    wrap_dsrlnk(&myPab, VDP_PAB_ADDRESS);
 
     // load colors
     buf[off] = 'C';
     myPab.VDPBuffer = gColor;
-    dsrlnk(&myPab, VDP_PAB_ADDRESS);
+    wrap_dsrlnk(&myPab, VDP_PAB_ADDRESS);
 
     // reset the pab for later
     myPab.OpCode = 0;
@@ -453,7 +453,7 @@ int main()
 {
     debug_write("Starting up...");
     files(1);
-    play_music(0);  // makes sure pSong is zeroed out
+    stop_music();  // makes sure pSong is zeroed out
 
 #ifdef CLASSIC99
     vgm_pcinit();
@@ -470,6 +470,7 @@ int main()
     restore_saved_data();
 #endif
     load_voices();
+    load_music();
 #endif
 
     // detect F18A for graphics (corrupts VDP registers)
@@ -498,9 +499,6 @@ int main()
     while (KSCAN_KEY == 0xff) {
         kscanfast(0);
     }
-
-    // TODO: pre-load voices if ams is present
-    // if (ams) { }
 
     // text mode, load charset
     VDP_SET_REGISTER(VDP_REG_MODE1, VDP_MODE1_16K|VDP_MODE1_INT);
@@ -544,6 +542,7 @@ int main()
     // will return with selection in KSCAN_KEY
 repeataid:
     run_aid(0);
+    store_saved_data(); // makes it easier to test if I set up VDP on any key
 
     // load VDP if requested, then jump to the saved chapter (from 0x3b00)
     int nextloc = 0;
@@ -628,11 +627,64 @@ repeataid:
 #endif
 
     // TODO: we can't return - scratchpad loader is one way. How
-    // can we verify the load works before committing?
+    // can we verify the load works before committing? (Actually, it does return sometimes?!
+    // Eh, this is last ditch effect to save the user's progress. it's fine.)
     // if we return, the load must have failed to find the first file (later files will just reboot)
     // aid will say we're at the end and at least allow a save
     run_aid(1);
+}
 
+// this is music code, but music.o is stored in paged memory, so we need wrappers to be able to call them
+// REMEMBER WE NEED TO BE LOADED LOWER THAN >E000 IN RAM!
+
+// this will make sure all needed music is loaded, same as the samples do
+void load_music() {
+    if (ams == 0) return;
+
+    samsMapPage(MUSIC_PAGE, MUSIC_ADDR);
+    samsMapOn();
+    load_music_banked();
+    restoreSamsMap();
+}
+
+void play_music(int music) {
+    if (ams == 0) return;
+    if (mute) return;
+
+    samsMapPage(MUSIC_PAGE, MUSIC_ADDR);
+    samsMapOn();
+    play_music_banked(music);
+    restoreSamsMap();
+}
+
+// this one probably doesn't NEED to be banked, but we'll stay consistent
+void stop_music() {
+    if (ams == 0) return;
+
+    samsMapPage(MUSIC_PAGE, MUSIC_ADDR);
+    samsMapOn();
+    stop_music_banked();
+    restoreSamsMap();
+}
+
+void update_music() {
+    if (ams == 0) return;
+
+    samsMapPage(MUSIC_PAGE, MUSIC_ADDR);
+    samsMapOn();
+    update_music_banked();
+    restoreSamsMap();
+}
+
+// a hacky wrapper to try failed accesses a second time, since
+// web access occasionally fails. Will mean save file access is
+// a little slower if it fails, but that's worth it.
+unsigned char wrap_dsrlnk(struct PAB *pab, unsigned int vdp) {
+    unsigned char ret = dsrlnk(pab, vdp);
+    if (ret) {
+        ret = dsrlnk(pab, vdp);
+    }
+    return ret;
 }
 
 // Intermediate data is saved in VDP RAM between programs.
@@ -642,20 +694,19 @@ repeataid:
 // 0000-0FFF - bitmap pattern table (top) - F18A palette loads 32 bytes after this
 // 1000-17FF - bottom third character set - first 4 chars (32 bytes) overwritten in F18A mode
 // 1800-19FF - bitmap SIT
-// 1B00-1A7F - sprite attribute list
-// 1A80-1A9F - Text screen color table
-// 1AA0-1AFF -
+// 1A80-1A9F - text screen color table
+// 1AA0-1AFF - (60 bytes free)
 // 1B00-1B7F - Sprite attribute list
 // 1B80-1B9F - help screen color table
-// 1BA0-1BFF - 
+// 1BA0-1BFF - (60 bytes free)
 // 1C00-1EFF - Text screen SIT
-// 1F00-1FFF -
+// 1F00-1FFF - (256 bytes free)
 // 2000-2FFF - bitmap color table (top)
 // 3000-37FF - bottom third color table
 // 3800-387F - PAB space
 // 3880-38FF - F18A GPU code
 // 3900-390F - F18A GPU interface
-// 3910-39FF -
+// 3910-39FF - (240 bytes free)
 // 3A00-3AFF - game data for between programs (see savegame.h)
-// 3B00-3BE3 - 
+// 3B00-3BE3 - (228 bytes free)
 // 3BE4-3FFF - DSR Buffers FILES(1)

@@ -67,6 +67,13 @@
 #define FLUTTERSHY_OBJECT_TAG   0x5432
 #define PHOENIX_HOLDIT_TAG      0xfdf5
 
+// filename offset of index byte for loading voice and music
+#define VOC_OFF 40
+
+// voice and music loading
+#define VDP_VOC_ADR 0x2000
+#define MAX_VOC_SIZE 0x1000
+
 void play_voice(int voice);
 void load_voices();
 

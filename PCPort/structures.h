@@ -7,7 +7,7 @@
 #ifdef CLASSIC99
 // define what we are building for here - this will be external on the build line for the makefile builds
 //#define LOCATION_IS_LOADER
-//#define LOCATION_IS_0
+#define LOCATION_IS_0
 //#define LOCATION_IS_1
 //#define LOCATION_IS_2
 //#define LOCATION_IS_3
@@ -16,7 +16,7 @@
 //#define LOCATION_IS_6
 //#define LOCATION_IS_10
 //#define LOCATION_IS_11
-#define LOCATION_IS_12
+//#define LOCATION_IS_12
 #endif
 
 // some types
@@ -291,7 +291,7 @@ enum {
                         
     CMD_STOPMUS     , // stop music
 
-    // downloaded
+    // downloaded - do not reorder the song list!!
     CMD_MUSTARTLIST , // just to find the music block
 
     CMD_MUSSTEEL    , // Steel Samurai Ringtone
@@ -341,6 +341,7 @@ enum {
     CMD_MUSGUILTY   , // Guilty love - Capcom (using ringtone version)
     CMD_MUSRECALL   , // Recollation - Elementary School Trial
 
+    // Do not reorder the song list!!
     // not available yet - will probably need to replace - how can I reach SoloAcapello? Might be able to ask Mando for Rarity's theme.
     CMD_MUSCRUSADE  , // Crusading (Apple Bloom) - SoloAcapello
     CMD_MUSCLOCK    , // Like Clockwork (Sonata) - SoloAcapello
@@ -471,7 +472,7 @@ extern int nStorySize;
 #define HAS_ICRASHSFX
 // music
 #define HAS_MUSLOUNGE
-//#define HAS_MUSMLP    // TODO: OUT OF MEMORY
+#define HAS_MUSMLP
 #define HAS_MUSTROUPE   // Trixie
 #endif
 
@@ -501,8 +502,8 @@ extern int nStorySize;
 #define HAS_TRIXIEOBJ
 #define HAS_PHOENIXOBJ
 // music
-//#define HAS_MUSTRIAL      // TODO: OUT OF MEMORY - move music to AMS
-//#define HAS_MUSTRANCE
+#define HAS_MUSTRIAL
+#define HAS_MUSTRANCE
 #define HAS_MUSCORNERED
 #define HAS_MUSTRICK
 #endif

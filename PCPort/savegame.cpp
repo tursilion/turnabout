@@ -192,7 +192,7 @@ void savegame() {
         }
 
         // yes, we store the PAB at the same VDP RAM we are saving
-        err = dsrlnk(&myPab, SAVE_GAME_VDP);
+        err = wrap_dsrlnk(&myPab, SAVE_GAME_VDP);
         if (err == DSR_ERR_NONE) {
             break;
         }
@@ -239,7 +239,7 @@ int loadgame() {
 
         // yes, we store the PAB at the same VDP RAM we are loading - this should be okay
         // as the loaded data should contain essentially the same PAB
-        err = dsrlnk(&myPab, SAVE_GAME_VDP);
+        err = wrap_dsrlnk(&myPab, SAVE_GAME_VDP);
         if (DSR_ERR_NONE == err) {
             break;
         }

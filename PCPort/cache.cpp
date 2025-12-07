@@ -1,4 +1,3 @@
-#if 1
 // Make sure to link this file first after the crt0, that way it's guaranteed to be in the >a000 page
 // An AMS cache for downloaded images - this lets us load without
 // going to the web and also play music during the load (since we expect that to take about 4 frames)
@@ -31,16 +30,28 @@
 // page13 - >d000
 // page14 - >e000
 // page15 - >f000
-// page16-255 - Cached images
+// page16 - music player at >E000
+// page17-47  - cached music
+// page48-255 - Cached images
+
+// the AMS is also going to handle all music now as well, so that will reduce the pages
+// available a bit more. Expecting 51 tunes right now, possibly there will be more.
+// I think we'll lay out the cache data based on up to 4 per page, since a good number
+// so far as under 1k (of course, some are over 2k). Anyway, see the music page for that.
+// For now, we're assuming we'll need 32 pages (including one for the music PLAYER. Nice
+// thing is since it's RAM, we can store its data in that page too!)
 
 // Image - each image takes 2 pages (pattern and color) plus 32 bytes in the cache index page 0
 // The 32 bytes contain 2 bytes of image, and 30 bytes of F18A image. (Random data if not F18A).
 // As the total page is 4k in size, we can store 128 images total in cache.
 // 128 images is 256 pages - but since 16 pages are used for the default memory space + cache + samples,
-// we only have 240 pages. That's 120 images.
+// We are now down to 208 pages - 104 images. That's still tons. Anything over say 64 is overkill.
+// 32 is probably adequate... but 64 may help some roundabout sequences.
+
+// TODO: LAST_CACHE_PAGE assumes 1MB or greater, we should use the value in the ams variable
 
 #define CACHE_PAGE 0
-#define FIRST_CACHE_PAGE 16
+#define FIRST_CACHE_PAGE 48
 #define LAST_CACHE_PAGE 255
 #define NUM_CACHE_PAGES (LAST_CACHE_PAGE-FIRST_CACHE_PAGE+1)
 int CacheHead = 0, CacheTail = 0;
@@ -62,7 +73,8 @@ unsigned char *pAmsRam = NULL;      // we'll allocate this on first run
 unsigned char *pAmsMap[16] = {};    // 16 4k blocks pointing into AMS, initialized to sequence by CRT, here we'll do it when we allocate
 bool amsMapOn = false;
 
-typedef unsigned short uint16;
+// beware: In the classic99 build CPlayer.h types "uint16" to a 32-bit int, so keep the name distinct and don't assume
+typedef unsigned short uint16_type;
 extern "C" void debug_write(char *s, ...);
 
 // here we'll just track a variable to ensure we are doing the on/off right
@@ -89,25 +101,25 @@ void samsMapPage(int page, int location) {
 }
 
 #else
-typedef unsigned int uint16;
+typedef unsigned int uint16_type;
 #define debug_write(...) ((void)0)
 
 // SAMS code by Jedimatt42
-void samsMapOn() {
+void __attribute__ ((noinline)) samsMapOn() {
   __asm__ volatile (
     "LI r12, >1E00\n\t"
     "SBO 1\n\t"
-  );
+    : : : "r12" );
 }
 
-void samsMapOff() {
+void __attribute__ ((noinline)) samsMapOff() {
   __asm__ volatile (
     "LI r12, >1E00\n\t"
     "SBZ 1\n\t"
-  );
+   : : : "r12" );
 }
 
-void samsMapPage(int page, int location) {
+void __attribute__ ((noinline)) samsMapPage(int page, int location) {
   __asm__ volatile (
       "LI r12, >1E00\n\t"
       "SRL %0, 12\n\t"      // isolate top nibble of location
@@ -124,9 +136,10 @@ void samsMapPage(int page, int location) {
 #endif
 
 // sz must be a multiple of 256!
-void vdpmemcpywithmusic(unsigned int vdpAdr, unsigned char *cpuAdr, unsigned int sz) {
+void vdpmemcpywithmusic(unsigned int vdpAdr, unsigned char *cpuAdr, unsigned int sz, unsigned int page) {
     // store 256 bytes at a time, checking for music
     // music player and data must ALSO be in low memory!!
+    samsMapPage(page, MAP_ADDRESS);
 #ifdef CLASSIC99
     if ((((int)cpuAdr&0xfff))+sz > 0x1000) debug_write("Warning: access past end of AMS page");
     if (!amsMapOn) debug_write("WARNING: memcpywithmusic but map is off!");
@@ -144,14 +157,17 @@ void vdpmemcpywithmusic(unsigned int vdpAdr, unsigned char *cpuAdr, unsigned int
         if (flag) {
             VDP_CLEAR_VBLANK;
             update_music();
+            // update_music reset the AMS page, so get it back
+            samsMapPage(page, MAP_ADDRESS);
         }
 #endif
     }
 }
 
-void vdpmemreadwithmusic(unsigned int vdpAdr, unsigned char *cpuAdr, unsigned int sz) {
+void vdpmemreadwithmusic(unsigned int vdpAdr, unsigned char *cpuAdr, unsigned int sz, unsigned int page) {
     // read 256 bytes at a time, checking for music
     // music player and data must ALSO be in low memory!!
+    samsMapPage(page, MAP_ADDRESS);
 #ifdef CLASSIC99
     if ((((int)cpuAdr&0xfff))+sz > 0x1000) debug_write("Warning: access past end of AMS page");
     if (!amsMapOn) debug_write("WARNING: memreadwithmusic but map is off!");
@@ -169,33 +185,42 @@ void vdpmemreadwithmusic(unsigned int vdpAdr, unsigned char *cpuAdr, unsigned in
         if (flag) {
             VDP_CLEAR_VBLANK;
             update_music();
+            // update_music reset the AMS page, so get it back
+            samsMapPage(page, MAP_ADDRESS);
         }
 #endif
     }
 }
 
 // restore default sams map
+// This file doesn't use the second page, but this lets other systems use this function
 void restoreSamsMap() {
     samsMapPage(ADR_DEFAULT_PAGE, MAP_ADDRESS);
+    samsMapPage(ADR_DEFAULT_PAGE2, MAP_ADDRESS2);
     samsMapOff();
 }
 
 // if we find the item in cache, copy the cache line to buf and return the cache line offset, else return 0xffff (which is > 4k)
 // warning: SAMS MAP is NOT restored - left active on the cache page
 int findInCache(int idx, unsigned char *buf) {
+    // to avoid violating assumptions - always turn on AMS first
     samsMapPage(0, MAP_ADDRESS);
     samsMapOn();
-    for (int cnt = CacheHead; cnt != CacheTail; cnt = ((cnt+1)>CACHE_MAX ? 0 : cnt+1)) {
-        // fetch the cache line
+
+    // ignore index 0, might just be uninitialized RAM. We only load it once ever.
+    if (idx != 0) {
+        for (int cnt = CacheHead; cnt != CacheTail; cnt = ((cnt+1)>CACHE_MAX ? 0 : cnt+1)) {
+            // fetch the cache line
 #ifdef CLASSIC99
-        if (!amsMapOn) debug_write("WARNING: findinCache but map is off!");
-        memcpy(buf, (unsigned char*)(pAmsMap[(MAP_ADDRESS&0xf000)>>12]) + (cnt<<5), 32);
+            if (!amsMapOn) debug_write("WARNING: findinCache but map is off!");
+            memcpy(buf, (unsigned char*)(pAmsMap[(MAP_ADDRESS&0xf000)>>12]) + (cnt<<5), 32);
 #else
-        memcpy(buf, (unsigned char*)MAP_ADDRESS + (cnt<<5), 32);
+            memcpy(buf, (unsigned char*)MAP_ADDRESS + (cnt<<5), 32);
 #endif
-        if (*(uint16*)buf == idx) {
-            // hey, this is it!
-            return cnt;
+            if (*(uint16_type*)buf == idx) {
+                // hey, this is it!
+                return cnt;
+            }
         }
     }
 
@@ -227,22 +252,7 @@ int loadFromCache(int idx) {
     // found has the index of the cache line. The card page is (index*2)+FIRST_CACHE_PAGE
     // remember it takes two pages for every cached image
     int mapidx = (found<<1)+FIRST_CACHE_PAGE;
-#ifdef CLASSIC99
-    samsMapPage(mapidx, MAP_ADDRESS);
-#else
-   // bug workaround
-    __asm__ volatile (
-      "LI r12, >1E00\n\t"
-      "SWPB %0\n\t"         // want little endian order for page
-      "SBO 0\n\t"           // card on
-      "MOV %0, @>401e\n\t"  // map page for >F000
-      "SBZ 0\n\t"           // card off
-      "SWPB %0\n\t"         // restore page register before returning
-      :
-      : "r"(mapidx)
-      : "r12");
-#endif
-    vdpmemcpywithmusic(gPattern, (unsigned char*)MAP_ADDRESS, 0x1000);
+    vdpmemcpywithmusic(gPattern, (unsigned char*)MAP_ADDRESS, 0x1000, mapidx);
     if (f18a) {
         // we need to load the palette into the right VDP address too, and tell the F18A about it
         buf[0]=0;   // always black and need to clear out the image index
@@ -251,22 +261,7 @@ int loadFromCache(int idx) {
         vdpchar(0x3900, 0x01);  // load palette command
     }
     ++mapidx;
-#ifdef CLASSIC99
-    samsMapPage(mapidx, MAP_ADDRESS);
-#else
-   // bug workaround
-    __asm__ volatile (
-      "LI r12, >1E00\n\t"
-      "SWPB %0\n\t"         // want little endian order for page
-      "SBO 0\n\t"           // card on
-      "MOV %0, @>401e\n\t"  // map page for >F000
-      "SBZ 0\n\t"           // card off
-      "SWPB %0\n\t"         // restore page register before returning
-      :
-      : "r"(mapidx)
-      : "r12");
-#endif
-    vdpmemcpywithmusic(gColor, (unsigned char*)MAP_ADDRESS, 0x1000);
+    vdpmemcpywithmusic(gColor, (unsigned char*)MAP_ADDRESS, 0x1000, mapidx);
     restoreSamsMap();
 
     return 1;
@@ -282,6 +277,12 @@ void storeToCache(int idx) {
 #endif
 
     if (ams == 0) {
+        return;
+    }
+
+    if (idx == 0) {
+        // don't store 0, we can't load it
+        restoreSamsMap();
         return;
     }
 
@@ -304,7 +305,7 @@ void storeToCache(int idx) {
     }
     debug_write("Saving to new page %d\n", found);
     
-    // update cache line
+    // update cache line - read in F18A palette (or junk if it's not on)
     unsigned char *baseAddress = (unsigned char*)MAP_ADDRESS;
 #ifdef CLASSIC99
     if (!amsMapOn) debug_write("WARNING: storetocache but map is off!");
@@ -312,10 +313,11 @@ void storeToCache(int idx) {
 #endif
     baseAddress += (found<<5);
     vdpmemread(0x1000, baseAddress, 32);
-    *(uint16*)baseAddress = idx;
+    *(uint16_type*)baseAddress = idx;
     
     // copy pattern table - use the TI addresses here as vdpmemreadwithmusic will fix for C99 build
 
+    // THis compiler bug is not an issue here now(?), the bank was moved to vdpmemreadwithmusic...
     // compiler bug needs to be resolved here... we lose the MAP_ADDRESS constant (because we don't flag that the shift changes the value?)
     // We should take a look, but otherwise we can probably do the mapping inline more efficiently than it did...
     // I think my patches are out of date, so maybe we start with finding the latest and rebuilding?
@@ -348,39 +350,10 @@ void storeToCache(int idx) {
 #endif
 
     int mapidx = (found<<1)+FIRST_CACHE_PAGE;
-#ifdef CLASSIC99
-    samsMapPage(mapidx, MAP_ADDRESS);
-#else
-   // bug workaround
-    __asm__ volatile (
-      "LI r12, >1E00\n\t"
-      "SWPB %0\n\t"         // want little endian order for page
-      "SBO 0\n\t"           // card on
-      "MOV %0, @>401e\n\t"  // map page for >F000
-      "SBZ 0\n\t"           // card off
-      "SWPB %0\n\t"         // restore page register before returning
-      :
-      : "r"(mapidx)
-      : "r12");
-#endif
-    vdpmemreadwithmusic(gPattern, (unsigned char*)MAP_ADDRESS, 0x1000);
+    vdpmemreadwithmusic(gPattern, (unsigned char*)MAP_ADDRESS, 0x1000, mapidx);
 
     ++mapidx;
-#ifdef CLASSIC99
-    samsMapPage(mapidx, MAP_ADDRESS);
-#else
-    __asm__ volatile (
-      "LI r12, >1E00\n\t"
-      "SWPB %0\n\t"         // want little endian order for page
-      "SBO 0\n\t"           // card on
-      "MOV %0, @>401e\n\t"  // map page for >F000
-      "SBZ 0\n\t"           // card off
-      "SWPB %0\n\t"         // restore page register before returning
-      :
-      : "r"(mapidx)
-      : "r12");
-#endif
-    vdpmemreadwithmusic(gColor, (unsigned char*)MAP_ADDRESS, 0x1000);
+    vdpmemreadwithmusic(gColor, (unsigned char*)MAP_ADDRESS, 0x1000, mapidx);
 
     restoreSamsMap();
 }
@@ -405,21 +378,8 @@ void invalidateCache(int idx) {
         baseAddress = pAmsMap[(((int)baseAddress)&0xf000)>>12]+(((int)baseAddress)&0x0fff);
     #endif
         baseAddress += (found<<5);
-        *(uint16*)baseAddress = 0xffff;
+        *(uint16_type*)baseAddress = 0xffff;
     }
 
     restoreSamsMap();
 }
-
-#else
-int loadFromCache(int index) {
-    (void)index;
-    return 0;
-}
-void storeToCache(int index) {
-    (void)index;
-}
-void invalidateCache(int index) {
-    (void)index;
-}
-#endif

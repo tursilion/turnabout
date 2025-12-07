@@ -8,6 +8,8 @@
 // Warning: bug workaround asm code in cache.cpp hard-codes this MAP_ADDRESS value
 #define MAP_ADDRESS 0xf000
 #define ADR_DEFAULT_PAGE 15
+#define MAP_ADDRESS2 0xe000
+#define ADR_DEFAULT_PAGE2 14
 
 // Some code to cache recent images in AMS
 extern int ams;

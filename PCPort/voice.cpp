@@ -1,5 +1,7 @@
 #include "structures.h"
+#include "engine.h"
 #include "voice.h"
+#include "music.h"
 #include "sfx.h"
 #include "cache.h"
 #include <string.h>
@@ -15,13 +17,6 @@ extern int ams;
 void load_voices() { }
 void play_voice(int x) { }
 #else
-
-// filename offset of index byte
-#define VOC_OFF 40
-
-// voice loading
-#define VDP_VOC_ADR 0x2000
-#define MAX_VOC_SIZE 0x1000
 
 // lookup table - less code to pass a table row
 typedef struct {
@@ -86,7 +81,8 @@ void load_one_voice(int idx) {
         myPab.RecordNumber = MAX_VOC_SIZE;  // up to 4k
         myPab.VDPBuffer = VDP_VOC_ADR;      // VDP buffer overtop of the pattern table (we should be on LOADING screen)
         myPab.pName[VOC_OFF] = idx + '0';
-        (void)dsrlnk(&myPab, VDP_PAB_ADDRESS);
+        (void)wrap_dsrlnk(&myPab, VDP_PAB_ADDRESS);
+        // most VOCs are pretty close to the full page, so don't bother working it out, just copy a full page
         vdpmemread(VDP_VOC_ADR, (unsigned char*)MAP_ADDRESS, MAX_VOC_SIZE); // won't work in Classic99 PC build - bad address
     }
 #endif
@@ -147,7 +143,7 @@ void play_voice(int voice) {
     if (ams != 0) {
         unsigned char *pSample = NULL;
 
-        // TODO: do we have to play from scratchpad? Or will inline asm do it?
+        // inline asm is fast enough!
         // First two bytes of the page are the length in bytes, we always play both nibbles.
         if ((voice >= 0) && (voice < CMD_VOICEENDLIST-CMD_VOICESTARTLIST-1)) {
             if (map_and_check(voice)) {
@@ -158,6 +154,7 @@ void play_voice(int voice) {
         if (pSample != NULL) {
             // This loop is hand tuned for 8192Hz playback. It uses all three voices (eh) and should be pretty close!
             // Of course, it was hand tuned in Classic99... so take that with a grain of salt.
+            // Also, I don't feel it sounds any damn louder with all three voices...
             __asm__ volatile (
                 "li r0,>8100\n\t"   // fastest frequency
                 "li r1,>8400\n\t"   // sound chip
