@@ -55,7 +55,11 @@ int specialinventory(int selected) {
     while (1) {
         // handles vblank and music
         if (maxlen < 32*7) {
-            ++maxlen;
+            if (readerFlag) {
+                maxlen = 32*7;
+            } else {
+                ++maxlen;
+            }
             set_maxlen(maxlen);
         }
         draw_screen();
@@ -157,7 +161,11 @@ startover:
         for (;;) {
             // handles vblank and music
             if (maxlen < 32*7) {
-                ++maxlen;
+                if (readerFlag) {
+                    maxlen = 32*7;
+                } else {
+                    ++maxlen;
+                }
                 set_maxlen(maxlen);
             }
             draw_screen();

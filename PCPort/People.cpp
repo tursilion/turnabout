@@ -4,10 +4,9 @@
 
 // people are just special evidence, but sometimes we need them separately
 // Remember names are stored in the MSB and or'd with 0x80
-Evidence_t people[PP_MAX] = {
-    //                         Discovered At this image
+const Evidence_t people[PP_MAX] = {
     { "                ",           ""    },    // PP_NONE
-    { "?????",	            /*0*/	""    },    // PP_UNKNOWN
+    { "(Unknown)",	         /*0*/	""    },    // PP_UNKNOWN
 
     // 01234567890123456789012345678
     { "Phoenix Wright",	    /*0*/	"That's me, attorney at law!"      },

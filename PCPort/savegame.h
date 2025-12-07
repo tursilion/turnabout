@@ -13,8 +13,8 @@ Save Game Data
 Most values are 16-bit big endian ints (even though the VDP is bytes)
 
 Offset  Size    Data
- 0      32      Save/Load PAB and Filename
- (gap)
+ 0      31      Save/Load PAB and Filename
+ 31      1      Screen reader mode flag
  32      2      Location index
  34      1      Mute flag MSB
  35      1      F18A flag LSB

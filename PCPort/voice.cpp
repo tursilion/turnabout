@@ -10,7 +10,6 @@
 #include <files.h>
 
 // This code must be loaded before 0xf000, so we can bank pages up there
-extern int ams;
 
 // we can't play samples in the Classic99 build
 #ifdef CLASSIC99

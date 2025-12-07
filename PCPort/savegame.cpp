@@ -15,9 +15,6 @@ static char myFilename[16] = "";
 // externs
 extern int evidence_found[EV_MAX_STORED_EV];
 extern int people_found[PP_MAX];
-extern int f18a;
-extern int ams;
-extern int mute;
 
 void set_default_data() {
     if (myFilename[0] < ' ') {
@@ -34,9 +31,11 @@ void restore_saved_data() {
     vdpmemread(SAVE_GAME_VDP+10, (unsigned char*)myFilename, 15);
     myFilename[15] = '\0';
     
-    // skip location at 32
-
-    VDP_SET_ADDRESS(SAVE_GAME_VDP+34);
+    VDP_SET_ADDRESS(SAVE_GAME_VDP+31);
+    readerFlag=VDPRD();
+    // skip location number at 32
+    VDPRD();
+    VDPRD();
     mute=VDPRD();
     f18a=VDPRD();
     ams=VDPRD()<<8;
@@ -64,7 +63,8 @@ void store_saved_data() {
     vdpmemcpy(SAVE_GAME_VDP, (unsigned char*)&myPab, 10);
     vdpmemcpy(SAVE_GAME_VDP+10, (unsigned char*)myFilename, 15);
 
-    VDP_SET_ADDRESS_WRITE(SAVE_GAME_VDP+32);
+    VDP_SET_ADDRESS_WRITE(SAVE_GAME_VDP+31);
+    VDPWD(readerFlag&0xff);
     VDPWD(LOCATION_NUMBER>>8);
     VDPWD(LOCATION_NUMBER);
     VDPWD(mute&0xff);

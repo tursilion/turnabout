@@ -11,10 +11,6 @@
 #define MAP_ADDRESS2 0xe000
 #define ADR_DEFAULT_PAGE2 14
 
-// Some code to cache recent images in AMS
-extern int ams;
-extern int f18a;
-
 // Load image from cache. Return non-zero if we found it
 int loadFromCache(int idx);
 

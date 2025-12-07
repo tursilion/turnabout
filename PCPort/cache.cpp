@@ -5,6 +5,7 @@
 #include <vdp.h>
 #include <f18a.h>
 #include <string.h>
+#include "engine.h"
 #include "cache.h"
 #include "music.h"
 
@@ -62,8 +63,6 @@ int CacheHead = 0, CacheTail = 0;
 // we could use the real AMS hardware if the emulation gave us a way to SBO/SBZ, but that's ok.
 // later, if necessary.
 #include <malloc.h>
-
-extern int ams;     // number of pages detected - we'll simulate this
 
 #ifndef NULL
 #define NULL (0)
@@ -140,6 +139,7 @@ void vdpmemcpywithmusic(unsigned int vdpAdr, unsigned char *cpuAdr, unsigned int
     // store 256 bytes at a time, checking for music
     // music player and data must ALSO be in low memory!!
     samsMapPage(page, MAP_ADDRESS);
+    samsMapOn();
 #ifdef CLASSIC99
     if ((((int)cpuAdr&0xfff))+sz > 0x1000) debug_write("Warning: access past end of AMS page");
     if (!amsMapOn) debug_write("WARNING: memcpywithmusic but map is off!");
@@ -159,6 +159,7 @@ void vdpmemcpywithmusic(unsigned int vdpAdr, unsigned char *cpuAdr, unsigned int
             update_music();
             // update_music reset the AMS page, so get it back
             samsMapPage(page, MAP_ADDRESS);
+            samsMapOn();
         }
 #endif
     }
@@ -168,6 +169,7 @@ void vdpmemreadwithmusic(unsigned int vdpAdr, unsigned char *cpuAdr, unsigned in
     // read 256 bytes at a time, checking for music
     // music player and data must ALSO be in low memory!!
     samsMapPage(page, MAP_ADDRESS);
+    samsMapOn();
 #ifdef CLASSIC99
     if ((((int)cpuAdr&0xfff))+sz > 0x1000) debug_write("Warning: access past end of AMS page");
     if (!amsMapOn) debug_write("WARNING: memreadwithmusic but map is off!");
@@ -187,6 +189,7 @@ void vdpmemreadwithmusic(unsigned int vdpAdr, unsigned char *cpuAdr, unsigned in
             update_music();
             // update_music reset the AMS page, so get it back
             samsMapPage(page, MAP_ADDRESS);
+            samsMapOn();
         }
 #endif
     }

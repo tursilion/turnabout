@@ -53,7 +53,6 @@ SECTIONS {
     /* note because there's no memory section it's not warning about overrun */
     .textpost __upperpre_end :
     {
-        aid.o(.text .rodata)
         crossexam.o(.text .rodata)
         engine.o(.text .rodata)
         mybitmap.o(.text .rodata)
@@ -72,6 +71,7 @@ SECTIONS {
     {
         PROVIDE(stextlower = .);
 
+        aid.o(.text .rodata)
         Evidence.o(.text .rodata)
         cache.o(.text .rodata)
         investigation.o(.text .rodata)

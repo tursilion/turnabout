@@ -21,6 +21,14 @@ _start:
 # The registers will be located at the start of scratchpad memory 
   lwpi >8300
 
+# the current version of elf2ea5 (or my linker script) is not correctly
+# loading the initialized data segment.. BUT, it doesn't need to as its
+# directly loaded as one of the EA5 files. Still, that's a TODO BUG to
+# solve in that tool. In my test here, start was correct, size was right,
+# but location was just never populated, so other code was stored there
+# instead. Anyway, Phoenix doesn't need this, but I need to solve it
+# for the final solution (and carts will definitely need it to be right,
+# though I didn't change elf2cart). the BSS is correct.
 # Initialize data segment to known values
   li   r0, _init_data  # Point to data initialization structure
   mov  *r0+, r1        # R1 = Start of data section
@@ -29,10 +37,10 @@ _start:
   jeq  data_copy_end   # If size is 0, skip the loop
   
   # Copy loop for data initialization
-data_copy_top:
-  mov  *r2+, *r1+      
-  dect r3
-  jgt  data_copy_top
+#data_copy_top:
+#  mov  *r2+, *r1+      
+#  dect r3
+#  jgt  data_copy_top
 data_copy_end:
 
 # Initialize BSS segment to zeroes

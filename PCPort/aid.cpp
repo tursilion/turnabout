@@ -49,8 +49,10 @@ redraw:
         cputs("Cross-Examination:\n");
         cputs("P - Press for more info\n");
         cputs("O - Object (present evidence)\n\n");
-        cputs("M - toggle music. Current: ");
-        if (mute) cputs("Off\n\n"); else cputs("On\n\n");
+        cputs("M - toggle music. Now ");
+        if (mute) cputs("Off.\n"); else cputs("On.\n");
+        cputs("T - text mode. Now ");
+        if (readerFlag) cputs("On.\n\n"); else cputs("Off.\n\n");
     }
     
     wait_for_key_release();
@@ -69,6 +71,10 @@ redraw:
         if ((x == '1') || (x == '2')) break;
         if (x == 'M') {
             mute = !mute;
+            goto redraw;
+        }
+        if (x == 'T') {
+            readerFlag = !readerFlag;
             goto redraw;
         }
         if ((x >= 'A') && (x <= 'I')) {
@@ -108,9 +114,15 @@ redraw:
                 }
                 goto redraw;
             }
+            if (x == 'T') {
+                readerFlag = !readerFlag;
+                goto redraw;
+            }
         }
         if (check_reset()) {
-            reset_f18a();
+            if (f18a) {
+                reset_f18a();
+            }
             exit();
         }
     }

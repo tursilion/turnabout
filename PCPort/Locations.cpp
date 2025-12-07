@@ -230,7 +230,7 @@ const Story_t story[] =  {                       //  012345678901234567890123456
 {   EV_NONE,    29,     PP_TWILIGHT | CMD_NONE,     "Save the questions for my friend, just take the badge!"   },
 {   EV_NONE,    29,     PP_PHOENIX  | CMD_NONE,     "(This isn't helping me accept your request, you know...)"   },
 
-{ EV_T_NOQBADGE,30,     PP_PHOENIX  | CMD_NONE,     "Equestrian Attorney Badge. A heart shaped badge that gives all the privileges of an Equestrian defense attorney."  },
+{ EV_T_NOQBADGE,30,     PP_NONE     | CMD_NONE,     "Equestrian Attorney Badge. A heart shaped badge that gives all the privileges of an Equestrian defense attorney."  },
 { EV_E_BADGE,   19,     PP_PHOENIX  | CMD_ADDEV,    "A heart..."   },
 {   EV_NONE,    19,     PP_PHOENIX  | CMD_NONE,     "(I feel my masculinity going... going... gone.)"   },
 {   EV_NONE,    31,     PP_TWILIGHT | CMD_NONE,     "Come on, hurry up! Visiting hours are almost over."   },

@@ -290,18 +290,22 @@ int run_story() {
         }
 
         // draw out the text - abort loop on space bar
-        int len = (int)strlen(story[index].text);
-        for (int i=1; i<len; ++i) {
-            set_maxlen(i);
-            for (int j=0; j<2; ++j) {
-                draw_screen();
+        if (readerFlag) {
+            set_maxlen(32*7);
+        } else {
+            int len = (int)strlen(story[index].text);
+            for (int i=1; i<len; ++i) {
+                set_maxlen(i);
+                for (int j=0; j<2; ++j) {
+                    draw_screen();
+                }
+                kscanfast(0);
+                if (KSCAN_KEY == ' ') {
+                    break;
+                }
             }
-            kscanfast(0);
-            if (KSCAN_KEY == ' ') {
-                break;
-            }
+            set_maxlen(len);
         }
-        set_maxlen(len);
 
         // wait for non-space to be released, space is okay as it's not used below
         while ((KSCAN_KEY != 0xff) && (KSCAN_KEY != ' ')) {

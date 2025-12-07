@@ -6,6 +6,8 @@
 
 #include <vdp.h>
 #include <kscan.h>
+#include <conio.h>
+#include <sound.h>
 #include "engine.h"
 #include "investigate.h"
 #include "music.h"
@@ -29,6 +31,35 @@ const unsigned char arrowright[] = {
     0x20,0x10,0x08,0x04,0x08,0x10,0x20
 };
 
+// some audio for non-sighted players
+int audiofeedback(unsigned char x, unsigned char y) {
+    if (readerFlag) {
+        unsigned char pat[8];
+        // feedback position
+        SOUND(0xaf); SOUND(x>>3); SOUND(0xbf - (y>>3));
+
+        // under cursor feedback - just grab a cell near the center
+        // we are 32x32, that's 4 cells each way
+        x+=20;  // 16+4 for rounding to 8 pixel cell
+        y+=20;
+        x>>=3;  // divide by 8
+        y>>=3;
+        unsigned char c = vdpreadchar(gImage+(y<<5)+x); // get char
+        vdpmemread(gColor+(c<<3)+((y>>3)*0x800), pat, 8);
+        // add up the 4 bit colors
+        int total = 0;
+        for (int i=0; i<8; ++i) {
+            total+=(pat[i]>>4)+(pat[i]&0xf);
+        }
+        // value from 0-256 (or 240, really).
+        SOUND(0xcf); SOUND(total&0xff); SOUND(0xd0);
+
+        return 3;
+    }
+
+    return 0;
+}
+
 int investigate(int panning) {
     // our sprite will be 32x32, start roughly centered
     unsigned char x = 112;
@@ -50,9 +81,28 @@ int investigate(int panning) {
     // We know we're in bitmap already, so VDP R1 should be 0xE0, and we want 0xE3
     VDP_SET_REGISTER(1, 0xe3);
 
+    if (readerFlag) {
+        fastputwordwrap(0, 17, "Volume represents altitude, pitch represents left to right. Use 7 if you need to mute music.", 32*7);
+        if ((panning == EV_T_ILEFTOK) || (panning == EV_T_IBOTHOK)) {
+            cputsxy(0,20,"Press comma to pan left");
+        }
+        if ((panning == EV_T_IRIGHTOK) || (panning == EV_T_IBOTHOK)) {
+            cputsxy(0,21,"Press period to pan right");
+        }
+    }
+
     // remember to allow AID and INVENTORY
+    int audiotimeout = 0;
     for (;;) {
         music_delay();
+        if (readerFlag) {
+            if (audiotimeout) {
+                --audiotimeout;
+                if (audiotimeout == 0) {
+                    SOUND(0xbf); SOUND(0xdf);
+                }
+            }
+        }
 
         // a little wasteful to write the whole sprite table every frame, but that's okay
         sprite(0, 4, COLOR_MEDGREEN, y, x);
@@ -86,12 +136,16 @@ int investigate(int panning) {
 
         if ((ch == 'E') && (y > 4)) {
             y-=4;
+            audiotimeout = audiofeedback(x,y);
         } else if ((ch == 'X') && (y < 127-32-4)) {
             y+=4;
+            audiotimeout = audiofeedback(x,y);
         } else if ((ch == 'S') && (x > 4)) {
             x-=4;
+            audiotimeout = audiofeedback(x,y);
         } else if ((ch == 'D') && (x < 256-32-4)) {
             x+=4;
+            audiotimeout = audiofeedback(x,y);
         } else if (ch == ',') {
             if ((panning == EV_T_ILEFTOK) || (panning == EV_T_IBOTHOK)) {
                 ret = EV_I_SEARCH_LEFT;
@@ -115,6 +169,10 @@ int investigate(int panning) {
             VDP_SET_REGISTER(1, 0xe3);
             continue;
         }
+    }
+
+    if (readerFlag) {
+        SOUND(0xbf); SOUND(0xdf);
     }
 
     if (ret == 0) {

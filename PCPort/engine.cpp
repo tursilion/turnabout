@@ -47,6 +47,7 @@ int oldMaxtext = 32*7;
 int iName = -1;     // does NOT use PP_FIRST after it's set
 int oldName = -2;
 int f18a = 0;
+int readerFlag = 0; // does some minor updates to work better with screen readers
 #ifdef CLASSIC99
 int ams = 256;   // we can't actually detect AMS, but i need some for testing the cache code
 #else
@@ -57,6 +58,15 @@ struct PAB myPab = {0};
 
 // clear the text window (excluding name)
 void clear_text() {
+    if (readerFlag) {
+        // this is awkward, but these extra clears will reset the screen reader
+        // history so it doesn't drop words (takes 767 spaces)
+        // we are also likely okay to remove the name, so do all 8 lines
+        // This prevents the reader from catching JUST the name still on screen during a clear
+        vdpmemset(gImage+16*32, ' ', 8*32);
+        vdpmemset(gImage+16*32, ' ', 8*32);
+        vdpmemset(gImage+16*32, ' ', 32);   // the remainder
+    }
     vdpmemset(gImage+17*32, ' ', 7*32);
 }
 
@@ -143,8 +153,16 @@ void draw_screen() {
             cputsxy(0, 16, people[iName].name);
             reverse(0);
         }
+    } else if ((readerFlag) && (pString != pOldString)) {
+        // hide the name from subsequent texts so it reads better
+        vdpmemset(gImage+16*32, ' ', 32);
     }
+
     if ((maxtext != oldMaxtext) || (pString != pOldString))  {
+        if ((readerFlag)&&(maxtext < 32*7)) {
+            // always draw fully so screen reader doesn't stutter
+            maxtext = 32*7;
+        }
         oldMaxtext = maxtext;
         pOldString = pString;
         if (pString) {
@@ -277,11 +295,24 @@ void load_title() {
 // map a string of sprites (maximum 4) to the display
 void spritestring(const char*str, unsigned char col) {
     int i = 0;
+    int ch = 0;
+    const char* ostr = str;
     while (*str) {
+        if (*str != vdpreadchar(gSprite+(i<<2))) {
+            ch = 1;
+        }
         sprite(i++, *str, col, 16*8-6, i*8+27*8);
         ++str;
     }
     VDPWD(0xd0);    // no sprites after this!
+
+#if 0
+    // this is probably more annoying than it's worth
+    if ((ch)&&(readerFlag)) {
+        cputsxy(21,23,"Keys ");
+        cputs(ostr);
+    }
+#endif
 }
 
 void invert_image() {
@@ -606,7 +637,9 @@ repeataid:
 
     // set up a text mode screen for the loader
     fixed_image();  // fix F18A palette
-    reset_f18a();   // turn off GPU program
+    if (f18a) {
+        reset_f18a();   // turn off GPU program
+    }
     my_set_text();  // text mode has fewest requirements
     charsetlc();
     vdpmemset(gImage, ' ', 40*24);

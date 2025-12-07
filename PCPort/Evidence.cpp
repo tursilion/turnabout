@@ -1,8 +1,6 @@
 #include "structures.h"
 
-// Warning: put no variables in here, they won't be initialized
-
-Evidence_t evidence[EV_MAX_STORED_EV] = {
+const Evidence_t evidence[EV_MAX_STORED_EV] = {
     // 01234567890123456789012345678
     { "","" },   // EV_NONE
     { "Attorney Badge",	              /*0*/  "Nobody would believe I was an attorney without this."    },
