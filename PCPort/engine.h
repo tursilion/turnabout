@@ -32,6 +32,7 @@ void set_textout(const char *p);
 void set_name(unsigned int i);
 void set_maxlen(int i);
 void wait_for_key_release();
+void fastputwordwrap(int x, int y, const char *pWork, int cnt);
 unsigned char wrap_dsrlnk(struct PAB *pab, unsigned int vdp);
 
 #endif

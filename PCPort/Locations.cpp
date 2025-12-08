@@ -652,7 +652,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
 // first screen investigation
 {   EV_NONE  ,      9801,           PP_NONE     | CMD_NONE,         "BEGIN INVESTIGATION - use arrows to move box, press enter to inspect area. Press < or > to shift view."    },
 {EV_T_IN1_SC1,      9801,           PP_NONE     | CMD_NONE,         ""    },
-{   EV_NONE,        EV_T_IRIGHTOK,  PP_PHOENIX  | CMD_INVESTIGATE,  ""    },
+{   EV_NONE,        IV_CELL4|IV_CELL5|IV_RIGHTOK,  PP_PHOENIX  | CMD_INVESTIGATE,  ""    },
 {   EV_I_4,         EV_T_I11_4,     PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },
 {   EV_I_5,         EV_T_I11_5,     PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },
 {EV_I_SEARCH_RIGHT, EV_T_IN1_SC2,   PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },
@@ -708,7 +708,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
 
 // second screen investigation
 {EV_T_IN1_SC2,      9802,           PP_NONE     | CMD_NONE,         ""    },
-{   EV_NONE,        EV_T_IBOTHOK,   PP_PHOENIX  | CMD_INVESTIGATE,  ""    },
+{   EV_NONE,        IV_CELL5|IV_RIGHTOK|IV_LEFTOK,   PP_PHOENIX  | CMD_INVESTIGATE,  ""    },     // 4 or 5 will trigger, but 5 is the hint
 {   EV_I_4,         EV_T_I12_4,     PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },
 {   EV_I_5,         EV_T_I12_4,     PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },    // allow 4 or 5
 {EV_I_SEARCH_RIGHT, EV_T_IN1_SC3,   PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },
@@ -762,7 +762,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
 
 // third screen investigation
 {EV_T_IN1_SC3b,     9803,           PP_PHOENIX  | CMD_NONE,         ""    },
-{   EV_NONE,        EV_T_ILEFTOK,   PP_PHOENIX  | CMD_INVESTIGATE,  ""    },
+{   EV_NONE,        IV_CELL7|IV_LEFTOK,   PP_PHOENIX  | CMD_INVESTIGATE,  ""    },
 {   EV_I_7,         EV_T_I13_7,     PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },
 {EV_I_SEARCH_LEFT,  EV_T_IN1_SC2,   PP_PHOENIX  | CMD_JUMPIFSHOW,   ""    },
 {EV_T_I13_NOTHING,  9803,           PP_PHOENIX  | CMD_JUMP,         ""    }, 

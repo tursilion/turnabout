@@ -16,6 +16,9 @@
 
 #ifdef LOCATION_TYPE_INVESTIGATION
 
+static unsigned char spritecolor = COLOR_DKGREEN;
+static unsigned int originalmute;
+
 // just the hollow box, the solid we can just memset
 const unsigned char spritepats[] = {
     0xff,0x80,0x80,0x80,0x80,0x80,0x80,0x80,
@@ -30,41 +33,79 @@ const unsigned char arrowleft[] = {
 const unsigned char arrowright[] = {
     0x20,0x10,0x08,0x04,0x08,0x10,0x20
 };
+// cell centers for each - x,y (this is less memory than the code, in theory)
+// each cell is 64x64. Our cursor is 32x32, and we care most about it's center.
+// so the cell center is at 32x32, our hotspot for that would be 16,16
+const unsigned char cluepos[16] = {
+    16,16, 80,16, 144,16, 208,16,
+    16,80, 80,80, 144,80, 208,80
+};
 
-// some audio for non-sighted players
-int audiofeedback(unsigned char x, unsigned char y) {
-    if (readerFlag) {
-        unsigned char pat[8];
-        // feedback position
-        SOUND(0xaf); SOUND(x>>3); SOUND(0xbf - (y>>3));
-
-        // under cursor feedback - just grab a cell near the center
-        // we are 32x32, that's 4 cells each way
-        x+=20;  // 16+4 for rounding to 8 pixel cell
-        y+=20;
-        x>>=3;  // divide by 8
-        y>>=3;
-        unsigned char c = vdpreadchar(gImage+(y<<5)+x); // get char
-        vdpmemread(gColor+(c<<3)+((y>>3)*0x800), pat, 8);
-        // add up the 4 bit colors
-        int total = 0;
-        for (int i=0; i<8; ++i) {
-            total+=(pat[i]>>4)+(pat[i]&0xf);
+// some audio for non-sighted players and colors for sighted
+int feedback(unsigned char x, unsigned char y, int panflags) {
+    // calculate how far from the nearest clue we are as a nibble 0-15
+    // we can use that directly on sound and scale it for color
+    int closest = 15;
+    for (int i=0; i<8; ++i) {
+        if (panflags&(1<<i)) {
+            int rx,ry;
+            if (x>cluepos[i<<1]) {
+                rx=x-cluepos[i<<1];
+            } else {
+                rx=cluepos[i<<1]-x;
+            }
+            if (y>cluepos[(i<<1)+1]) {
+                ry=y-cluepos[(i<<1)+1];
+            } else {
+                ry=cluepos[(i<<1)+1]-y;
+            }
+            // true range is a^2+b^2=c^2, but I only care about relative
+            // so I'll do (a+b)/2, which will be very wrong (it's an average)
+            // max value will be (255+127)/2 = 191. I want most of far away
+            // to clamp out at 15 and only change as you get close, so we'll
+            // divide a little further and just tweak it by hand.
+            rx = (rx+ry)>>2;
+            if (rx < closest) closest=rx;
         }
-        // value from 0-256 (or 240, really).
-        SOUND(0xcf); SOUND(total&0xff); SOUND(0xd0);
-
-        return 3;
     }
 
-    return 0;
+    // update sounds
+    if (readerFlag) {
+        unsigned char pat[8];
+        // feedback position on channel 2
+        SOUND(0xaf); SOUND(x>>3); SOUND(0xbf - (y>>3));
+        // feedback range on noise channel
+        SOUND(0xe2); SOUND(0xf0+closest);
+    }
+
+    // update color
+    if (closest < 8) {
+        spritecolor = COLOR_LTGREEN;
+    } else if (closest < 16) {
+        spritecolor = COLOR_MEDGREEN;
+    } else {
+        spritecolor = COLOR_DKGREEN;
+    }
+
+    return 3;
 }
 
-int investigate(int panning) {
+// panflags are IV_xxx bitflags
+// IV_CELL0 through IV_CELL7 indicate clues are available for hints
+// IV_LEFTOK and IV_RIGHTOK indicate the left and right options are available
+// Cells are numbered 0-3 across, then 4 to 7 under that
+int investigate(int panflags) {
     // our sprite will be 32x32, start roughly centered
     unsigned char x = 112;
     unsigned char y = 48;
     int ret = 0;
+
+    // adjust music mute for reader mode
+    if (readerFlag) {
+        originalmute = mute;
+        mute = 1;
+        stop_music();
+    }
 
     // turn off all sprites (overwrite first four)
     vdpmemset(gSprite, 0xd0, 16);
@@ -82,36 +123,36 @@ int investigate(int panning) {
     VDP_SET_REGISTER(1, 0xe3);
 
     if (readerFlag) {
-        fastputwordwrap(0, 17, "Volume represents altitude, pitch represents left to right. Use 7 if you need to mute music.", 32*7);
-        if ((panning == EV_T_ILEFTOK) || (panning == EV_T_IBOTHOK)) {
+        fastputwordwrap(0, 17, "Volume represents altitude, pitch represents left to right. Listen for clue noise.", 32*7);
+        if (panflags & IV_LEFTOK) {
             cputsxy(0,20,"Press comma to pan left");
         }
-        if ((panning == EV_T_IRIGHTOK) || (panning == EV_T_IBOTHOK)) {
+        if (panflags & IV_RIGHTOK) {
             cputsxy(0,21,"Press period to pan right");
         }
     }
 
     // remember to allow AID and INVENTORY
-    int audiotimeout = 0;
+    int feedbacktimeout = 0;
     for (;;) {
         music_delay();
-        if (readerFlag) {
-            if (audiotimeout) {
-                --audiotimeout;
-                if (audiotimeout == 0) {
-                    SOUND(0xbf); SOUND(0xdf);
+        if (feedbacktimeout) {
+            --feedbacktimeout;
+            if (feedbacktimeout == 0) {
+                if (readerFlag) {
+                    SOUND(0xbf);
                 }
             }
         }
 
         // a little wasteful to write the whole sprite table every frame, but that's okay
-        sprite(0, 4, COLOR_MEDGREEN, y, x);
-        if ((panning == EV_T_ILEFTOK) || (panning == EV_T_IBOTHOK)) {
+        sprite(0, 4, spritecolor, y, x);
+        if (panflags & IV_LEFTOK) {
             sprite(1, 12, COLOR_LTBLUE, 48, 0);
         } else {
             vdpchar(gSprite+4,0xd1);
         }
-        if ((panning == EV_T_IRIGHTOK) || (panning == EV_T_IBOTHOK)) {
+        if (panflags & IV_RIGHTOK) {
             sprite(2, 16, COLOR_LTBLUE, 48, 256-16);
         } else {
             vdpchar(gSprite+8, 0xd1);
@@ -136,23 +177,23 @@ int investigate(int panning) {
 
         if ((ch == 'E') && (y > 4)) {
             y-=4;
-            audiotimeout = audiofeedback(x,y);
+            feedbacktimeout = feedback(x,y,panflags);
         } else if ((ch == 'X') && (y < 127-32-4)) {
             y+=4;
-            audiotimeout = audiofeedback(x,y);
+            feedbacktimeout = feedback(x,y,panflags);
         } else if ((ch == 'S') && (x > 4)) {
             x-=4;
-            audiotimeout = audiofeedback(x,y);
+            feedbacktimeout = feedback(x,y,panflags);
         } else if ((ch == 'D') && (x < 256-32-4)) {
             x+=4;
-            audiotimeout = audiofeedback(x,y);
+            feedbacktimeout = feedback(x,y,panflags);
         } else if (ch == ',') {
-            if ((panning == EV_T_ILEFTOK) || (panning == EV_T_IBOTHOK)) {
+            if (panflags & IV_LEFTOK) {
                 ret = EV_I_SEARCH_LEFT;
                 break;
             }
         } else if (ch =='.') {
-            if ((panning == EV_T_IRIGHTOK) || (panning == EV_T_IBOTHOK)) {
+            if (panflags & IV_RIGHTOK) {
                 ret = EV_I_SEARCH_RIGHT;
                 break;
             }
@@ -172,7 +213,7 @@ int investigate(int panning) {
     }
 
     if (readerFlag) {
-        SOUND(0xbf); SOUND(0xdf);
+        SOUND(0xbf); SOUND(0xff);
     }
 
     if (ret == 0) {
@@ -225,6 +266,11 @@ int investigate(int panning) {
 
     vdpchar(gSprite, 0xd0);
     VDP_SET_REGISTER(1, 0xe0);
+
+    // restore mute
+    if (readerFlag) {
+        mute = originalmute;
+    }
 
     return ret;
 }

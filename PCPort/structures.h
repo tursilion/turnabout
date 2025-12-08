@@ -33,6 +33,18 @@ typedef struct {
     const char *description;   /* Text shown when examined */
 } Evidence_t;
 
+// investigation bitflags - cells indicate which cells have evidence for feedback
+#define IV_CELL0    0x0001
+#define IV_CELL1    0x0002
+#define IV_CELL2    0x0004
+#define IV_CELL3    0x0008
+#define IV_CELL4    0x0010
+#define IV_CELL5    0x0020
+#define IV_CELL6    0x0040
+#define IV_CELL7    0x0080
+#define IV_LEFTOK   0x0100
+#define IV_RIGHTOK  0x0200 
+
 // evidence - remember anything dealing with people needs to be UNSIGNED
 enum {
     EV_NONE,
@@ -115,10 +127,6 @@ enum {
     EV_T_FWORK,
     EV_T_INVEST,
     EV_T_DARK,
-
-    EV_T_ILEFTOK,       // can move left from here
-    EV_T_IRIGHTOK,      // can move right from here
-    EV_T_IBOTHOK,       // both directions are okay from here
 
     EV_T_IN1_SC1,       // investigation 1 screen 1
     EV_T_I11_4,         // select square 4
