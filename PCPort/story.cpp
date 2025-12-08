@@ -1,6 +1,7 @@
 // This containts the location type ifdef, so needs to be outside it
 #include "structures.h"
 
+// They all ended up being LOCATION_TYPE_STORY, but that's okay, we can still leave it out in the loader ;)
 #ifdef LOCATION_TYPE_STORY
 // we only need to process the contents of story[]. When we reach CMD_ENDSTORY, the evidence field tells us who to load
 // when changing location, be sure to draw black and stop music
@@ -108,6 +109,17 @@ redraw:
     prompts[newid].isread=1;
     change_index(prompts[newid].tagid);
 }
+
+#ifdef LOCATION_TYPE_CROSSEXAM
+// additional data and functions for crossexamination
+int iTestimony[16];         // up to 16 testimonies - index into story
+int maxTestimony = 0;      // number of testimonies loaded
+int currentTestimony = 0;   // testimony we are looking at
+int testimonyMode = 0;      // 0 = running story, 1 = giving testimony, 2 = cross examination
+int badObject = 0;          // tag for bad objection
+int goodObject = 0;         // tag for good objection
+int postTest = 0;           // tag for out of testimony
+#endif
 
 // returns the next location to run
 int run_story() {
@@ -244,6 +256,57 @@ int run_story() {
                 conversation();
                 continue;
 
+#ifdef LOCATION_TYPE_CROSSEXAM
+            case CMD_CLEARTEST   : // clear testimony array - testimony lines should NOT branch
+                maxTestimony = 0;
+                currentTestimony = 0;
+                testimonyMode = 0;
+                ++index;
+                continue;
+
+            case CMD_ADDTEST     : // add this line to testimony and go to next line - current is set to the new line
+                // make sure it's not already in there
+                for (int i = 0; i<maxTestimony; ++i) {
+                    if (iTestimony[i] == index) {
+                        // it's already in there
+                        currentTestimony = i;
+                        ++index;
+                        continue;
+                    }
+                }
+                currentTestimony = maxTestimony;
+                iTestimony[maxTestimony++] = index;
+                ++index;
+                continue;
+
+            case CMD_BADOBJECT  : // set the target of a bad objection to the tag in evidence
+                badObject = story[index].evidence;
+                ++index;
+                continue;
+
+            case CMD_GOODOBJECT  : // set the target of a good objection to the tag in evidence
+                goodObject = story[index].evidence;
+                ++index;
+                continue;
+
+            case CMD_STARTTEST     : // playback testimony as registered - last line MUST have CMD_ENDTEST
+                // make sure there is at least ONE, we don't check!
+                currentTestimony = 0;
+                testimonyMode = 1;  // giving testimony
+                postTest = story[index].evidence;       // where to continue when we fall out
+                index = iTestimony[currentTestimony];
+                continue;
+
+            case CMD_STARTCROSS  : // start crossexamination at first testimony line
+                currentTestimony = 0;
+                // fallthrough
+            case CMD_CONCROSS    : // continue cross examination at current line
+                testimonyMode = 2;  // cross examination
+                postTest = story[index].evidence;       // where to loop for hint if we fall out
+                index = iTestimony[currentTestimony];
+                continue;
+#endif
+
 #ifdef LOCATION_TYPE_INVESTIGATION
             case CMD_INVESTIGATE:
                 // assumes image is already loaded. Returns EV_0_1 through EV_I_7 in the shownEvidence field
@@ -325,6 +388,16 @@ int run_story() {
                     spritestring("N", COLOR_DKGREEN);
                 }
 #else
+#ifdef LOCATION_TYPE_CROSSEXAM
+                if (testimonyMode == 2) {
+                    if (cnt%120 == 0) {
+                        // set up the sprite string
+                        spritestring("NIPO", COLOR_WHITE);
+                    } else {
+                        spritestring("NIPO", COLOR_DKGREEN);
+                    }
+                } else
+#endif
                 if (cnt%120 == 0) {
                     // set up the sprite string
                     spritestring("NI", COLOR_WHITE);
@@ -342,9 +415,35 @@ int run_story() {
 
             // act on 'next' or 'inventory'
             if (ch == 'N') {
+#ifdef LOCATION_TYPE_CROSSEXAM
+                if (testimonyMode != 0) {
+                    // the next index comes from the testimony array instead
+                    ++currentTestimony;
+                    if (currentTestimony < maxTestimony) {
+                        index = iTestimony[currentTestimony];
+                    } else {
+                        index = postTest;
+                    }
+                } else
+#endif
                 ++index;
                 break;
             }
+
+#ifdef LOCATION_TYPE_CROSSEXAM
+            if (testimonyMode == 2) {
+                // cross examination only
+                if (ch == 'P') {
+                    // press for more information - ends the mode and branches to the evidence tag
+                    testimonyMode = 0;
+                    change_index(story[index].evidence);
+                    break;
+                }
+
+                if (ch == 'O') {
+                    // object! ends the mode and branches to ... um...
+                }
+#endif
 
             // no inventory on location 0
 #ifndef LOCATION_IS_0

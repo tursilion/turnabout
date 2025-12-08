@@ -36,9 +36,6 @@
     <ClCompile Include="investigation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="crossexam.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

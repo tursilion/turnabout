@@ -1,2 +1,0 @@
-#ifdef LOCATION_TYPE_CROSSEXAM
-#endif

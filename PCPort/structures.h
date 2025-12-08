@@ -7,7 +7,7 @@
 #ifdef CLASSIC99
 // define what we are building for here - this will be external on the build line for the makefile builds
 //#define LOCATION_IS_LOADER
-#define LOCATION_IS_0
+//#define LOCATION_IS_0
 //#define LOCATION_IS_1
 //#define LOCATION_IS_2
 //#define LOCATION_IS_3
@@ -17,6 +17,7 @@
 //#define LOCATION_IS_10
 //#define LOCATION_IS_11
 //#define LOCATION_IS_12
+#define LOCATION_IS_13
 #endif
 
 // some types
@@ -168,6 +169,22 @@ enum {
     EV_T_3RDBOLT,
     EV_T_SUREBOLT,
 
+    // apple bloom testimony
+    EV_P_ZECORA,        // push on zecora line
+    EV_P_WALKHOME,      // push on walk home line
+    EV_P_LIGHT840,      // push on lightning at 8:40 line
+    EV_P_WENTHOME,      // push on went home line
+
+    EV_E_BLOOMTEST,     // end of testimony
+    EV_E_BLOOMCROSS,    // end during cross examination
+
+    EV_O_BADBLOOM,      // bad objection
+    EV_O_BADBLOOM2,     // bad objection
+    EV_O_GOODBLOOM,     // good objection
+
+    EV_T_BLOOMTEST,     // jump target post testimony
+    EV_T_BLOOMCROSS,    // jump target if cross examine wraps around
+
 
     EV_MAX,
 
@@ -187,7 +204,7 @@ enum {
     PP_FLUTTERSHY = 0x8800,         // Pegasus friend of Rainbow Dash. Witness who lives near the Everfree Forest.
     PP_TRIXIE     = 0x8900,         // The Great and Powerful Trixie, unicorn magician and prosecutor. Has a grudge against Twilight.
     PP_JUDGE      = 0x8a00,         // The Judge also seems to have been called! He's fair, though easily confused.
-    PP_APPLEBLOOM = 0x8b00,         // Earth pony child, Cutie Mark Crusader. Witness who was in the Everfree Forest the night of the crime.
+    PP_BLOOM      = 0x8b00,         // Earth pony child, Cutie Mark Crusader. Witness who was in the Everfree Forest the night of the crime.
     PP_PINKIE     = 0x8c00,         // Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash.
     PP_SONATA     = 0x8d00,         // Unicorn manager of Ace Swift. Resembles Mia from my own realm.
     
@@ -241,6 +258,12 @@ enum {
     CMD_FLASH       , // draw a white flash and play boom - ignore frame
     CMD_BLACK       , // draw a black screen - ignore frame (but clear last frame so we know to load again)
     CMD_WHITE       , // draw a white screen with inverse crash sound
+
+    // Testimony commands allowed as jump targets (don't use evidence field otherwise)
+    CMD_CLEARTEST   , // clear testimony array - testimony lines should NOT branch
+    CMD_STARTTEST   , // playback testimony as registered - last line MUST have CMD_ENDTEST
+    CMD_STARTCROSS  , // start crossexamination at first testimony line
+    CMD_CONCROSS    , // continue cross examination at current line
                     
     CMD_SFXSTARTLIST, // find SFXs
 
@@ -298,6 +321,12 @@ enum {
     CMD_ENDSTORY    , // end this story sequence and return to main loop. Story stores new location in evidence field and will jump to it.
                         
     CMD_STOPMUS     , // stop music
+
+    CMD_ADDTEST     , // add this line to testimony and go to next line - current is set to the new line
+    CMD_BADOBJECT   , // set the target for bad objection to the tag in evidence
+    CMD_GOODOBJECT  , // set the target for good objection to the tag in evidence
+    CMD_OBJECTHERE  , // this is the line to object on
+    CMD_ENDTEST     , // no more testimony available - target tag is branched to (change between testimony and cross examine)
 
     // downloaded - do not reorder the song list!!
     CMD_MUSTARTLIST , // just to find the music block
@@ -520,11 +549,18 @@ extern int nStorySize;
 // AppleBloom's testimony
 #define LOCATION_NUMBER 13
 #define LOCATION_TYPE_STORY
+#define LOCATION_TYPE_CROSSEXAM
 // sfx
+#define HAS_BOOMSFX
+#define HAS_FALLSFX
+// voices
+#define HAS_VOICE
+#define HAS_TRIXIEHOLDIT
+#define HAS_TRIXIEOBJ
+#define HAS_PHOENIXHOLDIT
+#define HAS_PHOENIXOBJ
 // music
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
-#define LAST_LOCATION
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
+
 #endif
 
 #ifdef LOCATION_IS_14
@@ -533,6 +569,9 @@ extern int nStorySize;
 #define LOCATION_TYPE_CROSSEXAM
 // sfx
 // music
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
+#define LAST_LOCATION
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
 #endif
 
 #ifdef LOCATION_IS_15

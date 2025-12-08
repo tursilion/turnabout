@@ -375,7 +375,7 @@ int main(int argc, char **argv)
         
         // memsz can be larger than filesz to accomodate bss - we've already zeroed so we're good
            
-        if ((proghdr->p_paddr >= 0xa000) && (proghdr->p_paddr <= 0xffff)) {
+        if ((proghdr->p_paddr >= 0xa000) && (proghdr->p_paddr <= 0xffff) && (proghdr->p_filesz > 0)) {
             if (proghdr->p_paddr+proghdr->p_filesz > 0xffff) {
                 printf("Error: %d in high bank is too large: 0x%04X - 0x%X\n", i, proghdr->p_paddr, proghdr->p_paddr+proghdr->p_filesz);
                 return 1;
@@ -395,7 +395,7 @@ int main(int argc, char **argv)
             if (proghdr->p_paddr+proghdr->p_filesz > lastUpper) {
                 lastUpper = proghdr->p_paddr+proghdr->p_filesz;
             }
-        } else if ((proghdr->p_paddr >= 0x2000) && (proghdr->p_paddr <= 0x3fff)) {
+        } else if ((proghdr->p_paddr >= 0x2000) && (proghdr->p_paddr <= 0x3fff) && (proghdr->p_filesz > 0)) {
             if (proghdr->p_paddr+proghdr->p_filesz > 0x3fff) {
                 printf("Error: %d in low bank is too large: 0x%04X - 0x%X\n", i, proghdr->p_paddr, proghdr->p_paddr+proghdr->p_filesz);
                 return 1;

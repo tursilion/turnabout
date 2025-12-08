@@ -143,7 +143,6 @@
   <ItemGroup>
     <ClCompile Include="aid.cpp" />
     <ClCompile Include="cache.cpp" />
-    <ClCompile Include="crossexam.cpp" />
     <ClCompile Include="Evidence.cpp" />
     <ClCompile Include="inventory.cpp" />
     <ClCompile Include="investigation.cpp" />

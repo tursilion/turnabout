@@ -2,7 +2,7 @@
 
 const Evidence_t evidence[EV_MAX_STORED_EV] = {
     // 01234567890123456789012345678
-    { "","" },   // EV_NONE
+    { "","" },   // EV_NONE               //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
     { "Attorney Badge",	              /*0*/  "Nobody would believe I was an attorney without this."    },
     { "Magatama",	                  /*1*/  "A gift from Maya. Allows me to see if anyone is hiding any deep secret in their heart from me."    },
     { "The Fillies Guide to Ponies",  /*15*/ "Earth Ponies founded Land, Unicorns use magic, Pegasi soar through the air."    },
@@ -14,7 +14,7 @@ const Evidence_t evidence[EV_MAX_STORED_EV] = {
     { "Photo #2",	                  /*90*/ "An imprint of what seems to be something long. Next to it some markings indicating someone had scuffled the dirt around."    },
     { "Brown Feather",	              /*96*/ "A suspicious brown feather that doesn't belong to a bird or a pony."    },
     { "Ace Swift Autopsy Report",	  /*146*/ "Estimated time of death: 8:30pm - 9:00pm. Died instantly due to severe electrocution. Burn mark on the back of the neck: unknown cause."    },
-    { "Diagram of Everfree Forest",	  /*155*/ "Bolt 1 struck at 8:40PM where victim was found. Bolt 2 unknown but struck at 8:50. Bolt 3 took down a tree near the edge of the clearing at 11:35PM."    },
+    { "Diagram of Everfree Forest",	  /*155*/ "Bolt 1 struck at 8:40PM where victim was found. Bolt 2 unknown but struck at 8:50. Bolt 3 took down a tree near the eastern edge of the clearing at 11:35PM."    },
     { "Weather Schedule",	          /*175*/ "Rainbow Dash scheduled to create a thunder storm at 3:00PM on the eastern side of Ponyville."    },
     { "Missing Cloud Report",	      /*179*/ "A cloud Rainbow Dash was in charge of disappeared at 4:00PM on the night of the murder, and was found above the Everfree Forest Clearing."    },
     { "Embarrassing Pictures",	      /*186*/ "Several pictures of Rainbow Dash... Why in her right mind would she be doing this...? Photos found in a bag on the victim."    },

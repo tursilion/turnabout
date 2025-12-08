@@ -53,7 +53,6 @@ SECTIONS {
     /* note because there's no memory section it's not warning about overrun */
     .textpost __upperpre_end :
     {
-        crossexam.o(.text .rodata)
         engine.o(.text .rodata)
         mybitmap.o(.text .rodata)
         inventory.o(.text .rodata)
