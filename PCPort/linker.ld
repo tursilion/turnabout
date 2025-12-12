@@ -53,7 +53,6 @@ SECTIONS {
     /* note because there's no memory section it's not warning about overrun */
     .textpost __upperpre_end :
     {
-        engine.o(.text .rodata)
         mybitmap.o(.text .rodata)
         inventory.o(.text .rodata)
         Locations.o(.text .rodata)
@@ -70,6 +69,7 @@ SECTIONS {
     {
         PROVIDE(stextlower = .);
 
+        engine.o(.text .rodata)
         aid.o(.text .rodata)
         Evidence.o(.text .rodata)
         cache.o(.text .rodata)

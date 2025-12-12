@@ -261,35 +261,40 @@ int run_story() {
                 maxTestimony = 0;
                 currentTestimony = 0;
                 testimonyMode = 0;
-                ++index;
-                continue;
+                cmdID = CMD_NONE;  // force the code below to skip ahead if it's empty text
+                break;
 
             case CMD_ADDTEST     : // add this line to testimony and go to next line - current is set to the new line
-                // make sure it's not already in there
-                for (int i = 0; i<maxTestimony; ++i) {
-                    if (iTestimony[i] == index) {
-                        // it's already in there
-                        currentTestimony = i;
-                        ++index;
-                        continue;
+                if (testimonyMode == 0) {
+                    // make sure it's not already in there
+                    for (int i = 0; i<maxTestimony; ++i) {
+                        if (iTestimony[i] == index) {
+                            // it's already in there
+                            currentTestimony = i;
+                            ++index;
+                            continue;
+                        }
                     }
+                    currentTestimony = maxTestimony;
+                    iTestimony[maxTestimony++] = index;
+                    ++index;
+                    continue;
+                } else {
+                    // treat it as a story-like line
+                    break;
                 }
-                currentTestimony = maxTestimony;
-                iTestimony[maxTestimony++] = index;
-                ++index;
-                continue;
 
             case CMD_BADOBJECT  : // set the target of a bad objection to the tag in evidence
                 badObject = story[index].evidence;
-                ++index;
-                continue;
+                cmdID = CMD_NONE;  // force the code below to skip ahead if it's empty text
+                break;
 
             case CMD_GOODOBJECT  : // set the target of a good objection to the tag in evidence
                 goodObject = story[index].evidence;
-                ++index;
-                continue;
+                cmdID = CMD_NONE;  // force the code below to skip ahead if it's empty text
+                break;
 
-            case CMD_STARTTEST     : // playback testimony as registered - last line MUST have CMD_ENDTEST
+            case CMD_STARTTEST     : // playback testimony as registered - evidence is tag to go to after testimony
                 // make sure there is at least ONE, we don't check!
                 currentTestimony = 0;
                 testimonyMode = 1;  // giving testimony
@@ -299,11 +304,23 @@ int run_story() {
 
             case CMD_STARTCROSS  : // start crossexamination at first testimony line
                 currentTestimony = 0;
-                // fallthrough
-            case CMD_CONCROSS    : // continue cross examination at current line
                 testimonyMode = 2;  // cross examination
                 postTest = story[index].evidence;       // where to loop for hint if we fall out
                 index = iTestimony[currentTestimony];
+                continue;
+
+            case CMD_CONCROSS    : // continue cross examination at current line
+                testimonyMode = 2;  // cross examination
+                postTest = story[index].evidence;       // where to loop for hint if we fall out
+                ++currentTestimony;
+                if (currentTestimony < maxTestimony) {
+                    // these are actual indexes, saved inline
+                    index = iTestimony[currentTestimony];
+                } else {
+                    // but these are labels
+                    change_index(postTest);
+                    testimonyMode = 0;
+                }
                 continue;
 #endif
 
@@ -342,7 +359,16 @@ int run_story() {
         }
 
         // update name and text
-        set_name(story[index].cmdwho & 0xff00);
+
+#ifdef LOCATION_TYPE_CROSSEXAM
+        if (testimonyMode == 1) {
+            // replace name with 'TESTIMONY'
+            set_name(PP_TESTIMONY);
+        } else 
+#endif
+        {
+            set_name(story[index].cmdwho & 0xff00);
+        }
         set_textout(story[index].text);
 
         // Now after all that, if we are on CMD_NONE and there is no text, then proceed
@@ -420,9 +446,12 @@ int run_story() {
                     // the next index comes from the testimony array instead
                     ++currentTestimony;
                     if (currentTestimony < maxTestimony) {
+                        // these are actual indexes, saved inline
                         index = iTestimony[currentTestimony];
                     } else {
-                        index = postTest;
+                        // but these are labels
+                        change_index(postTest);
+                        testimonyMode = 0;
                     }
                 } else
 #endif
@@ -441,8 +470,16 @@ int run_story() {
                 }
 
                 if (ch == 'O') {
-                    // object! ends the mode and branches to ... um...
+                    // object! Check if this is the 'correct' place to object, and if yes branch to goodObject, otherwise badObject
+                    testimonyMode = 0;
+                    if (cmdID == CMD_OBJECTHERE) {
+                        change_index(goodObject);
+                    } else {
+                        change_index(badObject);
+                    }
+                    break;
                 }
+            }
 #endif
 
             // no inventory on location 0

@@ -4,7 +4,15 @@
 
 // people are just special evidence, but sometimes we need them separately
 // Remember names are stored in the MSB and or'd with 0x80
-const Evidence_t people[PP_MAX] = {
+
+// I don't know why, but the Classic99 build HATES these being const...
+// the TI version NEEDS it, else the data is doubled up. We can't afford the RAM.
+// The PC can, so screw it. ;)
+
+#ifndef CLASSIC99
+const
+#endif
+Evidence_t people[PP_MAX] = {
     { "                ",           ""    },    // PP_NONE
     { "(Unknown)",	         /*0*/	""    },    // PP_UNKNOWN
 
@@ -21,6 +29,8 @@ const Evidence_t people[PP_MAX] = {
     { "Apple Bloom",	    /*157*/	"Earth pony child, Cutie Mark Crusader. Witness who was in the Everfree Forest the night of the crime."      },
     { "Pinkie Pie",	        /*211*/	"Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash."      },
     { "Sonata",	            /*287*/	"Unicorn manager of Ace Swift. Resembles Mia from my own realm."        },
-    { "Edgeworth",                  "Prosecutor from my realm."     }
+
+    { "Edgeworth",                  ""     },
+    { "TESTIMONY",                  ""     }
 
 };

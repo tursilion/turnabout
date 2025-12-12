@@ -175,9 +175,6 @@ enum {
     EV_P_LIGHT840,      // push on lightning at 8:40 line
     EV_P_WENTHOME,      // push on went home line
 
-    EV_E_BLOOMTEST,     // end of testimony
-    EV_E_BLOOMCROSS,    // end during cross examination
-
     EV_O_BADBLOOM,      // bad objection
     EV_O_BADBLOOM2,     // bad objection
     EV_O_GOODBLOOM,     // good objection
@@ -185,6 +182,10 @@ enum {
     EV_T_BLOOMTEST,     // jump target post testimony
     EV_T_BLOOMCROSS,    // jump target if cross examine wraps around
 
+    EV_T_PRESSBLOOM,
+    EV_T_NOPRESSBL,
+    EV_T_WHATCUTIE,
+    EV_T_NOCUTIE,
 
     EV_MAX,
 
@@ -209,7 +210,8 @@ enum {
     PP_SONATA     = 0x8d00,         // Unicorn manager of Ace Swift. Resembles Mia from my own realm.
     
     PP_EDGEWORTH  = 0x8e00,         // never used in game, but we need it for his name in a flashback
-    PP_LAST       = 0x8f00
+    PP_TESTIMONY  = 0x8f00,         // used for the name only
+    PP_LAST       = 0x9000
 };
 #define PP_MAX ((PP_LAST>>8)-(PP_FIRST>>8))
 #define PP_NONE PP_FIRST
@@ -259,11 +261,9 @@ enum {
     CMD_BLACK       , // draw a black screen - ignore frame (but clear last frame so we know to load again)
     CMD_WHITE       , // draw a white screen with inverse crash sound
 
-    // Testimony commands allowed as jump targets (don't use evidence field otherwise)
+    // Testimony commands allowed as jump targets (they don't use evidence field otherwise)
     CMD_CLEARTEST   , // clear testimony array - testimony lines should NOT branch
-    CMD_STARTTEST   , // playback testimony as registered - last line MUST have CMD_ENDTEST
-    CMD_STARTCROSS  , // start crossexamination at first testimony line
-    CMD_CONCROSS    , // continue cross examination at current line
+    CMD_OBJECTHERE  , // this is the line to object on
                     
     CMD_SFXSTARTLIST, // find SFXs
 
@@ -325,8 +325,9 @@ enum {
     CMD_ADDTEST     , // add this line to testimony and go to next line - current is set to the new line
     CMD_BADOBJECT   , // set the target for bad objection to the tag in evidence
     CMD_GOODOBJECT  , // set the target for good objection to the tag in evidence
-    CMD_OBJECTHERE  , // this is the line to object on
-    CMD_ENDTEST     , // no more testimony available - target tag is branched to (change between testimony and cross examine)
+    CMD_STARTTEST   , // playback testimony as registered - post-testimony tag in evidence
+    CMD_STARTCROSS  , // start crossexamination at first testimony line, post-cross tag in evidence
+    CMD_CONCROSS    , // continue cross examination at current line, post-cross tag in evidence
 
     // downloaded - do not reorder the song list!!
     CMD_MUSTARTLIST , // just to find the music block

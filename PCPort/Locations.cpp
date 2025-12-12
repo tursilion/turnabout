@@ -1294,13 +1294,19 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    159,    PP_BLOOM   | CMD_NONE,  "What are you talking about?! It does matter!"  },
 {   EV_NONE,    157,    PP_BLOOM   | CMD_NONE,  "As a Cutie Mark Crusader, it's my duty to crusade my talents everywhere so I can earn my cutie mark!"  },
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "Even if one-third of the team is here!"  },
-{   EV_NONE,    132,    PP_PHOENIX | CMD_NONE,  "Ugh... I'm so confused. What on earth is a cutie mark? Is it the nickname of her boyfriend \"Mark\" or something?"  },
+
+{ EV_T_WHATCUTIE,160,   PP_BLOOM   | CMD_ADDPROMPT, "What is a 'cutie mark'?"     },
+{ EV_T_NOCUTIE,  160,   PP_BLOOM   | CMD_ADDPROMPT, "Continue..."    },
+{   EV_NONE,     160,   PP_BLOOM   | CMD_SELPROMPT, ""  },
+
+{EV_T_WHATCUTIE,132,    PP_PHOENIX | CMD_NONE,  "Ugh... I'm so confused. What on earth is a cutie mark? Is it the nickname of her boyfriend \"Mark\" or something?"  },
 {   EV_NONE,    131,    PP_TWILIGHT| CMD_NONE,  "A cutie mark is a symbol ponies earn when we find our special talent."  },
 {   EV_NONE,    131,    PP_TWILIGHT| CMD_NONE,  "For example, the stars on mine represent my expertise in magic and love for stargazing."  },
 {   EV_NONE,    131,    PP_PHOENIX | CMD_NONE,  "That's just... strange."  },
 {   EV_NONE,    136,    PP_PHOENIX | CMD_NONE,  "(Actually, I wonder what my cutie mark would be?)"  },
 {   EV_NONE,    149,    PP_PHOENIX | CMD_NONE,  "(Maybe a hand pointing an index finger filled with righteous justice! That would be amazing!)"  },
-{   EV_NONE,    144,    PP_TRIXIE  | CMD_NONE,  "Listen... \"sweetie\". Your job is to testify just like Trixie told you to earlier."  },
+                          
+{ EV_T_NOCUTIE, 144,    PP_TRIXIE  | CMD_NONE,  "Listen... \"sweetie\". Your job is to testify just like Trixie told you to earlier."  },
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "Hey! What are you?"  },
 {   EV_NONE,    128,    PP_PHOENIX | CMD_NONE,  "Huh? Me?"  },
 {   EV_NONE,    135,    PP_TRIXIE  | CMD_NONE,  "STOP IGNORING THE GREAT AND POWERFUL TRIXIE!"  },
@@ -1309,13 +1315,13 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "A human, huh? Is that your job?"  },
 {   EV_NONE,    128,    PP_PHOENIX | CMD_NONE,  "No, that's my species. I'm a lawyer, if you're wondering what my job is."  },
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "A lawyer? What's a lawyer?"  },
-{   EV_NONE,    128,    PP_PHOENIX | CMD_NONE,  "A lawyer argues, points, and theorizes to defend someone in trouble."  },
+{   EV_NONE,    128,    PP_PHOENIX | CMD_NONE,  "A lawyer argues points, and theorizes to defend someone in trouble."  },
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "Your job is to... argue?"  },
 {   EV_NONE,    136,    PP_PHOENIX | CMD_NONE,  "Yes... I guess it's kind of like that..."  },
 {   EV_NONE,    157,    PP_BLOOM   | CMD_NONE,  "I knew it! I knew it! There IS a cutie mark for arguin'!"  },
 {   EV_NONE,    157,    PP_BLOOM   | CMD_NONE,  "Wait till I tell Scootaloo. We were goin' about it all wrong! We can be..."  },
 {   EV_NONE,    158,    PP_BLOOM   | CMD_NONE,  "CUTIE MARK CRUSADER LAWYERS!"  },
-{   EV_NONE,    134,    PP_PHOENIX | CMD_NONE,  "(The future of criminal justice is looking pretty bleak right now.)"  },
+{   EV_NONE,    134,    PP_PHOENIX | CMD_FALLSFX,  "(The future of criminal justice is looking pretty bleak right now.)"  },
 {   EV_NONE,    135,    PP_TRIXIE  | CMD_NONE,  "Witness! Let's get back on topic! Testify as to what you saw last night!"  },
 {   EV_NONE,    159,    PP_BLOOM   | CMD_NONE,  "No... I'm losing valuable crusading time 'cause of you."  },
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "This is boring..."  },
@@ -1323,7 +1329,6 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    159,    PP_BLOOM   | CMD_NONE,  "I don't have to listen to you! You're that snotty show-off Applejack told me about."  },
 {   EV_NONE,    161,    PP_TRIXIE  | CMD_NONE,  "SNOTTY?!"  },
 {   EV_NONE,    135,    PP_TRIXIE  | CMD_NONE,  "Why you-!"  },
-{   EV_NONE,    137,    PP_PHOENIX | CMD_NONE,  "(You tell her, Applebloom!)"  },
 {   EV_NONE,    137,    PP_PHOENIX | CMD_NONE,  "(I'm actually kind of enjoying this.)"  },
 {   EV_NONE,    135,    PP_TRIXIE  | CMD_NONE,  "The defense will wipe that stupid grin off his ugly mug and the witness will cooperate!"  },
 {   EV_NONE,    126,    PP_JUDGE   | CMD_NONE,  "Witness, can you please testify for us? Then, you can do all the crusading you want. It won't take long at all."  },
@@ -1341,13 +1346,33 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {EV_P_LIGHT840, 163,    PP_BLOOM   | CMD_ADDTEST,  "Just then, I heard a lightning bolt... It was... 8:40... but it didn't scare me!"  },
 {EV_P_WENTHOME, 157,    PP_BLOOM   | CMD_ADDTEST,  "Then, I found my way out of the forest and went on home."  },
 
-{EV_E_BLOOMTEST,157,    PP_BLOOM   | CMD_ENDTEST, "" },
 {EV_O_BADBLOOM, 157,    PP_BLOOM   | CMD_BADOBJECT, "" },
 {EV_O_GOODBLOOM,157,    PP_BLOOM   | CMD_GOODOBJECT, "" },
 
+// run testimony
 {EV_T_BLOOMTEST,157,    PP_BLOOM   | CMD_STARTTEST, "" },
 
-// you can't object during testimonies, only cross-exam, but we can set these up early anyway
+// Testimony complete, come to here via label
+{EV_T_BLOOMTEST,130,    PP_JUDGE   | CMD_NONE,  "So there was indeed a lightning bolt around the time of death..."  },
+{   EV_NONE,    151,    PP_BLOOM   | CMD_NONE,  "Mr Wright, this isn't looking good for your client..."  },
+{   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "Please, just let me cross-examine this witness, Your Honor..."  },
+{   EV_NONE,    132,    PP_TWILIGHT| CMD_NONE,  "She's a child, Phoenix. It might just be an overactive imagination."  },
+{   EV_NONE,    132,    PP_PHOENIX | CMD_NONE,  "I don't think so. I think she is being vague, if anything."  },
+{   EV_NONE,    132,    PP_TWILIGHT| CMD_NONE,  "Vague? Meaning she's not telling us everything?"  },
+{   EV_NONE,    132,    PP_PHOENIX | CMD_NONE,  "Precisely! I don't think this will be about finding a contradiction more than about digging out those extra nuggets of information."  },
+{   EV_NONE,    126,    PP_JUDGE   | CMD_NONE,  "Alright, Mr Wright. You may cross-examine the witness."  },
+{   EV_NONE,    164,    PP_TRIXIE  | CMD_TRIXIEHOLD,  ""  },
+{   EV_NONE,    144,    PP_TRIXIE  | CMD_NONE,  "Before we begin the cross- examination, Trixie knows all about sneaky underhanded tricks!"  },
+{   EV_NONE,    143,    PP_TRIXIE  | CMD_NONE,  "If you dare press this innocent and fragile child too hard... you will be punished!"  },
+{   EV_NONE,    165,    PP_PHOENIX | CMD_NONE,  "W-What!?"  },
+{   EV_NONE,    151,    PP_JUDGE   | CMD_NONE,  "She's right! You better not hurt this sweet little one's feelings, Mr Wright!"  },
+{   EV_NONE,    151,    PP_JUDGE   | CMD_NONE,  "I know these tactics all too well! You will be forced to face the consequences if you do!"  },
+{   EV_NONE,    134,    PP_PHOENIX | CMD_NONE,  "(Children - the kryptonite of Phoenix Wright...)"  },
+{   EV_NONE,    166,    PP_NONE    | CMD_BOOMSFX,  "-- Cross Examination --"  },
+// Run cross examination
+{ EV_T_BLOOMCROSS,157,  PP_BLOOM   | CMD_STARTCROSS, "" },
+
+// Objection handlers
 {EV_O_BADBLOOM, 138,    PP_PHOENIX | CMD_PHOENIXOBJ, "" },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,          "Your honor, there is clearly something wrong with that statement!" },
 {EV_O_BADBLOOM2,169,    PP_JUDGE   | CMD_BADOBJECT,     "I'm afraid I can't see it, Mr Wright." },
@@ -1360,25 +1385,13 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    169,    PP_JUDGE   | CMD_NONE,          "I'm afraid I must agree. Objection overruled!!" },
 {EV_T_BLOOMCROSS,157,   PP_BLOOM   | CMD_CONCROSS, "" },
 
-{EV_E_BLOOMTEST,130,    PP_JUDGE   | CMD_NONE,  "So there was indeed a lightning bolt around the time of death..."  },
-{   EV_NONE,    151,    PP_BLOOM   | CMD_NONE,  "Mr Wright, this isn't looking good for your client..."  },
-{   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "Please, just let me cross-examine this witness, Your Honor..."  },
-{   EV_NONE,    132,    PP_TWILIGHT| CMD_NONE,  "She's a child, Phoenix. It might just be an overactive imagination."  },
-{   EV_NONE,    132,    PP_PHOENIX | CMD_NONE,  "I don't think so. I think she is being vague, if anything."  },
-{   EV_NONE,    132,    PP_TWILIGHT| CMD_NONE,  "Vague? Meaning she's not telling us everything?"  },
-{   EV_NONE,    132,    PP_PHOENIX | CMD_NONE,  "Precisely! I don't think this will be about finding a contradiction more than about digging out those extra nuggets of information."  },
-{   EV_NONE,    126,    PP_JUDGE   | CMD_NONE,  "Alright, Mr Wright. You may cross-examine the witness."  },
-{   EV_NONE,    164,    PP_TRIXIE  | CMD_TRIXIEHOLD,  ""  },
-{   EV_NONE,    144,    PP_TRIXIE  | CMD_NONE,  "Before we begin the cross-examination-- Trixie knows all about sneaky underhanded tricks;"  },
-{   EV_NONE,    143,    PP_TRIXIE  | CMD_NONE,  "If you dare press this innocent and fragile child too hard... you will be punished!"  },
-{   EV_NONE,    165,    PP_PHOENIX | CMD_NONE,  "W-What!?"  },
-{   EV_NONE,    151,    PP_JUDGE   | CMD_NONE,  "She's right! You better not hurt this sweet little one's feelings, Mr Wright!"  },
-{   EV_NONE,    151,    PP_JUDGE   | CMD_NONE,  "I know these tactics all too well! You will be forced to face the consequences if you do!"  },
-{   EV_NONE,    134,    PP_PHOENIX | CMD_NONE,  "(Children - the kryptonite of Phoenix Wright...)"  },
-{   EV_NONE,    166,    PP_NONE    | CMD_BOOMSFX,  ""  },
+// If we fall out of cross examination, run these lines before looping
+{EV_T_BLOOMCROSS,132,   PP_TWILIGHT| CMD_NONE, "Is that really all there is, Phoenix?" },
+{   EV_NONE,     136,   PP_PHOENIX | CMD_NONE, "No, there must be more, I just have to press a little harder." },
+{ EV_T_BLOOMCROSS,157,  PP_BLOOM   | CMD_STARTCROSS, "" },
 
-{   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "I went to Zecora's place in the Everfree Forest to help her brew some stuff."  },
-{   EV_NONE,    164,    PP_PHOENIX | CMD_PHOENIXHOLD,  ""  },
+// Testimony and cross examination lines
+{EV_P_ZECORA,   164,    PP_PHOENIX | CMD_PHOENIXHOLD,  ""  },
 {   EV_NONE,    136,    PP_PHOENIX | CMD_NONE,  "Zecora? Who is this?"  },
 {   EV_NONE,    157,    PP_BLOOM   | CMD_NONE,  "She's a zebra. A friend of mine who lives in the forest."  },
 {   EV_NONE,    134,    PP_PHOENIX | CMD_NONE,  "(There are talking zebras here as well? Oh brother...)"  },
@@ -1388,35 +1401,30 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    127,    PP_TRIXIE  | CMD_NONE,  "Nothing out of the ordinary."  },
 {   EV_NONE,    134,    PP_PHOENIX | CMD_NONE,  "(I've heard it all.. a zebra brewing potions is \"nothing out of the ordinary\"...)"  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "So what did you do afterward, Applebloom?"  },
-{   EV_NONE,    167,    PP_BLOOM   | CMD_NONE,  "Well..."  },
+{EV_T_BLOOMCROSS,157,   PP_BLOOM   | CMD_CONCROSS, "" },
 
-{   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "After we were all done, I walked home along the pathway."  },
-{   EV_NONE,    164,    PP_PHOENIX | CMD_PHOENIXHOLD,  ""  },
+{EV_P_WALKHOME, 164,    PP_PHOENIX | CMD_PHOENIXHOLD,  ""  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "You walked home all alone? I heard that forest was dangerous."  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "Definitely not the place for someone your age..."  },
 {   EV_NONE,    130,    PP_JUDGE   | CMD_NONE,  "Thank heavens she is alright. There are terrible creatures in that forest."  },
 {   EV_NONE,    167,    PP_BLOOM   | CMD_NONE,  "Truth is... I wasn't supposed to be in there that late..."  },
 {   EV_NONE,    167,    PP_BLOOM   | CMD_NONE,  "I got grounded when I got home."  },
 {   EV_NONE,    136,    PP_PHOENIX | CMD_NONE,  "Serves you right for breaking your curfew..."  },
-{   EV_NONE,    168,    PP_NONE    | CMD_NONE,  ""  },
+{   EV_NONE,    168,    PP_NONE    | CMD_FALLSFX,  ""  },
 {   EV_NONE,    137,    PP_PHOENIX | CMD_NONE,  "I-I MEAN, YOU SURE ARE A BRAVE COOTIE MARK CRUSADER!"  },
-{   EV_NONE,    159,    PP_BLOOM   | CMD_NONE,  "Cutie Mark Crusader!"  },
+{   EV_NONE,    159,    PP_BLOOM   | CMD_NONE,  "CUTIE Mark Crusader!"  },
 {   EV_NONE,    151,    PP_JUDGE   | CMD_NONE,  "Mr Wright, you are treading on VERY thin ice."  },
 {   EV_NONE,    132,    PP_PHOENIX | CMD_NONE,  "(I better be careful as to what I say to her.)"  },
 {   EV_NONE,    132,    PP_TWILIGHT| CMD_NONE,  "Try not to be too hard on her, Phoenix."  },
 {   EV_NONE,    132,    PP_PHOENIX | CMD_NONE,  "I'm kind of on a handicap here - not being able to squeeze information as I would normally do with any other witness."  },
 {   EV_NONE,    132,    PP_PHOENIX | CMD_NONE,  "But I have dealt with children in the past and I can do it again."  },
-{   EV_NONE,    133,    PP_TWILIGHT| CMD_NONE,  "Oh, so you have children? You don't really look like a father type."  },
-{   EV_NONE,    132,    PP_PHOENIX | CMD_NONE,  "N-no, I don't have kids! I meant I've dealt with children testifying."  },
-{   EV_NONE,    132,    PP_PHOENIX | CMD_NONE,  "(Me with children? That'll be the day.)"  },
 {   EV_NONE,    151,    PP_JUDGE   | CMD_NONE,  "If the defense is done with idle conversation... please continue your cross-examination."  },
-{   EV_NONE,    151,    PP_JUDGE   | CMD_NONE,  "And remember. GENTLY, Mr Wright. Or else, you will hear my gavel banging an unfortunate fate for you."  },
+{   EV_NONE,    151,    PP_JUDGE   | CMD_NONE,  "And remember: GENTLY, Mr Wright. Or else, you will hear my gavel banging an unfortunate fate for you."  },
 {   EV_NONE,    134,    PP_PHOENIX | CMD_NONE,  "Y-yes, sir!"  },
-{   EV_NONE,    134,    PP_PHOENIX | CMD_NONE,  "(The judge is staring down at me like he has the intent to kill!)"  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "Okay, Applebloom. Please continue."  },
+{EV_T_BLOOMCROSS,157,   PP_BLOOM   | CMD_CONCROSS, "" },
 
-{   EV_NONE,    163,    PP_BLOOM   | CMD_NONE,  "Just then, I heard a lightning bolt... It was... 8:40... but it didn't scare me!"  },
-{   EV_NONE,    164,    PP_PHOENIX | CMD_PHOENIXHOLD,  ""  },
+{EV_P_LIGHT840, 164,    PP_PHOENIX | CMD_PHOENIXHOLD,  ""  },
 {   EV_NONE,    136,    PP_PHOENIX | CMD_NONE,  "How did you know the time?"  },
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "Zecora's clock said 8:35 when I left and I had been walking for about five minutes."  },
 {   EV_NONE,    143,    PP_TRIXIE  | CMD_NONE,  "That lines up exactly with the time of death."  },
@@ -1424,9 +1432,16 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    167,    PP_BLOOM   | CMD_NONE,  "Umm... I..."  },
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "Okay, maybe it scared me a little."  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "A little?"  },
-{   EV_NONE,    167,    PP_BLOOM   | CMD_NONE,  "Yeah, just a little, no big deal..."  },
+{   EV_NONE,    167,    PP_BLOOM   | CMD_CLRPROMPT,  "Yeah, just a little, no big deal..."  },
 
-{   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "I don't think you are being honest with me, Applebloom."  },
+{ EV_T_PRESSBLOOM,167,  PP_BLOOM   | CMD_ADDPROMPT, "Press for more details"     },
+{ EV_T_NOPRESSBL,167,   PP_BLOOM   | CMD_ADDPROMPT, "Let it go"    },
+{   EV_NONE,     167,   PP_BLOOM   | CMD_SELPROMPT, ""  },
+
+{ EV_T_NOPRESSBL,167,   PP_BLOOM   | CMD_NONE, ""    },
+{EV_T_BLOOMCROSS,157,   PP_BLOOM   | CMD_CONCROSS, "" },
+
+{EV_T_PRESSBLOOM,139,   PP_PHOENIX | CMD_NONE,  "I don't think you are being honest with me, Applebloom."  },
 {   EV_NONE,    138,    PP_TRIXIE  | CMD_TRIXIEOBJ,  ""  },
 {   EV_NONE,    135,    PP_TRIXIE  | CMD_NONE,  "Mr Wrong is badgering this witness! Who cares if the lightning scared her! Penalize him!"  },
 {   EV_NONE,    138,    PP_PHOENIX | CMD_PHOENIXOBJ,  ""  },
@@ -1451,6 +1466,8 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    126,    PP_JUDGE   | CMD_NONE,  "The witness will amend this to her testimony."  },
 {   EV_NONE,    167,    PP_BLOOM   | CMD_NONE,  "Okay..."  },
 
+
+#if 0
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "After the lightning scared me I ran off the path and I got a little lost."  },
 {   EV_NONE,    164,    PP_PHOENIX | CMD_PHOENIXHOLD,  ""  },
 {   EV_NONE,    136,    PP_PHOENIX | CMD_NONE,  "How long were you lost?"  },
@@ -1629,8 +1646,10 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    158,    PP_BLOOM   | CMD_BOOMSFX,"HOLD IT!"  },
 {   EV_NONE,    173,    PP_NONE    | CMD_NONE,  ""  },
 {   EV_NONE,    167,    PP_BLOOM   | CMD_NONE,  "Awww, nothing..."  },
+
+#endif
    
-{   15,         94,     PP_NONE         | CMD_ENDSTORY, ""  }   // go to location 15
+{   14,         94,     PP_NONE         | CMD_ENDSTORY, ""  }   // go to location 14
 
 };
 #endif

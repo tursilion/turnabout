@@ -34,7 +34,7 @@ LIBS=-lti99 -ltivgm2
 # warning - only -Os is safe, -O2 has bugs
 # -x c forces files to be compiled as C, not C++
 C_FLAGS=\
-  -x c -DTI99 -DBUILD_TI99 -Os -std=c99 -s --save-temp -fno-peephole2 -fno-builtin -fno-function-cse
+  -x c -DTI99 -DBUILD_TI99 -Os -fmerge-constants -std=c99 -s --save-temp -fno-peephole2 -fno-builtin -fno-function-cse
 
 # note: crt not explicitly included as its not c
 OBJECT_LIST=\
@@ -174,6 +174,15 @@ ploc13:
 	$(CP) PLOC13* /mnt/d/classic99/dsk1/
 	rm *.o
 
+ploc14: 
+	-rm *.o
+	$(GAS) crt0_ea5.asm -o crt0_ea5.o
+	$(GAS) scratchloaderStandalone.a99 -o scratchloaderStandalone.o
+	$(CC) -c $(C_FLAGS) -DLOCATION_IS_14 $(SOURCE_LIST) $(INCPATH)
+	$(LD) crt0_ea5.o $(OBJECT_LIST) scratchloaderStandalone.o $(LIBS) $(LIBPATH) $(LDFLAGS_EA5) -o $(NAME)14.ea5.elf > $(NAME)14_ea5.map
+	$(ELF2EA5) $(NAME)14.ea5.elf $(NAME)14
+	$(CP) PLOC14* /mnt/d/classic99/dsk1/
+	rm *.o
 
 # Recipe to clean all compiled objects
 .phony clean:

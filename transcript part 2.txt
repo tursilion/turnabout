@@ -323,7 +323,7 @@ Time        Frame       Who         Text
 
 -- LOCATION 13 --
 
-20:15       0127        .           State your name and occupation please...
+20:15       0127        Trixie      State your name and occupation please...
 20:18       0156
 20:20       0139        Phoenix     Huh?
 20:22       0130        Judge       Um... where's the witness?
@@ -651,6 +651,10 @@ Time        Frame       Who         Text
 38:54                   .           HOLD IT!
 38:55       0173        
 38:56       0167        Bloom       Awww, nothing...
+
+
+-- Location 14 --
+
 39:00       black
 39:04       0126        Judge       The witness brought up some interesting information, but does the prosecution have anything more regarding the defendant?
 39:11       0144        Trixie      Trixie has this weather schedule...

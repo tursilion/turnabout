@@ -8,7 +8,7 @@
 #include <string.h>
 #include <kscan.h>
 
-#ifdef LOCATION_IS_LOADER
+#if defined(LOCATION_IS_LOADER) || defined(LAST_LOCATION)
 // nothing to do here
 unsigned int run_inventory(const char *pTitle) {
     return 0;

@@ -1,6 +1,13 @@
 #include "structures.h"
 
-const Evidence_t evidence[EV_MAX_STORED_EV] = {
+// I don't know why, but the Classic99 build HATES these being const...
+// the TI version NEEDS it, else the data is doubled up. We can't afford the RAM.
+// The PC can, so screw it. ;)
+
+#ifndef CLASSIC99
+const
+#endif
+Evidence_t evidence[EV_MAX_STORED_EV] = {
     // 01234567890123456789012345678
     { "","" },   // EV_NONE               //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
     { "Attorney Badge",	              /*0*/  "Nobody would believe I was an attorney without this."    },
@@ -25,5 +32,4 @@ const Evidence_t evidence[EV_MAX_STORED_EV] = {
     { "List",	                      /*284*/ "A list with several names including Rainbow Dash."    }
 
 };
-
 
