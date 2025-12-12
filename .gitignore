@@ -14,3 +14,4 @@ Release/
 *.map
 *Copy
 images/
+*/enc_temp_folder/

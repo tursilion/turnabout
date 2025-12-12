@@ -1418,10 +1418,15 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    132,    PP_TWILIGHT| CMD_NONE,  "Try not to be too hard on her, Phoenix."  },
 {   EV_NONE,    132,    PP_PHOENIX | CMD_NONE,  "I'm kind of on a handicap here - not being able to squeeze information as I would normally do with any other witness."  },
 {   EV_NONE,    132,    PP_PHOENIX | CMD_NONE,  "But I have dealt with children in the past and I can do it again."  },
-{   EV_NONE,    151,    PP_JUDGE   | CMD_NONE,  "If the defense is done with idle conversation... please continue your cross-examination."  },
+{   EV_NONE,    151,    PP_JUDGE   | CMD_NONE,  "If the defense is done with idle conversation... please continue your cross- examination."  },
 {   EV_NONE,    151,    PP_JUDGE   | CMD_NONE,  "And remember: GENTLY, Mr Wright. Or else, you will hear my gavel banging an unfortunate fate for you."  },
 {   EV_NONE,    134,    PP_PHOENIX | CMD_NONE,  "Y-yes, sir!"  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "Okay, Applebloom. Please continue."  },
+{EV_T_BLOOMCROSS,157,   PP_BLOOM   | CMD_CONCROSS, "" },
+
+{EV_P_WENTHOME, 164,    PP_PHOENIX | CMD_PHOENIXHOLD,  ""  },
+{   EV_NONE,    136,    PP_PHOENIX | CMD_NONE,  "And did anything happen on the way home?"  },
+{   EV_NONE,    157,    PP_BLOOM   | CMD_NONE,  "Nope! I got home about ten minutes later."  },
 {EV_T_BLOOMCROSS,157,   PP_BLOOM   | CMD_CONCROSS, "" },
 
 {EV_P_LIGHT840, 164,    PP_PHOENIX | CMD_PHOENIXHOLD,  ""  },
@@ -1455,7 +1460,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "Someone's life depends on you telling the truth."  },
 {   EV_NONE,    160,    PP_BLOOM   | CMD_CHIMESFX,  "!!??"  },
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "Someone's life?"  },
-{   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "Yes; if you don't tell the truth you may be ruining an innocent pony's life."  },
+{   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "Yes, if you don't tell the truth you may be ruining an innocent pony's life."  },
 {   EV_NONE,    167,    PP_BLOOM   | CMD_NONE,  "I-I don't want an innocent pony's life to be ruined..."  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "Then please tell us what really happened, Applebloom."  },
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "Fine... the lightning really scared me..."  },
@@ -1465,7 +1470,6 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "Yeah and I kinda got lost in the forest. I was really scared..."  },
 {   EV_NONE,    126,    PP_JUDGE   | CMD_NONE,  "The witness will amend this to her testimony."  },
 {   EV_NONE,    167,    PP_BLOOM   | CMD_NONE,  "Okay..."  },
-
 
 #if 0
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "After the lightning scared me I ran off the path and I got a little lost."  },
