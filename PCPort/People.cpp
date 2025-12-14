@@ -31,6 +31,6 @@ Evidence_t people[PP_MAX] = {
     { "Sonata",	            /*287*/	"Unicorn manager of Ace Swift. Resembles Mia from my own realm."        },
 
     { "Edgeworth",                  ""     },
-    { "TESTIMONY",                  ""     }
-
+    { "TESTIMONY",                  ""     },
+    { "CROSS-EXAMINE",              ""     }
 };

@@ -143,12 +143,15 @@ int run_story() {
         // doing music this way should take less code than in the switch... just keep the order
         if ((cmdID > CMD_MUSTARTLIST) && (cmdID < CMD_MUSENDLIST)) {
             play_music(cmdID);
+            cmdID = CMD_NONE;   // to allow the skip later to happen
         } else
         if ((cmdID > CMD_SFXSTARTLIST) && (cmdID < CMD_SFXENDLIST)) {
             play_sfx(cmdID);
+            cmdID = CMD_NONE;   // to allow the skip later to happen
         } else
         if ((cmdID > CMD_VOICESTARTLIST) && (cmdID < CMD_VOICEENDLIST)) {
             play_voice(cmdID-CMD_VOICESTARTLIST-1);
+            //cmdID = CMD_NONE;   // to allow the skip later to happen
         } else
         // process other commands
         switch (cmdID) {
@@ -264,6 +267,7 @@ int run_story() {
                 cmdID = CMD_NONE;  // force the code below to skip ahead if it's empty text
                 break;
 
+            case CMD_OBJECTHERE  : // objection line, but this also needs to add to testimony
             case CMD_ADDTEST     : // add this line to testimony and go to next line - current is set to the new line
                 if (testimonyMode == 0) {
                     // make sure it's not already in there
@@ -364,7 +368,10 @@ int run_story() {
         if (testimonyMode == 1) {
             // replace name with 'TESTIMONY'
             set_name(PP_TESTIMONY);
-        } else 
+        } else if (testimonyMode == 2) {
+            // replace name with 'CROSS-EXAMINE'
+            set_name(PP_CROSSEXAM);
+        } else
 #endif
         {
             set_name(story[index].cmdwho & 0xff00);
@@ -473,6 +480,7 @@ int run_story() {
                     // object! Check if this is the 'correct' place to object, and if yes branch to goodObject, otherwise badObject
                     testimonyMode = 0;
                     if (cmdID == CMD_OBJECTHERE) {
+                        stop_music();
                         change_index(goodObject);
                     } else {
                         change_index(badObject);

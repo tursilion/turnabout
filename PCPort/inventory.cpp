@@ -29,7 +29,7 @@ int specialinventory(int selected) {
     int maxlen = 0;
 
     // which special evidence is it?
-    if (selected == EV_EVERFREE1) {
+    if (selected == EV_CRIMESCENE) {
         // map image zoomed in
         imgout = 9008;
     } else {
@@ -223,6 +223,7 @@ startover:
             if ((oldkey >= 'A') && (oldkey <= 'O') && (evidx[oldkey-'A'] != 0)) {
                 // update the description 
                 clear_text();
+                hchar(16,0,' ',32);
                 selected = evidx[oldkey-'A'];
                 if (selected < PP_FIRST) {
                     reverse(1);

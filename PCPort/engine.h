@@ -9,7 +9,7 @@
 extern Evidence_t evidence[EV_MAX_STORED_EV];
 extern Evidence_t people[PP_MAX];
 #else
-extern const Evidence_t (&evidence)[EV_MAX_STORED_EV];
+extern const Evidence_t evidence[EV_MAX_STORED_EV];
 extern const Evidence_t people[PP_MAX];
 #endif
 

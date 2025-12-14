@@ -50,7 +50,7 @@ const MUSICLOOKUP musLookup[] = {   /* page   address  */
     /* 000 CMD_MUSTARTLIST */  {  0,    (unsigned char*)0x0000  },
     /* 001 CMD_MUSSTEEL    */  { 17,    (unsigned char*)0xf000  },      // 632 bytes
     /* 002 CMD_MUSSTART    */  {  0,    (unsigned char*)0x0000  }, 
-    /* 003 CMD_MUSEXAM     */  {  0,    (unsigned char*)0x0000  }, 
+    /* 003 CMD_MUSEXAM     */  { 24,    (unsigned char*)0xf400  },      // 1228 bytes
     /* 004 CMD_MUSCROSS    */  {  0,    (unsigned char*)0x0000  }, 
     /* 005 CMD_MUSTRICK    */  { 17,    (unsigned char*)0xf400  },      // 1376 bytes
     /* 006 CMD_MUSMLP      */  { 17,    (unsigned char*)0xfc00  },      // 836 bytes
@@ -78,7 +78,7 @@ const MUSICLOOKUP musLookup[] = {   /* page   address  */
     /* 028 CMD_MUSHOTLINE  */  {  0,    (unsigned char*)0x0000  }, 
     /* 029 CMD_MUSSUSPENSE */  { 21,    (unsigned char*)0xfc00  },      // 886 bytes
     /* 030 CMD_MUSBEGIN    */  {  0,    (unsigned char*)0x0000  }, 
-    /* 031 CMD_MUSTRUTH    */  {  0,    (unsigned char*)0x0000  }, 
+    /* 031 CMD_MUSTRUTH    */  { 24,    (unsigned char*)0xfc00  },      // 1000 bytes
     /* 032 CMD_MUSPURSUIT  */  {  0,    (unsigned char*)0x0000  }, 
     /* 033 CMD_MUSEND      */  {  0,    (unsigned char*)0x0000  }, 
     /* 034 CMD_MUSCORNERED */  { 22,    (unsigned char*)0xf000  },      // 1858 bytes
@@ -93,8 +93,8 @@ const MUSICLOOKUP musLookup[] = {   /* page   address  */
     /* 043 CMD_MUSTRUCY    */  { 23,    (unsigned char*)0xf000  },      // 1144 bytes
     /* 044 CMD_MUSELEGY    */  { 23,    (unsigned char*)0xf800  },      // 1084 bytes
     /* 045 CMD_MUSGUILTY   */  { 22,    (unsigned char*)0xfc00  },      // 422 bytes
-    /* 046 CMD_MUSRECALL   */  { 24,    (unsigned char*)0xf000  },      // 874 bytes     3k free (last allocation!)
-    /* 047 CMD_MUSCRUSADE  */  {  0,    (unsigned char*)0x0000  }, 
+    /* 046 CMD_MUSRECALL   */  { 24,    (unsigned char*)0xf000  },      // 874 bytes
+    /* 047 CMD_MUSCRUSADE  */  { 25,    (unsigned char*)0xf000  },      // 3734 bytes   (last allocation, full)
     /* 048 CMD_MUSCLOCK    */  {  0,    (unsigned char*)0x0000  }, 
     /* 049 CMD_MUSSPECIAL  */  {  0,    (unsigned char*)0x0000  }, 
     /* 050 CMD_MUSCOOL     */  {  0,    (unsigned char*)0x0000  }, 

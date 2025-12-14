@@ -17,7 +17,8 @@
 //#define LOCATION_IS_10
 //#define LOCATION_IS_11
 //#define LOCATION_IS_12
-#define LOCATION_IS_13
+//#define LOCATION_IS_13
+#define LOCATION_IS_14
 #endif
 
 // some types
@@ -61,7 +62,7 @@ enum {
     EV_PHOTO2,                      // An imprint of what seems to be something long. Next to it some markings indicating someone had scuffled the dirt around.
     EV_FEATHER,                     // A suspicious brown feather that doesn't belong to a bird or a pony.
     EV_AUTOPSY,                     // Estimated time of death: 8:30pm - 9:00pm. Cause: died instantly due to severe electrocution. Burn mark on the back of neck: unknown cause.
-    EV_EVERFREE1,                   // A diagram of the scene of the crime and where lightning struck that night. (#154)
+    EV_CRIMESCENE,                  // A diagram of the scene of the crime and where lightning struck that night. (#154)
     EV_WEATHER,                     // Rainbow Dash scheduled to create a thunder storm at 3:00PM on the eastern side of Ponyville.
     EV_CLOUDREPORT,                 // A cloud Rainbow Dash was in charge of disappeared at 4:00PM on the night of the murder, and was found above the Everfree Forest Clearing.
     EV_PICTURES,                    // Several pictures of Rainbow Dash... Why in her right mind would she be doing this...? Photos found in a bag on the victim.
@@ -174,6 +175,8 @@ enum {
     EV_P_WALKHOME,      // push on walk home line
     EV_P_LIGHT840,      // push on lightning at 8:40 line
     EV_P_WENTHOME,      // push on went home line
+    EV_P_BUMPED,        // push on bumped into something
+    EV_P_OUTSIDE,       // push on outside the forest
 
     EV_O_BADBLOOM,      // bad objection
     EV_O_BADBLOOM2,     // bad objection
@@ -181,11 +184,14 @@ enum {
 
     EV_T_BLOOMTEST,     // jump target post testimony
     EV_T_BLOOMCROSS,    // jump target if cross examine wraps around
+    EV_T_BLOOMCROSS2,   // jump target if cross examine wraps around
+    EV_T_PRESEF,        // present everfree map for cloud ballistics times
 
     EV_T_PRESSBLOOM,
     EV_T_NOPRESSBL,
     EV_T_WHATCUTIE,
     EV_T_NOCUTIE,
+    EV_T_LOOPBLOOM,
 
     EV_MAX,
 
@@ -211,7 +217,8 @@ enum {
     
     PP_EDGEWORTH  = 0x8e00,         // never used in game, but we need it for his name in a flashback
     PP_TESTIMONY  = 0x8f00,         // used for the name only
-    PP_LAST       = 0x9000
+    PP_CROSSEXAM  = 0x9000,         // used for the name only
+    PP_LAST       = 0x9100
 };
 #define PP_MAX ((PP_LAST>>8)-(PP_FIRST>>8))
 #define PP_NONE PP_FIRST
@@ -260,10 +267,11 @@ enum {
     CMD_FLASH       , // draw a white flash and play boom - ignore frame
     CMD_BLACK       , // draw a black screen - ignore frame (but clear last frame so we know to load again)
     CMD_WHITE       , // draw a white screen with inverse crash sound
+    CMD_STOPMUS     , // stop music
 
     // Testimony commands allowed as jump targets (they don't use evidence field otherwise)
     CMD_CLEARTEST   , // clear testimony array - testimony lines should NOT branch
-    CMD_OBJECTHERE  , // this is the line to object on
+    CMD_OBJECTHERE  , // this is the line to object on (also acts as ADDTEST)
                     
     CMD_SFXSTARTLIST, // find SFXs
 
@@ -320,8 +328,6 @@ enum {
 
     CMD_ENDSTORY    , // end this story sequence and return to main loop. Story stores new location in evidence field and will jump to it.
                         
-    CMD_STOPMUS     , // stop music
-
     CMD_ADDTEST     , // add this line to testimony and go to next line - current is set to the new line
     CMD_BADOBJECT   , // set the target for bad objection to the tag in evidence
     CMD_GOODOBJECT  , // set the target for good objection to the tag in evidence
@@ -378,10 +384,12 @@ enum {
     CMD_MUSELEGY    , // Guard's elegy - Capcom
     CMD_MUSGUILTY   , // Guilty love - Capcom (using ringtone version)
     CMD_MUSRECALL   , // Recollation - Elementary School Trial
+    CMD_MUSCRUSADE  , // Crusading (Apple Bloom) - SoloAcapello (using Apples to the Core by DJDelta0)
 
     // Do not reorder the song list!!
-    // not available yet - will probably need to replace - how can I reach SoloAcapello? Might be able to ask Mando for Rarity's theme.
-    CMD_MUSCRUSADE  , // Crusading (Apple Bloom) - SoloAcapello
+    // not available yet - will probably need to replace - how can I reach SoloAcapello?    
+    // This site has MLP MIDIs we can probably use: https://www.weimtime.org/midis
+    // Also for Gilda I was considering Shiru's covers/star_dust_mix, if it fits the theme (A lot of nice tracks in there)
     CMD_MUSCLOCK    , // Like Clockwork (Sonata) - SoloAcapello
     CMD_MUSSPECIAL  , // Special Delivery! (Derpy) - SoloAcapello
     CMD_MUSCOOL     , // Too Cool For You, Dweeb (Gilda) - SoloAcapello
@@ -413,8 +421,8 @@ extern int nStorySize;
 #define HAS_FLUTTEROBJ  
 #define HAS_JUDGEOBJ    
 #define HAS_GROUPOBJ    
-#define HAS_TRIXIEHOLD  
-#define HAS_PHOENIXHOLD 
+#define HAS_TRIXIEHOLDIT
+#define HAS_PHOENIXHOLDIT
 #define HAS_PHOENIXTAKE 
 // music
 #endif
@@ -547,13 +555,15 @@ extern int nStorySize;
 #endif
 
 #ifdef LOCATION_IS_13
-// AppleBloom's testimony
+// AppleBloom's testimony and cross examine p1
 #define LOCATION_NUMBER 13
 #define LOCATION_TYPE_STORY
 #define LOCATION_TYPE_CROSSEXAM
 // sfx
 #define HAS_BOOMSFX
 #define HAS_FALLSFX
+#define HAS_CHIMESFX
+#define HAS_CRASHSFX
 // voices
 #define HAS_VOICE
 #define HAS_TRIXIEHOLDIT
@@ -561,18 +571,28 @@ extern int nStorySize;
 #define HAS_PHOENIXHOLDIT
 #define HAS_PHOENIXOBJ
 // music
-
+#define HAS_MUSEXAM
+#define HAS_MUSCRUSADE
 #endif
 
 #ifdef LOCATION_IS_14
-// AppleBloom cross examination
+// AppleBloom cross examination p2
 #define LOCATION_NUMBER 14
+#define LOCATION_TYPE_STORY
 #define LOCATION_TYPE_CROSSEXAM
 // sfx
-// music
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
-#define LAST_LOCATION
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
+#define HAS_BOOMSFX
+#define HAS_CRASHSFX
+#define HAS_FALLSFX
+#define HAS_CHIMESFX
+// voices
+#define HAS_VOICE
+#define HAS_TRIXIEOBJ
+#define HAS_PHOENIXHOLDIT
+#define HAS_PHOENIXOBJ
+// music - missing exam part 2 and the actual music at 35:03, using TRUTH instead
+#define HAS_MUSEXAM
+#define HAS_MUSTRUTH
 #endif
 
 #ifdef LOCATION_IS_15
@@ -581,6 +601,9 @@ extern int nStorySize;
 #define LOCATION_TYPE_STORY
 // sfx
 // music
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
+#define LAST_LOCATION
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
 #endif
 
 #ifdef LOCATION_IS_16

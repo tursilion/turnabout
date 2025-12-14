@@ -117,11 +117,11 @@ void load_voices() {
         load_one_voice(ALL_OBJECT_IDX);
 #endif
 
-#ifdef HAS_TRIXIEHOLD  
+#ifdef HAS_TRIXIEHOLDIT
         load_one_voice(TRIXIE_HOLDIT_IDX);
 #endif
 
-#ifdef HAS_PHOENIXHOLD 
+#ifdef HAS_PHOENIXHOLDIT
         load_one_voice(PHOENIX_HOLDIT_IDX);
 #endif
 

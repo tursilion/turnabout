@@ -180,6 +180,10 @@ goto :EOF
 ..\PCPort\Debug\chopbmp.exe 167 top
 ..\PCPort\Debug\chopbmp.exe 168 top
 ..\PCPort\Debug\chopbmp.exe 169 top
+..\PCPort\Debug\chopbmp.exe 170 top
+..\PCPort\Debug\chopbmp.exe 171 top
+..\PCPort\Debug\chopbmp.exe 172 top
+..\PCPort\Debug\chopbmp.exe 173 top
 
 ..\PCPort\Debug\chopbmp.exe 9008 top
 ..\PCPort\Debug\chopbmp.exe 9801 top

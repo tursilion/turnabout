@@ -34,16 +34,19 @@ LIBS=-lti99 -ltivgm2
 # warning - only -Os is safe, -O2 has bugs
 # -x c forces files to be compiled as C, not C++
 C_FLAGS=\
-  -x c -DTI99 -DBUILD_TI99 -Os -fmerge-constants -std=c99 -s --save-temp -fno-peephole2 -fno-builtin -fno-function-cse
+  -x c -DTI99 -DBUILD_TI99 -Os -fmerge-constants -std=c99 -s --save-temps -fno-peephole2 -fno-builtin -fno-function-cse
+# don't save temps for the intermediate, that causes GCC to overwrite the file
+C_FLAGS_I=\
+  -x c -DTI99 -DBUILD_TI99 -Os -fmerge-constants -std=c99 -s -fno-peephole2 -fno-builtin -fno-function-cse
 
 # note: crt not explicitly included as its not c
 OBJECT_LIST=\
-  aid.o engine.o mybitmap.o Evidence.o inventory.o music.o investigation.o Locations.o People.o savegame.o sfx.o story.o cache.o voice.o
+  aid.o engine.o mybitmap.o Evidence.o inventory.o music.o Locations.o investigation.o People.o savegame.o sfx.o story.o cache.o voice.o
 
 # map the objects back to source files
 SOURCE_LIST := $(OBJECT_LIST:.o=.cpp)
 
-all: pload ploc0 ploc1 ploc2 ploc3 ploc4 ploc5 ploc6 ploc10 ploc11 ploc12 ploc13
+all: pload ploc0 ploc1 ploc2 ploc3 ploc4 ploc5 ploc6 ploc10 ploc11 ploc12 ploc13 ploc14 ploc15
 
 # we don't do incremental builds, so no prerequisites of note
 
@@ -182,6 +185,16 @@ ploc14:
 	$(LD) crt0_ea5.o $(OBJECT_LIST) scratchloaderStandalone.o $(LIBS) $(LIBPATH) $(LDFLAGS_EA5) -o $(NAME)14.ea5.elf > $(NAME)14_ea5.map
 	$(ELF2EA5) $(NAME)14.ea5.elf $(NAME)14
 	$(CP) PLOC14* /mnt/d/classic99/dsk1/
+	rm *.o
+
+ploc15: 
+	-rm *.o
+	$(GAS) crt0_ea5.asm -o crt0_ea5.o
+	$(GAS) scratchloaderStandalone.a99 -o scratchloaderStandalone.o
+	$(CC) -c $(C_FLAGS) -DLOCATION_IS_15 $(SOURCE_LIST) $(INCPATH)
+	$(LD) crt0_ea5.o $(OBJECT_LIST) scratchloaderStandalone.o $(LIBS) $(LIBPATH) $(LDFLAGS_EA5) -o $(NAME)15.ea5.elf > $(NAME)15_ea5.map
+	$(ELF2EA5) $(NAME)15.ea5.elf $(NAME)15
+	$(CP) PLOC15* /mnt/d/classic99/dsk1/
 	rm *.o
 
 # Recipe to clean all compiled objects
