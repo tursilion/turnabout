@@ -1096,7 +1096,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
 
 {EV_T_ASKHELP,  137,   PP_PHOENIX    | CMD_NONE,        "Ngh... Could you tell me about these differences, Your Honor?"    },
 {   EV_NONE,    130,   PP_JUDGE      | CMD_NONE,        "Well, Mr Wright, the first thing you should know is..."    },
-{   EV_NONE,    138,   PP_TRIXIE     | CMD_TRIXIEOBJ,   ""  },
+{   EV_NONE,    138,   PP_TRIXIE     | CMD_TRIXIEOBJ,   "OBJECTION!"  },
 {   EV_NONE,    135,   PP_TRIXIE     | CMD_NONE,        "It's not our fault this bumbling buffoon didn't do any research! We shouldn't be holding up the trial because of his stupidity and negligence."    },
 {   EV_NONE,    139,   PP_PHOENIX    | CMD_NONE,        "Hey!"    },
 {   EV_NONE,    126,   PP_JUDGE      | CMD_NONE,        "I'm sorry Mr Wright, but the prosecution is right. You should have studied Equestria before jumping in to this case."    },
@@ -1153,7 +1153,7 @@ const Story_t story[] =  {                       //  012345678901234567890123456
 { EV_T_ACCCLOUD, 147, PP_PHOENIX | CMD_ADDPROMPT, "No, that makes sense."    },
 {   EV_NONE,     147, PP_PHOENIX | CMD_SELPROMPT, ""  },
 
-{ EV_T_OBJCLOUD,138,    PP_PHOENIX  | CMD_PHOENIXOBJ, ""    },
+{ EV_T_OBJCLOUD,138,    PP_PHOENIX  | CMD_PHOENIXOBJ, "OBJECTION!"    },
 {   EV_NONE,    148,    PP_PHOENIX  | CMD_MUSCORNERED, "A storm cloud!? You call that decisive!?"    },
 {   EV_NONE,    139,    PP_PHOENIX  | CMD_BOOMSFX,  "How could you place blame on my client for that!?"    },
 {EV_I_QUESTIONCLOUD,149,PP_PHOENIX  | CMD_ADDEV,    "Unless you are honestly suggesting Rainbow Dash can move clouds around and make them shoot lightning at will!"    },
@@ -1218,9 +1218,9 @@ const Story_t story[] =  {                       //  012345678901234567890123456
 {   EV_NONE,    136,    PP_PHOENIX  | CMD_NONE,     "Three?"    },
 {   EV_NONE,    127,    PP_TRIXIE   | CMD_NONE,     "The first bolt was directly under the cloud where the late Mr Swift lay."    },
 {   EV_NONE,    141,    PP_TRIXIE   | CMD_NONE,     "The second one... we don't know where it hit."    },
-{   EV_NONE,    138,    PP_PHOENIX  | CMD_PHOENIXOBJ, ""    },
+{   EV_NONE,    138,    PP_PHOENIX  | CMD_PHOENIXOBJ, "OBJECTION!"    },
 {   EV_NONE,    148,    PP_PHOENIX  | CMD_NONE,     "Wait, then maybe-"    },
-{   EV_NONE,    138,    PP_TRIXIE   | CMD_TRIXIEOBJ, ""    },
+{   EV_NONE,    138,    PP_TRIXIE   | CMD_TRIXIEOBJ, "OBJECTION!"    },
 {   EV_NONE,    135,    PP_TRIXIE   | CMD_NONE,     "Trixie knows what you are going to say and it's not going to work!"    },
 {   EV_NONE,    143,    PP_TRIXIE   | CMD_NONE,     "The investigation team combed the entire perimeter of the crime scene and they didn't find any indication the bolt hit the ground or any trees in the storm cloud's proximity."    },
 {   EV_NONE,    141,    PP_TRIXIE   | CMD_NONE,     "It's truly a mystery where this bolt of lightning went."    },
@@ -1362,7 +1362,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    132,    PP_TWILIGHT| CMD_NONE,  "Vague? Meaning she's not telling us everything?"  },
 {   EV_NONE,    132,    PP_PHOENIX | CMD_NONE,  "Precisely! I don't think this will be about finding a contradiction more than about digging out those extra nuggets of information."  },
 {   EV_NONE,    126,    PP_JUDGE   | CMD_NONE,  "Alright, Mr Wright. You may cross-examine the witness."  },
-{   EV_NONE,    164,    PP_TRIXIE  | CMD_TRIXIEHOLD,  ""  },
+{   EV_NONE,    164,    PP_TRIXIE  | CMD_TRIXIEHOLD,  "HOLD IT!"  },
 {   EV_NONE,    144,    PP_TRIXIE  | CMD_NONE,  "Before we begin the cross- examination, Trixie knows all about sneaky underhanded tricks!"  },
 {   EV_NONE,    143,    PP_TRIXIE  | CMD_NONE,  "If you dare press this innocent and fragile child too hard... you will be punished!"  },
 {   EV_NONE,    165,    PP_PHOENIX | CMD_NONE,  "W-What!?"  },
@@ -1375,13 +1375,13 @@ const Story_t story[] =  {                           //  01234567890123456789012
 { EV_T_BLOOMCROSS,157,  PP_BLOOM   | CMD_STARTCROSS, "" },
 
 // Objection handlers
-{EV_O_BADBLOOM, 138,    PP_PHOENIX | CMD_PHOENIXOBJ, "" },
+{EV_O_BADBLOOM, 138,    PP_PHOENIX | CMD_PHOENIXOBJ, "OBJECTION!" },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,          "Your honor, there is clearly something wrong with that statement!" },
 {EV_O_BADBLOOM2,169,    PP_JUDGE   | CMD_BADOBJECT,     "I'm afraid I can't see it, Mr Wright." },
 {   EV_NONE,    169,    PP_JUDGE   | CMD_NONE,          "Objection overruled!!" },
 {EV_T_BLOOMCROSS,157,   PP_BLOOM   | CMD_CONCROSS, "" },
 
-{EV_O_BADBLOOM2,138,    PP_PHOENIX | CMD_PHOENIXOBJ, "" },
+{EV_O_BADBLOOM2,138,    PP_PHOENIX | CMD_PHOENIXOBJ, "OBJECTION!" },
 {   EV_NONE,    148,    PP_PHOENIX | CMD_NONE,          "That statement clearly contradicts the evidence!" },
 {EV_O_BADBLOOM, 141,    PP_TRIXIE  | CMD_BADOBJECT,     "It looks to Trixie like the defense is grasping at straws." },
 {   EV_NONE,    169,    PP_JUDGE   | CMD_NONE,          "I'm afraid I must agree. Objection overruled!!" },
@@ -1393,7 +1393,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
 { EV_T_BLOOMCROSS,157,  PP_BLOOM   | CMD_STARTCROSS, "" },
 
 // Testimony and cross examination lines
-{EV_P_ZECORA,   164,    PP_PHOENIX | CMD_PHOENIXHOLD,  ""  },
+{EV_P_ZECORA,   164,    PP_PHOENIX | CMD_PHOENIXHOLD,  "HOLD IT!"  },
 {   EV_NONE,    136,    PP_PHOENIX | CMD_NONE,  "Zecora? Who is this?"  },
 {   EV_NONE,    157,    PP_BLOOM   | CMD_NONE,  "She's a zebra. A friend of mine who lives in the forest."  },
 {   EV_NONE,    134,    PP_PHOENIX | CMD_NONE,  "(There are talking zebras here as well? Oh brother...)"  },
@@ -1405,7 +1405,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "So what did you do afterward, Applebloom?"  },
 {EV_T_BLOOMCROSS,157,   PP_BLOOM   | CMD_CONCROSS, "" },
 
-{EV_P_WALKHOME, 164,    PP_PHOENIX | CMD_PHOENIXHOLD,  ""  },
+{EV_P_WALKHOME, 164,    PP_PHOENIX | CMD_PHOENIXHOLD,  "HOLD IT!"  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "You walked home all alone? I heard that forest was dangerous."  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "Definitely not the place for someone your age..."  },
 {   EV_NONE,    130,    PP_JUDGE   | CMD_NONE,  "Thank heavens she is alright. There are terrible creatures in that forest."  },
@@ -1426,12 +1426,12 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "Okay, Applebloom. Please continue."  },
 {EV_T_BLOOMCROSS,157,   PP_BLOOM   | CMD_CONCROSS, "" },
 
-{EV_P_WENTHOME, 164,    PP_PHOENIX | CMD_PHOENIXHOLD,  ""  },
+{EV_P_WENTHOME, 164,    PP_PHOENIX | CMD_PHOENIXHOLD,  "HOLD IT!"  },
 {   EV_NONE,    136,    PP_PHOENIX | CMD_NONE,  "And did anything happen on the way home?"  },
 {   EV_NONE,    157,    PP_BLOOM   | CMD_NONE,  "Nope! I got home about ten minutes later."  },
 {EV_T_BLOOMCROSS,157,   PP_BLOOM   | CMD_CONCROSS, "" },
 
-{EV_P_LIGHT840, 164,    PP_PHOENIX | CMD_PHOENIXHOLD,  ""  },
+{EV_P_LIGHT840, 164,    PP_PHOENIX | CMD_PHOENIXHOLD,  "HOLD IT!"  },
 {   EV_NONE,    136,    PP_PHOENIX | CMD_NONE,  "How did you know the time?"  },
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "Zecora's clock said 8:35 when I left and I had been walking for about five minutes."  },
 {   EV_NONE,    143,    PP_TRIXIE  | CMD_NONE,  "That lines up exactly with the time of death."  },
@@ -1449,9 +1449,9 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {EV_T_BLOOMCROSS,157,   PP_BLOOM   | CMD_CONCROSS, "" },
 
 {EV_T_PRESSBLOOM,139,   PP_PHOENIX | CMD_NONE,  "I don't think you are being honest with me, Applebloom."  },
-{   EV_NONE,    138,    PP_TRIXIE  | CMD_TRIXIEOBJ,  ""  },
+{   EV_NONE,    138,    PP_TRIXIE  | CMD_TRIXIEOBJ,  "OBJECTION!"  },
 {   EV_NONE,    135,    PP_TRIXIE  | CMD_NONE,  "Mr Wrong is badgering this witness! Who cares if the lightning scared her? Penalize him!"  },
-{   EV_NONE,    138,    PP_PHOENIX | CMD_PHOENIXOBJ,  ""  },
+{   EV_NONE,    138,    PP_PHOENIX | CMD_PHOENIXOBJ,  "OBJECTION!"  },
 {   EV_NONE,    148,    PP_PHOENIX | CMD_NONE,  "She isn't giving us all the details as to what she saw!"  },
 {   EV_NONE,    169,    PP_JUDGE   | CMD_NONE,  "..."  },
 {   EV_NONE,    126,    PP_JUDGE   | CMD_NONE,  "I'll allow the defense to pursue this matter..."  },
@@ -1485,7 +1485,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    160,    PP_BLOOM   | CMD_MUSEXAM,  ""  },
 {EV_P_WALKHOME, 160,    PP_BLOOM   | CMD_ADDTEST,       "After the lightning scared me I ran off the path and I got a little lost."  },
 
-{EV_O_BADBLOOM, 160,    PP_BLOOM   | CMD_BADOBJECT, "" },
+{EV_O_BADBLOOM3,160,    PP_BLOOM   | CMD_BADOBJECT, "" },
 {EV_O_GOODBLOOM,160,    PP_BLOOM   | CMD_GOODOBJECT, "" },
 
 // Run cross examination
@@ -1493,19 +1493,19 @@ const Story_t story[] =  {                           //  01234567890123456789012
 { EV_T_BLOOMCROSS,160,  PP_BLOOM   | CMD_STARTCROSS, "" },
 
 // Objection handlers
-{EV_O_BADBLOOM, 138,    PP_PHOENIX | CMD_PHOENIXOBJ, "" },
+{EV_O_BADBLOOM3,138,    PP_PHOENIX | CMD_PHOENIXOBJ, "OBJECTION!" },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,          "Your honor, that's a clear contradiction!" },
 {   EV_NONE,    135,    PP_TRIXIE  | CMD_NONE,          "How dare you! Your honor, Mr. Wrong is badgering the witness!" },
 {   EV_NONE,    169,    PP_JUDGE   | CMD_NONE,          "I'm warning you, Mr. Wright! Objection overruled!!" },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,          "(I need to ask her about it more gently...)" },
-{EV_T_BLOOMCROSS,157,   PP_BLOOM   | CMD_CONCROSS, "" },
+{EV_T_BLOOMCROSS,157,   PP_BLOOM   | CMD_STARTCROSS, "" },  // since we know there is only one line, restart it
 
 // If we fall out of cross examination, run these lines before looping
 {EV_T_BLOOMCROSS,132,   PP_TWILIGHT| CMD_NONE, "Come on, Phoenix, you at least need to ask her about it!" },
 {   EV_NONE,     136,   PP_PHOENIX | CMD_NONE, "Sorry, you're right. I just have to be gentle about it." },
 { EV_T_BLOOMCROSS,157,  PP_BLOOM   | CMD_STARTCROSS, "" },
 
-{EV_P_WALKHOME, 164,    PP_PHOENIX | CMD_PHOENIXHOLD,  ""  },
+{EV_P_WALKHOME, 164,    PP_PHOENIX | CMD_PHOENIXHOLD,  "HOLD IT!"  },
 {   EV_NONE,    136,    PP_PHOENIX | CMD_NONE,  "How long were you lost?"  },
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "I was in there for a really long time."  },
 {   EV_NONE,    136,    PP_PHOENIX | CMD_NONE,  "How long exactly...?"  },
@@ -1534,7 +1534,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    139,    PP_PHOENIX | CMD_CHIMESFX,  "!!??"  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "What?"  },
 {   EV_NONE,    130,    PP_JUDGE   | CMD_NONE,  "You... you bumped into something?"  },
-{   EV_NONE,    138,    PP_TRIXIE  | CMD_TRIXIEOBJ,  ""  },
+{   EV_NONE,    138,    PP_TRIXIE  | CMD_TRIXIEOBJ,  "OBJECTION!"  },
 {   EV_NONE,    135,    PP_TRIXIE  | CMD_NONE,  "Witness! This is the first time I'm hearing about this!"  },
 {   EV_NONE,    135,    PP_TRIXIE  | CMD_NONE,  "Why did you not say anything to me regarding this earlier!?"  },
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "Because I don't like you..."  },
@@ -1556,19 +1556,19 @@ const Story_t story[] =  {                           //  01234567890123456789012
 { EV_T_BLOOMCROSS,157,  PP_BLOOM   | CMD_STARTCROSS, ""  },
 
 // Objection handlers
-{EV_O_BADBLOOM2,138,    PP_PHOENIX | CMD_PHOENIXOBJ, "" },
+{EV_O_BADBLOOM2,138,    PP_PHOENIX | CMD_PHOENIXOBJ, "OBJECTION!" },
 {   EV_NONE,    169,    PP_JUDGE   | CMD_NONE,          "Yes, Mr. Wright? What do you think is wrong?" },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,          "Oh... um... nothing, I guess." },
 {   EV_NONE,    143,    PP_TRIXIE  | CMD_NONE,          "You're making Trixie's job so very easy, Mr. Wrong." },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,          "(I need to press until I see a contradiction...)" },
-{EV_T_BLOOMCROSS,157,   PP_BLOOM   | CMD_CONCROSS, "" },
+{EV_T_BLOOMCROSS,157,   PP_BLOOM   | CMD_STARTCROSS, "" },  // since there's only one line, restart rather than continue
 
-{EV_P_BUMPED,   164,    PP_PHOENIX | CMD_PHOENIXHOLD,  ""  },
+{EV_P_BUMPED,   164,    PP_PHOENIX | CMD_PHOENIXHOLD,  "HOLD IT!"  },
 {   EV_NONE,    136,    PP_PHOENIX | CMD_NONE,  "You bumped into something? What was it?"  },
 {   EV_NONE,    167,    PP_BLOOM   | CMD_NONE,  "I don't have a clue... it was really dark, I couldn't see anything..."  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "You have to know more about this!"  },
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "But I really don't know what it was, Mr. Lawyer... honest..."  },
-{   EV_NONE,    138,    PP_TRIXIE  | CMD_TRIXIEOBJ,  ""  },
+{   EV_NONE,    138,    PP_TRIXIE  | CMD_TRIXIEOBJ,  "OBJECTION!"  },
 {   EV_NONE,    135,    PP_TRIXIE  | CMD_NONE,  "Leave her alone, you jerk! She doesn't know what it was."  },
 {   EV_NONE,    148,    PP_PHOENIX | CMD_NONE,  "This is important information! Just moments ago you said she never told you about this!"  },
 {   EV_NONE,    126,    PP_JUDGE   | CMD_NONE,  "I am curious as to what she bumped into as well... Objection overruled!"  },
@@ -1579,8 +1579,13 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    170,    PP_PHOENIX | CMD_NONE,  "(Why does Twilight keep randomly looking over at Trixie like that? I should ask her later... for now I have to focus on the matters at hand.)"  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "Okay Applebloom, just like how I asked you to think of a different way about how long you were lost..."  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "Let's think about this in a different way..."  },
-{   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "What do you mean?"  },
-{   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "What did it feel like... what did the thing you bumped into feel like?"  },
+{   EV_NONE,    160,    PP_BLOOM   | CMD_CLRPROMPT,  "What do you mean?"  },
+
+{ EV_T_FEEL,    160, PP_BLOOM | CMD_ADDPROMPT, "Ask how it felt"     },
+{ EV_T_REACT,   160, PP_BLOOM | CMD_ADDPROMPT, "Ask how it reacted"     },
+{   EV_NONE,    160, PP_BLOOM | CMD_SELPROMPT, ""  },
+
+{ EV_T_FEEL,    139,    PP_PHOENIX | CMD_NONE,  "What did it feel like... what did the thing you bumped into feel like?"  },
 {   EV_NONE,    157,    PP_BLOOM   | CMD_CHIMESFX,  "Oh... that's right!"  },
 {   EV_NONE,    130,    PP_JUDGE   | CMD_NONE,  "What is it, witness?"  },
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "It felt alive... it wasn't a rock or a tree."  },
@@ -1589,7 +1594,9 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "I definitely felt fur when I bumped into it and I could hear it breathing heavy like it was really tired."  },
 {   EV_NONE,    136,    PP_PHOENIX | CMD_NONE,  "It was... breathing? Could it have been a wild animal?"  },
 {   EV_NONE,    167,    PP_BLOOM   | CMD_NONE,  "I'm not too sure. I know I heard it breathing heavy though."  },
-{   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "How did it react when you bumped into it?"  },
+{   EV_NONE,    160, PP_BLOOM | CMD_SELPROMPT, ""  },
+
+{EV_T_REACT,    139,    PP_PHOENIX | CMD_NONE,  "How did it react when you bumped into it?"  },
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "When I bumped into the thing, it kinda jumped a bit."  },
 {   EV_NONE,    128,    PP_PHOENIX | CMD_NONE,  "I would probably jump too if something bumped me in the dark..."  },
 {   EV_NONE,    130,    PP_JUDGE   | CMD_NONE,  "As would I..."  },
@@ -1606,22 +1613,19 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    136,    PP_PHOENIX | CMD_NONE,  "That's not strange..."  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "Anyone's eyes would hurt if there was a sudden burst of light in pitch black darkness."  },
 {   EV_NONE,    167,    PP_BLOOM   | CMD_NONE,  "No, not that part Mr Lawyer, after that... I stumbled around for about a minute or two because I couldn't open my eyes."  },
-
 {   EV_NONE,    167,    PP_BLOOM   | CMD_NONE,  "The flash of the lightning made my eyes sting... but when the hurting in my eyes went away..."  },
-
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "I was outside the forest... just like that."  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "W-what!? But how?"  },
 {   EV_NONE,    141,    PP_TRIXIE  | CMD_MUSEXAM, "There is only one way in and out of that forest and that is the entrance on the pathway."  },
 {   EV_NONE,    141,    PP_TRIXIE  | CMD_NONE,  "The trees surrounding the forest's outer perimeter act as a barricade; you can only leave and enter the Everfree Forest from the entrance."  },
 {   EV_NONE,    141,    PP_TRIXIE  | CMD_NONE,  "Unless of course you're a pegasus - then you could just fly out."  },
 {   EV_NONE,    130,    PP_JUDGE   | CMD_NONE,  "That is certainly strange..."  },
-{   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "How could you go from being lost to being outside the forest just like that, Applebloom?"  },
+{   EV_NONE,    139,    PP_PHOENIX | CMD_CLEARTEST,  "How could you go from being lost to being outside the forest just like that, Applebloom?"  },
 {EV_O_GOODBLOOM,167,    PP_BLOOM   | CMD_GOODOBJECT,  "I know it sounds weird but it's true..."  },
 
 {EV_P_OUTSIDE,    160,  PP_BLOOM   | CMD_OBJECTHERE, "I was outside the dark forest after the lightning hit. I went straight home afterwards and I got home at 9:10 like I said before."  },
-{EV_T_BLOOMCROSS2,160,  PP_BLOOM   | CMD_CONCROSS, ""  },
 
-// If we fall out of cross examination, run these lines before looping
+// If we fall out of cross examination, run these lines before looping (we also play it once automatically)
 {EV_T_BLOOMCROSS2,132,  PP_TWILIGHT| CMD_NONE, "Maybe we should check the evidence again, and make sure what she said lines up?" },
 {   EV_NONE,     136,   PP_PHOENIX | CMD_NONE, "That's a good idea, Twilight." },
 {EV_T_BLOOMCROSS2,157,  PP_BLOOM   | CMD_STARTCROSS, "" },
@@ -1631,24 +1635,27 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "I went straight home after I was outside the forest... because I was... y'know... scared..."  },
 {EV_T_BLOOMCROSS2,160,  PP_BLOOM   | CMD_CONCROSS, ""  },
 
-{EV_O_GOODBLOOM,138,    PP_PHOENIX | CMD_PHOENIXOBJ,  ""  },
+{EV_O_GOODBLOOM,138,    PP_PHOENIX | CMD_PHOENIXOBJ,  "OBJECTION!"  },
 {   EV_NONE,    148,    PP_PHOENIX | CMD_NONE,  "The prosecution has some explaining to do!"  },
 {   EV_NONE,    141,    PP_TRIXIE  | CMD_NONE,  "What are you babbling about?"  },
 {EV_T_LOOPBLOOM,139,    PP_PHOENIX | CMD_NONE,  "Applebloom claims she got out of the forest at exactly 9:00, when she saw the second bolt of lightning."  },
 {   EV_NONE,    141,    PP_TRIXIE  | CMD_NONE,  "Yes? So what?"  },
+{   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "That directly contradicts this evidence:"  },
 
                                                //  01234567890123456789012345678901
 {   EV_NONE,    141,    PP_TRIXIE  | CMD_SHOWEV,  "What contradicts the time?"  },
 {EV_CRIMESCENE, EV_T_PRESEF, PP_TRIXIE  | CMD_JUMPIFSHOW, "" },
 
-{   EV_NONE,    150,    PP_TWILIGHT| CMD_NONE,  "..."  },
+{   EV_NONE,    223,    PP_PHOENIX| CMD_PHOENIXTAKE,  "TAKE THAT!"  },
+{   EV_NONE,    150,    PP_TWILIGHT| CMD_MUSTRUTH, "..."  },    // do we need to restart music here??
 {   EV_NONE,    144,    PP_TRIXIE  | CMD_NONE,  "That doesn't contradict anything this witness has said!"  },
 {   EV_NONE,    151,    PP_JUDGE   | CMD_NONE,  "Mr. Wright, if you can't show something better than that, I will have to overrule you!"  },
 {   EV_NONE,    170,    PP_TWILIGHT| CMD_NONE,  "Phoenix, present your evidence with more care before the judge penalizes us!"  },
 {EV_T_LOOPBLOOM,151,    PP_JUDGE   | CMD_JUMP,  ""  },
 
 // present evidence - cloud ballistics
-{EV_T_PRESEF, 161,    PP_TRIXIE  | CMD_CHIMESFX, "!!"  },
+{EV_T_PRESEF,   223,    PP_PHOENIX| CMD_PHOENIXTAKE,  "TAKE THAT!"  },
+{   EV_NONE,    161,    PP_TRIXIE  | CMD_CHIMESFX, "!!"  },
 {   EV_NONE,    171,    PP_PHOENIX | CMD_NONE,  "I see you caught on! According to these 'cloud ballistics' you said the second lightning bolt struck at ten to nine."  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_CRASHSFX,  "So why did Applebloom see a lightning bolt ten minutes after that!?"  },
 {   EV_NONE,    172,    PP_TRIXIE  | CMD_MUSTRUTH,  "Um well... uh... Maybe..."  }, // wrong music but I don't think I have the right one...
@@ -1680,8 +1687,8 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "(Argh! That was my deduction!)"  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "There is still a problem, Your Honor!"  },
 {   EV_NONE,    130,    PP_JUDGE   | CMD_NONE,  "What is that, Mr Wright?"  },
-{   EV_NONE,    130,    PP_JUDGE   | CMD_MUSTRUTH,  "Ms Trixie seems to have solved the mystery of the time inconsistency."  },
-{   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "But another mystery comes from that..."  },
+{   EV_NONE,    130,    PP_JUDGE   | CMD_NONE,  "Ms Trixie seems to have solved the mystery of the time inconsistency."  },
+{   EV_NONE,    139,    PP_PHOENIX | CMD_MUSTRUTH,  "But another mystery comes from that..."  },
 {   EV_NONE,    126,    PP_JUDGE   | CMD_NONE,  "Do tell, Mr Wright..."  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "The REAL second bolt of lightning: why didn't Applebloom mention seeing or hearing that?"  },
 {   EV_NONE,    126,    PP_JUDGE   | CMD_NONE,  "Ah, you bring up a valid point, Mr. Wright. Witness..."  },
@@ -1690,24 +1697,30 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {   EV_NONE,    160,    PP_BLOOM   | CMD_NONE,  "I only saw that one at 8:40PM and the one after I bumped into that thing."  },
 {   EV_NONE,    126,    PP_JUDGE   | CMD_NONE,  "This is most peculiar... Trixie, do you have an explanation for this?"  },
 {   EV_NONE,    172,    PP_TRIXIE  | CMD_NONE,  "Well... the Defense will-!"  },
-{   EV_NONE,    138,    PP_PHOENIX | CMD_PHOENIXOBJ,  ""  },
+{   EV_NONE,    138,    PP_PHOENIX | CMD_PHOENIXOBJ,  "OBJECTION!"  },
 {   EV_NONE,    148,    PP_PHOENIX | CMD_NONE,  "Fool me once shame on you, fool me twice shame on me..."  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "I'm not going to fall for that again! Besides, remember?"  },
-{   EV_NONE,    149,    PP_PHOENIX | CMD_NONE,  "It's YOUR \"GREAT and POWERFUL\" theory, after all!"  },
+{   EV_NONE,    149,    PP_PHOENIX | CMD_CLRPROMPT, "It's YOUR \"GREAT and POWERFUL\" theory, after all!"  },
 {   EV_NONE,    135,    PP_TRIXIE  | CMD_STOPMUS,  "What do you take me for, a fool!?"  },
-{   EV_NONE,    128,    PP_PHOENIX | CMD_NONE,  "Why in fact, I do..."  },
+
+{ EV_T_YESFOOL, 135, PP_TRIXIE | CMD_ADDPROMPT, "Agree"     },
+{ EV_T_NOFOOL,  135, PP_TRIXIE | CMD_ADDPROMPT, "Say nothing"    },
+{   EV_NONE,    135, PP_TRIXIE | CMD_SELPROMPT, ""  },
+
+{EV_T_YESFOOL,  128,    PP_PHOENIX | CMD_NONE,  "Why in fact, I do..."  },
 {   EV_NONE,    161,    PP_NONE    | CMD_CRASHSFX,  "!!!"  },
 {   EV_NONE,    132,    PP_TWILIGHT| CMD_NONE,  "Low blow, Phoenix..."  },
 {   EV_NONE,    135,    PP_TRIXIE  | CMD_NONE,  "How DARE you...!"  },
 {   EV_NONE,    151,    PP_JUDGE   | CMD_NONE,  "Mr Wright, that was uncalled for..."  },
 {   EV_NONE,    134,    PP_PHOENIX | CMD_NONE,  "(Hey... she's been putting me down all day!)"  },
-{   EV_NONE,    135,    PP_TRIXIE  | CMD_NONE,  "Trixie will show you, you spiky headed ingrate! Do you remember why this witness is testifying?"  },
+
+{EV_T_NOFOOL,   135,    PP_TRIXIE  | CMD_NONE,  "Trixie will show you, you spiky headed ingrate! Do you remember why this witness is testifying?"  },
 {   EV_NONE,    139,    PP_PHOENIX | CMD_NONE,  "Yes, to confirm the time of the lightning bolt striking!"  },
 {   EV_NONE,    135,    PP_TRIXIE  | CMD_NONE,  "Exactly, which she did. Anything beyond that is trivial."  },
 {   EV_NONE,    126,    PP_JUDGE   | CMD_NONE,  "Though it is suspicious... why this witness didn't testify to hearing or seeing the second lightning bolt, the fact still stands. The initial bolt was set off at 8:40PM."  },
-{   EV_NONE,    138,    PP_PHOENIX | CMD_PHOENIXOBJ, ""  },
+{   EV_NONE,    138,    PP_PHOENIX | CMD_PHOENIXOBJ, "OBJECTION!"  },
 {   EV_NONE,    148,    PP_PHOENIX | CMD_NONE,  "But the second bolt-"  },
-{   EV_NONE,    138,    PP_TRIXIE  | CMD_TRIXIEOBJ,  ""  },
+{   EV_NONE,    138,    PP_TRIXIE  | CMD_TRIXIEOBJ,  "OBJECTION!"  },
 {   EV_NONE,    141,    PP_TRIXIE  | CMD_NONE,  "You seem obsessed with that! Perhaps the reason the witness didn't hear it is that she was too far away."  },
 {   EV_NONE,    141,    PP_TRIXIE  | CMD_NONE,  "The clearing is fifteen minutes away from the entrance. Maybe the sound didn't have enough volume to reach that far."  },
 {   EV_NONE,    126,    PP_JUDGE   | CMD_NONE,  "I agree with the prosecution: the witness did what she came here to do. Objection overruled!"  },

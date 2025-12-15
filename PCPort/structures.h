@@ -180,6 +180,7 @@ enum {
 
     EV_O_BADBLOOM,      // bad objection
     EV_O_BADBLOOM2,     // bad objection
+    EV_O_BADBLOOM3,     // bad objection
     EV_O_GOODBLOOM,     // good objection
 
     EV_T_BLOOMTEST,     // jump target post testimony
@@ -192,6 +193,10 @@ enum {
     EV_T_WHATCUTIE,
     EV_T_NOCUTIE,
     EV_T_LOOPBLOOM,
+    EV_T_FEEL,
+    EV_T_REACT,
+    EV_T_YESFOOL,
+    EV_T_NOFOOL,
 
     EV_MAX,
 
@@ -590,6 +595,7 @@ extern int nStorySize;
 #define HAS_TRIXIEOBJ
 #define HAS_PHOENIXHOLDIT
 #define HAS_PHOENIXOBJ
+#define HAS_PHOENIXTAKE
 // music - missing exam part 2 and the actual music at 35:03, using TRUTH instead
 #define HAS_MUSEXAM
 #define HAS_MUSTRUTH
