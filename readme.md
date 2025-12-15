@@ -1,6 +1,8 @@
 This is an attempt to code a game out of the old Phoenix Wright - Turnabout Storm MLP cross-over fan video.
 
-The game plays online using a TI-99/4A with TIPI or compatible for the web access. 
+The game plays online using a TI-99/4A with TIPI or compatible for the web access. It also supports F18A for 
+better graphics.
+
 It is built into my Classic99 emulator as well:
 
 https://harmlesslion.com/classic99
