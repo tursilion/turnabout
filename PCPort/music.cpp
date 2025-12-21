@@ -63,7 +63,7 @@ const MUSICLOOKUP musLookup[] = {   /* page   address  */
     /* 013 CMD_MUSLOCK     */  {  0,    (unsigned char*)0x0000  }, 
     /* 014 CMD_MUSTRIALS   */  {  0,    (unsigned char*)0x0000  }, 
     /* 015 CMD_MUSPROLOG   */  { 19,    (unsigned char*)0xfc00  },      // 886 bytes
-    /* 016 CMD_MUSCHESS    */  {  0,    (unsigned char*)0x0000  }, 
+    /* 016 CMD_MUSECHESS   */  {  0,    (unsigned char*)0x0000  }, 
     /* 017 CMD_MUSOBJECT   */  {  0,    (unsigned char*)0x0000  }, 
     /* 018 CMD_MUSTHRILL   */  {  0,    (unsigned char*)0x0000  }, 
     /* 019 CMD_MUSINTEREST */  {  0,    (unsigned char*)0x0000  }, 
@@ -98,7 +98,9 @@ const MUSICLOOKUP musLookup[] = {   /* page   address  */
     /* 048 CMD_MUSCLOCK    */  {  0,    (unsigned char*)0x0000  }, 
     /* 049 CMD_MUSSPECIAL  */  {  0,    (unsigned char*)0x0000  }, 
     /* 050 CMD_MUSCOOL     */  {  0,    (unsigned char*)0x0000  }, 
-    /* 051 CMD_MUSMEMORY   */  {  0,    (unsigned char*)0x0000  }
+    /* 051 CMD_MUSMEMORY   */  {  0,    (unsigned char*)0x0000  },
+    /* 052 CMD_MUSSCHESS   */  {  0,    (unsigned char*)0x0000  },
+    /* 053 CMD_MUSOBJECT2  */  {  0,    (unsigned char*)0x0000  } 
 };
 
 #ifdef CLASSIC99

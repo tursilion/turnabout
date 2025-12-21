@@ -32,5 +32,6 @@ Evidence_t people[PP_MAX] = {
 
     { "Edgeworth",                  ""     },
     { "TESTIMONY",                  ""     },
-    { "CROSS-EXAMINE",              ""     }
+    { "CROSS-EXAMINE",              ""     },
+    { "Gallery",                    ""     }
 };

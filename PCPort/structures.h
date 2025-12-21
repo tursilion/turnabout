@@ -18,7 +18,8 @@
 //#define LOCATION_IS_11
 //#define LOCATION_IS_12
 //#define LOCATION_IS_13
-#define LOCATION_IS_14
+//#define LOCATION_IS_14
+#define LOCATION_IS_15
 #endif
 
 // some types
@@ -79,6 +80,7 @@ enum {
     EV_I_WHINEBED,                  // whined about bed
     EV_I_WHINEBREAKFAST,            // whined about breakfast
     EV_I_REVISION1,                 // stored to track first revision of the save file
+    EV_I_DAY1DESPERATE,             // day 1 first desperate question asked
 
     EV_MAX_STORED_EV,               // nothing after here is saved in inventory arrays
 
@@ -198,6 +200,25 @@ enum {
     EV_T_YESFOOL,
     EV_T_NOFOOL,
 
+    EV_T_YESSCHED,
+    EV_T_NOSCHED,
+    EV_T_QMOTIVE,
+    EV_T_PTHEORY,
+
+    EV_T_TRIXIECROSS1,  // jump target if cross examine wraps around
+    EV_P_RDEVERFREE,
+    EV_P_RDSEEACE,
+    EV_P_RDZAPACE,
+    EV_O_GOODTRIXIE1,
+    EV_O_BADTRIXIE1,
+
+    EV_T_SHOWEATHER,
+    EV_T_WETLOOP,
+    EV_T_YESAPONY,
+    EV_T_NOAPONY,
+    EV_T_WHYSHOW,
+    EV_T_WHYHAVE,
+
     EV_MAX,
 
     // people are just special evidence, so I need them in the same list
@@ -223,7 +244,8 @@ enum {
     PP_EDGEWORTH  = 0x8e00,         // never used in game, but we need it for his name in a flashback
     PP_TESTIMONY  = 0x8f00,         // used for the name only
     PP_CROSSEXAM  = 0x9000,         // used for the name only
-    PP_LAST       = 0x9100
+    PP_GALLERY    = 0x9100,         // audience gallery
+    PP_LAST       = 0x9200
 };
 #define PP_MAX ((PP_LAST>>8)-(PP_FIRST>>8))
 #define PP_NONE PP_FIRST
@@ -343,53 +365,52 @@ enum {
     // downloaded - do not reorder the song list!!
     CMD_MUSTARTLIST , // just to find the music block
 
-    CMD_MUSSTEEL    , // Steel Samurai Ringtone
-    CMD_MUSSTART    , // Apollo Justice - Start of a New Trial! - Apollo Justice Ace Attorney - Objection 2007 (used Objection 2011)
-    CMD_MUSEXAM     , // Cross Examination - Moderate 2007 - Apollo Justice Ace Attorney
-    CMD_MUSCROSS    , // Cross Examination - Moderato 2002 - Phoenix Wright Justice For All
-    CMD_MUSTRICK    , // Magic and Tricks - Phoenix Wright: Justice for All
-    CMD_MUSMLP      , // My Little Pony - Friendship is Magic Theme (8-bit) - RainbowCrash88 - used random Midi
-    CMD_MUSTROUPE   , // Gramarye Troupe - Apollo Justice Ace Attorney
-    CMD_MUSTRIAL    , // Ace Attorney 4 - Trial - Apollo Justice Ace Attorney - Court is now in session
-    CMD_MUSTRANCE   , // Trance Logic - Apollo Justice Ace Attorney
-    CMD_MUSPEARLY   , // With Pearly - Phoenix Wright Justice for All
-    CMD_MUSSISTER   , // Turnabout Sisters - Capcom
+    CMD_MUSSTEEL    , //    Steel Samurai Ringtone
+    CMD_MUSSTART    , // Apollo Justice - Start of a New Trial! - Apollo Justice Ace Attorney (AJ-1)
+    CMD_MUSEXAM     , //    Cross Examination - Moderate 2007 - Apollo Justice Ace Attorney
+    CMD_MUSCROSS    , // Cross Examination - Moderato 2002 - Phoenix Wright Justice For All (JFA-72)
+    CMD_MUSTRICK    , //    Magic and Tricks - Phoenix Wright: Justice for All
+    CMD_MUSMLP      , //    My Little Pony - Friendship is Magic Theme (8-bit) - RainbowCrash88 - used random Midi
+    CMD_MUSTROUPE   , //    Gramarye Troupe - Apollo Justice Ace Attorney
+    CMD_MUSTRIAL    , //    Ace Attorney 4 - Trial - Apollo Justice Ace Attorney - Court is now in session
+    CMD_MUSTRANCE   , //    Trance Logic - Apollo Justice Ace Attorney
+    CMD_MUSPEARLY   , //    With Pearly - Phoenix Wright Justice for All
+    CMD_MUSSISTER   , //    Turnabout Sisters - Capcom
     CMD_MUSSMILE    , // Smile Instrumental - Hasbro
-    CMD_MUSLOCK     , // Lock on the Heart - Capcom - Justice for All Psyche-Lock
-    CMD_MUSTRIALS   , // Trials and Tribulation WiiWare Rips - HoodieD
-    CMD_MUSPROLOG   , // Apollo Justice - Prologue
-    CMD_MUSCHESS    , // Logic Chess - Moderato - Ace Attorney Investigations 2
-    CMD_MUSOBJECT   , // Objection! 2009 - Ace Attorney Investigations
-    CMD_MUSTHRILL   , // Thrill Theme - Suspense
-    CMD_MUSINTEREST , // Interesting People - Ace Attorney Investigations
-    CMD_MUSKLAVIER  , // Klavier's Theme - Capcom
-    CMD_MUSTRAGIC   , // Interview Tragicomedy - Capcom
-    CMD_MUSMIDDLE   , // Investigation Middlegame - Capcom - Ace Attorney Investigations
-    CMD_MUSKG8      , // KG-8 Case - Capcom
-    CMD_MUSLYING    , // Lying Coldly - Capcom
+    CMD_MUSLOCK     , // Lock on the Heart - Capcom - Justice for All Psyche-Lock (JFA-85 - don't have)
+    CMD_MUSTRIALS   , //    Trials and Tribulation WiiWare Rips - HoodieD
+    CMD_MUSPROLOG   , //    Apollo Justice - Prologue
+        CMD_MUSECHESS   , // Logic Chess End - Moderato - Ace Attorney Investigations 2 (AAI2-53)
+        CMD_MUSOBJECT   , // Objection! 2009 - Ace Attorney Investigations (AAI-11)
+        CMD_MUSTHRILL   , // Thrill Theme - Suspense (AJ-35)
+        CMD_MUSINTEREST , // Interesting People - Ace Attorney Investigations (AAI-49)
+    CMD_MUSTRAGIC   , // Interview Tragicomedy - Capcom (AJ-17)
+    CMD_MUSMIDDLE   , //    Investigation Middlegame - Capcom - Ace Attorney Investigations
+    CMD_MUSKG8      , // KG-8 Case - Capcom (AAI-53)
+    CMD_MUSLYING    , // Lying Coldly - Capcom (AAI-12)
     CMD_MUSMOON     , // Moonlight Sonata - The Orchard Music
     CMD_MUSWINTER   , // Winter Wrap Up - David Larson
-    CMD_MUSLOUNGE   , // Courtroom Lounge - Overture again
-    CMD_MUSHOTLINE  , // Hotline to Destiny - Capcom - Hotline of Fate
-    CMD_MUSSUSPENSE , // Suspense - Phoenix Wright Ace Attorney
-    CMD_MUSBEGIN    , // Court Begins - Capcom
-    CMD_MUSTRUTH    , // Tell the Truth 2002 - Capcom - The Truth Revealed 2002
-    CMD_MUSPURSUIT  , // Pursuit - Questioned - Capcom
-    CMD_MUSEND      , // Ace Attorney ~ End - Capcom
-    CMD_MUSCORNERED , // Pursuit Cornered 2001 - Capcom
-    CMD_MUSSWEPT    , // Sweptaway Turnabout - Tragedy of the Horror House
-    CMD_MUSCORE     , // Investigation Core 2001 - Cadenza
-    CMD_MUSPRELUDE  , // Unending Prelude - Capcom - Defendant Lobby - So it Begins
+    CMD_MUSLOUNGE   , //    Courtroom Lounge - Overture again
+    CMD_MUSHOTLINE  , // Hotline to Destiny - Capcom - Hotline of Fate (JFA-86)
+    CMD_MUSSUSPENSE , //    Suspense - Phoenix Wright Ace Attorney
+    CMD_MUSBEGIN    , // Court Begins - Capcom (PW-8? AJ-45?)
+    CMD_MUSTRUTH    , //    Tell the Truth 2002 - Capcom - The Truth Revealed 2002
+    CMD_MUSPURSUIT  , // Pursuit - Questioned - Capcom (JFA-74)
+    CMD_MUSEND      , // Ace Attorney ~ End - Capcom (PW-7?)
+    CMD_MUSCORNERED , //    Pursuit Cornered 2001 - Capcom
+    CMD_MUSSWEPT    , // Sweptaway Turnabout - Tragedy of the Horror House (AAI-54 or AAI-55)
+    CMD_MUSCORE     , //    Investigation Core 2001 - Cadenza
+    CMD_MUSPRELUDE  , // Unending Prelude - Capcom - Defendant Lobby - So it Begins (PW-8)
     CMD_MUSGIGGLE   , // Giggle at the Ghosties - Hasbro - starts with so many wonders - need to cut
-    CMD_MUSCOURT    , // Court Begins Orchestrated - Capcom - TAT Court is now in session
-    CMD_MUSWON      , // Won the Lawsuit - Magical Trick Society - Victory - Our First Win
+    CMD_MUSCOURT    , // Court Begins Orchestrated - Capcom - TAT Court is now in session (PW-13? Or we might have a midi downloaded)
+    CMD_MUSWON      , // Won the Lawsuit - Magical Trick Society - Victory - Our First Win (PW-20)
     CMD_MUSAJ       , // Applejack's Theme - AcousticBrony
     CMD_MUSRARITY   , // Rarity's Theme - MandoPony - Using FIM Rarity MIDI instead
-    CMD_MUSTRUCY    , // Trucy's Theme - Child of Magic (Chords 0/1/2, 4/5/6, 7/8)
-    CMD_MUSELEGY    , // Guard's elegy - Capcom
-    CMD_MUSGUILTY   , // Guilty love - Capcom (using ringtone version)
-    CMD_MUSRECALL   , // Recollation - Elementary School Trial
-    CMD_MUSCRUSADE  , // Crusading (Apple Bloom) - SoloAcapello (using Apples to the Core by DJDelta0)
+    CMD_MUSTRUCY    , //    Trucy's Theme - Child of Magic (Chords 0/1/2, 4/5/6, 7/8)
+    CMD_MUSELEGY    , //    Guard's elegy - Capcom
+    CMD_MUSGUILTY   , //    Guilty love - Capcom (using ringtone version)
+    CMD_MUSRECALL   , //    Recollation - Elementary School Trial
+    CMD_MUSCRUSADE  , //    Crusading (Apple Bloom) - SoloAcapello (using Apples to the Core by DJDelta0)
 
     // Do not reorder the song list!!
     // not available yet - will probably need to replace - how can I reach SoloAcapello?    
@@ -399,6 +420,9 @@ enum {
     CMD_MUSSPECIAL  , // Special Delivery! (Derpy) - SoloAcapello
     CMD_MUSCOOL     , // Too Cool For You, Dweeb (Gilda) - SoloAcapello
     CMD_MUSMEMORY   , // Memories (Gilda confession) - SoloAcapello
+
+        CMD_MUSSCHESS   , // Logic Chess Start - Moderato - Ace Attorney Investigations 2 (AAI2-16)
+        CMD_MUSOBJECT2  , // Objection! 2011 - Ace Attorney Investigations 2 (AAI2-12)
 
     // not listed in the game credits but downloaded anyway
     // testimony-allegro (apparently no tracks are called that... might already have it then)

@@ -653,7 +653,7 @@ Time        Frame       Who         Text
 38:56       0167        Bloom       Awww, nothing...
 
 
--- Location 14 --
+-- Location 15 --
 
 39:00       black
 39:04       0126        Judge       The witness brought up some interesting information, but does the prosecution have anything more regarding the defendant?
@@ -665,7 +665,7 @@ Time        Frame       Who         Text
 39:30       0142        Trixie      Lo and behold! Rainbow Trash was scheduled to make several lightning storms at the eastern end of Ponyville; this is where she got the cloud from.
 39:39       0174
 39:42       0126        Judge       The court accepts this as evidence.
-39:45       0175
+39:45       0175                    Weather Schedule: Rainbow Dash scheduled to create a thunder storm at 3pm on the eastern side of Ponyville. Everfree Forest is on the west side of town.
 39:48       0139        Phoenix     (It's really starting to look like Rainbow Dash did it... but I can't give up!)
 39:53                   .           What about motive?
 39:55       0141        Trixie      Hmm?
@@ -681,7 +681,7 @@ Time        Frame       Who         Text
 40:26       0127        Trixie      Indeed...
 40:28       0143        .           Now Rainbow Trash was probably intimidated by this and decided to get rid of him like a coward, making it easier to win.
 40:35                   .           She is the top pegasus athlete in Ponyville after all; she has a reputation to uphold.
-40:40                   .           She then could reap the spoilt of the grand prize -- flight lessons from her idols, "The Wonderbolts".
+40:40                   .           She then could then reap the spoils of the grand prize: flight lessons from her idols, "The Wonderbolts".
 40:46       0148        Phoenix     You have no proof that is what she was thinking!
 40:49       0144        Trixie      So? You have no proof that WASN'T what she was thinking...
 40:53       0143        .           Trixie doesn't need to establish a motive. How should Trixie know why she killed him? The point is Rainbow Trash did it.
@@ -692,14 +692,14 @@ Time        Frame       Who         Text
 41:10       0139        Phoenix     How can you be sure she was there?
 41:12       0135        Trixie      Weren't you listening to what Trixie said earlier?
 41:15       0144        .           The cloud above the crime scene had her hoof markings.
-41:17                   .           On top of that, some cyan-colored feathers were found around the clearing -- three guesses who they belong to, Mr Wrong.
+41:17                   .           On top of that, some cyan-colored feathers were found around the clearing. Three guesses who they belong to, Mr Wrong.
 41:24       0139        Phoenix     (Rainbow Dash, what were you doing there...?)
 41:26       0128        .           Okay, continue...
 41:29       0143C       Trixie      She saw Ace hanging around the forest for whatever reason...
 41:32       0164        (phoenix holdit sfx)
 41:33       0136        Phoenix     Why would he be 'hanging' around that forest anyway?
 41:36       0135        Trixie      That is of no concern to Trixie!
-41:38       0139        Phoenix     That's ridiculous; he had to have a reason to go into that dangerous forest!
+41:38       0139        Phoenix     That's ridiculous! He had to have a reason to go into that dangerous forest!
 41:42       0176        Trixie      If you think it's so important, why don't you give us an explanation?
 41:46       0139        Phoenix     I-I don't have one...
 41:49       0176        Trixie      Thought so... now let Trixie continue...
@@ -726,7 +726,7 @@ Time        Frame       Who         Text
 43:00       0161        
 43:01       0133        Twilight    You got her, Phoenix!
 43:03                   Phoenix     I just have to keep the momentum on my side now.
-43:05       0126        Judge       Is the forest truly that dark at the hour of the night, Ms Trixie?
+43:05       0126        Judge       Is the forest truly that dark at that hour of the night, Ms Trixie?
 43:10       0172        Trixie      W-well yes...
 43:12       0126        Judge       Then the defense has pointed out a flaw in your theory.
 43:16       0135        Trixie      Why you...! Are you mocking me!?
@@ -762,9 +762,9 @@ Time        Frame       Who         Text
 44:56       0139        Phoenix     This can't be!
 44:58       0143        Trixie      Take a guess where that missing cloud was found, Mr Wrong.
 45:02       0142        .           Right above the Everfree Forest clearing!
-45:06       0124        (crowd sfx)
+45:06       0124                    (crowd noise)
 45:08       0130        Judge       My word! So the defendant placed it there earlier? This makes all the defense's objections null and void.
-45:18       0179
+45:18       0179                    Missing Cloud Report: A cloud Rainbow Dash was in charge of disappeared at 4pm on the night of the murder, and was found above the Everfree Forest clearing.
 45:23       0176        Trixie      The defendant knew Ace was going to be in that forest, so she placed the cloud in that clearing well in advance.
 45:29       0139        Phoenix     But how could she know he would be there!?
 45:32       0176        Trixie      Trixie will say this again, Mr Wrong...
@@ -813,7 +813,7 @@ Time        Frame       Who         Text
 48:17                   .           (Now I know you just brought them out to embarrass Rainbow Dash.)
 48:20       0126        Judge       In any case, the court accepts these... um...
 48:25       0130        .           photos as... evidence...
-48:27       0186
+48:27       0186                    Embarassing pictures: Several pictures of Rainbow Dash... why in her right mind would she be doing this? Photos found in a bag on the victim.
 48:30       0126        Judge       After that little sideshow... can I declare my verdict now?
 48:36       0176        Trixie      Most certainly, Your Honor!
 48:38       0132        Twilight    Phoenix, do something quick!
@@ -835,6 +835,9 @@ Time        Frame       Who         Text
 49:33                   Twilight    I wonder what she saw...
 49:35                   Phoenix     We're about to find out in any case...
 49:37       0126        Judge       The prosecution will bring out their next witness.
+
+--- Location 16 ---
+
 49:40       black
 49:42       0127        Trixie      Witness, state your name and occupation.
 49:46       0187
@@ -846,7 +849,7 @@ Time        Frame       Who         Text
 50:03       0132        Phoenix     Maybe I can milk this situation to our advantage.
 50:06                   Twilight    What do you mean?
 50:08       0139        Phoenix     Your Honor! This witness clearly doesn't have the ability to testify. Perhaps we should suspend the proceedings of this trial for another-
-50:15       0189        Fluttershy  Oh, Mr Phoenix, you're here. You haven't died yet?
+50:15       0189        Fluttershy  Oh, Mr Phoenix, you're here! You haven't died yet?
 50:18       0190        .           There must be something very wrong... you look so frail and seem to be suffering more than ever right now.
 50:24       0134        Phoenix     You got the last part right...
 50:26       0126        Judge       Mr Wright, tell her to state her name and occupation, please.
@@ -1083,7 +1086,7 @@ Time        Frame       Who         Text
 05:26       0130        Judge       What about the dark forest, Mr Wright? How would this witness have been able to see in it?
 05:32       0139        Phoenix     It must be like a backyard to her.
 05:34                   .           She can probably navigate it from memory, just as you can probably navigate your house with your eyes closed.
-05:39       0201
+05:39       0169
 05:41       0126        Judge       This is a very bold claim, Mr Wright. This meek little thing looks like she wouldn't harm a fly... why would she frame her friend?
 05:50       0191        Fluttershy  It's true, I have ten pet flies! Michael, Donna, Steven, Eric, Jackie...
 05:58       0139        Phoenix     Easy! To cover her own guilt!
@@ -1122,13 +1125,13 @@ Time        Frame       Who         Text
 07:59       0126        Judge       Back to the matter at hand... I still have a hard time believing this little pony would do something like this...
 08:07       0148        Phoenix     The evidence speaks for itself, Your Honor! This feather puts Fluttershy on the scene of the crime!
 08:13       0139        .           I demand further investigation to find out if this feather belongs to any of Fluttershy's animals!
-08:17       0201
+08:17       0169        Judge       Hmmm...
 08:20       0126        Judge       Ms Trixie, what is your opinion on all of this? You have been surprisingly quiet regarding all of Mr Wright's claims.
 08:27       0141        Trixie      You know what...
 08:29       0143        .           Trixie agrees, Fluttershy is suspicious.
 08:32       0176        .           The investigation team did indeed see this feather on the crime scene; we brushed it off as just a plain old bird feather.
-08:38       0141        .           but as Trixie's feeble opponent has pointed out, it does seem kind of big up close, and with this information regarding these zoo animals,
-08:46       0190        .           it does seem to cast suspicion over this witness.
+08:38       0141        .           But as Trixie's feeble opponent has pointed out, it does seem kind of big up close, and with this information regarding these zoo animals...
+08:46       0190        .           ... it does seem to cast suspicion over this witness.
 08:49       0126        Judge       You are aware we will have to suspend proceedings until tomorrow for further investigation...?
 08:55       0135        Trixie      You don't think Trixie knows this?
 08:57       0141        .           Another one of Twilight Sparkle's little friends in the slammer is reward enough for Trixie today. "Two for the price of one", as they say!
