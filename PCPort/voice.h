@@ -16,7 +16,7 @@
 // page 6 - (overlaps cart) SAMPLE: Phoenix Holdit
 // page 7 - (overlaps cart) SAMPLE: Phoenix Objection
 // page 8 - (overlaps I/O) SAMPLE: Phoenix TakeThat / Judge Objection (final scene)
-// page 9 - (overlaps I/O) SAMPLE: Fluttershy Objection / Twilight Objection
+// page 9 - (overlaps I/O) SAMPLE: Fluttershy Objection / Twilight Objection / Laugh SFX
 
 // voice storage information
 // CMD_TRIXIEOBJ   , // play trixie objection      S0
@@ -28,17 +28,19 @@
 // CMD_TRIXIEHOLD  , // play trixie holdit         S6
 // CMD_PHOENIXHOLD , // play phoenix holdit        S7
 // CMD_PHOENIXTAKE , // play phoenix take that!    S8
+// CMD_LAUGHSFX    , // play laugh sample          S9
 
 // filename index
-#define ALL_OBJECT_IDX          5
 #define TRIXIE_OBJECT_IDX       0
-#define TRIXIE_HOLDIT_IDX       6
-#define PHOENIX_HOLDIT_IDX      7
 #define PHOENIX_OBJECT_IDX      1
-#define PHOENIX_TAKETHAT_IDX    8
+#define TWILIGHT_OBJECT_IDX     2
 #define FLUTTERSHY_OBJECT_IDX   3
 #define JUDGE_OBJECT_IDX        4
-#define TWILIGHT_OBJECT_IDX     2
+#define ALL_OBJECT_IDX          5
+#define TRIXIE_HOLDIT_IDX       6
+#define PHOENIX_HOLDIT_IDX      7
+#define PHOENIX_TAKETHAT_IDX    8
+#define ALL_LAUGH_IDX           9
 
 // AMS page
 #define ALL_OBJECT_PAGE         1
@@ -50,6 +52,7 @@
 #define FLUTTERSHY_OBJECT_PAGE  9
 #define JUDGE_OBJECT_PAGE       8
 #define TWILIGHT_OBJECT_PAGE    9
+#define ALL_LAUGH_PAGE          9
 
 // voice tag words (offset 0x0110 in sample - WARNING: IF SAMPLES CHANGES, THIS CHANGES! MUST BE UNIQUE!)
 // This is how we tell if it was already loaded
@@ -66,6 +69,7 @@
 #define PHOENIX_OBJECT_TAG      0x4544
 #define FLUTTERSHY_OBJECT_TAG   0x5432
 #define PHOENIX_HOLDIT_TAG      0xfdf5
+#define ALL_LAUGH_TAG           ??????
 
 // filename offset of index byte for loading voice and music
 #define VOC_OFF 40

@@ -34,6 +34,7 @@ static const VOICEINFOSTRUCT vis[] = {
     {   TRIXIE_HOLDIT_PAGE,     TRIXIE_HOLDIT_TAG    },
     {   PHOENIX_HOLDIT_PAGE,    PHOENIX_HOLDIT_TAG    },
     {   PHOENIX_TAKETHAT_PAGE,  PHOENIX_TAKETHAT_TAG    }
+    {   ALL_LAUGH_PAGE,         ALL_LAUGH_TAG    }
 };
 #endif
 
@@ -127,6 +128,10 @@ void load_voices() {
 
 #ifdef HAS_PHOENIXTAKE 
         load_one_voice(PHOENIX_TAKETHAT_IDX);
+#endif
+
+#ifdef HAS_LAUGHSFX
+        load_one_voice(ALL_LAUGH_IDX);
 #endif
 
         // restore SAMS and turn mapping off

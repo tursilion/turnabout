@@ -1,0 +1,312 @@
+49:40       black
+49:42       0127        Trixie      Witness, state your name and occupation.
+49:46       0187
+49:48       0135        Trixie      Witness! Get out from under there and state your name and occupation!
+49:51       0188        Fluttershy  (*whispers*)
+49:54       0130        Judge       Can you please repeat that, young lady? I couldn't hear you.
+49:59       0188        Fluttershy  (*whispers*)
+50:01       0130        Judge       Nope... still couldn't hear you...
+50:03       0132        Phoenix     Maybe I can milk this situation to our advantage.
+50:06                   Twilight    What do you mean?
+50:08       0139        Phoenix     Your Honor! This witness clearly doesn't have the ability to testify. Perhaps we should suspend the proceedings of this trial for another-
+50:15       0189        Fluttershy  Oh, Mr Phoenix, you're here! You haven't died yet?
+50:18       0190        .           There must be something very wrong... you look so frail and seem to be suffering more than ever right now.
+50:24       0134        Phoenix     You got the last part right...
+50:26       0126        Judge       Mr Wright, tell her to state her name and occupation, please.
+50:30       0128        Phoenix     But that's the prosecution's job. It's her witness...
+50:34       0141        Trixie      This witness was being difficult when Trixie was preparing her earlier as well.
+50:39       0126        Judge       Given the circumstances... just do it, Mr Wright.
+50:43       0148        Phoenix     Fluttershy - I mean, witness - state your name and occupation, please.
+50:47                   .           (Never thought I'd be saying that line.)
+50:49       0189        Fluttershy  I'm Fluttershy. I'm an animal caretaker.
+50:53       0127        Trixie      Is it true you saw Rainbow Dash leave the Everfree Forest two nights ago?
+50:58       0187
+50:59       0126        Judge       Mr Wright...
+51:01       0134
+51:03                   Phoenix     Is it true you saw Rainbow Dash leave the Everfree Forest two nights ago?
+51:07                   .           (This kind of backfired on me...)
+51:09       0191        Fluttershy  Yes, she seemed to be in a hurry.
+51:12       0130        Judge       So the defendant was indeed at the scene of the crime on the night of the murder.
+51:17       0126        .           Witness! You will-
+51:18       0187
+51:19       0126        Judge       Mr Wright, tell her she has to testify.
+51:24       0134        Phoenix     (Now I have to do your job too, Your Honor?)
+51:27                   .           Fluttershy...
+51:29       0189        Fluttershy  Yes, Mr Phoenix?
+51:31       0139        Phoenix     Can you please testify as to what you saw two nights ago when you saw Rainbow Dash leaving the forest?
+51:36       0190        Fluttershy  Umm... I don't know what 'testify' means...
+51:40       0139        Phoenix     It just means tell us what you saw that night.
+51:42       0189        Fluttershy  Oh yes, I can do that! Anything for you, Mr Phoenix!
+51:46       0192        (boomsfx)   -- I'll tell you all what I saw! ... if it's okay with you... --
+51:50       0191T       Fluttershy  It was during the night hours. I went outside to feed the chickens and the other ones...
+51:57       0190T       .           When I was near my chicken coop, I heard a lightning bolt in the distance and it scared me.
+52:04       0193T       .           After I finished feeding my chickens, I saw Rainbow Dash flying away from the forest like something was chasing her. I called out to her, but I don't think she heard me.
+52:16                   .           I looked up but saw nothing following her.
+52:19       0191T       .           That was when the police ponies arrived. They spoke with me, and I went off to bed at 10:30PM.
+52:28       0176        Trixie      Hahaha! Is that isn't an airtight testimony, Trixie doesn't know what is! By Rainbow Trash's own friend no less.
+52:36       0191        Rainbow     FLUTTERSHY!
+52:38       0189        Fluttershy  Hi Rainbow Dash.
+52:39       0126        Judge       Very well, Mr Wright, your cross-examination, if you please.
+52:44       0132        Twilight    Did you see anything odd in there, Phoenix?
+52:47                   Phoenix     Not really... Trixie is right.. it's kind of airtight...
+52:50                   Twilight    Then what do we do?
+52:52                   Phoenix     Poke holes in it until it isn't airtight anymore.
+52:55       0133        Twilight    That's the spirit! I just hope Fluttershy isn't lying about anything.
+52:59       0132        Phoenix     (I actually hope she's lying so I have something to work off of.)
+53:02       0194
+53:07       0191C       Fluttershy  It was during the night hours. I went outside to feed the chickens and the other ones...
+53:13       0164        (phoenix holdit sfx)
+53:14       0139        Phoenix     So, you say you went outside to feed your chickens, and "the other ones". What do you mean by that?
+53:20       0189        Fluttershy  I'm... taking care of a lot of exotic animals right now.
+53:23       0136        Phoenix     I see. How did you acquire them?
+53:26       0189        Fluttershy  A zoo in Fillydelphia is, well, renovating, and they needed a place for all the animals to stay while they do it.
+53:33       0191        .           They... heard about my talent with animals, somehow, and they came to me and asked me to take care of them.
+53:42       0189        Fluttershy  O-of course I said 'yes', since they had lots of birdies and critters that I've never seen before, and I always like to meet new animals...
+53:50       0136        Phoenix     How long have you had these animals?
+53:52       0189        Fluttershy  Three days now.
+53:54       0136        Phoenix     Is it hard work taking care of them all?
+53:56       0138        (trixie objection sfx)
+53:58       0135        Trixie      What, pray tell, does this have to do with murder?
+54:01       0137        Phoenix     Well... I kind of like animals too, and...
+54:03       0135        Trixie      Stop going off topic, you incompetent fool!
+54:06       0139        Phoenix     (I really hate you Trixie, you know that?)
+54:10                   .           (I better keep note of these exotic animals, though, something about it...)
+54:13       0190C       Fluttershy  When I was near my chicken coop, I heard a lightning bolt in the distance and it scared me.
+54:19       0164        (phoenix holdit sfx)
+54:21       0139        Phoenix     You heard thunder while you were in your chicken coop?
+54:23       0190        Fluttershy  Well, it was lightning...
+54:25       0139        Phoenix     No, Fluttershy, thunder produces the sound, not lightning.
+54:29       0143        Trixie      Wrong again, Mr Wrong...
+54:31       0139        Phoenix     For the last time, Trixie, it's "Wright". Would you please stop calling me that?
+54:35       0132        Twilight    Actually, here in Equestria, lightning is what produces the noise when it strikes the ground.
+54:41       0139        Phoenix     That wasn't what I wanted to say, anyway. What time was it when you heard it?
+54:45       0191        Fluttershy  8:40PM, on the dot.
+54:47       0136        Phoenix     That's quite exact. How are you so sure?
+54:49       0189        Fluttershy  It's the time I feed my chickens every night.
+54:53       0134        Phoenix     Feeding chickens... at night...?
+54:55       0190        Fluttershy  Midnight snack! I couldn't send them to bed without one, what if they starved to death while they were sleeping!?
+55:02       0130        Judge       Oh my! I never realized the importance of midnight snacking!
+55:07       0132        Twilight    That's our naive Fluttershy...
+55:10                   Phoenix     (And that's my clueless Judge...)
+55:12       0139        .           Are you positive it was the lightning you heard, and not something else?
+55:15       0190        Fluttershy  I'm sure it was lightning, because the sound of lightning really frightens me!
+55:20                   .           I remember getting scared when I heard it; I nearly dropped all of my chicken feed.
+55:25       0127        Trixie      This lines up with the time of death, and when the initial lightning bolt was set off.
+55:29       0193C       Fluttershy  After I finished feeding my chickens, I saw Rainbow Dash flying away from the forest like something was chasing her. I called out to her, but I don't think she heard me.
+55:39       0164        (phoenix holdit sfx)
+55:41       0139        Phoenix     How long did it take you to feed your chickens, Fluttershy?
+55:44       0190        Fluttershy  Um, about 15 minutes.
+55:47       0139        Phoenix     And you're saying you saw Rainbow Dash fleeing from the forest at that time?
+55:50       0191        Fluttershy  Yes. I thought there was a ferocious creature chasing her, judging by how fast she was flying.
+55:56       0139        Phoenix     What did you do then?
+55:57       0190        Fluttershy  I called out to her at the top of my lungs so I could see what the problem was.
+56:01       0136        Phoenix     And she just ignored you?
+56:03       0190        Fluttershy  Yes, I don't know why... I yelled so loud, at the top of my lungs, like this...
+56:07       0195
+56:10       0196        Fluttershy  (softly) "Rainbow Dash, what's wrong!?"
+56:14       0134
+56:16                   Phoenix     Yeah... I haven't the faintest idea how she didn't hear that...
+56:20       0139        .           So, you didn't see anything chasing Rainbow Dash?
+56:23       0191        Fluttershy  Yes. I watched the forest until the police arrived, but I didn't see or hear anything come out of it after Rainbow Dash.
+56:31       0139        Phoenix     !!??
+56:33       0132        Twilight    What is it, Phoenix?
+56:35                   Phoenix     I think I just found a contradiction...
+56:37                   Twilight    You mean, Fluttershy is lying?
+56:39                   Phoenix     I don't know why, but something she said is impossible.
+56:41                   Twilight    Impossible?
+56:43       0139        Phoenix     Your Honor, can you please have the witness amend that statement to her testimony?
+56:46       0126        Judge       Hmmm... I don't see why not. Witness, please add your previous statement to your testimony.
+56:53       0190        Fluttershy  Um... okay...
+56:56       0191C       Fluttershy  I didn't see or hear anything else come out of the forest that night.
+57:01       0164        (phoenix holdit sfx)
+57:02       0139        Phoenix     Fluttershy, are you absolutely sure about this?
+57:06       0191        Fluttershy  I'm sure. Not a peep or pony came out of that forest until the police came and spoke with me... then I went to sleep at 10:30PM.
+57:14       0138        (phoenix objection sfx)
+57:16       0187
+57:17       0126        Judge       Mr Wright, please don't frighten the witness.
+57:21       0137        Phoenix     Right... sorry, but there is a contradiction in this testimony.
+57:25       0141        Trixie      What contradiction? Everything she has said meshes with the evidence to a T!
+57:30       0139        Phoenix     No, there's one thing that isn't right. Fluttershy, you said you watched the forest until the police force arrived, correct?
+57:36       0187        Fluttershy  Y-yes... did I do something wrong? I'm so sorry if I did...
+57:41       0134        Phoenix     Uh... no need to be sorry...
+57:44       0139        .           But you didn't hear or see ANYTHING come out from the forest?
+57:48       0191        FluttershyI didn't see or hear anything else come out of the forest that night.
+57:53       0148        Phoenix     Then there's clearly a contradiction here... actually two!
+57:57       0126        Judge       Please explain what these contradictions are, Mr Wright.
+58:01       0139        Phoenix     Fluttershy should have seen someone leave the forest...
+58:04       0148        .           The previous witness, Applebloom!
+58:06       0130        Judge       Oh! That's right!
+58:08       0161
+58:09       0190        Fluttershy  But I-I didn't see Applebloom... I-I promise!
+58:13       0148        Phoenix     You see, Fluttershy... you HAD to have seen Applebloom if you were really watching the forest all night...
+58:13                   .           The prosecution even confirmed that there's only one way in and out of that forest... and that entrance is right by your cottage!
+58:25       0172        Trixie      Ngh!
+58:26       0132        Twilight    ...I don't understand, why would Fluttershy lie like this...?
+58:30                   Phoenix     I don't know either. We've got to pursue this issue, otherwise we're cooked.
+58:34       0190        Fluttershy  I-I don't know why, but I didn't see her...
+58:38       0139        Phoenix     It's not just that; there is another thing, Fluttershy --
+58:42                   .           You also stated you HEARD nothing as well. Earlier I was told lightning makes a noise when it hits the ground in Equestria.
+58:49       0130        Judge       Yes, that is right, Mr Wright.
+58:52       0148        Phoenix     Then why didn't Fluttershy mention hearing the second bolt of lightning?
+58:55       0139        .           Fluttershy says she watched the forest until the police arrived, and they witnessed the third bolt take down a tree firsthand.
+59:01       0148        .           The second lightning bolt is unaccounted for.
+59:04       0190        Fluttershy  I only heard one bolt of lightning, though...
+59:08       0138        (trixie objection sfx)
+59:09       0135        Trixie      Maybe she just forgot about it.
+59:11       0138        (phoenix objection sfx)
+59:13       0148        Phoenix     She stated the first bolt of lightning scared her, from which we can conclude that every bolt of lightning could have been heard from Fluttershy's cottage.
+59:20       0139        .           It's very clear this witness is afraid of lightning.
+59:25       0134        .           (And everything, for that matter.)
+59:27       0191        Fluttershy  Yes, it's true, lightning scares me! It is so loud and scary -- 
+59:34       0187        .           like that voice you just did, Mr Phoenix.
+59:37       0149        Phoenix     There you go, Trixie, she would have remembered the second bolt of lightning frightening her if she had heard it.
+59:42       0139        .           Also, let's not forget, Applebloom didn't mention seeing or hearing this lightning either, now that we know that the lightning could've been heard from that far away.
+59:50       0130        Judge       The defense has a point.
+59:52       0143        Trixie      Heh, and Trixie thinks the defense has nothing.
+59:55       0130        Judge       Excuse me?
+59:58       0176        Trixie      So what, she didn't see Applebloom; what does that prove? Do tell, Mr Wrong, Trixie is all ears...
+00:05       0139        Phoenix     It questions the credibility of your witnesses! You said it yourself; there's only one way in and out of that forest!
+00:12       0141        Trixie      Remember another thing! Anything beyond what Applebloom said after the time she heard the lightning bolt is irrelevant!
+00:18       0148        Phoenix     You can't say that this is irrelevant information when your witness didn't see your other witness leave the forest!
+00:23       0135        Trixie      Then tell the GREAT and POWERFUL Trixie WHAT it means!
+00:27       0176        .           Trixie knows one possibility, but that's up to you to say what it is, Mr Wrong. That is, if you have the guts to...
+00:33       0139        Phoenix     I... I... can't...
+00:36       0176        Trixie      Heh, thought so...
+00:38       0197        Twilight    What is she talking about, Phoenix? You know a reason why Fluttershy didn't see Applebloom?
+00:43                   Phoenix     I do, but I can't say it...
+00:45                   Twilight    Why not?
+00:48                   Phoenix     I just can't, Twilight. I'll be safe and just use the other contradiction as my stead for now.
+00:53       0139        .           Fine, forget that! We can't overlook this second bolt of lightning, though. It could have been the real cause of death, making all this just an accident.
+01:02       0141        Trixie      Didn't you hear Trixie earlier?
+01:04       0139        Phoenix     Huh?
+01:06       0141        Trixie      Lightning doesn't strike the same spot twice in Equestria, just as you can't divide by zero. The body was found directly under where the first bolt had struck.
+01:15       0143        .           Not to mention the odds of a stray bolt of lightning hitting the victim by chance are highly improbable, especially since he was wearing a lightning-proof suit.
+01:23       0132        Phoenix     I remember her bringing up this 'lightning-proof suit'...
+01:27                   Twilight    It's what the pegasi wear when working with weather.
+01:30                   .           Or in this case, a modified version designed for large scale races where they may encounter dangerous weather conditions.
+01:35                   Phoenix     How exactly does the suit work?
+01:38                   Twilight    It's a two piece suit, worn on the head and body. The fabric is made up of an effective insulator that protects pegasi from being harmed by lightning.
+01:45                   Phoenix     Then how did he die if he was wearing this suit?
+01:48                   Twilight    There are some parts of the body that the suit does not cover, namely certain parts of the head and neck. A precise, aimed bolt could still hit him in the sweet spots, which is what Trixie is basing her claims on...
+02:00       0148        Phoenix     But it's still possible for a random bolt to hit him in one of the exposed spots!
+02:04       0143        Trixie      I'm surprised you haven't realized it yet, Mr Wrong...
+02:07       0139        Phoenix     Huh?
+02:09       0135        Trixie      You have been babbling about Trixie's witnesses not seeing the second bolt of lightning so much that you seem to have forgotten...
+02:15       0172        .           The second bolt seems to not exist at all. Trixie will be sure to have a chat with the pegasi who gave her these cloud ballistics to confirm it, Trixie assures you.
+02:24       0143        .           Even if we take your silly theory into consideration, the odds of him being struck down by a random bolt of lightning are too low to be believable without having
+02:32                   .           some sort of concrete proof!
+02:34       0126        Judge       The prosecution's logic is very sound.
+02:36                   .           The chances of a lightning bolt hitting the victim by chance are too small to hold water in this court without any proof,
+02:43                   .           considering the protection he was wearing.
+02:45       0151        .           Objection overruled!
+02:48       0139        Phoenix     No!
+02:50                   .           (Every time I make an objection she has it refuted just like that!)
+02:53       0143        Trixie      Hah! Too bad, Mr Wrong.
+02:57       0151        Judge       Enough! I'm afraid the defense's line has run short. Do you have anything else you would like to say, Mr Wright, before I hand down my verdict?
+03:08       0139        Phoenix     (I'm going to lose if I don't do something fast!!)
+03:13       0132        Twilight    Phoenix, there has got to be something we can do! It can't end like this!
+03:18                   Phoenix     I know, but I need more time. I need more information!
+03:23       0141        Trixie      Please Your Honor, make this quick. Trixie is starting to feel sorry for this hopeless defense team.
+03:29       0198        Phoenix     (There is one thing I can do... I didn't want to do it earlier...)
+03:33                   .           (But I have no choice...)
+03:35       0199        .           (I need more time and evidence... this is the only way...)
+03:37       0148        .           Your Honor!
+03:39       0130        Judge       Yes, Mr Wright?
+03:41       0139        Phoenix     The defense would like to cast suspicion on another.
+03:44       0130        Judge       Another suspect?
+03:46       0139        Phoenix     Yes, that is correct, Your Honor.
+03:49       0197        Twilight    But who?
+03:51       0143        Trixie      Is this the last bastion of Mr Wrong? Haha, let's hear it -- who is this mystery suspect?
+03:57       0139        Phoenix     I am far from being done, Trixie!
+04:00                   .           The suspect the defense accuses is the witness...
+04:02       0148        .           Fluttershy!
+04:04       0191        Fluttershy  Huh?
+04:05       0132        Twilight    Mr Wright! What are you doing!?
+04:07       0148        Phoenix     Fluttershy is a pegasus; therefore she could have tampered with the cloud and the crime scene.
+04:12                   .           And let's not forget, there was a very large time frame where Fluttershy was alone;
+04:16                   .           She even stated she didn't see Applebloom leave the forest when we all know she SHOULD have!
+04:21       0190        Fluttershy  B-but I was watching it the whole time... I'm not lying...
+04:26       0143        Trixie      Heh...
+04:27       0148        Phoenix     Fluttershy also has connections with my client;
+04:30                   .           She could have been the one who took the storm cloud my client was scheduled to set off, as well as gathered loose feathers to spread around the crime scene.
+04:36       0190        Fluttershy  I-I didn't do that...
+04:39       0200        Twilight    Phoenix! Stop this! She didn't do it!
+04:42       0130        Judge       But the defendant's hoof marks were on the storm cloud, Mr Wright... how do you explain that?
+04:49       0139        Phoenix     I'd be surprised if they WEREN'T there, Your Honor...
+04:52       0130        Judge       Hmm, I don't follow...
+04:55       0171        Phoenix     Simple. Rainbow Dash was to put those storm clouds at the eastern end of Ponyville, according to this weather schedule.
+05:01       0130        Judge       Oh!
+05:03       0139        Phoenix     Of course her hoofprints are there -- she was just doing her job!
+05:06       0148        .           Fluttershy could have come and taken one of the clouds with marks on it, set it off and removed her own markings from the cloud...
+05:12       0139        .           That is possible... right?
+05:14       0141        Trixie      Yes, one could wipe a cloud... of their hoofmarks...
+05:17       0148        Phoenix     Then all the more reason to suspect her!
+05:20       0190        Fluttershy  I was home all day though...
+05:22       0200        Twilight    Phoenix, you're supposed to be defending my friends!
+05:26       0130        Judge       What about the dark forest, Mr Wright? How would this witness have been able to see in it?
+05:32       0139        Phoenix     It must be like a backyard to her.
+05:34                   .           She can probably navigate it from memory, just as you can probably navigate your house with your eyes closed.
+05:39       0169
+05:41       0126        Judge       This is a very bold claim, Mr Wright. This meek little thing looks like she wouldn't harm a fly... why would she frame her friend?
+05:50       0191        Fluttershy  It's true, I have ten pet flies! Michael, Donna, Steven, Eric, Jackie...
+05:58       0139        Phoenix     Easy! To cover her own guilt!
+06:00                   .           Besides, as the prosecution has stated, why she did it is irrelevant; the fact still stands, she is just as suspicious as Rainbow Dash!
+06:09       0200        Twilight    I-I can't believe you're saying this! I trusted you!
+06:12       0126        Judge       You're going to need more proof to accuse this witness, Mr Wright. Do you have any evidence that can place her on the crime scene?
+06:20       0139        Phoenix     In fact I do, Your Honor.
+06:23       0148        .           This!
+06:24       0130        Judge       A feather? Does it belong to her?
+06:27       0139        Phoenix     No, I found this feather at the crime scene. It's way too big to belong to any bird or pegasus pony in Ponyville.
+06:34       0130        Judge       Just what are you getting at, Mr Wright? How does this relate to the witness?
+06:39       0148        Phoenix     Fluttershy!
+06:40       0188        Fluttershy  Y-yes, Mr Phoenix...?
+06:42       0139        Phoenix     Do you allow any of your exotic animals to go into the Everfree Forest?
+06:46       0191        Fluttershy  Oh no, it is much too dangerous in there. They're kept locked up tightly when I'm not playing with them...
+06:53       0139        Phoenix     As I thought! Fluttershy stated earlier that she's caring for animals not native to Ponyville; this feather could belong to one of them.
+07:00       0148        .           It could have been brought there unintentionally by Fluttershy as she framed my client!
+07:04       0138        (twilight objection sfx)
+07:06       0130
+07:07       0141
+07:08       0202        Twilight    This can't go on!
+07:11       0130        Judge       The.. defense is objecting to...
+07:15                   .           ITSELF!?
+07:16       0202        Twilight    Yes. Mr Wright doesn't know what he's talking about! His words are nothing but slander and lies!
+07:23                   Phoenix     Twilight!
+07:24       0138        (trixie objection sfx)
+07:25       0135        Trixie      Zip it, Twilight! You're only his co-counsel, and nothing more!
+07:29       0141        .           Discrediting an attorney like that will get you held in contempt!
+07:33       0202        Twilight    You're a hypocrit! You've been degrading him all day long!
+07:37       0176        Trixie      And that's it. Trixie has just called Mr Wrong names -- 
+07:40       0143        .           never once has Trixie accused him of lies or slander, which is a serious accusation!
+07:46       0126        Judge       You are right as always, Ms Trixie. 
+07:49       0169        .           Another outburst by the defense's co-council and they will be held in contempt of court.
+07:53       0177        Twilight    B-but...
+07:55                   Phoenix     (Trust me, I don't want to do this, Twilight... but it's the only way I can buy more time...)
+07:59       0126        Judge       Back to the matter at hand... I still have a hard time believing this little pony would do something like this...
+08:07       0148        Phoenix     The evidence speaks for itself, Your Honor! This feather puts Fluttershy on the scene of the crime!
+08:13       0139        .           I demand further investigation to find out if this feather belongs to any of Fluttershy's animals!
+08:17       0169        Judge       Hmmm...
+08:20       0126        Judge       Ms Trixie, what is your opinion on all of this? You have been surprisingly quiet regarding all of Mr Wright's claims.
+08:27       0141        Trixie      You know what...
+08:29       0143        .           Trixie agrees, Fluttershy is suspicious.
+08:32       0176        .           The investigation team did indeed see this feather on the crime scene; we brushed it off as just a plain old bird feather.
+08:38       0141        .           But as Trixie's feeble opponent has pointed out, it does seem kind of big up close, and with this information regarding these zoo animals...
+08:46       0190        .           ... it does seem to cast suspicion over this witness.
+08:49       0126        Judge       You are aware we will have to suspend proceedings until tomorrow for further investigation...?
+08:55       0135        Trixie      You don't think Trixie knows this?
+08:57       0141        .           Another one of Twilight Sparkle's little friends in the slammer is reward enough for Trixie today. "Two for the price of one", as they say!
+09:05       0143        .           And Trixie has you to thank, Mr Wrong!
+09:09                   .           You've made this experience much, MUCH more fulfilling. 
+09:12       0176        .           Perhaps Trixie will give you a voucher for her next performance.
+09:14       0139        Phoenix     ...
+09:16       0126        Judge       All proceedings for this case will be suspended until tomorrow.
+09:20                   .           Baliff, please take the suspect into custody for questioning.
+09:24       0190        Fluttershy  Wait, w-where are you taking me? I wouldn't do that to anypony... 
+09:27       0156        .           Twilight, Mr Phoenix, help!
+09:32       0177        Twilight    Phoenix... how could you...?
+09:36       0139        Phoenix     (What have I done...?)
+09:39       0126        Judge       I expect both sides will gather more evidence for tomorrow.
+09:43       0176        Trixie      Trixie shouldn't need to if they are planning to keep that second rate lawyer over there!
+09:48       0139        Phoenix     ...
+09:50       0126        Judge       Court is now adjourned!
+09:52       0125        (hammersfx)

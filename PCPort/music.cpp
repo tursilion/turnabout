@@ -63,10 +63,10 @@ const MUSICLOOKUP musLookup[] = {   /* page   address  */
     /* 013 CMD_MUSLOCK     */  {  0,    (unsigned char*)0x0000  }, 
     /* 014 CMD_MUSTRIALS   */  {  0,    (unsigned char*)0x0000  }, 
     /* 015 CMD_MUSPROLOG   */  { 19,    (unsigned char*)0xfc00  },      // 886 bytes
-    /* 016 CMD_MUSECHESS   */  {  0,    (unsigned char*)0x0000  }, 
-    /* 017 CMD_MUSOBJECT   */  {  0,    (unsigned char*)0x0000  }, 
-    /* 018 CMD_MUSTHRILL   */  {  0,    (unsigned char*)0x0000  }, 
-    /* 019 CMD_MUSINTEREST */  {  0,    (unsigned char*)0x0000  }, 
+    /* 016 CMD_MUSECHESS   */  { 28,    (unsigned char*)0xf000  },      // 3468 bytes
+    /* 017 CMD_MUSOBJECT   */  { 29,    (unsigned char*)0xf000  },      // 1720 bytes (2k free)
+    /* 018 CMD_MUSTHRILL   */  { 30,    (unsigned char*)0xfc00  },      // 836 bytes (last allocation, full)
+    /* 019 CMD_MUSINTEREST */  { 30,    (unsigned char*)0xf000  },      // 2332 bytes
     /* 020 CMD_MUSKLAVIER  */  {  0,    (unsigned char*)0x0000  }, 
     /* 021 CMD_MUSTRAGIC   */  {  0,    (unsigned char*)0x0000  }, 
     /* 022 CMD_MUSMIDDLE   */  { 21,    (unsigned char*)0xf000  },      // 1828 bytes
@@ -94,13 +94,13 @@ const MUSICLOOKUP musLookup[] = {   /* page   address  */
     /* 044 CMD_MUSELEGY    */  { 23,    (unsigned char*)0xf800  },      // 1084 bytes
     /* 045 CMD_MUSGUILTY   */  { 22,    (unsigned char*)0xfc00  },      // 422 bytes
     /* 046 CMD_MUSRECALL   */  { 24,    (unsigned char*)0xf000  },      // 874 bytes
-    /* 047 CMD_MUSCRUSADE  */  { 25,    (unsigned char*)0xf000  },      // 3734 bytes   (last allocation, full)
+    /* 047 CMD_MUSCRUSADE  */  { 25,    (unsigned char*)0xf000  },      // 3734 bytes
     /* 048 CMD_MUSCLOCK    */  {  0,    (unsigned char*)0x0000  }, 
     /* 049 CMD_MUSSPECIAL  */  {  0,    (unsigned char*)0x0000  }, 
     /* 050 CMD_MUSCOOL     */  {  0,    (unsigned char*)0x0000  }, 
     /* 051 CMD_MUSMEMORY   */  {  0,    (unsigned char*)0x0000  },
-    /* 052 CMD_MUSSCHESS   */  {  0,    (unsigned char*)0x0000  },
-    /* 053 CMD_MUSOBJECT2  */  {  0,    (unsigned char*)0x0000  } 
+    /* 052 CMD_MUSSCHESS   */  { 27,    (unsigned char*)0xf000  },      // 4078 bytes
+    /* 053 CMD_MUSOBJECT2  */  { 26,    (unsigned char*)0xf000  }       // 3618 bytes
 };
 
 #ifdef CLASSIC99
@@ -283,8 +283,8 @@ void load_music_banked() {
 #ifdef HAS_MUSSTART
     load_one_music(CMD_MUSSTART); // Apollo Justice - Start of a New Trial! - Apollo Justice Ace Attorney
 #endif
-#ifdef HAS_MUSCHESS
-    load_one_music(CMD_MUSCHESS); // Logic Chess - Moderato - Ace Attorney Investigations 2
+#ifdef HAS_MUSECHESS
+    load_one_music(CMD_MUSECHESS); // Logic Chess - Moderato - Ace Attorney Investigations 2
 #endif
 #ifdef HAS_MUSOBJECT
     load_one_music(CMD_MUSOBJECT); // Objection! 2009 - Ace Attorney Investigations 2
@@ -400,5 +400,12 @@ void load_music_banked() {
 #ifdef HAS_MUSCORE
     load_one_music(CMD_MUSCORE);  // Investigation Core 2001 - Cadenza
 #endif
+#ifdef HAS_MUSSCHESS
+    load_one_music(CMD_MUSSCHESS); // Logic Chess - Moderato - Ace Attorney Investigations 2
+#endif
+#ifdef HAS_MUSOBJECT2
+    load_one_music(CMD_MUSOBJECT2); // Logic Chess - Moderato - Ace Attorney Investigations 2
+#endif
 }
+
 

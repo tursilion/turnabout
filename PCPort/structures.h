@@ -362,7 +362,7 @@ enum {
     CMD_STARTCROSS  , // start crossexamination at first testimony line, post-cross tag in evidence
     CMD_CONCROSS    , // continue cross examination at current line, post-cross tag in evidence
 
-    // downloaded - do not reorder the song list!!
+    // downloaded - do not reorder the song list!! Indented comment means it is done and uploaded
     CMD_MUSTARTLIST , // just to find the music block
 
     CMD_MUSSTEEL    , //    Steel Samurai Ringtone
@@ -380,10 +380,10 @@ enum {
     CMD_MUSLOCK     , // Lock on the Heart - Capcom - Justice for All Psyche-Lock (JFA-85 - don't have)
     CMD_MUSTRIALS   , //    Trials and Tribulation WiiWare Rips - HoodieD
     CMD_MUSPROLOG   , //    Apollo Justice - Prologue
-        CMD_MUSECHESS   , // Logic Chess End - Moderato - Ace Attorney Investigations 2 (AAI2-53)
-        CMD_MUSOBJECT   , // Objection! 2009 - Ace Attorney Investigations (AAI-11)
-        CMD_MUSTHRILL   , // Thrill Theme - Suspense (AJ-35)
-        CMD_MUSINTEREST , // Interesting People - Ace Attorney Investigations (AAI-49)
+    CMD_MUSECHESS   , //    Logic Chess End - Moderato - Ace Attorney Investigations 2 (AAI2-53)
+    CMD_MUSOBJECT   , //    Objection! 2009 - Ace Attorney Investigations (AAI-11)
+    CMD_MUSTHRILL   , //    Thrill Theme - Suspense (AJ-35)
+    CMD_MUSINTEREST , //    Interesting People - Ace Attorney Investigations (AAI-49)
     CMD_MUSTRAGIC   , // Interview Tragicomedy - Capcom (AJ-17)
     CMD_MUSMIDDLE   , //    Investigation Middlegame - Capcom - Ace Attorney Investigations
     CMD_MUSKG8      , // KG-8 Case - Capcom (AAI-53)
@@ -421,8 +421,8 @@ enum {
     CMD_MUSCOOL     , // Too Cool For You, Dweeb (Gilda) - SoloAcapello
     CMD_MUSMEMORY   , // Memories (Gilda confession) - SoloAcapello
 
-        CMD_MUSSCHESS   , // Logic Chess Start - Moderato - Ace Attorney Investigations 2 (AAI2-16)
-        CMD_MUSOBJECT2  , // Objection! 2011 - Ace Attorney Investigations 2 (AAI2-12)
+    CMD_MUSSCHESS   , //    Logic Chess Start - Moderato - Ace Attorney Investigations 2 (AAI2-16)
+    CMD_MUSOBJECT2  , //    Objection! 2011 - Ace Attorney Investigations 2 (AAI2-12)
 
     // not listed in the game credits but downloaded anyway
     // testimony-allegro (apparently no tracks are called that... might already have it then)
@@ -629,11 +629,25 @@ extern int nStorySize;
 // Trixie and Dash's motive
 #define LOCATION_NUMBER 15
 #define LOCATION_TYPE_STORY
+#define LOCATION_TYPE_CROSSEXAM
 // sfx
+#define HAS_BOOMSFX
+#define HAS_CHIMESFX
+#define HAS_HAMMERSFX
+// voice
+#define HAS_VOICE
+#define HAS_TRIXIEOBJ
+#define HAS_PHOENIXHOLDIT
+#define HAS_PHOENIXOBJ
+#define HAS_PHOENIXTAKE
+#define HAS_LAUGHSFX            // TODO: need to make this still
 // music
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
-#define LAST_LOCATION
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
+#define HAS_MUSTHRILL
+#define HAS_MUSOBJECT2
+#define HAS_MUSSCHESS
+#define HAS_MUSECHESS
+#define HAS_MUSOBJECT
+#define HAS_MUSINTEREST
 #endif
 
 #ifdef LOCATION_IS_16
@@ -642,6 +656,9 @@ extern int nStorySize;
 #define LOCATION_TYPE_STORY
 // sfx
 // music
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
+#define LAST_LOCATION
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
 #endif
 
 #ifdef LOCATION_IS_17
