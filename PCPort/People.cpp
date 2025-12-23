@@ -34,4 +34,6 @@ Evidence_t people[PP_MAX] = {
     { "TESTIMONY",                  ""     },
     { "CROSS-EXAMINE",              ""     },
     { "Gallery",                    ""     }
+    
+    // WARNING: This is maximum saved people for the savegame right now - if we need more, figure out how to make the static names above not part of the data
 };

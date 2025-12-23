@@ -19,7 +19,8 @@
 //#define LOCATION_IS_12
 //#define LOCATION_IS_13
 //#define LOCATION_IS_14
-#define LOCATION_IS_15
+//#define LOCATION_IS_15
+#define LOCATION_IS_16
 #endif
 
 // some types
@@ -81,6 +82,7 @@ enum {
     EV_I_WHINEBREAKFAST,            // whined about breakfast
     EV_I_REVISION1,                 // stored to track first revision of the save file
     EV_I_DAY1DESPERATE,             // day 1 first desperate question asked
+    EV_I_FLUTTERANIMALS,            // learn about Fluttershy's animals
 
     EV_MAX_STORED_EV,               // nothing after here is saved in inventory arrays
 
@@ -219,6 +221,27 @@ enum {
     EV_T_WHYSHOW,
     EV_T_WHYHAVE,
 
+    EV_P_FNIGHTCHICKENS,
+    EV_P_FLIGHTNING,
+    EV_P_FSAWDASH,
+    EV_P_FNOFOLLOW,
+    EV_P_FPOLICE,
+    EV_P_FNOTHINGELSE,
+
+    EV_O_GOODFLUT,
+    EV_O_BADFLUT,
+    EV_O_BADFLUT2,
+    EV_T_FLUTTEST,
+    EV_T_FLUTCROSS,
+    EV_T_FLUTCROSS2,
+
+    EV_T_FHARDWORK,
+    EV_T_FHOWLONG,
+    EV_T_FCORRECTL,
+    EV_T_FNOCORRECTL,
+    EV_T_FGOTANIMALS,
+
+
     EV_MAX,
 
     // people are just special evidence, so I need them in the same list
@@ -240,6 +263,8 @@ enum {
     PP_BLOOM      = 0x8b00,         // Earth pony child, Cutie Mark Crusader. Witness who was in the Everfree Forest the night of the crime.
     PP_PINKIE     = 0x8c00,         // Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash.
     PP_SONATA     = 0x8d00,         // Unicorn manager of Ace Swift. Resembles Mia from my own realm.
+
+    // if we need room in the savefile, we can make the savefile stop recording at PP_EDGEWORTH instead of PP_LAST
     
     PP_EDGEWORTH  = 0x8e00,         // never used in game, but we need it for his name in a flashback
     PP_TESTIMONY  = 0x8f00,         // used for the name only
@@ -653,11 +678,17 @@ extern int nStorySize;
 // Fluttershy's testimony
 #define LOCATION_NUMBER 16
 #define LOCATION_TYPE_STORY
+#define LOCATION_TYPE_CROSSEXAM
 // sfx
+#define HAS_CHIMESFX
+#define HAS_FALLSFX
+// voice
+#define HAS_VOICE
+#define HAS_TRIXIEOBJ
+#define HAS_PHOENIXHOLDIT
+#define HAS_PHOENIXOBJ
+#define HAS_PHOENIXTAKE
 // music
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
-#define LAST_LOCATION
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
 #endif
 
 #ifdef LOCATION_IS_17
@@ -666,6 +697,9 @@ extern int nStorySize;
 #define LOCATION_TYPE_CROSSEXAM
 // sfx
 // music
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
+#define LAST_LOCATION
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
 #endif
 
 #ifdef LOCATION_IS_20

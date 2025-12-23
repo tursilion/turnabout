@@ -91,6 +91,7 @@ int specialinventory(int selected) {
 // row 0: Inverted, the question (max 32 characters)
 // row 1-14: available inventory
 // row 16-23: description of inventory
+// If the title starts with an asterisk, then start on the people page
 unsigned int run_inventory(const char *pTitle) {
     // the inventory displayed for each character (A-??)
     // this needs to be drawn dynamically
@@ -103,6 +104,10 @@ unsigned int run_inventory(const char *pTitle) {
     // don't change the name, that'll cause us pain ;)
     const char *pOldString = pString;
     unsigned char oldkey = 'I';     // make sure we don't carry 'I' into here
+    if (*pTitle=='*') {
+        active=PP_FIRST;
+        ++pTitle;
+    }
 
 startover:
     set_textout(DEFTEXT);

@@ -270,16 +270,17 @@ int run_story() {
             case CMD_OBJECTHERE  : // objection line, but this also needs to add to testimony
             case CMD_ADDTEST     : // add this line to testimony and go to next line - current is set to the new line
                 if (testimonyMode == 0) {
+                    // assuming it will be appended
+                    currentTestimony = maxTestimony-1;
                     // make sure it's not already in there
                     for (int i = 0; i<maxTestimony; ++i) {
                         if (iTestimony[i] == index) {
                             // it's already in there
-                            currentTestimony = i;
+                            currentTestimony = i-1;
                             ++index;
                             continue;
                         }
                     }
-                    currentTestimony = maxTestimony;
                     iTestimony[maxTestimony++] = index;
                     ++index;
                     continue;
