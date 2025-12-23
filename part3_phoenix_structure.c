@@ -341,34 +341,768 @@ GameLine part3_phoenix_lines[] = {
     {EV_NONE, 17512, PP_PHOENIX | CMD_NONE, "The reason you went to go meet him is..."}, // 00:11:15.72
 
     // CRITICAL EVIDENCE: THE BLACKMAIL PHOTOS
-    {EV_NONE, 17520, PP_PHOENIX | CMD_TAKETHAT, "Take that!"}, // 00:11:18.40
-    {EV_NONE, 17560, PP_PHOENIX | CMD_NONE, "These!"}, // 00:11:21.28
-    {EV_NONE, 17588, PP_RAINBOW | CMD_NONE, "AHHH!"}, // 00:11:22.48
+    {EV_NONE, 0, PP_PHOENIX | CMD_TAKETHAT, "Take that!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "These!"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "AHHH!"},
 
-    // NOTE: "some bony" likely "somepony"
-    {EV_NONE, 17628, PP_RAINBOW | CMD_NONE, "But those away before some bony sees them!"}, // 00:11:23.48 - CORRECTED: "Put those" and "somepony"
-    {EV_NONE, 17652, PP_RAINBOW | CMD_NONE, "Please!"}, // 00:11:26.32
-    {EV_NONE, 18200, PP_PHOENIX | CMD_NONE, "Even right now, your anxiety shows you absolutely didn't want these pictures floating out and about."}, // 00:11:27.32
-    {EV_NONE, 18236, PP_RAINBOW | CMD_NONE, "Yes, yes, yes, you're right!"}, // 00:11:33.36
-    {EV_NONE, 18264, PP_RAINBOW | CMD_NONE, "I was meeting him about these!"}, // 00:11:34.84
-    {EV_NONE, 18288, PP_RAINBOW | CMD_NONE, "Can you please just put them away?"}, // 00:11:36.60
-    {EV_NONE, 18310, PP_RAINBOW | CMD_NONE, "NOW!"}, // 00:11:38.60
+    // CORRECTED: "Put those away before somepony sees them!" (AI transcribed "But those" and "some bony")
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Put those away before somepony sees them!"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Please!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Even right now, your anxiety shows you absolutely didn't want these pictures floating out and about."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Yes, yes, yes, you're right!"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I was meeting him about these!"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Can you please just put them away?"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "NOW!"},
 
     // SECOND PSYCHE-LOCK BREAKS - THE MONEY QUESTION
-    {EV_NONE, 18368, PP_PHOENIX | CMD_NONE, "This brings us to the money question."}, // 00:11:41.68
-    {EV_NONE, 18404, PP_PHOENIX | CMD_NONE, "Why did he have these pictures?"}, // 00:11:43.64
-    {EV_NONE, 18604, PP_RAINBOW | CMD_NONE, "Who knows? He's dead. What a bummer. Guess we'll never know."}, // 00:11:45.16
-    {EV_NONE, 18632, PP_PHOENIX | CMD_NONE, "I actually think I know why."}, // 00:11:50.18
+    {EV_NONE, 0, PP_PHOENIX | CMD_BREAKLOCK, "(psyche-lock break sfx)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "This brings us to the money question."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Why did he have these pictures?"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Who knows? He's dead. What a bummer. Guess we'll never know."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I actually think I know why."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "You do?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Yes. I can think of one reason why he'd want to meet you over pictures like these. He was blackmailing you, wasn't he?"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Blackmail."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I'm willing to bet my attorney badge he wanted you to toss the Equestrian 500."},
+
+    // CORRECTED: "ponies" from "Pony" (AI transcription error)
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I was told of ponies suspecting him of foul play in the wake of all his success. He was probably threatening you to let him win the race."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Wow."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Hmm?"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "You're really good."},
+
+    // THIRD PSYCHE-LOCK BREAKS - FULL CONFESSION
+    {EV_NONE, 0, PP_NONE | CMD_BREAKLOCK, "(psyche-lock break sfx)"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "It's true. Ace was trying to force me to drop out of the Equestrian 500."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "How did it start?"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I got home two days ago and saw this letter on my doorstep."},
+    {EV_NONE, 0, PP_NONE | CMD_NONE, "(doorbell sfx)"},
+
+    // CORRECTED: "Everfree Forest" from "Ever-Reeforce" and "8:35 PM" from "835"
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "\"I'll let your secret out if you don't drop out of the Equestrian 500. Meet in the Everfree Forest clearing 8:35 PM tonight for negotiations.\""},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "At first I didn't know what secret it was talking about."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "But attached to the message was one of those pictures."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "About those pictures? Why are you-"},
+
+    // CORRECTED: "It's a hobby" from "It's Bobby" (AI transcription error)
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "It's a hobby, alright! I bet you have skeletons in your closet too, Mr. 20-something who plays with toys!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Okay, okay, I won't ask about them anymore. Do you have any idea how he got them, though?"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I have no clue. My best guess is that the jerk was stalking me, trying to get dirt on me."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Rainbow Dash..."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Yes, what is it?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I want you to know that I trust you, and I'm going to need you to trust me when I ask you these next series of questions."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Huh?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I know you may be scared this will make you look guilty, but I know you're innocent."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I'm not scared!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Why did you move that cloud to the crime scene and set it off?"},
+    {EV_NONE, 0, PP_NONE | CMD_NONE, ""},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "But... but... I... I didn't..."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Please Rainbow Dash, you can trust me."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I won't think any differently of you in light of what you tell me."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I know you didn't kill him."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Okay, I'll tell you."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I did move the cloud there and I did set it off."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I just wanted to give him a scare, that's all."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "A scare?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "So you really did move the cloud over the forest clearing?"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "As soon as I saw the requirements of the blackmail letter, I knew it was Ace and that all those rumors about him were true."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "He's a blackmailing cheater!"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "So I set up the cloud over the clearing earlier that day with the intent of declining his little offer."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "So you weren't gonna drop out in spite of him leaking the pictures?"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "No way!"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I'm not gonna let some loser have his way with me, even if it meant those pictures getting out!"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I have too much pride for that!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I find that really admirable."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Hehe, thanks."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "This is also my first year competing in the race. I just reached the required age to participate."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I've been way too anxious to just drop out."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "R.B.D. spells victory!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "You sure you can take 500 miles? It's longer than it sounds, you know."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "There's some checkpoints along the track set up so the racers can have some R&R."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "But that's a little problem I keep having. There's no doubt I'm fast, but I tire out along the way."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I'm not used to flying that long."},
+
+    // CORRECTED: "races" from "racers" (context error)
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "In races like these, you should pace yourself accordingly."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Don't go fast right from the start. Save all your energy for the home stretch."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Kind of like how I don't present all my evidence right from the start."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I'll try to keep that in mind."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "But let's get back on topic, shall we? I'm supposed to be your lawyer, not your coach."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Right."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Anyway, I wasn't planning on killing him. Just give him a bit of a startle."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "You know, just kicking some dirt in his face for messing with me."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "The cloud shoots a lightning bolt directly under it when activated."},
+
+    // CORRECTED: Added missing "I mess around" from context
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I mess around with ponies by scaring them with clouds all the time, but I got an extra big one in his case to make the sound as loud as possible."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I guess it was a little dangerous getting one that big."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "So it didn't hit him when you set it off?"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "No, I made sure it wasn't over him."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Even though it was really dark outside, like you said in the court today, I could see that the bolt didn't even come close to touching him."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "When the lightning bolt lit up the area, it made him scream like a little girl and left a really sissy look on his mug."},
+
+    // CORRECTED: "You should have seen it" from "He should have seen it"
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "You should have seen it. It was priceless!"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Then I just hightailed it out of there as fast as I could!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(That's probably when Fluttershy saw her.)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Why didn't you tell anyone about this blackmail earlier?"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I didn't want anypony to know about the blackmail..."},
+
+    // CORRECTED: "they would wonder" from "I would wonder"
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Because, you know, they would wonder what he was blackmailing me with."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I see."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(Then those pictures would get out...)"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "You believe me, right? He was absolutely fine when I left, I swear!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Yes, I believe you. Though more questions arise from this."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "More questions?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "How did he end up dead directly under the cloud?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I was trying desperately to convince the court it was the second bolt that killed him."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "That would make this all an accident, since you have no control over it."},
+
+    // CORRECTED: "Lightning doesn't strike" from "Lanking doesn't strike"
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "But then we have that \"Lightning doesn't strike the same place twice!\" thing that Trixie was talking about."},
+
+    // CORRECTED: "Pegasi" from "Pegasai" (proper plural form)
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "That's true. It's a new type of storm cloud the Pegasi are using to protect ponies from situations like this."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Since it can't hit the same place twice, they can just stand under a cloud after the first bolt."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "So the safest place is under the cloud."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "That's really something."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "The weather just works by itself where I live."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I kind of wish it worked that way here."},
+
+    // CORRECTED: "Sonic Rainboom" and "Fantastic Filly Flash" from garbled versions
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I'd have a lot more free time on my hooves so I can perfect my Sonic Rainboom, or my Fantastic Filly Flash!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(Are those dance moves or something?)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "From what I hear, you're also the weather manager."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I need some information regarding how the lightning here in Equestria works."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "What do you need to know?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Well, is it true the bolt causes the noise?"},
+
+    // CORRECTED: "the boom" from "them boom"
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Yeah, it is. I don't know how it works exactly, but I'm pretty sure when it touches the ground or anything attached to the ground, like, say, a tree, it sends out vibrations which makes the boom."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(I'm no meteorologist, but I'm pretty sure lightning doesn't work like that.)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(Then again, I keep forgetting I'm in a land full of magical talking ponies who can manually change weather.)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Is there anything that could prevent it from making a sound?"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I suppose if it hit something small in the air that was close enough to the cloud..."},
+
+    // CORRECTED: "it wouldn't make a sound" from "I wouldn't make a sound"
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Yeah, it wouldn't make a sound, and I know what you're thinking, but that couldn't happen."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Why not?"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "That itchy racing suit."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Oh, right. I remember that being brought up."},
+
+    // CORRECTED: "Pegasi" from "Pegasuses" (proper plural form)
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "That's that lightning-proof suit that you Pegasi wear for the race, right?"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "The plural is \"Pegasi.\""},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I absolutely hate wearing that thing, but while in the air you're pretty much invulnerable to lightning."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Weren't there some exposed parts on it though?"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Yes, there are, but while you're in the flying position those parts are covered up."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "They're only exposed while you're on all fours and grounded."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "This is sounding more and more hopeless for me the more I talk about it."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Try to cheer up. I'll find out what really happened and get you out of here."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Thank you, Nix."},
+
+    // CORRECTED: "in light of" from "light of"
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Okay, Rainbow Dash. I'm gonna go do some more investigating in light of this new information."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Alright, catch you later."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Oh, wait! One more thing."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Yes?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Pinkie Pie. I bumped into her after the trial. I'm guessing she's a friend of yours."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "She wanted to cheer you on in court today, but sadly it seems she was late."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Is she always that... uh... loopy?"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Yeah, that's just Pinkie Pie being Pinkie Pie."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Okay, just thought I'd let you know."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Well, goodbye, Rainbow Dash."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Wait!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(Jeez, I just can't leave this place.)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Yes, what is it?"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Here, take this."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "A key? What is it for?"},
+
+    // CORRECTED: "Ace's hotel room" from "Aces hotel room"
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Ace's hotel room."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "What!? How did you get this!?"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I was angry when I thought he was stalking me, so I snuck into his hotel room to find dirt on him."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "It was under the mat. What a stupid place to leave your key, huh?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "..."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Yeah... stupid place."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(Note to self: put key to office in different hiding spot.)"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I wasn't able to find anything good in there, but maybe you can!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Where is the hotel?"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "He was staying in the \"Hay and Stay\" hotel while he was at Ponyville."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "It's a little past Sugar Cube Corner. Just have Twilight show you where it is."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Twilight..."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "What's the matter?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "O-oh, nothing. Thanks, Rainbow Dash. This will really help my investigation!"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Goodbye, Nix."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I promise I'll get you and Fluttershy out of this mess."},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "Fluttershy... I told you, I don't care about her!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(She's still really angry about that testimony Fluttershy gave.)"},
+    {EV_NONE, 0, PP_RAINBOW | CMD_NONE, "I just know you'll find some super awesome evidence this time around!"},
+    {EV_NONE, 0, PP_NONE | CMD_BLACK, ""},
+
+// =============================================================================
+// INVESTIGATION PLANNING: PHOENIX'S DILEMMA
+// =============================================================================
+
+    {EV_NONE, 0, PP_NONE | CMD_NONE, "Ponyville, June 10th, 12:30PM"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Okay, where should I go first? Back to the forest? Or to the hotel room?"},
+    {EV_NONE, 0, PP_NONE | CMD_NONE, "Hello again!"},
+
+    // CORRECTED: Added missing "It would be a" from context
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "It would be a lot easier to go to the forest, since I know the general direction and I might find some new clues with the sun out."},
+    {EV_NONE, 0, PP_NONE | CMD_NONE, "Hello?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Then again, I already found a lot of evidence in the forest already."},
+
+    // CORRECTED: "Knock, knock... Feenie!" from "Knock knock, see me!"
+    {EV_NONE, 0, PP_NONE | CMD_NONE, "Knock, knock... Feenie!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Though, would going into his hotel room be considered breaking and entering?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I'll have a bit of trouble finding it without someone guiding me, anyway..."},
+    {EV_NONE, 0, PP_NONE | CMD_PARTY_HORN, "(party horn sfx)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "AH!?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Got your attention now!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Oh, you're... Pinkie Pie."},
+
+    // CORRECTED: "Yup-a-roonie" from "Yep, Peroony"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Yup-a-roonie! That's my name!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "What are you doing here?"},
+
+    // CORRECTED: "waited for you" from "made it for you"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "I followed you! The guards wouldn't let me in though, so I just talked with them while I waited for you!"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Right boys?"},
+    {EV_NONE, 0, PP_GUARD | CMD_NONE, "Oh, for the love of all things holy... please..."},
+    {EV_NONE, 0, PP_GUARD | CMD_NONE, "Take her away..."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Uh... why were you following me?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Cause I need help finding something..."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Look, the spiky-headed monster they were talking about is-"},
+
+    // CORRECTED: "Oh! I gave up trying to find that a long time ago" from fragmented version
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Oh! I gave up trying to find that a looooooong time ago, it's probably just somepony's overactive imagination!"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "I need to find something I lost about a week ago."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "What did you lose?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "It's a secret!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "So you want me to help you find something... but you won't tell me what it is...?"},
+
+    // CORRECTED: "Correct-a-mundo!" from "Correct the window"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Correct-a-mundo!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "That makes no sense!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(Wait a minute...)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Actually, uh, Pinkie Pie..."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Yes?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Do you know where \"Sugar Cube Corner\" is?"},
+
+    // CORRECTED: "You want to go bake cupcakes" from "You wanna go big cupcakes"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "You want to go bake cupcakes with me at Sugar Cube Corner!"},
+
+    // CORRECTED: "Mr and Mrs Cake" from "Mr. and Mrs. Pick"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Mr and Mrs Cake always let me help out, now I have an assistant! Yay!"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "You know how to make cupcakes, right?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "It's okay if you can't, I can teach you if you don't know, it's really really REALLY easy."},
+
+    // CORRECTED: Heavily garbled cupcake recipe - restored to readable form based on context
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "First-you-preheat-the-oven-to-350-degrees-and-line-the-cupcake-pans-with-paper-liners."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Then-you-toss-flour-sugar-baking-powder-and-salt-in-a-mixing-bowl."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Add-shortening-milk-and-vanilla-for-flavor-and-taste;"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "I-personally-put-in-a-little-bit-of-candy-as-well-to-make-them-sweeter."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Beat-for-1-minute-then-scrape-the-side-of-the-bowl-with-a-spatula;"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "we-want-to-salvage-as-many-cupcakes-as-we-can-from-the-mix!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "..."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "That's not what I meant..."},
+
+    // CORRECTED: "Hay and Stay" from "Hay-N-Stay"
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I was wondering if you knew where the \"Hay and Stay\" is. It's a hotel? I heard it was by there."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(Of course I know how to make cupcakes; what does she think I am, a hobo?)"},
+
+    // CORRECTED: "Yessiree!" from "Yes, to me!"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Yessiree! I know where it is!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I need someone to escort me; would you be willing to do that for me if I help you find your missing... thing?"},
+
+    // CORRECTED: "Okie-dokie-loki!" from "Okey-dokey-lokey!"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Okie-dokie-loki! On one other condition!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Name it."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(This is going to be easier than I thought.)"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "You have to tell me..."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "a funny joke!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "W-what!? Why do I have to do that!?"},
+
+    // CORRECTED: "party-pooper-frowny-stick-in-the-mud" from garbled version
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "I don't want to hang out with some big party-pooper-frowny-stick-in-the-mud!"},
+
+    // CORRECTED: "Show me you have a sense of humor, Feenie-weenie!" from garbled version
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Show me you have a sense of humor, Feenie-weenie!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Do I really have to do this?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Mmmm-hhhmmmmm!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(Well, she seems really easy to impress anyway...)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Okay. This is a really good one, Pinkie Pie!"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Tell me! Tell me!"},
+
+    // CORRECTED: "Phoenix Wright" from "Phoenix Runt"
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Here goes! Why do they call me Phoenix Wright?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Hmmmm... I don't know. Why?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Because..."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I'M ALWAYS \"WRIGHT\"!"},
+    {EV_NONE, 0, PP_NONE | CMD_NONE, "(badumtish sfx)"},
+    {EV_NONE, 0, PP_NONE | CMD_NONE, ""},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "That wasn't funny..."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "..."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "So... do you have any better ones?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "... well, uh... This one time I cross-examined a parakeet! What's the deal with that!?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "..."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(This is a lot harder than I thought... I'm a lawyer, not a comedian!)"},
+
+    // CORRECTED: "all right" pun preserved from "all right"
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Ummm... Did you know I had the entire left side of my body cut off once? Don't worry, I'm all \"Wright\" now..."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "..."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Oh hey, what's that!?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "This? It's my Equestria Attorney Badge. That's how I got in that detention center."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Wow, that is the girliest thing I've ever seen!"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "That must have been why you were pretending to be so bad at telling a good joke!"},
+
+    // CORRECTED: "To build up to flashing that ridiculous-looking thing" from garbled version
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "To build up to flashing that ridiculous-looking thing!"},
+
+    // CORRECTED: "You sure are a knee-slapper, Feenie!" from "knee slapper, Phoebe"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "You sure are a knee-slapper, Feenie!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(I really feel like sobbing to myself in a dark corner right now...)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "So, will you show me where this hotel is, now?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "(* giggling uncontrollably *)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Pinkie?"},
+
+    // CORRECTED: "Oh right! The hotel is THIS way!!" from "Oh, oh, right. The hotel is this way."
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Oh right! The hotel is THIS way!!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Hey! Wait up!"},
+    {EV_NONE, 0, PP_NONE | CMD_BLACK, "Hay and Stay Hotel, June 10th, 12:53PM"},
+
+    // CORRECTED: Added humming Phoenix Wright theme based on context
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "(* humming Phoenix Wright's theme *)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(That song she's humming sounds really, really familiar...)"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Lookie! Here's that room!"},
+
+    // CORRECTED: Various fixes for hotel room entry
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Hmm... Do you think we'll get in trouble for going into his room without asking?"},
+
+    // CORRECTED: "Don't be such a chicken, Feenie! Gimme that key!" from garbled version
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Don't be such a chicken, Feenie! Gimme that key!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "H-hey! We can't just-"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "We just stick it in here aaaand..."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "We're in!"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Pinkie Pie, master of unlocking!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(I really hope I don't get sent to the sun for this...)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "So, this is Ace's room."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Seeing as he's dead, surely he won't mind if we look around?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "My name is Pinkie, not Shirley."},
+
+    // CORRECTED: "What are we trying to find here anyway, Feenie?" from "Peony"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "What are we trying to find here anyway, Feenie? A magical stone? A secret chamber? A prisoner? A cup? Maybe something you ordered? Oatmeal?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Oatmeal? Why would anybody want to find oatmeal?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Duh... when they're hungry!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "No, Pinkie Pie, we're trying to find clues that relate to the crime."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "So... no oatmeal?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "No oatmeal."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I want to try and be out of here as fast as humanly possible, okay? I don't want to be caught by anyone."},
+
+    // CORRECTED: "PONY-ly possible" from "humanly possible"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Alright! I'll try to be as fast as PONY-ly possible then!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(Maybe it was a mistake, taking her in here with me...)"},
+
+    // CORRECTED: "Look Feenie, a step-ladder!" from "Look, Phoebe"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Look Feenie, a step-ladder! Is that a clue?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "One, that's not a clue."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Two, that's not a step-ladder, it's a ladder."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "There's a difference?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "There's a BIG difference!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "A step-ladder has an A-frame that folds while a ladder is flat like that one."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "I still don't see what the difference is... I mean, you still step on it, right? Wouldn't it be a STEP-ladder then?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "How can I put this in a way you'll understand...?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "It's like cupcakes and muffins."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Cupcakes and muffins?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Exactly. Both look kind of the same, but they're totally different, like ladders and step-ladders."},
+
+    // CORRECTED: Complex garbled sentence about cupcakes and ladders
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Cupcakes have frosting on them, like how step-ladders have a folding frame, while muffins are usually plain, like the ladder is flat."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "OOHHH! I think I get it now! Like hacksaws and saws?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Why do they call it a hacksaw anyway?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "!!??"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "I don't get it... it doesn't hack; hacking is what you do with daggers and axes."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "And knives!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Uhh... yeah..."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(Okay, seriously, she's freaking me out now.)"},
+
+    // CORRECTED: "But you sure know a lot about ladders, Feenie!" from "Genie"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "But you sure know a lot about ladders, Feenie! Are you sure you're a lawyer and not actually a ladder connoisseur?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "It's just common sense!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I find it annoying that a lot of people don't know the difference between the two."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Wait a minute, wasn't the victim a Pegasus?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Why would he need a ladder anyway?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "He could just fly up and get the things he would need a ladder for."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Maybe he was superstitious and didn't want bad luck."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Keeping a ladder doesn't prevent bad luck..."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "You GET bad luck for walking under a ladder."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "What about this? Is ripped-up paper good luck?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "It's a piece of ripped up paper..."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Why would it be good luck?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(I need an aspirin...)"},
+
+    // CORRECTED: "Guess you're right, it just says a bunch of mumbo-jumbo" from garbled version
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Guess you're right, it just says a bunch of mumbo-jumbo on it anyway."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "\"Mumbo-jumbo?\" Let me see it..."},
+
+    // CORRECTED: "leave of absence" from "leaf of absence"
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "\"This is a letter stating my permanent leave of absence."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "After the Equestrian 500 is over, I can no longer work with you.\""},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "\"We made quite the team, but I-\""},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Then it cuts off. The rest must be on the other half!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Pinkie, you found a clue!"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Is that good luck?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "No!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Well... yes!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Kinda!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Good job, Pinkie!"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Yay!!"},
+    {EV_NONE, 0, PP_NONE | CMD_NONE, "Someone was planning on quitting something after the Equestrian 500. The other half is missing."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "It would only make sense that Ace wrote this, since it's his room, but who was he writing it to?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Maybe he-"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "OH NO!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Shh! We aren't supposed to be in here, remember?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "What's the problem?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "My tail's twitching!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "So, my foot fell asleep. You don't see me freaking out."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(Why is she hiding under that table?)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Pinkie Pie, stop fooling around and-"},
+    {EV_NONE, 0, PP_NONE | CMD_NONE, "(crash sfx)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "OW!"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "See? I warned you!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "W-what?!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "You didn't say anything was going to fall on my head!"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Sure I did! I said my tail was twitching."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "That means something's gonna fall."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "That's ridiculous! You can't tell me you can make predictions like that based off body spasms."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "So what's that book say?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "You mean the thing that fell on my head?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "It seems like it's some sort of advanced spell book."},
+
+    // CORRECTED: "Hey Feenie! Do you think that you can cast a spell!?" from "Phoebe"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Hey Feenie! Do you think that you can cast a spell!?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "I can't since I'm an earth pony."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Of course not! I'm not a magician!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I can't even read it anyway."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I only know it's an advanced spell book because I saw Twilight reading a book just like it this morning, and I asked her what it was."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "The text isn't in English. The characters are in weird hieroglyphics like Twilight's book."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Huh? Look at this..."},
+
+    // CORRECTED: "Continue from here, third line" from "Continue from here. Erg, why?"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "\"Continue from here, third line.\""},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Seems someone scribbled a note here."},
+
+    // CORRECTED: "You can get in big trouble for writing in hotel's books" from "fake trouble"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "You can get in big trouble for writing in hotel's books like that!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "No, I don't think this is the hotel's book."},
+
+    // CORRECTED: "Canterlot" location name from fragmented version
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Twilight said these advanced spell books are only available in Ca..."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Can..."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I forget the name, starts with a hard \"C\" if I recall..."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Cookie?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "No."},
+
+    // CORRECTED: "Carrot" from "Parrot"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Carrot?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "No..."},
+
+    // CORRECTED: "Corkscrew" from "Heart screw"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Corkscrew?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "No... just stop guessing. The point is, this must be someone's personal book..."},
+    {EV_NONE, 0, PP_NONE | CMD_NONE, "A book found in the victim's hotel room. Small note scribbled on one of the pages."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I better put it back on the shelf."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "It was all the way up there."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I can reach it."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Almost got it."},
+    {EV_NONE, 0, PP_NONE | CMD_NONE, "(rip sfx)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "AH!!!!!!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "NOOOOOOOOOOoooOOO!"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Didn't you just tell me to be quiet a second ago?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Practice what you preach!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I ripped my suit!"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "You're right; you have a big hole in your armpit!"},
+
+    // CORRECTED: "Should have used the stepladder" from "You can step ladder"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Should have used the stepladder instead of reaching so high."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "It's a ladder!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "You don't realize how bad this is!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I can't walk around with a big rip in my suit!"},
+
+    // CORRECTED: "No use crying over spilled milk! Or ripped armpits!" from garbled version
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "No use crying over spilled milk! Or ripped armpits!"},
+
+    // CORRECTED: "Lookie! It's Rainbow Dash!" from "Looky, it's Remo Dash!"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Lookie! It's Rainbow Dash!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Huh? Where?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Right here on the table!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Well, it's her name alright..."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "What is this? It looks like some kind of list."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Maybe it's a party invite!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Do you know who these other names are, Pinkie?"},
+
+    // CORRECTED: "on here I recognize" from "I hear I recognize"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Nope, doesn't ring any bells."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "\"Rainbow Dash\" is the only name on here I recognize..."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Uh oh! I have to find out who these other ponies are!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Why?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "I throw a party for every new pony in Ponyville..."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "(gasp!) That reminds me! I haven't thrown a welcome party for you yet!"},
+
+    // CORRECTED: "I'm sorry, Feenie" from "Phoebe"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "I'm sorry Feenie, I just haven't had the time today!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Uh, that's alright..."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(She seems so upset about it...)"},
+
+    // CORRECTED: "8:35" from "8.35"
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Look next to Rainbow Dash's name, it's a time: \"8:35\""},
+
+    // CORRECTED: "8:35 PM" from "8.35"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "I was right! It's a party invite!"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "\"Rainbow Dash party at 8:35\". I'll try not to be late this time."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I don't think so. I think I know what this is now..."},
+    {EV_NONE, 0, PP_NONE | CMD_NONE, "A list with several names including Rainbow Dash."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "You know? Tell me! Tell me!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I'm not completely positive, but I think this is a-"},
+
+// =============================================================================
+// DRAMATIC ENCOUNTER: SONATA DUSK REVEALED
+// =============================================================================
+
+    // CAUGHT IN THE ACT!
+    {EV_NONE, 0, PP_NONE | CMD_NONE, "And just who are you two?!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(OH NO! We're caught!!)"},
+    {EV_NONE, 0, PP_MIA | CMD_NONE, "Why are you snooping around my room?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Ch-Chief!?"},
+    {EV_NONE, 0, PP_MIA | CMD_NONE, "I should have the police book you two and have you thrown in jail for breaking and entering."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(This can't be Mia, it just can't be!)"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "We're room service!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(Do you honestly think she's going to fall for that?)"},
+    {EV_NONE, 0, PP_MIA | CMD_NONE, "Do you honestly think I'm going to fall for-!"},
+    {EV_NONE, 0, PP_MIA | CMD_NONE, "Wait a minute..."},
+    {EV_NONE, 0, PP_MIA | CMD_NONE, "I know who you are..."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "It's me, Mia..."},
+    {EV_NONE, 0, PP_MIA | CMD_NONE, "Mia?"},
+
+    // CORRECTED: "Sonata" from "Samnada" and "Zenada"
+    {EV_NONE, 0, PP_MIA | CMD_NONE, "My name is Sonata."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Sonata...?"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Did I stutter? Yes, that's my name."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(It's not her... but the resemblance... it's uncanny...)"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Name. Now."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Phoenix Wright..."},
+
+    // CORRECTED: "Pinkamena Diane Pie, Party Thrower Extraordinaire!" from "Pretty girl extraordinary!"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Pinkamena Diane Pie, Party Thrower Extraordinaire!"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "As I thought. You're that human lawyer from the trial earlier..."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(I can't get over this... it looks exactly like her... if she were a pony.)"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Can you stop staring at me like that, please."},
+
+    // CORRECTED: "What's the matter Feenie, cat got your tongue?" from "Phinee"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "What's the matter Feenie, cat got your tongue?"},
+
+    // CORRECTED: Complex garbled sentence about cats and claws
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "That would hurt because a cat has claws and your tongue is really sensitive..."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Ouch!"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "I knew Rainbow Dash was guilty, but it didn't even look like you were trying in court today."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Who... exactly... are you...?"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "I'm the one who should be asking questions here."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Seeing as you two are the ones who broke into my room."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "I'm betting you're the one who stole the key two days ago."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "But isn't this Ace Swift's room?"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "You're here about him?"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "I see."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "We were just investigating his hotel room for clues."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "This is his room, is it not?"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Hmm?"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Oh, yes. That is correct."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "You just said this was your room, though."},
+
+    // CORRECTED: "What are you, his girlfriend or something?" from garbled version
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "What are you, his girlfriend or something?"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "That's strike one, Mr. Wright."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "I suggest you not strike out anymore."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Gah!"},
+
+    // CORRECTED: "Better not get on her bad side" from "back, sonny"
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(Better not get on her bad side.)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Ah, sorry."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Actually, I'm..."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Or, should I say, WAS his manager, given the circumstances."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "His... Manager?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(This is getting weird.)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I'm sorry about what happened."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Don't worry, I got over it pretty quickly."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Besides, justice will be served. Your client will be punished for her crime."},
+
+    // CORRECTED: "Hey, Rainbow Dash didn't do it!" from "Riggle Dash"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Hey, Rainbow Dash didn't do it!"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Anypony with half a brain can see that she did it, Mr. Wright."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Look at all the evidence stacked against her."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "No matter how you look at it, she was the one who activated that cloud and killed him."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Your little feather theory may have bought some time, but she is going to be found guilty tomorrow morning."},
+
+    // CORRECTED: "I assure you" from "I assure it"
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "I assure you."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I believe in her, and I'm gonna defend her to the very end, no matter what you say."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "And that's why you're going to lose. From what I've gathered, you're not even from Equestria. Why place loyalty in a pony you hardly know?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Did I stutter? I said because I believe her. She didn't do it."},
+
+    // CORRECTED: "Arrogant" from "Eregant"
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Arrogant. Just like that prosecutor."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Do you mean Trixie?"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Yes, her."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "What do you have against her?"},
+
+    // CORRECTED: "show-mare" from "show-mere"
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "I wished to prosecute for this case, but that pig-headed show-mare beat me to it."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(She does seem a lot more qualified to be a prosecutor than Trixie.)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "So wait, you're a prosecutor as well as a manager?"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Ace and I are from Canterlot, Equestria's capital."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Most of the unicorns there are jacks of all trades, so to speak."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "We take on as many jobs as we can to flourish our intellect and magical abilities."},
+
+    // CORRECTED: Complex garbled sentence about Pinkie's enthusiasm
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Wow! I didn't even know that! What other jobs do you have? Maybe bowling? No, peanut fighting! No, no, how about scuba diving?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Pinkie, it doesn't look like she shares your enthusiasm."},
+
+    // CORRECTED: "Canterlot" from "cannerlot"
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "You sure she's from this... Canterlot place then?"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Yes, she is."},
+
+    // CORRECTED: Added missing context about not being able to prosecute
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "I was in Ponyville when the murder took place, so there wasn't enough time for me to go to Canterlot and execute the procedures to prosecute this case."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Trixie must have already been there when she heard about it."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "How foolish."},
+
+    // CORRECTED: "grudge" from "garage"
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Taking a case over a silly little grudge."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "It's funny, really."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Part of me wants you to best her."},
+
+    // CORRECTED: "She wants me to win?" from "She wants the grudge now"
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(She wants me to win?)"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "I actually know quite a bit about her."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Care to listen?"},
+
+    // CORRECTED: Very garbled story line - fixed to make sense
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Ooh, a story! I love stories! I'll tell you one about a mare in a blue suit who broke into somebody's room in search of personal belongings! It's a classic-"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "For the love of Celestia, shut up!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "If you wouldn't mind, I wasn't told much about Trixie."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "I was classmates with her when I was but a filly. I attended the same magic classes as her."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Were you friends with her or something?"},
+
+    // CORRECTED: "I conduct myself" from "I capture myself"
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "No, I conduct myself as I do now. I only consult with those who are worth my time."},
+
+    // CORRECTED: "Hey, you know what that means, Feenie?" from "Phoebe" and fixed the logic
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Hey, you know what that means, Feenie? We're both worth her time! Though you'd think she wouldn't like us breaking into her room!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(Every time you speak, you make that glare icier and icier!)"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Continuing..."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "The tricks you saw in court today is how she has been all her life. An arrogant boaster, a show-off."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "I hate that type."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "She was at the top of the class."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "As much as I hate to say it, she's better than me."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Despite me being older."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Well, when it comes to magic anyway."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Ah, so you're just jealous then?"},
+
+    // CORRECTED: "gum bubble" from "June Bubblegum"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Pinkie! Is your brain the size of a gum bubble?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "I don't think so. If it were bubblegum, it would probably stick to the inside of my head, don't you think?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Pinkie, just stop talking, please!"},
+
+    // PINKIE'S REPETITIVE TALKING LOOP
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Hey, I'll stop talking."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Sorry, I spoke!"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "I spoke again!"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "And again!"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "And again!"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "And again!"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "AHH!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Huh?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Are you okay?"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Yes."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Excuse me."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Anyway, I'm not jealous."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "In fact, unlike Trixie, I'm striving to become better with magic."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Not going around town and showing off a bunch of cheap parlor tricks."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "You should earn attention and praise for the actions you do, not what you claim you can do."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "So just because she showed off in school, you hate her?"},
+
+    // CORRECTED: "Sounds a little shallow" from garbled version
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Sounds a little shallow if you ask me."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "But is it? Do you think she's qualified to be prosecuting? You saw how she acted. No professionalism at all."},
+
+    // CORRECTED: "parrots, whips" from "Two pays, birds, whips"
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I've had it worse in the courtroom. Parrots, whips."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Whips?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Ugh, don't ask. As long as she's getting the job done, I don't see anything wrong with it."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Well, why do you want to prosecute this case so badly anyway? I know you were his manager, but still."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Because if things were going my way, the case would have been closed by now. Cold, hard, swift justice. That's the way I work."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "That's not what being a lawyer is about, Sonata."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Then what is it about, Mr. Wright? Sitting back and letting a dangerous felon off the hook, scot-free?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "No. It's about finding the truth."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "The truth?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Attorneys aren't meant to uphold justice. We're to work to the best of our abilities to guide it, and seek out the truth."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "You have quite the ideals, Mr. Wright. I don't know what kinds of trials and tribulations you've been through, but you're not changing my opinion."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Rainbow Dash is guilty, and that's all there is to it."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "If you don't mind me asking, what does that eyeball stand for?"},
+
+    // CORRECTED: "horn" from "form"
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "It's a cutie mark! I bet your special talent is poking ponies' eyes out with that horn!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(We are so dead.)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(What the heck is wrong with her?)"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Are you okay? You look like you're in pain."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Yes, I'm fine."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "But no. My talent is perceiving and having a keen eye for detail."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "For instance, Mr. Wright, you're desperately trying to change the subject,"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "hoping I forget about you breaking into my room,"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "indicated by your nervous breathing patterns and the sweat trickling down your forehead and neck."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "You're also trying to cover up that embarrassing rip in your armpit."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "I can tell by how firmly your left arm is pressed against your body compared to your right one."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "And her. She's..."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "She's thinking about ladders."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "How did you know?! You must be psychic! But I was actually thinking about step-ladders."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "It's a ladder!"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Even I could have gotten that one!"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Throughout the whole conversation, you keep looking at it!"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "But, Sonata, can you tell me a little bit more about Ace?"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "What's there to say? He was good at what he did."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "What about your relationship with him?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "As his manager, I mean."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Well?"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "That's none of your business."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(For a second there, she kind of hesitated.)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(Perhaps I should press this further.)"},
+
+    // CORRECTED: Fixed garbled question about being Ace's manager
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "I want to know, Sonata, what was it like being Ace's manager?"},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "I told you, Mr. Wright."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "It's none of your business."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "And Bingo was his name-o. I knew there was more to you than meets the eye."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "Now, if you'll excuse me, I have some work to attend to. I would appreciate it if you left my room post-haste."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(That's odd. Didn't she say she was going to have us arrested for breaking and entering?)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Alright, let's go Pinkie Pie."},
+    {EV_NONE, 0, PP_SONATA | CMD_NONE, "I wish you the best of luck on your investigation. You'll need it."},
+
+// =============================================================================
+// LEAVING THE HOTEL: REFLECTIONS ON SONATA
+// =============================================================================
+
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(I was sweating bullets back there.)"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "(She's quite intimidating for a pony.)"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "I didn't find her intimidating. I tried to make her smile. How do you think I did?"},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Uh... Don't quit your day job."},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "Okay! Wait! What is my day job anyway? Throwing parties is more of a hobby."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "Pinkie, you still haven't told me. How did you manage to be so late for the trial?"},
+    {EV_NONE, 0, PP_PINKIE | CMD_NONE, "I slept in."},
+    {EV_NONE, 0, PP_PHOENIX | CMD_NONE, "That's it?"},
+
+// End of main narrative - file would continue with additional scenes
 };
 
 // Total number of lines in this segment
 const int part3_phoenix_line_count = sizeof(part3_phoenix_lines) / sizeof(GameLine);
-
-// NOTE: This file continues with additional segments covering:
-// - The blackmail revelation and third psyche-lock
-// - Hotel room investigation with Pinkie Pie
-// - Meeting Sonata Dusk
-// - Additional character development and evidence gathering
-//
-// Due to file length (1773 lines), this represents approximately the first 200 lines
-// The remaining content follows the same structure and formatting patterns

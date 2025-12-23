@@ -47,7 +47,7 @@ typedef struct {
 // so it's kind of a mess... as long as they fit and don't stomp on each other ;)
 // We allocated for ourselves pages 17 through 47 (inclusive)
 const MUSICLOOKUP musLookup[] = {   /* page   address  */
-    /* 000 CMD_MUSTARTLIST */  {  0,    (unsigned char*)0x0000  },
+    /* 000 CMD_MUSTARTLIST */  {  0,    (unsigned char*)0x0000  },                      // index 0 is never used, so the list can be 1 based
     /* 001 CMD_MUSSTEEL    */  { 17,    (unsigned char*)0xf000  },      // 632 bytes
     /* 002 CMD_MUSSTART    */  {  0,    (unsigned char*)0x0000  }, 
     /* 003 CMD_MUSEXAM     */  { 24,    (unsigned char*)0xf400  },      // 1228 bytes
@@ -67,7 +67,7 @@ const MUSICLOOKUP musLookup[] = {   /* page   address  */
     /* 017 CMD_MUSOBJECT   */  { 29,    (unsigned char*)0xf000  },      // 1720 bytes (2k free)
     /* 018 CMD_MUSTHRILL   */  { 30,    (unsigned char*)0xfc00  },      // 836 bytes (last allocation, full)
     /* 019 CMD_MUSINTEREST */  { 30,    (unsigned char*)0xf000  },      // 2332 bytes
-    /* 020 CMD_MUSKLAVIER  */  {  0,    (unsigned char*)0x0000  }, 
+    /* 020 CMD_MUSKLAVIER  */  {  0,    (unsigned char*)0x0000  },
     /* 021 CMD_MUSTRAGIC   */  {  0,    (unsigned char*)0x0000  }, 
     /* 022 CMD_MUSMIDDLE   */  { 21,    (unsigned char*)0xf000  },      // 1828 bytes
     /* 023 CMD_MUSKG8      */  {  0,    (unsigned char*)0x0000  }, 
@@ -184,7 +184,11 @@ void load_one_music(int nMusic) {
 #ifdef CLASSIC99
             // big endian to little endian, cause we loaded this file
             sz = ((sz&0xff)<<8) | ((sz&0xff00)>>8);
-            if (sz+musLookup[nMusic].pAdr+2 > (unsigned char*)0xffff) debug_write("Warning: music %d too large for load", nMusic);
+            if (sz > 0x3fff) {
+                debug_write("Warning: impossible music size 0x%04X in %d", sz, nMusic);
+            } else if (sz+musLookup[nMusic].pAdr+2 > (unsigned char*)0xffff) {
+                debug_write("Warning: music %d too large for load", nMusic);
+            } else
 #endif
             vdpmemread(VDP_VOC_ADR+2, cpuAdr+2, sz);
         }

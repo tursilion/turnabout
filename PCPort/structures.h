@@ -298,7 +298,6 @@ enum {
 
     // Testimony commands allowed as jump targets (they don't use evidence field otherwise)
     CMD_CLEARTEST   , // clear testimony array - testimony lines should NOT branch
-    CMD_OBJECTHERE  , // this is the line to object on (also acts as ADDTEST)
                     
     CMD_SFXSTARTLIST, // find SFXs
 
@@ -306,7 +305,6 @@ enum {
     CMD_CHIMESFX    , // play chime sound (mostly meant for cmd_stopmus)
     CMD_BOOMSFX     , // play boom sound
     CMD_LOCKSFX     , // play 3 booms for psychelocks
-    CMD_LAUGHSFX    , // play crowd laughter
     CMD_BREAKSFX    , // play break psychlock sfx
     CMD_PARTYSFX    , // play party horn sfx
     CMD_JOKESFX     , // play rimshot sfx
@@ -356,6 +354,7 @@ enum {
     CMD_ENDSTORY    , // end this story sequence and return to main loop. Story stores new location in evidence field and will jump to it.
                         
     CMD_ADDTEST     , // add this line to testimony and go to next line - current is set to the new line
+    CMD_OBJECTHERE  , // this is the line to object on (also acts as ADDTEST)
     CMD_BADOBJECT   , // set the target for bad objection to the tag in evidence
     CMD_GOODOBJECT  , // set the target for good objection to the tag in evidence
     CMD_STARTTEST   , // playback testimony as registered - post-testimony tag in evidence
@@ -384,6 +383,7 @@ enum {
     CMD_MUSOBJECT   , //    Objection! 2009 - Ace Attorney Investigations (AAI-11)
     CMD_MUSTHRILL   , //    Thrill Theme - Suspense (AJ-35)
     CMD_MUSINTEREST , //    Interesting People - Ace Attorney Investigations (AAI-49)
+    CMD_MUSKLAVIER  , // Klavier? Might have intended to delete this...
     CMD_MUSTRAGIC   , // Interview Tragicomedy - Capcom (AJ-17)
     CMD_MUSMIDDLE   , //    Investigation Middlegame - Capcom - Ace Attorney Investigations
     CMD_MUSKG8      , // KG-8 Case - Capcom (AAI-53)
@@ -640,7 +640,6 @@ extern int nStorySize;
 #define HAS_PHOENIXHOLDIT
 #define HAS_PHOENIXOBJ
 #define HAS_PHOENIXTAKE
-#define HAS_LAUGHSFX            // TODO: need to make this still
 // music
 #define HAS_MUSTHRILL
 #define HAS_MUSOBJECT2

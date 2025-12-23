@@ -15,10 +15,17 @@ MEMORY
     LOWER(xrw) : ORIGIN = 0x2000, LENGTH = 0x1f00 
     /* bank switched region for music player (linker doesnt handle music itself) */
     BANKMUSIC(xrw): ORIGIN = 0xE000, LENGTH = 4K
+    UNUSED(xrw): ORIGIN = 0, LENGTH = 8K
 }
 
 SECTIONS {
     PROVIDE (__executable_start = 0xA000); 
+
+    /* drop parts of libti99 that we don't use */
+    .unusedlib (NOLOAD) :
+    {
+        *libti99.a:vdp_scrnscrolldefault.o
+    } > UNUSED
 
     .text :
     {
@@ -62,6 +69,7 @@ SECTIONS {
         story.o(.text .rodata)
         People.o(.text .rodata)
         scratchloaderStandalone.o
+        investigation.o(.text .rodata)
 
         PROVIDE(etextupper = .);
     }
@@ -73,7 +81,6 @@ SECTIONS {
         aid.o(.text .rodata)
         Evidence.o(.text .rodata)
         cache.o(.text .rodata)
-        investigation.o(.text .rodata)
 
         PROVIDE(etextlower = .);
     } > LOWER

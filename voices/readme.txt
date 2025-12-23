@@ -4,6 +4,8 @@ since they are loud we should be able to use best-match rather than my Dragon's 
 I'll also convert to 8192hz. All samples are under 1 second in length, so that's the highest rate we can guarantee
 will fit in one 4096 page (at 4 bits per sample). Since it's a dedicated playback engine we can afford the bitshifts.
 
+Note: Laughter is only 4096hz to fit 2 seconds.
+
 ---
 
 https://www.openai.fm/

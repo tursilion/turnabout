@@ -67,11 +67,6 @@ void play_sfx(int sfx) {
             break;
 #endif
 
-#ifdef HAS_LAUGHSFX
-        case CMD_LAUGHSFX    : // play crowd laughter
-            break;
-#endif
-
 #ifdef HAS_BREAKSFX
         case CMD_BREAKSFX    : // play break psychlock sfx
             break;

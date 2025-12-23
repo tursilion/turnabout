@@ -15,10 +15,17 @@ MEMORY
     LOWER(xrw) : ORIGIN = 0x2000, LENGTH = 0x1f00 
     /* bank switched region for music player (linker doesnt handle music itself) */
     BANKMUSIC(xrw): ORIGIN = 0xE000, LENGTH = 4K
+    UNUSED(xrw): ORIGIN = 0, LENGTH = 8K
 }
 
 SECTIONS {
     PROVIDE (__executable_start = 0xA000); 
+
+    /* drop parts of libti99 that we don't use */
+    .unusedlib (NOLOAD) :
+    {
+        *libti99.a:vdp_scrnscrolldefault.o
+    } > UNUSED
 
     .text :
     {
@@ -27,7 +34,6 @@ SECTIONS {
         crt0_ea5.o  /* must be first, must load at 0xA000 */
         cache.o
         voice.o
-        music.o(.text .rodata)
         *libti99.a:*
     } > UPPERFIXED
 
@@ -53,7 +59,6 @@ SECTIONS {
     /* note because there's no memory section it's not warning about overrun */
     .textpost __upperpre_end :
     {
-        mybitmap.o(.text .rodata)
         inventory.o(.text .rodata)
         Locations.o(.text .rodata)
         savegame.o(.text .rodata)
@@ -61,6 +66,7 @@ SECTIONS {
         story.o(.text .rodata)
         People.o(.text .rodata)
         scratchloaderStandalone.o
+        investigation.o(.text .rodata)
 
         PROVIDE(etextupper = .);
     }
@@ -69,11 +75,12 @@ SECTIONS {
     {
         PROVIDE(stextlower = .);
 
+        mybitmap.o(.text .rodata)
         engine.o(.text .rodata)
         aid.o(.text .rodata)
         Evidence.o(.text .rodata)
         cache.o(.text .rodata)
-        investigation.o(.text .rodata)
+        music.o(.text .rodata)
 
         PROVIDE(etextlower = .);
     } > LOWER

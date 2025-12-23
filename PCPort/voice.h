@@ -28,7 +28,6 @@
 // CMD_TRIXIEHOLD  , // play trixie holdit         S6
 // CMD_PHOENIXHOLD , // play phoenix holdit        S7
 // CMD_PHOENIXTAKE , // play phoenix take that!    S8
-// CMD_LAUGHSFX    , // play laugh sample          S9
 
 // filename index
 #define TRIXIE_OBJECT_IDX       0
@@ -40,36 +39,34 @@
 #define TRIXIE_HOLDIT_IDX       6
 #define PHOENIX_HOLDIT_IDX      7
 #define PHOENIX_TAKETHAT_IDX    8
-#define ALL_LAUGH_IDX           9
 
 // AMS page
-#define ALL_OBJECT_PAGE         1
 #define TRIXIE_OBJECT_PAGE      4
-#define TRIXIE_HOLDIT_PAGE      5
-#define PHOENIX_HOLDIT_PAGE     6
 #define PHOENIX_OBJECT_PAGE     7
-#define PHOENIX_TAKETHAT_PAGE   8
+#define TWILIGHT_OBJECT_PAGE    9
 #define FLUTTERSHY_OBJECT_PAGE  9
 #define JUDGE_OBJECT_PAGE       8
-#define TWILIGHT_OBJECT_PAGE    9
-#define ALL_LAUGH_PAGE          9
+#define ALL_OBJECT_PAGE         1
+#define TRIXIE_HOLDIT_PAGE      5
+#define PHOENIX_HOLDIT_PAGE     6
+#define PHOENIX_TAKETHAT_PAGE   8
 
-// voice tag words (offset 0x0110 in sample - WARNING: IF SAMPLES CHANGES, THIS CHANGES! MUST BE UNIQUE!)
+// voice tag words (offset 0x0112 in sample - WARNING: IF SAMPLES CHANGES, THIS CHANGES! MUST BE UNIQUE!)
 // This is how we tell if it was already loaded
-// It's at 0x110 in the raw binary, but 0x112 after the 2 byte length header is prepended
-// (if looking at hexdump, remember the 0x80 bytes of TIFILES header don't get loaded, so there it's 0x192)
-#define TAG_OFFSET_WORD         0x0112
+// It's at 0x112 in the raw binary, but 0x114 after the 2 byte length header is prepended
+// (if looking at hexdump, remember the 0x80 bytes of TIFILES header don't get loaded, so there it's 0x194)
+// (Technically, samples who don't share a bank don't have to be unique)
+#define TAG_OFFSET_WORD         0x0114
 
-#define JUDGE_OBJECT_TAG        0x1122
-#define TWILIGHT_OBJECT_TAG     0x1213
-#define TRIXIE_OBJECT_TAG       0x15ea
-#define TRIXIE_HOLDIT_TAG       0x2134
-#define ALL_OBJECT_TAG          0x2222
-#define PHOENIX_TAKETHAT_TAG    0x4333
-#define PHOENIX_OBJECT_TAG      0x4544
-#define FLUTTERSHY_OBJECT_TAG   0x5432
-#define PHOENIX_HOLDIT_TAG      0xfdf5
-#define ALL_LAUGH_TAG           ??????
+#define TRIXIE_OBJECT_TAG       0xf000
+#define PHOENIX_OBJECT_TAG      0xf00f
+#define TWILIGHT_OBJECT_TAG     0x0f91
+#define FLUTTERSHY_OBJECT_TAG   0xf000
+#define JUDGE_OBJECT_TAG        0xfff0
+#define ALL_OBJECT_TAG          0x200c
+#define TRIXIE_HOLDIT_TAG       0x2ff1
+#define PHOENIX_HOLDIT_TAG      0xf130
+#define PHOENIX_TAKETHAT_TAG    0x2721
 
 // filename offset of index byte for loading voice and music
 #define VOC_OFF 40

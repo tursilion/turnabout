@@ -77,7 +77,7 @@ redraw:
             readerFlag = !readerFlag;
             goto redraw;
         }
-        if ((x >= 'A') && (x <= 'I')) {
+        if ((x >= 'A') && (x <= 'J')) {
             int n = x-'A';
             load_one_voice(n);
             play_voice(n);

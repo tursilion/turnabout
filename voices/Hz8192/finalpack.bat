@@ -7,6 +7,7 @@ d:\work\ti\audioconvert\release\audioconvert All-Objection-Full.wav All-Objectio
 d:\work\ti\audioconvert\release\audioconvert Trixie-Holdit-Full.wav Trixie-Holdit.bin pack real
 d:\work\ti\audioconvert\release\audioconvert Phoenix-Holdit-Full.wav Phoenix-Holdit.bin pack real
 d:\work\ti\audioconvert\release\audioconvert Phoenix-Takethat-Full.wav Phoenix-Takethat.bin pack real
+d:\work\ti\audioconvert\release\audioconvert Crowd-Laughing-2sec.wav Crowd-Laughing-2sec.bin pack real
 
 
 python makeTIFILES.py Trixie-Objection.bin S0
@@ -18,5 +19,7 @@ python makeTIFILES.py All-Objection.bin S5
 python makeTIFILES.py Trixie-Holdit.bin S6
 python makeTIFILES.py Phoenix-Holdit.bin S7
 python makeTIFILES.py Phoenix-Takethat.bin S8
+python makeTIFILES.py Crowd-Laughing-2sec.bin S9
+
 
 
