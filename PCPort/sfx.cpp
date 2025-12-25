@@ -198,6 +198,28 @@ sfx.cpp:166: internal compiler error: in extract_insn, at recog.c:2048
             break;
 #endif
 
+#ifdef HAS_SQUEAKSFX
+        case CMD_SQUEAKSFX   : // play squeak sfx
+            {
+                // 60hz playlist - 0 marks end of frame
+                const unsigned char squeakbytes[] = {
+                    0x8e,0x03,0x90,0,
+                    0x8e,0x04,0,
+                    0x82,0x06,0,
+                    0x9f
+                };
+                for (unsigned int i=0; i<sizeof(squeakbytes); ++i) {
+                    if (squeakbytes[i]) {
+                        SOUND(squeakbytes[i]);
+                    } else {
+                        VDP_WAIT_VBLANK_CRU;
+                        VDP_CLEAR_VBLANK;
+                    }
+                }
+            }
+            break;
+#endif
+
     default:
         break;
     }

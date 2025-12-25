@@ -207,6 +207,17 @@ ploc16:
 	$(CP) PLOC16* /mnt/d/classic99/dsk1/
 	rm *.o
 
+ploc17: 
+	-rm *.o
+	$(GAS) crt0_ea5.asm -o crt0_ea5.o
+	$(GAS) scratchloaderStandalone.a99 -o scratchloaderStandalone.o
+	$(CC) -c $(C_FLAGS) -DLOCATION_IS_17 $(SOURCE_LIST) $(INCPATH)
+	$(LD) crt0_ea5.o $(OBJECT_LIST) scratchloaderStandalone.o $(LIBS) $(LIBPATH) $(LDFLAGS_EA5) -o $(NAME)17.ea5.elf > $(NAME)17_ea5.map
+	$(ELF2EA5) $(NAME)17.ea5.elf $(NAME)17
+	$(CP) PLOC17* /mnt/d/classic99/dsk1/
+	rm *.o
+
+
 # Recipe to clean all compiled objects
 .phony clean:
 	rm *.o

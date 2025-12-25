@@ -340,6 +340,7 @@ enum {
     CMD_FALLSFX     , // play falling sfx
     CMD_MAGICSFX    , // play magic sfx
     CMD_BADMAGSFX   , // play bad magic sfx
+    CMD_SQUEAKSFX   , // play squeak sfx
 
     CMD_SFXENDLIST  , // end SFX list
                     
@@ -392,7 +393,7 @@ enum {
     CMD_MUSSTEEL    , //    Steel Samurai Ringtone
     CMD_MUSSTART    , // Apollo Justice - Start of a New Trial! - Apollo Justice Ace Attorney (AJ-1)
     CMD_MUSEXAM     , //    Cross Examination - Moderate 2007 - Apollo Justice Ace Attorney
-    CMD_MUSCROSS    , // Cross Examination - Moderato 2002 - Phoenix Wright Justice For All (JFA-72)
+    CMD_MUSCROSS    , //    Cross Examination - Moderato 2002 - Phoenix Wright Justice For All (JFA-72)
     CMD_MUSTRICK    , //    Magic and Tricks - Phoenix Wright: Justice for All
     CMD_MUSMLP      , //    My Little Pony - Friendship is Magic Theme (8-bit) - RainbowCrash88 - used random Midi
     CMD_MUSTROUPE   , //    Gramarye Troupe - Apollo Justice Ace Attorney
@@ -682,6 +683,8 @@ extern int nStorySize;
 // sfx
 #define HAS_CHIMESFX
 #define HAS_FALLSFX
+#define HAS_BOOMSFX
+#define HAS_SQUEAKSFX
 // voice
 #define HAS_VOICE
 #define HAS_TRIXIEOBJ
@@ -689,6 +692,8 @@ extern int nStorySize;
 #define HAS_PHOENIXOBJ
 #define HAS_PHOENIXTAKE
 // music
+#define HAS_MUSPEARLY
+#define HAS_MUSCROSS
 #endif
 
 #ifdef LOCATION_IS_17

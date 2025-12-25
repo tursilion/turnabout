@@ -1991,7 +1991,7 @@ const Story_t story[] =  {                       //  012345678901234567890123456
 const Story_t story[] =  {                           //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
 
     {EV_NONE, 127, PP_TRIXIE | CMD_NONE, "Witness, state your name and occupation."},
-    {EV_NONE, 187, PP_FLUTTERSHY | CMD_NONE, "(hiding)"},
+    {EV_NONE, 187, PP_FLUTTERSHY | CMD_SQUEAKSFX, "(hiding)"},
     {EV_NONE, 135, PP_TRIXIE | CMD_NONE, "Witness! Get out from under there and state your name and occupation!"},
     {EV_NONE, 188, PP_FLUTTERSHY | CMD_NONE, "(*whispers*)"},
     {EV_NONE, 130, PP_JUDGE | CMD_NONE, "Can you please repeat that, young lady? I couldn't hear you."},
@@ -2000,7 +2000,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
     {EV_NONE, 132, PP_PHOENIX | CMD_NONE, "Maybe I can milk this situation to our advantage."},
     {EV_NONE, 132, PP_TWILIGHT | CMD_NONE, "What do you mean?"},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "Your Honor! This witness clearly doesn't have the ability to testify. Perhaps we should suspend the proceedings of this trial for another-"},
-    {EV_NONE, 189, PP_FLUTTERSHY | CMD_NONE, "Oh, Mr Phoenix, you're here! You haven't died yet?"},
+    {EV_NONE, 189, PP_FLUTTERSHY | CMD_MUSPEARLY, "Oh, Mr Phoenix, you're here! You haven't died yet?"},
     {EV_NONE, 190, PP_FLUTTERSHY | CMD_NONE, "There must be something very wrong... you look so frail and seem to be suffering more than ever right now."},
     {EV_NONE, 134, PP_PHOENIX | CMD_NONE, "You got the last part right..."},
     {EV_NONE, 126, PP_JUDGE | CMD_NONE, "Mr Wright, tell her to state her name and occupation, please."},
@@ -2011,14 +2011,14 @@ const Story_t story[] =  {                           //  01234567890123456789012
     {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "(Never thought I'd be saying that line.)"},
     {EV_NONE, 189, PP_FLUTTERSHY | CMD_NONE, "I'm Fluttershy. I'm an animal caretaker."},
     {EV_NONE, 127, PP_TRIXIE | CMD_NONE, "Is it true you saw Rainbow Dash leave the Everfree Forest two nights ago?"},
-    {EV_NONE, 187, PP_FLUTTERSHY | CMD_NONE, "(hiding)"},
+    {EV_NONE, 187, PP_FLUTTERSHY | CMD_SQUEAKSFX, "(hiding)"},
     {EV_NONE, 126, PP_JUDGE | CMD_NONE, "Mr Wright..."},
     {EV_NONE, 134, PP_PHOENIX | CMD_NONE, "(reluctantly) Is it true you saw Rainbow Dash leave the Everfree Forest two nights ago?"},
     {EV_NONE, 134, PP_PHOENIX | CMD_NONE, "(This kind of backfired on me...)"},
     {EV_NONE, 191, PP_FLUTTERSHY | CMD_NONE, "Yes, she seemed to be in a hurry."},
     {EV_NONE, 130, PP_JUDGE | CMD_NONE, "So the defendant was indeed at the scene of the crime on the night of the murder."},
     {EV_NONE, 126, PP_JUDGE | CMD_NONE, "Witness! You will-"},
-    {EV_NONE, 187, PP_FLUTTERSHY | CMD_NONE, "(hiding)"},
+    {EV_NONE, 187, PP_FLUTTERSHY | CMD_SQUEAKSFX, "(hiding)"},
     {EV_NONE, 126, PP_JUDGE | CMD_NONE, "Mr Wright, tell her she has to testify."},
     {EV_NONE, 134, PP_PHOENIX | CMD_NONE, "(Now I have to do your job too, Your Honor?)"},
     {EV_NONE, 134, PP_PHOENIX | CMD_NONE, "Fluttershy..."},
@@ -2026,7 +2026,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "Can you please testify as to what you saw two nights ago when you saw Rainbow Dash leaving the forest?"},
     {EV_NONE, 190, PP_FLUTTERSHY | CMD_NONE, "Umm... I don't know what 'testify' means..."},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "It just means tell us what you saw that night."},
-    {EV_NONE, 189, PP_FLUTTERSHY | CMD_NONE, "Oh yes, I can do that! Anything for you, Mr Phoenix!"},
+    {EV_NONE, 189, PP_FLUTTERSHY | CMD_STOPMUS, "Oh yes, I can do that! Anything for you, Mr Phoenix!"},
 
 // =============================================================================
 // TESTIMONY SEGMENT: FLUTTERSHY'S INITIAL TESTIMONY
@@ -2043,10 +2043,10 @@ const Story_t story[] =  {                           //  01234567890123456789012
 {EV_O_GOODFLUT,192, PP_NONE | CMD_GOODOBJECT, "" },
 
 // run testimony
-{   EV_NONE,    192, PP_NONE | CMD_MUSAJ,   "" },   // wrong music
+{   EV_NONE,    192, PP_NONE | CMD_MUSCROSS,   "" },
 {EV_T_FLUTTEST, 192, PP_NONE | CMD_STARTTEST, "" },
 
-    {EV_T_FLUTTEST, 176, PP_TRIXIE | CMD_NONE, "Hahaha! Is that isn't an airtight testimony, Trixie doesn't know what is! By Rainbow Trash's own friend no less."},
+    {EV_T_FLUTTEST, 176, PP_TRIXIE | CMD_STOPMUS, "Hahaha! Is that isn't an airtight testimony, Trixie doesn't know what is! By Rainbow Trash's own friend no less."},
     {EV_NONE, 191, PP_RAINBOW | CMD_NONE, "FLUTTERSHY!"},
     {EV_NONE, 189, PP_FLUTTERSHY | CMD_NONE, "Hi Rainbow Dash."},
     {EV_NONE, 126, PP_JUDGE | CMD_NONE, "Very well, Mr Wright, your cross-examination, if you please."},
@@ -2063,7 +2063,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
     {EV_NONE, 194, PP_NONE | CMD_BOOMSFX,  "-- Cross Examination --"  },
 
     // Run cross examination
-    {   EV_NONE,    194, PP_NONE |   CMD_MUSAJ,  ""  }, // wrong music
+    {   EV_NONE,    194, PP_NONE |   CMD_MUSCROSS,  ""  },
     { EV_T_FLUTCROSS,194, PP_NONE | CMD_STARTCROSS, "" },
 
 // Objection handlers
@@ -2078,7 +2078,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
 
 {EV_O_BADFLUT2,138,    PP_PHOENIX | CMD_PHOENIXOBJ, "OBJECTION!" },
 {EV_O_BADFLUT, 139, PP_PHOENIX | CMD_BADOBJECT, "I object! That statement is a clear contradiction!"},
-{EV_NONE, 187, PP_FLUTTERSHY | CMD_NONE, "(hiding)"},
+{EV_NONE, 187, PP_FLUTTERSHY | CMD_SQUEAKSFX, "(hiding)"},
 {EV_NONE, 130, PP_JUDGE | CMD_NONE, "Mr Wright, please stop frightening the witness!"},
 {EV_NONE, 134, PP_PHOENIX | CMD_NONE, "Sorry, Your Honor."},
 {EV_NONE, 176, PP_TRIXIE | CMD_NONE, "Perhaps Mr Wrong should stick to defending instead of... whatever that was."},
@@ -2102,7 +2102,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
     {EV_NONE, 189, PP_FLUTTERSHY | CMD_NONE, "Three days now."},
     {EV_NONE, 189, PP_FLUTTERSHY | CMD_SELPROMPT, ""},
 
-    {EV_T_FHARDWORK, 136, PP_PHOENIX | CMD_ADDPROMPT, "Is it hard work taking care of them all?"},
+    {EV_T_FHARDWORK, 136, PP_PHOENIX | CMD_NONE, "Is it hard work taking care of them all?"},
     {EV_NONE, 138, PP_TRIXIE | CMD_TRIXIEOBJ, "OBJECTION!"},
     {EV_NONE, 135, PP_TRIXIE | CMD_NONE, "What, pray tell, does this have to do with murder?"},
     {EV_NONE, 137, PP_PHOENIX | CMD_NONE, "Well... I kind of like animals too, and..."},
@@ -2154,9 +2154,10 @@ const Story_t story[] =  {                           //  01234567890123456789012
     {EV_NONE, 136, PP_PHOENIX | CMD_NONE, "And she just ignored you?"},
     {EV_NONE, 190, PP_FLUTTERSHY | CMD_NONE, "Yes, I don't know why... I yelled so loud, at the top of my lungs, like this..."},
     {EV_NONE, 195, PP_FLUTTERSHY | CMD_NONE, "(deep inhale)"},
-    {EV_NONE, 196, PP_FLUTTERSHY | CMD_NONE, "(softly) \"Rainbow Dash, what's wrong...?\""},
+    {EV_NONE, 196, PP_FLUTTERSHY | CMD_STOPMUS, "(softly) \"Rainbow Dash, what's wrong...?\""},
     {EV_NONE, 134, PP_PHOENIX | CMD_FALLSFX, "Yeah... I haven't the faintest idea how she didn't hear that..."},
-    { EV_T_FLUTCROSS, 139, PP_PHOENIX | CMD_CONCROSS, "" },
+    {   EV_NONE,    134, PP_PHOENIX  |   CMD_MUSCROSS,  ""  },
+    { EV_T_FLUTCROSS, 134, PP_PHOENIX | CMD_CONCROSS, "" },
 
     // STATEMENT 4: "I looked up but saw nothing following her." - THE CONTRADICTION!
     {EV_P_FNOFOLLOW, 164, PP_PHOENIX | CMD_PHOENIXHOLD, "HOLD IT!"},
@@ -2218,7 +2219,11 @@ const Story_t story[] =  {                           //  01234567890123456789012
 
 #ifdef LOCATION_IS_17
 
-    {EV_NONE, 187, PP_FLUTTERSHY | CMD_NONE, "(hiding)"},
+// 56:16
+const Story_t story[] =  {                           //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
+
+    {EV_NONE, 138, PP_NONE | CMD_PHOENIXOBJ, "OBJECTION!"},     // repeat on purpose for new load
+    {EV_NONE, 187, PP_FLUTTERSHY | CMD_SQUEAKSFX, "(hiding)"},
     {EV_NONE, 126, PP_JUDGE | CMD_NONE, "Mr Wright, please don't frighten the witness."},
     {EV_NONE, 137, PP_PHOENIX | CMD_NONE, "Right... sorry, but there is a contradiction in this testimony."},
     {EV_NONE, 141, PP_TRIXIE | CMD_NONE, "What contradiction? Everything she has said meshes with the evidence to a T!"},
@@ -2302,6 +2307,8 @@ const Story_t story[] =  {                           //  01234567890123456789012
 #endif
 
 #ifdef LOCATION_IS_18
+
+const Story_t story[] =  {                           //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
 
 // =============================================================================
 // STORY SEGMENT: PHOENIX'S DESPERATE GAMBIT - ACCUSING FLUTTERSHY
@@ -2432,7 +2439,6 @@ const Story_t story[] =  {                           //  01234567890123456789012
 
 };
 #endif
-
 
 
 #ifndef LOCATION_IS_LOADER

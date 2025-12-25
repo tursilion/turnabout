@@ -51,7 +51,7 @@ const MUSICLOOKUP musLookup[] = {   /* page   address  */
     /* 001 CMD_MUSSTEEL    */  { 17,    (unsigned char*)0xf000  },      // 632 bytes
     /* 002 CMD_MUSSTART    */  {  0,    (unsigned char*)0x0000  }, 
     /* 003 CMD_MUSEXAM     */  { 24,    (unsigned char*)0xf400  },      // 1228 bytes
-    /* 004 CMD_MUSCROSS    */  {  0,    (unsigned char*)0x0000  }, 
+    /* 004 CMD_MUSCROSS    */  { 29,    (unsigned char*)0xf800  },      // 704 bytes (1k free)
     /* 005 CMD_MUSTRICK    */  { 17,    (unsigned char*)0xf400  },      // 1376 bytes
     /* 006 CMD_MUSMLP      */  { 17,    (unsigned char*)0xfc00  },      // 836 bytes
     /* 007 CMD_MUSTROUPE   */  { 18,    (unsigned char*)0xf000  },      // 3022 bytes
