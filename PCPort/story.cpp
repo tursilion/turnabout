@@ -28,12 +28,12 @@ int shownEvidence = EV_NONE;
 
 // conversation prompts that can be prompted
 // it's an error to enter prompt mode without registering any!
-// TODO: thinking of reducing the maximum to six? Maybe push it down out of the nametag line
+#define MAX_PROMPTS 6
 struct _PROMPTS {
     int tagid;          // make sure to only register EV_T_xxx tags - zero means unset
     int isread;         // set if the text was read already
     const char *str;    // pointer to the string to display for it (from the story text)
-} prompts[8];
+} prompts[MAX_PROMPTS];
 
 // REMEMBER! Any target of a change_index must have a target command less than CMD_VOICEENDLIST
 void change_index(int tag) {
@@ -60,9 +60,9 @@ void conversation() {
     
 redraw:
     max = 0;
-    for (int i=0; i<8; ++i) {
+    for (int i=0; i<MAX_PROMPTS; ++i) {
         if (prompts[i].tagid == 0) break;
-        gotoxy(1, 16+i);
+        gotoxy(1, 17+i);
         if (prompts[i].isread) reverse(1);
         cprintfmini("%c %s", i+'1', prompts[i].str);
         reverse(0);
@@ -93,9 +93,6 @@ redraw:
             goto redraw;
         }
 
-        // TODO: hmm. What if we get 7 story options? Should we change it to letters? Would conflict with inventory...
-        // I could make = the help screen, but if you accidentally did fctn-= you'd reset after getting there. I can't
-        // read the FCTN key otherwise it'd be easy...
         // I'll try to keep options to 6 or fewer...
         if (x == '7') {
             // fctn-7 for AID
@@ -166,6 +163,38 @@ int run_story() {
                 lastimg = -1;
                 break;
 
+#ifdef LOCATION_TYPE_MISSES
+            case CMD_RESETMISS:
+                missesLeft = DEFAULT_MISSES;
+                missesTarget = story[index].evidence;
+                break;
+
+            case CMD_CLEARMISS:
+                missesLeft = 0;
+                break;
+
+            case CMD_STOREMISS:
+                recallMisses = missesLeft;
+                missesLeft = 0;
+                break;
+
+            case CMD_RECALLMISS:
+                missesLeft = recallMisses;
+                break;
+
+            case CMD_MISS:
+                --missesLeft;
+                // redraw in white
+                cputsxy(23, 16, "Misses:");
+                vdpchar(16*32+31+gImage, missesLeft+'0');
+                play_sfx(CMD_CRASHSFX);
+                if (missesLeft < 1) {
+                    change_index(missesTarget);
+                    continue;
+                }
+                break;
+#endif
+
             case CMD_ENDSTORY    : // end this story sequence and return to main loop. Story stores new location in evidence field and will jump to it.
                 stop_music();
                 return story[index].evidence;
@@ -224,7 +253,7 @@ int run_story() {
                 break;  
 
             case CMD_ADDPROMPT   : // Add this string and EV_I_name to the conversation prompts (and skip to the next one) - EV is how we find it
-                for (int i=0; i<8; ++i) {
+                for (int i=0; i<MAX_PROMPTS; ++i) {
                     if (prompts[i].tagid == story[index].evidence) {
                         // already exists
                         break;
@@ -240,7 +269,7 @@ int run_story() {
                 continue;
 
             case CMD_CHANGEPROMPT   : // update the EV_xxx prompt with new target and/or text
-                for (int i=0; i<8; ++i) {
+                for (int i=0; i<MAX_PROMPTS; ++i) {
                     if (prompts[i].tagid == story[index].evidence) {
                         if (story[index].frame != 0) {
                             prompts[i].tagid = story[index].frame;

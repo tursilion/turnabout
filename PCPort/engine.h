@@ -18,6 +18,13 @@ extern int f18a;
 extern int mute;
 extern int readerFlag;
 
+#ifdef LOCATION_TYPE_MISSES
+#define DEFAULT_MISSES (4)
+extern int missesLeft;
+extern int missesTarget;
+extern int recallMisses;
+#endif
+
 #define PPLIDX(i) (((i)-PP_FIRST)>>8)
 
 void clear_text();
@@ -37,7 +44,7 @@ void set_textout(const char *p);
 void set_name(unsigned int i);
 void set_maxlen(int i);
 void wait_for_key_release();
-void fastputwordwrap(int x, int y, const char *pWork, int cnt);
+int fastputwordwrap(int x, int y, const char *pWork, int cnt);
 unsigned char wrap_dsrlnk(struct PAB *pab, unsigned int vdp);
 
 #endif

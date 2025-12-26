@@ -20,6 +20,8 @@ extern const char *pString;
 // we hack this to force a redraw of the original text
 extern int oldMaxtext;
 const char *DEFTEXT = "Press letter for description, Enter to select. Period for next page.";
+// we shouldn't directly access this, but we do for performance
+extern int maxtext;
 
 // if it's a special piece, we do the special work for bitmap images
 // return 1 for selected itself, return -1 for redraw needed, return 0 for nothing special
@@ -113,7 +115,6 @@ startover:
     set_textout(DEFTEXT);
 
     // just a text display - so need a custom draw function
-    // arrow keys to move a selector up and down, left and right to page
     // pages move to people when at end of inventory
     // enter to select and exit - no cancel needed
     set_alt_text();
@@ -170,6 +171,7 @@ startover:
                     maxlen = 32*7;
                 } else {
                     ++maxlen;
+                    if (maxtext >= 32*7) maxlen=32*7;
                 }
                 set_maxlen(maxlen);
             }

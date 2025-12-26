@@ -31,7 +31,7 @@ typedef unsigned short uint16_type;
 
 // these variables are stored in bss, so are in low RAM and always available
 // However, the library code is not! Neither is anything in songDatVars!
-const unsigned char *pSong;
+const unsigned char *pSong = NULL;
 int musicPage = 0;
 int mute = 0;
 
@@ -51,7 +51,7 @@ const MUSICLOOKUP musLookup[] = {   /* page   address  */
     /* 001 CMD_MUSSTEEL    */  { 17,    (unsigned char*)0xf000  },      // 632 bytes
     /* 002 CMD_MUSSTART    */  {  0,    (unsigned char*)0x0000  }, 
     /* 003 CMD_MUSEXAM     */  { 24,    (unsigned char*)0xf400  },      // 1228 bytes
-    /* 004 CMD_MUSCROSS    */  { 29,    (unsigned char*)0xf800  },      // 704 bytes (1k free)
+    /* 004 CMD_MUSCROSS    */  { 29,    (unsigned char*)0xf800  },      // 704 bytes
     /* 005 CMD_MUSTRICK    */  { 17,    (unsigned char*)0xf400  },      // 1376 bytes
     /* 006 CMD_MUSMLP      */  { 17,    (unsigned char*)0xfc00  },      // 836 bytes
     /* 007 CMD_MUSTROUPE   */  { 18,    (unsigned char*)0xf000  },      // 3022 bytes
@@ -64,7 +64,7 @@ const MUSICLOOKUP musLookup[] = {   /* page   address  */
     /* 014 CMD_MUSTRIALS   */  {  0,    (unsigned char*)0x0000  }, 
     /* 015 CMD_MUSPROLOG   */  { 19,    (unsigned char*)0xfc00  },      // 886 bytes
     /* 016 CMD_MUSECHESS   */  { 28,    (unsigned char*)0xf000  },      // 3468 bytes
-    /* 017 CMD_MUSOBJECT   */  { 29,    (unsigned char*)0xf000  },      // 1720 bytes (2k free)
+    /* 017 CMD_MUSOBJECT   */  { 29,    (unsigned char*)0xf000  },      // 1720 bytes
     /* 018 CMD_MUSTHRILL   */  { 30,    (unsigned char*)0xfc00  },      // 836 bytes (last allocation, full)
     /* 019 CMD_MUSINTEREST */  { 30,    (unsigned char*)0xf000  },      // 2332 bytes
     /* 020 CMD_MUSKLAVIER  */  {  0,    (unsigned char*)0x0000  },
@@ -100,7 +100,8 @@ const MUSICLOOKUP musLookup[] = {   /* page   address  */
     /* 050 CMD_MUSCOOL     */  {  0,    (unsigned char*)0x0000  }, 
     /* 051 CMD_MUSMEMORY   */  {  0,    (unsigned char*)0x0000  },
     /* 052 CMD_MUSSCHESS   */  { 27,    (unsigned char*)0xf000  },      // 4078 bytes
-    /* 053 CMD_MUSOBJECT2  */  { 26,    (unsigned char*)0xf000  }       // 3618 bytes
+    /* 053 CMD_MUSOBJECT2  */  { 26,    (unsigned char*)0xf000  },      // 3618 bytes
+    /* 054 CMD_MUSOBJECT3  */  { 29,    (unsigned char*)0xfc00  }       // 1012 bytes
 };
 
 #ifdef CLASSIC99
@@ -409,6 +410,9 @@ void load_music_banked() {
 #endif
 #ifdef HAS_MUSOBJECT2
     load_one_music(CMD_MUSOBJECT2); // Logic Chess - Moderato - Ace Attorney Investigations 2
+#endif
+#ifdef HAS_MUSOBJECT3
+    load_one_music(CMD_MUSOBJECT3); // Objection! 2002 - Justice for All (JFA-70)
 #endif
 }
 

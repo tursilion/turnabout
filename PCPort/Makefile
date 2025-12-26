@@ -46,7 +46,7 @@ OBJECT_LIST=\
 # map the objects back to source files
 SOURCE_LIST := $(OBJECT_LIST:.o=.cpp)
 
-all: pload ploc0 ploc1 ploc2 ploc3 ploc4 ploc5 ploc6 ploc10 ploc11 ploc12 ploc13 ploc14 ploc15 ploc16
+all: pload ploc0 ploc1 ploc2 ploc3 ploc4 ploc5 ploc6 ploc10 ploc11 ploc12 ploc13 ploc14 ploc15 ploc16 ploc17 ploc18 ploc19 ploc20
 
 # we don't do incremental builds, so no prerequisites of note
 
@@ -217,6 +217,35 @@ ploc17:
 	$(CP) PLOC17* /mnt/d/classic99/dsk1/
 	rm *.o
 
+ploc18: 
+	-rm *.o
+	$(GAS) crt0_ea5.asm -o crt0_ea5.o
+	$(GAS) scratchloaderStandalone.a99 -o scratchloaderStandalone.o
+	$(CC) -c $(C_FLAGS) -DLOCATION_IS_18 $(SOURCE_LIST) $(INCPATH)
+	$(LD) crt0_ea5.o $(OBJECT_LIST) scratchloaderStandalone.o $(LIBS) $(LIBPATH) $(LDFLAGS_EA5) -o $(NAME)18.ea5.elf > $(NAME)18_ea5.map
+	$(ELF2EA5) $(NAME)18.ea5.elf $(NAME)18
+	$(CP) PLOC18* /mnt/d/classic99/dsk1/
+	rm *.o
+
+ploc19: 
+	-rm *.o
+	$(GAS) crt0_ea5.asm -o crt0_ea5.o
+	$(GAS) scratchloaderStandalone.a99 -o scratchloaderStandalone.o
+	$(CC) -c $(C_FLAGS) -DLOCATION_IS_19 $(SOURCE_LIST) $(INCPATH)
+	$(LD) crt0_ea5.o $(OBJECT_LIST) scratchloaderStandalone.o $(LIBS) $(LIBPATH) $(LDFLAGS_EA5) -o $(NAME)19.ea5.elf > $(NAME)19_ea5.map
+	$(ELF2EA5) $(NAME)19.ea5.elf $(NAME)19
+	$(CP) PLOC19* /mnt/d/classic99/dsk1/
+	rm *.o
+
+ploc20: 
+	-rm *.o
+	$(GAS) crt0_ea5.asm -o crt0_ea5.o
+	$(GAS) scratchloaderStandalone.a99 -o scratchloaderStandalone.o
+	$(CC) -c $(C_FLAGS) -DLOCATION_IS_20 $(SOURCE_LIST) $(INCPATH)
+	$(LD) crt0_ea5.o $(OBJECT_LIST) scratchloaderStandalone.o $(LIBS) $(LIBPATH) $(LDFLAGS_EA5) -o $(NAME)20.ea5.elf > $(NAME)20_ea5.map
+	$(ELF2EA5) $(NAME)20.ea5.elf $(NAME)20
+	$(CP) PLOC20* /mnt/d/classic99/dsk1/
+	rm *.o
 
 # Recipe to clean all compiled objects
 .phony clean:

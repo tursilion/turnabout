@@ -20,7 +20,8 @@
 //#define LOCATION_IS_13
 //#define LOCATION_IS_14
 //#define LOCATION_IS_15
-#define LOCATION_IS_16
+//#define LOCATION_IS_16
+#define LOCATION_IS_17
 #endif
 
 // some types
@@ -80,7 +81,6 @@ enum {
     EV_I_IN1FLAG1,                  // flagged first search done
     EV_I_WHINEBED,                  // whined about bed
     EV_I_WHINEBREAKFAST,            // whined about breakfast
-    EV_I_REVISION1,                 // stored to track first revision of the save file
     EV_I_DAY1DESPERATE,             // day 1 first desperate question asked
     EV_I_FLUTTERANIMALS,            // learn about Fluttershy's animals
 
@@ -241,6 +241,29 @@ enum {
     EV_T_FNOCORRECTL,
     EV_T_FGOTANIMALS,
 
+    EV_T_FSEEAB,
+    EV_T_FSEEPW,
+    EV_T_FSEETS,
+    EV_T_FSEERD,
+    EV_T_LOOPFWHO,
+    EV_T_SKIPSUIT,
+    EV_T_NOSKIPSUIT,
+
+    EV_T_LOOPFWHO2,
+    EV_T_FACCFS,
+    EV_T_FACCTR,
+    EV_T_FACCRD,
+    EV_T_JUDGERETRY,
+
+    EV_T_LOOPFSHOW,
+    EV_T_FFEATHER,
+
+    EV_T_FMISSOUT,
+    EV_T_LOOPFSND,
+    EV_T_FBOLT2,
+    EV_T_FQ1,
+    EV_T_FQ2,
+    EV_T_FQ3,
 
     EV_MAX,
 
@@ -320,6 +343,10 @@ enum {
     CMD_BLACK       , // draw a black screen - ignore frame (but clear last frame so we know to load again)
     CMD_WHITE       , // draw a white screen with inverse crash sound
     CMD_STOPMUS     , // stop music
+    CMD_MISS        , // count down misses. If 0 (or less), jump to missesTarget
+    CMD_CLEARMISS   , // resets the missesLeft to 0, which turns off the display (does NOT jump to missesTarget) (have to use RESETMISS to start it)
+    CMD_STOREMISS   , // resets missesLeft to 0 to turn off the display, but remembers the old value
+    CMD_RECALLMISS  , // recalls a stored count back into missesLeft to reactivate the display
 
     // Testimony commands allowed as jump targets (they don't use evidence field otherwise)
     CMD_CLEARTEST   , // clear testimony array - testimony lines should NOT branch
@@ -387,6 +414,8 @@ enum {
     CMD_STARTCROSS  , // start crossexamination at first testimony line, post-cross tag in evidence
     CMD_CONCROSS    , // continue cross examination at current line, post-cross tag in evidence
 
+    CMD_RESETMISS   , // reset miss count to default (makes it display), evidence becomes missesTarget
+
     // downloaded - do not reorder the song list!! Indented comment means it is done and uploaded
     CMD_MUSTARTLIST , // just to find the music block
 
@@ -402,7 +431,7 @@ enum {
     CMD_MUSPEARLY   , //    With Pearly - Phoenix Wright Justice for All
     CMD_MUSSISTER   , //    Turnabout Sisters - Capcom
     CMD_MUSSMILE    , // Smile Instrumental - Hasbro
-    CMD_MUSLOCK     , // Lock on the Heart - Capcom - Justice for All Psyche-Lock (JFA-85 - don't have)
+    CMD_MUSLOCK     , // Lock on the Heart - Capcom - Justice for All Psyche-Lock (JFA-85)
     CMD_MUSTRIALS   , //    Trials and Tribulation WiiWare Rips - HoodieD
     CMD_MUSPROLOG   , //    Apollo Justice - Prologue
     CMD_MUSECHESS   , //    Logic Chess End - Moderato - Ace Attorney Investigations 2 (AAI2-53)
@@ -419,7 +448,7 @@ enum {
     CMD_MUSLOUNGE   , //    Courtroom Lounge - Overture again
     CMD_MUSHOTLINE  , // Hotline to Destiny - Capcom - Hotline of Fate (JFA-86)
     CMD_MUSSUSPENSE , //    Suspense - Phoenix Wright Ace Attorney
-    CMD_MUSBEGIN    , // Court Begins - Capcom (PW-8? AJ-45?)
+    CMD_MUSBEGIN    , // Court Begins - Capcom (AJ-45?)
     CMD_MUSTRUTH    , //    Tell the Truth 2002 - Capcom - The Truth Revealed 2002
     CMD_MUSPURSUIT  , // Pursuit - Questioned - Capcom (JFA-74)
     CMD_MUSEND      , // Ace Attorney ~ End - Capcom (PW-7?)
@@ -427,7 +456,7 @@ enum {
     CMD_MUSSWEPT    , // Sweptaway Turnabout - Tragedy of the Horror House (AAI-54 or AAI-55)
     CMD_MUSCORE     , //    Investigation Core 2001 - Cadenza
     CMD_MUSPRELUDE  , // Unending Prelude - Capcom - Defendant Lobby - So it Begins (PW-8)
-    CMD_MUSGIGGLE   , // Giggle at the Ghosties - Hasbro - starts with so many wonders - need to cut
+    CMD_MUSGIGGLE   , // Giggle at the Ghosties - Hasbro - starts with so many wonders - need to cut beginning off
     CMD_MUSCOURT    , // Court Begins Orchestrated - Capcom - TAT Court is now in session (PW-13? Or we might have a midi downloaded)
     CMD_MUSWON      , // Won the Lawsuit - Magical Trick Society - Victory - Our First Win (PW-20)
     CMD_MUSAJ       , // Applejack's Theme - AcousticBrony
@@ -449,6 +478,7 @@ enum {
 
     CMD_MUSSCHESS   , //    Logic Chess Start - Moderato - Ace Attorney Investigations 2 (AAI2-16)
     CMD_MUSOBJECT2  , //    Objection! 2011 - Ace Attorney Investigations 2 (AAI2-12)
+    CMD_MUSOBJECT3  , //    Objection! 2002 - Justice for All (JFA-70)
 
     // not listed in the game credits but downloaded anyway
     // testimony-allegro (apparently no tracks are called that... might already have it then)
@@ -699,7 +729,45 @@ extern int nStorySize;
 #ifdef LOCATION_IS_17
 // Fluttershy cross-examination
 #define LOCATION_NUMBER 17
+#define LOCATION_TYPE_STORY
 #define LOCATION_TYPE_CROSSEXAM
+#define LOCATION_TYPE_MISSES
+// sfx
+#define HAS_CHIMESFX
+#define HAS_BOOMSFX
+#define HAS_SQUEAKSFX
+#define HAS_HAMMERSFX
+// voice
+#define HAS_VOICE
+#define HAS_TRIXIEOBJ
+#define HAS_PHOENIXHOLDIT
+#define HAS_PHOENIXOBJ
+#define HAS_PHOENIXTAKE
+#define HAS_TWIOBJ
+// music
+#define HAS_MUSOBJECT3
+#endif
+
+#ifdef LOCATION_IS_18
+// flashback - Fey law offices
+#define LOCATION_NUMBER 18
+#define LOCATION_TYPE_STORY
+// sfx
+// music
+#endif
+
+#ifdef LOCATION_IS_19
+// outside courtroom, talk to Pinkie
+#define LOCATION_NUMBER 19
+#define LOCATION_TYPE_STORY
+// sfx
+// music
+#endif
+
+#ifdef LOCATION_IS_20
+// detention center with Dash
+#define LOCATION_NUMBER 20
+#define LOCATION_TYPE_STORY
 // sfx
 // music
 //*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
@@ -707,16 +775,8 @@ extern int nStorySize;
 //*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
 #endif
 
-#ifdef LOCATION_IS_20
-// flashback - Fey law offices
-#define LOCATION_NUMBER 20
-#define LOCATION_TYPE_STORY
-// sfx
-// music
-#endif
-
 #ifdef LOCATION_IS_21
-// outside courtroom, talk to Pinkie
+// on the street with Pinkie
 #define LOCATION_NUMBER 21
 #define LOCATION_TYPE_STORY
 // sfx
@@ -724,32 +784,16 @@ extern int nStorySize;
 #endif
 
 #ifdef LOCATION_IS_22
-// detention center with Dash
-#define LOCATION_NUMBER 22
-#define LOCATION_TYPE_STORY
-// sfx
-// music
-#endif
-
-#ifdef LOCATION_IS_23
-// on the street with Pinkie
-#define LOCATION_NUMBER 23
-#define LOCATION_TYPE_STORY
-// sfx
-// music
-#endif
-
-#ifdef LOCATION_IS_24
 // Ace's room
-#define LOCATION_NUMBER 24
+#define LOCATION_NUMBER 22
 #define LOCATION_TYPE_INVESTIGATION
 // sfx
 // music
 #endif
 
-#ifdef LOCATION_IS_25
+#ifdef LOCATION_IS_23
 // Caught by Sonata
-#define LOCATION_NUMBER 25
+#define LOCATION_NUMBER 23
 #define LOCATION_TYPE_STORY
 // sfx
 // music

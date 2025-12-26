@@ -54,6 +54,15 @@ int ams = 256;   // we can't actually detect AMS, but i need some for testing th
 int ams = 0;
 #endif
 
+#ifdef LOCATION_TYPE_MISSES
+// When misses are non-zero, they are displayed on the right side of the name line
+// as a reminder that you are under the gun. Since it takes extra code it's only
+// compiled in for locations that need it.
+int missesLeft = 0;
+int recallMisses = 0;
+int missesTarget = 0;
+#endif
+
 struct PAB myPab = {0};
 
 // clear the text window (excluding name)
@@ -81,7 +90,8 @@ void music_delay() {
 // get it down to a frame per update...
 // cnt is used to limit the string to before the NUL termination
 // if zero, then the whole string is used - no control codes, direct to output function
-void fastputwordwrap(int x, int y, const char *pWork, int cnt) {
+// returns true if we reached the end of the string
+int fastputwordwrap(int x, int y, const char *pWork, int cnt) {
     const int width = 32;
     if (cnt == 0) {
         cnt = 32767;    // rely on the NUL terminator
@@ -136,6 +146,8 @@ void fastputwordwrap(int x, int y, const char *pWork, int cnt) {
         }
         if (cnt == 0) break;    // again
     }
+
+    return (cnt != 0);
 }
 
 // more of an update than a draw, per-sae
@@ -158,6 +170,15 @@ void draw_screen() {
         vdpmemset(gImage+16*32, ' ', 32);
     }
 
+#ifdef LOCATION_TYPE_MISSES
+    if (missesLeft > 0) {
+        reverse(1);
+        cputsxy(23, 16, "Misses:");
+        vdpchar(16*32+31+gImage, missesLeft+'0'+128);
+        reverse(0);
+    }
+#endif
+
     if ((maxtext != oldMaxtext) || (pString != pOldString))  {
         if ((readerFlag)&&(maxtext < 32*7)) {
             // always draw fully so screen reader doesn't stutter
@@ -167,7 +188,9 @@ void draw_screen() {
         pOldString = pString;
         if (pString) {
             // draw out the string one character at time with wordwrap
-            fastputwordwrap(0, 17, pString, maxtext);
+            if (fastputwordwrap(0, 17, pString, maxtext)) {
+                maxtext = 32*7;
+            }
         } else {
             // clear the text window
             clear_text();
@@ -484,7 +507,6 @@ int main()
 {
     debug_write("Starting up...");
     files(1);
-    stop_music();  // makes sure pSong is zeroed out
 
 #ifdef CLASSIC99
     vgm_pcinit();
@@ -499,6 +521,21 @@ int main()
     // clasic99 build never ran the loader, it goes direct, so keep the f18a setting (never has AMS)
     // restore the data from VDP
     restore_saved_data();
+#else
+    // just load all the evidence for a Classic99 build (this will
+    // include evidence we shouldn't have yet, be warned!)
+    for (unsigned int i=0; i<EV_MAX_STORED_EV; ++i) {
+        // EV_MAX_STORED_EV can not be larger than 64!
+        evidence_found[i]=1;
+    }
+
+    // skip ahead to the people, we don't necessarily fill all 64 slots
+    VDP_SET_ADDRESS(SAVE_GAME_VDP+166);
+    for (unsigned int i=0; i<PP_MAX; ++i) {
+        // PP_MAX can not be larger than 16
+        people_found[i]=1;
+    }
+
 #endif
     load_voices();
     load_music();
@@ -509,6 +546,8 @@ int main()
     if (f18a) {
         debug_write("F18A enabled");
     }
+
+    stop_music();  // makes sure pSong is zeroed out (AFTER hardware setup)
 
 #if LOCATION_IS_LOADER
     checkSams();

@@ -10,7 +10,7 @@ const Story_t story[] =  {                    //  012345678901234567890123456789
 {   PP_PHOENIX,  0,  PP_NONE    | CMD_ADDEV,     "?????? ??????? June 9th, 8:??PM"  },
 {   EV_NONE,     0,  PP_NONE    | CMD_MUSPROLOG, "Time for negotiations..."  },
 {   EV_BADGE,    0,  PP_NONE    | CMD_ADDEV,     "Forget it, I'm not doing it!"  },
-{   EV_I_REVISION1,0,PP_NONE    | CMD_ADDEV,     "Do it or else!"  },
+{   EV_NONE,     0,  PP_NONE    | CMD_NONE,      "Do it or else!"  },
 {   EV_NONE,     0,  PP_NONE    | CMD_NONE,      "I don't care about that anymore..."  },
 {   EV_NONE,     0,  PP_NONE    | CMD_NONE,      "Besides... I have a better idea..."  },
 {   EV_NONE,     0,  PP_NONE    | CMD_NONE,      "WHAT?!"  },
@@ -288,7 +288,7 @@ const Story_t story[] =  {                       //  012345678901234567890123456
 {   EV_NONE,     36,    PP_PHOENIX  | CMD_SELPROMPT, ""  },
 
 {   EV_T_RDNAME,36,     PP_PHOENIX  | CMD_NONE,     "Let's start off with your name..."      },
-{   EV_NONE,    39,     PP_RAINBOW  | CMD_NONE,     "I'm Rainbow Dash, best flier in Ponyville! Soon to be a household name in all of Equestria!"      },
+{   PP_RAINBOW, 39,     PP_RAINBOW  | CMD_ADDEV,    "I'm Rainbow Dash, best flier in Ponyville! Soon to be a household name in all of Equestria!"      },
 {   EV_NONE,    39,     PP_RAINBOW  | CMD_NONE,     "Line up for my autograph starts over there!"      },
 {   EV_NONE,    37,     PP_PHOENIX  | CMD_NONE,     "(Twilight Sparkle? Rainbow Dash?)"      },
 {   EV_NONE,    37,     PP_PHOENIX  | CMD_NONE,     "(Is it me or are their names starting to sound like flavors of ice cream?)"      },
@@ -2210,7 +2210,7 @@ const Story_t story[] =  {                           //  01234567890123456789012
     { EV_T_FLUTCROSS, 136, PP_PHOENIX | CMD_STARTCROSS, "" },
 
     // OBJECTION: THE BIG CONTRADICTION - She should have seen Applebloom!
-    {EV_O_GOODFLUT, 138, PP_NONE | CMD_PHOENIXOBJ, "OBJECTION!"},
+    {EV_O_GOODFLUT, 138, PP_PHOENIX | CMD_PHOENIXOBJ, "OBJECTION!"},
 
 {   17,         94,     PP_NONE         | CMD_ENDSTORY, ""  }   // go to location 17
 };
@@ -2219,10 +2219,9 @@ const Story_t story[] =  {                           //  01234567890123456789012
 
 #ifdef LOCATION_IS_17
 
-// 56:16
-const Story_t story[] =  {                           //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
-
-    {EV_NONE, 138, PP_NONE | CMD_PHOENIXOBJ, "OBJECTION!"},     // repeat on purpose for new load
+// continuing from the objection...
+const Story_t story[] =  {               //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
+    {EV_NONE, 138, PP_PHOENIX | CMD_PHOENIXOBJ, "OBJECTION!"},     // repeat on purpose for new load
     {EV_NONE, 187, PP_FLUTTERSHY | CMD_SQUEAKSFX, "(hiding)"},
     {EV_NONE, 126, PP_JUDGE | CMD_NONE, "Mr Wright, please don't frighten the witness."},
     {EV_NONE, 137, PP_PHOENIX | CMD_NONE, "Right... sorry, but there is a contradiction in this testimony."},
@@ -2232,45 +2231,136 @@ const Story_t story[] =  {                           //  01234567890123456789012
     {EV_NONE, 134, PP_PHOENIX | CMD_NONE, "Uh... no need to be sorry..."},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "But you didn't hear or see ANYTHING come out from the forest?"},
     {EV_NONE, 191, PP_FLUTTERSHY | CMD_NONE, "I didn't see or hear anything else come out of the forest that night."},
-    {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "Then there's clearly a contradiction here... actually two!"},
-    {EV_NONE, 126, PP_JUDGE | CMD_NONE, "Please explain what these contradictions are, Mr Wright."},
-    {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "Fluttershy should have seen someone leave the forest..."},
-    {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "The previous witness, Applebloom!"},
+    {EV_NONE, 148, PP_PHOENIX | CMD_MUSOBJECT3, "Then there's clearly a contradiction here... actually two!"},
+    {EV_T_FMISSOUT, 126, PP_JUDGE | CMD_RESETMISS, "Please explain what these contradictions are, Mr Wright."},
+    {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "Fluttershy should have seen someone leave the forest:"},
+
+    //                                        0123456789012345678901234567890101
+{   EV_T_LOOPFWHO,  139, PP_PHOENIX | CMD_NONE, "" },
+{   EV_NONE,  139, PP_PHOENIX | CMD_SHOWEV, "*Who should Fluttershy have seen?"   },    // * to start at people
+{   PP_BLOOM,EV_T_FSEEAB, PP_PHOENIX|CMD_JUMPIFSHOW, "" }, 
+{   PP_PHOENIX,EV_T_FSEEPW, PP_PHOENIX|CMD_JUMPIFSHOW, "" }, 
+{   PP_TWILIGHT,EV_T_FSEETS, PP_PHOENIX|CMD_JUMPIFSHOW, "" }, 
+{   PP_RAINBOW,EV_T_FSEERD, PP_PHOENIX|CMD_JUMPIFSHOW, "" },
+
+    // generic wrong response
+    {EV_NONE, 141, PP_TRIXIE | CMD_NONE, "That makes absolutely no sense whatsoever..."},
+    {EV_NONE, 134, PP_PHOENIX | CMD_NONE, "Uh... yeah... not sure what I was thinking there..."},
+    {EV_NONE, 134, PP_PHOENIX | CMD_MISS, "" },
+    {EV_T_LOOPFWHO, 134, PP_PHOENIX | CMD_JUMP, "" },
+
+    // saw Phoenix
+    {EV_T_FSEEPW, 148, PP_PHOENIX | CMD_NONE, "Me, Phoenix Wright!"},
+    {EV_NONE, 130, PP_JUDGE | CMD_NONE, "You, Mr Wright!? What were YOU doing in the forest on the night of the murder?!"},
+    {EV_NONE, 150, PP_TWILIGHT | CMD_NONE, "Phoenix, I hadn't even summoned you yet!"},
+    {EV_NONE, 134, PP_PHOENIX | CMD_NONE, "Oh... right... sorry about that..."},
+    {EV_NONE, 134, PP_PHOENIX | CMD_MISS, "" },
+    {EV_T_LOOPFWHO, 134, PP_PHOENIX | CMD_JUMP, "" },
+
+    // saw Twilight
+    {EV_T_FSEETS, 148, PP_PHOENIX | CMD_NONE, "My co-counsel, Twilight Sparkle!"},
+    {EV_NONE, 170, PP_TWILIGHT | CMD_NONE, "What are you talking about, Phoenix!?"},
+    {EV_NONE, 143, PP_TRIXIE | CMD_NONE, "Oh! If you want to put Twilight Screw-up on the scene of the crime, Trixie is all in for that."},
+    {EV_NONE, 134, PP_PHOENIX | CMD_NONE, "Oh... wait... no. That can't be right..."},
+    {EV_NONE, 134, PP_PHOENIX | CMD_MISS, "" },
+    {EV_T_LOOPFWHO, 134, PP_PHOENIX | CMD_JUMP, "" },
+
+    // saw Rainbow Dash
+    {EV_T_FSEERD, 148, PP_PHOENIX | CMD_NONE, "The defendent, Rainbow Dash!"},
+    {EV_NONE, 141, PP_TRIXIE | CMD_NONE, "She DID see Rainbow Trash, that's what her whole testimony is about."},
+    {EV_NONE, 134, PP_PHOENIX | CMD_NONE, "Oh... um... let me correct myself here..."},
+    {EV_NONE, 134, PP_PHOENIX | CMD_MISS, "" },
+    {EV_T_LOOPFWHO, 134, PP_PHOENIX | CMD_JUMP, "" },
+
+    // Out of misses
+    {EV_T_FMISSOUT, 151, PP_JUDGE | CMD_STOPMUS, "I've heard enough..."},
+    {EV_NONE, 143, PP_TRIXIE | CMD_NONE, "About time..."},
+    {EV_NONE, 151, PP_JUDGE | CMD_NONE, "With the evidence provided, and the defense's inability to provide a reasonable alternate theory, I can hand down my verdict."},
+    {EV_NONE, 151, PP_JUDGE | CMD_NONE, "I find the defendent, Ms Rainbow Dash:"},
+    {EV_NONE, 201, PP_JUDGE | CMD_BOOMSFX, "GUILTY"},
+    {EV_NONE, 177, PP_TWILIGHT | CMD_NONE, "No..."},
+    {EV_NONE, 126, PP_JUDGE | CMD_NONE, "Court is now adjourned."},
+    {EV_NONE, 125, PP_NONE  | CMD_HAMMERSFX, "Don't give up! Press 'N' to retry chapter, or '7' then 'S' to save game." },
+    {   17,         94,     PP_NONE         | CMD_ENDSTORY, ""  },   // loop back to THIS location 17    
+
+    // Correct response - saw Applebloom
+    {EV_T_FSEEAB,223, PP_PHOENIX   | CMD_PHOENIXTAKE, "TAKE THAT!"   },
+    {EV_NONE, 148, PP_PHOENIX | CMD_STOREMISS, "The previous witness, Applebloom!"},
     {EV_NONE, 130, PP_JUDGE | CMD_NONE, "Oh! That's right!"},
-    {EV_NONE, 161, PP_NONE | CMD_NONE, ""},
+    {EV_NONE, 161, PP_TRIXIE | CMD_NONE, "!!!"},
     {EV_NONE, 190, PP_FLUTTERSHY | CMD_NONE, "But I-I didn't see Applebloom... I-I promise!"},
     {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "You see, Fluttershy... you HAD to have seen Applebloom if you were really watching the forest all night..."},
     {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "The prosecution even confirmed that there's only one way in and out of that forest... and that entrance is right by your cottage!"},
     {EV_NONE, 172, PP_TRIXIE | CMD_NONE, "Ngh!"},
-    {EV_NONE, 132, PP_TWILIGHT | CMD_NONE, "...I don't understand, why would Fluttershy lie like this...?"},
-    {EV_NONE, 132, PP_PHOENIX | CMD_NONE, "I don't know either. We've got to pursue this issue, otherwise we're cooked."},
+    {EV_NONE, 132, PP_TWILIGHT | CMD_NONE, "... I don't understand, why would Fluttershy lie like this...?"},
+    {EV_NONE, 132, PP_PHOENIX | CMD_NONE, "I don't know either. But we've got to pursue this issue, otherwise we're cooked."},
     {EV_NONE, 190, PP_FLUTTERSHY | CMD_NONE, "I-I don't know why, but I didn't see her..."},
-    {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "It's not just that; there is another thing, Fluttershy --"},
-    {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "You also stated you HEARD nothing as well. Earlier I was told lightning makes a noise when it hits the ground in Equestria."},
+    {EV_NONE, 139, PP_PHOENIX | CMD_RECALLMISS, "It's not just that. There is another thing, Fluttershy."},
+
+    // ask the user what else Fluttershy missed. Answer: Lightning
+{   EV_T_LOOPFSND,  139, PP_PHOENIX | CMD_NONE, "" },
+    //                                       0123456789012345678901234567890101
+{   EV_NONE,  139, PP_PHOENIX | CMD_SHOWEV, "What else did Fluttershy miss?"   },
+{   EV_CRIMESCENE,EV_T_FBOLT2, PP_PHOENIX|CMD_JUMPIFSHOW, "" },     // any of these items that mention lightning will do
+{   EV_WEATHER,EV_T_FBOLT2, PP_PHOENIX|CMD_JUMPIFSHOW, "" }, 
+{   EV_CLOUDREPORT,EV_T_FBOLT2, PP_PHOENIX|CMD_JUMPIFSHOW, "" }, 
+
+    // wrong item presented
+    {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "Why didn't Fluttershy mention THIS?"},
+    {EV_NONE, 141, PP_TRIXIE | CMD_NONE, "Even Trixie doesn't understand why you think she would."},
+    {EV_NONE, 165, PP_PHOENIX | CMD_MISS, "Erf!"},
+    {EV_NONE, 132, PP_TWILIGHT | CMD_NONE, "What are you getting at, Phoenix?"},
+    {EV_NONE, 136, PP_PHOENIX | CMD_NONE, "There's something else that Fluttershy should have heard if she was watching the forest..."},
+    {EV_T_LOOPFSND, 136, PP_PHOENIX | CMD_JUMP, "" },
+
+    // Lightning correctly presented
+    {EV_T_FBOLT2,223, PP_PHOENIX   | CMD_PHOENIXTAKE, "TAKE THAT!"   },
+    {EV_NONE, 139, PP_PHOENIX | CMD_STOREMISS, "You also stated you HEARD nothing as well. Earlier I was told lightning makes a noise when it hits the ground in Equestria."},
     {EV_NONE, 130, PP_JUDGE | CMD_NONE, "Yes, that is right, Mr Wright."},
     {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "Then why didn't Fluttershy mention hearing the second bolt of lightning?"},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "Fluttershy says she watched the forest until the police arrived, and they witnessed the third bolt take down a tree firsthand."},
-    {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "The second lightning bolt is unaccounted for."},
+    {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "The second lightning bolt is unaccounted for!"},
     {EV_NONE, 190, PP_FLUTTERSHY | CMD_NONE, "I only heard one bolt of lightning, though..."},
-    {EV_NONE, 138, PP_NONE | CMD_TRIXIEOBJ, "(trixie objection sfx)"},
+    {EV_NONE, 138, PP_TRIXIE | CMD_TRIXIEOBJ, "OBJECTION!"},
     {EV_NONE, 135, PP_TRIXIE | CMD_NONE, "Maybe she just forgot about it."},
-    {EV_NONE, 138, PP_NONE | CMD_PHOENIXOBJ, "(phoenix objection sfx)"},
+    {EV_NONE, 138, PP_PHOENIX | CMD_PHOENIXOBJ, "OBJECTION"},
     {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "She stated the first bolt of lightning scared her, from which we can conclude that every bolt of lightning could have been heard from Fluttershy's cottage."},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "It's very clear this witness is afraid of lightning."},
-    {EV_NONE, 134, PP_PHOENIX | CMD_NONE, "(And everything, for that matter.)"},
-    {EV_NONE, 191, PP_FLUTTERSHY | CMD_NONE, "Yes, it's true, lightning scares me! It is so loud and scary -- "},
-    {EV_NONE, 187, PP_FLUTTERSHY | CMD_NONE, "like that voice you just did, Mr Phoenix."},
+    {EV_NONE, 136, PP_PHOENIX | CMD_NONE, "(And everything, for that matter.)"},
+    {EV_NONE, 191, PP_FLUTTERSHY | CMD_NONE, "Yes, it's true, lightning scares me! It is so loud and scary..."},
+    {EV_NONE, 187, PP_FLUTTERSHY | CMD_NONE, "... like that voice you just did, Mr Phoenix."},
     {EV_NONE, 149, PP_PHOENIX | CMD_NONE, "There you go, Trixie, she would have remembered the second bolt of lightning frightening her if she had heard it."},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "Also, let's not forget, Applebloom didn't mention seeing or hearing this lightning either, now that we know that the lightning could've been heard from that far away."},
     {EV_NONE, 130, PP_JUDGE | CMD_NONE, "The defense has a point."},
-    {EV_NONE, 143, PP_TRIXIE | CMD_NONE, "Heh, and Trixie thinks the defense has nothing."},
-    {EV_NONE, 130, PP_JUDGE | CMD_NONE, "Excuse me?"},
-    {EV_NONE, 176, PP_TRIXIE | CMD_NONE, "So what, she didn't see Applebloom; what does that prove? Do tell, Mr Wrong, Trixie is all ears..."},
-    {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "It questions the credibility of your witnesses! You said it yourself; there's only one way in and out of that forest!"},
-    {EV_NONE, 141, PP_TRIXIE | CMD_NONE, "Remember another thing! Anything beyond what Applebloom said after the time she heard the lightning bolt is irrelevant!"},
+    {EV_NONE, 143, PP_TRIXIE | CMD_STOPMUS, "Heh, and Trixie thinks the defense has nothing."},
+    {EV_NONE, 130, PP_JUDGE | CMD_CLRPROMPT, "Excuse me?"},
+    {EV_NONE, 176, PP_TRIXIE | CMD_RECALLMISS, "So what, she didn't see Applebloom. What does that prove? Do tell, Mr Wrong, Trixie is all ears..."},
+
+    // Ask the user what it proves. Answer: Witness credibility
+    //                                       01234567890123456789012345678901
+    {EV_T_FQ1, 176, PP_TRIXIE | CMD_ADDPROMPT, "Question lightning vs thunder"   },
+    {EV_T_FQ2, 176, PP_TRIXIE | CMD_ADDPROMPT, "Question witness credibility!"   },
+    {EV_T_FQ3, 176, PP_TRIXIE | CMD_ADDPROMPT, "Question Applebloom's alibi!"   },
+    {EV_NONE,  176, PP_TRIXIE | CMD_SELPROMPT, ""   },
+
+    {EV_T_FQ1, 139, PP_PHOENIX | CMD_BOOMSFX, "It questions whether it's really lightning that makes the sound, as opposed to thunder!"},
+    {EV_NONE, 126, PP_JUDGE | CMD_NONE, "Mr Wright, it may not be the same as in our world, but we've no basis to question the science of these ponies."},
+    {EV_NONE, 126, PP_JUDGE | CMD_NONE, "I'm afraid I'll have to penalize you..."},
+    {EV_NONE, 134, PP_PHOENIX | CMD_MISS, "Sorry, Your Honor..."},
+    {EV_NONE, 134, PP_PHOENIX | CMD_SELPROMPT, ""},
+
+    {EV_T_FQ3, 139, PP_PHOENIX | CMD_BOOMSFX, "It questions Applebloom's alibi for getting home that night!"},
+    {EV_NONE, 135, PP_TRIXIE | CMD_NONE, "Applebloom's testimony was only to establish the time of the first lightning strike!"},
+    {EV_NONE, 126, PP_JUDGE | CMD_NONE, "The prosecution is correct, I don't see how this is relevant at all."},
+    {EV_NONE, 139, PP_PHOENIX | CMD_MISS, "(I've got to think carefully, I have to get this right...)"},
+    {EV_NONE, 139, PP_PHOENIX | CMD_SELPROMPT, ""},
+        
+    // Correct - questions credibility
+    {EV_T_FQ2, 139, PP_PHOENIX | CMD_BOOMSFX, "It questions the credibility of your witnesses! You said it yourself: there's only one way in and out of that forest!"},
+    {EV_NONE, 141, PP_TRIXIE | CMD_STOREMISS, "Remember another thing! Anything beyond what Applebloom said after the time she heard the lightning bolt is irrelevant!"},
     {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "You can't say that this is irrelevant information when your witness didn't see your other witness leave the forest!"},
     {EV_NONE, 135, PP_TRIXIE | CMD_NONE, "Then tell the GREAT and POWERFUL Trixie WHAT it means!"},
-    {EV_NONE, 176, PP_TRIXIE | CMD_NONE, "Trixie knows one possibility, but that's up to you to say what it is, Mr Wrong. That is, if you have the guts to..."},
+    {EV_NONE, 176, PP_TRIXIE | CMD_NONE, "Trixie knows one possibility, but that's up to you to say what it is, Mr Wrong. That is, if you have the guts..."},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "I... I... can't..."},
     {EV_NONE, 176, PP_TRIXIE | CMD_NONE, "Heh, thought so..."},
     {EV_NONE, 197, PP_TWILIGHT | CMD_NONE, "What is she talking about, Phoenix? You know a reason why Fluttershy didn't see Applebloom?"},
@@ -2281,19 +2371,26 @@ const Story_t story[] =  {                           //  01234567890123456789012
     {EV_NONE, 141, PP_TRIXIE | CMD_NONE, "Didn't you hear Trixie earlier?"},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "Huh?"},
     {EV_NONE, 141, PP_TRIXIE | CMD_NONE, "Lightning doesn't strike the same spot twice in Equestria, just as you can't divide by zero. The body was found directly under where the first bolt had struck."},
-    {EV_NONE, 143, PP_TRIXIE | CMD_NONE, "Not to mention the odds of a stray bolt of lightning hitting the victim by chance are highly improbable, especially since he was wearing a lightning-proof suit."},
-    {EV_NONE, 132, PP_PHOENIX | CMD_NONE, "I remember her bringing up this 'lightning-proof suit'..."},
+    {EV_NONE, 143, PP_TRIXIE | CMD_CLRPROMPT, "Not to mention the odds of a stray bolt of lightning hitting the victim by chance are highly improbable, especially since he was wearing a lightning-proof suit."},
+
+    {EV_T_NOSKIPSUIT, 136, PP_PHOENIX | CMD_ADDPROMPT, "Ask about the suit"},
+    {EV_T_SKIPSUIT, 136, PP_PHOENIX | CMD_ADDPROMPT, "I already understand the suit"},
+    {EV_NONE, 136, PP_PHOENIX | CMD_SELPROMPT, ""},
+
+    {EV_T_NOSKIPSUIT, 132, PP_PHOENIX | CMD_NONE, "I remember her bringing up this 'lightning-proof suit'..."},
     {EV_NONE, 132, PP_TWILIGHT | CMD_NONE, "It's what the pegasi wear when working with weather."},
     {EV_NONE, 132, PP_TWILIGHT | CMD_NONE, "Or in this case, a modified version designed for large scale races where they may encounter dangerous weather conditions."},
     {EV_NONE, 132, PP_PHOENIX | CMD_NONE, "How exactly does the suit work?"},
     {EV_NONE, 132, PP_TWILIGHT | CMD_NONE, "It's a two piece suit, worn on the head and body. The fabric is made up of an effective insulator that protects pegasi from being harmed by lightning."},
     {EV_NONE, 132, PP_PHOENIX | CMD_NONE, "Then how did he die if he was wearing this suit?"},
-    {EV_NONE, 132, PP_TWILIGHT | CMD_NONE, "There are some parts of the body that the suit does not cover, namely certain parts of the head and neck. A precise, aimed bolt could still hit him in the sweet spots, which is what Trixie is basing her claims on..."},
-    {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "But it's still possible for a random bolt to hit him in one of the exposed spots!"},
+    {EV_NONE, 132, PP_TWILIGHT | CMD_NONE, "There are some parts of the body that the suit does not cover, namely certain parts of the head and neck."},
+    {EV_NONE, 132, PP_TWILIGHT | CMD_NONE, "A precise, aimed bolt could still hit him in the sweet spots, which is what Trixie is basing her claims on..."},
+
+    {EV_T_SKIPSUIT, 148, PP_PHOENIX | CMD_NONE, "But it's still possible for a random bolt to hit him in one of the exposed spots!"},
     {EV_NONE, 143, PP_TRIXIE | CMD_NONE, "I'm surprised you haven't realized it yet, Mr Wrong..."},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "Huh?"},
     {EV_NONE, 135, PP_TRIXIE | CMD_NONE, "You have been babbling about Trixie's witnesses not seeing the second bolt of lightning so much that you seem to have forgotten..."},
-    {EV_NONE, 172, PP_TRIXIE | CMD_NONE, "The second bolt seems to not exist at all. Trixie will be sure to have a chat with the pegasi who gave her these cloud ballistics to confirm it, Trixie assures you."},
+    {EV_NONE, 176, PP_TRIXIE | CMD_NONE, "The second bolt seems to not exist at all. Trixie will be sure to have a chat with the pegasi who gave her these cloud ballistics to confirm it, Trixie assures you."},
     {EV_NONE, 143, PP_TRIXIE | CMD_NONE, "Even if we take your silly theory into consideration, the odds of him being struck down by a random bolt of lightning are too low to be believable without having some sort of concrete proof!"},
     {EV_NONE, 126, PP_JUDGE | CMD_NONE, "The prosecution's logic is very sound."},
     {EV_NONE, 126, PP_JUDGE | CMD_NONE, "The chances of a lightning bolt hitting the victim by chance are too small to hold water in this court without any proof, considering the protection he was wearing."},
@@ -2302,13 +2399,13 @@ const Story_t story[] =  {                           //  01234567890123456789012
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "(Every time I make an objection she has it refuted just like that!)"},
     {EV_NONE, 143, PP_TRIXIE | CMD_NONE, "Hah! Too bad, Mr Wrong."},
 
-{   18,         94,     PP_NONE         | CMD_ENDSTORY, ""  }   // go to location 18
+{   19,       143, PP_TRIXIE | CMD_ENDSTORY, ""  }   // go to location 19
+
 };
 #endif
 
-#ifdef LOCATION_IS_18
-
-const Story_t story[] =  {                           //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
+#ifdef LOCATION_IS_19
+const Story_t story[] =  {               //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
 
 // =============================================================================
 // STORY SEGMENT: PHOENIX'S DESPERATE GAMBIT - ACCUSING FLUTTERSHY
@@ -2329,16 +2426,44 @@ const Story_t story[] =  {                           //  01234567890123456789012
     {EV_NONE, 197, PP_TWILIGHT | CMD_NONE, "But who?"},
     {EV_NONE, 143, PP_TRIXIE | CMD_NONE, "Is this the last bastion of Mr Wrong? Haha, let's hear it -- who is this mystery suspect?"},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "I am far from being done, Trixie!"},
-    {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "The suspect the defense accuses is the witness..."},
-    {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "Fluttershy!"},
+    {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "The suspect the defense accuses:"},
+
+    //                                        0123456789012345678901234567890101
+{   EV_T_LOOPFWHO2,  139, PP_PHOENIX | CMD_NONE, "" },
+{   EV_NONE,  139, PP_PHOENIX | CMD_SHOWEV, "*Who else could it have done it?"   },    // * to start at people
+{   PP_FLUTTERSHY,EV_T_FACCFS, PP_PHOENIX|CMD_JUMPIFSHOW, "" }, 
+{   PP_TRIXIE,EV_T_FACCTR, PP_PHOENIX|CMD_JUMPIFSHOW, "" }, 
+{   PP_RAINBOW,EV_T_FACCRD, PP_PHOENIX|CMD_JUMPIFSHOW, "" },
+
+    {EV_NONE, 141, PP_TRIXIE | CMD_NONE, "This is absolutely ridiculous..."},
+    {EV_NONE, 151, PP_JUDGE | CMD_NONE, "Mr Wright, you can't just throw out baseless accusations without any proof!"},
+    {EV_T_JUDGERETRY, 151, PP_JUDGE | CMD_NONE, "Do you want to rethink your accusation?"},
+    {EV_T_LOOPFWHO2, 139, PP_PHOENIX | CMD_JUMP, "" },
+
+    {EV_T_FACCTR, 148, PP_PHOENIX | CMD_NONE, "The defense accuses the prosecutor, Trixie!"},
+    {EV_NONE, 161, PP_TRIXIE | CMD_NONE, "WHAT!?"},
+    {EV_NONE, 135, PP_TRIXIE | CMD_NONE, "You are the stupidest, dumbest numbskull Trixie has ever come across!"},
+    {EV_NONE, 135, PP_TRIXIE | CMD_NONE, "Trixie is a unicorn, not a pegasus! Trixie cannot fly! Trixie cannot manipulate storm clouds! AND TRIXIE WAS IN CANTERLOT AT THE TIME OF THE CRIME!"},
+    {EV_NONE, 151, PP_JUDGE | CMD_NONE, "Mr Wright, you can't accuse the prosecution just because you don't like them."},
+    {EV_T_JUDGERETRY, 135, PP_TRIXIE | CMD_JUMP, "" },
+
+    {EV_T_FACCRD, 148, PP_PHOENIX | CMD_NONE, "The defense accuses the defendent, Rainbow Dash!"},
+    {EV_NONE, 130, PP_JUDGE | CMD_STOPMUS, "..."},
+    {EV_NONE, 141, PP_TRIXIE | CMD_NONE, "..."},
+    {EV_NONE, 140, PP_TWILIGHT | CMD_NONE, "..."},
+    {EV_NONE, 137, PP_PHOENIX | CMD_NONE, "Sorry... I got a little carried away. What I meant to say was:"},
+    {EV_NONE, 134, PP_PHOENIX | CMD_MUSAJ, "" },   // restart the music
+    {EV_T_LOOPFWHO2, 134, PP_PHOENIX | CMD_JUMP, "" },
+
+    {EV_T_FACCFS, 148, PP_PHOENIX | CMD_NONE, "The defense accuses the witness, Fluttershy!"},
     {EV_NONE, 191, PP_FLUTTERSHY | CMD_NONE, "Huh?"},
     {EV_NONE, 132, PP_TWILIGHT | CMD_NONE, "Mr Wright! What are you doing!?"},
     {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "Fluttershy is a pegasus; therefore she could have tampered with the cloud and the crime scene."},
-    {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "And let's not forget, there was a very large time frame where Fluttershy was alone;"},
+    {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "And let's not forget, there was a very large time frame where Fluttershy was alone!"},
     {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "She even stated she didn't see Applebloom leave the forest when we all know she SHOULD have!"},
     {EV_NONE, 190, PP_FLUTTERSHY | CMD_NONE, "B-but I was watching it the whole time... I'm not lying..."},
     {EV_NONE, 143, PP_TRIXIE | CMD_NONE, "Heh..."},
-    {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "Fluttershy also has connections with my client;"},
+    {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "Fluttershy also has connections with my client:"},
     {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "She could have been the one who took the storm cloud my client was scheduled to set off, as well as gathered loose feathers to spread around the crime scene."},
     {EV_NONE, 190, PP_FLUTTERSHY | CMD_NONE, "I-I didn't do that..."},
     {EV_NONE, 200, PP_TWILIGHT | CMD_NONE, "Phoenix! Stop this! She didn't do it!"},
@@ -2350,21 +2475,30 @@ const Story_t story[] =  {                           //  01234567890123456789012
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "Of course her hoofprints are there -- she was just doing her job!"},
     {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "Fluttershy could have come and taken one of the clouds with marks on it, set it off and removed her own markings from the cloud..."},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "That is possible... right?"},
-    {EV_NONE, 141, PP_TRIXIE | CMD_NONE, "Yes, one could wipe a cloud... of their hoofmarks..."},
+    {EV_NONE, 141, PP_TRIXIE | CMD_NONE, "Yes, one could wipe a cloud of their hoofmarks..."},
     {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "Then all the more reason to suspect her!"},
     {EV_NONE, 190, PP_FLUTTERSHY | CMD_NONE, "I was home all day though..."},
     {EV_NONE, 200, PP_TWILIGHT | CMD_NONE, "Phoenix, you're supposed to be defending my friends!"},
     {EV_NONE, 130, PP_JUDGE | CMD_NONE, "What about the dark forest, Mr Wright? How would this witness have been able to see in it?"},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "It must be like a backyard to her."},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "She can probably navigate it from memory, just as you can probably navigate your house with your eyes closed."},
-    {EV_NONE, 169, PP_NONE | CMD_NONE, ""},
+    {EV_NONE, 169, PP_JUDGE | CMD_NONE, "Hmmm..."},
     {EV_NONE, 126, PP_JUDGE | CMD_NONE, "This is a very bold claim, Mr Wright. This meek little thing looks like she wouldn't harm a fly... why would she frame her friend?"},
     {EV_NONE, 191, PP_FLUTTERSHY | CMD_NONE, "It's true, I have ten pet flies! Michael, Donna, Steven, Eric, Jackie..."},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "Easy! To cover her own guilt!"},
-    {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "Besides, as the prosecution has stated, why she did it is irrelevant; the fact still stands, she is just as suspicious as Rainbow Dash!"},
-    {EV_NONE, 200, PP_TWILIGHT | CMD_NONE, "I-I can't believe you're saying this! I trusted you!"},
+    {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "Besides, as the prosecution has stated, why she did it is irrelevant! The fact still stands, she is just as suspicious as Rainbow Dash!"},
+    {EV_NONE, 200, PP_TWILIGHT | CMD_NONE, "I can't believe you're saying this! I trusted you!"},
     {EV_NONE, 126, PP_JUDGE | CMD_NONE, "You're going to need more proof to accuse this witness, Mr Wright. Do you have any evidence that can place her on the crime scene?"},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "In fact I do, Your Honor."},
+
+    //                                       0123456789012345678901234567890101
+{   EV_T_LOOPFSHOW,  139, PP_PHOENIX | CMD_NONE, "" },
+{   EV_NONE,  139, PP_PHOENIX | CMD_SHOWEV, "What MIGHT place her on the scene?"   },
+{   EV_FEATHER,EV_T_FFEATHER, PP_PHOENIX|CMD_JUMPIFSHOW, "" }, 
+
+    {EV_NONE, 126, PP_JUDGE | CMD_NONE, "I don't see it, Mr Wright. Did you find ANYTHING else that might place her on the crime scene?" },
+    {EV_T_LOOPFSHOW,  126, PP_JUDGE | CMD_JUMP, "" },
+
     {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "This!"},
     {EV_NONE, 130, PP_JUDGE | CMD_NONE, "A feather? Does it belong to her?"},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "No, I found this feather at the crime scene. It's way too big to belong to any bird or pegasus pony in Ponyville."},
@@ -2373,30 +2507,30 @@ const Story_t story[] =  {                           //  01234567890123456789012
     {EV_NONE, 188, PP_FLUTTERSHY | CMD_NONE, "Y-yes, Mr Phoenix...?"},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "Do you allow any of your exotic animals to go into the Everfree Forest?"},
     {EV_NONE, 191, PP_FLUTTERSHY | CMD_NONE, "Oh no, it is much too dangerous in there. They're kept locked up tightly when I'm not playing with them..."},
-    {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "As I thought! Fluttershy stated earlier that she's caring for animals not native to Ponyville; this feather could belong to one of them."},
+    {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "As I thought! Fluttershy stated earlier that she's caring for animals not native to Ponyville. This feather could belong to one of them."},
     {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "It could have been brought there unintentionally by Fluttershy as she framed my client!"},
-    {EV_NONE, 138, PP_NONE | CMD_TWILIGHT_OBJECTION, "(twilight objection sfx)"},
-    {EV_NONE, 130, PP_NONE | CMD_NONE, ""},
-    {EV_NONE, 141, PP_NONE | CMD_NONE, ""},
-    {EV_NONE, 202, PP_TWILIGHT | CMD_NONE, "This can't go on!"},
-    {EV_NONE, 130, PP_JUDGE | CMD_NONE, "The.. defense is objecting to..."},
-    {EV_NONE, 130, PP_JUDGE | CMD_NONE, "ITSELF!?"},
-    {EV_NONE, 202, PP_TWILIGHT | CMD_NONE, "Yes. Mr Wright doesn't know what he's talking about! His words are nothing but slander and lies!"},
+    {EV_NONE, 138, PP_TWILIGHT| CMD_TWIOBJ, "OBJECTION!"},
+    {EV_NONE, 130, PP_NONE | CMD_BOOMSFX, ""},
+    {EV_NONE, 141, PP_NONE | CMD_BOOMSFX, ""},
+    {EV_NONE, 202, PP_TWILIGHT | CMD_BOOMSFX, "This can't go on!"},
+    {EV_NONE, 130, PP_JUDGE | CMD_NONE, "The.. defense is objecting to... ITSELF!?"},
+    {EV_NONE, 202, PP_TWILIGHT | CMD_NONE, "Yes! Mr Wright doesn't know what he's talking about! His words are nothing but slander and lies!"},
     {EV_NONE, 202, PP_PHOENIX | CMD_NONE, "Twilight!"},
-    {EV_NONE, 138, PP_NONE | CMD_TRIXIE_OBJECTION, "(trixie objection sfx)"},
+    {EV_NONE, 138, PP_NONE | CMD_TRIXIEOBJ, "OBJECTION!"},
     {EV_NONE, 135, PP_TRIXIE | CMD_NONE, "Zip it, Twilight! You're only his co-counsel, and nothing more!"},
     {EV_NONE, 141, PP_TRIXIE | CMD_NONE, "Discrediting an attorney like that will get you held in contempt!"},
     {EV_NONE, 202, PP_TWILIGHT | CMD_NONE, "You're a hypocrit! You've been degrading him all day long!"},
-    {EV_NONE, 176, PP_TRIXIE | CMD_NONE, "And that's it. Trixie has just called Mr Wrong names -- "},
-    {EV_NONE, 143, PP_TRIXIE | CMD_NONE, "never once has Trixie accused him of lies or slander, which is a serious accusation!"},
-    {EV_NONE, 126, PP_JUDGE | CMD_NONE, "You are right as always, Ms Trixie. "},
+    {EV_NONE, 176, PP_TRIXIE | CMD_NONE, "And that's it. Trixie has just called Mr Wrong names..."},
+    {EV_NONE, 143, PP_TRIXIE | CMD_NONE, "Never once has Trixie accused him of lies or slander, which is a serious accusation!"},
+    {EV_NONE, 126, PP_JUDGE | CMD_NONE, "You are right as always, Ms Trixie."},
     {EV_NONE, 169, PP_JUDGE | CMD_NONE, "Another outburst by the defense's co-council and they will be held in contempt of court."},
     {EV_NONE, 177, PP_TWILIGHT | CMD_NONE, "B-but..."},
     {EV_NONE, 177, PP_PHOENIX | CMD_NONE, "(Trust me, I don't want to do this, Twilight... but it's the only way I can buy more time...)"},
     {EV_NONE, 126, PP_JUDGE | CMD_NONE, "Back to the matter at hand... I still have a hard time believing this little pony would do something like this..."},
-// =============================================================================
-// STORY SEGMENT: THE FEATHER EVIDENCE AND TRIAL CONCLUSION
-// =============================================================================
+
+    // =============================================================================
+    // STORY SEGMENT: THE FEATHER EVIDENCE AND TRIAL CONCLUSION
+    // =============================================================================
     // Phoenix presents the large feather as evidence linking Fluttershy to the scene
     {EV_NONE, 148, PP_PHOENIX | CMD_NONE, "The evidence speaks for itself, Your Honor! This feather puts Fluttershy on the scene of the crime!"},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "I demand further investigation to find out if this feather belongs to any of Fluttershy's animals!"},
@@ -2406,8 +2540,8 @@ const Story_t story[] =  {                           //  01234567890123456789012
     {EV_NONE, 126, PP_JUDGE | CMD_NONE, "Ms Trixie, what is your opinion on all of this? You have been surprisingly quiet regarding all of Mr Wright's claims."},
     {EV_NONE, 141, PP_TRIXIE | CMD_NONE, "You know what..."},
     {EV_NONE, 143, PP_TRIXIE | CMD_NONE, "Trixie agrees, Fluttershy is suspicious."},
-    {EV_NONE, 176, PP_TRIXIE | CMD_NONE, "The investigation team did indeed see this feather on the crime scene; we brushed it off as just a plain old bird feather."},
-    {EV_NONE, 141, PP_TRIXIE | CMD_NONE, "But as Trixie's feeble opponent has pointed out, it does seem kind of big up close, and with this information regarding these zoo animals..."},
+    {EV_NONE, 176, PP_TRIXIE | CMD_NONE, "The investigation team did indeed see this feather on the crime scene. We brushed it off as just a plain old bird feather."},
+    {EV_NONE, 141, PP_TRIXIE | CMD_NONE, "But as Trixie's feeble opponent has pointed out, it does seem kind of big up close. And with this information regarding these zoo animals..."},
     {EV_NONE, 190, PP_TRIXIE | CMD_NONE, "... it does seem to cast suspicion over this witness."},
 
     // Trial postponement and Trixie's gloating victory
@@ -2419,9 +2553,9 @@ const Story_t story[] =  {                           //  01234567890123456789012
     {EV_NONE, 176, PP_TRIXIE | CMD_NONE, "Perhaps Trixie will give you a voucher for her next performance."},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "..."},
 
-// =============================================================================
-// STORY SEGMENT: TRIAL END - FLUTTERSHY'S ARREST AND PHOENIX'S REGRET
-// =============================================================================
+    // =============================================================================
+    // STORY SEGMENT: TRIAL END - FLUTTERSHY'S ARREST AND PHOENIX'S REGRET
+    // =============================================================================
     // The devastating conclusion - Phoenix's "victory" feels like defeat
     {EV_NONE, 126, PP_JUDGE | CMD_NONE, "All proceedings for this case will be suspended until tomorrow."},
     {EV_NONE, 126, PP_JUDGE | CMD_NONE, "Baliff, please take the suspect into custody for questioning."},
@@ -2433,13 +2567,22 @@ const Story_t story[] =  {                           //  01234567890123456789012
     {EV_NONE, 176, PP_TRIXIE | CMD_NONE, "Trixie shouldn't need to if they are planning to keep that second rate lawyer over there!"},
     {EV_NONE, 139, PP_PHOENIX | CMD_NONE, "..."},
     {EV_NONE, 126, PP_JUDGE | CMD_NONE, "Court is now adjourned!"},
-    {EV_NONE, 125, PP_NONE | CMD_HAMMERSFX, "(hammersfx)"},
+    {EV_NONE, 125, PP_NONE | CMD_HAMMERSFX, ""},
 
-{   15,         94,     PP_NONE         | CMD_ENDSTORY, ""  }   // go to location 15
+{   20,        125, PP_NONE   | CMD_ENDSTORY, ""  }   // go to location 20
 
 };
 #endif
 
+#ifdef LOCATION_IS_20
+
+const Story_t story[] =  {                           //  0123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901012345678901234567890123456789010123456789012345678901234567890101234567890123456789012345678901
+    {EV_NONE, 138, PP_NONE | CMD_PHOENIXOBJ, "OBJECTION!"},     // repeat on purpose for new load
+
+{   21,         94,     PP_NONE         | CMD_ENDSTORY, ""  }   // go to location 21
+
+};
+#endif
 
 #ifndef LOCATION_IS_LOADER
 // a value that can be referenced externally, though I don't plan to check everything

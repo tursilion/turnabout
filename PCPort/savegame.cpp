@@ -251,17 +251,6 @@ int loadgame() {
     // load it back into the variables, except for the location which isn't a variable
     restore_saved_data();
 
-    // check if upgrades are needed
-    if (!has_inventory(EV_I_REVISION1)) {
-        // upgrade from zero to rev 1 - inserted everfree forest after EQ500
-        // so shift all evidence up and insert it (even if you didn't get there yet, that's okay)
-        for (int i=EV_MAX_STORED_EV-2; i>=EV_EVERFREE; --i) {
-            evidence_found[i+1]=evidence_found[i];
-        }
-        evidence_found[EV_EVERFREE] = 1;
-        evidence_found[EV_I_REVISION1] = 1;
-    }
-
     // restore the hardware
     ams = oldams;
     f18a = oldF18;
