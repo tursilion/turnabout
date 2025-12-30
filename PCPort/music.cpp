@@ -65,7 +65,7 @@ const MUSICLOOKUP musLookup[] = {   /* page   address  */
     /* 015 CMD_MUSPROLOG   */  { 19,    (unsigned char*)0xfc00  },      // 886 bytes
     /* 016 CMD_MUSECHESS   */  { 28,    (unsigned char*)0xf000  },      // 3468 bytes
     /* 017 CMD_MUSOBJECT   */  { 29,    (unsigned char*)0xf000  },      // 1720 bytes
-    /* 018 CMD_MUSTHRILL   */  { 30,    (unsigned char*)0xfc00  },      // 836 bytes (last allocation, full)
+    /* 018 CMD_MUSTHRILL   */  { 30,    (unsigned char*)0xfc00  },      // 836 bytes
     /* 019 CMD_MUSINTEREST */  { 30,    (unsigned char*)0xf000  },      // 2332 bytes
     /* 020 CMD_MUSKLAVIER  */  {  0,    (unsigned char*)0x0000  },
     /* 021 CMD_MUSTRAGIC   */  {  0,    (unsigned char*)0x0000  }, 
@@ -101,7 +101,8 @@ const MUSICLOOKUP musLookup[] = {   /* page   address  */
     /* 051 CMD_MUSMEMORY   */  {  0,    (unsigned char*)0x0000  },
     /* 052 CMD_MUSSCHESS   */  { 27,    (unsigned char*)0xf000  },      // 4078 bytes
     /* 053 CMD_MUSOBJECT2  */  { 26,    (unsigned char*)0xf000  },      // 3618 bytes
-    /* 054 CMD_MUSOBJECT3  */  { 29,    (unsigned char*)0xfc00  }       // 1012 bytes
+    /* 054 CMD_MUSOBJECT3  */  { 29,    (unsigned char*)0xfc00  },      // 1012 bytes
+    /* 055 CMD_MUSFALL     */  { 31,    (unsigned char*)0xf000  }       // 1796 bytes (last allocation, 2k free)
 };
 
 #ifdef CLASSIC99
@@ -413,6 +414,9 @@ void load_music_banked() {
 #endif
 #ifdef HAS_MUSOBJECT3
     load_one_music(CMD_MUSOBJECT3); // Objection! 2002 - Justice for All (JFA-70)
+#endif
+#ifdef HAS_MUSFALL
+    load_one_music(CMD_MUSFALL); // Shiru - Fall of the Leaf
 #endif
 }
 

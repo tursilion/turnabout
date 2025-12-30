@@ -135,6 +135,7 @@ int run_story() {
         if (cmdID == CMD_STOPMUS) {
             stop_music();
             play_sfx(CMD_CHIMESFX);
+            cmdID = CMD_NONE;   // allow to skip ahead automatically
         }
 
         // doing music this way should take less code than in the switch... just keep the order

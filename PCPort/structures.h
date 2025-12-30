@@ -21,7 +21,8 @@
 //#define LOCATION_IS_14
 //#define LOCATION_IS_15
 //#define LOCATION_IS_16
-#define LOCATION_IS_17
+//#define LOCATION_IS_17
+#define LOCATION_IS_18
 #endif
 
 // some types
@@ -265,6 +266,8 @@ enum {
     EV_T_FQ2,
     EV_T_FQ3,
 
+    EV_T_FFINALMISS,
+
     EV_MAX,
 
     // people are just special evidence, so I need them in the same list
@@ -479,6 +482,7 @@ enum {
     CMD_MUSSCHESS   , //    Logic Chess Start - Moderato - Ace Attorney Investigations 2 (AAI2-16)
     CMD_MUSOBJECT2  , //    Objection! 2011 - Ace Attorney Investigations 2 (AAI2-12)
     CMD_MUSOBJECT3  , //    Objection! 2002 - Justice for All (JFA-70)
+    CMD_MUSFALL,      //    Shiru - Fall of the Leaf - replaces Kil6969 MLP FiM Main Theme 8bit RPG Battle
 
     // not listed in the game credits but downloaded anyway
     // testimony-allegro (apparently no tracks are called that... might already have it then)
@@ -743,25 +747,43 @@ extern int nStorySize;
 #define HAS_PHOENIXHOLDIT
 #define HAS_PHOENIXOBJ
 #define HAS_PHOENIXTAKE
-#define HAS_TWIOBJ
 // music
 #define HAS_MUSOBJECT3
 #endif
 
 #ifdef LOCATION_IS_18
-// flashback - Fey law offices
+// accuse fluttershy
 #define LOCATION_NUMBER 18
 #define LOCATION_TYPE_STORY
+#define LOCATION_TYPE_CROSSEXAM
+#define LOCATION_TYPE_MISSES
 // sfx
+#define HAS_CHIMESFX
+#define HAS_BOOMSFX
+#define HAS_CRASHSFX
+#define HAS_HAMMERSFX
+// voice
+#define HAS_VOICE
+#define HAS_TRIXIEOBJ
+#define HAS_PHOENIXHOLDIT
+#define HAS_PHOENIXOBJ
+#define HAS_PHOENIXTAKE
+#define HAS_TWIOBJ
 // music
+#define HAS_MUSSUSPENSE
+#define HAS_MUSFALL
+#define HAS_MUSTRIAL
 #endif
 
 #ifdef LOCATION_IS_19
+// flashback - Fey law offices
 // outside courtroom, talk to Pinkie
 #define LOCATION_NUMBER 19
-#define LOCATION_TYPE_STORY
 // sfx
 // music
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
+#define LAST_LOCATION
+//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
 #endif
 
 #ifdef LOCATION_IS_20
@@ -770,9 +792,6 @@ extern int nStorySize;
 #define LOCATION_TYPE_STORY
 // sfx
 // music
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION - ALWAYS MOVE TO LAST ONE DEFINED
-#define LAST_LOCATION
-//*>*<*>*<>*<>*<>*<*>*<*>*<*> LAST LOCATION
 #endif
 
 #ifdef LOCATION_IS_21

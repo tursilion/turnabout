@@ -46,7 +46,7 @@ OBJECT_LIST=\
 # map the objects back to source files
 SOURCE_LIST := $(OBJECT_LIST:.o=.cpp)
 
-all: pload ploc0 ploc1 ploc2 ploc3 ploc4 ploc5 ploc6 ploc10 ploc11 ploc12 ploc13 ploc14 ploc15 ploc16 ploc17 ploc18 ploc19 ploc20
+all: pload ploc0 ploc1 ploc2 ploc3 ploc4 ploc5 ploc6 ploc10 ploc11 ploc12 ploc13 ploc14 ploc15 ploc16 ploc17 ploc18 ploc19
 
 # we don't do incremental builds, so no prerequisites of note
 

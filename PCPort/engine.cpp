@@ -594,8 +594,8 @@ int main()
     cputs("This game is running LIVE over\n");
     cputs("the internet and is a work in\n");
     cputs("progress! Currently I have\n");
-    cputs("implemented 16 scenes which is\n");
-    cputs("about 25% of the total script.\n\n");
+    cputs("implemented 18 scenes which is\n");
+    cputs("about 29% of the total script.\n\n");
     // to get the percentage I'm looking at the last timestamp, and dividing it by about 6 hrs
 
     // some hardware info
@@ -670,7 +670,7 @@ repeataid:
 
     // load the next section in nextloc...
     // save the current state before we load
-    MUTE_SOUND();
+    stop_music();
 
     store_saved_data();
 

@@ -1,0 +1,28 @@
+  Sound Effects (SFX) - Literal file names:
+  - CMD_HAMMERSFX ? SFX/hammer.wav (Hammer sound)
+  - CMD_CHIMESFX ? SFX/chime.wav (Chime sound for cmd_stopmus)
+  - CMD_BOOMSFX ? SFX/boom.wav (Boom sound)
+  - CMD_LOCKSFX ? SFX/psychelock.wav (3 booms for psyche-locks)
+  - CMD_BREAKSFX ? SFX/breaklock.wav (Break psyche-lock sfx)
+  - CMD_PARTYSFX ? SFX/party.wav (Party horn sfx)
+  - CMD_JOKESFX ? SFX/rimshot.wav (Rimshot sfx)
+  - CMD_CRASHSFX ? SFX/crash.wav (Crash sfx)
+  - CMD_ICRASHSFX ? SFX/icrash.wav (Inverted crash sfx used by CMD_WHITE)
+  - CMD_RIPSFX ? SFX/rip.wav (Rip sfx)
+  - CMD_WHOOSHSFX ? SFX/whoosh.wav (Whoosh sfx)
+  - CMD_FALLSFX ? SFX/fall.wav (Falling sfx)
+  - CMD_MAGICSFX ? SFX/magic.wav (Magic sfx)
+  - CMD_BADMAGSFX ? SFX/badmagic.wav (Bad magic sfx)
+  - CMD_SQUEAKSFX ? SFX/squeak.wav (Squeak sfx)
+
+  Voice Clips - Indexed by command (S0-S8):
+  - CMD_TRIXIEOBJ ? SFX/S0.wav (Trixie objection)
+  - CMD_PHOENIXOBJ ? SFX/S1.wav (Phoenix objection)
+  - CMD_TWIOBJ ? SFX/S2.wav (Twilight objection)
+  - CMD_FLUTTEROBJ ? SFX/S3.wav (Fluttershy objection)
+  - CMD_JUDGEOBJ ? SFX/S4.wav (Judge objection)
+  - CMD_GROUPOBJ ? SFX/S5.wav (Group objection)
+  - CMD_TRIXIEHOLD ? SFX/S6.wav (Trixie hold it)
+  - CMD_PHOENIXHOLD ? SFX/S7.wav (Phoenix hold it)
+  - CMD_PHOENIXTAKE ? SFX/S8.wav (Phoenix take that!)
+  
