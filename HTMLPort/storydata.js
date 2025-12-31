@@ -1,4 +1,16 @@
-const storyData = {
+// Phoenix Wright: Turnabout Storm - Story Data
+// Story data ported from Locations.cpp (python updateStory.py ../Locations.cpp locations.js)
+//
+// HOW TO UPDATE STORY DATA:
+// 1. Each location is a numbered key in STORY_DATA object (0, 1, 2, etc.)
+// 2. Each location contains an array of story lines
+// 3. Each story line has: evidence, frame, cmdwho, text
+// 4. Constants (EV_*, PP_*, CMD_*) must match those defined in the main HTML file
+//
+// EXAMPLE STORY LINE:
+// {evidence: EV_NONE, frame: 5, cmdwho: PP_PHOENIX | CMD_NONE, text: "Hello world!"}
+
+const STORY_DATA = {
     0: [
         {evidence: PP_PHOENIX, frame: 0, cmdwho: PP_NONE    | CMD_ADDEV, text: "?????? ??????? June 9th, 8:??PM"},
         {evidence: EV_NONE, frame: 0, cmdwho: PP_NONE    | CMD_MUSPROLOG, text: "Time for negotiations..."},
@@ -8,8 +20,8 @@ const storyData = {
         {evidence: EV_NONE, frame: 0, cmdwho: PP_NONE    | CMD_NONE, text: "Besides... I have a better idea..."},
         {evidence: EV_NONE, frame: 0, cmdwho: PP_NONE    | CMD_NONE, text: "WHAT?!"},
         {evidence: EV_MAGATAMA, frame: 0, cmdwho: PP_NONE    | CMD_ADDEV, text: "Enjoy the parting gift!"},
-        {evidence: EV_NONE, frame: 1, cmdwho: PP_NONE    | CMD_STOPMUS, text: ""},
-        {evidence: EV_NONE, frame: 1, cmdwho: PP_NONE    | CMD_FLASH, text: ""},
+        {evidence: EV_NONE, frame: 1, cmdwho: PP_NONE    | CMD_STOPMUS, text: " "},
+        {evidence: EV_NONE, frame: 1, cmdwho: PP_NONE    | CMD_FLASH, text: " "},
         {evidence: EV_NONE, frame: 1, cmdwho: PP_NONE    | CMD_BLACK, text: "June 9th, 9:43PM Wright and Co. Law Offices"},
         {evidence: EV_NONE, frame: 3, cmdwho: PP_NONE    | CMD_MUSSTEEL, text: "(*ring*)"},
         {evidence: EV_NONE, frame: 3, cmdwho: PP_PHOENIX | CMD_STOPMUS, text: "Phoenix Wright and Co. Office. \"Defending YOU like it's nuttin', baby\"!"},
@@ -273,6 +285,7 @@ const storyData = {
         {evidence: EV_T_BADGUESS, frame: 41, cmdwho: PP_PHOENIX  | CMD_NONE, text: "(It's kinda sad I couldn't get down a book with twelve words.)"},
         {evidence: EV_T_NOPONY, frame: 41, cmdwho: PP_PHOENIX  | CMD_NONE, text: "Uhh... never mind that. Why are you in here?"},
         {evidence: EV_NONE, frame: 40, cmdwho: PP_RAINBOW  | CMD_NONE, text: "Well, I guess I can tell you all I know..."},
+        {evidence: EV_NONE, frame: 36, cmdwho: PP_RAINBOW  | CMD_CLRPROMPT, text: "You see, last night a pegasus named \"Ace Swift\" was killed in the Everfree Forest."},
         {evidence: EV_NONE, frame: 36, cmdwho: PP_RAINBOW  | CMD_CLRPROMPT, text: "You see, last night a pegasus named \"Ace Swift\" was killed in the Everfree Forest."},
         {evidence: EV_T_ACE, frame: 36, cmdwho: PP_PHOENIX  | CMD_ADDPROMPT, text: "Ace Swift"},
         {evidence: EV_NONE, frame: 36, cmdwho: PP_PHOENIX  | CMD_SELPROMPT, text: ""},
@@ -556,7 +569,6 @@ const storyData = {
         {evidence: EV_NONE, frame: 80, cmdwho: PP_PHOENIX  | CMD_MAGICSFX, text: "Good work, Twilight."},
         {evidence: EV_NONE, frame: 81, cmdwho: PP_TWILIGHT | CMD_MUSMIDDLE, text: "Alright! Let's find some clues!"},
         {evidence: EV_EVERFREE, frame: 81, cmdwho: PP_PHOENIX  | CMD_ADDEV, text: "(She seems really eager to start this up.)"},
-        {evidence: EV_NONE, frame: 9801, cmdwho: PP_NONE     | CMD_NONE, text: "BEGIN INVESTIGATION - use arrows to move box, press enter to inspect area. Press < or > to shift view."},
         {evidence: EV_T_IN1_SC1, frame: 9801, cmdwho: PP_NONE     | CMD_NONE, text: ""},
         {evidence: EV_NONE, frame: IV_CELL4|IV_CELL5|IV_RIGHTOK, cmdwho: PP_PHOENIX  | CMD_INVESTIGATE, text: ""},
         {evidence: EV_I_4, frame: EV_T_I11_4, cmdwho: PP_PHOENIX  | CMD_JUMPIFSHOW, text: ""},
@@ -1884,7 +1896,6 @@ const storyData = {
         {evidence: 17, frame: 94, cmdwho: PP_NONE         | CMD_ENDSTORY, text: ""}
     ],
     17: [
-        {evidence: EV_NONE, frame: 138, cmdwho: PP_PHOENIX | CMD_PHOENIXOBJ, text: "OBJECTION!"},
         {evidence: EV_NONE, frame: 187, cmdwho: PP_FLUTTERSHY | CMD_SQUEAKSFX, text: "(hiding)"},
         {evidence: EV_NONE, frame: 126, cmdwho: PP_JUDGE | CMD_NONE, text: "Mr Wright, please don't frighten the witness."},
         {evidence: EV_NONE, frame: 137, cmdwho: PP_PHOENIX | CMD_NONE, text: "Right... sorry, but there is a contradiction in this testimony."},
@@ -1931,7 +1942,7 @@ const storyData = {
         {evidence: EV_NONE, frame: 201, cmdwho: PP_JUDGE | CMD_BOOMSFX, text: "GUILTY"},
         {evidence: EV_NONE, frame: 177, cmdwho: PP_TWILIGHT | CMD_NONE, text: "No..."},
         {evidence: EV_NONE, frame: 126, cmdwho: PP_JUDGE | CMD_NONE, text: "Court is now adjourned."},
-        {evidence: EV_NONE, frame: 125, cmdwho: PP_NONE  | CMD_HAMMERSFX, text: "Don't give up! Press 'N' to retry chapter, or '7' then 'S' to save game."},
+        {evidence: EV_NONE, frame: 125, cmdwho: PP_NONE  | CMD_HAMMERSFX, text: "Don't give up! Press Next to retry chapter, or File to reload game."},
         {evidence: 17, frame: 125, cmdwho: PP_NONE  | CMD_ENDSTORY, text: ""},
         {evidence: EV_T_FSEEAB, frame: 223, cmdwho: PP_PHOENIX   | CMD_PHOENIXTAKE, text: "TAKE THAT!"},
         {evidence: EV_NONE, frame: 148, cmdwho: PP_PHOENIX | CMD_STOREMISS, text: "The previous witness, Applebloom!"},
@@ -2079,7 +2090,7 @@ const storyData = {
         {evidence: EV_NONE, frame: 201, cmdwho: PP_JUDGE | CMD_BOOMSFX, text: "GUILTY"},
         {evidence: EV_NONE, frame: 129, cmdwho: PP_PHOENIX | CMD_NONE, text: "!!!"},
         {evidence: EV_NONE, frame: 126, cmdwho: PP_JUDGE | CMD_NONE, text: "Court is now adjourned."},
-        {evidence: EV_NONE, frame: 125, cmdwho: PP_NONE  | CMD_HAMMERSFX, text: "Don't give up! Press 'N' to retry chapter, or '7' then 'S' to save game."},
+        {evidence: EV_NONE, frame: 125, cmdwho: PP_NONE  | CMD_HAMMERSFX, text: "Don't give up! Press Next to retry chapter, or File to reload game."},
         {evidence: 18, frame: 125, cmdwho: PP_NONE  | CMD_ENDSTORY, text: ""},
         {evidence: EV_T_FACCFS, frame: 148, cmdwho: PP_PHOENIX | CMD_STOPMUS, text: "The defense accuses the witness, Fluttershy!"},
         {evidence: EV_NONE, frame: 191, cmdwho: PP_FLUTTERSHY | CMD_MUSFALL, text: "Huh?"},
@@ -2181,8 +2192,10 @@ const storyData = {
         {evidence: EV_NONE, frame: 125, cmdwho: PP_NONE | CMD_HAMMERSFX, text: ""},
         {evidence: 19, frame: 125, cmdwho: PP_NONE   | CMD_ENDSTORY, text: ""}
     ],
-    19: [
-        {evidence: EV_NONE, frame: 138, cmdwho: PP_NONE | CMD_PHOENIXOBJ, text: "OBJECTION!"},
-        {evidence: 20, frame: 94, cmdwho: PP_NONE         | CMD_ENDSTORY, text: ""}
-    ]
 };
+
+
+// Export for use in the main game
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = STORY_DATA;
+}

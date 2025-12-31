@@ -441,7 +441,7 @@ enum {
     CMD_MUSOBJECT   , //    Objection! 2009 - Ace Attorney Investigations (AAI-11)
     CMD_MUSTHRILL   , //    Thrill Theme - Suspense (AJ-35)
     CMD_MUSINTEREST , //    Interesting People - Ace Attorney Investigations (AAI-49)
-    CMD_MUSKLAVIER  , // Klavier? Might have intended to delete this...
+    CMD_MUSKLAVIER  , // Klavier? Guilty Love again? Might have intended to delete this...
     CMD_MUSTRAGIC   , // Interview Tragicomedy - Capcom (AJ-17)
     CMD_MUSMIDDLE   , //    Investigation Middlegame - Capcom - Ace Attorney Investigations
     CMD_MUSKG8      , // KG-8 Case - Capcom (AAI-53)
