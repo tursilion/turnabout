@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<!-- Tursilion releases this code to Public Domain - you may use it for your own games if you find it useful. -->
+<!-- If you make useful fixes, though, why not offer them back? -->
+<!-- https://github.com/tursilion/turnabout -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -735,9 +738,19 @@
             }
 
             showMainMenu() {
+                // Check if we're currently in a game (button bar is visible = game active)
+                if (this.buttonBarEl.style.display === 'flex') {
+                    // Show confirmation dialog
+                    const confirmed = confirm("Returning to the main menu will end your current game. Any unsaved progress will be lost.\n\nAre you sure you want to continue?");
+                    if (!confirmed) {
+                        return; // User cancelled, don't show main menu
+                    }
+                }
+
                 this.hideLoading();
                 this.hideButtonBar();
                 this.stopMusic();
+                this.hideAllMenus(); // Close any open menus (including file menu)
                 this.mainMenuEl.style.display = 'block';
             }
 
