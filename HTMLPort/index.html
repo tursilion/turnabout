@@ -189,6 +189,22 @@
             color: #fff;
         }
 
+        #mainMenu {
+            position: absolute;
+            top: 33.335vh; /* Center vertically within the image area (middle of 66.67%) */
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #cheatMenu {
+            position: absolute;
+            top: 33.335vh; /* Center vertically within the image area (middle of 66.67%) */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-height: 60vh; /* Limit height to fit within image area */
+            overflow-y: auto;
+        }
+
         .menu-item {
             padding: 10px;
             cursor: pointer;
@@ -229,6 +245,309 @@
             align-items: center;
             color: #fff;
             font-size: 24px;
+        }
+
+        /* Mobile and portrait orientation styles */
+        @media (max-width: 768px) or (orientation: portrait) {
+            #nameDisplay {
+                font-size: 16px;
+                padding: 2px 6px;
+                margin-bottom: 4px;
+            }
+
+            #textDisplay {
+                font-size: 16px;
+                line-height: 1.3;
+                min-height: 60px;
+            }
+
+            #buttonBar {
+                height: 45px;
+                padding: 0 10px;
+                gap: 8px;
+            }
+
+            .game-button {
+                padding: 6px 12px;
+                font-size: 12px;
+                min-width: 60px;
+            }
+
+            #textArea {
+                bottom: 45px;
+                padding: 8px;
+                height: calc(33.33% - 45px);
+            }
+
+            #evidenceMenu {
+                width: 90vw;
+                max-width: 350px;
+                max-height: 70vh;
+                padding: 15px;
+                top: 40vh;
+            }
+
+            .menu {
+                min-width: 250px;
+                padding: 15px;
+            }
+
+            .menu-item {
+                padding: 8px;
+                margin: 3px 0;
+                font-size: 14px;
+            }
+
+            #sprites {
+                font-size: 14px;
+                bottom: 8px;
+                right: 8px;
+            }
+
+            #missesDisplay {
+                top: 8px;
+                right: 8px;
+                padding: 3px 8px;
+                font-size: 14px;
+            }
+
+            #investigationCursor {
+                width: 30px;
+                height: 30px;
+                border-width: 1px;
+            }
+
+            #loadingScreen {
+                font-size: 18px;
+            }
+        }
+
+        /* Very small screens (phones in portrait) */
+        @media (max-width: 480px) {
+            #nameDisplay {
+                font-size: 14px;
+            }
+
+            #textDisplay {
+                font-size: 14px;
+            }
+
+            #buttonBar {
+                height: 40px;
+                padding: 0 8px;
+                gap: 6px;
+            }
+
+            .game-button {
+                padding: 4px 8px;
+                font-size: 11px;
+                min-width: 50px;
+            }
+
+            #textArea {
+                bottom: 40px;
+                padding: 6px;
+                height: calc(33.33% - 40px);
+            }
+
+            #evidenceMenu {
+                width: 95vw;
+                padding: 12px;
+                top: 35vh;
+            }
+
+            .menu {
+                min-width: 200px;
+                padding: 12px;
+            }
+
+            .menu-item {
+                font-size: 12px;
+                padding: 6px;
+            }
+        }
+
+        /* Landscape mobile optimization */
+        @media (max-height: 500px) and (orientation: landscape) {
+            #imageArea {
+                height: 60%;
+            }
+
+            #textArea {
+                height: calc(40% - 40px);
+                bottom: 40px;
+            }
+
+            #buttonBar {
+                height: 40px;
+            }
+
+            #evidenceMenu {
+                max-height: 80vh;
+                top: 30vh;
+            }
+
+            #mainMenu, #cheatMenu {
+                top: 30vh; /* Center vertically within the 60% image area in landscape */
+            }
+        }
+
+        /* Very narrow screens - two-row button layout */
+        @media (max-width: 384px) {
+            #buttonBar {
+                height: 80px;
+                bottom: 60px;
+                flex-wrap: wrap;
+                align-content: space-around;
+                justify-content: space-around;
+                padding: 5px 4px;
+                gap: 3px;
+                background-color: rgba(34, 34, 34, 0.95);
+                backdrop-filter: blur(5px);
+            }
+
+            .game-button {
+                padding: 2px 4px;
+                font-size: 9px;
+                min-width: 40px;
+                flex: 0 1 calc(33% - 2px);
+                max-width: calc(33% - 2px);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            #textArea {
+                bottom: 140px;
+                padding: 5px;
+                height: calc(43.33% - 140px);
+            }
+
+            #textDisplay {
+                font-size: 13px;
+                line-height: 1.2;
+            }
+
+            #nameDisplay {
+                font-size: 13px;
+                padding: 2px 4px;
+            }
+
+            #evidenceMenu {
+                width: 98vw;
+                padding: 10px;
+                top: 35vh;
+            }
+
+            .menu {
+                min-width: 180px;
+                padding: 10px;
+            }
+
+            .menu-item {
+                font-size: 11px;
+                padding: 5px;
+                margin: 2px 0;
+            }
+        }
+
+        /* Large desktop screens - bigger fonts */
+        @media (min-width: 1200px) and (orientation: landscape) {
+            #nameDisplay {
+                font-size: 28px;
+                padding: 6px 10px;
+                margin-bottom: 10px;
+            }
+
+            #textDisplay {
+                font-size: 28px;
+                line-height: 1.5;
+                min-height: 120px;
+            }
+
+            .game-button {
+                padding: 10px 20px;
+                font-size: 16px;
+                min-width: 100px;
+            }
+
+            #buttonBar {
+                height: 70px;
+                padding: 0 25px;
+                gap: 20px;
+            }
+
+            #textArea {
+                bottom: 70px;
+                padding: 15px;
+                height: calc(33.33% - 70px);
+            }
+
+            #evidenceMenu {
+                width: 500px;
+                padding: 25px;
+            }
+
+            .menu {
+                min-width: 400px;
+                padding: 25px;
+            }
+
+            .menu-item {
+                padding: 12px;
+                margin: 6px 0;
+                font-size: 16px;
+            }
+
+            #sprites {
+                font-size: 18px;
+                bottom: 12px;
+                right: 12px;
+            }
+
+            #missesDisplay {
+                top: 12px;
+                right: 12px;
+                padding: 6px 12px;
+                font-size: 16px;
+            }
+
+            #loadingScreen {
+                font-size: 32px;
+            }
+        }
+
+        /* Extra large desktop screens */
+        @media (min-width: 1600px) and (orientation: landscape) {
+            #nameDisplay {
+                font-size: 32px;
+            }
+
+            #textDisplay {
+                font-size: 32px;
+                min-height: 140px;
+            }
+
+            .game-button {
+                font-size: 18px;
+                padding: 12px 24px;
+                min-width: 120px;
+            }
+
+            #buttonBar {
+                height: 80px;
+                gap: 25px;
+            }
+
+            #textArea {
+                bottom: 80px;
+                padding: 20px;
+                height: calc(33.33% - 80px);
+            }
+
+            #loadingScreen {
+                font-size: 36px;
+            }
         }
     </style>
 </head>
@@ -496,6 +815,18 @@
         const EV_T_FQ2 = 186;
         const EV_T_FQ3 = 187;
         const EV_T_FFINALMISS = 188;
+        const EV_T_FINTRO = 189;
+        const EV_T_FNOINTRO = 190;
+        const EV_T_FDONEINTRO = 191;
+        const EV_T_FBEAST = 192;
+        const EV_T_FNOBEAST = 193;
+        const EV_T_CELRULE = 194;
+        const EV_T_NOCELRULE = 195;
+        const EV_T_BLOOMGROUND = 196;
+        const EV_T_NOBLOOMGROUND = 197;
+        const EV_T_BLOOMHUMAN = 198;
+        const EV_T_BLOOMLAWYER = 199;
+        const EV_T_DONEBLOOMLAW = 200;
 
         // Investigation bitflags
         const IV_CELL0 = 1;
@@ -528,6 +859,7 @@
         const PP_TESTIMONY = 0x8f00;
         const PP_CROSSEXAM = 0x9000;
         const PP_GALLERY = 0x9100;
+        const PP_MIA = 0x9200;
 
         // Command constants (from structures.h)
         const CMD_NONE = 0;
@@ -552,23 +884,27 @@
         const CMD_CRASHSFX = 17;
         const CMD_ICRASHSFX = 18;
         const CMD_RIPSFX = 19;
-        const CMD_WHOOSHSFX = 20;
-        const CMD_FALLSFX = 21;
-        const CMD_MAGICSFX = 22;
-        const CMD_BADMAGSFX = 23;
-        const CMD_SQUEAKSFX = 24;
+        const CMD_FALLSFX = 20;
+        const CMD_MAGICSFX = 21;
+        const CMD_BADMAGSFX = 22;
+        const CMD_SQUEAKSFX = 23;
+        const CMD_LOCK3SFX = 24;
+        const CMD_BREAKLOCK = 25;
+        const CMD_UNLOCKED = 26;
+        const CMD_LAUGHSFX = 27;
+        const CMD_GUILTYSFX = 28;
+        const CMD_WHOOSHSFX = 29;
 
         // Voice Commands
-        const CMD_TRIXIEOBJ = 26;
-        const CMD_PHOENIXOBJ = 27;
-        const CMD_TWIOBJ = 28;
-        const CMD_FLUTTEROBJ = 29;
         const CMD_JUDGEOBJ = 30;
         const CMD_GROUPOBJ = 31;
         const CMD_TRIXIEHOLD = 32;
         const CMD_PHOENIXHOLD = 33;
         const CMD_PHOENIXTAKE = 34;
-        const CMD_VOICEENDLIST = 35;
+        const CMD_TRIXIEOBJ = 35;
+        const CMD_PHOENIXOBJ = 36;
+        const CMD_TWIOBJ = 37;
+        const CMD_FLUTTEROBJ = 38;
 
         // Music Commands
         const CMD_MUSSTEEL = 50;
@@ -627,6 +963,7 @@
         const CMD_MUSFALL = 103;
 
         // Action Commands
+        const CMD_FIRST_ACTION = 200;   // deliberate repeat of CMD_JUMP, just used to check whether to honor the tag for a jump. Less than this is a valid target
         const CMD_JUMP = 200;
         const CMD_SHOWEV = 201;
         const CMD_JUMPIFSHOW = 202;
@@ -648,6 +985,7 @@
         const CMD_STARTCROSS = 218;
         const CMD_CONCROSS = 219;
         const CMD_RESETMISS = 220;
+        const CMD_FADEBLACK = 221;
 
         // Miss system constants
         const DEFAULT_MISSES = 4;
@@ -685,6 +1023,7 @@
                 this.awaitingEvidenceSelection = false;
                 this.selectedEvidenceId = null;
                 this.presentedEvidenceId = null;
+                this.evidencePromptText = '';
 
                 // Testimony/Cross-examination system
                 this.testimonyArray = [];      // up to 16 testimonies - indices into story
@@ -751,6 +1090,7 @@
                 this.hideButtonBar();
                 this.stopMusic();
                 this.hideAllMenus(); // Close any open menus (including file menu)
+                this.loadImage(9999); // Load frame 9999 as background
                 this.mainMenuEl.style.display = 'block';
             }
 
@@ -781,7 +1121,12 @@
                 this.hideAllMenus();
                 this.showButtonBar();
                 this.updateButtonStates('story');
-                this.loadLocation(0); // Start at location 0
+
+                // Start with image area black
+                this.fadeFromBlack();
+
+                // Load location 0 (will load under the black overlay, then fade in)
+                this.loadLocation(0);
             }
 
             showFileMenu() {
@@ -846,7 +1191,7 @@
             }
 
             showCredits() {
-                alert("Phoenix Wright / My Little Pony - Turnabout Storm\n\nOriginal video by PWaaMLPfim\nTitle image by HowXu\n\nBased on TI port by Tursilion");
+                alert("Phoenix Wright / My Little Pony - Turnabout Storm\n\nOriginal video by PWaaMLPfim\nTitle image by HowXu\n\nBased on TI port by Tursilion\n\n19 scenes - 29% complete");
             }
 
             showCheatMenu() {
@@ -899,7 +1244,11 @@
             }
 
             loadImage(imageIndex) {
-                if (imageIndex === this.currentImage) return;
+                if (imageIndex === this.currentImage) {
+                    // Still clear fade overlay even if image hasn't changed
+                    this.clearFadeOverlay();
+                    return;
+                }
 
                 this.currentImage = imageIndex;
 
@@ -917,6 +1266,7 @@
                 this.imageEl.onload = () => {
                     console.log(`Successfully loaded: ${imageUrl}`);
                     this.imageEl.style.display = 'block';
+                    this.clearFadeOverlay(); // Clear any fade overlay when new image loads
                 };
 
                 this.imageEl.onerror = () => {
@@ -924,6 +1274,7 @@
                     // Don't hide the element, just show a placeholder
                     this.imageEl.style.display = 'block';
                     this.imageEl.alt = `Missing: ${imageUrl}`;
+                    this.clearFadeOverlay(); // Clear any fade overlay even on error
                 };
 
                 // Set the source to trigger loading
@@ -1021,7 +1372,7 @@
                 const names = {
                     [PP_PHOENIX]: "Phoenix Wright",
                     [PP_TWILIGHT]: "Twilight Sparkle",
-                    [PP_UNKNOWN]: "???",
+                    [PP_UNKNOWN]: "Unknown",
                     [PP_GUARD]: "Guard",
                     [PP_RAINBOW]: "Rainbow Dash",
                     [PP_ACE2]: "Ace Swift",
@@ -1035,9 +1386,29 @@
                     [PP_EDGEWORTH]: "Miles Edgeworth",
                     [PP_TESTIMONY]: "Testimony",
                     [PP_CROSSEXAM]: "Cross-Examination",
-                    [PP_GALLERY]: "Gallery"
+                    [PP_GALLERY]: "Gallery",
+                    [PP_MIA]: "Mia"
                 };
                 return names[personId] || "Unknown";
+            }
+
+            getPersonDescription(evidenceId) {
+                const descriptions = {
+                    // Don't need descriptions for internal-only characters
+                    [PP_PHOENIX]: "That's me, attorney at law!",
+                    [PP_TWILIGHT]: "Unicorn disciple of Princess Celestia. Summoned the 'Greatest Defense Attorney' to Equestria.",
+                    [PP_GUARD]: "Royal Equestrian Guard, they appear to handle most police duties here.",
+                    [PP_RAINBOW]: "The Defendent: Pegasus racer, the 'best flier in Equestria'. Accused of the murder of Ace Swift.",
+                    [PP_ACE2]: "The victim, a professional pegasus racer. Found dead in the Everfree Forest.",
+                    [PP_ACE]: "The victim, a professional pegasus racer. Never lost an event. Found dead in the Everfree Forest.",
+                    [PP_FLUTTERSHY]: "Pegasus friend of Rainbow Dash. Animal caretaker. Witness who lives near the Everfree Forest.",
+                    [PP_TRIXIE]: "The Great and Powerful Trixie, unicorn magician and prosecutor. Has a grudge against Twilight.",
+                    [PP_JUDGE]: "The Judge also seems to have been called! He's fair, though easily confused.",
+                    [PP_BLOOM]: "Earth pony child, Cutie Mark Crusader. Witness who was in the Everfree Forest the night of the crime.",
+                    [PP_PINKIE]: "Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash.",
+                    [PP_SONATA]: "Unicorn manager of Ace Swift. Resembles Mia from my own realm."
+                };
+                return descriptions[evidenceId] || `No description available for person ${evidenceId}.`;
             }
 
             addInventory(id) {
@@ -1110,6 +1481,14 @@
 
                 let firstItem = null;
 
+                // Add prompt text at the top if presenting evidence
+                if (this.awaitingEvidenceSelection && this.evidencePromptText) {
+                    const promptDiv = document.createElement('div');
+                    promptDiv.style.cssText = 'margin-bottom: 15px; padding: 10px; background-color: rgba(0,0,0,0.3); border-radius: 5px; color: white;';
+                    promptDiv.textContent = this.evidencePromptText;
+                    evidenceList.appendChild(promptDiv);
+                }
+
                 // Add evidence items
                 for (let i = 0; i < EV_START_INTERNAL; i++) {
                     if (this.evidence_found[i]) {
@@ -1156,6 +1535,9 @@
 
             showEvidenceForPresentation() {
                 // Same as showEvidence() but specifically for CMD_JUMPIFSHOW
+                // Capture the text prompt from the current story line
+                const currentStoryLine = this.currentStoryData[this.storyIndex];
+                this.evidencePromptText = currentStoryLine.text || '';
                 this.awaitingEvidenceSelection = true;
                 this.showEvidence();
             }
@@ -1212,24 +1594,6 @@
                 return descriptions[evidenceId] || `No description available for evidence ${evidenceId}.`;
             }
 
-            getPersonDescription(evidenceId) {
-                const descriptions = {
-                    [PP_PHOENIX]: "That's me, attorney at law!",
-                    [PP_TWILIGHT]: "Unicorn disciple of Princess Celestia. Summoned the 'Greatest Defense Attorney' to Equestria.",
-                    [PP_GUARD]:  "Royal Equestrian Guard, they appear to handle most police duties here.",
-                    [PP_RAINBOW]:	"The Defendent: Pegasus racer, the 'best flier in Equestria'. Accused of the murder of Ace Swift.",
-                    [PP_ACE2]:	"The victim, a professional pegasus racer. Found dead in the Everfree Forest.",
-                    [PP_ACE]:	"The victim, a professional pegasus racer. Never lost an event. Found dead in the Everfree Forest.",
-                    [PP_FLUTTERSHY]:	"Pegasus friend of Rainbow Dash. Animal caretaker. Witness who lives near the Everfree Forest.",
-                    [PP_TRIXIE]:	"The Great and Powerful Trixie, unicorn magician and prosecutor. Has a grudge against Twilight.",
-                    [PP_JUDGE]: "The Judge also seems to have been called! He's fair, though easily confused.",
-                    [PP_BLOOM]:	"Earth pony child, Cutie Mark Crusader. Witness who was in the Everfree Forest the night of the crime.",
-                    [PP_PINKIE]:	"Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash.",
-                    [PP_SONATA]:	"Unicorn manager of Ace Swift. Resembles Mia from my own realm."
-                };
-                return descriptions[evidenceId] || `No description available for person ${evidenceId}.`;
-            }
-
             selectEvidence(evidenceId) {
                 // Show evidence detail view
                 this.showEvidenceDetail(evidenceId);
@@ -1268,6 +1632,7 @@
                 if (this.awaitingEvidenceSelection && this.selectedEvidenceId !== null) {
                     this.awaitingEvidenceSelection = false;
                     this.presentedEvidenceId = this.selectedEvidenceId;
+                    this.evidencePromptText = ''; // Clear the prompt text
                     this.hideAllMenus();
 
                     console.log("Presented evidence:", this.selectedEvidenceId);
@@ -1280,6 +1645,7 @@
             closeEvidence() {
                 this.evidenceMenuEl.style.display = 'none';
                 this.evidenceDetailEl.style.display = 'none';
+                this.evidencePromptText = ''; // Clear the prompt text
                 this.updateButtonStates('story'); // Refresh button states with menu closed
                 this.focusNextButton(); // Return focus to Next button
             }
@@ -1344,6 +1710,36 @@
                 if (e.key === '?' && this.mainMenuEl.style.display === 'block') {
                     this.showCheatMenu();
                     return;
+                }
+
+                // Handle number keys for main menu selection
+                if (this.mainMenuEl.style.display === 'block') {
+                    if (e.key === '1') {
+                        e.preventDefault();
+                        this.startNew();
+                        return;
+                    } else if (e.key === '2') {
+                        e.preventDefault();
+                        this.loadGame();
+                        return;
+                    } else if (e.key === '3') {
+                        e.preventDefault();
+                        this.showCredits();
+                        return;
+                    }
+                }
+
+                // Handle number keys for conversation menu selection
+                if (this.conversationMenuEl.style.display === 'block') {
+                    const num = parseInt(e.key);
+                    if (!isNaN(num) && num >= 1 && num <= 9) {
+                        const index = num - 1;
+                        if (index < this.prompts.length) {
+                            e.preventDefault();
+                            this.selectConversation(index);
+                            return;
+                        }
+                    }
                 }
 
                 // Handle Escape key to close menus
@@ -1668,7 +2064,7 @@
                 ];
                 // silent only if text if empty
                 const conditionalSilentCommands = [
-                    CMD_ADDEV, CMD_REMOVEEV, CMD_CLRPROMPT,
+                    CMD_ADDEV, CMD_REMOVEEV, CMD_CLRPROMPT, CMD_FLASH,
                     CMD_BADOBJECT, CMD_GOODOBJECT, CMD_STOPMUS,
                     CMD_RESETMISS, CMD_CLEARMISS, CMD_STOREMISS, CMD_RECALLMISS
                 ];
@@ -1676,9 +2072,13 @@
                 // CMD_ADDTEST is silent only when not in testimony mode and has empty text
                 const isAddTestSilent = ((cmd === CMD_ADDTEST || cmd === CMD_OBJECTHERE) && this.testimonyMode === 0);
 
+                // CMD_MISS is silent when it will cause game over (to avoid showing text before jumping)
+                const isMissGameOver = (cmd === CMD_MISS && this.missesLeft <= 1);
+
                 const isSilentCommand = silentCommands.includes(cmd) ||
                                       (conditionalSilentCommands.includes(cmd) && storyLine.text === "") ||
-                                      isAddTestSilent;
+                                      isAddTestSilent ||
+                                      isMissGameOver;
 
                 // Set speaker name (handle PP_NONE as no name) - but not for silent commands
                 if (!isSilentCommand) {
@@ -1696,8 +2096,10 @@
                     }
 
                     // Handle CMD_BLACK - override image and show black screen
+                    // CMD_FADEBLACK doesn't override image loading (it just adds overlay)
                     if (cmd === CMD_BLACK) {
                         this.blackScreen();
+                        this.clearFadeOverlay(); // Clear any fade overlay even on black screen
                     } else if (storyLine.frame >= 0) {
                         // Load image if specified (including frame 0) and not overridden by CMD_BLACK
                         this.loadImage(storyLine.frame);
@@ -1742,6 +2144,9 @@
                     case CMD_WHITE:
                         this.whiteScreen();
                         break;
+                    case CMD_FADEBLACK:
+                        this.fadeToBlack(() => this.advanceStory());
+                        return; // Block until fade completes
                     case CMD_STOPMUS:
                         this.playSound(CMD_CHIMESFX);
                         this.stopMusic();
@@ -1775,9 +2180,17 @@
                         this.startInvestigation(storyLine.frame);
                         return; // Wait for player to click a cell
                     case CMD_ENDSTORY:
-                        this.stopMusic();
-                        this.prompts = [];
-                        this.loadLocation(storyLine.evidence);
+                        if (storyLine.text == "") {
+                            this.fadeToBlack(() => {
+                                this.stopMusic();
+                                this.prompts = [];
+                                this.loadLocation(storyLine.evidence);
+                            });
+                        } else {
+                            this.stopMusic();
+                            this.prompts = [];
+                            this.loadLocation(storyLine.evidence);
+                        }
                         return;
                     case CMD_JUMP:
                         this.jumpToTag(storyLine.evidence);
@@ -1872,6 +2285,11 @@
                     case CMD_MAGICSFX:
                     case CMD_BADMAGSFX:
                     case CMD_SQUEAKSFX:
+                    case CMD_LOCK3SFX:
+                    case CMD_BREAKLOCK:
+                    case CMD_UNLOCKED:
+                    case CMD_LAUGHSFX:
+                    case CMD_GUILTYSFX:
                         this.playSound(cmd);
                         if (storyLine.text == "") {
                             setTimeout(() => this.advanceStory(), 10);
@@ -2011,10 +2429,10 @@
                             // Game over - jump to miss target
                             console.log(`Game over! Jumping to target: ${this.missesTarget}`);
                             setTimeout(() => this.jumpToTag(this.missesTarget), 500); // Delay to show flash
+                            return;
                         } else {
-                            setTimeout(() => this.advanceStory(), 500); // Delay to show flash
+                            break;  // should still be text to show
                         }
-                        return;
 
                     default:
                         console.warn("Command not supported:", cmd);
@@ -2038,7 +2456,7 @@
                 // Find the story line with the matching evidence tag
                 for (let i = 0; i < this.currentStoryData.length; i++) {
                     if (this.currentStoryData[i].evidence === tag &&
-                        (this.currentStoryData[i].cmdwho & 0xff) < CMD_VOICEENDLIST) {
+                        (this.currentStoryData[i].cmdwho & 0xff) < CMD_FIRST_ACTION) {
                         this.storyIndex = i;
                         this.processStoryLine(this.currentStoryData[i]);
                         return;
@@ -2214,15 +2632,85 @@
                 this.currentImage = -1;
             }
 
+            fadeToBlack(callback) {
+                console.log('fadeToBlack: Starting fade at', Date.now());
+                // Remove any existing fade overlay
+                const existingOverlay = document.getElementById('fadeOverlay');
+                if (existingOverlay) {
+                    existingOverlay.remove();
+                }
+
+                // Create black overlay over image area only
+                const imageArea = document.getElementById('imageArea');
+                const overlay = document.createElement('div');
+                overlay.id = 'fadeOverlay';
+                overlay.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;background:black;opacity:0;z-index:10;pointer-events:none;transition:opacity 0.5s;';
+                imageArea.appendChild(overlay);
+
+                const startTime = Date.now();
+                // Trigger fade in
+                setTimeout(() => {
+                    console.log('fadeToBlack: Setting opacity to 1 at', Date.now(), `(+${Date.now() - startTime}ms)`);
+                    overlay.style.opacity = '1';
+                    // Call callback after fade completes
+                    setTimeout(() => {
+                        console.log('fadeToBlack: Calling callback at', Date.now(), `(+${Date.now() - startTime}ms)`);
+                        if (callback) callback();
+                    }, 500); // Match transition duration
+                }, 50); // Small delay to ensure transition triggers
+            }
+
+            clearFadeOverlay() {
+                const overlay = document.getElementById('fadeOverlay');
+                if (overlay) {
+                    // If already fading out (opacity is 0 or transitioning to 0), don't interrupt
+                    const currentOpacity = parseFloat(getComputedStyle(overlay).opacity);
+                    const targetOpacity = parseFloat(overlay.style.opacity);
+
+                    console.log(`clearFadeOverlay: currentOpacity=${currentOpacity}, targetOpacity=${targetOpacity}`);
+
+                    // Only force clear if overlay is still visible and not already fading
+                    if (targetOpacity === 0 || currentOpacity < 0.1) {
+                        // Already fading or faded, just wait for it to complete
+                        console.log('clearFadeOverlay: Already fading, not interrupting');
+                        return;
+                    }
+
+                    // Force quick fade out
+                    console.log('clearFadeOverlay: Forcing quick fade out');
+                    overlay.style.transition = 'opacity 0.1s';
+                    overlay.style.opacity = '0';
+                    setTimeout(() => overlay.remove(), 100); // Remove after quick fade out
+                }
+            }
+
+            fadeFromBlack() {
+                console.log('fadeFromBlack: Creating overlay');
+                // Create black overlay that's fully opaque
+                const imageArea = document.getElementById('imageArea');
+                const overlay = document.createElement('div');
+                overlay.id = 'fadeOverlay';
+                overlay.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;background:black;opacity:1;z-index:10;pointer-events:none;transition:opacity 1s;';
+                imageArea.appendChild(overlay);
+
+                // Immediately set opacity to 0 to start fade (browser needs small delay to register initial state)
+                requestAnimationFrame(() => {
+                    console.log('fadeFromBlack: Starting fade to 0');
+                    overlay.style.opacity = '0';
+                    setTimeout(() => {
+                        console.log('fadeFromBlack: Removing overlay');
+                        overlay.remove();
+                    }, 1000); // Remove after fade completes
+                });
+            }
+
             getSfxFileName(soundCmd) {
                 // Map SFX commands to WAV files
-                // Some use literal names, others are indexed
                 const sfxMap = {
                     // Generated sound effects (indexed by command)
                     [CMD_HAMMERSFX]: 'sfx/hammer.wav',      // Hammer sound
                     [CMD_CHIMESFX]: 'sfx/chime.wav',        // Chime sound (for cmd_stopmus)
                     [CMD_BOOMSFX]: 'sfx/boom.wav',          // Boom sound
-                    [CMD_LOCKSFX]: 'sfx/psychelock.wav',    // 3 booms for psyche-locks
                     [CMD_BREAKSFX]: 'sfx/breaklock.wav',    // Break psyche-lock sfx
                     [CMD_PARTYSFX]: 'sfx/party.wav',        // Party horn sfx
                     [CMD_JOKESFX]: 'sfx/rimshot.wav',       // Rimshot sfx
@@ -2233,7 +2721,12 @@
                     [CMD_FALLSFX]: 'sfx/fall.wav',          // Falling sfx
                     [CMD_MAGICSFX]: 'sfx/magic.wav',        // Magic sfx
                     [CMD_BADMAGSFX]: 'sfx/badmagic.wav',    // Bad magic sfx
-                    [CMD_SQUEAKSFX]: 'sfx/squeak.wav'       // Squeak sfx
+                    [CMD_SQUEAKSFX]: 'sfx/squeak.wav',      // Squeak sfx
+                    [CMD_LOCK3SFX]: 'sfx/psychelock3.wav',  // chain + 3 booms for psyche-locks
+                    [CMD_BREAKLOCK]: 'sfx/breaklock.wav',   // break one psyche-lock
+                    [CMD_UNLOCKED]: 'sfx/psychelock.wav',   // unwind the chains
+                    [CMD_LAUGHSFX]: 'sfx/laughing.wav',     // laughing sfx
+                    [CMD_GUILTYSFX]: 'sfx/guilty.wav'       // guilty boom sfx
                 };
 
                 return sfxMap[soundCmd] || null;
