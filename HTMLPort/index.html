@@ -827,6 +827,14 @@
         const EV_T_BLOOMHUMAN = 198;
         const EV_T_BLOOMLAWYER = 199;
         const EV_T_DONEBLOOMLAW = 200;
+        const EV_T_PFRUSTRATION = 201;
+        const EV_T_PINTRODUCE = 202;
+        const EV_T_PLOOKING = 203;
+        const EV_T_PCONTINUE = 204;
+        const EV_T_DHELP = 205;
+        const EV_T_DFOCUS = 206;
+        const EV_T_DNOTBAD = 207;
+        const EV_T_DTERRIBAD = 208;
 
         // Investigation bitflags
         const IV_CELL0 = 1;
@@ -880,7 +888,7 @@
         const CMD_LOCKSFX = 13;
         const CMD_BREAKSFX = 14;
         const CMD_PARTYSFX = 15;
-        const CMD_JOKESFX = 16;
+        const CMD_RIMSHOTSFX = 16;
         const CMD_CRASHSFX = 17;
         const CMD_ICRASHSFX = 18;
         const CMD_RIPSFX = 19;
@@ -2276,7 +2284,7 @@
                     case CMD_LOCKSFX:
                     case CMD_BREAKSFX:
                     case CMD_PARTYSFX:
-                    case CMD_JOKESFX:
+                    case CMD_RIMSHOTSFX:
                     case CMD_CRASHSFX:
                     case CMD_ICRASHSFX:
                     case CMD_RIPSFX:
@@ -2713,7 +2721,7 @@
                     [CMD_BOOMSFX]: 'sfx/boom.wav',          // Boom sound
                     [CMD_BREAKSFX]: 'sfx/breaklock.wav',    // Break psyche-lock sfx
                     [CMD_PARTYSFX]: 'sfx/party.wav',        // Party horn sfx
-                    [CMD_JOKESFX]: 'sfx/rimshot.wav',       // Rimshot sfx
+                    [CMD_RIMSHOTSFX]: 'sfx/rimshot.wav',    // Rimshot sfx
                     [CMD_CRASHSFX]: 'sfx/crash.wav',        // Crash sfx
                     [CMD_ICRASHSFX]: 'sfx/icrash.wav',      // Inverted crash sfx (used by CMD_WHITE)
                     [CMD_RIPSFX]: 'sfx/rip.wav',            // Rip sfx

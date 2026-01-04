@@ -2231,7 +2231,6 @@ const STORY_DATA = {
         { evidence: EV_NONE, frame: 204, cmdwho: PP_PHOENIX | CMD_NONE, text: "He's kind of an idiot." },
         { evidence: EV_NONE, frame: 205, cmdwho: PP_MIA | CMD_NONE, text: "That's not a very nice thing to say about your friend." },
         { evidence: EV_NONE, frame: 205, cmdwho: PP_PHOENIX | CMD_NONE, text: "No, I really mean it. He thinks passing the 8th grade is a credential. He got the report card framed and everything." },
-        // Mia's crucial advice about believing in clients and pursuing truth
         { evidence: EV_NONE, frame: 206, cmdwho: PP_MIA | CMD_NONE, text: "So? What are you getting at?" },
         { evidence: EV_NONE, frame: 206, cmdwho: PP_PHOENIX | CMD_NONE, text: "I mean, what if he really did kill that woman?" },
         { evidence: EV_NONE, frame: 206, cmdwho: PP_PHOENIX | CMD_NONE, text: "What do I do?" },
@@ -2263,16 +2262,277 @@ const STORY_DATA = {
         { evidence: EV_NONE, frame: 204, cmdwho: PP_PHOENIX | CMD_NONE, text: "Ah, forget about it. I'm just a little out of it right now." },
         { evidence: EV_NONE, frame: 206, cmdwho: PP_NONE | CMD_STOPMUS, text: "..." },
         { evidence: EV_NONE, frame: 206, cmdwho: PP_NONE | CMD_FADEBLACK, text: "" },
-
-        // Phoenix's reflection on failing Mia's teachings
         { evidence: EV_NONE, frame: 206, cmdwho: PP_PHOENIX | CMD_BLACK, text: "I'll never forget what you taught me." },
         { evidence: EV_NONE, frame: 206, cmdwho: PP_PHOENIX | CMD_BLACK, text: "But somehow, I highly doubt you're looking down on me smiling after what I did today..." },
 
-        { evidence: 20, frame: 206, cmdwho: PP_NONE | CMD_ENDSTORY, text: "" }
+        { evidence: 20, frame: 206, cmdwho: PP_NONE | CMD_ENDSTORY, text: "*" }
     ],
     20: [
-        {evidence: EV_T_LOOPFSHOW, frame: 9999, cmdwho: PP_NONE | CMD_NONE, text: "Check back later for more. Save here if you want to resume when more is added."},
-        {evidence: EV_T_LOOPFSHOW, frame: 9999, cmdwho: PP_NONE | CMD_JUMP, text: ""}
+        { evidence: EV_NONE, frame: 100, cmdwho: PP_NONE | CMD_NONE, text: "Ponyville District Court, June 10th, 11:55AM" },
+        { evidence: EV_NONE, frame: 207, cmdwho: PP_TWILIGHT | CMD_NONE, text: "Phoenix... I was wrong about you..." },
+        { evidence: EV_NONE, frame: 100, cmdwho: PP_PHOENIX | CMD_NONE, text: "Twilight, wait, I-..." },
+        { evidence: EV_NONE, frame: 100, cmdwho: PP_PHOENIX | CMD_NONE, text: "She's gone..." },
+        { evidence: EV_NONE, frame: 100, cmdwho: PP_PHOENIX | CMD_NONE, text: "Who am I kidding?" },
+        { evidence: EV_NONE, frame: 100, cmdwho: PP_PHOENIX | CMD_NONE, text: "She's right. I did absolutely terrible in there..." },
+        { evidence: EV_NONE, frame: 100, cmdwho: PP_PHOENIX | CMD_NONE, text: "Now two of her friends are suspects. What do I do now?" },
+        { evidence: EV_NONE, frame: 100, cmdwho: PP_PHOENIX | CMD_NONE, text: "I don't have any leads at all, nobody to turn to. I'm all by myself..." },
+        { evidence: EV_NONE, frame: 100, cmdwho: PP_PHOENIX | CMD_NONE, text: "Which means... I can't even get back home..." },
+        { evidence: EV_NONE, frame: 100, cmdwho: PP_PHOENIX | CMD_NONE, text: "..." },
+        { evidence: EV_NONE, frame: 100, cmdwho: PP_PHOENIX | CMD_NONE, text: "No, I can't think that way. I've got to stay diligent." },
+        { evidence: EV_NONE, frame: 100, cmdwho: PP_PHOENIX | CMD_NONE, text: "I said I'd clear Rainbow Dash's name, and I bought her another day." },
+        { evidence: EV_NONE, frame: 100, cmdwho: PP_PHOENIX | CMD_NONE, text: "I can't let it go to waste... but where do I start...?" },
+        { evidence: EV_NONE, frame: 208, cmdwho: PP_UNKNOWN | CMD_CHIMESFX, text: "Hey, Mr Frowny-Wowny. What's the matter?" },
+        { evidence: EV_NONE, frame: 208, cmdwho: PP_PHOENIX | CMD_MUSSMILE, text: "(Huh? Where did she come from? She smells like cotton candy...)" },
+        { evidence: EV_NONE, frame: 209, cmdwho: PP_UNKNOWN | CMD_NONE, text: "Cotton candy?" },
+        { evidence: EV_NONE, frame: 210, cmdwho: PP_UNKNOWN | CMD_NONE, text: "Oh! You must smell the new shampoo I'm using." },
+        { evidence: EV_NONE, frame: 210, cmdwho: PP_PHOENIX | CMD_NONE, text: "That explains it, then..." },
+        { evidence: EV_NONE, frame: 208, cmdwho: PP_PHOENIX | CMD_CHIMESFX, text: "Wait, did I say that, or think tha-...?" },
+        { evidence: EV_NONE, frame: 208, cmdwho: PP_PHOENIX | CMD_NONE, text: "Who are you!?" },
+        { evidence: EV_NONE, frame: 211, cmdwho: PP_PINKIE | CMD_NONE, text: "I'm Pinkie Pie, of course!" },
+        { evidence: PP_PINKIE, frame: 211, cmdwho: PP_PINKIE | CMD_ADDEV, text: "Party Thrower Extraordinaire!" },
+        { evidence: EV_NONE, frame: 209, cmdwho: PP_PINKIE | CMD_CLRPROMPT, text: "But I can't talk right now! I'm looking for something..." },
+
+        { evidence: EV_T_PFRUSTRATION, frame: 209, cmdwho: PP_PINKIE | CMD_ADDPROMPT, text: "I'm frustrated." },
+        { evidence: EV_T_PINTRODUCE, frame: 209, cmdwho: PP_PINKIE | CMD_ADDPROMPT, text: "Introduce myself." },
+        { evidence: EV_T_PLOOKING, frame: 209, cmdwho: PP_PINKIE | CMD_ADDPROMPT, text: "What are you looking for?." },
+        { evidence: EV_NONE, frame: 209, cmdwho: PP_PINKIE | CMD_SELPROMPT, text: "" },
+
+        { evidence: EV_T_PLOOKING, frame: 209, cmdwho: PP_PHOENIX | CMD_NONE, text: "What are you looking for?" },
+        { evidence: EV_NONE, frame: 208, cmdwho: PP_PINKIE | CMD_NONE, text: "Some other ponies said there was a spiky-headed monster in here." },
+        { evidence: EV_NONE, frame: 208, cmdwho: PP_PINKIE | CMD_NONE, text: "I can't seem to find it anywhere, though." },
+        { evidence: EV_NONE, frame: 209, cmdwho: PP_PINKIE | CMD_NONE, text: "You'd think it would stick out like a sore hoof." },
+        { evidence: EV_NONE, frame: 208, cmdwho: PP_PINKIE | CMD_NONE, text: "Have you seen it?" },
+        { evidence: EV_NONE, frame: 208, cmdwho: PP_PHOENIX | CMD_NONE, text: "(* sigh *)" },
+        { evidence: EV_NONE, frame: 212, cmdwho: PP_PINKIE | CMD_NONE, text: "...does that mean \"no\"?" },
+        { evidence: EV_NONE, frame: 212, cmdwho: PP_PHOENIX | CMD_CRASHSFX, text: "I'm getting so sick of this place!" },
+        { evidence: EV_NONE, frame: 212, cmdwho: PP_PHOENIX | CMD_SELPROMPT, text: "" },
+    
+        { evidence: EV_T_PFRUSTRATION, frame: 213, cmdwho: PP_PINKIE | CMD_NONE, text: "Hey! Turn that frowny upside-downy!" },
+        { evidence: EV_NONE, frame: 213, cmdwho: PP_PHOENIX | CMD_NONE, text: "How can I? I did such a lousy job in court today, and Twilight probably hates my guts for what I did..." },
+        { evidence: EV_NONE, frame: 210, cmdwho: PP_PINKIE | CMD_NONE, text: "Hey, you know Twilight!? Me too!" },
+        { evidence: EV_NONE, frame: 210, cmdwho: PP_PHOENIX | CMD_NONE, text: "You know Twilight Sparkle?" },
+        { evidence: EV_NONE, frame: 213, cmdwho: PP_PINKIE | CMD_NONE, text: "Yup! We're the bestest of best friends!" },
+        // bit duplicated here because it's the LAST line that changes...
+        { evidence: EV_NONE, frame: 214, cmdwho: PP_PINKIE | CMD_NONE, text: "Oh, that reminds me! I'm supposed to go to court today, and cheer for Rainbow Dash!" },
+        { evidence: EV_NONE, frame: 100, cmdwho: PP_PINKIE | CMD_NONE, text: "Sorry, gotta run!" },
+        { evidence: EV_NONE, frame: 100, cmdwho: PP_PHOENIX | CMD_NONE, text: "But you're-!" },
+        { evidence: EV_NONE, frame: 208, cmdwho: PP_PINKIE | CMD_NONE, text: "Oh, I'm already here." },
+        { evidence: EV_NONE, frame: 211, cmdwho: PP_PINKIE | CMD_NONE, text: "Yay!" },
+        { evidence: EV_NONE, frame: 213, cmdwho: PP_PHOENIX | CMD_NONE, text: "I hate to break it to you, but you missed the trial." },
+        { evidence: EV_NONE, frame: 213, cmdwho: PP_PHOENIX | CMD_NONE, text: "(Out of all the pastel grass-chewers I've met, this one is definitely the weirdest.)" },
+        { evidence: EV_NONE, frame: 213, cmdwho: PP_PHOENIX | CMD_CHIMESFX, text: "(AH! I better be careful, I think she can read minds.)" },
+        { evidence: EV_NONE, frame: 212, cmdwho: PP_PINKIE | CMD_NONE, text: "Is Dashie okay?" },
+        { evidence: EV_NONE, frame: 212, cmdwho: PP_PHOENIX | CMD_NONE, text: "For the time being, yes." },
+        { evidence: EV_NONE, frame: 212, cmdwho: PP_PHOENIX | CMD_NONE, text: "The trial is being postponed. I'm actually Rainbow Dash's lawyer, Phoenix Wright." },
+        { evidence: EV_NONE, frame: 210, cmdwho: PP_PINKIE | CMD_NONE, text: "Oooh! Neato!" },
+        { evidence: EV_T_PCONTINUE, frame: 212, cmdwho: PP_PHOENIX | CMD_JUMP, text: "" },
+
+        { evidence: EV_T_PINTRODUCE, frame: 212, cmdwho: PP_PHOENIX | CMD_NONE, text: "I'm Rainbow Dash's lawyer, Phoenix Wright." },
+        // duplicate...
+        { evidence: EV_NONE, frame: 214, cmdwho: PP_PINKIE | CMD_NONE, text: "Oh, that reminds me! I'm supposed to go to court today, and cheer for Rainbow Dash!" },
+        { evidence: EV_NONE, frame: 100, cmdwho: PP_PINKIE | CMD_NONE, text: "Sorry, gotta run!" },
+        { evidence: EV_NONE, frame: 100, cmdwho: PP_PHOENIX | CMD_NONE, text: "But you're-!" },
+        { evidence: EV_NONE, frame: 208, cmdwho: PP_PINKIE | CMD_NONE, text: "Oh, I'm already here." },
+        { evidence: EV_NONE, frame: 211, cmdwho: PP_PINKIE | CMD_NONE, text: "Yay!" },
+        { evidence: EV_NONE, frame: 213, cmdwho: PP_PHOENIX | CMD_NONE, text: "I hate to break it to you, but you missed the trial." },
+        { evidence: EV_NONE, frame: 213, cmdwho: PP_PHOENIX | CMD_NONE, text: "(Out of all the pastel grass-chewers I've met, this one is definitely the weirdest.)" },
+        { evidence: EV_NONE, frame: 213, cmdwho: PP_PHOENIX | CMD_CHIMESFX, text: "(AH! I better be careful, I think she can read minds.)" },
+        { evidence: EV_NONE, frame: 212, cmdwho: PP_PINKIE | CMD_NONE, text: "Is Dashie okay?" },
+        { evidence: EV_NONE, frame: 212, cmdwho: PP_PHOENIX | CMD_NONE, text: "For the time being, yes." },
+
+        { evidence: EV_T_PCONTINUE, frame: 210, cmdwho: PP_NONE | CMD_NONE, text: "" },
+        { evidence: EV_NONE, frame: 210, cmdwho: PP_PINKIE | CMD_NONE, text: "So what'cha doing right now, Feenie?" },
+        { evidence: EV_NONE, frame: 212, cmdwho: PP_PHOENIX | CMD_CHIMESFX, text: "\"Feenie\"... that's... ... never mind..." },
+        { evidence: EV_NONE, frame: 213, cmdwho: PP_PHOENIX | CMD_NONE, text: "Well... I don't know what I should be doing right now, to be honest. I have no leads at all." },
+        { evidence: EV_NONE, frame: 208, cmdwho: PP_PINKIE | CMD_NONE, text: "Why don't you go talk to Dashie about the trial?" },
+        { evidence: EV_NONE, frame: 213, cmdwho: PP_PHOENIX | CMD_NONE, text: "Wait a minute... she had Psyche-locks..." },
+        { evidence: EV_NONE, frame: 209, cmdwho: PP_PINKIE | CMD_NONE, text: "Psyche-locks? Is that some kinda breakfast cereal?" },
+        { evidence: EV_NONE, frame: 210, cmdwho: PP_PINKIE | CMD_NONE, text: "Sounds yummy!" },
+        { evidence: EV_NONE, frame: 208, cmdwho: PP_PINKIE | CMD_NONE, text: "Is it made with real locks and not grossly-wossly artificial locks?" },
+        { evidence: EV_NONE, frame: 215, cmdwho: PP_PHOENIX | CMD_NONE, text: "Thanks for the advice, erm, Pinkie Pie." },
+        { evidence: EV_NONE, frame: 215, cmdwho: PP_PHOENIX | CMD_NONE, text: "I'm gonna go to the detention center now." },
+
+        { evidence: 21, frame: 215, cmdwho: PP_PHOENIX | CMD_ENDSTORY, text: "" }
+    ],
+    21: [
+        { evidence: EV_NONE, frame: 34, cmdwho: PP_NONE | CMD_NONE, text: "Ponyville Detention Center, June 10th, 12:00PM" },
+        { evidence: EV_NONE, frame: 34, cmdwho: PP_PHOENIX | CMD_NONE, text: "(I really hope she isn't mad at me after what happened...)" },
+        { evidence: EV_NONE, frame: 216, cmdwho: PP_RAINBOW | CMD_CRASHSFX, text: "No no no no! No! No! No!" },
+        { evidence: EV_NONE, frame: 217, cmdwho: PP_PHOENIX | CMD_NONE, text: "R-Rainbow Dash?" },
+        { evidence: EV_NONE, frame: 45, cmdwho: PP_RAINBOW | CMD_NONE, text: "I can't bear to live anymore!" },
+        { evidence: EV_NONE, frame: 216, cmdwho: PP_RAINBOW | CMD_NONE, text: "Throw the book at me! Let them send me to the sun, there's nothing left for me in Equestria!" },
+        { evidence: EV_NONE, frame: 45, cmdwho: PP_PHOENIX | CMD_NONE, text: "Rainbow Dash, get a hold of yourself!" },
+        { evidence: EV_NONE, frame: 45, cmdwho: PP_PHOENIX | CMD_NONE, text: "(She must still be upset over those pictures.)" },
+        { evidence: EV_NONE, frame: 218, cmdwho: PP_RAINBOW | CMD_CLRPROMPT, text: "Easy for you to say! Now the Wonderbolts will NEVER let me in! Ponyville is going to laugh at me forever!" },
+
+        { evidence: EV_T_DHELP, frame: 218, cmdwho: PP_RAINBOW | CMD_ADDPROMPT, text: "I'll help you" },
+        { evidence: EV_T_DFOCUS, frame: 218, cmdwho: PP_RAINBOW | CMD_ADDPROMPT, text: "We need to focus" },
+        { evidence: EV_T_DNOTBAD, frame: 218, cmdwho: PP_RAINBOW | CMD_ADDPROMPT, text: "Not that bad..." },
+        { evidence: EV_T_DNOTBAD, frame: 218, cmdwho: PP_RAINBOW | CMD_SELPROMPT, text: "" },
+
+        { evidence: EV_T_DHELP, frame: 218, cmdwho: PP_PHOENIX | CMD_NONE, text: "Don't worry, I'll get you out of this mess!" },
+        { evidence: EV_T_DTERRIBAD, frame: 218, cmdwho: PP_PHOENIX | CMD_JUMP, text: "" },
+
+        { evidence: EV_T_DFOCUS, frame: 218, cmdwho: PP_PHOENIX | CMD_NONE, text: "Look, we need to focus on finding the real killer." },
+        { evidence: EV_NONE, frame: 216, cmdwho: PP_RAINBOW | CMD_NONE, text: "I don't even care anymore! Nopony is going to respect me now!" },
+
+        { evidence: EV_T_DNOTBAD, frame: 218, cmdwho: PP_PHOENIX | CMD_NONE, text: "They weren't that... um... bad. Really. I'm sure everyone will forget it by tomorrow. In fact, I guarantee it." },
+        { evidence: EV_NONE, frame: 45, cmdwho: PP_PHOENIX | CMD_NONE, text: "(There's no way anyone's forgetting images like those...)" },
+        { evidence: EV_NONE, frame: 44, cmdwho: PP_RAINBOW | CMD_NONE, text: "You think so?" },
+        { evidence: EV_NONE, frame: 44, cmdwho: PP_PHOENIX | CMD_RIMSHOTSFX, text: "I know so! I'm always right: my name is Phoenix WRIGHT after all..." },
+        { evidence: EV_NONE, frame: 219, cmdwho: PP_NONE | CMD_CHIMESFX, text: "" },
+        { evidence: EV_NONE, frame: 219, cmdwho: PP_RAINBOW | CMD_NONE, text: "That wasn't funny..." },
+        { evidence: EV_NONE, frame: 219, cmdwho: PP_PHOENIX | CMD_NONE, text: "(Ack! ... I thought it was! ...)" },
+        { evidence: EV_NONE, frame: 36, cmdwho: PP_RAINBOW | CMD_NONE, text: "Thanks for trying to cheer me up though, I appreciate it." },
+        { evidence: EV_NONE, frame: 36, cmdwho: PP_PHOENIX | CMD_NONE, text: "You're welcome." },
+        { evidence: EV_NONE, frame: 40, cmdwho: PP_RAINBOW | CMD_NONE, text: "By the way..." },
+        { evidence: EV_NONE, frame: 40, cmdwho: PP_PHOENIX | CMD_NONE, text: "Yes? What is it?" },
+
+        { evidence: EV_T_DTERRIBAD, frame: 35, cmdwho: PP_RAINBOW | CMD_NONE, text: "What was that terri-bad performance in the court today!?" },
+        { evidence: EV_NONE, frame: 35, cmdwho: PP_RAINBOW | CMD_NONE, text: "I could have done a better job defending myself!" },
+        { evidence: EV_NONE, frame: 35, cmdwho: PP_PHOENIX | CMD_NONE, text: "I-I..." },
+        { evidence: EV_NONE, frame: 220, cmdwho: PP_RAINBOW | CMD_MUSGUILTY, text: "Every defense attorney must suck horse apples, if you're supposed to be the best one!" },
+        { evidence: EV_NONE, frame: 35, cmdwho: PP_PHOENIX | CMD_NONE, text: "Look, I know I screwed up, but I'm going to make it up to you and Fluttershy tomorrow." },
+        { evidence: EV_NONE, frame: 221, cmdwho: PP_RAINBOW | CMD_NONE, text: "Fluttershy?! Ha!" },
+        { evidence: EV_NONE, frame: 221, cmdwho: PP_RAINBOW | CMD_NONE, text: "She got what she deserved! After she betrayed me like that!" },
+        { evidence: EV_NONE, frame: 221, cmdwho: PP_PHOENIX | CMD_NONE, text: "Hey! It tore me up having to do that! It was the only way I could save you. Fluttershy didn't betray you." },
+        { evidence: EV_NONE, frame: 35, cmdwho: PP_RAINBOW | CMD_NONE, text: "Give me a break! This is the thanks I get for all the times I stuck up for her sorry flank?" },
+        { evidence: EV_NONE, frame: 35, cmdwho: PP_PHOENIX | CMD_NONE, text: "She was just telling the truth." },
+        { evidence: EV_NONE, frame: 36, cmdwho: PP_RAINBOW | CMD_NONE, text: "Truth? You proved she was lying though, she didn't see Applebloom!" },
+        { evidence: EV_NONE, frame: 35, cmdwho: PP_PHOENIX | CMD_NONE, text: "But she did see you leave the forest... you were there, weren't you?" },
+        { evidence: EV_NONE, frame: 38, cmdwho: PP_RAINBOW | CMD_NONE, text: "..." },
+        { evidence: EV_NONE, frame: 221, cmdwho: PP_RAINBOW | CMD_NONE, text: "Whatever! We are ex-friends as of now!" },
+        { evidence: EV_NONE, frame: 38, cmdwho: PP_RAINBOW | CMD_NONE, text: "I could tell you were trying your hardest to defend me, even if you did do a crummy job." },
+        { evidence: EV_NONE, frame: 38, cmdwho: PP_PHOENIX | CMD_NONE, text: "(Gee, thanks.)" },
+        { evidence: EV_NONE, frame: 35, cmdwho: PP_RAINBOW | CMD_NONE, text: "She pretty much said:" },
+        { evidence: EV_NONE, frame: 222, cmdwho: PP_RAINBOW | CMD_NONE, text: "\"Yup! Rainbow Dash did it!\"" },
+        { evidence: EV_NONE, frame: 35, cmdwho: PP_RAINBOW | CMD_NONE, text: "What kind of a friend does that?" },
+        { evidence: EV_NONE, frame: 35, cmdwho: PP_PHOENIX | CMD_NONE, text: "Rainbow Dash, for the last time, she was telling the truth. What she saw..." },
+        { evidence: EV_NONE, frame: 36, cmdwho: PP_PHOENIX | CMD_NONE, text: "Actually, that brings me to why I'm here." },
+        { evidence: EV_NONE, frame: 40, cmdwho: PP_RAINBOW | CMD_NONE, text: "What? Why are you here?" },
+        { evidence: EV_NONE, frame: 40, cmdwho: PP_PHOENIX | CMD_NONE, text: "The truth. I want to know what you were really doing near the Everfree Forest the night of the murder." },
+
+        { evidence: 22, frame: 206, cmdwho: PP_NONE | CMD_ENDSTORY, text: "*" }
+    ],
+    22: [
+        { evidence: EV_NONE, frame: 223, cmdwho: PP_PHOENIX | CMD_PHOENIXTAKE, text: "TAKE THAT!" },
+        { evidence: EV_NONE, frame: 224, cmdwho: PP_RAINBOW | CMD_LOCK3SFX, text: "Ugh..." },
+        { evidence: EV_NONE, frame: 225, cmdwho: PP_RAINBOW | CMD_NONE, text: "I told you already, I was practicing for the race!" },
+        { evidence: EV_NONE, frame: 225, cmdwho: PP_PHOENIX | CMD_NONE, text: "(Phew... it still works after that incident this morning...)" },
+        { evidence: EV_NONE, frame: 122, cmdwho: PP_NONE | CMD_BADMAGSFX, text: "!!!" },
+        { evidence: EV_NONE, frame: 227, cmdwho: PP_PHOENIX | CMD_NONE, text: "(What was that all about anyway?)" },
+        { evidence: EV_NONE, frame: 227, cmdwho: PP_PHOENIX | CMD_NONE, text: "(Ugh, forget about that! It still works, and that's all that matters!)" },
+        { evidence: EV_NONE, frame: 227, cmdwho: PP_PHOENIX | CMD_NONE, text: "(Okay, there they are. Time to break 'em!)" },
+        { evidence: EV_NONE, frame: 227, cmdwho: PP_PHOENIX | CMD_NONE, text: "Sorry, but I don't believe you, my little pony. Not for a single solitary second." },
+        { evidence: EV_NONE, frame: 224, cmdwho: PP_RAINBOW | CMD_NONE, text: "You're my lawyer and you don't believe me? THAT'S reassuring..." },
+        { evidence: EV_NONE, frame: 224, cmdwho: PP_PHOENIX | CMD_NONE, text: "Let's play a game, Rainbow Dash..." },
+        { evidence: EV_NONE, frame: 224, cmdwho: PP_PHOENIX | CMD_NONE, text: "I'm going to guess what you were really doing near the crime scene that night, and you're going to tell me if I'm right." },
+        { evidence: EV_NONE, frame: 228, cmdwho: PP_RAINBOW | CMD_NONE, text: "You can go right ahead and do that, but I'm sticking to my story." },
+        { evidence: EV_NONE, frame: 228, cmdwho: PP_PHOENIX | CMD_NONE, text: "I don't think you were practicing at all; I think you were doing something FAR more important." },
+        { evidence: EV_NONE, frame: 225, cmdwho: PP_RAINBOW | CMD_CLRPROMPT, text: "L-like WHAT!?" },
+
+        { evidence: EV_T_RHUNT, frame: 225, cmdwho: PP_RAINBOW | CMD_ADDPROMPT, text: "Hunting dangerous creatures" },
+        { evidence: EV_T_RMEET, frame: 225, cmdwho: PP_RAINBOW | CMD_ADDPROMPT, text: "Meeting someone" },
+        { evidence: EV_T_RSTALK, frame: 225, cmdwho: PP_RAINBOW | CMD_ADDPROMPT, text: "Stalking Fluttershy" },
+        { evidence: EV_NONE, frame: 225, cmdwho: PP_RAINBOW | CMD_SELPROMPT, text: "" },
+
+        { evidence: EV_T_RHUNT, frame: 225, cmdwho: PP_PHOENIX | CMD_NONE, text: "Maybe you were there to hunt some dangerous creatures?" },
+        { evidence: EV_NONE, frame: 39, cmdwho: PP_RAINBOW | CMD_NONE, text: "I can see why you might think someone as cool as me would do that, Nix..." },
+        { evidence: EV_NONE, frame: 35, cmdwho: PP_RAINBOW | CMD_NONE, text: "But that's stupid. I'm a racer, not a hunter." },
+        { evidence: EV_NONE, frame: 35, cmdwho: PP_PHOENIX | CMD_NONE, text: "In that case... you must have been there because you were..." },
+        { evidence: EV_NONE, frame: 35, cmdwho: PP_PHOENIX | CMD_SELPROMPT, text: "" },
+
+        { evidence: EV_T_RSTALK, frame: 225, cmdwho: PP_PHOENIX | CMD_NONE, text: "Oh... maybe you were just... secretly watching Fluttershy?" },
+        { evidence: EV_NONE, frame: 220, cmdwho: PP_RAINBOW | CMD_NONE, text: "Fluttershy?! HAH! We were best friends since we were fillies!" },
+        { evidence: EV_NONE, frame: 221, cmdwho: PP_RAINBOW | CMD_NONE, text: "I saw her nearly every day. I had to defend her so many times!" },
+        { evidence: EV_NONE, frame: 50, cmdwho: PP_RAINBOW | CMD_CRASHSFX, text: "And then she just BETRAYS me like that! Who DOES that?!" },
+        { evidence: EV_NONE, frame: 50, cmdwho: PP_PHOENIX | CMD_NONE, text: "She was just telling the truth. And I need you to, as well. You were really there because you were..." },
+        { evidence: EV_NONE, frame: 50, cmdwho: PP_PHOENIX | CMD_SELPROMPT, text: "" },
+
+        { evidence: EV_T_RMEET, frame: 225, cmdwho: PP_PHOENIX | CMD_NONE, text: "Oh, I don't know... meeting someone?" },
+        { evidence: EV_NONE, frame: 229, cmdwho: PP_RAINBOW | CMD_NONE, text: "Ah! Uh-I-I mean-..." },
+        { evidence: EV_NONE, frame: 225, cmdwho: PP_RAINBOW | CMD_NONE, text: "Who would I be meeting in the middle of the forest at that hour?" },
+        { evidence: EV_NONE, frame: 225, cmdwho: PP_RAINBOW | CMD_NONE, text: "Nopony ever goes in there willingly." },
+        { evidence: EV_NONE, frame: 225, cmdwho: PP_PHOENIX | CMD_NONE, text: "Then why were YOU \"practicing\" there if no one ever goes in there willingly?" },
+        { evidence: EV_NONE, frame: 229, cmdwho: PP_RAINBOW | CMD_NONE, text: "U-uh... w-well..." },
+        { evidence: EV_NONE, frame: 227, cmdwho: PP_PHOENIX | CMD_NONE, text: "I know there was someone in the forest the night of the murder." },
+        { evidence: EV_NONE, frame: 225, cmdwho: PP_RAINBOW | CMD_NONE, text: "Put your money where your mouth is! Who do you think I was meeting?" },
+
+        { evidence: EV_NONE, frame: 225, cmdwho: PP_RAINBOW | CMD_SHOWEV, text: "Who was Rainbow meeting?" },
+        **************************
+
+
+        // EVIDENCE PRESENTATION: Rainbow's Feathers + Victim Location Logic
+        { evidence: EV_NONE, frame: 223, cmdwho: PP_PHOENIX | CMD_NONE, text: "(phoenix takethat sfx)" },
+        { evidence: EV_NONE, frame: 227, cmdwho: PP_PHOENIX | CMD_NONE, text: "Ace Swift!" },
+        { evidence: EV_NONE, frame: 227, cmdwho: PP_PHOENIX | CMD_NONE, text: "The fact that your feathers were found all around the clearing proves you were there that night." },
+        { evidence: EV_NONE, frame: 229, cmdwho: PP_RAINBOW | CMD_NONE, text: "!!??" },
+        { evidence: EV_NONE, frame: 229, cmdwho: PP_PHOENIX | CMD_NONE, text: "And who else was in the clearing that night...? The victim, of course!" },
+        { evidence: EV_NONE, frame: 229, cmdwho: PP_PHOENIX | CMD_NONE, text: "You needed to be there to see him." },
+        { evidence: EV_NONE, frame: 229, cmdwho: PP_PHOENIX | CMD_NONE, text: "You also just told me, ponies avoid going in there." },
+        { evidence: EV_NONE, frame: 229, cmdwho: PP_PHOENIX | CMD_NONE, text: "So I'm willing to bet he wanted to meet with you in private, and what better place to pick than the middle of a forest nobody ever goes into?" },
+        { evidence: EV_NONE, frame: 230, cmdwho: PP_RAINBOW | CMD_NONE, text: "AHH! NOOOOO!" },
+        { evidence: EV_NONE, frame: 231, cmdwho: PP_NONE | CMD_BREAKLOCK, text: "(breaklock sfx)" },
+
+        // PSYCHE-LOCK 2/3: "He was just competition"
+        /*
+        // EVIDENCE NEEDED TO BREAK: Blackmail Photos
+        // This reveals the real motive for the meeting
+        */
+        { evidence: EV_NONE, frame: 232, cmdwho: PP_RAINBOW | CMD_NONE, text: "I-I mean-... \"Ah, no, you're wrong!\"" },
+        { evidence: EV_NONE, frame: 233, cmdwho: PP_RAINBOW | CMD_NONE, text: "H-he was just competition!" },
+        { evidence: EV_NONE, frame: 233, cmdwho: PP_RAINBOW | CMD_NONE, text: "Why would I want to meet him? I have better things I could be doing." },
+        { evidence: EV_NONE, frame: 233, cmdwho: PP_PHOENIX | CMD_NONE, text: "Like what?" },
+        { evidence: EV_NONE, frame: 234, cmdwho: PP_RAINBOW | CMD_NONE, text: "I don't know, napping? Something like that..." },
+        { evidence: EV_NONE, frame: 234, cmdwho: PP_PHOENIX | CMD_NONE, text: "(Oh, please...)" },
+        { evidence: EV_NONE, frame: 234, cmdwho: PP_PHOENIX | CMD_NONE, text: "Maybe he had something you wanted." },
+        { evidence: EV_NONE, frame: 235, cmdwho: PP_RAINBOW | CMD_NONE, text: "What do you mean?" },
+        { evidence: EV_NONE, frame: 235, cmdwho: PP_PHOENIX | CMD_NONE, text: "I'm saying maybe he had somehting important to you, something you'd move heaven and earth for." },
+        { evidence: EV_NONE, frame: 233, cmdwho: PP_RAINBOW | CMD_NONE, text: "I'm a pretty self-satisfied pony." },
+        { evidence: EV_NONE, frame: 233, cmdwho: PP_RAINBOW | CMD_NONE, text: "I've got everything I need, well, besides fortune and glory, and I don't think he could give those to me." },
+        { evidence: EV_NONE, frame: 236, cmdwho: PP_RAINBOW | CMD_NONE, text: "What could he possibly have that I'd want?" },
+        { evidence: EV_NONE, frame: 236, cmdwho: PP_PHOENIX | CMD_NONE, text: "I'm glad you asked that, Rainbow Dash..." },
+        { evidence: EV_NONE, frame: 235, cmdwho: PP_RAINBOW | CMD_NONE, text: "Y-you are?" },
+        { evidence: EV_NONE, frame: 235, cmdwho: PP_PHOENIX | CMD_NONE, text: "There's one thing that you absolutely needed that I know he had." },
+        { evidence: EV_NONE, frame: 234, cmdwho: PP_RAINBOW | CMD_NONE, text: "I'm afraid I don't know what you're talking about..." },
+        { evidence: EV_NONE, frame: 234, cmdwho: PP_PHOENIX | CMD_NONE, text: "The reason you went to go meet him is..." },
+
+        // CRITICAL EVIDENCE PRESENTATION: The Blackmail Photos
+        { evidence: EV_NONE, frame: 223, cmdwho: PP_PHOENIX | CMD_NONE, text: "(phoenix takethat sfx)" },
+        { evidence: EV_NONE, frame: 223, cmdwho: PP_PHOENIX | CMD_NONE, text: "These!" },
+        { evidence: EV_NONE, frame: 237, cmdwho: PP_RAINBOW | CMD_NONE, text: "AHH! Put those away before somepony sees them! PLEASE!" },
+        { evidence: EV_NONE, frame: 238, cmdwho: PP_PHOENIX | CMD_NONE, text: "Even right now, your anxiety shows you absolutely didn't want these pictures floating out and about!" },
+        { evidence: EV_NONE, frame: 232, cmdwho: PP_RAINBOW | CMD_NONE, text: "Yes, yes, yes, you're right!" },
+        { evidence: EV_NONE, frame: 232, cmdwho: PP_RAINBOW | CMD_NONE, text: "I was meeting him about these! Can you please just put them away? NOW!?" },
+        { evidence: EV_NONE, frame: 239, cmdwho: PP_NONE | CMD_BREAKLOCK, text: "(breaklock sfx)" },
+
+        // PSYCHE-LOCK 3/3: The true nature of the meeting
+        /*
+        // EVIDENCE NEEDED TO BREAK: Race information + Logic about Ace's behavior
+        // This reveals the blackmail scheme
+        */
+        { evidence: EV_NONE, frame: 240, cmdwho: PP_PHOENIX | CMD_NONE, text: "This brings us to the money question... why did he have these pictures?" },
+        { evidence: EV_NONE, frame: 240, cmdwho: PP_RAINBOW | CMD_NONE, text: "Who knows, he's dead, what a bummer, guess we'll never know!" },
+        { evidence: EV_NONE, frame: 240, cmdwho: PP_PHOENIX | CMD_NONE, text: "I actually think I know why." },
+        { evidence: EV_NONE, frame: 241, cmdwho: PP_RAINBOW | CMD_NONE, text: "You do?" },
+        { evidence: EV_NONE, frame: 241, cmdwho: PP_PHOENIX | CMD_NONE, text: "Yes. I can think of one reason why he'd want to meet you over pictures like these..." },
+        { evidence: EV_NONE, frame: 241, cmdwho: PP_PHOENIX | CMD_NONE, text: "He was blackmailing you, wasn't he?" },
+        { evidence: EV_NONE, frame: 242, cmdwho: PP_RAINBOW | CMD_NONE, text: "Blackmail..." },
+        { evidence: EV_NONE, frame: 242, cmdwho: PP_PHOENIX | CMD_NONE, text: "I'm willing to bet my attorney badge that he wanted you to toss the Equestrian 500." },
+        { evidence: EV_NONE, frame: 242, cmdwho: PP_RAINBOW | CMD_NONE, text: "..." },
+        { evidence: EV_NONE, frame: 242, cmdwho: PP_PHOENIX | CMD_NONE, text: "I was told of ponies suspecting him of foul play in the wake of all his success." },
+        { evidence: EV_NONE, frame: 242, cmdwho: PP_PHOENIX | CMD_NONE, text: "He was probably threatening you to let him win the race." },
+        { evidence: EV_NONE, frame: 241, cmdwho: PP_RAINBOW | CMD_NONE, text: "Wow..." },
+        { evidence: EV_NONE, frame: 241, cmdwho: PP_PHOENIX | CMD_NONE, text: "Hmm?" },
+        { evidence: EV_NONE, frame: 243, cmdwho: PP_RAINBOW | CMD_NONE, text: "You're really good..." },
+        { evidence: EV_NONE, frame: 244, cmdwho: PP_NONE | CMD_BREAKLOCK, text: "(breaklock sfx)" },
+
+        { evidence: 23, frame: 206, cmdwho: PP_NONE | CMD_ENDSTORY, text: "" }
+    ],
+    23: [
+        { evidence: EV_T_LOOPFSHOW, frame: 9999, cmdwho: PP_NONE | CMD_NONE, text: "Check back later for more. Save here if you want to resume when more is added." },
+        { evidence: EV_T_LOOPFSHOW, frame: 9999, cmdwho: PP_NONE | CMD_JUMP, text: "" },
+        { evidence: 24, frame: 206, cmdwho: PP_NONE | CMD_ENDSTORY, text: "" }
     ]
 };
 

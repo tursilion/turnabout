@@ -252,7 +252,7 @@ continue
     {evidence: EV_NONE, frame: 216, cmdwho: PP_RAINBOW | CMD_NONE, text: "No no no no! No! No! No!" },
     {evidence: EV_NONE, frame: 217, cmdwho: PP_PHOENIX | CMD_NONE, text: "R-Rainbow Dash?" },
     {evidence: EV_NONE, frame: 45, cmdwho: PP_RAINBOW | CMD_NONE, text: "I-I can't bear to live anymore!" },
-    {evidence: EV_NONE, frame: 216, cmdwho: PP_RAINBOW | CMD_NONE, text: "Throw the book at me! L-let them send me to the sun, there's nothing left for me in Equestria!" },
+    {evidence: EV_NONE, frame: 216, cmdwho: PP_RAINBOW | CMD_NONE, text: "Throw the book at me! Let them send me to the sun, there's nothing left for me in Equestria!" },
     {evidence: EV_NONE, frame: 45, cmdwho: PP_PHOENIX | CMD_NONE, text: "Rainbow Dash, get a hold of yourself!" },
     {evidence: EV_NONE, frame: 45, cmdwho: PP_PHOENIX | CMD_NONE, text: "(She must still be upset over those... pictures.)" },
     {evidence: EV_NONE, frame: 218, cmdwho: PP_RAINBOW | CMD_NONE, text: "Easy for you to say! Now the Wonderbolts will NEVER let me in! Ponyville is going to laugh at me forever!" },
