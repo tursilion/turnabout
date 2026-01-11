@@ -139,12 +139,41 @@
 
         #investigationCursor {
             position: absolute;
-            width: 40px;
-            height: 40px;
-            border: 2px solid #ff0;
-            background-color: rgba(255, 255, 0, 0.3);
+            width: 60px;
+            height: 60px;
+            border: 3px solid #ff0;
+            background-color: rgba(255, 255, 0, 0.2);
             display: none;
             pointer-events: none;
+            box-shadow: 0 0 15px rgba(255, 255, 0, 0.6), inset 0 0 15px rgba(255, 255, 0, 0.3);
+            transform: translate(-50%, -50%);
+        }
+
+        #investigationCursor::before,
+        #investigationCursor::after {
+            content: '';
+            position: absolute;
+            background-color: #ff0;
+        }
+
+        /* Vertical crosshair line */
+        #investigationCursor::before {
+            left: 50%;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 5px rgba(255, 255, 0, 0.8);
+        }
+
+        /* Horizontal crosshair line */
+        #investigationCursor::after {
+            top: 50%;
+            left: 0;
+            height: 2px;
+            width: 100%;
+            transform: translateY(-50%);
+            box-shadow: 0 0 5px rgba(255, 255, 0, 0.8);
         }
 
         #missesDisplay {
@@ -233,6 +262,36 @@
             background-color: #444;
         }
 
+        .evidence-tab {
+            padding: 8px 16px;
+            cursor: pointer;
+            border: 1px solid #333;
+            background-color: #222;
+            flex: 1;
+            text-align: center;
+        }
+
+        .evidence-tab:hover {
+            background-color: #444;
+        }
+
+        .evidence-tab-active {
+            background-color: #006;
+            border-color: #44f;
+            font-weight: bold;
+        }
+
+        .game-button:focus {
+            outline: 3px solid #4af;
+            outline-offset: 2px;
+            box-shadow: 0 0 10px rgba(68, 170, 255, 0.5);
+        }
+
+        .game-button.disabled:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
         #loadingScreen {
             position: absolute;
             top: 0;
@@ -312,9 +371,14 @@
             }
 
             #investigationCursor {
-                width: 30px;
-                height: 30px;
-                border-width: 1px;
+                width: 45px;
+                height: 45px;
+                border-width: 2px;
+            }
+
+            #investigationCursor::before,
+            #investigationCursor::after {
+                box-shadow: 0 0 3px rgba(255, 255, 0, 0.8);
             }
 
             #loadingScreen {
@@ -570,7 +634,12 @@
 
         <div id="evidenceMenu" class="menu">
             <h3>Evidence</h3>
+            <div id="evidenceTabs" style="display: flex; gap: 10px; margin-bottom: 10px;">
+                <div id="evidenceTab" class="evidence-tab evidence-tab-active" onclick="game.switchEvidenceTab('evidence')">Evidence</div>
+                <div id="peopleTab" class="evidence-tab" onclick="game.switchEvidenceTab('people')">People</div>
+            </div>
             <div id="evidenceList"></div>
+            <div id="peopleList" style="display: none;"></div>
             <div id="evidenceCloseButton" class="menu-item" tabindex="0" onclick="game.closeEvidence()" style="margin-top: 15px;">Close Evidence</div>
         </div>
 
@@ -578,8 +647,8 @@
             <h3 id="evidenceDetailName">Evidence Name</h3>
             <div id="evidenceDetailDescription"></div>
             <div id="evidenceDetailButtons">
-                <div class="menu-item" id="presentEvidenceBtn" onclick="game.presentEvidence()" style="display: none;">Present Evidence</div>
-                <div class="menu-item" onclick="game.closeEvidenceDetail()">Back to Evidence List</div>
+                <div class="menu-item" id="presentEvidenceBtn" tabindex="0" onclick="game.presentEvidence()" style="display: none;">Present Evidence</div>
+                <div class="menu-item" id="backToEvidenceBtn" tabindex="0" onclick="game.closeEvidenceDetail()">Back to Evidence List</div>
             </div>
         </div>
 
@@ -610,13 +679,13 @@
         </div>
 
         <div id="buttonBar">
-            <button id="nextBtn" class="game-button" onclick="game.nextButton()">Next</button>
-            <button id="evidenceBtn" class="game-button" onclick="game.evidenceButton()">Evidence</button>
-            <button id="pressBtn" class="game-button" onclick="game.pressButton()">Press</button>
-            <button id="objectionBtn" class="game-button" onclick="game.objectionButton()">Objection</button>
-            <button id="leftBtn" class="game-button" onclick="game.leftButton()">&lt;</button>
-            <button id="rightBtn" class="game-button" onclick="game.rightButton()">&gt;</button>
-            <button id="fileBtn" class="game-button" onclick="game.fileButton()">File</button>
+            <button id="nextBtn" class="game-button" tabindex="0" onclick="game.nextButton()">Next</button>
+            <button id="evidenceBtn" class="game-button" tabindex="0" onclick="game.evidenceButton()">Evidence</button>
+            <button id="pressBtn" class="game-button" tabindex="0" onclick="game.pressButton()">Press</button>
+            <button id="objectionBtn" class="game-button" tabindex="0" onclick="game.objectionButton()">Objection</button>
+            <button id="leftBtn" class="game-button" tabindex="0" onclick="game.leftButton()">&lt;</button>
+            <button id="rightBtn" class="game-button" tabindex="0" onclick="game.rightButton()">&gt;</button>
+            <button id="fileBtn" class="game-button" tabindex="0" onclick="game.fileButton()">File</button>
         </div>
     </div>
 
@@ -835,6 +904,38 @@
         const EV_T_DFOCUS = 206;
         const EV_T_DNOTBAD = 207;
         const EV_T_DTERRIBAD = 208;
+        const EV_T_R1JUMP = 209;
+        const EV_T_RMEETACE = 210;
+        const EV_T_RMEETFLUTTERSHY = 211;
+        const EV_T_RMEETBLOOM = 212;
+        const EV_T_R2JUMP = 213;
+        const EV_T_RGETMAGATAMA = 214;
+        const EV_T_RGETFEATHER = 215;
+        const EV_T_RGETPICS = 216;
+        const EV_T_RHUNT = 217;
+        const EV_T_RMEET = 218;
+        const EV_T_RSTALK = 219;
+        const EV_T_RWHY1 = 220;
+        const EV_T_RWHY2 = 221;
+        const EV_T_RWHY3 = 222;
+        const EV_T_R2CLOUD = 223;
+        const EV_T_R2500 = 224;
+        const EV_T_R2WORK = 225;
+        const EV_T_R2REPORT = 226;
+        const EV_T_R2UNDER = 227;
+        const EV_T_R2LIGHTNING = 228;
+        const EV_T_TDARKLP = 229;
+        const EV_T_TDARKEF = 230;
+        const EV_T_RPIC1 = 231;
+        const EV_T_RPIC2 = 232;
+        const EV_T_TLIG = 233;
+        const EV_T_TLRD = 234;
+        const EV_T_RLYES = 235;
+        const EV_T_RLNO = 236;
+        const EV_T_RLDONE = 237;
+        const EV_T_ELECYES = 238;
+        const EV_T_ELECNO = 239;
+
 
         // Investigation bitflags
         const IV_CELL0 = 1;
@@ -1020,6 +1121,8 @@
                 this.missesTarget = 0;      // Target tag for game over
                 this.investigationMode = false;
                 this.investigationCells = [];
+                this.investigationCursorX = 0; // Cursor X position in pixels
+                this.investigationCursorY = 0; // Cursor Y position in pixels
                 this.prompts = [];
                 this.currentLocation = 0;
                 this.typewriterActive = false;
@@ -1041,6 +1144,7 @@
                 this.badObjectTarget = 0;      // tag for bad objection
                 this.goodObjectTarget = 0;     // tag for good objection
                 this.postTestTarget = 0;       // tag to continue after testimony/cross-examination
+                this.savedButtonContext = null; // stores button context before opening evidence menu
 
                 // UI Elements
                 this.imageEl = document.getElementById('gameImage');
@@ -1079,6 +1183,7 @@
                 // Set up event listeners for investigation mode and escape key
                 document.addEventListener('click', (e) => this.handleClick(e));
                 document.addEventListener('keydown', (e) => this.handleKeyDown(e));
+                document.addEventListener('mousemove', (e) => this.handleMouseMove(e));
 
                 // Show main menu
                 this.showMainMenu();
@@ -1199,7 +1304,7 @@
             }
 
             showCredits() {
-                alert("Phoenix Wright / My Little Pony - Turnabout Storm\n\nOriginal video by PWaaMLPfim\nTitle image by HowXu\n\nBased on TI port by Tursilion\n\n19 scenes - 29% complete");
+                alert("Phoenix Wright / My Little Pony - Turnabout Storm\n\nOriginal video by PWaaMLPfim\nTitle image by HowXu\n\nBased on TI port by Tursilion\n\n23 scenes - 34% complete");
             }
 
             showCheatMenu() {
@@ -1238,9 +1343,25 @@
             cheatJumpToLocation(locationNum) {
                 console.log(`Cheat: Jumping to location ${locationNum}`);
 
-                // Mark all evidence as found (cheat mode)
-                this.evidence_found.fill(1);
-                this.people_found.fill(1);
+                // Reset evidence and people found arrays
+                this.evidence_found.fill(0);
+                this.people_found.fill(0);
+
+                // Loop through all locations prior to the selected one
+                for (let loc = 0; loc < locationNum; loc++) {
+                    const locationData = STORY_DATA[loc];
+                    if (locationData) {
+                        // Loop through all story entries in this location
+                        for (const storyLine of locationData) {
+                            const cmd = storyLine.cmdwho & 0xff;
+
+                            // If this is an ADDEV command, add the evidence/person
+                            if (cmd === CMD_ADDEV && storyLine.evidence > 0) {
+                                this.addInventory(storyLine.evidence);
+                            }
+                        }
+                    }
+                }
 
                 // Hide menus and show game
                 this.hideAllMenus();
@@ -1355,14 +1476,8 @@
                     this.nameEl.style.display = 'none';
                 }
 
-                // Update text with word wrap (simplified)
-                if (this.currentText) {
-                    let displayText = this.currentText;
-                    if (displayText.length > this.maxText) {
-                        displayText = displayText.substring(0, this.maxText);
-                    }
-                    this.textEl.textContent = displayText;
-                }
+                // NOTE: Text is updated via setText() which uses typewriter effect
+                // Do NOT update textEl.textContent here as it would bypass the typewriter
 
                 // Update sprites
                 this.spritesEl.textContent = this.sprites;
@@ -1483,21 +1598,32 @@
             }
 
             showEvidence() {
+                // Save the current button context so we can restore it when evidence is closed
+                this.savedButtonContext = this.getCurrentButtonContext();
+
                 // Show evidence selection menu
                 const evidenceList = document.getElementById('evidenceList');
+                const peopleList = document.getElementById('peopleList');
                 evidenceList.innerHTML = '';
+                peopleList.innerHTML = '';
 
-                let firstItem = null;
+                let firstEvidenceItem = null;
+                let firstPeopleItem = null;
 
-                // Add prompt text at the top if presenting evidence
+                // Add prompt text at the top if presenting evidence (to both lists)
                 if (this.awaitingEvidenceSelection && this.evidencePromptText) {
-                    const promptDiv = document.createElement('div');
-                    promptDiv.style.cssText = 'margin-bottom: 15px; padding: 10px; background-color: rgba(0,0,0,0.3); border-radius: 5px; color: white;';
-                    promptDiv.textContent = this.evidencePromptText;
-                    evidenceList.appendChild(promptDiv);
+                    const promptDiv1 = document.createElement('div');
+                    promptDiv1.style.cssText = 'margin-bottom: 15px; padding: 10px; background-color: rgba(0,0,0,0.3); border-radius: 5px; color: white;';
+                    promptDiv1.textContent = this.evidencePromptText;
+                    evidenceList.appendChild(promptDiv1);
+
+                    const promptDiv2 = document.createElement('div');
+                    promptDiv2.style.cssText = 'margin-bottom: 15px; padding: 10px; background-color: rgba(0,0,0,0.3); border-radius: 5px; color: white;';
+                    promptDiv2.textContent = this.evidencePromptText;
+                    peopleList.appendChild(promptDiv2);
                 }
 
-                // Add evidence items
+                // Add evidence items to evidence tab
                 for (let i = 0; i < EV_START_INTERNAL; i++) {
                     if (this.evidence_found[i]) {
                         const item = document.createElement('div');
@@ -1506,11 +1632,11 @@
                         item.tabIndex = 0; // Make focusable
                         item.onclick = () => this.selectEvidence(i);
                         evidenceList.appendChild(item);
-                        if (!firstItem) firstItem = item;
+                        if (!firstEvidenceItem) firstEvidenceItem = item;
                     }
                 }
 
-                // Add people
+                // Add people to people tab
                 for (let i = 0; i < PP_MAX; i++) {
                     if (this.people_found[i]) {
                         const personId = PP_FIRST + (i << 8);
@@ -1519,8 +1645,8 @@
                         item.textContent = this.getPersonName(personId);
                         item.tabIndex = 0; // Make focusable
                         item.onclick = () => this.selectEvidence(personId);
-                        evidenceList.appendChild(item);
-                        if (!firstItem) firstItem = item;
+                        peopleList.appendChild(item);
+                        if (!firstPeopleItem) firstPeopleItem = item;
                     }
                 }
 
@@ -1535,9 +1661,38 @@
                     closeButton.style.display = 'block';
                 }
 
-                // Focus the first item
+                // Switch to the appropriate tab (default to evidence unless told otherwise)
+                const initialTab = this.evidenceInitialTab || 'evidence';
+                this.switchEvidenceTab(initialTab);
+
+                // Focus the first item of the active tab
+                const firstItem = (initialTab === 'people') ? firstPeopleItem : firstEvidenceItem;
                 if (firstItem) {
                     setTimeout(() => firstItem.focus(), 50); // Small delay to ensure menu is visible
+                }
+
+                // Reset initial tab preference
+                this.evidenceInitialTab = 'evidence';
+            }
+
+            switchEvidenceTab(tabName) {
+                const evidenceList = document.getElementById('evidenceList');
+                const peopleList = document.getElementById('peopleList');
+                const evidenceTab = document.getElementById('evidenceTab');
+                const peopleTab = document.getElementById('peopleTab');
+
+                if (tabName === 'evidence') {
+                    // Show evidence tab
+                    evidenceList.style.display = 'block';
+                    peopleList.style.display = 'none';
+                    evidenceTab.classList.add('evidence-tab-active');
+                    peopleTab.classList.remove('evidence-tab-active');
+                } else if (tabName === 'people') {
+                    // Show people tab
+                    evidenceList.style.display = 'none';
+                    peopleList.style.display = 'block';
+                    evidenceTab.classList.remove('evidence-tab-active');
+                    peopleTab.classList.add('evidence-tab-active');
                 }
             }
 
@@ -1545,7 +1700,18 @@
                 // Same as showEvidence() but specifically for CMD_JUMPIFSHOW
                 // Capture the text prompt from the current story line
                 const currentStoryLine = this.currentStoryData[this.storyIndex];
-                this.evidencePromptText = currentStoryLine.text || '';
+                let promptText = currentStoryLine.text || '';
+
+                // Check if text starts with '*' to determine initial tab
+                if (promptText.startsWith('*')) {
+                    this.evidenceInitialTab = 'people';
+                    // Strip the '*' from the prompt text
+                    promptText = promptText.substring(1);
+                } else {
+                    this.evidenceInitialTab = 'evidence';
+                }
+
+                this.evidencePromptText = promptText;
                 this.awaitingEvidenceSelection = true;
                 this.showEvidence();
             }
@@ -1634,6 +1800,14 @@
 
                 this.evidenceDetailEl.style.display = 'block';
                 this.updateButtonStates('story'); // Refresh button states with menu active
+
+                // Focus the first visible button
+                const backBtn = document.getElementById('backToEvidenceBtn');
+                if (this.awaitingEvidenceSelection && presentBtn.style.display === 'block') {
+                    setTimeout(() => presentBtn.focus(), 50);
+                } else {
+                    setTimeout(() => backBtn.focus(), 50);
+                }
             }
 
             presentEvidence() {
@@ -1645,6 +1819,9 @@
 
                     console.log("Presented evidence:", this.selectedEvidenceId);
 
+                    // Skip any active typewriter from the CMD_SHOWEV prompt
+                    this.skipTypewriter();
+
                     // Continue story after evidence selection
                     this.advanceStory();
                 }
@@ -1654,7 +1831,9 @@
                 this.evidenceMenuEl.style.display = 'none';
                 this.evidenceDetailEl.style.display = 'none';
                 this.evidencePromptText = ''; // Clear the prompt text
-                this.updateButtonStates('story'); // Refresh button states with menu closed
+                // Restore the button context from before evidence was opened
+                const contextToRestore = this.savedButtonContext || 'story';
+                this.updateButtonStates(contextToRestore);
                 this.focusNextButton(); // Return focus to Next button
             }
 
@@ -1662,13 +1841,20 @@
                 this.evidenceDetailEl.style.display = 'none';
                 this.evidenceMenuEl.style.display = 'block';
                 this.updateButtonStates('story'); // Refresh button states with menu active
+
+                // Focus the first evidence item in the list
+                const evidenceList = document.getElementById('evidenceList');
+                const firstItem = evidenceList.querySelector('.menu-item[tabindex="0"]');
+                if (firstItem) {
+                    setTimeout(() => firstItem.focus(), 50);
+                }
             }
 
             startInvestigation(sceneNumber) {
                 this.investigationMode = true;
                 this.investigationFlags = sceneNumber; // Store the bitflags from frame
-                this.cursorEl.style.display = 'block';
-                this.setText("Click area to inspect");
+                this.imageEl.style.cursor = 'none'; // Hide system cursor during investigation
+                this.setText("Click area to inspect (Arrow keys to move, Enter to select)");
                 this.updateButtonStates('investigation');
 
                 // Set up investigation cells (8 clickable areas)
@@ -1682,6 +1868,14 @@
                         evidence: 0 // EV_I_0 + i
                     });
                 }
+
+                // Initialize cursor to center of image
+                const rect = this.imageEl.getBoundingClientRect();
+                this.investigationCursorX = rect.left + (rect.width / 2);
+                this.investigationCursorY = rect.top + (rect.height / 2);
+                this.cursorEl.style.left = this.investigationCursorX + 'px';
+                this.cursorEl.style.top = this.investigationCursorY + 'px';
+                this.cursorEl.style.display = 'block';
             }
 
 
@@ -1707,13 +1901,82 @@
                 this.investigationMode = false;
                 this.presentedEvidenceId = cellIndex + EV_I_0;
                 this.cursorEl.style.display = 'none';
+                this.imageEl.style.cursor = ''; // Restore system cursor
                 this.updateButtonStates('story'); // Return to story mode
 
                 // Continue story progression after investigation
                 this.advanceStory();
             }
 
+            handleMouseMove(e) {
+                if (this.investigationMode) {
+                    const rect = this.imageEl.getBoundingClientRect();
+
+                    // Check if mouse is over the game image
+                    if (e.clientX >= rect.left && e.clientX <= rect.right &&
+                        e.clientY >= rect.top && e.clientY <= rect.bottom) {
+                        // Update cursor position
+                        this.investigationCursorX = e.clientX;
+                        this.investigationCursorY = e.clientY;
+                        this.cursorEl.style.left = this.investigationCursorX + 'px';
+                        this.cursorEl.style.top = this.investigationCursorY + 'px';
+                        this.cursorEl.style.display = 'block';
+                    } else {
+                        // Hide cursor when not over image
+                        this.cursorEl.style.display = 'none';
+                    }
+                }
+            }
+
             handleKeyDown(e) {
+                // Handle investigation mode keyboard controls
+                if (this.investigationMode) {
+                    const rect = this.imageEl.getBoundingClientRect();
+                    const moveSpeed = 40; // pixels per keypress
+
+                    if (e.key === 'ArrowUp' || e.key === 'ArrowDown' ||
+                        e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                        e.preventDefault();
+
+                        // Move cursor
+                        if (e.key === 'ArrowUp') {
+                            this.investigationCursorY = Math.max(rect.top, this.investigationCursorY - moveSpeed);
+                        } else if (e.key === 'ArrowDown') {
+                            this.investigationCursorY = Math.min(rect.bottom, this.investigationCursorY + moveSpeed);
+                        } else if (e.key === 'ArrowLeft') {
+                            this.investigationCursorX = Math.max(rect.left, this.investigationCursorX - moveSpeed);
+                        } else if (e.key === 'ArrowRight') {
+                            this.investigationCursorX = Math.min(rect.right, this.investigationCursorX + moveSpeed);
+                        }
+
+                        // Update cursor display position
+                        this.cursorEl.style.left = this.investigationCursorX + 'px';
+                        this.cursorEl.style.top = this.investigationCursorY + 'px';
+                        this.cursorEl.style.display = 'block';
+                        return;
+                    }
+
+                    // Handle Enter key to "click" at current cursor position
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+
+                        // Convert cursor position to percentage coordinates
+                        const x = ((this.investigationCursorX - rect.left) / rect.width) * 100;
+                        const y = ((this.investigationCursorY - rect.top) / rect.height) * 100;
+
+                        // Check which investigation cell is at this position
+                        for (let i = 0; i < this.investigationCells.length; i++) {
+                            const cell = this.investigationCells[i];
+                            if (x >= cell.x && x < cell.x + cell.width &&
+                                y >= cell.y && y < cell.y + cell.height) {
+                                this.investigateCell(i);
+                                break;
+                            }
+                        }
+                        return;
+                    }
+                }
+
                 // Handle '?' key to show cheat menu (only when main menu is active)
                 if (e.key === '?' && this.mainMenuEl.style.display === 'block') {
                     this.showCheatMenu();
@@ -1789,6 +2052,31 @@
                                 }
                                 menuItems[nextIndex].focus();
                             }
+                        }
+                    }
+                    return;
+                }
+
+                // Handle left/right arrow key navigation within button bar
+                if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                    const focusedElement = document.activeElement;
+                    if (focusedElement && focusedElement.classList.contains('game-button')) {
+                        e.preventDefault(); // Prevent page scrolling
+
+                        // Find all enabled buttons in the button bar
+                        const buttonBar = document.getElementById('buttonBar');
+                        const allButtons = Array.from(buttonBar.querySelectorAll('.game-button'));
+                        const enabledButtons = allButtons.filter(btn => !btn.classList.contains('disabled'));
+                        const currentIndex = enabledButtons.indexOf(focusedElement);
+
+                        if (currentIndex !== -1 && enabledButtons.length > 0) {
+                            let nextIndex;
+                            if (e.key === 'ArrowRight') {
+                                nextIndex = (currentIndex + 1) % enabledButtons.length; // Wrap to beginning
+                            } else {
+                                nextIndex = (currentIndex - 1 + enabledButtons.length) % enabledButtons.length; // Wrap to end
+                            }
+                            enabledButtons[nextIndex].focus();
                         }
                     }
                     return;
@@ -1870,6 +2158,7 @@
                     this.investigationMode = false;
                     this.presentedEvidenceId = EV_I_SEARCH_LEFT;
                     this.cursorEl.style.display = 'none';
+                    this.imageEl.style.cursor = ''; // Restore system cursor
                     this.updateButtonStates('story');
                     this.advanceStory();
                 }
@@ -1881,6 +2170,7 @@
                     this.investigationMode = false;
                     this.presentedEvidenceId = EV_I_SEARCH_RIGHT;
                     this.cursorEl.style.display = 'none';
+                    this.imageEl.style.cursor = ''; // Restore system cursor
                     this.updateButtonStates('story');
                     this.advanceStory();
                 }
@@ -1953,6 +2243,32 @@
             focusNextButton() {
                 if (this.nextBtnEl && !this.isButtonDisabled('next')) {
                     setTimeout(() => this.nextBtnEl.focus(), 50);
+                } else {
+                    // If Next button is disabled, focus first enabled button
+                    this.focusFirstEnabledButton();
+                }
+            }
+
+            // Helper method to focus the first enabled button in the button bar
+            focusFirstEnabledButton() {
+                const buttonBar = document.getElementById('buttonBar');
+                const allButtons = Array.from(buttonBar.querySelectorAll('.game-button'));
+                const firstEnabledButton = allButtons.find(btn => !btn.classList.contains('disabled'));
+                if (firstEnabledButton) {
+                    setTimeout(() => firstEnabledButton.focus(), 50);
+                }
+            }
+
+            // Get the current button context based on game state
+            getCurrentButtonContext() {
+                if (this.investigationMode) {
+                    return 'investigation';
+                } else if (this.testimonyMode === 1) {
+                    return 'testimony';
+                } else if (this.testimonyMode === 2) {
+                    return 'cross-examination';
+                } else {
+                    return 'story';
                 }
             }
 
@@ -2132,17 +2448,23 @@
                         if (storyLine.evidence > 0) {
                             this.addInventory(storyLine.evidence);
                         }
-                        // Auto-advance for silent commands
-                        setTimeout(() => this.advanceStory(), 10);
-                        return;
+                        // Auto-advance only if text is empty (silent command)
+                        if (storyLine.text === "") {
+                            setTimeout(() => this.advanceStory(), 10);
+                            return;
+                        }
+                        break;
                     case CMD_REMOVEEV:
                         // Remove evidence from inventory
                         if (storyLine.evidence > 0) {
                             this.removeInventory(storyLine.evidence);
                         }
-                        // Auto-advance for silent commands
-                        setTimeout(() => this.advanceStory(), 10);
-                        return;
+                        // Auto-advance only if text is empty (silent command)
+                        if (storyLine.text === "") {
+                            setTimeout(() => this.advanceStory(), 10);
+                            return;
+                        }
+                        break;
                     case CMD_FLASH:
                         this.flashScreen();
                         break;
@@ -2205,9 +2527,12 @@
                         return;
                     case CMD_CLRPROMPT:
                         this.prompts = [];
-                        // Auto-advance for silent commands
-                        setTimeout(() => this.advanceStory(), 10);
-                        return;
+                        // Auto-advance only if text is empty (silent command)
+                        if (storyLine.text === "") {
+                            setTimeout(() => this.advanceStory(), 10);
+                            return;
+                        }
+                        break;
                     case CMD_ADDPROMPT:
                         this.addPrompt(storyLine.evidence, storyLine.text);
                         // Auto-advance to next line for ADDPROMPT commands
@@ -2345,15 +2670,23 @@
                         // Set target for bad objection
                         this.badObjectTarget = storyLine.evidence;
                         console.log(`Set bad object target: ${this.badObjectTarget}`);
-                        setTimeout(() => this.advanceStory(), 10);
-                        return;
+                        // Auto-advance only if text is empty (silent command)
+                        if (storyLine.text === "") {
+                            setTimeout(() => this.advanceStory(), 10);
+                            return;
+                        }
+                        break;
 
                     case CMD_GOODOBJECT:
                         // Set target for good objection
                         this.goodObjectTarget = storyLine.evidence;
                         console.log(`Set good object target: ${this.goodObjectTarget}`);
-                        setTimeout(() => this.advanceStory(), 10);
-                        return;
+                        // Auto-advance only if text is empty (silent command)
+                        if (storyLine.text === "") {
+                            setTimeout(() => this.advanceStory(), 10);
+                            return;
+                        }
+                        break;
 
                     case CMD_STARTTEST:
                         // Start testimony mode
@@ -2401,30 +2734,46 @@
                         this.missesLeft = DEFAULT_MISSES;
                         this.missesTarget = storyLine.evidence;
                         console.log(`Reset misses to ${DEFAULT_MISSES}, target: ${this.missesTarget}`);
-                        setTimeout(() => this.advanceStory(), 10);
-                        return;
+                        // Auto-advance only if text is empty (silent command)
+                        if (storyLine.text === "") {
+                            setTimeout(() => this.advanceStory(), 10);
+                            return;
+                        }
+                        break;
 
                     case CMD_CLEARMISS:
                         // Clear misses to zero
                         this.missesLeft = 0;
                         console.log(`Cleared misses to 0`);
-                        setTimeout(() => this.advanceStory(), 10);
-                        return;
+                        // Auto-advance only if text is empty (silent command)
+                        if (storyLine.text === "") {
+                            setTimeout(() => this.advanceStory(), 10);
+                            return;
+                        }
+                        break;
 
                     case CMD_STOREMISS:
                         // Store current miss count and clear
                         this.recallMisses = this.missesLeft;
                         this.missesLeft = 0;
                         console.log(`Stored ${this.recallMisses} misses, cleared to 0`);
-                        setTimeout(() => this.advanceStory(), 10);
-                        return;
+                        // Auto-advance only if text is empty (silent command)
+                        if (storyLine.text === "") {
+                            setTimeout(() => this.advanceStory(), 10);
+                            return;
+                        }
+                        break;
 
                     case CMD_RECALLMISS:
                         // Recall stored miss count
                         this.missesLeft = this.recallMisses;
                         console.log(`Recalled misses to ${this.missesLeft}`);
-                        setTimeout(() => this.advanceStory(), 10);
-                        return;
+                        // Auto-advance only if text is empty (silent command)
+                        if (storyLine.text === "") {
+                            setTimeout(() => this.advanceStory(), 10);
+                            return;
+                        }
+                        break;
 
                     case CMD_MISS:
                         // Subtract a miss and check for game over
