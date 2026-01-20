@@ -855,6 +855,8 @@ continue
     */
     {evidence: EV_NONE, frame: 279, cmdwho: PP_NONE | CMD_NONE, text: "And just who are you two?!" },
     {evidence: EV_NONE, frame: 279, cmdwho: PP_PHOENIX | CMD_NONE, text: "(OH NO! We're caught!!)" },
+    
+    
     {evidence: EV_NONE, frame: 285, cmdwho: PP_MIA | CMD_NONE, text: "Why are you snooping around my room?" },
     {evidence: EV_NONE, frame: 285, cmdwho: PP_PHOENIX | CMD_NONE, text: "Ch-Chief!?" },
     {evidence: EV_NONE, frame: 285, cmdwho: PP_MIA | CMD_NONE, text: "I should have the police book you two and have you thrown in jail for breaking and entering." },
@@ -1038,6 +1040,8 @@ continue
     {evidence: EV_NONE, frame: 290, cmdwho: PP_PHOENIX | CMD_NONE, text: "(For a second there she kind of hesitated. Perhaps I should press this further...)" },
     {evidence: EV_NONE, frame: 0, cmdwho: PP_NONE | CMD_NONE, text: "" }
 };
+
+// 42:34
 
 // Number of entries in the array
 #define TRANSCRIPT_PART3_SIZE (sizeof(transcript_part3) / sizeof(ConversationEntry))

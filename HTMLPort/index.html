@@ -935,6 +935,39 @@
         const EV_T_RLDONE = 237;
         const EV_T_ELECYES = 238;
         const EV_T_ELECNO = 239;
+        const EV_T_PWHYHERE = 240;
+        const EV_T_PWHYFOLLOW = 241;
+        const EV_T_PSUGAR = 242;
+        const EV_T_PTHING = 243;
+        const EV_T_PJOKE = 244;
+        const EV_T_PJOKEPW = 245;
+        const EV_T_PJOKEPARA = 246;
+        const EV_T_PJOKELEFT = 247;
+        const EV_T_PJOKECHECK = 248;
+        const EV_T_PJOKEDONE = 249;
+        const EV_T_I11_1 = 250;
+        const EV_T_I11_2 = 251;
+        const EV_T_I11_3 = 252;
+        const EV_T_I11_6 = 253;
+        const EV_T_I11_7 = 254;
+        const EV_T_FINISHACE = 255;
+        const EV_T_SLOOK = 256;
+        const EV_T_SMISTOOK = 257;
+        const EV_T_SMIA = 258;
+        const EV_T_SCONT = 259;
+        const EV_T_SWHO = 260;
+        const EV_T_SGIRL = 261;
+        const EV_T_SAGENT = 262;
+        const EV_T_SSEC = 263;
+        const EV_T_SSTRIKE = 264;
+        const EV_T_SNOSTRIKE = 265;
+        const EV_T_STRIXIE = 266;
+        const EV_T_STRIXIE2 = 267;
+        const EV_T_SACE = 268;
+        const EV_T_SWHYPROS = 269;
+        const EV_T_SCUTIE = 270;
+        const EV_T_SPRESS = 271;
+
 
 
         // Investigation bitflags
@@ -1003,10 +1036,10 @@
         const CMD_LAUGHSFX = 27;
         const CMD_GUILTYSFX = 28;
         const CMD_WHOOSHSFX = 29;
+        const CMD_DUNDUNSFX = 30;
+        const CMD_LOCK4SFX = 31;
 
         // Voice Commands
-        const CMD_JUDGEOBJ = 30;
-        const CMD_GROUPOBJ = 31;
         const CMD_TRIXIEHOLD = 32;
         const CMD_PHOENIXHOLD = 33;
         const CMD_PHOENIXTAKE = 34;
@@ -1014,6 +1047,8 @@
         const CMD_PHOENIXOBJ = 36;
         const CMD_TWIOBJ = 37;
         const CMD_FLUTTEROBJ = 38;
+        const CMD_JUDGEOBJ = 39;
+        const CMD_GROUPOBJ = 40;
 
         // Music Commands
         const CMD_MUSSTEEL = 50;
@@ -1070,6 +1105,7 @@
         const CMD_MUSOBJECT2 = 101;
         const CMD_MUSOBJECT3 = 102;
         const CMD_MUSFALL = 103;
+        const CMD_MUSOPENING = 104;
 
         // Action Commands
         const CMD_FIRST_ACTION = 200;   // deliberate repeat of CMD_JUMP, just used to check whether to honor the tag for a jump. Less than this is a valid target
@@ -1095,6 +1131,7 @@
         const CMD_CONCROSS = 219;
         const CMD_RESETMISS = 220;
         const CMD_FADEBLACK = 221;
+        const CMD_AUTOADVANCE = 222;
 
         // Miss system constants
         const DEFAULT_MISSES = 4;
@@ -1129,6 +1166,7 @@
                 this.typewriterText = "";
                 this.typewriterIndex = 0;
                 this.typewriterInterval = null;
+                this.autoAdvance = false;
                 this.currentMusic = null;
                 this.musicAudio = null;
                 this.awaitingEvidenceSelection = false;
@@ -1304,7 +1342,8 @@
             }
 
             showCredits() {
-                alert("Phoenix Wright / My Little Pony - Turnabout Storm\n\nOriginal video by PWaaMLPfim\nTitle image by HowXu\n\nBased on TI port by Tursilion\n\n23 scenes - 34% complete");
+                // total before vid 3 is 105 minutes. Total time is roughly 360 minutes.
+                alert("Phoenix Wright / My Little Pony - Turnabout Storm\n\nOriginal video by PWaaMLPfim\nTitle image by HowXu\n\nBased on TI port by Tursilion\n\n27 scenes - 40% complete");
             }
 
             showCheatMenu() {
@@ -1443,6 +1482,10 @@
                         clearInterval(this.typewriterInterval);
                         this.typewriterInterval = null;
                         this.typewriterActive = false;
+                        if (this.autoAdvance) {
+                            this.autoAdvance = false;
+                            setTimeout(() => this.advanceStory(), 10);
+                        }
                     }
                 }, 10);
             }
@@ -2429,6 +2472,12 @@
                         this.loadImage(storyLine.frame);
                     }
 
+                    if (cmd == CMD_AUTOADVANCE) {
+                        this.autoAdvance = true;
+                    } else {
+                        this.autoAdvance = false;
+                    }
+
                     this.setText(storyLine.text);
                 }
                 
@@ -2593,10 +2642,12 @@
                     case CMD_MUSGUILTY:
                     case CMD_MUSRECALL:
                     case CMD_MUSCRUSADE:
+                    case CMD_MUSCLOCK:
                     case CMD_MUSSCHESS:
                     case CMD_MUSOBJECT2:
                     case CMD_MUSOBJECT3:
                     case CMD_MUSFALL:
+                    case CMD_MUSOPENING:
                         this.playMusic(cmd);
                         if (storyLine.text == "") {
                             setTimeout(() => this.advanceStory(), 10);
@@ -2619,10 +2670,12 @@
                     case CMD_BADMAGSFX:
                     case CMD_SQUEAKSFX:
                     case CMD_LOCK3SFX:
+                    case CMD_LOCK4SFX:
                     case CMD_BREAKLOCK:
                     case CMD_UNLOCKED:
                     case CMD_LAUGHSFX:
                     case CMD_GUILTYSFX:
+                    case CMD_DUNDUNSFX:
                         this.playSound(cmd);
                         if (storyLine.text == "") {
                             setTimeout(() => this.advanceStory(), 10);
@@ -3080,10 +3133,12 @@
                     [CMD_BADMAGSFX]: 'sfx/badmagic.wav',    // Bad magic sfx
                     [CMD_SQUEAKSFX]: 'sfx/squeak.wav',      // Squeak sfx
                     [CMD_LOCK3SFX]: 'sfx/psychelock3.wav',  // chain + 3 booms for psyche-locks
+                    [CMD_LOCK4SFX]: 'sfx/psychelock4.wav',  // chain + 4 booms for psyche-locks
                     [CMD_BREAKLOCK]: 'sfx/breaklock.wav',   // break one psyche-lock
                     [CMD_UNLOCKED]: 'sfx/psychelock.wav',   // unwind the chains
                     [CMD_LAUGHSFX]: 'sfx/laughing.wav',     // laughing sfx
-                    [CMD_GUILTYSFX]: 'sfx/guilty.wav'       // guilty boom sfx
+                    [CMD_GUILTYSFX]: 'sfx/guilty.wav',      // guilty boom sfx
+                    [CMD_DUNDUNSFX]: 'sfx/dundun.wav'       // dundun case location sfx
                 };
 
                 return sfxMap[soundCmd] || null;
@@ -3186,7 +3241,8 @@
                     [CMD_MUSSCHESS]: 51,    // Logic Chess Start - Moderato
                     [CMD_MUSOBJECT2]: 52,   // Objection! 2011
                     [CMD_MUSOBJECT3]: 53,   // Objection! 2002
-                    [CMD_MUSFALL]: 54       // Shiru - Fall of the Leaf
+                    [CMD_MUSFALL]: 54,      // Shiru - Fall of the Leaf
+                    [CMD_MUSOPENING]: 55    // Investigation - Opening 2007
                 };
 
                 return musicMap[musicCmd] || 0;
