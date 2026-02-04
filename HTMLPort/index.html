@@ -692,7 +692,7 @@
     <script>
         // Constants from structures.h
         const PP_FIRST = 0x8000;
-        const PP_MAX = 18;
+        const PP_MAX = 21;
 
         // Evidence constants (python updateEnums.py ../structures.h structures.js)
         const EV_NONE = 0;
@@ -967,7 +967,26 @@
         const EV_T_SWHYPROS = 269;
         const EV_T_SCUTIE = 270;
         const EV_T_SPRESS = 271;
-
+        const EV_T_NOCLOUD = 272;
+        const EV_T_WHATPTHINK = 273;
+        const EV_T_MOVEON = 274;
+        const EV_T_WHATDTHINK = 275;
+        const EV_T_ABOUTSONATA = 276;
+        const EV_T_ABOUTSUIT = 277;
+        const EV_T_ABOUTNOW = 278;
+        const EV_T_FIXSUIT = 279;
+        const EV_T_PCOMEOUT = 280;
+        const EV_T_PJOINUNDER = 281;
+        const EV_T_PBOOK = 282;
+        const EV_T_STRIXSHOW = 283;
+        const EV_T_PWHYLATE = 284;
+        const EV_T_PSKIPLATE = 285;
+        const EV_T_DEYES = 286;
+        const EV_T_DNOLETTER = 287;
+        const EV_T_DCONT = 288;
+        const EV_T_DSKIPEYES = 289;
+        const EV_T_WHATD2THINK = 290;
+        const EV_T_MOVEON2 = 291;
 
 
         // Investigation bitflags
@@ -1002,6 +1021,8 @@
         const PP_CROSSEXAM = 0x9000;
         const PP_GALLERY = 0x9100;
         const PP_MIA = 0x9200;
+        const PP_WOBNIAR = 0x9300;
+        const PP_DERPY = 0x9400;
 
         // Command constants (from structures.h)
         const CMD_NONE = 0;
@@ -1120,8 +1141,8 @@
         const CMD_CLRPROMPT = 208;
         const CMD_ADDPROMPT = 209;
         const CMD_CHANGEPROMPT = 210;
-        const CMD_SELPROMPT = 211;
-        const CMD_ENDSTORY = 212;
+        const CMD_REMOVEPROMPT = 211;
+        const CMD_SELPROMPT = 212;
         const CMD_ADDTEST = 213;
         const CMD_OBJECTHERE = 214;
         const CMD_BADOBJECT = 215;
@@ -1132,6 +1153,7 @@
         const CMD_RESETMISS = 220;
         const CMD_FADEBLACK = 221;
         const CMD_AUTOADVANCE = 222;
+        const CMD_ENDSTORY = 223;
 
         // Miss system constants
         const DEFAULT_MISSES = 4;
@@ -1343,7 +1365,7 @@
 
             showCredits() {
                 // total before vid 3 is 105 minutes. Total time is roughly 360 minutes.
-                alert("Phoenix Wright / My Little Pony - Turnabout Storm\n\nOriginal video by PWaaMLPfim\nTitle image by HowXu\n\nBased on TI port by Tursilion\n\n27 scenes - 40% complete");
+                alert("Phoenix Wright / My Little Pony - Turnabout Storm\n\nOriginal video by PWaaMLPfim\nTitle image by HowXu\n\nBased on TI port by Tursilion\n\n28 scenes - 42% complete");
             }
 
             showCheatMenu() {
@@ -1553,7 +1575,9 @@
                     [PP_TESTIMONY]: "Testimony",
                     [PP_CROSSEXAM]: "Cross-Examination",
                     [PP_GALLERY]: "Gallery",
-                    [PP_MIA]: "Mia"
+                    [PP_MIA]: "Mia",
+                    [PP_WOBNIAR]: "Wob Niar",
+                    [PP_DERPY]: "Derpy Hooves"
                 };
                 return names[personId] || "Unknown";
             }
@@ -1572,7 +1596,9 @@
                     [PP_JUDGE]: "The Judge also seems to have been called! He's fair, though easily confused.",
                     [PP_BLOOM]: "Earth pony child, Cutie Mark Crusader. Witness who was in the Everfree Forest the night of the crime.",
                     [PP_PINKIE]: "Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash.",
-                    [PP_SONATA]: "Unicorn manager of Ace Swift. Resembles Mia from my own realm."
+                    [PP_SONATA]: "Unicorn manager of Ace Swift.",
+                    [PP_WOBNIAR]: "Made up evil twin of Rainbow Dash from Pinkie's imagination.",
+                    [PP_DERPY]: "Mail carrier with offset eyes. Pinkie advises not to say her name."
                 };
                 return descriptions[evidenceId] || `No description available for person ${evidenceId}.`;
             }
@@ -2426,7 +2452,7 @@
                 // Commands that should execute silently and auto-advance (if they don't return)
                 const silentCommands = [
                     CMD_ADDPROMPT, CMD_SELPROMPT, CMD_JUMP, CMD_JUMPIFSHOW,
-                    CMD_CHANGEPROMPT, CMD_JUMPIFEV, CMD_JUMPIFNOEV, CMD_JUMPIFSHOW,
+                    CMD_CHANGEPROMPT, CMD_REMOVEPROMPT, CMD_JUMPIFEV, CMD_JUMPIFNOEV, CMD_JUMPIFSHOW,
                     CMD_INVESTIGATE
                 ];
                 // silent only if text if empty
@@ -2595,6 +2621,11 @@
                         // Auto-advance to next line for CHANGEPROMPT commands
                         setTimeout(() => this.advanceStory(), 10);
                         return;
+                    case CMD_REMOVEPROMPT:
+                        this.removePrompt(storyLine.evidence);
+                        // Auto-advance to next line for REMOVEPROMPT commands
+                        setTimeout(() => this.advanceStory(), 10);
+                        return;
                     // Music commands
                     case CMD_MUSPROLOG:
                     case CMD_MUSSTEEL:
@@ -2648,6 +2679,7 @@
                     case CMD_MUSOBJECT3:
                     case CMD_MUSFALL:
                     case CMD_MUSOPENING:
+                    case CMD_MUSSPECIAL:
                         this.playMusic(cmd);
                         if (storyLine.text == "") {
                             setTimeout(() => this.advanceStory(), 10);
@@ -2894,6 +2926,15 @@
                         if (text != "") {
                             this.prompts[i].text = text;
                         }
+                        break;
+                    }
+                }
+            }
+
+            removePrompt(tagId) {
+                for (let i = 0; i < this.prompts.length; i++) {
+                    if (this.prompts[i].tagId == tagId) {
+                        this.prompts.splice(i, 1);
                         break;
                     }
                 }
