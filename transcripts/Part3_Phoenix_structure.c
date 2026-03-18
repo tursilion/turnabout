@@ -137,10 +137,6 @@ ConversationEntry part3_phoenix_transcript[] = {
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PINKIE | CMD_NONE, text: "Carousel Boutique is over yonder, Feenie!" },
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PHOENIX | CMD_NONE, text: "H-hey! Stop running ahead of me like that!" },
     
-    
-    
-    
-    
     {evidence: EV_NONE, frame: 0, cmdwho: PP_NONE | CMD_DUNDUNSFX, text: "Carousel Boutique. June 10th, 2:20PM" },
     
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PHOENIX | CMD_NONE, text: "Wow. This place is really... posh." },
@@ -252,13 +248,13 @@ ConversationEntry part3_phoenix_transcript[] = {
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PHOENIX | CMD_NONE, text: "And it didn't go that way, I'm guessing." },
     {evidence: EV_NONE, frame: 0, cmdwho: PP_RARITY | CMD_NONE, text: "No." },
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PHOENIX | CMD_NONE, text: "???" },
-    {evidence: EV_NONE, frame: 0, cmdwho: PP_RARITY | CMD_NONE, text: "THE LINE WAS SO LONG! IT WAS HOT AND STIFLING, NO AIR CIRCULATION WHATSOEVER!" },
-    {evidence: EV_NONE, frame: 0, cmdwho: PP_RARITY | CMD_NONE, text: "SOME FOAL WAS CRYING AND BICKERING THE ENTIRE TIME! THE ENTIRE TIME! WAAAH! WAAAH!" },
-    {evidence: EV_NONE, frame: 0, cmdwho: PP_RARITY | CMD_NONE, text: "I TRIED TO LOVE AND TOLERATE IT, BUT IT WOULDN'T STOP!" },
-    {evidence: EV_NONE, frame: 0, cmdwho: PP_RARITY | CMD_NONE, text: "THERE WAS ONLY ONE PEN, AND THE PONY IN FRONT OF ME WAS WATCHING A NOVEL OR SOMETHING WITH IT!" },
-    {evidence: EV_NONE, frame: 0, cmdwho: PP_RARITY | CMD_NONE, text: "I WAS SITTING THERE FOR HALF AN HOUR WAITING FOR HER TO FINISH SO I COULD SIGN THE DUMB PAPERWORK THEY WANTED ME TO SIGN!" },
-    {evidence: EV_NONE, frame: 0, cmdwho: PP_RARITY | CMD_NONE, text: "WHY AREN'T THERE MORE PENS!? TELL ME, WHY AREN'T THERE MORE PENS!!??" },
-    {evidence: EV_NONE, frame: 0, cmdwho: PP_RARITY | CMD_NONE, text: "IT WAS ABSOLUTELY DREADFUL! I NEVER WANT TO SEE THAT PLACE AGAIN!!" },
+    {evidence: EV_NONE, frame: 0, cmdwho: PP_RARITY | CMD_AUTOADVANCE, text: "THE LINE WAS SO LONG! IT WAS HOT AND STIFLING, NO AIR CIRCULATION WHATSOEVER!" },
+    {evidence: EV_NONE, frame: 0, cmdwho: PP_RARITY | CMD_AUTOADVANCE, text: "SOME FOAL WAS CRYING AND BICKERING THE ENTIRE TIME! THE ENTIRE TIME! WAAAH! WAAAH!" },
+    {evidence: EV_NONE, frame: 0, cmdwho: PP_RARITY | CMD_AUTOADVANCE, text: "I TRIED TO LOVE AND TOLERATE IT, BUT IT WOULDN'T STOP!" },
+    {evidence: EV_NONE, frame: 0, cmdwho: PP_RARITY | CMD_AUTOADVANCE, text: "THERE WAS ONLY ONE PEN, AND THE PONY IN FRONT OF ME WAS WATCHING A NOVEL OR SOMETHING WITH IT!" },
+    {evidence: EV_NONE, frame: 0, cmdwho: PP_RARITY | CMD_AUTOADVANCE, text: "I WAS SITTING THERE FOR HALF AN HOUR WAITING FOR HER TO FINISH SO I COULD SIGN THE DUMB PAPERWORK THEY WANTED ME TO SIGN!" },
+    {evidence: EV_NONE, frame: 0, cmdwho: PP_RARITY | CMD_AUTOADVANCE, text: "WHY AREN'T THERE MORE PENS!? TELL ME, WHY AREN'T THERE MORE PENS!!??" },
+    {evidence: EV_NONE, frame: 0, cmdwho: PP_RARITY | CMD_AUTOADVANCE, text: "IT WAS ABSOLUTELY DREADFUL! I NEVER WANT TO SEE THAT PLACE AGAIN!!" },
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PHOENIX | CMD_NONE, text: "(I think I'm gonna need to change my pants now.)" },
     {evidence: EV_NONE, frame: 0, cmdwho: PP_RARITY | CMD_NONE, text: "*Ahem* Excuse me, yes. I got a TAD frustrated and lost my composure while waiting in that line." },
     {evidence: EV_NONE, frame: 0, cmdwho: PP_RARITY | CMD_NONE, text: "All I wanted to do was inquire where my package was..." },
@@ -347,6 +343,9 @@ ConversationEntry part3_phoenix_transcript[] = {
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PHOENIX | CMD_NONE, text: "Pinkie Pie, wait!" },
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PHOENIX | CMD_NONE, text: "(Why does she always run ahead of me like that? I better follow her though.)" },
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PHOENIX | CMD_NONE, text: "(WHAT!? HOW DID SHE DO THAT!?)" },
+    
+    
+***** 1:00:43.0 - video 3b phoenix
     
     {evidence: EV_NONE, frame: 0, cmdwho: PP_NONE | CMD_DUNDUNSFX, text: "Fluttershy's Cottage. June 10th, 2:50PM" },
     
