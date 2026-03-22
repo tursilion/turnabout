@@ -10,7 +10,7 @@ The images, sound effects and music are significant in size, so at the moment th
 
 I might forget to update this archive - if it's out of date, just drop me an email at harmlesslion and I'll update it for you.
 
-The TI version is built into my Classic99 emulator: <a href="https://harmlesslion.com/classic99">https://harmlesslion.com/classic99</a>
+The TI version is built into my Classic99 emulator: <a href="https://harmlesslion.com/software/classic99">https://harmlesslion.com/software/classic99</a>
 
 The HTML5 version can be played here: <a href="https://harmlesslion.com/phoenix">https://harmlesslion.com/phoenix</a>
 
