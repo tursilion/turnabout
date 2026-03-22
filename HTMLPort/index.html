@@ -1000,7 +1000,10 @@
         const EV_T_RHOLDIT = 302;
         const EV_T_RWRONG = 303;
         const EV_T_RHOLE = 304;
-
+        const EV_T_FACCAB = 305;
+        const EV_T_TYESHUM = 306;
+        const EV_T_TTALKHORSE = 307;
+        const EV_T_TEQUEST = 308;
 
         // Investigation bitflags
         const IV_CELL0 = 1;
@@ -2927,6 +2930,12 @@
             }
 
             addPrompt(tagId, text) {
+                for (let i = 0; i < this.prompts.length; i++) {
+                    if (this.prompts[i].tagId == tagId) {
+                        this.prompts[i].text = text;
+                        return;
+                    }
+                }
                 if (this.prompts.length < 6) { // MAX_PROMPTS
                     this.prompts.push({
                         tagId: tagId,

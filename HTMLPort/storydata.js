@@ -51,12 +51,20 @@ const STORY_DATA = {
         {evidence: EV_NONE, frame: 4, cmdwho: PP_UNKNOWN | CMD_BLACK, text: "I wanted the best Defense Attorney in Equestria, not some... porcupine thing."},
         {evidence: EV_NONE, frame: 4, cmdwho: PP_PHOENIX | CMD_BLACK, text: "(*Sigh* Does my hair really look like a porcupine...?)"},
         {evidence: EV_NONE, frame: 4, cmdwho: PP_PHOENIX | CMD_BLACK, text: "(My muscles are coming to, I think I can open my eyes.)"},
-        { evidence: EV_NONE, frame: 4, cmdwho: PP_PHOENIX | CMD_NONE, text: "Huh? Where am I?" },
+        { evidence: EV_NONE, frame: 4, cmdwho: PP_PHOENIX | CMD_CLRPROMPT, text: "Huh? Where am I?" },
         { evidence: EV_NONE, frame: 5, cmdwho: PP_UNKNOWN | CMD_CHIMESFX, text: "Hey! You're a human, aren't you?" },
-        {evidence: EV_NONE, frame: 5, cmdwho: PP_PHOENIX | CMD_NONE, text: "Yeah... I'm a human..."},
+        
+        {evidence: EV_T_TYESHUM, frame: 5, cmdwho: PP_UNKNOWN | CMD_ADDPROMPT, text: "Yes, I'm human"},
+        {evidence: EV_T_TTALKHORSE, frame: 5, cmdwho: PP_UNKNOWN | CMD_ADDPROMPT, text: "A talking horse?!"},
+        {evidence: EV_NONE, frame: 5, cmdwho: PP_UNKNOWN | CMD_SELPROMPT, text: ""},
+        
+        {evidence: EV_T_TYESHUM, frame: 5, cmdwho: PP_PHOENIX | CMD_NONE, text: "Yeah... I'm a human..."},
         {evidence: EV_NONE, frame: 5, cmdwho: PP_PHOENIX | CMD_FLASH, text: "WAIT WHAT?!"},
         {evidence: EV_NONE, frame: 6, cmdwho: PP_UNKNOWN | CMD_MUSTRUCY, text: "A human in Equestria, that's amazing!"},
-        {evidence: EV_NONE, frame: 6, cmdwho: PP_PHOENIX | CMD_NONE, text: "Y-YOU'RE A TALKING HORSE!"},
+        {evidence: EV_T_TEQUEST, frame: 6, cmdwho: PP_UNKNOWN | CMD_ADDPROMPT, text: "What is Equestria?"},
+        {evidence: EV_NONE, frame: 6, cmdwho: PP_UNKNOWN | CMD_SELPROMPT, text: ""},
+        
+        {evidence: EV_T_TTALKHORSE, frame: 6, cmdwho: PP_PHOENIX | CMD_NONE, text: "Y-YOU'RE A TALKING HORSE!"},
         {evidence: EV_NONE, frame: 7, cmdwho: PP_UNKNOWN | CMD_NONE, text: "Excuse me! I am not a horse, I happen to be a pony."},
         {evidence: EV_NONE, frame: 5, cmdwho: PP_PHOENIX | CMD_NONE, text: "OH! Okay! A talking PONY. That explains everything!"},
         {evidence: EV_NONE, frame: 5, cmdwho: PP_PHOENIX | CMD_NONE, text: "I must be in a dream... a really REALLY bad dream."},
@@ -70,16 +78,21 @@ const STORY_DATA = {
         {evidence: EV_NONE, frame: 9, cmdwho: PP_UNKNOWN | CMD_NONE, text: "Oh... oops... my mistake."},
         {evidence: EV_NONE, frame: 9, cmdwho: PP_PHOENIX | CMD_NONE, text: "What do you mean \"oops\"?"},
         {evidence: EV_NONE, frame: 7, cmdwho: PP_UNKNOWN | CMD_NONE, text: "Well, I cast a spell to call upon \"The Greatest Defense Attorney in Equestria\""},
-        {evidence: EV_NONE, frame: 7, cmdwho: PP_PHOENIX | CMD_NONE, text: "What is Equestria?"},
+        {evidence: EV_T_TEQUEST, frame: 7, cmdwho: PP_UNKNOWN | CMD_ADDPROMPT, text: "What is Equestria?"},
+        {evidence: EV_NONE, frame: 6, cmdwho: PP_UNKNOWN | CMD_SELPROMPT, text: ""},
+        
+        {evidence: EV_T_TEQUEST, frame: 7, cmdwho: PP_PHOENIX | CMD_NONE, text: "What is Equestria?"},
         {evidence: EV_NONE, frame: 10, cmdwho: PP_UNKNOWN | CMD_NONE, text: "The name of this country."},
         {evidence: EV_NONE, frame: 11, cmdwho: PP_PHOENIX | CMD_NONE, text: "But I'm not FROM this country!"},
         {evidence: EV_NONE, frame: 10, cmdwho: PP_UNKNOWN | CMD_NONE, text: "I must have left out the \"Equestria\" part when I cast the spell."},
         {evidence: EV_NONE, frame: 9, cmdwho: PP_UNKNOWN | CMD_NONE, text: "I guess I accidentally called upon \"The Greatest Defense Attorney\" period."},
         {evidence: EV_NONE, frame: 9, cmdwho: PP_UNKNOWN | CMD_NONE, text: "Go figure, huh?"},
+        {evidence: EV_NONE, frame: 9, cmdwho: PP_PHOENIX | CMD_CLRPROMPT, text: "(Oh cosmos, you flatter me.)"},
+
         {evidence: EV_T_SNDBCK, frame: 9, cmdwho: PP_PHOENIX | CMD_ADDPROMPT, text: "Send me back"},
         {evidence: EV_T_WHORU, frame: 9, cmdwho: PP_PHOENIX | CMD_ADDPROMPT, text: "Who are you?"},
-        {evidence: EV_NONE, frame: 9, cmdwho: PP_PHOENIX | CMD_NONE, text: "(Oh cosmos, you flatter me.)"},
         {evidence: EV_NONE, frame: 9, cmdwho: PP_PHOENIX | CMD_SELPROMPT, text: ""},
+
         {evidence: EV_T_SNDBCK, frame: 5, cmdwho: PP_PHOENIX  | CMD_NONE, text: "Well, can you please send me back... like RIGHT NOW?!"},
         {evidence: EV_NONE, frame: 10, cmdwho: PP_UNKNOWN  | CMD_NONE, text: "Sure thing..."},
         {evidence: EV_NONE, frame: 6, cmdwho: PP_UNKNOWN  | CMD_NONE, text: "Actually... this is perfect!"},
@@ -132,6 +145,7 @@ const STORY_DATA = {
         {evidence: EV_T_CRIME, frame: 13, cmdwho: PP_PHOENIX  | CMD_ADDPROMPT, text: "What was the crime?"},
         {evidence: EV_NONE, frame: 13, cmdwho: PP_TWILIGHT | CMD_NONE, text: "No, it's not that. It's my friend... I know she is not guilty but she is going to be punished for a crime she didn't even commit."},
         {evidence: EV_NONE, frame: 13, cmdwho: PP_TWILIGHT | CMD_SELPROMPT, text: ""},
+        
         {evidence: EV_T_CRIME, frame: 13, cmdwho: PP_PHOENIX  | CMD_NONE, text: "What kind of crime is she being accused of?"},
         {evidence: EV_NONE, frame: 13, cmdwho: PP_TWILIGHT | CMD_NONE, text: "Murder..."},
         {evidence: EV_NONE, frame: 13, cmdwho: PP_PHOENIX  | CMD_NONE, text: "(Surprise, surprise...)"},
@@ -989,6 +1003,7 @@ const STORY_DATA = {
         {evidence: EV_NONE, frame: 126, cmdwho: PP_JUDGE      | CMD_NONE, text: "The trial will now commence!"},
         {evidence: EV_NONE, frame: 127, cmdwho: PP_TRIXIE     | CMD_NONE, text: "Indeed, this drabble has wasted enough of Trixie's time."},
         {evidence: EV_NONE, frame: 139, cmdwho: PP_PHOENIX    | CMD_NONE, text: "(That third person thing is really getting on my nerves.)"},
+        // non-empty string means don't fade to black
         {evidence: 12, frame: 139, cmdwho: PP_NONE       | CMD_ENDSTORY, text: "*"}
     ],
     12: [
@@ -1538,7 +1553,7 @@ const STORY_DATA = {
         {evidence: EV_NONE, frame: 126, cmdwho: PP_JUDGE   | CMD_NONE, text: "Alright, this witness is free to go!"},
         {evidence: EV_NONE, frame: 158, cmdwho: PP_BLOOM   | CMD_CRASHSFX, text: "OBJECTION!"},
         {evidence: EV_NONE, frame: 158, cmdwho: PP_BLOOM   | CMD_CRASHSFX, text: "HOLD IT!"},
-        {evidence: EV_NONE, frame: 173, cmdwho: PP_NONE    | CMD_NONE, text: "..."},
+        {evidence: EV_NONE, frame: 173, cmdwho: PP_BLOOM   | CMD_NONE, text: "..."},
         {evidence: EV_NONE, frame: 167, cmdwho: PP_BLOOM   | CMD_NONE, text: "Awww, nothing..."},
         {evidence: 15, frame: 167, cmdwho: PP_NONE         | CMD_ENDSTORY, text: ""}
     ],
@@ -1705,6 +1720,8 @@ const STORY_DATA = {
         {evidence: EV_T_NOAPONY, frame: 143, cmdwho: PP_TRIXIE | CMD_ADDPROMPT, text: "I don't have evidence"},
         {evidence: EV_NONE, frame: 143, cmdwho: PP_TRIXIE | CMD_SELPROMPT, text: ""},
         {evidence: EV_T_YESAPONY, frame: 177, cmdwho: PP_TWILIGHT  | CMD_NONE, text: "Phoenix, I've been through everything, I don't see any evidence that implicates another pony being there."},
+        {evidence: EV_NONE, frame: 177, cmdwho: PP_PHOENIX   | CMD_NONE, text: "What about Apple Bloom...?"},
+        {evidence: EV_NONE, frame: 177, cmdwho: PP_TWILIGHT  | CMD_NONE, text: "She was in the forest on the trail, but there's no evidence she was in the clearing."},
         {evidence: EV_NONE, frame: 177, cmdwho: PP_PHOENIX   | CMD_NONE, text: "We'll have to see whether another opportunity comes up then..."},
         {evidence: EV_T_NOAPONY, frame: 139, cmdwho: PP_PHOENIX   | CMD_NONE, text: "I don't right now!"},
         {evidence: EV_NONE, frame: 176, cmdwho: PP_TRIXIE    | CMD_NONE, text: "Then it is to be assumed Rainbow Trash moved that cloud there in foresight that Ace would be there!"},
@@ -2118,19 +2135,20 @@ const STORY_DATA = {
         {evidence: PP_FLUTTERSHY, frame: EV_T_FACCFS, cmdwho: PP_PHOENIX|CMD_JUMPIFSHOW, text: ""},
         {evidence: PP_TRIXIE, frame: EV_T_FACCTR, cmdwho: PP_PHOENIX|CMD_JUMPIFSHOW, text: ""},
         {evidence: PP_RAINBOW, frame: EV_T_FACCRD, cmdwho: PP_PHOENIX|CMD_JUMPIFSHOW, text: ""},
-
+        {evidence: PP_BLOOM, frame: EV_T_FACCAB, cmdwho: PP_PHOENIX|CMD_JUMPIFSHOW, text: ""},
+        
         {evidence: EV_NONE, frame: 141, cmdwho: PP_TRIXIE | CMD_NONE, text: "This is absolutely ridiculous..."},
         {evidence: EV_NONE, frame: 151, cmdwho: PP_JUDGE | CMD_NONE, text: "Mr Wright, you can't just throw out baseless accusations without any proof!"},
         {evidence: EV_T_JUDGERETRY, frame: 151, cmdwho: PP_JUDGE | CMD_MISS, text: "Do you want to rethink your accusation?"},
         { evidence: EV_NONE, frame: 134, cmdwho: PP_PHOENIX | CMD_NONE, text: "Um, sorry... What I meant to say was:" },
-        {evidence: EV_T_LOOPFWHO2, frame: 139, cmdwho: PP_PHOENIX | CMD_JUMP, text: ""},
+        {evidence: EV_T_LOOPFWHO2, frame: 134, cmdwho: PP_PHOENIX | CMD_JUMP, text: ""},
 
         {evidence: EV_T_FACCTR, frame: 148, cmdwho: PP_PHOENIX | CMD_NONE, text: "The defense accuses the prosecutor, Trixie!"},
         {evidence: EV_NONE, frame: 161, cmdwho: PP_TRIXIE | CMD_NONE, text: "WHAT!?"},
         {evidence: EV_NONE, frame: 135, cmdwho: PP_TRIXIE | CMD_NONE, text: "You are the stupidest, dumbest numbskull Trixie has ever come across!"},
         {evidence: EV_NONE, frame: 135, cmdwho: PP_TRIXIE | CMD_NONE, text: "Trixie is a unicorn, not a pegasus! Trixie cannot fly! Trixie cannot manipulate storm clouds! AND TRIXIE WAS IN CANTERLOT AT THE TIME OF THE CRIME!"},
         {evidence: EV_NONE, frame: 151, cmdwho: PP_JUDGE | CMD_NONE, text: "Mr Wright, you can't accuse the prosecution just because you don't like them."},
-        {evidence: EV_T_JUDGERETRY, frame: 135, cmdwho: PP_TRIXIE | CMD_JUMP, text: ""},
+        {evidence: EV_T_JUDGERETRY, frame: 151, cmdwho: PP_JUDGE | CMD_JUMP, text: ""},
 
         {evidence: EV_T_FACCRD, frame: 148, cmdwho: PP_PHOENIX | CMD_NONE, text: "The defense accuses the defendent, Rainbow Dash!"},
         {evidence: EV_NONE, frame: 130, cmdwho: PP_JUDGE | CMD_STOPMUS, text: "..."},
@@ -2139,6 +2157,11 @@ const STORY_DATA = {
         {evidence: EV_NONE, frame: 137, cmdwho: PP_PHOENIX | CMD_MISS, text: "Sorry... I got a little carried away. What I meant to say was:"},
         {evidence: EV_NONE, frame: 137, cmdwho: PP_PHOENIX | CMD_MUSSUSPENSE, text: ""},
         {evidence: EV_T_LOOPFWHO2, frame: 137, cmdwho: PP_PHOENIX | CMD_JUMP, text: ""},
+
+        {evidence: EV_T_FACCAB, frame: 148, cmdwho: PP_PHOENIX | CMD_NONE, text: "The defense accuses the previous witness, Apple Bloom!"},
+        {evidence: EV_NONE, frame: 143, cmdwho: PP_TRIXIE | CMD_NONE, text: "Nice try, Mr Wrong. The filly is an Earth pony, she's not capable of manipulating a storm cloud. That requires a pegasus."},
+        {evidence: EV_NONE, frame: 151, cmdwho: PP_JUDGE | CMD_NONE, text: "The prosecution's logic is sound, Mr Wright. This court rejects that theory."},
+        {evidence: EV_T_JUDGERETRY, frame: 151, cmdwho: PP_JUDGE | CMD_JUMP, text: ""},
 
         {evidence: EV_T_FFINALMISS, frame: 151, cmdwho: PP_JUDGE | CMD_STOPMUS, text: "I'm sorry, but this court will not permit any more stalling on this question."},
         {evidence: EV_NONE, frame: 151, cmdwho: PP_JUDGE | CMD_NONE, text: "The prosecution has provided convincing evidence which the defense has been unable to refute."},
@@ -2554,15 +2577,15 @@ const STORY_DATA = {
         { evidence: EV_FEATHER, frame: EV_T_RGETFEATHER, cmdwho: PP_RAINBOW | CMD_JUMPIFSHOW, text: "" },
         { evidence: EV_PICTURES, frame: EV_T_RGETPICS, cmdwho: PP_RAINBOW | CMD_JUMPIFSHOW, text: "" },
 
+        { evidence: EV_NONE, frame: 235, cmdwho: PP_RAINBOW | CMD_NONE, text: "I don't think that Ace even had that, Nix..." },
+        { evidence: EV_NONE, frame: 235, cmdwho: PP_PHOENIX | CMD_NONE, text: "Right... okay... what about this?" },
+        { evidence: EV_T_R2JUMP, frame: 227, cmdwho: PP_PHOENIX | CMD_JUMP, text: "" },
+
         { evidence: EV_T_RGETMAGATAMA, frame: 235, cmdwho: PP_RAINBOW | CMD_NONE, text: "I'm not sure why you keep showing me that toy, Nix..." },
         { evidence: EV_NONE, frame: 235, cmdwho: PP_PHOENIX | CMD_NONE, text: "It's not a toy!!" },
         { evidence: EV_T_RGETMAGATAMA, frame: 234, cmdwho: PP_RAINBOW | CMD_NONE, text: "Whatever you say..." },
         { evidence: EV_NONE, frame: 234, cmdwho: PP_PHOENIX | CMD_NONE, text: "Let's try this, then..." },
         { evidence: EV_T_R2JUMP, frame: 234, cmdwho: PP_PHOENIX | CMD_JUMP, text: "" },
-
-        { evidence: EV_NONE, frame: 235, cmdwho: PP_RAINBOW | CMD_NONE, text: "I don't think that Ace even had that, Nix..." },
-        { evidence: EV_NONE, frame: 235, cmdwho: PP_PHOENIX | CMD_NONE, text: "Right... okay... what about this?" },
-        { evidence: EV_T_R2JUMP, frame: 227, cmdwho: PP_PHOENIX | CMD_JUMP, text: "" },
 
         { evidence: EV_T_RGETFEATHER, frame: 234, cmdwho: PP_RAINBOW | CMD_NONE, text: "Humph. Didn't you say that belongs to Fluttershy?" },
         { evidence: EV_NONE, frame: 236, cmdwho: PP_PHOENIX | CMD_NONE, text: "Oh, right, the zoo animals. Okay... in that case..." },
@@ -2802,7 +2825,7 @@ const STORY_DATA = {
         { evidence: EV_NONE, frame: 298, cmdwho: PP_PINKIE | CMD_CLRPROMPT, text: "Yup-a-roonie! That's my name!" },
 
         { evidence: EV_T_PWHYHERE, frame: 298, cmdwho: PP_PINKIE | CMD_ADDPROMPT, text: "Why are you here?" },
-        { evidence: EV_T_PWHYFOLLOW, frame: 298, cmdwho: PP_PINKIE | CMD_ADDPROMPT, text: "Why are following me?" },
+        { evidence: EV_T_PWHYFOLLOW, frame: 298, cmdwho: PP_PINKIE | CMD_ADDPROMPT, text: "Why are you following me?" },
         { evidence: EV_T_PSUGAR, frame: 298, cmdwho: PP_PINKIE | CMD_ADDPROMPT, text: "Do you know Sugar Cube Corner?" },
         { evidence: EV_NONE, frame: 298, cmdwho: PP_PINKIE | CMD_SELPROMPT, text: "" },
 
@@ -3110,27 +3133,27 @@ const STORY_DATA = {
         { evidence: EV_NONE, frame: 273, cmdwho: PP_PHOENIX | CMD_NONE, text: "(Do you honestly think she's going to fall for that?)" },
         { evidence: EV_NONE, frame: 290, cmdwho: PP_UNKNOWN | CMD_NONE, text: "Do you honestly think I'm going to fall for-!" },
 
-        { evidence: EV_NONE, frame: 290, cmdwho: PP_SONATA | CMD_NONE, text: "Name. Now." },
+        { evidence: EV_NONE, frame: 290, cmdwho: PP_UNKNOWN | CMD_NONE, text: "Name. Now." },
         { evidence: EV_NONE, frame: 288, cmdwho: PP_PHOENIX | CMD_NONE, text: "Phoenix Wright..." },
         { evidence: EV_NONE, frame: 268, cmdwho: PP_PINKIE | CMD_NONE, text: "Pinkamena Dianne Pie, Party Thrower Extraordinaire!" },
-        { evidence: EV_NONE, frame: 288, cmdwho: PP_SONATA | CMD_NONE, text: "As I thought. You're that human lawyer from the trial earlier..." },
+        { evidence: EV_NONE, frame: 288, cmdwho: PP_UNKNOWN | CMD_NONE, text: "As I thought. You're that human lawyer from the trial earlier..." },
         { evidence: EV_NONE, frame: 288, cmdwho: PP_PHOENIX | CMD_NONE, text: "..." },
         { evidence: EV_NONE, frame: 272, cmdwho: PP_PINKIE | CMD_NONE, text: "What's the matter Feenie, cat got your tongue?" },
         { evidence: EV_NONE, frame: 268, cmdwho: PP_PINKIE | CMD_NONE, text: "That would hurt because a cat has claws and your tongue is really sensitive..." },
         { evidence: EV_NONE, frame: 279, cmdwho: PP_PINKIE | CMD_NONE, text: "Ouch!" },
-        { evidence: EV_NONE, frame: 288, cmdwho: PP_SONATA | CMD_CLRPROMPT, text: "I knew Rainbow Dash was guilty, but it didn't even look like you were trying in court today." },
+        { evidence: EV_NONE, frame: 288, cmdwho: PP_UNKNOWN | CMD_CLRPROMPT, text: "I knew Rainbow Dash was guilty, but it didn't even look like you were trying in court today." },
 
-        { evidence: EV_T_SWHO, frame: 288, cmdwho: PP_SONATA | CMD_ADDPROMPT, text: "Who are you?" },
-        { evidence: EV_NONE, frame: 288, cmdwho: PP_SONATA | CMD_SELPROMPT, text: "" },
+        { evidence: EV_T_SWHO, frame: 288, cmdwho: PP_UNKNOWN | CMD_ADDPROMPT, text: "Who are you?" },
+        { evidence: EV_NONE, frame: 288, cmdwho: PP_UNKNOWN | CMD_SELPROMPT, text: "" },
 
         { evidence: EV_T_SWHO, frame: 288, cmdwho: PP_PHOENIX | CMD_NONE, text: "Who... exactly... are you...?" },
-        { evidence: EV_NONE, frame: 290, cmdwho: PP_SONATA | CMD_NONE, text: "I'm the one who should be asking questions here. Seeing as you two are the ones who broke into my room." },
-        { evidence: EV_NONE, frame: 290, cmdwho: PP_SONATA | CMD_NONE, text: "I'm betting you're the one who stole the key two days ago." },
+        { evidence: EV_NONE, frame: 290, cmdwho: PP_UNKNOWN | CMD_NONE, text: "I'm the one who should be asking questions here. Seeing as you two are the ones who broke into my room." },
+        { evidence: EV_NONE, frame: 290, cmdwho: PP_UNKNOWN | CMD_NONE, text: "I'm betting you're the one who stole the key two days ago." },
         { evidence: EV_NONE, frame: 290, cmdwho: PP_PHOENIX | CMD_NONE, text: "But isn't this Ace Swift's room?" },
-        { evidence: EV_NONE, frame: 288, cmdwho: PP_SONATA | CMD_CHIMESFX, text: "You're here about him? I see..." },
+        { evidence: EV_NONE, frame: 288, cmdwho: PP_UNKNOWN | CMD_CHIMESFX, text: "You're here about him? I see..." },
         { evidence: EV_NONE, frame: 289, cmdwho: PP_PHOENIX | CMD_NONE, text: "We were just investigating his hotel room for clues. This is his room, is it not?" },
-        { evidence: EV_NONE, frame: 288, cmdwho: PP_SONATA | CMD_CLRPROMPT, text: "Hmm?" },
-        { evidence: EV_NONE, frame: 289, cmdwho: PP_SONATA | CMD_NONE, text: "Oh, yes, that is correct. And my name is Sonata." },
+        { evidence: EV_NONE, frame: 288, cmdwho: PP_UNKNOWN | CMD_NONE, text: "Hmm?" },
+        { evidence: PP_SONATA, frame: 289, cmdwho: PP_SONATA | CMD_ADDEV, text: "Oh, yes, that is correct. And my name is Sonata." },
         { evidence: EV_NONE, frame: 289, cmdwho: PP_PHOENIX | CMD_CLRPROMPT, text: "Sonata...?" },
         { evidence: EV_NONE, frame: 287, cmdwho: PP_SONATA | CMD_NONE, text: "Did I stutter? Yes, that's my name." },
         
@@ -3193,6 +3216,11 @@ const STORY_DATA = {
         { evidence: EV_NONE, frame: 295, cmdwho: PP_SONATA | CMD_NONE, text: "It's funny really, part of me wants you to best her." },
         { evidence: EV_NONE, frame: 288, cmdwho: PP_PHOENIX | CMD_NONE, text: "(Who has the grudge now?)" },
         { evidence: EV_NONE, frame: 288, cmdwho: PP_SONATA | CMD_NONE, text: "I actually know quite a bit about her... care to listen?" },
+        { evidence: EV_NONE, frame: 273, cmdwho: PP_PINKIE | CMD_NONE, text: "ooooh, gossip time!" },
+        { evidence: EV_NONE, frame: 273, cmdwho: PP_SONATA | CMD_NONE, text: "Pinkie, this isn't gossip. It's... background information." },
+        { evidence: EV_NONE, frame: 273, cmdwho: PP_PINKIE | CMD_NONE, text: "Background gossip information!" },
+        { evidence: EV_NONE, frame: 288, cmdwho: PP_SONATA | CMD_NONE, text: "... if you're quite finished?" },
+        { evidence: EV_NONE, frame: 288, cmdwho: PP_PHOENIX | CMD_NONE, text: "Yes, please. Go on." },
 
         { evidence: 27, frame: 288, cmdwho: PP_NONE | CMD_ENDSTORY, text: "*" }
     ],
@@ -3426,7 +3454,7 @@ const STORY_DATA = {
     {evidence: EV_NONE, frame: 262, cmdwho: PP_PHOENIX | CMD_SELPROMPT, text: "" },
     
     {evidence: EV_T_WHATDTHINK, frame: 309, cmdwho: PP_PHOENIX | CMD_NONE, text: "Well, Derp- I mean, uh, Blonde-maned Pony...!" },
-    {evidence: EV_T_WHATD2THINK, frame: 305, cmdwho: PP_PHOENIX | CMD_REMOVEPROMPT, text: "What did you think of the trial?" },
+    {evidence: EV_NONE, frame: 305, cmdwho: PP_PHOENIX | CMD_REMOVEPROMPT, text: "What did you think of the trial?" },
     {evidence: EV_NONE, frame: 306, cmdwho: PP_DERPY | CMD_NONE, text: "\"Blonde-maned Pony\"? Didn't I tell you my name?" },
     {evidence: EV_NONE, frame: 306, cmdwho: PP_PHOENIX | CMD_NONE, text: "Uh, I, uh... I..." },
     {evidence: EV_NONE, frame: 308, cmdwho: PP_DERPY | CMD_NONE, text: "Yes?" },
@@ -3644,7 +3672,7 @@ const STORY_DATA = {
         { evidence: EV_NONE, frame: 335, cmdwho: PP_RARITY | CMD_NONE, text: "Yes, I am..." },
         { evidence: EV_NONE, frame: 337, cmdwho: PP_PINKIE | CMD_NONE, text: "Don't worry, Rarity! Feenie and I are hot on the trail of Wob Niar!" },
         { evidence: EV_NONE, frame: 319, cmdwho: PP_RARITY | CMD_NONE, text: "\"Wob Niar\"?" },
-        { evidence: EV_NONE, frame: 338, cmdwho: PP_PINKIE | CMD_NONE, text: "Yeah, it's Rainbow Dash's evil twin sister that nobody knows about!" },
+        { evidence: EV_NONE, frame: 338, cmdwho: PP_PINKIE | CMD_NONE, text: "Yeah, it's Rainbow Dash's evil twin sister that nopony knows about!" },
         { evidence: EV_NONE, frame: 319, cmdwho: PP_RARITY | CMD_NONE, text: "Rainbow Dash has a twin sister? I didn't know that..." },
         { evidence: EV_NONE, frame: 339, cmdwho: PP_PINKIE | CMD_NONE, text: "Of course you didn't! Didn't you catch the 'nopony knows about' part? You're a pony and you don't know! See?" },
 
