@@ -344,9 +344,6 @@ ConversationEntry part3_phoenix_transcript[] = {
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PHOENIX | CMD_NONE, text: "(Why does she always run ahead of me like that? I better follow her though.)" },
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PHOENIX | CMD_NONE, text: "(WHAT!? HOW DID SHE DO THAT!?)" },
     
-    
-***** 1:00:43.0 - video 3b phoenix
-    
     {evidence: EV_NONE, frame: 0, cmdwho: PP_NONE | CMD_DUNDUNSFX, text: "Fluttershy's Cottage. June 10th, 2:50PM" },
     
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PHOENIX | CMD_NONE, text: "Hmm, I expected there to be more police here looking into that feather..." },
@@ -523,6 +520,12 @@ ConversationEntry part3_phoenix_transcript[] = {
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PHOENIX | CMD_NONE, text: "(What a pleasant way to say goodbye to someone...)" },
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PHOENIX | CMD_NONE, text: "Goodbye, Applejack. Goodbye... Big Macintosh..." },
     {evidence: EV_NONE, frame: 0, cmdwho: PP_BIGMAC | CMD_NONE, text: "Eeyup..." },
+
+    
+    
+***** 1:10:26.0 - video 3b phoenix
+
+
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PHOENIX | CMD_NONE, text: "Was that the reason you wanted me to come here, Pinkie? To speak with Applejack?" },
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PINKIE | CMD_NONE, text: "No, it wasn't that. There should be another reason..." },
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PINKIE | CMD_NONE, text: "Oh! Here it comes!" },
@@ -787,6 +790,25 @@ ConversationEntry part3_phoenix_transcript[] = {
     {evidence: EV_NONE, frame: 0, cmdwho: PP_TWILIGHT | CMD_NONE, text: "You're right. Come back here once you're done though." },
     {evidence: EV_NONE, frame: 0, cmdwho: PP_TWILIGHT | CMD_NONE, text: "You were attacked after all." },
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PHOENIX | CMD_NONE, text: "You have my word." },
+    
+-- TWILIGHT'S INVESTIGATION --
+    
+- met Cruse from Manehatten. Said he just arrived. Cruise loopy, except for Ace, said Ace got what was coming to him. Knew even though the murder had not been announced. Had Psychelocks. 
+    - a griffon named Lenora explained that he had a sick sister, and that the erratic behaviour is an act
+- Got Equestian 500 program - Cruise was not listed but one competitor from Manehatten had dropped out. Program says that pony signed up two days ago.
+- Got second half of letter
+- got handle to Pinkie's golf club - charred but has distinctive 'P' on the handle - the Pinkie Iron Mark V. She lost it in the forest a week ago, but it wasn't broken then.
+- An expensive package delivery from the Griffon Express never arrived, was expected at 10am on the day of the murder (mail schedule)
+- A pouch found in Everfree containing a rancid smelling perfume
+- Met Pinkie when we left the forest. While talking to her, Cruise Control ran into us. He dropped all your evidence, and when we questioned him he admitted he did something to you. Pinkie and I held him while AppleBloom fetched the police. Then I came to find you.
+
+-- AFTER SPLITTING UP TWILIGHT CONFRONTS CRUISE --
+
+- Cruise admits he was being blackmailed, that Ace would pull his sister's care if Cruise didn't lose. He was sure Ace was blackmailing others like Rainbow Dash. 
+- He found out about Dash's meeting, and hid near the forest to take a picture of Ace entering for it
+- He took the photo to the police, but they didn't treat his tip as credible
+- Visiting hours ended before I could find out if Cruise killed Ace, but he had psychelocks!
+    
     
     {evidence: EV_NONE, frame: 0, cmdwho: PP_NONE | CMD_NONE, text: "Hay And Stay Hotel. June 10th, 5:05PM" },
     

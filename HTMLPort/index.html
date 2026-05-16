@@ -6,7 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phoenix Wright: Turnabout Storm</title>
+    <meta name="description" content="A web port of the original video series into a playable game using a custom engine.">
+    <title>Phoenix Wright: Turnabout Storm (An original 2026 Game Port)</title>
     <style>
         body {
             margin: 0;
@@ -692,7 +693,7 @@
     <script>
         // Constants from structures.h
         const PP_FIRST = 0x8000;
-        const PP_MAX = 22;
+        const PP_MAX = 26;
 
         // Evidence constants (python updateEnums.py ../structures.h structures.js)
         const EV_NONE = 0;
@@ -717,35 +718,35 @@
         const EV_UNICORNSPELL = 19;
         const EV_LIST = 20;
         const EV_INVOICE = 21;
-        const EV_START_INTERNAL = 22;
-        const EV_I_IN1FLAG1 = 23;
-        const EV_I_WHINEBED = 24;
-        const EV_I_WHINEBREAKFAST = 25;
-        const EV_I_DAY1DESPERATE = 26;
-        const EV_I_FLUTTERANIMALS = 27;
-        const EV_I_QUESTIONCLOUD = 28;
-        const EV_MAX_STORED_EV = 29;
-        const EV_I_0 = 30;
-        const EV_I_1 = 31;
-        const EV_I_2 = 32;
-        const EV_I_3 = 33;
-        const EV_I_4 = 34;
-        const EV_I_5 = 35;
-        const EV_I_6 = 36;
-        const EV_I_7 = 37;
-        const EV_I_SEARCH_LEFT = 38;
-        const EV_I_SEARCH_RIGHT = 39;
-        const EV_START_TAGS = 40;
-        const EV_T_SNDBCK2 = 41;
-        const EV_T_WHORU = 42;
-        const EV_T_CRIME = 43;
-        const EV_T_DETAIL = 44;
-        const EV_T_HUMAN = 45;
-        const EV_T_NOHUMAN = 46;
-        const EV_T_LAWYERBADGE = 47;
-        const EV_T_NOBADGE = 48;
-        const EV_T_RIGHTBADGE = 49;
-        const EV_T_QUESTIONBADGE = 50;
+        const EV_PROGRAM = 22;
+        const EV_GOLFCLUB = 23;
+        const EV_PERFUME = 24;
+        const EV_ACEPHOTO = 25;
+        const EV_FULLLETTER = 26;
+        const EV_DUMMY1 = 27;
+        const EV_DUMMY2 = 28;
+        const EV_DUMMY3 = 29;
+        const EV_DUMMY4 = 30;
+        const EV_DUMMY5 = 31;
+        const EV_START_INTERNAL = 32;
+        const EV_I_IN1FLAG1 = 33;
+        const EV_I_WHINEBED = 34;
+        const EV_I_WHINEBREAKFAST = 35;
+        const EV_I_DAY1DESPERATE = 36;
+        const EV_I_FLUTTERANIMALS = 37;
+        const EV_I_QUESTIONCLOUD = 38;
+        const EV_MAX_STORED_EV = 39;
+        const EV_I_0 = 40;
+        const EV_I_1 = 41;
+        const EV_I_2 = 42;
+        const EV_I_3 = 43;
+        const EV_I_4 = 44;
+        const EV_I_5 = 45;
+        const EV_I_6 = 46;
+        const EV_I_7 = 47;
+        const EV_I_SEARCH_LEFT = 48;
+        const EV_I_SEARCH_RIGHT = 49;
+        const EV_START_TAGS = 50;
         const EV_T_NOQBADGE = 51;
         const EV_T_CONCERN = 52;
         const EV_T_NOCONCERN = 53;
@@ -1004,6 +1005,44 @@
         const EV_T_TYESHUM = 306;
         const EV_T_TTALKHORSE = 307;
         const EV_T_TEQUEST = 308;
+        const EV_T_AWHITELIE = 309;
+        const EV_T_ASISTER = 310;
+        const EV_T_AAJ = 311;
+        const EV_T_AMUFFIN = 312;
+        const EV_T_ABLOOM = 313;
+        const EV_T_ADEFUSE = 314;
+        const EV_T_ANOJOKE = 315;
+        const EV_T_ANOTTWI = 316;
+        const EV_T_ATRIXIE = 317;
+        const EV_T_APERFORM = 318;
+        const EV_T_AYESSHAKE = 319;
+        const EV_T_ANOSHAKE = 320;
+        const EV_T_ADONESHAKE = 321;
+        const EV_T_CALLWHO = 322;
+        const EV_T_CALLHOW = 323;
+        const EV_T_CALLHELP = 324;
+        const EV_T_CALLWHY = 325;
+        const EV_T_CALLOKAY = 326;
+        const EV_T_CALLHI = 327;
+        const EV_T_EVFLUTAPOL = 328;
+        const EV_T_EVFLUTFREE = 329;
+        const EV_T_EVFLUTSEEN = 330;
+        const EV_T_EVFLUTLEAVE = 331;
+        const EV_T_TWIFIRED = 332;
+        const EV_T_TWIDONEFIRED = 333;
+        const EV_T_SNDBCK2 = 334;
+        const EV_T_WHORU = 335;
+        const EV_T_CRIME = 336;
+        const EV_T_DETAIL = 337;
+        const EV_T_HUMAN = 338;
+        const EV_T_TWITRUTH = 339;
+        const EV_T_TWIATTACK = 340;
+        const EV_T_TWIEVIDENCE = 341;
+        const EV_T_NOHUMAN = 342;
+        const EV_T_LAWYERBADGE = 343;
+        const EV_T_NOBADGE = 344;
+        const EV_T_RIGHTBADGE = 345;
+        const EV_T_QUESTIONBADGE = 346;
 
         // Investigation bitflags
         const IV_CELL0 = 1;
@@ -1040,6 +1079,9 @@
         const PP_WOBNIAR = 0x9300;
         const PP_DERPY = 0x9400;
         const PP_RARITY = 0x9500;
+        const PP_BIGMAC = 0x9600;
+        const PP_APPLEJACK = 0x9700;
+        const PP_CRUISE = 0x9800;
 
         // Command constants (from structures.h)
         const CMD_NONE = 0;
@@ -1144,6 +1186,7 @@
         const CMD_MUSOBJECT3 = 102;
         const CMD_MUSFALL = 103;
         const CMD_MUSOPENING = 104;
+        const CMD_MUSSWEPTP2 = 105;
 
         // Action Commands
         const CMD_FIRST_ACTION = 200;   // deliberate repeat of CMD_JUMP, just used to check whether to honor the tag for a jump. Less than this is a valid target
@@ -1171,6 +1214,8 @@
         const CMD_FADEBLACK = 221;
         const CMD_AUTOADVANCE = 222;
         const CMD_ENDSTORY = 223;
+        const CMD_REMOVEALLEV = 224;
+        const CMD_RESTOREEV = 225;
 
         // Miss system constants
         const DEFAULT_MISSES = 4;
@@ -1205,6 +1250,7 @@
                 this.typewriterText = "";
                 this.typewriterIndex = 0;
                 this.typewriterInterval = null;
+                this.postTypewriterCmd = CMD_NONE;
                 this.autoAdvance = false;
                 this.currentMusic = null;
                 this.musicAudio = null;
@@ -1382,7 +1428,7 @@
 
             showCredits() {
                 // total before vid 3 is 105 minutes. Total time is roughly 360 minutes.
-                alert("Phoenix Wright / My Little Pony - Turnabout Storm\n\nOriginal video by PWaaMLPfim\nTitle image by HowXu\n\nBased on TI port by Tursilion\n\n30 scenes - 45% complete");
+                alert("Phoenix Wright / My Little Pony - Turnabout Storm\n\nOriginal video by PWaaMLPfim\nTitle image by HowXu\n\nBased on TI port by Tursilion\n\n35 scenes - 52% complete");
             }
 
             showCheatMenu() {
@@ -1492,12 +1538,12 @@
                 this.textEl.textContent = "";
             }
 
-            setText(text) {
+            setText(text, postcmd) {
                 this.currentText = text;
-                this.startTypewriter(text);
+                this.startTypewriter(text, postcmd);
             }
 
-            startTypewriter(text) {
+            startTypewriter(text, postcmd) {
                 if (this.typewriterInterval) {
                     clearInterval(this.typewriterInterval);
                 }
@@ -1506,6 +1552,7 @@
                 this.typewriterText = text;
                 this.typewriterIndex = 0;
                 this.textEl.textContent = "";
+                this.postTypewriterCmd = postcmd;
 
                 if (!text || text.length === 0) {
                     this.typewriterActive = false;
@@ -1518,6 +1565,11 @@
                         this.textEl.textContent = this.typewriterText.substring(0, this.typewriterIndex + 1);
                         this.typewriterIndex++;
                     } else {
+                        // warning: all commands are passed in, so be picky in what you check for
+                        // for now this exists only for the rimshot
+                        if (this.postTypewriterCmd == CMD_RIMSHOTSFX) {
+                            this.playSound(this.postTypewriterCmd);
+                        }
                         clearInterval(this.typewriterInterval);
                         this.typewriterInterval = null;
                         this.typewriterActive = false;
@@ -1595,7 +1647,10 @@
                     [PP_MIA]: "Mia",
                     [PP_WOBNIAR]: "Wob Niar",
                     [PP_DERPY]: "Derpy Hooves",
-                    [PP_RARITY]: "Rarity"
+                    [PP_RARITY]: "Rarity",
+                    [PP_BIGMAC]: "Big Macintosh",
+                    [PP_APPLEJACK]: "Applejack",
+                    [PP_CRUISE]: "Cruise Control"
                 };
                 return names[personId] || "Unknown";
             }
@@ -1616,8 +1671,11 @@
                     [PP_PINKIE]: "Earth pony Party Thrower Extraordinaire. Friend of Rainbow Dash.",
                     [PP_SONATA]: "Unicorn manager of Ace Swift.",
                     [PP_WOBNIAR]: "Made up evil twin of Rainbow Dash from Pinkie's imagination.",
-                    [PP_DERPY]: "Mail carrier with offset eyes. Pinkie advises not to say her name.",
-                    [PP_RARITY]: "Fashion pony who is friends with Rainbow Dash. Fixed my suit in return for considering her lost order."
+                    [PP_DERPY]: "Mail carrier pegasus with offset eyes. Pinkie advises not to say her name, as it hurts her feelings.",
+                    [PP_RARITY]: "Fashion unicorn who is friends with Rainbow Dash. Fixed my suit in return for considering her lost order.",
+                    [PP_BIGMAC]: "Older brother of Applejack. Large earth pony stallion of few words.",
+                    [PP_APPLEJACK]: "Earth pony who runs Sweet Apple Acres. Apple Bloom's older sister.",
+                    [PP_CRUISE]: "Racer from Manehatten in the Equestrian 500. Was being blackmailed by Ace. Attacked me in the Everfree Forest."
                 };
                 return descriptions[evidenceId] || `No description available for person ${evidenceId}.`;
             }
@@ -1641,6 +1699,18 @@
                     }
                 } else if (id < EV_MAX_STORED_EV) {
                     this.evidence_found[id] = 0;
+                }
+            }
+
+            removeAllInventory() {
+                for (let i = 0; i < EV_MAX_STORED_EV; i++) {
+                    this.removeInventory(i);    
+                }
+            }
+
+            restoreInventory(id) {
+                for (let i = 1; i <= id; i++) {
+                    this.addInventory(i);
                 }
             }
 
@@ -1680,7 +1750,7 @@
                     this.processStoryLine(this.currentStoryData[this.storyIndex]);
                 } else {
                     this.loadImage(locationNumber + 1000);
-                    this.setText(`Location ${locationNumber} - No story data available yet.`);
+                    this.setText(`Location ${locationNumber} - No story data available yet.`, CMD_NONE);
                     this.setName(PP_PHOENIX);
                 }
             }
@@ -1826,7 +1896,13 @@
                     [EV_TORNRESIGN]: "Torn Resignation",
                     [EV_UNICORNSPELL]: "Unicorn Spell Book",
                     [EV_LIST]: "List of Names",
-                    [EV_INVOICE]: "Rarity's Invoice"
+                    [EV_INVOICE]: "Rarity's Invoice",
+                    [EV_PROGRAM]: "Equestrian 500 program",
+                    [EV_GOLFCLUB]: "Pinkie Iron Mark V",
+                    [EV_PERFUME]: "Rancid Smelling Bottle",
+                    [EV_ACEPHOTO]: "Photo of Ace Swift",
+                    [EV_FULLLETTER]: "Retirement letter to Ace Swift"
+
                 };
                 return names[evidenceId] || `Evidence ${evidenceId}`;
             }
@@ -1853,7 +1929,12 @@
                     [EV_TORNRESIGN]: "Someone was planning on quitting something after the Equestrian 500. The other half is missing.",
                     [EV_UNICORNSPELL]: "A book found in the victim's hotel room. Small note scribbled on one of the pages.",
                     [EV_LIST]: "A list with several names including Rainbow Dash.",
-                    [EV_INVOICE]: "Invoice for a bottom of imported perfume Rarity ordered. It's very long lasting."
+                    [EV_INVOICE]: "Invoice for a bottom of imported perfume Rarity ordered. It's very long lasting.",
+                    [EV_PROGRAM]: "Equestrian 500 program. Some pony from Manehatten signed up and then dropped out, causing a blank on the program.",
+                    [EV_GOLFCLUB]: "The first innovation from Pinkamena Diane Pie. Has a very distinctive 'P' handle, otherwise it is charred and broken. Lost intact in Everfree two weeks ago. Found in the stream entering Ponyville.",
+                    [EV_PERFUME]: "Found in a satchel in Everfree Forest near the clearing. Has a distinctive and unpleasant odor.",
+                    [EV_ACEPHOTO]: "Photo from behind Ace Swift in his Lightning Proof Suit entering Everfree Forest the night of the murder. His suit appears properly worn and intact.",
+                    [EV_FULLLETTER]: "A hand-written letter found in two halves written to Ace Swift, retiring from 'hurting ponies'."
                 };
                 return descriptions[evidenceId] || `No description available for evidence ${evidenceId}.`;
             }
@@ -1944,7 +2025,7 @@
                 this.investigationMode = true;
                 this.investigationFlags = sceneNumber; // Store the bitflags from frame
                 this.imageEl.style.cursor = 'none'; // Hide system cursor during investigation
-                this.setText("Click area to inspect (Arrow keys to move, Enter to select)");
+                this.setText("Click area to inspect (Arrow keys to move, Enter to select)", CMD_NONE);
                 this.updateButtonStates('investigation');
 
                 // Set up investigation cells (8 clickable areas)
@@ -2478,7 +2559,7 @@
                 ];
                 // silent only if text if empty
                 const conditionalSilentCommands = [
-                    CMD_ADDEV, CMD_REMOVEEV, CMD_CLRPROMPT, CMD_FLASH,
+                    CMD_ADDEV, CMD_REMOVEEV, CMD_REMOVEALLEV, CMD_RESTOREEV, CMD_CLRPROMPT, CMD_FLASH,
                     CMD_BADOBJECT, CMD_GOODOBJECT, CMD_STOPMUS,
                     CMD_RESETMISS, CMD_CLEARMISS, CMD_STOREMISS, CMD_RECALLMISS
                 ];
@@ -2525,7 +2606,7 @@
                         this.autoAdvance = false;
                     }
 
-                    this.setText(storyLine.text);
+                    this.setText(storyLine.text, cmd);
                 }
                 
                 // Process special commands first
@@ -2556,6 +2637,24 @@
                         if (storyLine.evidence > 0) {
                             this.removeInventory(storyLine.evidence);
                         }
+                        // Auto-advance only if text is empty (silent command)
+                        if (storyLine.text === "") {
+                            setTimeout(() => this.advanceStory(), 10);
+                            return;
+                        }
+                        break;
+                    case CMD_REMOVEALLEV:
+                        // Remove all evidence (but not people) from inventory
+                        this.removeAllInventory();
+                        // Auto-advance only if text is empty (silent command)
+                        if (storyLine.text === "") {
+                            setTimeout(() => this.advanceStory(), 10);
+                            return;
+                        }
+                        break;
+                    case CMD_RESTOREEV:
+                        // Restore evidence to inventory
+                        this.restoreInventory(storyLine.evidence);
                         // Auto-advance only if text is empty (silent command)
                         if (storyLine.text === "") {
                             setTimeout(() => this.advanceStory(), 10);
@@ -2702,6 +2801,7 @@
                     case CMD_MUSFALL:
                     case CMD_MUSOPENING:
                     case CMD_MUSSPECIAL:
+                    case CMD_MUSSWEPTP2:
                         this.playMusic(cmd);
                         if (storyLine.text == "") {
                             setTimeout(() => this.advanceStory(), 10);
@@ -2714,7 +2814,6 @@
                     case CMD_LOCKSFX:
                     case CMD_BREAKSFX:
                     case CMD_PARTYSFX:
-                    case CMD_RIMSHOTSFX:
                     case CMD_CRASHSFX:
                     case CMD_ICRASHSFX:
                     case CMD_RIPSFX:
@@ -2732,6 +2831,12 @@
                     case CMD_DUNDUNSFX:
                         this.playSound(cmd);
                         if (storyLine.text == "") {
+                            setTimeout(() => this.advanceStory(), 10);
+                        }
+                        break;
+                    case CMD_RIMSHOTSFX:
+                        if (storyLine.text == "") {
+                            this.playSound(cmd);
                             setTimeout(() => this.advanceStory(), 10);
                         }
                         break;
@@ -3061,7 +3166,7 @@
 
                 if (!this.currentStoryData || this.storyIndex >= this.currentStoryData.length - 1) {
                     // End of story for this location
-                    this.setText("End of current content. Press E for Evidence, or return to menu.");
+                    this.setText("End of current content. Press E for Evidence, or return to menu.", CMD_NONE);
                     return;
                 }
 
@@ -3311,7 +3416,8 @@
                     [CMD_MUSOBJECT2]: 52,   // Objection! 2011
                     [CMD_MUSOBJECT3]: 53,   // Objection! 2002
                     [CMD_MUSFALL]: 54,      // Shiru - Fall of the Leaf
-                    [CMD_MUSOPENING]: 55    // Investigation - Opening 2007
+                    [CMD_MUSOPENING]: 55,   // Investigation - Opening 2007
+                    [CMD_MUSSWEPTP2]: 56    // Sweptaway Turnabout (second part)
                 };
 
                 return musicMap[musicCmd] || 0;
