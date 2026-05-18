@@ -693,7 +693,7 @@
     <script>
         // Constants from structures.h
         const PP_FIRST = 0x8000;
-        const PP_MAX = 26;
+        const PP_MAX = 27;
 
         // Evidence constants (python updateEnums.py ../structures.h structures.js)
         const EV_NONE = 0;
@@ -1043,6 +1043,43 @@
         const EV_T_NOBADGE = 344;
         const EV_T_RIGHTBADGE = 345;
         const EV_T_QUESTIONBADGE = 346;
+        const EV_T_SONLETTER = 347;
+        const EV_T_LOOPSON1 = 348;
+        const EV_T_LOOPSON2 = 349;
+        const EV_T_SONSPELL = 350;
+        const EV_T_SONWRONGLETTER = 351;
+        const EV_T_SONWRONGWRITE = 352;
+        const EV_T_LOOPSON3 = 353;
+        const EV_T_SONBLACKMAIL = 354;
+        const EV_T_SONPICS = 355;
+        const EV_T_LOOPSON4 = 356;
+        const EV_T_SONPROB = 357;
+        const EV_T_SONWHYTELL = 358;
+        const EV_T_SONWHYREPORT = 359;
+        const EV_T_SONREPORT = 360;
+        const EV_T_OWL = 361;
+        const EV_T_SPIKE = 362;
+        const EV_T_LIBRARY = 363;
+        const EV_T_SONLIST = 364;
+        const EV_T_SONDEFEAT = 365;
+        const EV_T_SONSAYNOTHING = 366;
+        const EV_T_SONDEAL = 367;
+        const EV_T_AABTIME = 368;
+        const EV_T_AABDONE = 369;
+        const EV_T_EFCALL = 370;
+        const EV_T_EFWAIT = 371;
+        const EV_T_CRUISEMORE = 372;
+        const EV_T_CRUISEDONE = 373;
+        const EV_T_SONWBLACKMAIL = 374;
+        const EV_T_SONYESDEAL = 375;
+        const EV_T_SONSAYNOTHING2 = 376;
+        const EV_T_RFEENIE = 377;
+        const EV_T_RNOTOKPONY = 378;
+        const EV_T_ROKPONY = 379;
+        const EV_T_RSHAME = 380;
+        const EV_T_RHELP = 381;
+        const EV_T_RLOOP = 382;
+        const EV_T_RSEWING = 383;
 
         // Investigation bitflags
         const IV_CELL0 = 1;
@@ -1082,6 +1119,8 @@
         const PP_BIGMAC = 0x9600;
         const PP_APPLEJACK = 0x9700;
         const PP_CRUISE = 0x9800;
+        const PP_OWL = 0x9900;
+        const PP_SPIKE = 0x9a00;
 
         // Command constants (from structures.h)
         const CMD_NONE = 0;
@@ -1427,8 +1466,8 @@
             }
 
             showCredits() {
-                // total before vid 3 is 105 minutes. Total time is roughly 360 minutes.
-                alert("Phoenix Wright / My Little Pony - Turnabout Storm\n\nOriginal video by PWaaMLPfim\nTitle image by HowXu\n\nBased on TI port by Tursilion\n\n35 scenes - 52% complete");
+                // total before vid 4 is 206 minutes. Total time is roughly 360 minutes.
+                alert("Phoenix Wright / My Little Pony - Turnabout Storm\n\nOriginal video by PWaaMLPfim\nTitle image by HowXu\n\nBased on TI port by Tursilion\n\n37 scenes - 57% complete");
             }
 
             showCheatMenu() {
@@ -1650,7 +1689,9 @@
                     [PP_RARITY]: "Rarity",
                     [PP_BIGMAC]: "Big Macintosh",
                     [PP_APPLEJACK]: "Applejack",
-                    [PP_CRUISE]: "Cruise Control"
+                    [PP_CRUISE]: "Cruise Control",
+                    [PP_OWL]: "Owlowiscious",
+                    [PP_SPIKE]: "Spike",
                 };
                 return names[personId] || "Unknown";
             }
@@ -1675,7 +1716,9 @@
                     [PP_RARITY]: "Fashion unicorn who is friends with Rainbow Dash. Fixed my suit in return for considering her lost order.",
                     [PP_BIGMAC]: "Older brother of Applejack. Large earth pony stallion of few words.",
                     [PP_APPLEJACK]: "Earth pony who runs Sweet Apple Acres. Apple Bloom's older sister.",
-                    [PP_CRUISE]: "Racer from Manehatten in the Equestrian 500. Was being blackmailed by Ace. Attacked me in the Everfree Forest."
+                    [PP_CRUISE]: "Racer from Manehatten in the Equestrian 500. Was being blackmailed by Ace. Attacked me in the Everfree Forest.",
+                    [PP_OWL]: "Twilight's owl assistant who helps her study at night.",
+                    [PP_SPIKE]: "Twilight's dragon assistant, '#1 assistant' in his words."
                 };
                 return descriptions[evidenceId] || `No description available for person ${evidenceId}.`;
             }
@@ -1898,7 +1941,7 @@
                     [EV_LIST]: "List of Names",
                     [EV_INVOICE]: "Rarity's Invoice",
                     [EV_PROGRAM]: "Equestrian 500 program",
-                    [EV_GOLFCLUB]: "Pinkie Iron Mark V",
+                    [EV_GOLFCLUB]: "Burned Stick",
                     [EV_PERFUME]: "Rancid Smelling Bottle",
                     [EV_ACEPHOTO]: "Photo of Ace Swift",
                     [EV_FULLLETTER]: "Retirement letter to Ace Swift"
@@ -1931,9 +1974,9 @@
                     [EV_LIST]: "A list with several names including Rainbow Dash.",
                     [EV_INVOICE]: "Invoice for a bottom of imported perfume Rarity ordered. It's very long lasting.",
                     [EV_PROGRAM]: "Equestrian 500 program. Some pony from Manehatten signed up and then dropped out, causing a blank on the program.",
-                    [EV_GOLFCLUB]: "The first innovation from Pinkamena Diane Pie. Has a very distinctive 'P' handle, otherwise it is charred and broken. Lost intact in Everfree two weeks ago. Found in the stream entering Ponyville.",
+                    [EV_GOLFCLUB]: "Used to be a golf club - the Pinkie Iron Mark V. The first innovation from Pinkamena Diane Pie. Has a very distinctive 'P' handle, otherwise it is charred and broken. Lost intact in Everfree two weeks ago. Found in the stream entering Ponyville.",
                     [EV_PERFUME]: "Found in a satchel in Everfree Forest near the clearing. Has a distinctive and unpleasant odor.",
-                    [EV_ACEPHOTO]: "Photo from behind Ace Swift in his Lightning Proof Suit entering Everfree Forest the night of the murder. His suit appears properly worn and intact.",
+                    [EV_ACEPHOTO]: "Photo from behind Ace Swift in his Lightning Proof Suit entering Everfree Forest the night of the murder. No injuries or damage to the suit are visible.",
                     [EV_FULLLETTER]: "A hand-written letter found in two halves written to Ace Swift, retiring from 'hurting ponies'."
                 };
                 return descriptions[evidenceId] || `No description available for evidence ${evidenceId}.`;
@@ -3036,8 +3079,7 @@
 
             addPrompt(tagId, text) {
                 for (let i = 0; i < this.prompts.length; i++) {
-                    if (this.prompts[i].tagId == tagId) {
-                        this.prompts[i].text = text;
+                    if ((this.prompts[i].tagId == tagId) && (this.prompts[i].text == text)) {
                         return;
                     }
                 }

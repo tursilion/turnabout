@@ -947,6 +947,20 @@ ConversationEntry part3_phoenix_transcript[] = {
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PHOENIX | CMD_NONE, text: "(Looks like I ended up on the same boat as all our other victims...)" },
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PHOENIX | CMD_NONE, text: "(Ugh! What do I do? Though this seems important, how does it fit in with anything?)" },
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     {evidence: EV_NONE, frame: 0, cmdwho: PP_NONE | CMD_NONE, text: "Library. June 10th, 5:40PM" },
     
     {evidence: EV_NONE, frame: 0, cmdwho: PP_PHOENIX | CMD_NONE, text: "(Seems Twilight isn't back yet. Better not tell her about Sonata, unless it's necessary.)" },
