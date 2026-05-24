@@ -1080,6 +1080,11 @@
         const EV_T_RHELP = 381;
         const EV_T_RLOOP = 382;
         const EV_T_RSEWING = 383;
+        const EV_T_RDKNIFE = 384;
+        const EV_T_RDEVID = 385;
+        const EV_T_TWINOTSURE = 386;
+        const EV_T_TWIAMSURE = 387;
+
 
         // Investigation bitflags
         const IV_CELL0 = 1;
@@ -1226,6 +1231,7 @@
         const CMD_MUSFALL = 103;
         const CMD_MUSOPENING = 104;
         const CMD_MUSSWEPTP2 = 105;
+        const CMD_MUSPRELUDEORIG = 106;
 
         // Action Commands
         const CMD_FIRST_ACTION = 200;   // deliberate repeat of CMD_JUMP, just used to check whether to honor the tag for a jump. Less than this is a valid target
@@ -1290,7 +1296,7 @@
                 this.typewriterIndex = 0;
                 this.typewriterInterval = null;
                 this.postTypewriterCmd = CMD_NONE;
-                this.autoAdvance = false;
+                this.autoAdvance = 0;
                 this.currentMusic = null;
                 this.musicAudio = null;
                 this.awaitingEvidenceSelection = false;
@@ -1467,7 +1473,7 @@
 
             showCredits() {
                 // total before vid 4 is 206 minutes. Total time is roughly 360 minutes.
-                alert("Phoenix Wright / My Little Pony - Turnabout Storm\n\nOriginal video by PWaaMLPfim\nTitle image by HowXu\n\nBased on TI port by Tursilion\n\n37 scenes - 57% complete");
+                alert("Phoenix Wright / My Little Pony - Turnabout Storm\n\nOriginal video by PWaaMLPfim\nTitle image by HowXu\n\nBased on TI port by Tursilion\n\n38 scenes - 59% complete");
             }
 
             showCheatMenu() {
@@ -1612,9 +1618,10 @@
                         clearInterval(this.typewriterInterval);
                         this.typewriterInterval = null;
                         this.typewriterActive = false;
-                        if (this.autoAdvance) {
-                            this.autoAdvance = false;
-                            setTimeout(() => this.advanceStory(), 10);
+                        if (this.autoAdvance > 0) {
+                            // text complete, so now we can autoadvance
+                            setTimeout(() => this.advanceStory(), this.autoAdvance);
+                            this.autoAdvance = 0;
                         }
                     }
                 }, 10);
@@ -2592,9 +2599,12 @@
                 const cmd = storyLine.cmdwho & 0xff;
                 const speaker = storyLine.cmdwho & 0xFF00;
 
+                // to override below if needed
+                this.autoAdvance = 0;
+
                 console.log(`Processing story line: cmd=${cmd}, speaker=${speaker.toString(16)} (${this.getPersonName(speaker)}), text="${storyLine.text}"`);
 
-                // Commands that should execute silently and auto-advance (if they don't return)
+                // Commands that should execute silently and auto-advance (if they don't return) - autoadvance is manually handled below, don't add here
                 const silentCommands = [
                     CMD_ADDPROMPT, CMD_SELPROMPT, CMD_JUMP, CMD_JUMPIFSHOW,
                     CMD_CHANGEPROMPT, CMD_REMOVEPROMPT, CMD_JUMPIFEV, CMD_JUMPIFNOEV, CMD_JUMPIFSHOW,
@@ -2643,12 +2653,6 @@
                         this.loadImage(storyLine.frame);
                     }
 
-                    if (cmd == CMD_AUTOADVANCE) {
-                        this.autoAdvance = true;
-                    } else {
-                        this.autoAdvance = false;
-                    }
-
                     this.setText(storyLine.text, cmd);
                 }
                 
@@ -2656,7 +2660,6 @@
                 switch (cmd) {
                     case CMD_NONE:
                     case CMD_BLACK:
-                    case CMD_AUTOADVANCE:
                         // valid frame for save file
                         this.lastValidStoryIndex = this.storyIndex;
                         if (storyLine.text == "") {
@@ -2664,6 +2667,21 @@
                         }
                         break;
                         
+                    case CMD_AUTOADVANCE:
+                        if (storyLine.evidence > 0) {
+                            this.autoAdvance = storyLine.evidence * 1000;
+                        } else {
+                            this.autoAdvance = 10;      // 10ms default
+                        }
+                        if (storyLine.text == "") {
+                            // no typewriter text, so run the delay now
+                            setTimeout(() => this.advanceStory(), this.autoAdvance);
+                            console.log(`Autoadvance blank ${this.autoAdvance} ms`);
+                        } else {
+                            console.log(`Autoadvance after text ${this.autoAdvance} ms`);
+                        }
+                        break;
+
                     case CMD_ADDEV:
                         // Add evidence to inventory
                         if (storyLine.evidence > 0) {
@@ -2827,6 +2845,7 @@
                     case CMD_MUSSWEPT:
                     case CMD_MUSCORE:
                     case CMD_MUSPRELUDE:
+                    case CMD_MUSPRELUDEORIG:
                     case CMD_MUSGIGGLE:
                     case CMD_MUSCOURT:
                     case CMD_MUSWON:
@@ -3439,7 +3458,7 @@
                     [CMD_MUSCORNERED]: 33,  // Pursuit Cornered 2001
                     [CMD_MUSSWEPT]: 34,     // Sweptaway Turnabout
                     [CMD_MUSCORE]: 35,      // Investigation Core 2001
-                    [CMD_MUSPRELUDE]: 36,   // Unending Prelude
+                    [CMD_MUSPRELUDE]: 36,   // Unending Prelude (I think this is misnamed, but not changing it now)
                     [CMD_MUSGIGGLE]: 37,    // Giggle at the Ghosties
                     [CMD_MUSCOURT]: 38,     // Court Begins Orchestrated
                     [CMD_MUSWON]: 39,       // Won the Lawsuit
@@ -3459,7 +3478,8 @@
                     [CMD_MUSOBJECT3]: 53,   // Objection! 2002
                     [CMD_MUSFALL]: 54,      // Shiru - Fall of the Leaf
                     [CMD_MUSOPENING]: 55,   // Investigation - Opening 2007
-                    [CMD_MUSSWEPTP2]: 56    // Sweptaway Turnabout (second part)
+                    [CMD_MUSSWEPTP2]: 56,   // Sweptaway Turnabout (second part)
+                    [CMD_MUSPRELUDEORIG]: 57    // Unending Prelude / Trials and Tribulations
                 };
 
                 return musicMap[musicCmd] || 0;
