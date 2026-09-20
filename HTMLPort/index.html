@@ -615,9 +615,25 @@
             }
         }
     </style>
+    <style>
+        /* Offscreen but present in the DOM and accessibility tree, for AI-agent
+           and screen-reader consumption. Not display:none, so it stays queryable. */
+        .agent-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            clip-path: inset(50%);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
 </head>
 <body>
-    <div id="gameContainer">
+    <div id="gameContainer" data-state="loading">
         <div id="loadingScreen">Loading Phoenix Wright: Turnabout Storm...</div>
 
         <div id="imageArea">
@@ -687,6 +703,18 @@
             <button id="leftBtn" class="game-button" tabindex="0" onclick="game.leftButton()">&lt;</button>
             <button id="rightBtn" class="game-button" tabindex="0" onclick="game.rightButton()">&gt;</button>
             <button id="fileBtn" class="game-button" tabindex="0" onclick="game.fileButton()">File</button>
+        </div>
+
+        <!-- Machine-readable game state for AI agents / screen readers.
+             Offscreen (see .agent-only) but present in the DOM and a11y tree.
+             Fields are refreshed by updateAgentState(); #agentText is a live
+             region written the full line at once (never character-by-character). -->
+        <div id="agentState" class="agent-only" role="group" aria-label="Game state">
+            <p id="agentStateName">state: loading</p>
+            <p id="agentSpeaker">speaker: none</p>
+            <p id="agentMisses">misses: none</p>
+            <p id="agentActions">actions: none</p>
+            <p id="agentText" role="log" aria-live="polite" aria-atomic="true"></p>
         </div>
     </div>
 
@@ -1339,6 +1367,15 @@
                 this.rightBtnEl = document.getElementById('rightBtn');
                 this.fileBtnEl = document.getElementById('fileBtn');
 
+                // Agent/accessibility state mirror elements
+                this.gameContainerEl = document.getElementById('gameContainer');
+                this.agentStateNameEl = document.getElementById('agentStateName');
+                this.agentSpeakerEl = document.getElementById('agentSpeaker');
+                this.agentMissesEl = document.getElementById('agentMisses');
+                this.agentActionsEl = document.getElementById('agentActions');
+                this.agentTextEl = document.getElementById('agentText');
+                this.pendingAdvance = false; // true while an auto-advance is scheduled
+
                 this.init();
             }
 
@@ -1598,11 +1635,18 @@
                 this.typewriterIndex = 0;
                 this.textEl.textContent = "";
                 this.postTypewriterCmd = postcmd;
+                this.pendingAdvance = false;
+
+                // Mirror the complete line once, up front, for agents/screen readers.
+                this.mirrorLine(text);
 
                 if (!text || text.length === 0) {
                     this.typewriterActive = false;
+                    this.updateAgentState();
                     return;
                 }
+
+                this.updateAgentState(); // reflect state: typing
 
                 // 100 characters per second = 10ms per character
                 this.typewriterInterval = setInterval(() => {
@@ -1620,9 +1664,14 @@
                         this.typewriterActive = false;
                         if (this.autoAdvance > 0) {
                             // text complete, so now we can autoadvance
-                            setTimeout(() => this.advanceStory(), this.autoAdvance);
+                            this.pendingAdvance = true;
+                            setTimeout(() => {
+                                this.pendingAdvance = false;
+                                this.advanceStory();
+                            }, this.autoAdvance);
                             this.autoAdvance = 0;
                         }
+                        this.updateAgentState(); // reflect state: ready / waiting
                     }
                 }, 10);
             }
@@ -1633,6 +1682,7 @@
                     this.typewriterInterval = null;
                     this.typewriterActive = false;
                     this.textEl.textContent = this.typewriterText;
+                    this.updateAgentState(); // no longer typing
                 }
             }
 
@@ -1669,6 +1719,8 @@
                 } else {
                     this.missesEl.style.display = 'none';
                 }
+
+                this.updateAgentState();
             }
 
             getPersonName(personId) {
@@ -2460,6 +2512,80 @@
                        this.cheatMenuEl.style.display === 'block';
             }
 
+            // ---- Agent / accessibility state mirror ----
+
+            // Returns the currently visible popup menu element, or null.
+            getActiveMenuEl() {
+                const menus = [
+                    this.mainMenuEl, this.fileMenuEl, this.cheatMenuEl,
+                    this.conversationMenuEl, this.evidenceDetailEl, this.evidenceMenuEl
+                ];
+                return menus.find(m => m && m.style.display === 'block') || null;
+            }
+
+            // Coarse machine-readable phase, exposed as data-state on #gameContainer.
+            // Order matters: typing is reported first because a click during the
+            // typewriter completes the line instead of advancing the story.
+            computeAgentState() {
+                if (this.loadingEl && this.loadingEl.style.display !== 'none') return 'loading';
+                if (this.typewriterActive) return 'typing';
+                if (this.isAnyMenuActive()) return 'menu';
+                if (this.pendingAdvance) return 'waiting';
+                if (this.investigationMode) return 'investigation';
+                if (this.buttonBarEl.style.display !== 'flex') return 'menu';
+                return 'ready';
+            }
+
+            // Human/agent-readable list of the actions available right now.
+            getAvailableActions() {
+                const activeMenu = this.getActiveMenuEl();
+                if (activeMenu) {
+                    // Menu is open: the actions are its visible, clickable items.
+                    const items = Array.from(activeMenu.querySelectorAll('.menu-item, .evidence-tab'))
+                        .filter(el => el.offsetParent !== null && el.textContent.trim())
+                        .map(el => el.textContent.trim());
+                    return items;
+                }
+                // Otherwise the actions are the enabled buttons in the button bar.
+                if (this.buttonBarEl.style.display !== 'flex') return [];
+                const labels = {
+                    next: 'Next', evidence: 'Evidence', press: 'Press',
+                    objection: 'Objection', left: 'Left', right: 'Right', file: 'File'
+                };
+                return Object.keys(labels).filter(k => !this.isButtonDisabled(k)).map(k => labels[k]);
+            }
+
+            // Refresh the offscreen state block + data-state. Cheap and idempotent;
+            // safe to call from any point where speaker/text/misses/buttons change.
+            updateAgentState() {
+                if (!this.gameContainerEl) return; // not yet wired up
+
+                const state = this.computeAgentState();
+                this.gameContainerEl.setAttribute('data-state', state);
+                this.agentStateNameEl.textContent = `state: ${state}`;
+
+                const speaker = (this.currentName >= 0)
+                    ? this.getPersonName(this.currentName)
+                    : 'none';
+                this.agentSpeakerEl.textContent = `speaker: ${speaker}`;
+
+                this.agentMissesEl.textContent = `misses: ${this.missesLeft > 0 ? this.missesLeft : 'none'}`;
+
+                const actions = this.getAvailableActions();
+                this.agentActionsEl.textContent = `actions: ${actions.length ? actions.join(', ') : 'none'}`;
+            }
+
+            // Write the full dialogue line to the live-region mirror in one shot,
+            // rather than the character-by-character visual typewriter. Called once
+            // per line so screen readers / agents get the complete text immediately.
+            mirrorLine(text) {
+                if (!this.agentTextEl) return;
+                const line = (text || '').trim();
+                if (!line) return;
+                const speaker = (this.currentName >= 0) ? this.getPersonName(this.currentName) : '';
+                this.agentTextEl.textContent = speaker ? `${speaker}: ${line}` : line;
+            }
+
             // Helper method to return focus to the Next button after closing menus
             focusNextButton() {
                 if (this.nextBtnEl && !this.isButtonDisabled('next')) {
@@ -2592,6 +2718,8 @@
                         this.enableButton('file');
                         break;
                 }
+
+                this.updateAgentState();
             }
 
             processStoryLine(storyLine) {
@@ -3529,11 +3657,19 @@
             }
         }
 
-        // Initialize the game when page loads
+        // Initialize the game when the DOM is ready (not window.onload, which
+        // waits for every image/audio asset and can leave an agent clicking
+        // buttons before `game` exists).
         let game;
-        window.onload = () => {
+        function bootGame() {
             game = new PhoenixWrightGame();
-        };
+            window.game = game; // expose for console / agent bridge
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', bootGame);
+        } else {
+            bootGame(); // DOM already parsed
+        }
     </script>
 </body>
 </html>
